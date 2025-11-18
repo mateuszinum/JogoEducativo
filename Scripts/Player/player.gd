@@ -23,15 +23,23 @@ func _physics_process(delta: float) -> void:
 		move()
 
 func move():
-	if input_dir and !moving:
-		
-		# O player não consegue mudar de direção enquanto está se movimentando
-		moving = true
-		var tween = create_tween()
-		
-		# O último parâmetro define a velocidade com que o player anda de um tile para outro
-		tween.tween_property(self, "position", position + input_dir * tile_size, 0.15)
-		tween.tween_callback(move_false)
+	if input_dir == Vector2.ZERO or moving:
+		return
+
+	# Lança Raycast para o próximo tile
+	$RayCast2D.target_position = input_dir * tile_size
+	$RayCast2D.force_raycast_update()
+
+	if $RayCast2D.is_colliding():
+		return # Achou barreira, não mexer
+	
+	# O player não consegue mudar de direção enquanto está se movimentando
+	moving = true
+	var tween = create_tween()
+	
+	# O último parâmetro define a velocidade com que o player anda de um tile para outro
+	tween.tween_property(self, "position", position + input_dir * tile_size, 0.05)
+	tween.tween_callback(move_false)
 
 func move_false():
-	moving = false		
+	moving = false
