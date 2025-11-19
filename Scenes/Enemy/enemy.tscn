@@ -1,16 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cahfrnsqc06wg"]
+[gd_scene load_steps=4 format=3 uid="uid://cahfrnsqc06wg"]
 
 [ext_resource type="Texture2D" uid="uid://d1scalh7wft55" path="res://Assets/Enemy/Sprite-0004.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://bcc45d8gc8fbt" path="res://Scripts/Enemy/enemy.gd" id="1_nvvbs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvvbs"]
 radius = 8.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2t2r4"]
-radius = 140.51335
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dmwl5"]
-radius = 177.01129
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
@@ -19,6 +13,10 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nvvbs")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(-1, 324)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mw074")
@@ -35,23 +33,4 @@ debug_enabled = true
 wait_time = 0.1
 autostart = true
 
-[node name="Aggro" type="Node2D" parent="."]
-
-[node name="AggroRange" type="Area2D" parent="Aggro"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/AggroRange"]
-shape = SubResource("CircleShape2D_2t2r4")
-debug_color = Color(0.90073997, 0.23083922, 0.34467763, 0.41960785)
-
-[node name="DeAggroRange" type="Area2D" parent="Aggro"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/DeAggroRange"]
-shape = SubResource("CircleShape2D_dmwl5")
-
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
-[connection signal="area_entered" from="Aggro/AggroRange" to="." method="_on_aggro_range_area_entered"]
-[connection signal="area_exited" from="Aggro/DeAggroRange" to="." method="_on_de_aggro_range_area_exited"]
