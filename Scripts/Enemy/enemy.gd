@@ -28,7 +28,7 @@ func _physics_process(_delta):
 			use_navigation = true
 			nav_agent.target_position = player.global_position
 			return
-
+			
 		# Move diretamente para o player
 		velocity = direction * speed
 		move_and_slide()
@@ -52,7 +52,6 @@ func _physics_process(_delta):
 		move_and_slide()
 
 		# Se RayCast não encontra nada, volta para Modo 1
-		$RayCast2D.target_position = direction * 64
 		$RayCast2D.force_raycast_update()
 		if not $RayCast2D.is_colliding():
 			use_navigation = false
