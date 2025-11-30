@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: float = 60.0
 @export var nav_agent: NavigationAgent2D
 
+var health = 3
 var use_navigation := false  # Troca entre modos de navegação
 
 
@@ -11,6 +12,11 @@ func _ready():
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
+func take_damage():
+	health -= 1
+	
+	if health == 0:
+		queue_free()
 
 func _physics_process(_delta):
 	var player: Node2D = get_node("/root/World/Player")
