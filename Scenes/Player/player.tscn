@@ -9,12 +9,16 @@
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
-radius = 8.0
+radius = 249.00201
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2097154
 collision_mask = 3
 script = ExtResource("1_a3d8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.7683716e-07, 2.3841858e-07)
+texture = ExtResource("2_a3d8c")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -30,18 +34,18 @@ weapon = ExtResource("3_htcer")
 enabled = false
 target_position = Vector2(0, 19)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4.7683716e-07, 2.3841858e-07)
-texture = ExtResource("2_a3d8c")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
 z_index = 100
 shape = SubResource("CircleShape2D_xpcdj")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="EnemyDetector" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 shape = SubResource("CircleShape2D_a3d8c")
+debug_color = Color(0.78158224, 0.25332963, 0.8763708, 0.41960785)
+
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
+[connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]

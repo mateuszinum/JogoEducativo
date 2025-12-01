@@ -5,32 +5,27 @@ const tile_size = 16
 var moving:bool = false
 var input_dir
 
-var nearest_enemy : CharacterBody2D
-var nearest_enemy_distance : float = INF
-
-# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
-func _physics_process(_delta: float) -> void:
-	nearest_enemy_distance = INF
-	nearest_enemy = null
+var enemies_in_range : Array[CharacterBody2D] = []
+var nearest_enemy : CharacterBody2D = null
 	
-	if is_instance_valid(nearest_enemy):
-		nearest_enemy_distance = nearest_enemy.separation
-	else:
-		nearest_enemy_distance = INF
-		 
+func _physics_process(_delta: float) -> void:
+	nearest_enemy = get_nearest_enemy()
+	
+	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
-	if Input.is_action_just_pressed("ui_down"):
-		input_dir = Vector2(0, 1)
-		move()
-	elif Input.is_action_just_pressed("ui_up"):
-		input_dir = Vector2(0, -1)
-		move()
-	elif Input.is_action_just_pressed("ui_left"):
-		input_dir = Vector2(-1, 0)
-		move()
-	elif Input.is_action_just_pressed("ui_right"):
-		input_dir = Vector2(1, 0)
-		move()
+
+	var dirs = {
+		"ui_up":    Vector2.UP,
+		"ui_down":  Vector2.DOWN,
+		"ui_left":  Vector2.LEFT,
+		"ui_right": Vector2.RIGHT
+	}
+
+	for action in dirs:
+		if Input.is_action_just_pressed(action):
+			input_dir = dirs[action]
+			move()
+			break
 
 func move():
 	if input_dir == Vector2.ZERO or moving:
@@ -53,3 +48,22 @@ func move():
 
 func move_false():
 	moving = false
+
+func _on_enemy_detector_body_entered(body):
+	if body is CharacterBody2D:
+		enemies_in_range.append(body)
+
+func _on_enemy_detector_body_exited(body):
+	enemies_in_range.erase(body)
+
+func get_nearest_enemy() -> CharacterBody2D:
+	var nearest : CharacterBody2D = null
+	var min_distance := INF
+
+	for enemy in enemies_in_range:
+		var distance = global_position.distance_squared_to(enemy.global_position)
+		if distance < min_distance:
+			min_distance = distance
+			nearest = enemy
+
+	return nearest

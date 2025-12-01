@@ -71,11 +71,9 @@ func _physics_process(delta):
 
 func check_separation(_delta):
 	separation = (player_reference.position - position).length()
+	# No futuro, colocar para NÃO deletar bosses
 	if separation >= 500:
 		queue_free()
-	
-	if separation < player_reference.nearest_enemy_distance:
-		player_reference.nearest_enemy = self
 
 func take_damage(amount):
 	health -= amount

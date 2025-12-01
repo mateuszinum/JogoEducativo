@@ -29,7 +29,6 @@ shape = SubResource("CircleShape2D_nvvbs")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 path_postprocessing = 1
 simplify_path = true
-debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Navigation"]
 wait_time = 0.1
