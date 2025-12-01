@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c643wf1mcqxt0"]
+
+[ext_resource type="Script" uid="uid://dkta04xakmji6" path="res://weapon_slot.gd" id="1_hm3d8"]
+
+[node name="WeaponSlot" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hm3d8")
+
+[node name="Cooldown" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

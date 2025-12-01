@@ -10,7 +10,10 @@ var nearest_enemy_distance : float = INF
 
 # Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 func _physics_process(_delta: float) -> void:
-	if nearest_enemy:
+	nearest_enemy_distance = INF
+	nearest_enemy = null
+	
+	if is_instance_valid(nearest_enemy):
 		nearest_enemy_distance = nearest_enemy.separation
 	else:
 		nearest_enemy_distance = INF

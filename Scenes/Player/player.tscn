@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh52uvg0iqam"]
+[gd_scene load_steps=7 format=3 uid="uid://bh52uvg0iqam"]
 
 [ext_resource type="Script" uid="uid://b26jfdo2611d8" path="res://Scripts/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://cr33sgri13e2t" path="res://Assets/Player/PlayerSprite.png" id="2_a3d8c"]
+[ext_resource type="PackedScene" uid="uid://c643wf1mcqxt0" path="res://Scenes/Weapons/WeaponSlot/weapon_slot.tscn" id="2_mtuoh"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/Test_Weapon.tres" id="3_htcer"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
@@ -13,6 +15,16 @@ radius = 8.0
 collision_layer = 2097154
 collision_mask = 3
 script = ExtResource("1_a3d8c")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Weapons" type="HBoxContainer" parent="UI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WeaponSlot" parent="UI/Weapons" instance=ExtResource("2_mtuoh")]
+layout_mode = 2
+weapon = ExtResource("3_htcer")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false

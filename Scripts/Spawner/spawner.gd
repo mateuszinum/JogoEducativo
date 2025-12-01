@@ -3,10 +3,10 @@ extends Node2D
 @export var player : CharacterBody2D
 @export var enemy : PackedScene
 @export var max_enemies : int
+@export var enemy_types : Array[Enemy]
 
-# Distancia que o inimigo irá spawnar
+# Distancia que o inimigo irá spawnar do player
 var distance : float = 400
-
 var can_spawn : bool = true
 
 func _physics_process(_delta: float) -> void:
@@ -21,6 +21,7 @@ func spawn(pos : Vector2):
 
 	var enemy_instance = enemy.instantiate()
 	
+	enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
 	enemy_instance.position = pos
 	enemy_instance.player_reference = player
 	
@@ -38,7 +39,7 @@ func _on_timer_timeout() -> void:
 	amount(seconds % 10)
 
 func _on_pattern_timeout() -> void:
-	for i in range(75):
+	for i in range(15):
 		spawn(get_random_position())
 
 # Timer
@@ -52,7 +53,7 @@ var seconds : int:
 		seconds = value
 		
 		# Normal é colocar segundos como 60
-		if seconds >= 10:
-			seconds -= 10
+		if seconds >= 60:
+			seconds -= 60
 			minute += 1
 		%Seconds.text = str(seconds).lpad(2, '0')

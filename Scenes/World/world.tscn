@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cg6f8725c7lw5"]
+[gd_scene load_steps=13 format=3 uid="uid://cg6f8725c7lw5"]
 
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://qbxlshisclcd" path="res://Scripts/world.gd" id="1_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://dah3i7r3cw6wk" path="res://Assets/Terrain/TileSet.png" id="2_go701"]
 [ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/Barrier.png" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="3_5ukr8"]
-[ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="4_8j60k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8j60k"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -58,7 +57,6 @@ sources/1 = SubResource("TileSetAtlasSource_k7acu")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_fo5ed")
-object_to_spawn = ExtResource("4_8j60k")
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_5ukr8")]
 player = NodePath("../Player")

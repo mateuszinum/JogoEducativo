@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://bufqw7ji7465l"]
+
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="1_4qfvx"]
+[ext_resource type="Texture2D" uid="uid://d1scalh7wft55" path="res://Assets/Enemy/Sprite-0004.png" id="2_x305w"]
+
+[resource]
+script = ExtResource("1_4qfvx")
+title = "RedCube"
+texture = ExtResource("2_x305w")
+health = 3.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

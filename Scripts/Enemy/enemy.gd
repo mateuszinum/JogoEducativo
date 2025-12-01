@@ -4,10 +4,21 @@ extends CharacterBody2D
 @export var speed: float = 60
 @export var nav_agent: NavigationAgent2D
 
-var health = 3
 var knockback : Vector2
 var separation : float
 var use_navigation := false  # Troca entre modos de navegação
+
+var type : Enemy:
+	set(value):
+		type = value
+		$Sprite2D.texture = value.texture
+		health = value.health
+
+var health : float:
+	set(value):
+		health = value
+		if health <= 0:
+			queue_free()
 
 func _ready():
 	nav_agent.path_desired_distance = 4
@@ -66,8 +77,5 @@ func check_separation(_delta):
 	if separation < player_reference.nearest_enemy_distance:
 		player_reference.nearest_enemy = self
 
-func take_damage():
-	health -= 1
-	
-	if health == 0:
-		queue_free()
+func take_damage(amount):
+	health -= amount
