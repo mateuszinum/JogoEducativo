@@ -1,24 +1,21 @@
 extends CharacterBody2D
 
-@export var speed: float = 60.0
+@export var player_reference : CharacterBody2D
+@export var speed: float = 60
 @export var nav_agent: NavigationAgent2D
 
 var health = 3
+var knockback : Vector2
+var separation : float
 var use_navigation := false  # Troca entre modos de navegação
 
-
 func _ready():
-	var player = get_node("/root/World/Player")
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
-func take_damage():
-	health -= 1
+func _physics_process(delta):
+	check_separation(delta)
 	
-	if health == 0:
-		queue_free()
-
-func _physics_process(_delta):
 	var player: Node2D = get_node("/root/World/Player")
 
 	# Modo 1: Seguir Player
@@ -40,7 +37,6 @@ func _physics_process(_delta):
 		move_and_slide()
 		return
 
-
 	# Modo 2: Navegar até o Player
 	if use_navigation:
 		# Sempre atualiza o target para ser o player
@@ -61,3 +57,17 @@ func _physics_process(_delta):
 		$RayCast2D.force_raycast_update()
 		if not $RayCast2D.is_colliding():
 			use_navigation = false
+
+func check_separation(_delta):
+	separation = (player_reference.position - position).length()
+	if separation >= 500:
+		queue_free()
+	
+	if separation < player_reference.nearest_enemy_distance:
+		player_reference.nearest_enemy = self
+
+func take_damage():
+	health -= 1
+	
+	if health == 0:
+		queue_free()

@@ -11,7 +11,7 @@ radius = 8.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2097154
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("1_a3d8c")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

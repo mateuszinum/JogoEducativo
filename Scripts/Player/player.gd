@@ -2,12 +2,19 @@ extends CharacterBody2D
 
 # Quantidade de pixels que o player mexe por ativação
 const tile_size = 16
-
 var moving:bool = false
 var input_dir
 
+var nearest_enemy : CharacterBody2D
+var nearest_enemy_distance : float = INF
+
 # Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if nearest_enemy:
+		nearest_enemy_distance = nearest_enemy.separation
+	else:
+		nearest_enemy_distance = INF
+		 
 	input_dir = Vector2.ZERO
 	if Input.is_action_just_pressed("ui_down"):
 		input_dir = Vector2(0, 1)
