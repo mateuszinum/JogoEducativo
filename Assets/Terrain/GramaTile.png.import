@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bptit856hc68f"
-path="res://.godot/imported/Barrier.png-c3cc134d9face7a703b5276f292563b9.ctex"
+path="res://.godot/imported/GramaTile.png-2ca2e4492298db360df660a642260264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Barrier.png"
-dest_files=["res://.godot/imported/Barrier.png-c3cc134d9face7a703b5276f292563b9.ctex"]
+source_file="res://Assets/Terrain/GramaTile.png"
+dest_files=["res://.godot/imported/GramaTile.png-2ca2e4492298db360df660a642260264.ctex"]
 
 [params]
 
