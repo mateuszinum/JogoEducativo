@@ -9,19 +9,22 @@ extends Node2D
 var distance : float = 400
 var can_spawn : bool = true
 
-func _physics_process(_delta: float) -> void:
-	if get_tree().get_node_count_in_group("Enemy") < max_enemies:
-		can_spawn = true
-	else:
-		can_spawn = false
+#func _physics_process(_delta: float) -> void:
+	#if get_tree().get_node_count_in_group("Enemy") < max_enemies:
+		#can_spawn = true
+	#else:
+		#can_spawn = false
 
 func spawn(pos : Vector2):
-	if not can_spawn:
+	#if not can_spawn:
+		#return
+	if get_tree().get_node_count_in_group("Enemy") >= max_enemies:
 		return
 
 	var enemy_instance = enemy.instantiate()
 	
-	enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
+	#enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
+	enemy_instance.type = enemy_types.pick_random()
 	enemy_instance.position = pos
 	enemy_instance.player_reference = player
 	

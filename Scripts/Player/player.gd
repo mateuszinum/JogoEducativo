@@ -8,9 +8,7 @@ var input_dir
 var enemies_in_range : Array[CharacterBody2D] = []
 var nearest_enemy : CharacterBody2D = null
 	
-func _physics_process(_delta: float) -> void:
-	nearest_enemy = get_nearest_enemy()
-	
+func _physics_process(_delta: float) -> void:	
 	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
 
@@ -50,17 +48,26 @@ func move_false():
 	moving = false
 
 func _on_enemy_detector_body_entered(body):
-	if body is CharacterBody2D:
+	if body.is_in_group("Enemy"):
 		enemies_in_range.append(body)
 
 func _on_enemy_detector_body_exited(body):
 	enemies_in_range.erase(body)
 
+func _on_nearest_enemy_timer_timeout():
+	nearest_enemy = get_nearest_enemy()
+
 func get_nearest_enemy() -> CharacterBody2D:
+	if enemies_in_range.is_empty():
+		return null
+	
 	var nearest : CharacterBody2D = null
 	var min_distance := INF
 
 	for enemy in enemies_in_range:
+		if !is_instance_valid(enemy):
+			continue
+			
 		var distance = global_position.distance_squared_to(enemy.global_position)
 		if distance < min_distance:
 			min_distance = distance
