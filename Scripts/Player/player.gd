@@ -5,10 +5,39 @@ const tile_size = 16
 var moving:bool = false
 var input_dir
 
+# Isso vai criar um espaço no Inspetor do Player para você arrastar suas armas (.tres)
+@export var inventario_armas : Array[Weapon] = []
+var indice_arma_atual : int = 0
+var arma_equipada : Weapon = null
+
+func _ready() -> void:
+	if inventario_armas.size() > 0:
+		arma_equipada = inventario_armas[0]
+		# AVISA O SLOT QUAL É A PRIMEIRA ARMA
+		%WeaponSlot.weapon = arma_equipada
+		
+func trocar_arma() -> void:
+	if inventario_armas.is_empty():
+		return
+		
+	indice_arma_atual += 1
+	if indice_arma_atual >= inventario_armas.size():
+		indice_arma_atual = 0
+		
+	arma_equipada = inventario_armas[indice_arma_atual]
+	# Ela pega a arma nova do inventário e joga dentro do WeaponSlot
+	%WeaponSlot.weapon = arma_equipada 
+	print("Arma trocada para: ", arma_equipada.resource_path)
+	
+
+		
 var enemies_in_range : Array[CharacterBody2D] = []
 var nearest_enemy : CharacterBody2D = null
 	
 func _physics_process(_delta: float) -> void:	
+	# --- TROCAR DE ARMA (Aperte TAB) ---
+	if Input.is_action_just_pressed("ui_focus_next"):
+		trocar_arma()
 	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
 
@@ -74,3 +103,4 @@ func get_nearest_enemy() -> CharacterBody2D:
 			nearest = enemy
 
 	return nearest
+	

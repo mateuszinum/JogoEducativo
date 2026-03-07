@@ -17,7 +17,9 @@ collision_mask = 3
 script = ExtResource("1_a3d8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1787942334]
+z_index = 1
 position = Vector2(4.7683716e-07, 2.3841858e-07)
+scale = Vector2(0.9599999, 1)
 texture = ExtResource("2_a3d8c")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
@@ -27,6 +29,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WeaponSlot" parent="UI/Weapons" unique_id=2044674191 instance=ExtResource("2_mtuoh")]
+unique_name_in_owner = true
 layout_mode = 2
 weapon = ExtResource("3_htcer")
 

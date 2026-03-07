@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://d3j5fnsthjsdh"]
+
+[ext_resource type="PackedScene" uid="uid://oc0f144il1jk" path="res://Scenes/Weapons/Projectiles/fire_shot.tscn" id="1_cps43"]
+[ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_wylcx"]
+
+[resource]
+script = ExtResource("2_wylcx")
+damage = 3.0
+cooldown = 0.5
+speed = 500.0
+projectile_node = ExtResource("1_cps43")
+metadata/_custom_type_script = "uid://dacndn1awrba2"
