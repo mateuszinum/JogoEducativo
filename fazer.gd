@@ -3,7 +3,7 @@ Lista de coisas para fazer
 
 Funções Built-In
 - ataque(alvo, tipoDeAtaque)
-- mover(direcao) -> feita
+#- mover(direcao) -> feita
 - inimigoMaisProximo() -> feita
 - sensor(direcao)
 - vidaAtual() -> feita

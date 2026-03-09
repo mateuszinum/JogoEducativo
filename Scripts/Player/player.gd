@@ -41,9 +41,6 @@ func _physics_process(_delta: float) -> void:
 	# --- TROCAR DE ARMA (Aperte TAB) ---
 	if Input.is_action_just_pressed("change_weapon"):
 		trocar_arma()
-	
-	if Input.is_action_just_pressed("check_health"):
-		vida_atual()
 		
 	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
@@ -82,24 +79,6 @@ func move():
 
 func move_false():
 	moving = false
-
-func get_nearest_enemy() -> CharacterBody2D:
-	if enemies_in_range.is_empty():
-		return null
-	
-	var nearest : CharacterBody2D = null
-	var min_distance := INF
-
-	for enemy in enemies_in_range:
-		if !is_instance_valid(enemy):
-			continue
-			
-		var distance = global_position.distance_squared_to(enemy.global_position)
-		if distance < min_distance:
-			min_distance = distance
-			nearest = enemy
-
-	return nearest
 	
 func take_damage(amount):
 	if $DamageTick.time_left > 0:
@@ -113,10 +92,6 @@ func take_damage(amount):
 	
 	modulate.a = 0.5
 
-func vida_atual():
-	print(str(health) + "/" + str(max_health))
-	return health
-
 func _on_enemy_detector_body_entered(body):
 	if body.is_in_group("Enemy"):
 		enemies_in_range.append(body)
@@ -125,7 +100,7 @@ func _on_enemy_detector_body_exited(body):
 	enemies_in_range.erase(body)
 
 func _on_nearest_enemy_timer_timeout():
-	nearest_enemy = get_nearest_enemy()
+	nearest_enemy = InimigoMaisProximo.get_nearest_enemy(global_position, enemies_in_range)
 	
 func _on_self_damage_body_entered(body: Node2D) -> void:
 	take_damage(body.damage)
