@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
+var health : float = 50:
+	set(value):
+		health = value
+		%HealthBar.value = value
+
 # Quantidade de pixels que o player mexe por ativação
 const tile_size = 16
-var moving:bool = false
+var moving : bool = false
 var input_dir
 
 # Isso vai criar um espaço no Inspetor do Player para você arrastar suas armas (.tres)
@@ -42,10 +47,10 @@ func _physics_process(_delta: float) -> void:
 	input_dir = Vector2.ZERO
 
 	var dirs = {
-		"ui_up":    Vector2.UP,
-		"ui_down":  Vector2.DOWN,
-		"ui_left":  Vector2.LEFT,
-		"ui_right": Vector2.RIGHT
+		"move_up":    Vector2.UP,
+		"move_down":  Vector2.DOWN,
+		"move_left":  Vector2.LEFT,
+		"move_right": Vector2.RIGHT
 	}
 
 	for action in dirs:
@@ -75,16 +80,6 @@ func move():
 
 func move_false():
 	moving = false
-
-func _on_enemy_detector_body_entered(body):
-	if body.is_in_group("Enemy"):
-		enemies_in_range.append(body)
-
-func _on_enemy_detector_body_exited(body):
-	enemies_in_range.erase(body)
-
-func _on_nearest_enemy_timer_timeout():
-	nearest_enemy = get_nearest_enemy()
 
 func get_nearest_enemy() -> CharacterBody2D:
 	if enemies_in_range.is_empty():
