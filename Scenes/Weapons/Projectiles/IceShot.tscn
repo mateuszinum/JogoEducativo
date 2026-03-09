@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://claok5jy0cla1"]
+[gd_scene format=3 uid="uid://k1ywcxxasbkl"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_7thkf"]
 [ext_resource type="Texture2D" uid="uid://cvgoyvr0mrdsy" path="res://Assets/Projectiles/gelo.png" id="2_fp723"]

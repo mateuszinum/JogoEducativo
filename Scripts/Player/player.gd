@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-var health : float = 50:
-	set(value):
-		health = value
-		%HealthBar.value = value
+signal health_changed(current_health)
+
+@export var health = 50
+@export var max_health = health
 
 # Quantidade de pixels que o player mexe por ativação
 const tile_size = 16
@@ -33,16 +33,18 @@ func trocar_arma() -> void:
 	# Ela pega a arma nova do inventário e joga dentro do WeaponSlot
 	%WeaponSlot.weapon = arma_equipada 
 	print("Arma trocada para: ", arma_equipada.resource_path)
-	
 
-		
 var enemies_in_range : Array[CharacterBody2D] = []
 var nearest_enemy : CharacterBody2D = null
 	
-func _physics_process(_delta: float) -> void:	
+func _physics_process(_delta: float) -> void:
 	# --- TROCAR DE ARMA (Aperte TAB) ---
-	if Input.is_action_just_pressed("ui_focus_next"):
+	if Input.is_action_just_pressed("change_weapon"):
 		trocar_arma()
+	
+	if Input.is_action_just_pressed("check_health"):
+		vida_atual()
+		
 	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
 
@@ -99,3 +101,34 @@ func get_nearest_enemy() -> CharacterBody2D:
 
 	return nearest
 	
+func take_damage(amount):
+	if $DamageTick.time_left > 0:
+		return
+	
+	health -= amount
+	health_changed.emit(health)
+	print("Você tomou " + str(amount) + " de dano!")
+	
+	$DamageTick.start()
+	
+	modulate.a = 0.5
+
+func vida_atual():
+	print(str(health) + "/" + str(max_health))
+	return health
+
+func _on_enemy_detector_body_entered(body):
+	if body.is_in_group("Enemy"):
+		enemies_in_range.append(body)
+
+func _on_enemy_detector_body_exited(body):
+	enemies_in_range.erase(body)
+
+func _on_nearest_enemy_timer_timeout():
+	nearest_enemy = get_nearest_enemy()
+	
+func _on_self_damage_body_entered(body: Node2D) -> void:
+	take_damage(body.damage)
+
+func _on_damage_tick_timeout() -> void:
+	modulate.a = 1

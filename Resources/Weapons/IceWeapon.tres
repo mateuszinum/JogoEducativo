@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://8pxt5qb4yqnu"]
 
-[ext_resource type="PackedScene" uid="uid://claok5jy0cla1" path="res://Scenes/Weapons/Projectiles/IceShot.tscn" id="1_v5b4k"]
+[ext_resource type="PackedScene" uid="uid://k1ywcxxasbkl" path="res://Scenes/Weapons/Projectiles/IceShot.tscn" id="1_v5b4k"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_ctqob"]
 
 [resource]

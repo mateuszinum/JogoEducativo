@@ -6,9 +6,13 @@ Funções Built-In
 - mover(direcao) -> feita
 - inimigoMaisProximo() -> feita
 - sensor(direcao)
-- vidaAtual()
+- vidaAtual() -> feita
 - usarItem(item)
 - arena(nomeDaArena)
 - escapar()
+
+
+* Refazer sistema de tiro? Adicionar arma tá tranquilo, mas a lógica para o player
+atirar tá meio confusa
 
 """

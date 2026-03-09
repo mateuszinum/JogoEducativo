@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bct2mn0xi7na0" path="res://Scripts/UI/ui.gd" id="3_dd0ac"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/Test_Weapon.tres" id="3_htcer"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
+bg_color = Color(0.98039216, 0, 0, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
 
@@ -14,9 +17,6 @@ size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3d8c"]
 radius = 249.00201
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
-bg_color = Color(0.98039216, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=848872761]
 collision_layer = 2097154
@@ -32,6 +32,16 @@ texture = ExtResource("2_a3d8c")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=2014217669]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 8.0
+offset_bottom = -9.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_mtuoh")
+value = 100.0
+show_percentage = false
 
 [node name="Weapons" type="HBoxContainer" parent="UI" unique_id=1940889582]
 offset_right = 40.0
@@ -74,16 +84,6 @@ autostart = true
 [node name="DamageTick" type="Timer" parent="." unique_id=1242487735]
 wait_time = 0.5
 one_shot = true
-
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=2014217669]
-unique_name_in_owner = true
-offset_left = -8.0
-offset_top = 10.0
-offset_right = 8.0
-offset_bottom = 14.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_mtuoh")
-value = 100.0
-show_percentage = false
 
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
