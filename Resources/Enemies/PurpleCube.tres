@@ -8,5 +8,6 @@ script = ExtResource("1_fkwag")
 title = "RedCube"
 texture = ExtResource("2_fkwag")
 health = 3.0
+damage = 5.0
 spawn_amount = 7
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

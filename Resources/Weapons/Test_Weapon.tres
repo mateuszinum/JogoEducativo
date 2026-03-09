@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SingleShot" load_steps=3 format=3 uid="uid://dmo3l5vfvdxq1"]
+[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://dmo3l5vfvdxq1"]
 
 [ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/Projectiles/projectile.tscn" id="1_7xuj4"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_wt8un"]

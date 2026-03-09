@@ -13,12 +13,17 @@ var type : Enemy:
 		type = value
 		$Sprite2D.texture = value.texture
 		health = value.health
+		damage = value.damage
 
 var health : float:
 	set(value):
 		health = value
 		if health <= 0:
 			queue_free()
+
+var damage : float:
+	set(value):
+		damage = value
 
 func _ready():
 	nav_agent.path_desired_distance = 4
