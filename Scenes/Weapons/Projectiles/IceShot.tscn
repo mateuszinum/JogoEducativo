@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://k1ywcxxasbkl"]
+[gd_scene format=3 uid="uid://claok5jy0cla1"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_7thkf"]
-[ext_resource type="Texture2D" path="res://Assets/Projectiles/gelo.png" id="2_fp723"]
+[ext_resource type="Texture2D" uid="uid://cvgoyvr0mrdsy" path="res://Assets/Projectiles/gelo.png" id="2_fp723"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]
 radius = 9.999999

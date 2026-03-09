@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c2lpghfx75udb"]
+[gd_scene format=3 uid="uid://oc0f144il1jk"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_pr2ei"]
-[ext_resource type="Texture2D" path="res://Assets/Projectiles/Fire.png" id="2_7ypa3"]
+[ext_resource type="Texture2D" uid="uid://bbht7rpnvmy7i" path="res://Assets/Projectiles/Fire.png" id="2_7ypa3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpoxt"]
 radius = 59.89303
