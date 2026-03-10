@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dj8iit3oemlpe"]
 
-[ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf with shadows/Werewolf-Walk.png" id="1_qa7hl"]
+[ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Werewolf/Werewolf with shadows/Werewolf-Walk.png" id="1_qa7hl"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_n0mhb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0mhb"]

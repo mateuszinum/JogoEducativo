@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dsltr00ychkc4"]
 
-[ext_resource type="Texture2D" uid="uid://x636pgqnar62" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime with shadows/Slime-Walk.png" id="1_34gl4"]
+[ext_resource type="Texture2D" uid="uid://x636pgqnar62" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/Slime-Walk.png" id="1_34gl4"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_so5l6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osetd"]
