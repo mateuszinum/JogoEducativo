@@ -55,9 +55,9 @@ animations = [{
 
 [resource]
 script = ExtResource("2_so5l6")
-title = "RedCube"
+title = "Slime"
 animations = SubResource("SpriteFrames_jat16")
-health = 3.0
+health = 10.0
 damage = 5.0
-spawn_amount = 7
+spawn_amount = 30
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

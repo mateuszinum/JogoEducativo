@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
+const KNOCKBACK_FORCE : float = 200.0
 
 @export var player_reference : CharacterBody2D
 @export var speed: float = 60
@@ -37,8 +38,13 @@ func _ready():
 func _physics_process(delta):
 	check_separation(delta)
 	
+	# Faz a força do knockback diminuir suavemente até zero ao longo do tempo (Fricção)
+	if knockback != Vector2.ZERO:
+		knockback = knockback.lerp(Vector2.ZERO, 10 * delta)
+	
 	var player: Node2D = get_node("/root/World/Player")
 
+	# Modo 1: Seguir Player
 	if not use_navigation:
 		var direction := global_position.direction_to(player.global_position)
 
@@ -53,10 +59,12 @@ func _physics_process(delta):
 			nav_agent.target_position = player.global_position
 			return
 			
-		velocity = direction * speed
+		# Adicionamos o knockback na velocidade final 
+		velocity = (direction * speed) + knockback
 		move_and_slide()
 		return
 
+	# Modo 2: Navegar até o Player
 	if use_navigation:
 		nav_agent.target_position = player.global_position
 
@@ -70,7 +78,8 @@ func _physics_process(delta):
 		if direction.x != 0:
 			$AnimatedSprite2D.flip_h = (direction.x < 0)
 
-		velocity = direction * speed
+		# Adicionamos o knockback na velocidade final aqui também 
+		velocity = (direction * speed) + knockback
 		move_and_slide()
 
 		$RayCast2D.force_raycast_update()
@@ -83,9 +92,17 @@ func check_separation(_delta):
 	if separation >= 500:
 		queue_free()
 
-func take_damage(amount):
+func take_damage(amount, knockback_dir: Vector2 = Vector2.ZERO):
 	health -= amount
+
+	apply_knockback(knockback_dir)
 	show_damage_number(amount)
+	
+func apply_knockback(knockback_dir: Vector2 = Vector2.ZERO):
+	knockback = knockback_dir * KNOCKBACK_FORCE
+	$AnimatedSprite2D.modulate = Color.RED
+	var tween = create_tween()
+	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
 	
 func show_damage_number(amount):
 	var dmg_num = DAMAGE_NUMBER.instantiate()

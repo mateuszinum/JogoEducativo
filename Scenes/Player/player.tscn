@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbiy4cbddr6x0" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard with shadows/Wizard-Idle.png" id="2_htcer"]
 [ext_resource type="PackedScene" uid="uid://c643wf1mcqxt0" path="res://Scenes/Weapons/WeaponSlot/weapon_slot.tscn" id="2_mtuoh"]
 [ext_resource type="Script" uid="uid://bct2mn0xi7na0" path="res://Scripts/UI/ui.gd" id="3_dd0ac"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/Test_Weapon.tres" id="3_htcer"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="3_htcer"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
