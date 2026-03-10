@@ -1,12 +1,16 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://8pxt5qb4yqnu"]
 
+[ext_resource type="AudioStream" uid="uid://42aie6sgfyut" path="res://Audio/SFX/LancarGelo.mp3" id="1_6fkw1"]
 [ext_resource type="PackedScene" uid="uid://k1ywcxxasbkl" path="res://Scenes/Weapons/Projectiles/ice_shot.tscn" id="1_v5b4k"]
+[ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/HitGelo.mp3" id="2_6fkw1"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_ctqob"]
 
 [resource]
 script = ExtResource("2_ctqob")
 damage = 2.0
 cooldown = 0.6
-speed = 800.0
+speed = 400.0
+attack_sound = ExtResource("1_6fkw1")
+hit_sound = ExtResource("2_6fkw1")
 projectile_node = ExtResource("1_v5b4k")
 metadata/_custom_type_script = "uid://dacndn1awrba2"

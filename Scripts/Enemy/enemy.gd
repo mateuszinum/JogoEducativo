@@ -12,6 +12,12 @@ var knockback : Vector2
 var separation : float
 var use_navigation := false
 
+@export_group("Audio")
+var hurt_sound : AudioStream
+var hurt_volume : float = 0.0
+var pitch_min : float = 0.8
+var pitch_max : float = 1.2
+
 var type : Enemy:
 	set(value):
 		type = value
@@ -23,6 +29,10 @@ var type : Enemy:
 		damage = value.damage
 		speed = value.speed * 6.0
 		despawns = value.despawns
+		hurt_sound = value.hurt_sound
+		hurt_volume = value.hurt_volume
+		pitch_min = value.pitch_min
+		pitch_max = value.pitch_max
 
 var health : float:
 	set(value):
@@ -111,6 +121,16 @@ func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):
 	health -= amount
 	apply_knockback(mult, knockback_dir)
 	show_damage_number(amount)
+	
+	if hurt_sound != null:
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = hurt_sound
+		audio.volume_db = hurt_volume
+		audio.global_position = global_position
+		audio.pitch_scale = randf_range(pitch_min, pitch_max)
+		get_tree().current_scene.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
 	
 func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
 	var player: Node2D = get_node("/root/World/Player")
