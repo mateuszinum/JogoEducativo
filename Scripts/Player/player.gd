@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@onready var anim = $AnimatedSprite2D
+const OPACIDADE_NO_DANO : float = 1.0
 
+@onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
 
 @export var health = 50
@@ -112,7 +113,7 @@ func take_damage(amount):
 	
 	$DamageTick.start()
 	
-	modulate.a = 1
+	modulate.a = OPACIDADE_NO_DANO
 	
 	anim.modulate = Color.RED
 	var tween = create_tween()
