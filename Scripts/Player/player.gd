@@ -11,13 +11,19 @@ signal health_changed(current_health)
 
 @export_group("Audio")
 @export var hurt_sound : AudioStream
+@export var hurt_volume : float = 0.0
 @export var hurt_pitch_min : float = 0.8
 @export var hurt_pitch_max : float = 1.2
+@export var step_sound : AudioStream
+@export var step_volume : float = 0.0
+@export var step_pitch_min : float = 0.8
+@export var step_pitch_max : float = 1.2
 
 const tile_size = 16
 var moving : bool = false
 var input_dir
 
+@export_group("Inventory")
 @export var inventario_armas : Array[Weapon] = []
 var indice_arma_atual : int = 0
 var arma_equipada : Weapon = null
@@ -75,6 +81,17 @@ func move():
 		anim.flip_h = (input_dir.x < 0)
 	
 	moving = true
+	
+	if step_sound != null:
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = step_sound
+		audio.volume_db = step_volume
+		audio.global_position = global_position
+		audio.pitch_scale = randf_range(step_pitch_min, step_pitch_max)
+		get_tree().current_scene.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+	
 	var tween = create_tween()
 	tween.tween_property(self, "position", position + input_dir * tile_size, 0.05)
 	tween.tween_callback(move_false)
@@ -95,7 +112,7 @@ func take_damage(amount):
 	
 	$DamageTick.start()
 	
-	modulate.a = 0.50
+	modulate.a = 1
 	
 	anim.modulate = Color.RED
 	var tween = create_tween()
@@ -106,6 +123,7 @@ func take_damage(amount):
 	if hurt_sound != null:
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = hurt_sound
+		audio.volume_db = hurt_volume
 		audio.global_position = global_position
 		audio.pitch_scale = randf_range(hurt_pitch_min, hurt_pitch_max)
 		get_tree().current_scene.add_child(audio)

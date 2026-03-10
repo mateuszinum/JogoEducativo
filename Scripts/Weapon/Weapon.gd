@@ -8,7 +8,9 @@ class_name Weapon
 
 @export_group("Audio")
 @export var attack_sound : AudioStream
+@export var attack_volume : float = 0.0
 @export var hit_sound : AudioStream
+@export var hit_volume : float = 0.0
 @export var pitch_min : float = 0.8
 @export var pitch_max : float = 1.2
 

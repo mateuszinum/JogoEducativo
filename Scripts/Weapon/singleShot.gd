@@ -8,6 +8,7 @@ func shoot(source, target, scene_tree):
 	if attack_sound != null:
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = attack_sound
+		audio.volume_db = attack_volume
 		audio.global_position = source.global_position
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
 		scene_tree.current_scene.add_child(audio)
@@ -20,6 +21,7 @@ func shoot(source, target, scene_tree):
 	projectile.speed = speed
 	projectile.knockback_multiplier = knockback_multiplier
 	projectile.hit_sound = hit_sound
+	projectile.hit_volume = hit_volume
 	projectile.pitch_min = pitch_min
 	projectile.pitch_max = pitch_max
 	projectile.direction = (target.position - source.position).normalized()

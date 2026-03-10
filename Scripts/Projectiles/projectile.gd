@@ -6,6 +6,7 @@ extends Area2D
 var knockback_multiplier : float = 1.0
 
 var hit_sound : AudioStream
+var hit_volume : float = 0.0
 var pitch_min : float = 0.8
 var pitch_max : float = 1.2
 
@@ -19,6 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if hit_sound != null:
 			var audio = AudioStreamPlayer2D.new()
 			audio.stream = hit_sound
+			audio.volume_db = hit_volume
 			audio.global_position = global_position
 			audio.pitch_scale = randf_range(pitch_min, pitch_max)
 			get_tree().current_scene.add_child(audio)
