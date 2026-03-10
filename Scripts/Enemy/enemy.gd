@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
-const KNOCKBACK_FORCE : float = 200.0
+const KNOCKBACK_FORCE : float = 400.0
 
 @export var player_reference : CharacterBody2D
 var speed: float = 60
@@ -10,7 +10,7 @@ var despawns: bool = true
 
 var knockback : Vector2
 var separation : float
-var use_navigation := false  # Troca entre modos de navegação
+var use_navigation := false
 
 var type : Enemy:
 	set(value):
@@ -92,14 +92,17 @@ func check_separation(_delta):
 	if separation >= 500:
 		queue_free()
 
-func take_damage(amount, knockback_dir: Vector2 = Vector2.ZERO):
+func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):
 	health -= amount
-
-	apply_knockback(knockback_dir)
+	apply_knockback(mult, knockback_dir)
 	show_damage_number(amount)
 	
-func apply_knockback(knockback_dir: Vector2 = Vector2.ZERO):
-	knockback = knockback_dir * KNOCKBACK_FORCE
+func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
+	var player: Node2D = get_node("/root/World/Player")
+	var globalMult = player.global_knockback_multiplier
+	
+	knockback = knockback_dir * KNOCKBACK_FORCE * mult * globalMult
+	
 	$AnimatedSprite2D.modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)

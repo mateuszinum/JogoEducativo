@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxasuwt0mgxbv"]
 
-[ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_xifme"]
-[ext_resource type="Texture2D" uid="uid://g34esyfhchxw" path="res://Assets/Projectiles/flecha.png" id="2_xifme"]
+[ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_r4yt6"]
+[ext_resource type="Texture2D" uid="uid://buk1u2iu6cukb" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Arrow(Projectile)/Arrow01(32x32).png" id="2_mcr74"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]
 radius = 20.024984
@@ -9,20 +9,19 @@ radius = 20.024984
 [node name="Projectile" type="Area2D" unique_id=1468238364]
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_xifme")
+script = ExtResource("1_r4yt6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301682816]
 position = Vector2(0, -3.5527137e-15)
-rotation = 4.0072317
-scale = Vector2(0.17291552, 0.19869535)
-texture = ExtResource("2_xifme")
+scale = Vector2(0.87, 1)
+texture = ExtResource("2_mcr74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=813063409]
-scale = Vector2(1.9999995, 0.36000025)
+scale = Vector2(0.521, 0.245)
 shape = SubResource("CircleShape2D_aihi3")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1927736231]
-scale = Vector2(3.2436748, 0.40710345)
+scale = Vector2(0.919, 0.407)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

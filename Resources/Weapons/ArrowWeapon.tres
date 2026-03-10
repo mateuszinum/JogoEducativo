@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://dmo3l5vfvdxq1"]
 
-[ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/Projectiles/projectile.tscn" id="1_r22qi"]
+[ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/Projectiles/arrow_shot.tscn" id="1_r22qi"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_ofrdl"]
 
 [resource]
@@ -8,4 +8,5 @@ script = ExtResource("2_ofrdl")
 damage = 1.0
 cooldown = 0.4
 speed = 400.0
+knockback_multiplier = 0.5
 metadata/_custom_type_script = "uid://dacndn1awrba2"

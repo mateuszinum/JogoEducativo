@@ -6,22 +6,24 @@ signal health_changed(current_health)
 
 @export var health = 50
 @export var max_health = health
+@export var touch_knockback_multiplier: float = 1.0
+@export var global_knockback_multiplier: float = 1.0
 
-# Quantidade de pixels que o player mexe por ativação
 const tile_size = 16
 var moving : bool = false
 var input_dir
 
-# Isso vai criar um espaço no Inspetor do Player para você arrastar suas armas (.tres)
 @export var inventario_armas : Array[Weapon] = []
 var indice_arma_atual : int = 0
 var arma_equipada : Weapon = null
+
+var enemies_in_range : Array[CharacterBody2D] = []
+var nearest_enemy : CharacterBody2D = null
 
 func _ready() -> void:
 	anim.play("default")
 	if inventario_armas.size() > 0:
 		arma_equipada = inventario_armas[0]
-		# AVISA O SLOT QUAL É A PRIMEIRA ARMA
 		%WeaponSlot.weapon = arma_equipada
 		
 func trocar_arma() -> void:
@@ -33,19 +35,12 @@ func trocar_arma() -> void:
 		indice_arma_atual = 0
 		
 	arma_equipada = inventario_armas[indice_arma_atual]
-	# Ela pega a arma nova do inventário e joga dentro do WeaponSlot
 	%WeaponSlot.weapon = arma_equipada 
-	print("Arma trocada para: ", arma_equipada.resource_path)
 
-var enemies_in_range : Array[CharacterBody2D] = []
-var nearest_enemy : CharacterBody2D = null
-	
 func _physics_process(_delta: float) -> void:
-	# --- TROCAR DE ARMA (Aperte TAB) ---
 	if Input.is_action_just_pressed("change_weapon"):
 		trocar_arma()
 		
-	# Processa cada tecla de movimentação que o player aperta e atribui uma direção para input_dir
 	input_dir = Vector2.ZERO
 
 	var dirs = {
@@ -92,11 +87,16 @@ func take_damage(amount):
 	
 	health -= amount
 	health_changed.emit(health)
-	print("Você tomou " + str(amount) + " de dano!")
 	
 	$DamageTick.start()
 	
-	modulate.a = 0.5
+	modulate.a = 0.50
+	
+	anim.modulate = Color.RED
+	var tween = create_tween()
+	tween.tween_property(anim, "modulate", Color.WHITE, 0.2)
+	
+	anim.play("hurt")
 
 func _on_enemy_detector_body_entered(body):
 	if body.is_in_group("Enemy"):
@@ -109,7 +109,13 @@ func _on_nearest_enemy_timer_timeout():
 	nearest_enemy = InimigoMaisProximo.get_nearest_enemy(global_position, enemies_in_range)
 	
 func _on_self_damage_body_entered(body: Node2D) -> void:
-	take_damage(body.damage)
+	if "damage" in body:
+		take_damage(body.damage)
+	
+	if body.has_method("apply_knockback"):
+		var knockback_dir = global_position.direction_to(body.global_position)
+		body.apply_knockback(touch_knockback_multiplier, knockback_dir)
 
 func _on_damage_tick_timeout() -> void:
 	modulate.a = 1
+	anim.play("default")

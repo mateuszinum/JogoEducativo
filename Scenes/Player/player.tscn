@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c643wf1mcqxt0" path="res://Scenes/Weapons/WeaponSlot/weapon_slot.tscn" id="2_mtuoh"]
 [ext_resource type="Script" uid="uid://bct2mn0xi7na0" path="res://Scripts/UI/ui.gd" id="3_dd0ac"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="3_htcer"]
+[ext_resource type="Texture2D" uid="uid://dogxdhaswpp14" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Wizard/Wizard with shadows/Wizard-Hurt.png" id="6_dd0ac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
@@ -42,6 +43,22 @@ region = Rect2(400, 0, 100, 100)
 atlas = ExtResource("2_htcer")
 region = Rect2(500, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_74mp2"]
+atlas = ExtResource("6_dd0ac")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
+atlas = ExtResource("6_dd0ac")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
+atlas = ExtResource("6_dd0ac")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
+atlas = ExtResource("6_dd0ac")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_74mp2"]
 animations = [{
 "frames": [{
@@ -65,14 +82,34 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74mp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oikmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g0yx")
+}],
+"loop": false,
+"name": &"hurt",
 "speed": 5.0
 }]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dd0ac"]
 
 [node name="Player" type="CharacterBody2D" unique_id=848872761 groups=["Player"]]
 collision_layer = 2097154
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_a3d8c")
+max_health = 50
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
@@ -101,6 +138,7 @@ collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="SelfDamage" unique_id=1702665459]
 unique_name_in_owner = true
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_mtuoh")
 
 [node name="EnemyDetector" type="Area2D" parent="." unique_id=2083798496]
@@ -117,7 +155,6 @@ wait_time = 0.1
 autostart = true
 
 [node name="DamageTick" type="Timer" parent="." unique_id=1242487735]
-wait_time = 0.5
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=2014217669]
@@ -132,6 +169,9 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056011674]
 sprite_frames = SubResource("SpriteFrames_74mp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1809162312]
+texture = SubResource("CompressedTexture2D_dd0ac")
 
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
