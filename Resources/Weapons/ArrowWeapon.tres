@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_ofrdl")
 damage = 1.0
-cooldown = 0.2
+cooldown = 0.4
 speed = 400.0
 metadata/_custom_type_script = "uid://dacndn1awrba2"

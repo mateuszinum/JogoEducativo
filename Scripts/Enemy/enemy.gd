@@ -20,6 +20,7 @@ var type : Enemy:
 			
 		health = value.health
 		damage = value.damage
+		speed = value.speed * 6.0
 
 var health : float:
 	set(value):
@@ -38,13 +39,11 @@ func _ready():
 func _physics_process(delta):
 	check_separation(delta)
 	
-	# Faz a força do knockback diminuir suavemente até zero ao longo do tempo (Fricção)
 	if knockback != Vector2.ZERO:
 		knockback = knockback.lerp(Vector2.ZERO, 10 * delta)
 	
 	var player: Node2D = get_node("/root/World/Player")
 
-	# Modo 1: Seguir Player
 	if not use_navigation:
 		var direction := global_position.direction_to(player.global_position)
 
@@ -59,12 +58,10 @@ func _physics_process(delta):
 			nav_agent.target_position = player.global_position
 			return
 			
-		# Adicionamos o knockback na velocidade final 
 		velocity = (direction * speed) + knockback
 		move_and_slide()
 		return
 
-	# Modo 2: Navegar até o Player
 	if use_navigation:
 		nav_agent.target_position = player.global_position
 
@@ -78,7 +75,6 @@ func _physics_process(delta):
 		if direction.x != 0:
 			$AnimatedSprite2D.flip_h = (direction.x < 0)
 
-		# Adicionamos o knockback na velocidade final aqui também 
 		velocity = (direction * speed) + knockback
 		move_and_slide()
 
@@ -88,7 +84,6 @@ func _physics_process(delta):
 
 func check_separation(_delta):
 	separation = (player_reference.position - position).length()
-	# No futuro, colocar para NÃO deletar bosses
 	if separation >= 500:
 		queue_free()
 

@@ -1,30 +1,29 @@
 extends Node2D
 
 @export var player : CharacterBody2D
-@export var enemy : PackedScene
-@export var max_enemies : int
-@export var enemy_types : Array[Enemy]
+@export var enemy_scene : PackedScene
+@export var max_enemies : int = 300
 
-# Distancia que o inimigo irá spawnar do player
+# Aqui você arrasta o seu arquivo .tres da fase atual!
+@export var current_stage : StageData 
+
 var distance : float = 400
-var can_spawn : bool = true
+var total_time_seconds : int = 0
 
-#func _physics_process(_delta: float) -> void:
-	#if get_tree().get_node_count_in_group("Enemy") < max_enemies:
-		#can_spawn = true
-	#else:
-		#can_spawn = false
+# Dicionário que guarda quem está nascendo agora e a quantidade por segundo.
+# Estrutura: { EnemyResource : spawn_rate_int }
+var active_spawns : Dictionary = {}
 
-func spawn(pos : Vector2):
-	#if not can_spawn:
-		#return
+func _ready():
+	# Força a leitura inicial no segundo 0
+	check_spawn_events()
+
+func spawn(pos : Vector2, type_to_spawn: Enemy):
 	if get_tree().get_node_count_in_group("Enemy") >= max_enemies:
 		return
 
-	var enemy_instance = enemy.instantiate()
-	
-	#enemy_instance.type = enemy_types[min(minute, enemy_types.size()-1)]
-	enemy_instance.type = enemy_types.pick_random()
+	var enemy_instance = enemy_scene.instantiate()
+	enemy_instance.type = type_to_spawn
 	enemy_instance.position = pos
 	enemy_instance.player_reference = player
 	
@@ -33,30 +32,41 @@ func spawn(pos : Vector2):
 func get_random_position() -> Vector2:
 	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 
-func amount(number : int = 1):
-	for i in range(number):
-		spawn(get_random_position())
-
+# O Timer de 1 segundo que você já tinha
 func _on_timer_timeout() -> void:
-	seconds += 1
-	amount(seconds % 10)
+	total_time_seconds += 1
+	update_ui_clock()
+	
+	# 1. Checa se tem alguma regra nova para esse exato segundo
+	check_spawn_events()
+	
+	# 2. Spawna os inimigos baseados nas taxas ativas atuais
+	execute_spawns()
 
-func _on_pattern_timeout() -> void:
-	for i in range(15):
-		spawn(get_random_position())
+func check_spawn_events():
+	if current_stage == null: return
+	
+	for event in current_stage.spawn_events:
+		if event.time_in_seconds == total_time_seconds:
+			if event.spawn_rate > 0:
+				# Atualiza ou adiciona o inimigo na lista de spawns ativos
+				active_spawns[event.enemy_type] = event.spawn_rate
+				print("Evento: Começando a spawnar ", event.enemy_type.title, " a ", event.spawn_rate, "/s")
+			else:
+				# Se a taxa for 0, removemos ele da lista de spawns ativos
+				active_spawns.erase(event.enemy_type)
+				print("Evento: Parando de spawnar ", event.enemy_type.title)
 
-# Timer
-var minute : int:
-	set(value):
-		minute = value
-		%Minute.text = str(value)
-
-var seconds : int:
-	set(value):
-		seconds = value
+func execute_spawns():
+	# Para cada inimigo que está "ativo" no momento, spawna a quantidade dele
+	for enemy_type in active_spawns:
+		var amount_to_spawn = active_spawns[enemy_type]
 		
-		# Normal é colocar segundos como 60
-		if seconds >= 60:
-			seconds -= 60
-			minute += 1
-		%Seconds.text = str(seconds).lpad(2, '0')
+		for i in range(amount_to_spawn):
+			spawn(get_random_position(), enemy_type)
+
+func update_ui_clock():
+	var m = total_time_seconds / 60
+	var s = total_time_seconds % 60
+	%Minute.text = str(m)
+	%Seconds.text = str(s).lpad(2, '0')

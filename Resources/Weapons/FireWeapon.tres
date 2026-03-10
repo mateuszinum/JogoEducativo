@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_wylcx")
 damage = 3.0
-cooldown = 0.5
+cooldown = 1.0
 speed = 500.0
 projectile_node = ExtResource("1_cps43")
 metadata/_custom_type_script = "uid://dacndn1awrba2"
