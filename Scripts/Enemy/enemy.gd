@@ -62,6 +62,7 @@ func _physics_process(delta):
 			
 		velocity = (direction * speed) + knockback
 		move_and_slide()
+		handle_enemy_collisions(delta)
 		return
 
 	if use_navigation:
@@ -79,10 +80,24 @@ func _physics_process(delta):
 
 		velocity = (direction * speed) + knockback
 		move_and_slide()
+		handle_enemy_collisions(delta)
 
 		$RayCast2D.force_raycast_update()
 		if not $RayCast2D.is_colliding():
 			use_navigation = false
+
+func handle_enemy_collisions(delta):
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider.is_in_group("Enemy"):
+			if knockback.length() > 50:
+				var push_dir = global_position.direction_to(collider.global_position)
+				collider.apply_chain_knockback(push_dir * knockback.length() * 0.8)
+			
+			var repel_dir = collider.global_position.direction_to(global_position)
+			knockback += repel_dir * 400 * delta
 
 func check_separation(_delta):
 	if !despawns:
@@ -106,7 +121,11 @@ func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
 	$AnimatedSprite2D.modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
-	
+
+func apply_chain_knockback(force: Vector2):
+	if force.length() > knockback.length():
+		knockback = force
+
 func show_damage_number(amount):
 	var dmg_num = DAMAGE_NUMBER.instantiate()
 	dmg_num.global_position = global_position

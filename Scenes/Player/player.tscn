@@ -110,6 +110,7 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_a3d8c")
 max_health = 50
+touch_knockback_multiplier = 1.5
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
@@ -155,6 +156,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="DamageTick" type="Timer" parent="." unique_id=1242487735]
+wait_time = 2.0
 one_shot = true
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=2014217669]
