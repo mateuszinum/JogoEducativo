@@ -4,7 +4,8 @@ const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
 const KNOCKBACK_FORCE : float = 200.0
 
 @export var player_reference : CharacterBody2D
-@export var speed: float = 60
+var speed: float = 60
+var despawns: bool = true
 @export var nav_agent: NavigationAgent2D
 
 var knockback : Vector2
@@ -21,6 +22,7 @@ var type : Enemy:
 		health = value.health
 		damage = value.damage
 		speed = value.speed * 6.0
+		despawns = value.despawns
 
 var health : float:
 	set(value):
@@ -83,6 +85,9 @@ func _physics_process(delta):
 			use_navigation = false
 
 func check_separation(_delta):
+	if !despawns:
+		return
+		
 	separation = (player_reference.position - position).length()
 	if separation >= 500:
 		queue_free()

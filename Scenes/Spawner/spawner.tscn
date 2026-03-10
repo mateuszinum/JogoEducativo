@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://b0dfuc7lgsag6"]
 
 [ext_resource type="Script" uid="uid://dl6gqihkbwj4y" path="res://Scripts/Spawner/spawner.gd" id="1_kiceh"]
-[ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="2_rd5sa"]
-[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="3_v3byw"]
-[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="4_f8pqk"]
-[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="5_n5t3c"]
-[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="6_7p3vf"]
 
 [node name="Spawner" type="Node2D" unique_id=179975569 groups=["Spawner"]]
 script = ExtResource("1_kiceh")
-enemy = ExtResource("2_rd5sa")
 max_enemies = 200
-enemy_types = Array[ExtResource("3_v3byw")]([ExtResource("4_f8pqk"), ExtResource("5_n5t3c"), ExtResource("6_7p3vf")])
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=233284635]
 
