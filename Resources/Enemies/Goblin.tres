@@ -71,6 +71,4 @@ animations = [{
 script = ExtResource("2_i6dql")
 title = "Goblin"
 animations = SubResource("SpriteFrames_nwupb")
-health = 3.0
-damage = 5.0
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

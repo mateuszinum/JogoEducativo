@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="3_l4xld"]
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="4_m7rlt"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="5_wi01x"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="6_m7rlt"]
 
 [sub_resource type="Resource" id="Resource_01ayd"]
 script = ExtResource("2_4nnad")
@@ -21,19 +22,32 @@ metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_3dl8p"]
 script = ExtResource("2_4nnad")
-time_in_seconds = 30
+time_in_seconds = 20
 enemy_type = ExtResource("5_wi01x")
 spawn_rate = 1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_gdekt"]
 script = ExtResource("2_4nnad")
-time_in_seconds = 30
+time_in_seconds = 20
 enemy_type = ExtResource("3_l4xld")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("2_4nnad")
+time_in_seconds = 30
+enemy_type = ExtResource("6_m7rlt")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("2_4nnad")
+time_in_seconds = 35
+enemy_type = ExtResource("4_m7rlt")
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [resource]
 script = ExtResource("1_pu466")
 stage_name = "Floresta"
-spawn_events = Array[ExtResource("2_4nnad")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt")])
+spawn_events = Array[ExtResource("2_4nnad")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"

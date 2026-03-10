@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dj8iit3oemlpe"]
+
+[ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Werewolf/Werewolf with shadows/Werewolf-Walk.png" id="1_qa7hl"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_n0mhb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0mhb"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n37o"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huyki"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqvqy"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgxxi"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sidb4"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4joyj"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky16j"]
+atlas = ExtResource("1_qa7hl")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d0sj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0mhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n37o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huyki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqvqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgxxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sidb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4joyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky16j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_n0mhb")
+title = "Lobisomem"
+animations = SubResource("SpriteFrames_0d0sj")
+damage = 20.0
+speed = 15.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"
