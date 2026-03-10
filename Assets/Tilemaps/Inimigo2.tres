@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://cb2lqem13diyp"]
+
+[ext_resource type="Texture2D" uid="uid://dr6jliy3kc8us" path="res://Assets/Tilemaps/monsters.png" id="1_al0jg"]
+
+[resource]
+atlas = ExtResource("1_al0jg")
+region = Rect2(32, 64, 32, 32)

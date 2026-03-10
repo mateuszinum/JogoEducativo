@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dah3i7r3cw6wk" path="res://Assets/Terrain/TileSet.png" id="2_go701"]
 [ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/GramaTile.png" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="3_5ukr8"]
+[ext_resource type="Texture2D" uid="uid://bpgs70lgw6oej" path="res://Assets/Tilemaps/Grama.tres" id="4_0ph6x"]
 [ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="4_y0d6x"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/Test_Weapon.tres" id="5_ugf0j"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="6_0ph6x"]
@@ -53,9 +54,12 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7acu"]
-texture = ExtResource("3_5a7ea")
+texture = ExtResource("4_0ph6x")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_y0d6x")
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ph6x"]
 texture = ExtResource("6_adcqc")

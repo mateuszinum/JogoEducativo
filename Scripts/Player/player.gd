@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var anim = $AnimationPlayer
+@onready var sprite = $Sprite2D
+
 signal health_changed(current_health)
 
 @export var health = 50
@@ -16,6 +19,7 @@ var indice_arma_atual : int = 0
 var arma_equipada : Weapon = null
 
 func _ready() -> void:
+	anim.play("walk")
 	if inventario_armas.size() > 0:
 		arma_equipada = inventario_armas[0]
 		# AVISA O SLOT QUAL É A PRIMEIRA ARMA
@@ -69,13 +73,19 @@ func move():
 	if $RayCast2D.is_colliding():
 		return # Achou barreira, não mexer
 	
-	# O player não consegue mudar de direção enquanto está se movimentando
-	moving = true
-	var tween = create_tween()
+	# Lógica de espelhamento (Flip)
+	if input_dir.x != 0:
+		sprite.flip_h = (input_dir.x < 0)
 	
-	# O último parâmetro define a velocidade com que o player anda de um tile para outro
-	tween.tween_property(self, "position", position + input_dir * tile_size, 0.05)
-	tween.tween_callback(move_false)
+	moving = true
+	
+	var move_tween = create_tween()
+	move_tween.tween_property(self, "position", position + input_dir * tile_size, 0.075)
+	move_tween.tween_callback(move_false)
+
+	var squash_tween = create_tween()
+	squash_tween.tween_property(sprite, "scale", Vector2(1.4, 0.7), 0.025)
+	squash_tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.025)
 
 func move_false():
 	moving = false
