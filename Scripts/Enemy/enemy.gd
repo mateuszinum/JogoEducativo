@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
+
 @export var player_reference : CharacterBody2D
 @export var speed: float = 60
 @export var nav_agent: NavigationAgent2D
@@ -83,3 +85,12 @@ func check_separation(_delta):
 
 func take_damage(amount):
 	health -= amount
+	show_damage_number(amount)
+	
+func show_damage_number(amount):
+	var dmg_num = DAMAGE_NUMBER.instantiate()
+	dmg_num.global_position = global_position
+	dmg_num.global_position.x += randf_range(-12, 12)
+	dmg_num.global_position.y += randf_range(-12, 12)
+	get_tree().current_scene.add_child(dmg_num)
+	dmg_num.setup(amount)

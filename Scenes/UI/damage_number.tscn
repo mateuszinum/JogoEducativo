@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://5nomjiy7lqdc"]
+
+[ext_resource type="Script" uid="uid://bat1qbms14i3l" path="res://Scripts/UI/DamageNumber.gd" id="1_x1qsi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8v7ec"]
+font_size = 10
+font_color = Color(0.7490196, 0.16078432, 0.16862746, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="DamageNumber" type="Node2D" unique_id=848191591]
+script = ExtResource("1_x1qsi")
+
+[node name="Label" type="Label" parent="." unique_id=1591030368]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 15.0
+text = "100"
+label_settings = SubResource("LabelSettings_8v7ec")
+horizontal_alignment = 1
+vertical_alignment = 1
