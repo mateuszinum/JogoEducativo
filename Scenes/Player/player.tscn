@@ -18,56 +18,61 @@ radius = 249.00201
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
 bg_color = Color(0.98039216, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_htcer"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_htcer"]
+atlas = ExtResource("2_htcer")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="Animation" id="Animation_dd0ac"]
-resource_name = "walk"
-length = 0.75
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd0ac"]
+atlas = ExtResource("2_htcer")
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0u5uq"]
-_data = {
-&"RESET": SubResource("Animation_htcer"),
-&"walk": SubResource("Animation_dd0ac")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u5uq"]
+atlas = ExtResource("2_htcer")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlvik"]
+atlas = ExtResource("2_htcer")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk6dx"]
+atlas = ExtResource("2_htcer")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhyir"]
+atlas = ExtResource("2_htcer")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_74mp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htcer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd0ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u5uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlvik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk6dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhyir")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=848872761 groups=["Player"]]
 collision_layer = 2097154
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_a3d8c")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1787942334]
-z_index = 1
-position = Vector2(4.7683716e-07, 2.3841858e-07)
-scale = Vector2(0.9599999, 1)
-texture = ExtResource("2_htcer")
-hframes = 6
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
@@ -125,8 +130,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mtuoh")
 value = 100.0
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=411614326]
-libraries/ = SubResource("AnimationLibrary_0u5uq")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056011674]
+sprite_frames = SubResource("SpriteFrames_74mp2")
 
 [connection signal="body_entered" from="SelfDamage" to="." method="_on_self_damage_body_entered"]
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]

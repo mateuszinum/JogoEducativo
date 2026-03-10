@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://yv3gmlvil4l3"]
+
+[ext_resource type="Texture2D" uid="uid://jrcv022lhju5" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Orc/Orc with shadows/Orc-Walk.png" id="1_sele7"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_i6dql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnpy"]
+atlas = ExtResource("1_sele7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfpcx"]
+atlas = ExtResource("1_sele7")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jdvw"]
+atlas = ExtResource("1_sele7")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gla4"]
+atlas = ExtResource("1_sele7")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgyra"]
+atlas = ExtResource("1_sele7")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i01xc"]
+atlas = ExtResource("1_sele7")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq8in"]
+atlas = ExtResource("1_sele7")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suoxv"]
+atlas = ExtResource("1_sele7")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwupb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxnpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfpcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jdvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gla4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgyra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i01xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq8in")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suoxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_i6dql")
+title = "RedCube"
+animations = SubResource("SpriteFrames_nwupb")
+health = 10.0
+damage = 15.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

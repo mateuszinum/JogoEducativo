@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cahfrnsqc06wg"]
 
-[ext_resource type="Texture2D" uid="uid://d1scalh7wft55" path="res://Assets/Enemy/RedCube.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://bcc45d8gc8fbt" path="res://Scripts/Enemy/enemy.gd" id="1_nvvbs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvvbs"]
@@ -18,9 +17,6 @@ nav_agent = NodePath("Navigation/NavigationAgent2D")
 enabled = false
 target_position = Vector2(-1, 324)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312844259]
-texture = ExtResource("1_mw074")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391823423]
 shape = SubResource("CircleShape2D_nvvbs")
 
@@ -33,5 +29,7 @@ simplify_path = true
 [node name="RecalculateTimer" type="Timer" parent="Navigation" unique_id=894503489]
 wait_time = 0.1
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=915655667]
 
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]

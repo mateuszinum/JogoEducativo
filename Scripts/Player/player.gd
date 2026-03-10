@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var anim = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var anim = $AnimatedSprite2D
 
 signal health_changed(current_health)
 
@@ -19,7 +18,7 @@ var indice_arma_atual : int = 0
 var arma_equipada : Weapon = null
 
 func _ready() -> void:
-	anim.play("walk")
+	anim.play("default")
 	if inventario_armas.size() > 0:
 		arma_equipada = inventario_armas[0]
 		# AVISA O SLOT QUAL É A PRIMEIRA ARMA
@@ -66,26 +65,23 @@ func move():
 	if input_dir == Vector2.ZERO or moving:
 		return
 
-	# Lança Raycast para o próximo tile
 	$RayCast2D.target_position = input_dir * tile_size
 	$RayCast2D.force_raycast_update()
 
 	if $RayCast2D.is_colliding():
-		return # Achou barreira, não mexer
+		return 
 	
-	# Lógica de espelhamento (Flip)
 	if input_dir.x != 0:
-		sprite.flip_h = (input_dir.x < 0)
+		anim.flip_h = (input_dir.x < 0)
 	
 	moving = true
-	
-	var move_tween = create_tween()
-	move_tween.tween_property(self, "position", position + input_dir * tile_size, 0.075)
-	move_tween.tween_callback(move_false)
+	var tween = create_tween()
+	tween.tween_property(self, "position", position + input_dir * tile_size, 0.05)
+	tween.tween_callback(move_false)
 
 	var squash_tween = create_tween()
-	squash_tween.tween_property(sprite, "scale", Vector2(1.4, 0.7), 0.025)
-	squash_tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.025)
+	squash_tween.tween_property(anim, "scale", Vector2(1.4, 0.7), 0.025)
+	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), 0.025)
 
 func move_false():
 	moving = false

@@ -56,6 +56,9 @@ agent_radius = 0.0
 texture = ExtResource("3_5a7ea")
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_y0d6x")
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ph6x"]
 texture = ExtResource("6_adcqc")
@@ -99,7 +102,7 @@ player = NodePath("../Player")
 inventario_armas = Array[ExtResource("4_y0d6x")]([ExtResource("6_0ph6x"), ExtResource("5_ugf0j"), ExtResource("6_ugf0j")])
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=110197636]
-zoom = Vector2(1.6, 1.6)
+zoom = Vector2(1.08, 1.08)
 position_smoothing_enabled = true
 
 [editable path="Player"]

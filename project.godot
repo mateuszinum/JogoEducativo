@@ -24,6 +24,10 @@ config/icon="res://icon.svg"
 VidaAtual="*uid://bnur40wxa54cj"
 Tempo="*uid://c52qriloxi4ay"
 
+[dotnet]
+
+project/assembly_name="jogo educativo"
+
 [file_customization]
 
 folder_colors={

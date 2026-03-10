@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dsltr00ychkc4"]
+
+[ext_resource type="Texture2D" uid="uid://x636pgqnar62" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Slime/Slime with shadows/Slime-Walk.png" id="1_34gl4"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_so5l6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osetd"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vgc"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehl3f"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_361v4"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy5p0"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv2pf"]
+atlas = ExtResource("1_34gl4")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jat16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osetd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehl3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_361v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy5p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv2pf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_so5l6")
+title = "RedCube"
+animations = SubResource("SpriteFrames_jat16")
+health = 3.0
+damage = 5.0
+spawn_amount = 7
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

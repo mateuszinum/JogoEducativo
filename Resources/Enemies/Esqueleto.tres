@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bufqw7ji7465l"]
+
+[ext_resource type="Texture2D" uid="uid://ccdg0rqx56d2m" path="res://Assets/Asset Packs/Tiny RPG Character Asset Pack v1.03 -Full 20 Characters/Characters(100x100)/Skeleton/Skeleton with shadows/Skeleton-Walk.png" id="1_ie2g8"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_tas4p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlq74"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r0fp"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhb58"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ettlo"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wargj"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak7j4"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tld6v"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi3fm"]
+atlas = ExtResource("1_ie2g8")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0lqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlq74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r0fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhb58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ettlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wargj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak7j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tld6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi3fm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_tas4p")
+title = "RedCube"
+animations = SubResource("SpriteFrames_y0lqt")
+health = 1.0
+damage = 1.0
+spawn_amount = 20
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"
