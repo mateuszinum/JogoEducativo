@@ -9,6 +9,11 @@ signal health_changed(current_health)
 @export var touch_knockback_multiplier: float = 1.0
 @export var global_knockback_multiplier: float = 1.0
 
+@export_group("Audio")
+@export var hurt_sound : AudioStream
+@export var hurt_pitch_min : float = 0.8
+@export var hurt_pitch_max : float = 1.2
+
 const tile_size = 16
 var moving : bool = false
 var input_dir
@@ -75,7 +80,7 @@ func move():
 	tween.tween_callback(move_false)
 
 	var squash_tween = create_tween()
-	squash_tween.tween_property(anim, "scale", Vector2(1.4, 0.7), 0.025)
+	squash_tween.tween_property(anim, "scale", Vector2(1.6, 0.6), 0.025)
 	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), 0.025)
 
 func move_false():
@@ -97,6 +102,15 @@ func take_damage(amount):
 	tween.tween_property(anim, "modulate", Color.WHITE, 0.2)
 	
 	anim.play("hurt")
+	
+	if hurt_sound != null:
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = hurt_sound
+		audio.global_position = global_position
+		audio.pitch_scale = randf_range(hurt_pitch_min, hurt_pitch_max)
+		get_tree().current_scene.add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
 
 func _on_enemy_detector_body_entered(body):
 	if body.is_in_group("Enemy"):

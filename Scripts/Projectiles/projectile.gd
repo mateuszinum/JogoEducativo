@@ -5,12 +5,26 @@ extends Area2D
 @export var damage : float = 1.0
 var knockback_multiplier : float = 1.0
 
+var hit_sound : AudioStream
+var pitch_min : float = 0.8
+var pitch_max : float = 1.2
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage, knockback_multiplier, direction)
+		
+		if hit_sound != null:
+			var audio = AudioStreamPlayer2D.new()
+			audio.stream = hit_sound
+			audio.global_position = global_position
+			audio.pitch_scale = randf_range(pitch_min, pitch_max)
+			get_tree().current_scene.add_child(audio)
+			audio.play()
+			audio.finished.connect(audio.queue_free)
+			
 		queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
