@@ -114,6 +114,7 @@ script = ExtResource("1_a3d8c")
 max_health = 50
 touch_knockback_multiplier = 1.5
 hurt_sound = ExtResource("2_jlvik")
+hurt_volume = -8.0
 step_sound = ExtResource("3_gk6dx")
 step_volume = -5.0
 step_pitch_min = 2.0
