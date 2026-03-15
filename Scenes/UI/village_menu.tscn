@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c3m76cg4011v6"]
+
+[ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kg0"]
+bg_color = Color(0.19443807, 0.12317724, 0.30224544, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kolhh"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iynx"]
+bg_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai1hv"]
+
+[node name="VillageMenu" type="Control" unique_id=600159087]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhw0b")
+
+[node name="Panel" type="Panel" parent="." unique_id=845293472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4kg0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=825643601]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -27.5
+offset_right = 132.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=533408498]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 2
+theme_override_constants/icon_max_width = 17
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kolhh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kolhh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7iynx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ai1hv")
+text = "Começar"
+
+[node name="Label" type="Label" parent="." unique_id=1399879803]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -342.0
+offset_top = 94.0
+offset_right = 342.0
+offset_bottom = 170.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 76
+text = "Bem-Vindo ao Vilarejo!"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_game_pressed"]
