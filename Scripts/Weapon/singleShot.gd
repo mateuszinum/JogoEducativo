@@ -11,7 +11,8 @@ func shoot(source, target, scene_tree):
 		audio.volume_db = attack_volume
 		audio.global_position = source.global_position
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
-		scene_tree.current_scene.add_child(audio)
+		# Garante que o som saia dentro do mapa onde o Player está
+		source.get_parent().add_child(audio)
 		audio.play()
 		audio.finished.connect(audio.queue_free)
 	
@@ -26,7 +27,8 @@ func shoot(source, target, scene_tree):
 	projectile.pitch_max = pitch_max
 	projectile.direction = (target.position - source.position).normalized()
 	projectile.look_at(target.global_position)
-	scene_tree.current_scene.add_child(projectile)
+	
+	source.get_parent().add_child(projectile)
 	
 func activate(source, target, scene_tree):
 	shoot(source, target, scene_tree)

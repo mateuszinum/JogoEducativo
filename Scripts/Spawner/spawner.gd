@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var player : CharacterBody2D
 @export var enemy_scene : PackedScene
 @export var max_enemies : int = 300
 
@@ -22,12 +21,19 @@ func spawn(pos : Vector2, type_to_spawn: Enemy):
 	var enemy_instance = enemy_scene.instantiate()
 	enemy_instance.type = type_to_spawn
 	enemy_instance.position = pos
-	enemy_instance.player_reference = player
 	
-	get_tree().current_scene.add_child(enemy_instance)
+	# Adiciona o inimigo como filho do pai do Spawner (o mapa World), e não da tela cheia!
+	get_parent().add_child(enemy_instance)
 
 func get_random_position() -> Vector2:
-	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	# Agora o spawner também busca o player dinamicamente pelo grupo,
+	# evitando erros de caminhos quebrados por causa da tela dividida.
+	var player = get_tree().get_first_node_in_group("Player")
+	
+	if player != null:
+		return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+	
+	return Vector2.ZERO
 
 func _on_timer_timeout() -> void:
 	total_time_seconds += 1
@@ -59,5 +65,10 @@ func execute_spawns():
 func update_ui_clock():
 	var m = total_time_seconds / 60
 	var s = total_time_seconds % 60
-	%Minute.text = str(m)
-	%Seconds.text = str(s).lpad(2, '0')
+	
+	var minute_node = get_node_or_null("%Minute")
+	var seconds_node = get_node_or_null("%Seconds")
+	
+	if minute_node and seconds_node:
+		minute_node.text = str(m)
+		seconds_node.text = str(s).lpad(2, '0')

@@ -3,7 +3,6 @@ extends CharacterBody2D
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
 const KNOCKBACK_FORCE : float = 400.0
 
-@export var player_reference : CharacterBody2D
 var speed: float = 60
 var despawns: bool = true
 @export var nav_agent: NavigationAgent2D
@@ -44,7 +43,9 @@ func _physics_process(delta):
 	if knockback != Vector2.ZERO:
 		knockback = knockback.lerp(Vector2.ZERO, 10 * delta)
 	
-	var player: Node2D = get_node("/root/World/Player")
+	var player = get_tree().get_first_node_in_group("Player")
+	if player == null:
+		return
 
 	if not use_navigation:
 		var direction := global_position.direction_to(player.global_position)
@@ -103,7 +104,11 @@ func check_separation(_delta):
 	if !despawns:
 		return
 		
-	separation = (player_reference.position - position).length()
+	var player = get_tree().get_first_node_in_group("Player")
+	if player == null:
+		return
+		
+	separation = (player.global_position - global_position).length()
 	if separation >= 500:
 		queue_free()
 
@@ -113,8 +118,11 @@ func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):
 	show_damage_number(amount)
 	
 func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
-	var player: Node2D = get_node("/root/World/Player")
-	var globalMult = player.global_knockback_multiplier
+	var player = get_tree().get_first_node_in_group("Player")
+	var globalMult = 1.0
+	
+	if player != null:
+		globalMult = player.global_knockback_multiplier
 	
 	knockback = knockback_dir * KNOCKBACK_FORCE * mult * globalMult
 	
@@ -131,5 +139,6 @@ func show_damage_number(amount):
 	dmg_num.global_position = global_position
 	dmg_num.global_position.x += randf_range(-12, 12)
 	dmg_num.global_position.y += randf_range(-12, 12)
-	get_tree().current_scene.add_child(dmg_num)
+	# Adiciona o número de dano no mundo, e não na tela do menu principal!
+	get_parent().add_child(dmg_num)
 	dmg_num.setup(amount)

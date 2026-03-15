@@ -89,7 +89,7 @@ func move():
 		audio.volume_db = step_volume
 		audio.global_position = global_position
 		audio.pitch_scale = randf_range(step_pitch_min, step_pitch_max)
-		get_tree().current_scene.add_child(audio)
+		get_parent().add_child(audio)
 		audio.play()
 		audio.finished.connect(audio.queue_free)
 	
@@ -127,7 +127,7 @@ func take_damage(amount):
 		audio.volume_db = hurt_volume
 		audio.global_position = global_position
 		audio.pitch_scale = randf_range(hurt_pitch_min, hurt_pitch_max)
-		get_tree().current_scene.add_child(audio)
+		get_parent().add_child(audio)
 		audio.play()
 		audio.finished.connect(audio.queue_free)
 
@@ -139,7 +139,10 @@ func _on_enemy_detector_body_exited(body):
 	enemies_in_range.erase(body)
 
 func _on_nearest_enemy_timer_timeout():
-	nearest_enemy = InimigoMaisProximo.get_nearest_enemy(global_position, enemies_in_range)
+	if enemies_in_range.size() > 0:
+		nearest_enemy = InimigoMaisProximo.get_nearest_enemy(global_position, enemies_in_range)
+	else:
+		nearest_enemy = null
 	
 func _on_self_damage_body_entered(body: Node2D) -> void:
 	if "damage" in body:

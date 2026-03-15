@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://dri1s4v4tguek"]
 
 [ext_resource type="Script" uid="uid://dxp5nwwotwb1v" path="res://Scripts/UI/pause_menu.gd" id="1_8qpb5"]
-[ext_resource type="Shader" uid="uid://dpgwaxvbbfpoc" path="res://Assets/UI/pause_menu.gdshader" id="2_obbcd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_snwr2"]
-shader = ExtResource("2_obbcd")
-shader_parameter/lod = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65h3o"]
 bg_color = Color(1, 1, 1, 1)
@@ -29,30 +24,6 @@ shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="Animation" id="Animation_su7en"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_j4ug0"]
 resource_name = "blur"
@@ -60,22 +31,10 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/path = NodePath("PanelContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.800000038]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -90,26 +49,15 @@ _data = {
 
 [node name="PauseMenu" type="Control" unique_id=1618265714]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_8qpb5")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1225632776]
-material = SubResource("ShaderMaterial_snwr2")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = 20.0
-offset_right = -10.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1365510308]
 modulate = Color(1, 1, 1, 0)
@@ -133,6 +81,7 @@ theme_override_constants/separation = 69
 [node name="Continuar" type="Button" parent="PanelContainer/VBoxContainer" unique_id=603476322]
 layout_mode = 2
 size_flags_vertical = 6
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -150,6 +99,7 @@ text = "Continuar"
 [node name="Reiniciar" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1199838567]
 layout_mode = 2
 size_flags_vertical = 6
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -167,6 +117,7 @@ text = "Reiniciar"
 [node name="Sair" type="Button" parent="PanelContainer/VBoxContainer" unique_id=978057255]
 layout_mode = 2
 size_flags_vertical = 6
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
