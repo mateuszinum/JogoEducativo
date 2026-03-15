@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bqvc5mn80fh3k" path="res://Resources/Stages/arena_floresta.tres" id="6_pvt60"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="6_ugf0j"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="6_vbhkl"]
+[ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_vbhkl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_adcqc"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -106,5 +107,9 @@ inventario_armas = Array[ExtResource("4_y0d6x")]([ExtResource("6_0ph6x"), ExtRes
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=110197636]
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=480103697]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("13_vbhkl")]
 
 [editable path="Player"]
