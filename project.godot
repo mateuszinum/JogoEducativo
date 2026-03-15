@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="jogo educativo"
-run/main_scene="uid://cg6f8725c7lw5"
+run/main_scene="uid://dlet84vusyyr6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -35,11 +35,13 @@ folder_colors={
 "res://Assets/Player/": "purple",
 "res://Assets/Projectiles/": "orange",
 "res://Assets/Terrain/": "green",
+"res://Assets/UI/": "pink",
 "res://Resources/Enemies/": "red",
 "res://Resources/Weapons/": "orange",
 "res://Scenes/Enemy/": "red",
 "res://Scenes/Player/": "purple",
 "res://Scenes/Spawner/": "yellow",
+"res://Scenes/UI/": "pink",
 "res://Scenes/Weapons/": "orange",
 "res://Scenes/Weapons/Projectiles/": "orange",
 "res://Scenes/World/": "green",
