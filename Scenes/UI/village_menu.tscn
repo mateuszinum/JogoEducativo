@@ -27,6 +27,7 @@ shadow_offset = Vector2(0, 3.4)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai1hv"]
 
 [node name="VillageMenu" type="Control" unique_id=600159087]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

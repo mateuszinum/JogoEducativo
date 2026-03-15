@@ -35,7 +35,7 @@ func _on_continue_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
-	var main = get_node_or_null("/root/Main")
+	var main = get_node_or_null("/root/Jogo")
 	if main: 
 		main.ir_para_arena()
 	else: 
