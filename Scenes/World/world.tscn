@@ -12,6 +12,9 @@
 [ext_resource type="Resource" uid="uid://bqvc5mn80fh3k" path="res://Resources/Stages/arena_floresta.tres" id="6_pvt60"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="6_ugf0j"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="6_vbhkl"]
+[ext_resource type="Script" uid="uid://cev7x6bw6m835" path="res://Scripts/UI/Terminal.gd" id="13_vbhkl"]
+[ext_resource type="FontFile" uid="uid://cpngly18uigqy" path="res://Assets/UI/UncialAntiqua-Regular.ttf" id="14_4pv6w"]
+[ext_resource type="FontFile" uid="uid://dc1ri5yiifdo0" path="res://Assets/UI/Jacquard24-Regular.ttf" id="14_dbvd7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_adcqc"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -85,6 +88,8 @@ repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=776853416]
 texture_repeat = 2
+position = Vector2(2, 67)
+scale = Vector2(1, 0.9942541)
 texture = ExtResource("3_5a7ea")
 region_enabled = true
 region_rect = Rect2(0, 0, 3000, 3000)
@@ -106,5 +111,51 @@ inventario_armas = Array[ExtResource("4_y0d6x")]([ExtResource("6_0ph6x"), ExtRes
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=110197636]
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
+
+[node name="TerminalUI" type="CanvasLayer" parent="." unique_id=1502545384]
+
+[node name="PanelContainer" type="PanelContainer" parent="TerminalUI" unique_id=1350474772]
+offset_left = 2.0
+offset_right = 171.0
+offset_bottom = 170.0
+script = ExtResource("13_vbhkl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TerminalUI/PanelContainer" unique_id=1344748340]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BotaoCabecalho" type="Button" parent="TerminalUI/PanelContainer/VBoxContainer" unique_id=1044361716]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[-] Terminal de Comando"
+
+[node name="ConteudoTerminal" type="VBoxContainer" parent="TerminalUI/PanelContainer/VBoxContainer" unique_id=1696305021]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TerminalUI/PanelContainer/VBoxContainer/ConteudoTerminal" unique_id=1850757989]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_4pv6w")
+text = "Grimório "
+
+[node name="CodeEdit" type="CodeEdit" parent="TerminalUI/PanelContainer/VBoxContainer/ConteudoTerminal" unique_id=605747825]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("14_dbvd7")
+gutters_draw_line_numbers = true
+gutters_line_numbers_min_digits = 4
+
+[node name="BotaoExecutar" type="Button" parent="TerminalUI/PanelContainer/VBoxContainer/ConteudoTerminal" unique_id=1613865716]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_4pv6w")
+text = "Encantar
+"
+autowrap_mode = 1
+
+[connection signal="pressed" from="TerminalUI/PanelContainer/VBoxContainer/BotaoCabecalho" to="TerminalUI/PanelContainer" method="_on_botao_cabecalho_pressed"]
+[connection signal="pressed" from="TerminalUI/PanelContainer/VBoxContainer/ConteudoTerminal/BotaoExecutar" to="TerminalUI/PanelContainer" method="_on_button_pressed"]
 
 [editable path="Player"]
