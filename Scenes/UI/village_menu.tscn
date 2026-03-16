@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4kg0"]
-bg_color = Color(0.19443807, 0.12317724, 0.30224544, 1)
+[ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_ai1hv"]
+[ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="5_ter28"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kolhh"]
 bg_color = Color(1, 1, 1, 1)
@@ -36,23 +36,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhw0b")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=481396965]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -75.99999
+offset_right = 616.0
+offset_bottom = 284.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.50450814, 0.26563212, 2.8878452e-07, 1)
-
-[node name="Panel" type="Panel" parent="." unique_id=845293472]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k4kg0")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_kolhh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=825643601]
 layout_mode = 1
@@ -62,9 +58,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -132.0
-offset_top = -27.5
+offset_top = 99.0
 offset_right = 132.0
-offset_bottom = 27.5
+offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -78,12 +74,14 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/h_separation = 2
 theme_override_constants/icon_max_width = 17
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_kolhh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kolhh")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7iynx")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ai1hv")
 text = "Começar"
+script = ExtResource("4_ai1hv")
 
 [node name="Label" type="Label" parent="." unique_id=1399879803]
 layout_mode = 1
@@ -91,14 +89,19 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -342.0
-offset_top = 94.0
+offset_top = 73.0
 offset_right = 342.0
-offset_bottom = 170.0
+offset_bottom = 149.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 6
 theme_override_fonts/font = ExtResource("2_k4kg0")
-theme_override_font_sizes/font_size = 76
+theme_override_font_sizes/font_size = 44
 text = "Bem-Vindo ao Vilarejo!"
+horizontal_alignment = 1
+script = ExtResource("5_ter28")
+amplitude_x = 10.0
+amplitude_y = 6.0
+amplitude_rotacao = 1.2
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_game_pressed"]
