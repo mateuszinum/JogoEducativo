@@ -117,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1582201435]
 stream = ExtResource("6_ter28")
 volume_db = -10.0
 autoplay = true

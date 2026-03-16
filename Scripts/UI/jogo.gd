@@ -43,7 +43,7 @@ func fazer_transicao_tv(cena_preload, modo_terminal: String) -> void:
 		if cena_atual.has_node("MusicaVilarejo"):
 			var musica = cena_atual.get_node("MusicaVilarejo")
 			var tween_som = create_tween()
-			tween_som.tween_property(musica, "volume_db", -40.0, 1.0) # Sincronizado com a tela
+			tween_som.tween_property(musica, "volume_db", -80.0, 1.0) # Sincronizado com a tela
 			
 	await tween_out.finished
 	
