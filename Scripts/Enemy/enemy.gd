@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
 const KNOCKBACK_FORCE : float = 400.0
+const DISTANCIA_DESPAWN : float = 300.0
 
 var speed: float = 60
 var despawns: bool = true
@@ -109,7 +110,7 @@ func check_separation(_delta):
 		return
 		
 	separation = (player.global_position - global_position).length()
-	if separation >= 500:
+	if separation >= DISTANCIA_DESPAWN:
 		queue_free()
 
 func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):

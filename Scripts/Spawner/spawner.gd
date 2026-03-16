@@ -6,7 +6,7 @@ extends Node2D
 # Aqui você arrasta o seu arquivo .tres da fase atual!
 @export var current_stage : StageData 
 
-var distance : float = 400
+var distance : float = 250
 var total_time_seconds : int = 0
 
 var active_spawns : Dictionary = {}
