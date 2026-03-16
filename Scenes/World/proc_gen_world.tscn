@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dkbfito78h360"]
+
+[ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
+[ext_resource type="Resource" uid="uid://bqvc5mn80fh3k" path="res://Resources/Stages/arena_floresta.tres" id="2_3vsio"]
+[ext_resource type="TileSet" uid="uid://cc8gemstq1gsi" path="res://Resources/Stages/tileset.tres" id="2_4mw8v"]
+[ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
+[ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
+[ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_dr08h"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
+[ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="11_v8y8b"]
+
+[sub_resource type="Gradient" id="Gradient_4mw8v"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.22, 0.48333332, 0.88666666)
+colors = PackedColorArray(1, 1, 1, 1, 0.10980392, 0.7058824, 0.94509804, 1, 1, 1, 0, 1, 1, 0.49803922, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vsio"]
+noise_type = 5
+frequency = 0.0972
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r7lkc"]
+noise = SubResource("FastNoiseLite_3vsio")
+color_ramp = SubResource("Gradient_4mw8v")
+
+[node name="proc_gen_world" type="Node2D" unique_id=1205955989]
+script = ExtResource("1_n73w2")
+stage_data = ExtResource("2_3vsio")
+noise_height_text = SubResource("NoiseTexture2D_r7lkc")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=19495981]
+z_index = -1
+tile_set = ExtResource("2_4mw8v")
+format = 2
+
+[node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
+enemy_scene = ExtResource("5_7deaf")
+current_stage = ExtResource("2_3vsio")
+
+[node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
+inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1511039620]
+zoom = Vector2(1.6, 1.6)
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1069550438]
+process_mode = 3
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("11_v8y8b")]
+
+[editable path="Player"]

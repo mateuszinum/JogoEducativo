@@ -6,7 +6,7 @@ extends Control
 @onready var fade_rect = $FadeLayer/ColorRect 
 
 const CENA_VILAREJO = preload("res://Scenes/UI/village_menu.tscn")
-const CENA_ARENA = preload("res://Scenes/World/world.tscn")
+const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
 
 var transicao_em_andamento: bool = false 
 

@@ -53,4 +53,6 @@ stage_name = "Floresta"
 spawn_events = Array[ExtResource("2_4nnad")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 stage_music = ExtResource("7_wi01x")
 music_volume = -10.0
+obstaculos_source_ids = Array[int]([4])
+obstaculos_atlas = Array[Vector2i]([Vector2i(0, 0)])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
