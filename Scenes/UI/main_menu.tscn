@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://dlet84vusyyr6"]
 
-[ext_resource type="Texture2D" uid="uid://hyhr5g0lgl5b" path="res://Assets/UI/Main_Menu.jpg" id="1_5wsvm"]
 [ext_resource type="Script" uid="uid://fahp554uy14i" path="res://Scripts/UI/main_menu.gd" id="1_i2xx2"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2xx2"]
-texture = ExtResource("1_5wsvm")
+[ext_resource type="FontFile" uid="uid://n1cnxwxjj7t0" path="res://Assets/Fonts/Skranji-Regular.ttf" id="2_u7lva"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="3_o14dv"]
+[ext_resource type="Texture2D" uid="uid://b36diiavsxrpb" path="res://Assets/UI/Logo.png" id="4_u7lva"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o14dv"]
 bg_color = Color(1, 1, 1, 1)
+draw_center = false
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7lva"]
@@ -44,6 +43,67 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
 
+[sub_resource type="Animation" id="Animation_o14dv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u7lva"]
+resource_name = "SplashIntro"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 2, 4.7, 5.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.69),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mrfpk"]
+_data = {
+&"RESET": SubResource("Animation_o14dv"),
+&"SplashIntro": SubResource("Animation_u7lva")
+}
+
 [node name="MainMenu" type="Control" unique_id=1821145701]
 layout_mode = 3
 anchors_preset = 15
@@ -53,14 +113,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i2xx2")
 
-[node name="Panel" type="Panel" parent="." unique_id=1364876111]
+[node name="Panel" type="Panel" parent="." unique_id=1737382053]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_i2xx2")
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1022398578]
+position = Vector2(375, 176)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("4_u7lva")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=583712999]
 layout_mode = 1
@@ -69,10 +134,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -212.0
-offset_right = -198.0
-offset_bottom = -58.0
+offset_left = -1094.0
+offset_top = -363.0
+offset_right = -716.0
+offset_bottom = -89.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 18
@@ -80,36 +145,114 @@ theme_override_constants/separation = 18
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=837130793]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 2
-theme_override_constants/icon_max_width = 17
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_u7lva")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "Começar Jogo"
+text = "JOGAR"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1909921654]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 2
-theme_override_constants/icon_max_width = 17
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_u7lva")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mrfpk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "Sair"
+text = "CONFIGURAÇÕES"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=895490790]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_u7lva")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "CRÉDITOS"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1865725634]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_u7lva")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "SAIR"
+
+[node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="IntroLayer" unique_id=1828069636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="IntroLayer" unique_id=98034796]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 77
+text = "LOGO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
+libraries/ = SubResource("AnimationLibrary_mrfpk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1334439971]
+stream = ExtResource("3_o14dv")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]

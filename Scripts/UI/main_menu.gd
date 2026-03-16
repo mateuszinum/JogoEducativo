@@ -1,7 +1,12 @@
 extends Control
 
+@onready var anim_intro = $AnimationPlayer
+
 func _ready() -> void:
-	pass
+	anim_intro.play("SplashIntro")
+	
+func revelar_menu():
+	$IntroLayer.hide()
 
 func _process(delta: float) -> void:
 	pass
