@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dc1ri5yiifdo0"
-path="res://.godot/imported/Jacquard24-Regular.ttf-87da87b6957495d3f9c6c3979dcad545.fontdata"
+uid="uid://cpngly18uigqy"
+path="res://.godot/imported/UncialAntiqua-Regular.ttf-c6b5dd514a241a4e5f9e8685c20b828c.fontdata"
 
 [deps]
 
-source_file="res://Assets/UI/Jacquard24-Regular.ttf"
-dest_files=["res://.godot/imported/Jacquard24-Regular.ttf-87da87b6957495d3f9c6c3979dcad545.fontdata"]
+source_file="res://Assets/Fonts/UncialAntiqua-Regular.ttf"
+dest_files=["res://.godot/imported/UncialAntiqua-Regular.ttf-c6b5dd514a241a4e5f9e8685c20b828c.fontdata"]
 
 [params]
 
