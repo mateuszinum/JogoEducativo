@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clfmn82bf6t82" path="res://Scripts/UI/jogo.gd" id="1_kv1y8"]
 [ext_resource type="Script" uid="uid://cev7x6bw6m835" path="res://Scripts/UI/Terminal.gd" id="2_8gbds"]
+[ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
 
 [node name="Jogo" type="Control" unique_id=984641298]
 layout_mode = 3
@@ -97,3 +98,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="InterpretadorServico" type="Node" parent="." unique_id=409858468]
+unique_name_in_owner = true
+script = ExtResource("3_8gbds")
+
+[connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]

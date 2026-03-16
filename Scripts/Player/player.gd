@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const OPACIDADE_NO_DANO : float = 1.0
 
+var fila_comandos: Array[String] = [] # O nosso "caderninho" de anotações
+
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
 
@@ -9,6 +11,12 @@ signal health_changed(current_health)
 @export var max_health = health
 @export var touch_knockback_multiplier: float = 1.0
 @export var global_knockback_multiplier: float = 1.0
+
+@export_group("Atributos")
+@export var agilidade: float = 1.0 # 1.0 é a velocidade normal de processamento
+@export var tempo_base_acao: float = 0.5 # Segundos que ele espera entre cada comando
+
+var aguardando_agilidade: bool = false # Uma trava para o cooldown
 
 @export_group("Audio")
 @export var hurt_sound : AudioStream
@@ -67,6 +75,9 @@ func _physics_process(_delta: float) -> void:
 			input_dir = dirs[action]
 			move()
 			break
+			
+	# --- NOSSA NOVA LINHA ---
+	processar_fila() # Fica checando se a mente mandou o corpo agir
 
 func move():
 	if input_dir == Vector2.ZERO or moving:
@@ -155,3 +166,69 @@ func _on_self_damage_body_entered(body: Node2D) -> void:
 func _on_damage_tick_timeout() -> void:
 	modulate.a = 1
 	anim.play("default")
+	
+func mover(direcao: String) -> void:
+	# O C# agora apenas anota o pedido no final da fila, super rápido!
+	fila_comandos.append(direcao)
+
+func processar_fila() -> void:
+	# 1. Verifica as travas: pulando, fila vazia, ou ainda no cooldown da agilidade
+	if moving or fila_comandos.is_empty() or aguardando_agilidade:
+		return
+		
+	# 2. Ativa a trava de cooldown
+	aguardando_agilidade = true
+		
+	# 3. Pega o próximo comando e apaga do caderninho
+	var proximo_comando = fila_comandos.pop_front() 
+	
+	if proximo_comando == "norte":
+		input_dir = Vector2.UP
+	elif proximo_comando == "sul":
+		input_dir = Vector2.DOWN
+	elif proximo_comando == "leste":
+		input_dir = Vector2.RIGHT
+	elif proximo_comando == "oeste":
+		input_dir = Vector2.LEFT
+	else:
+		aguardando_agilidade = false # Destrava se o comando for inválido
+		return
+		
+	# 4. Aciona a sua função original para fazer a animação e andar
+	move()
+	
+	# === A MÁGICA DA AGILIDADE AQUI ===
+	var tempo_de_espera = tempo_base_acao / agilidade
+	
+	# O Godot cria um cronômetro invisível e pausa a execução DESTA função até o tempo acabar
+	await get_tree().create_timer(tempo_de_espera).timeout
+	
+	# 5. O tempo acabou! Libera o personagem para ler o próximo comando da fila
+	aguardando_agilidade = false
+	# Se já estiver pulando ou não tiver nada anotado, não faz nada
+	if moving or fila_comandos.is_empty():
+		return
+	
+	if proximo_comando == "norte":
+		input_dir = Vector2.UP
+	elif proximo_comando == "sul":
+		input_dir = Vector2.DOWN
+	elif proximo_comando == "leste":
+		input_dir = Vector2.RIGHT
+	elif proximo_comando == "oeste":
+		input_dir = Vector2.LEFT
+	else:
+		return
+		
+	# Inicia a animação do pulo
+	move()
+
+func atacar(alvo: String, tipo: String) -> void:
+	print("[Player] Ordem recebida do C#: Atacar alvo '", alvo, "' com elemento '", tipo, "'")
+	
+	# Aqui no futuro vamos instanciar a arma (flecha, fogo, gelo) 
+	# e disparar na direção do nearest_enemy (inimigo mais próximo)
+	if nearest_enemy != null:
+		print("Atirando no inimigo: ", nearest_enemy.name)
+	else:
+		print("Nenhum inimigo no alcance!")

@@ -169,6 +169,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i2xx2")
 
+[node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.00012207031
+offset_top = -6.1035156e-05
+offset_right = 0.00012207031
+offset_bottom = 6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="IntroLayer" unique_id=1828069636]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="IntroLayer" unique_id=98034796]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 77
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="IntroLayer/Label" unique_id=352888535]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -86.0
+offset_right = 327.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_xp0kt")
+
 [node name="Fundo" type="TextureRect" parent="." unique_id=298731134]
 layout_mode = 1
 anchors_preset = 15
@@ -384,56 +434,6 @@ autoplay = true
 [node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
 stream = ExtResource("10_wqme5")
 volume_db = -6.0
-
-[node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.00012207031
-offset_top = -6.1035156e-05
-offset_right = 0.00012207031
-offset_bottom = 6.1035156e-05
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="IntroLayer" unique_id=1828069636]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="IntroLayer" unique_id=98034796]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 77
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="IntroLayer/Label" unique_id=352888535]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -327.0
-offset_top = -86.0
-offset_right = 327.0
-offset_bottom = 86.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_xp0kt")
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
 

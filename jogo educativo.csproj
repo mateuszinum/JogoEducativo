@@ -6,6 +6,6 @@
     <RootNamespace>jogoeducativo</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jogo.Core\Jogo.Core.csproj" />
+    <ProjectReference Include="C:\Dev\backend-extensao\Jogo.Core\Jogo.Core.csproj" />
   </ItemGroup>
 </Project>
