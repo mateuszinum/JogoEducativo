@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_ai1hv"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="5_ter28"]
+[ext_resource type="AudioStream" uid="uid://b7ea3c2b4dc0e" path="res://Audio/Soundtracks/vilarejo.wav" id="6_ter28"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kolhh"]
 bg_color = Color(1, 1, 1, 1)
@@ -103,5 +104,22 @@ script = ExtResource("5_ter28")
 amplitude_x = 10.0
 amplitude_y = 6.0
 amplitude_rotacao = 1.2
+
+[node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1738301207]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="FadeLayer" unique_id=1466773901]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1582201435]
+stream = ExtResource("6_ter28")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_game_pressed"]

@@ -7,9 +7,14 @@
 [ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="4_k33u3"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_mrfpk"]
 [ext_resource type="Texture2D" uid="uid://b36diiavsxrpb" path="res://Assets/UI/Logo.png" id="4_u7lva"]
+[ext_resource type="Texture2D" uid="uid://bugrjyp35c455" path="res://Assets/UI/Sunburst.png" id="5_jewm6"]
+[ext_resource type="Script" uid="uid://c6wsjp2cr7gkg" path="res://Scripts/Polimento/rotacao_continua.gd" id="6_cejvf"]
 [ext_resource type="Texture2D" uid="uid://b0ahs13ryy5bn" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard/Wizard-Idle.png" id="6_wqme5"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_wqme5"]
 [ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/HitGelo.mp3" id="10_wqme5"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
+[ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjdf"]
 shader = ExtResource("4_k33u3")
@@ -206,6 +211,28 @@ velocidade_y = 0.5
 amplitude_rotacao = 1.215
 velocidade_rotacao = 0.915
 
+[node name="Raios" type="TextureRect" parent="Personagem" unique_id=1380382746]
+modulate = Color(1, 1, 1, 0.6862745)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1477.9999
+offset_top = -1513.0
+offset_right = 1522.0001
+offset_bottom = 1487.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.2831855
+pivot_offset = Vector2(1500, 1500)
+texture = ExtResource("5_jewm6")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("6_cejvf")
+amplitude_pulso = 0.4
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personagem" unique_id=982547945]
 scale = Vector2(29.57, 29.57)
 sprite_frames = SubResource("SpriteFrames_3h8o7")
@@ -272,6 +299,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
 text = "JOGAR"
 script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1909921654]
 layout_mode = 2
@@ -291,6 +322,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
 text = "CONFIGURAÇÕES"
 script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
 
 [node name="Button4" type="Button" parent="VBoxContainer" unique_id=895490790]
 layout_mode = 2
@@ -310,6 +345,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
 text = "CRÉDITOS"
 script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
 
 [node name="Button3" type="Button" parent="VBoxContainer" unique_id=1865725634]
 layout_mode = 2
@@ -329,16 +368,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
 text = "SAIR"
 script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
 libraries/ = SubResource("AnimationLibrary_mrfpk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1334439971]
 stream = ExtResource("3_o14dv")
+volume_db = -6.0
 autoplay = true
 
 [node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
 stream = ExtResource("10_wqme5")
+volume_db = -6.0
 
 [node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
 visible = false
@@ -346,6 +391,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -0.00012207031
+offset_top = -6.1035156e-05
+offset_right = 0.00012207031
+offset_bottom = 6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -368,9 +417,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 77
-text = "LOGO"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="IntroLayer/Label" unique_id=352888535]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -86.0
+offset_right = 327.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_xp0kt")
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
 
