@@ -35,6 +35,7 @@ fractal_octaves = 1
 noise = SubResource("FastNoiseLite_wu1pf")
 
 [node name="proc_gen_world" type="Node2D" unique_id=1205955989]
+y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_3vsio")
 noise_height_text = SubResource("NoiseTexture2D_r7lkc")
@@ -42,10 +43,12 @@ noise_tree_text = SubResource("NoiseTexture2D_7deaf")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=19495981]
 z_index = -1
+y_sort_enabled = true
 tile_set = ExtResource("2_4mw8v")
 format = 2
 layer_0/name = "Chao"
 layer_1/name = "Arvore"
+layer_1/y_sort_enabled = true
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
 enemy_scene = ExtResource("5_7deaf")
