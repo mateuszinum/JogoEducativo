@@ -9,8 +9,8 @@ var tree_noise : Noise
 # Referência ao seu único nó TileMap
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
-var tree_atlas = Vector2i(6,0)
-var tree_source_id = 2
+var tree_atlas = [Vector2i(6,0), Vector2i(2,2), Vector2i(0,2), Vector2i(4,0), Vector2i(8,2)]
+var tree_source_id = 3
 
 func _ready():
 	noise = noise_height_text.noise
@@ -18,16 +18,26 @@ func _ready():
 	generate_world()
 	
 func generate_world():
-	if not stage_data or not noise:
-		push_error("StageData ou NoiseTexture2D não configurados!")
-		return
-
 	var qtd_obstaculos = stage_data.obstaculos_source_ids.size()
 	var arr_noise = []
 	var arr_tree_noise = []
+	var centro_x = (stage_data.map_width * 16) / 2
+	var centro_y = (stage_data.map_height * 16) / 2
+	var centro_vetor = Vector2(centro_x, centro_y)
+	
+	var raio_seguro = 5.0
+	
 	for x in range(stage_data.map_width):
 		for y in range(stage_data.map_height):
 			var pos = Vector2i(x, y)
+			
+			var pos_vetor = Vector2(x, y)
+			if pos_vetor.distance_to(centro_vetor) <= raio_seguro:
+				# Força o chão na Camada 0 e pula a verificação de obstáculos/árvores
+				tile_map.set_cell(0, pos, stage_data.source_id_chao, stage_data.chao_atlas)
+				continue
+			
+			
 			var noise_val = noise.get_noise_2d(x, y)
 			var noise_tree_val = tree_noise.get_noise_2d(x, y)
 			
@@ -52,14 +62,12 @@ func generate_world():
 				
 				# 2. DECORAÇÃO: Apenas nos 80% de grama, testamos os 10% de Árvore
 				# O ruído da árvore varia de ~ -0.99 a 0.94.
-				# Para pegar os 10% mais raros, exigimos um valor muito alto, próximo do topo.
+				# Para pe'gar os 10% mais raros, exigimos um valor muito alto, próximo do topo.
 				if noise_tree_val > 0.85:
 					print("ENTROU")
-					tile_map.set_cell(1, pos, tree_source_id, tree_atlas)
+					tile_map.set_cell(1, pos, tree_source_id, tree_atlas.pick_random())
 	
 	var player = get_tree().get_first_node_in_group("Player")
-	var centro_x = (stage_data.map_width	*	16)	/	2
-	var centro_y = (stage_data.map_height	*	16)	/	2
 	player.position = Vector2(centro_x, centro_y)
 	print("Ruído Normal - Min: ", arr_noise.min(), " | Max: ", arr_noise.max())
 	print("Ruído Tree   - Min: ", arr_tree_noise.min(), " | Max: ", arr_tree_noise.max())

@@ -18,9 +18,10 @@ offsets = PackedFloat32Array(0, 0.25)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3vsio"]
-noise_type = 4
-seed = 1
-frequency = 0.1312
+noise_type = 5
+frequency = 0.07
+fractal_type = 0
+cellular_return_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r7lkc"]
 noise = SubResource("FastNoiseLite_3vsio")

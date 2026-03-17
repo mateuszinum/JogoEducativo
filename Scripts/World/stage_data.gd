@@ -9,8 +9,8 @@ class_name StageData
 @export var music_volume : float = 0.0
 
 @export_group("Geração de Mapa")
-@export var map_width: int = 100
-@export var map_height: int = 100
+@export var map_width: int = 200
+@export var map_height: int = 200
 
 @export_group("Tiles do Mapa")
 @export var source_id_chao: int = 1

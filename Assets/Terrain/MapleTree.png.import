@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgrklgbg7ynj4"
-path="res://.godot/imported/Maple Tree.png-abb29b0fe7184a2317e1bcc9c48d6316.ctex"
+uid="uid://cj5tbluv0j5jw"
+path="res://.godot/imported/MapleTree.png-be2574b9cbe1b3e5d59908c4e3f0780f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Stages/Maple Tree.png"
-dest_files=["res://.godot/imported/Maple Tree.png-abb29b0fe7184a2317e1bcc9c48d6316.ctex"]
+source_file="res://Assets/Terrain/MapleTree.png"
+dest_files=["res://.godot/imported/MapleTree.png-be2574b9cbe1b3e5d59908c4e3f0780f.ctex"]
 
 [params]
 
