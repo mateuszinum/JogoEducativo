@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://g74a3hmxrn73"]
+
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="1_nlm2c"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="2_k3mdj"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="3_1ahwm"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="4_jc6mv"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="5_c74op"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="6_jtoai"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="7_jidlh"]
+
+[sub_resource type="Resource" id="Resource_01ayd"]
+script = ExtResource("2_k3mdj")
+enemy_type = ExtResource("3_1ahwm")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_2d58w"]
+script = ExtResource("2_k3mdj")
+time_in_seconds = 15
+enemy_type = ExtResource("4_jc6mv")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_3dl8p"]
+script = ExtResource("2_k3mdj")
+time_in_seconds = 20
+enemy_type = ExtResource("5_c74op")
+spawn_rate = 1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_gdekt"]
+script = ExtResource("2_k3mdj")
+time_in_seconds = 20
+enemy_type = ExtResource("3_1ahwm")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("2_k3mdj")
+time_in_seconds = 30
+enemy_type = ExtResource("6_jtoai")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("2_k3mdj")
+time_in_seconds = 35
+enemy_type = ExtResource("4_jc6mv")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[resource]
+script = ExtResource("1_nlm2c")
+stage_name = "Floresta"
+spawn_events = Array[ExtResource("2_k3mdj")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+stage_music = ExtResource("7_jidlh")
+music_volume = -10.0
+obstaculos_source_ids = Array[int]([4])
+obstaculos_atlas = Array[Vector2i]([Vector2i(0, 0)])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"
