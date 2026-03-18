@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
 [ext_resource type="Resource" uid="uid://bqvc5mn80fh3k" path="res://Resources/Stages/arena_floresta.tres" id="2_3vsio"]
 [ext_resource type="TileSet" uid="uid://cc8gemstq1gsi" path="res://Resources/Stages/tileset.tres" id="2_4mw8v"]
+[ext_resource type="Resource" uid="uid://tprljb1cl5dv" path="res://Resources/Stages/mapa_floresta.tres" id="2_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
@@ -10,60 +11,36 @@
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
-[ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="11_v8y8b"]
 
-[sub_resource type="Gradient" id="Gradient_4mw8v"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.25)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3vsio"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7deaf"]
 noise_type = 5
-frequency = 0.07
+frequency = 0.1
 fractal_type = 0
-cellular_return_type = 2
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r7lkc"]
-noise = SubResource("FastNoiseLite_3vsio")
-color_ramp = SubResource("Gradient_4mw8v")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nkw66"]
+noise = SubResource("FastNoiseLite_7deaf")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wu1pf"]
-frequency = 0.35
-fractal_octaves = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7deaf"]
-noise = SubResource("FastNoiseLite_wu1pf")
-
-[node name="proc_gen_world" type="Node2D" unique_id=1205955989]
-y_sort_enabled = true
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625]
 script = ExtResource("1_n73w2")
-stage_data = ExtResource("2_3vsio")
-noise_height_text = SubResource("NoiseTexture2D_r7lkc")
-noise_tree_text = SubResource("NoiseTexture2D_7deaf")
+stage_data = ExtResource("2_wu1pf")
+noise_text = SubResource("NoiseTexture2D_nkw66")
 
-[node name="TileMap" type="TileMap" parent="." unique_id=19495981]
-z_index = -1
-y_sort_enabled = true
+[node name="TileMap" type="TileMap" parent="." unique_id=174543522]
+position = Vector2(8, 8)
 tile_set = ExtResource("2_4mw8v")
 format = 2
-layer_0/name = "Chao"
-layer_1/name = "Arvore"
-layer_1/y_sort_enabled = true
+layer_1/name = "Layer1"
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
 enemy_scene = ExtResource("5_7deaf")
 current_stage = ExtResource("2_3vsio")
 
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
+y_sort_enabled = true
 inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1511039620]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1069550438]
-process_mode = 3
-
-[node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("11_v8y8b")]
 
 [editable path="Player"]

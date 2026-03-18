@@ -1,62 +1,69 @@
 extends Node2D
 
-@export var stage_data : StageData
-@export var noise_height_text : NoiseTexture2D
-@export var noise_tree_text : NoiseTexture2D
-var noise : Noise
-var tree_noise : Noise
-
+@export var stage_data: StageData
+@export var noise_text: NoiseTexture2D
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
-var tree_atlas = [Vector2i(6,0), Vector2i(2,2), Vector2i(0,2), Vector2i(4,0), Vector2i(8,2)]
-var tree_source_id = 3
-
+var noise: FastNoiseLite
+var seed_hash: int
 func _ready():
-	noise = noise_height_text.noise
-	tree_noise = noise_tree_text.noise
+	randomize()
+	seed_hash = randi()
+	seed(seed_hash)
+	if noise_text:
+		noise = noise_text.noise
+		noise.seed = seed_hash
 	generate_world()
-	
+
 func generate_world():
-	var qtd_obstaculos = stage_data.obstaculos_source_ids.size()
-	var centro_x = (stage_data.map_width * 16) / 2
-	var centro_y = (stage_data.map_height * 16) / 2
-	var centro_vetor = Vector2(centro_x, centro_y)
+	if not stage_data or not noise:
+		return
 	
-	var raio_seguro = 5.0
+	tile_map.clear()
+	# 1. Calcula o centro em GRADE (para o raio funcionar)
+	var centro_grid_x = stage_data.map_width / 2.0
+	var centro_grid_y = stage_data.map_height / 2.0
+	var centro_vetor_grid = Vector2(centro_grid_x, centro_grid_y)
+	
+	stage_data.regras_de_geracao.sort_custom(func(a, b): return a.layer_destino < b.layer_destino)
 	
 	for x in range(stage_data.map_width):
 		for y in range(stage_data.map_height):
 			var pos = Vector2i(x, y)
-			
 			var pos_vetor = Vector2(x, y)
-			if pos_vetor.distance_to(centro_vetor) <= raio_seguro:
-				# Força o chão na Camada 0 e pula a verificação de obstáculos/árvores
-				tile_map.set_cell(0, pos, stage_data.source_id_chao, stage_data.chao_atlas)
+			
+			tile_map.set_cell(0, pos, stage_data.source_id_chao_padrao, stage_data.chao_padrao_atlas)
+			
+			# Usa o vetor em GRADE para checar a distância
+			if pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn:
 				continue
 			
+			var bloco_ocupado = false 
 			
-			var noise_val = noise.get_noise_2d(x, y)
-			var noise_tree_val = tree_noise.get_noise_2d(x, y)
-			
-		
-			if noise_val < -0.15 and qtd_obstaculos > 0:
-				var index_aleatorio = randi() % qtd_obstaculos
-				var s_id = stage_data.obstaculos_source_ids[index_aleatorio]
-				var atlas = stage_data.obstaculos_atlas[index_aleatorio]
-				
-				# Desenha o obstáculo na camada 0
-				tile_map.set_cell(0, pos, s_id, atlas)
-				
-			else:
-				tile_map.set_cell(0, pos, stage_data.source_id_chao, stage_data.chao_atlas)
-				
-				
-				if noise_tree_val > 0.85:
-					print("ENTROU")
-					tile_map.set_cell(1, pos, tree_source_id, tree_atlas.pick_random())
-	
+			for regra in stage_data.regras_de_geracao:
+				if regra.exige_chao_livre and bloco_ocupado:
+					continue
+					
+				var valor_atual_ruido = 0.0
+				if regra.usa_ruido_proprio and regra.ruido:
+					regra.ruido.noise.seed = seed_hash
+					valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
+				else:
+					valor_atual_ruido = noise.get_noise_2d(x, y) 
+					
+				if valor_atual_ruido >= regra.valor_minimo and valor_atual_ruido <= regra.valor_maximo:
+					var index_rand = randi() % regra.source_ids.size()
+					var s_id = regra.source_ids[index_rand]
+					var atlas = regra.atlas_coords[index_rand]
+					
+					tile_map.set_cell(regra.layer_destino, pos, s_id, atlas)
+					
+					if regra.layer_destino == 0:
+						bloco_ocupado = true
+						
 	var player = get_tree().get_first_node_in_group("Player")
-	player.position = Vector2(centro_x, centro_y)
+	# 2. Converte a grade para PIXELS (* 16) apenas na hora de mover o jogador
+	player.position = Vector2(centro_grid_x * 16, centro_grid_y * 16)
 	
 func _input(event):
 	if Input.is_action_just_pressed("zoom_in"):
