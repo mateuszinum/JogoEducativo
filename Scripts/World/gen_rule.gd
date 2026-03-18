@@ -4,7 +4,6 @@ class_name GenRule extends Resource
 @export var layer_destino: int = 0
 
 @export_category("Configuração do Ruído")
-@export var usa_ruido_proprio: bool = false
 @export var ruido: NoiseTexture2D 
 @export var valor_minimo: float = -1.0
 @export var valor_maximo: float = 1.0

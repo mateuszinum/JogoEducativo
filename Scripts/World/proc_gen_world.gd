@@ -1,22 +1,18 @@
 extends Node2D
 
 @export var stage_data: StageData
-@export var noise_text: NoiseTexture2D
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
-var noise: FastNoiseLite
+
 var seed_hash: int
 func _ready():
 	randomize()
 	seed_hash = randi()
 	seed(seed_hash)
-	if noise_text:
-		noise = noise_text.noise
-		noise.seed = seed_hash
 	generate_world()
 
 func generate_world():
-	if not stage_data or not noise:
+	if not stage_data:
 		return
 	
 	tile_map.clear()
@@ -44,12 +40,11 @@ func generate_world():
 				if regra.exige_chao_livre and bloco_ocupado:
 					continue
 					
-				var valor_atual_ruido = 0.0
-				if regra.usa_ruido_proprio and regra.ruido:
-					regra.ruido.noise.seed = seed_hash
-					valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
-				else:
-					valor_atual_ruido = noise.get_noise_2d(x, y) 
+				if not regra.ruido or not regra.ruido.noise:
+					continue # Pula a regra se você esqueceu de criar o ruído no Inspetor
+					
+				regra.ruido.noise.seed = seed_hash
+				var valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
 					
 				if valor_atual_ruido >= regra.valor_minimo and valor_atual_ruido <= regra.valor_maximo:
 					var index_rand = randi() % regra.source_ids.size()

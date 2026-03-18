@@ -12,24 +12,18 @@
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7deaf"]
-noise_type = 5
-frequency = 0.1
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nkw66"]
-noise = SubResource("FastNoiseLite_7deaf")
-
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625]
+y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_wu1pf")
-noise_text = SubResource("NoiseTexture2D_nkw66")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=174543522]
+y_sort_enabled = true
 position = Vector2(8, 8)
 tile_set = ExtResource("2_4mw8v")
 format = 2
 layer_1/name = "Layer1"
+layer_1/y_sort_enabled = true
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
 enemy_scene = ExtResource("5_7deaf")
