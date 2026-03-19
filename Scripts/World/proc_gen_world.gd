@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var stage_data: StageData
+@export var cena_base_objeto: PackedScene
+@onready var node_objetos = $Objetos
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
 
@@ -20,6 +22,8 @@ func generate_world():
 	var centro_grid_x = stage_data.map_width / 2.0
 	var centro_grid_y = stage_data.map_height / 2.0
 	var centro_vetor_grid = Vector2(centro_grid_x, centro_grid_y)
+	var min_ruido_gerado = 1.0
+	var max_ruido_gerado = -1.0
 	
 	stage_data.regras_de_geracao.sort_custom(func(a, b): return a.layer_destino < b.layer_destino)
 	
@@ -30,21 +34,29 @@ func generate_world():
 			
 			tile_map.set_cell(0, pos, stage_data.source_id_chao_padrao, stage_data.chao_padrao_atlas)
 			
-			# Usa o vetor em GRADE para checar a distância
-			if pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn:
-				continue
+			# 1. Apenas salva se está na área segura (sem dar continue ainda)
+			var na_area_segura = pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn
 			
 			var bloco_ocupado = false 
 			
 			for regra in stage_data.regras_de_geracao:
+				# 2. Pula a regra se for um obstáculo tentando nascer no spawn
+				if na_area_segura and regra.evitar_area_segura:
+					continue
+					
 				if regra.exige_chao_livre and bloco_ocupado:
 					continue
 					
 				if not regra.ruido or not regra.ruido.noise:
-					continue # Pula a regra se você esqueceu de criar o ruído no Inspetor
+					continue 
 					
 				regra.ruido.noise.seed = seed_hash
 				var valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
+				
+				if valor_atual_ruido < min_ruido_gerado:
+					min_ruido_gerado = valor_atual_ruido
+				if valor_atual_ruido > max_ruido_gerado:
+					max_ruido_gerado = valor_atual_ruido
 					
 				if valor_atual_ruido >= regra.valor_minimo and valor_atual_ruido <= regra.valor_maximo:
 					var index_rand = randi() % regra.source_ids.size()
@@ -59,6 +71,8 @@ func generate_world():
 	var player = get_tree().get_first_node_in_group("Player")
 	# 2. Converte a grade para PIXELS (* 16) apenas na hora de mover o jogador
 	player.position = Vector2(centro_grid_x * 16, centro_grid_y * 16)
+	print("Ruído Mínimo Gerado: ", min_ruido_gerado)
+	print("Ruído Máximo Gerado: ", max_ruido_gerado)
 	
 func _input(event):
 	if Input.is_action_just_pressed("zoom_in"):

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GenRule" format=3 uid="uid://b8w7r374x8uia"]
+
+[ext_resource type="Texture2D" uid="uid://bpocax7ym6bh5" path="res://Resources/Stages/Noises/Floresta/ruido_arvore_floresta.tres" id="1_a3bfr"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="2_0sb7k"]
+
+[resource]
+script = ExtResource("2_0sb7k")
+layer_destino = 1
+ruido = ExtResource("1_a3bfr")
+valor_minimo = 0.83
+exige_chao_livre = true
+evitar_area_segura = true
+source_ids = Array[int]([3, 3, 3, 3, 3])
+atlas_coords = Array[Vector2i]([Vector2i(0, 2), Vector2i(2, 2), Vector2i(4, 0), Vector2i(6, 0), Vector2i(8, 2)])
+metadata/_custom_type_script = "uid://dlk027vsi110o"

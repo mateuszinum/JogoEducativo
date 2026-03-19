@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh868c41q1brv"
-path="res://.godot/imported/ArvoreTile.png-d900121aaf37ff0198c43001bb413a6a.ctex"
+uid="uid://l6t22mq4ewhv"
+path="res://.godot/imported/WinterTile.png-34bc6be0858474b62b77383e6cfd46e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/ArvoreTile.png"
-dest_files=["res://.godot/imported/ArvoreTile.png-d900121aaf37ff0198c43001bb413a6a.ctex"]
+source_file="res://Assets/Terrain/WinterTile.png"
+dest_files=["res://.godot/imported/WinterTile.png-34bc6be0858474b62b77383e6cfd46e8.ctex"]
 
 [params]
 

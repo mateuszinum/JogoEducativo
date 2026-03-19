@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="StageData" format=3 uid="uid://bqvc5mn80fh3k"]
 
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="1_01ayd"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="1_m7rlt"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="2_4nnad"]
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="3_l4xld"]
@@ -53,6 +54,4 @@ stage_name = "Floresta"
 spawn_events = Array[ExtResource("2_4nnad")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 stage_music = ExtResource("7_wi01x")
 music_volume = -10.0
-obstaculos_source_ids = Array[int]([4])
-obstaculos_atlas = Array[Vector2i]([Vector2i(0, 0)])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
 [ext_resource type="Resource" uid="uid://bqvc5mn80fh3k" path="res://Resources/Stages/arena_floresta.tres" id="2_3vsio"]
 [ext_resource type="TileSet" uid="uid://cc8gemstq1gsi" path="res://Resources/Stages/tileset.tres" id="2_4mw8v"]
-[ext_resource type="Resource" uid="uid://tprljb1cl5dv" path="res://Resources/Stages/mapa_floresta.tres" id="2_wu1pf"]
+[ext_resource type="Resource" uid="uid://cbjymnalqb2i3" path="res://Resources/Stages/mapa_gelo.tres" id="2_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
@@ -11,6 +11,10 @@
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
+[ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/GramaTile.png" id="12_7deaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1pf"]
+size = Vector2(16, 5.5)
 
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625]
 y_sort_enabled = true
@@ -30,11 +34,26 @@ enemy_scene = ExtResource("5_7deaf")
 current_stage = ExtResource("2_3vsio")
 
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
+visible = false
+z_index = 1
 y_sort_enabled = true
 inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
+
+[node name="ObjetoBase" type="StaticBody2D" parent="." unique_id=608595169]
+position = Vector2(-85, 69)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjetoBase" unique_id=1763790118]
+position = Vector2(10, 28)
+texture = ExtResource("12_7deaf")
+centered = false
+offset = Vector2(-8, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetoBase" unique_id=828235154]
+position = Vector2(10, 28)
+shape = SubResource("RectangleShape2D_wu1pf")
 
 [editable path="Player"]
