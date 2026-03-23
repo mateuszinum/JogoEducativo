@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dkbfito78h360"]
+
+[ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
+[ext_resource type="Resource" uid="uid://uws66pebgv5v" path="res://Resources/Stages/Campos/campos_config.tres" id="2_7deaf"]
+[ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
+[ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="6_jixqc"]
+[ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="7_7fyq5"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_dr08h"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="8_5vcap"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="9_01xxv"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="11_byjoo"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
+[ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/GramaTile.png" id="12_7deaf"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="13_0ofdx"]
+[ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
+
+[sub_resource type="Resource" id="Resource_01ayd"]
+script = ExtResource("8_5vcap")
+enemy_type = ExtResource("9_01xxv")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_2d58w"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 15
+enemy_type = ExtResource("10_usue8")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_3dl8p"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 20
+enemy_type = ExtResource("11_byjoo")
+spawn_rate = 1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_gdekt"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 20
+enemy_type = ExtResource("9_01xxv")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 30
+enemy_type = ExtResource("12_5t4pt")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 35
+enemy_type = ExtResource("10_usue8")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_841rm"]
+script = ExtResource("7_7fyq5")
+stage_name = "Floresta"
+stage_music = ExtResource("13_0ofdx")
+music_volume = -10.0
+spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1pf"]
+size = Vector2(16, 5.5)
+
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625]
+y_sort_enabled = true
+script = ExtResource("1_n73w2")
+stage_data = ExtResource("2_7deaf")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=174543522]
+y_sort_enabled = true
+position = Vector2(8, 8)
+scale = Vector2(2, 2)
+format = 2
+layer_0/name = "Chao"
+layer_1/name = "Obstaculos"
+
+[node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
+enemy_scene = ExtResource("5_7deaf")
+current_stage = SubResource("Resource_841rm")
+
+[node name="ObjetoBase" type="StaticBody2D" parent="." unique_id=608595169]
+position = Vector2(-85, 69)
+
+[node name="Sprite2D" type="Sprite2D" parent="ObjetoBase" unique_id=1763790118]
+position = Vector2(10, 28)
+texture = ExtResource("12_7deaf")
+centered = false
+offset = Vector2(-8, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetoBase" unique_id=828235154]
+position = Vector2(10, 28)
+shape = SubResource("RectangleShape2D_wu1pf")
+
+[node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
+z_index = 1
+y_sort_enabled = true
+inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
+zoom = Vector2(1.6, 1.6)
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1723960542]
+process_mode = 3
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("13_nkw66")]
+
+[editable path="Player"]

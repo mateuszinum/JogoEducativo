@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://uws66pebgv5v"]
+
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="1_3rtkl"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="3_qddx7"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="4_7a7rn"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="5_30l5j"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="6_nc17b"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="7_vk0of"]
+[ext_resource type="Texture2D" uid="uid://c4nljqjj78lte" path="res://Resources/Stages/Campos/campos_ruido_barreira.tres" id="8_3rtkl"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="8_vkne6"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="9_581yd"]
+[ext_resource type="TileSet" uid="uid://cfy6xd5tosqa1" path="res://Resources/Stages/Campos/campos_tileset.tres" id="10_fvhww"]
+
+[sub_resource type="Resource" id="Resource_01ayd"]
+script = ExtResource("4_7a7rn")
+enemy_type = ExtResource("5_30l5j")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_2d58w"]
+script = ExtResource("4_7a7rn")
+time_in_seconds = 15
+enemy_type = ExtResource("6_nc17b")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_3dl8p"]
+script = ExtResource("4_7a7rn")
+time_in_seconds = 20
+enemy_type = ExtResource("7_vk0of")
+spawn_rate = 1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_gdekt"]
+script = ExtResource("4_7a7rn")
+time_in_seconds = 20
+enemy_type = ExtResource("5_30l5j")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("4_7a7rn")
+time_in_seconds = 30
+enemy_type = ExtResource("8_vkne6")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("4_7a7rn")
+time_in_seconds = 35
+enemy_type = ExtResource("6_nc17b")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_ua18n"]
+script = ExtResource("1_3rtkl")
+nome_obstaculo = "Barreira"
+source_ids = Array[int]([10])
+ruido = ExtResource("8_3rtkl")
+valor_minimo = 0.8
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[resource]
+script = ExtResource("3_qddx7")
+stage_name = "Fase 1"
+stage_music = ExtResource("9_581yd")
+spawn_events = Array[ExtResource("4_7a7rn")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+map_width = 100
+stage_tileset = ExtResource("10_fvhww")
+ground_source_ids = Array[int]([0])
+spawn_rules = Array[ExtResource("1_3rtkl")]([SubResource("Resource_ua18n")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"

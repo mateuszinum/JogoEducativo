@@ -20,7 +20,7 @@ signal health_changed(current_health)
 @export var step_pitch_min : float = 0.8
 @export var step_pitch_max : float = 1.2
 
-const tile_size = 16
+const tile_size = 32
 var moving : bool = false
 var input_dir
 

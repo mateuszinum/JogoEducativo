@@ -26,12 +26,16 @@ func spawn(pos : Vector2, type_to_spawn: Enemy):
 	get_parent().add_child(enemy_instance)
 
 func get_random_position() -> Vector2:
-	# Agora o spawner também busca o player dinamicamente pelo grupo,
-	# evitando erros de caminhos quebrados por causa da tela dividida.
 	var player = get_tree().get_first_node_in_group("Player")
 	
 	if player != null:
-		return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		var random_dir = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		var raw_pos = player.global_position + (random_dir * distance)
+		
+		var nav_map = get_world_2d().navigation_map
+		var safe_pos = NavigationServer2D.map_get_closest_point(nav_map, raw_pos)
+		
+		return safe_pos
 	
 	return Vector2.ZERO
 

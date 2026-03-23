@@ -1,5 +1,8 @@
 extends Control
 
+#define se vai tocar aquela intro com a logo da ufmt
+const MOSTRAR_INTRO: bool = false 
+
 static var intro_ja_exibida: bool = false
 
 @onready var anim_intro = $AnimationPlayer
@@ -7,7 +10,7 @@ static var intro_ja_exibida: bool = false
 @onready var transition_rect = $TransitionLayer/ColorRect
 
 func _ready() -> void:
-	if not intro_ja_exibida:
+	if MOSTRAR_INTRO and not intro_ja_exibida:
 		anim_intro.play("SplashIntro")
 		intro_ja_exibida = true
 	else:
