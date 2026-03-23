@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://g74a3hmxrn73"]
-
-[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="1_jpv8r"]
-[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="1_nlm2c"]
-
-[resource]
-script = ExtResource("1_nlm2c")
-metadata/_custom_type_script = "uid://cimi8ig206mmi"

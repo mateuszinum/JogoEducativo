@@ -1,83 +1,68 @@
 extends Node2D
 
 @export var stage_data: StageData
-@export var cena_base_objeto: PackedScene
-@onready var node_objetos = $Objetos
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
 
 var seed_hash: int
+
 func _ready():
 	randomize()
 	seed_hash = randi()
 	seed(seed_hash)
 	generate_world()
+	play_stage_music()
 
 func generate_world():
 	if not stage_data:
 		return
+		
+	if stage_data.stage_tileset:
+		tile_map.tile_set = stage_data.stage_tileset
 	
 	tile_map.clear()
-	# 1. Calcula o centro em GRADE (para o raio funcionar)
 	var centro_grid_x = stage_data.map_width / 2.0
 	var centro_grid_y = stage_data.map_height / 2.0
 	var centro_vetor_grid = Vector2(centro_grid_x, centro_grid_y)
-	var min_ruido_gerado = 1.0
-	var max_ruido_gerado = -1.0
-	
-	stage_data.regras_de_geracao.sort_custom(func(a, b): return a.layer_destino < b.layer_destino)
 	
 	for x in range(stage_data.map_width):
 		for y in range(stage_data.map_height):
 			var pos = Vector2i(x, y)
 			var pos_vetor = Vector2(x, y)
 			
-			tile_map.set_cell(0, pos, stage_data.source_id_chao_padrao, stage_data.chao_padrao_atlas)
+			var chao_escolhido = stage_data.ground_atlas_coords.pick_random()
+			tile_map.set_cell(0, pos, stage_data.ground_source_id, chao_escolhido)
 			
-			# 1. Apenas salva se está na área segura (sem dar continue ainda)
 			var na_area_segura = pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn
+			if na_area_segura:
+				continue
 			
-			var bloco_ocupado = false 
+			var final_obstacle_id = -1
+			var final_obstacle_coord = Vector2i.ZERO
 			
-			for regra in stage_data.regras_de_geracao:
-				# 2. Pula a regra se for um obstáculo tentando nascer no spawn
-				if na_area_segura and regra.evitar_area_segura:
-					continue
-					
-				if regra.exige_chao_livre and bloco_ocupado:
-					continue
-					
-				if not regra.ruido or not regra.ruido.noise:
+			for regra in stage_data.spawn_rules:
+				if not regra.ruido or not regra.ruido.noise or regra.atlas_coords.is_empty():
 					continue 
 					
 				regra.ruido.noise.seed = seed_hash
 				var valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
-				
-				if valor_atual_ruido < min_ruido_gerado:
-					min_ruido_gerado = valor_atual_ruido
-				if valor_atual_ruido > max_ruido_gerado:
-					max_ruido_gerado = valor_atual_ruido
 					
 				if valor_atual_ruido >= regra.valor_minimo and valor_atual_ruido <= regra.valor_maximo:
-					var index_rand = randi() % regra.source_ids.size()
-					var s_id = regra.source_ids[index_rand]
-					var atlas = regra.atlas_coords[index_rand]
-					
-					tile_map.set_cell(regra.layer_destino, pos, s_id, atlas)
-					
-					if regra.layer_destino == 0:
-						bloco_ocupado = true
+					final_obstacle_id = regra.source_id
+					final_obstacle_coord = regra.atlas_coords.pick_random() # Variação aleatória do obstáculo
+			
+			if final_obstacle_id != -1:
+				tile_map.set_cell(1, pos, final_obstacle_id, final_obstacle_coord)
+				tile_map.erase_cell(0, pos)
 						
 	var player = get_tree().get_first_node_in_group("Player")
-	# 2. Converte a grade para PIXELS (* 16) apenas na hora de mover o jogador
-	player.position = Vector2(centro_grid_x * 16, centro_grid_y * 16)
-	print("Ruído Mínimo Gerado: ", min_ruido_gerado)
-	print("Ruído Máximo Gerado: ", max_ruido_gerado)
-	
-func _input(event):
-	if Input.is_action_just_pressed("zoom_in"):
-		var zoom_val = camera_2d.zoom.x - 0.1
-		camera_2d.zoom = Vector2(zoom_val, zoom_val)
-	if Input.is_action_just_pressed("zoom_out"):
-		var zoom_val = camera_2d.zoom.x + 0.1
-		camera_2d.zoom = Vector2(zoom_val, zoom_val)
+	player.position = Vector2((centro_grid_x * 32) + 24, (centro_grid_y * 32) + 24)
+
+func play_stage_music():
+	if stage_data != null and stage_data.stage_music != null:
+		var music_player = AudioStreamPlayer.new()
+		music_player.stream = stage_data.stage_music
+		music_player.volume_db = stage_data.music_volume
+		music_player.name = "StageMusicPlayer"
+		add_child(music_player)
+		music_player.play()
