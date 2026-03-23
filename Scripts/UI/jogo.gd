@@ -16,15 +16,14 @@ func _ready() -> void:
 	viewport.add_child(vilarejo)
 	if terminal.has_method("ativar_modo_vilarejo"):
 		terminal.ativar_modo_vilarejo()
-		
-	# CORREÇÃO DO FADE IN: Garante que a camada está ligada antes de animar!
+
 	if fade_rect:
-		$FadeLayer.show() # Liga a camada
-		fade_rect.show()  # Liga o retângulo
+		$FadeLayer.show()
+		fade_rect.show()
 		fade_rect.modulate.a = 1.0
 		
 		var tween = create_tween()
-		tween.tween_property(fade_rect, "modulate:a", 0.0, 1.5) # 1.5s para suavidade total
+		tween.tween_property(fade_rect, "modulate:a", 0.0, 1.5)
 		await tween.finished
 		$FadeLayer.hide()
 
@@ -35,15 +34,14 @@ func fazer_transicao_tv(cena_preload, modo_terminal: String) -> void:
 	fade_tv.show()
 	fade_tv.modulate.a = 0.0
 	var tween_out = create_tween()
-	tween_out.tween_property(fade_tv, "modulate:a", 1.0, 1.0) # A sua escolha de 1 segundo
+	tween_out.tween_property(fade_tv, "modulate:a", 1.0, 1.0)
 	
-	# CORREÇÃO DO ÁUDIO: Ele agora procura a música e desce o volume em exato 1 segundo!
 	if viewport.get_child_count() > 0:
 		var cena_atual = viewport.get_child(0)
 		if cena_atual.has_node("MusicaVilarejo"):
 			var musica = cena_atual.get_node("MusicaVilarejo")
 			var tween_som = create_tween()
-			tween_som.tween_property(musica, "volume_db", -40.0, 1.0) # Sincronizado com a tela
+			tween_som.tween_property(musica, "volume_db", -40.0, 1.0)
 			
 	await tween_out.finished
 	

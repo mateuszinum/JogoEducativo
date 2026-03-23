@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0uvt0c1xh0yt"
-path="res://.godot/imported/BarreiraTile.png-7ab46ecbc0f941ee7440297d2b11d19c.ctex"
+path="res://.godot/imported/BarreiraTile.png-243e6404f77160cf33d9ac81b652b9aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/BarreiraTile.png"
-dest_files=["res://.godot/imported/BarreiraTile.png-7ab46ecbc0f941ee7440297d2b11d19c.ctex"]
+source_file="res://Assets/Terrain/Genérico/BarreiraTile.png"
+dest_files=["res://.godot/imported/BarreiraTile.png-243e6404f77160cf33d9ac81b652b9aa.ctex"]
 
 [params]
 

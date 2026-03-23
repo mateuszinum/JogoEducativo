@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+const tile_size = 32
+const TEMPO_DE_PASSO : float = 0.05
+const TEMPO_ANIMACAO : float = 0.05
+
 const OPACIDADE_NO_DANO : float = 1.0
 
 @onready var anim = $AnimatedSprite2D
@@ -20,7 +24,6 @@ signal health_changed(current_health)
 @export var step_pitch_min : float = 0.8
 @export var step_pitch_max : float = 1.2
 
-const tile_size = 32
 var moving : bool = false
 var input_dir
 
@@ -94,12 +97,12 @@ func move():
 		audio.finished.connect(audio.queue_free)
 	
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + input_dir * tile_size, 0.05)
+	tween.tween_property(self, "position", position + input_dir * tile_size, TEMPO_DE_PASSO)
 	tween.tween_callback(move_false)
 
 	var squash_tween = create_tween()
-	squash_tween.tween_property(anim, "scale", Vector2(1.6, 0.6), 0.025)
-	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), 0.025)
+	squash_tween.tween_property(anim, "scale", Vector2(1.6, 0.6), TEMPO_ANIMACAO / 2.0)
+	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), TEMPO_ANIMACAO / 2.0)
 
 func move_false():
 	moving = false

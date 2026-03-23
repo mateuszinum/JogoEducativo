@@ -11,10 +11,8 @@ var despawns: bool = true
 var knockback : Vector2
 var separation : float
 
-# --- VARIÁVEIS DE OTIMIZAÇÃO DO PATHFINDING ---
 var path_timer : float = 0.0
 var path_update_interval : float = 0.2 
-# ----------------------------------------------
 
 var type : Enemy:
 	set(value):
@@ -42,7 +40,6 @@ func _ready():
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 	
-	# Desincroniza o relógio de cada inimigo para a CPU não calcular todos no mesmo frame
 	path_timer = randf_range(0.0, 0.2)
 	path_update_interval = randf_range(0.2, 0.3)
 
@@ -56,17 +53,13 @@ func _physics_process(delta):
 	if player == null:
 		return
 
-	# --- OTIMIZAÇÃO: Só recalcula a rota algumas vezes por segundo ---
 	path_timer -= delta
 	if path_timer <= 0.0:
 		nav_agent.target_position = player.global_position
 		path_timer = path_update_interval 
-	# -----------------------------------------------------------------
 
-	# --- PROTEÇÃO: Não tenta andar se o alvo estiver dentro de uma parede ---
 	if nav_agent.is_navigation_finished() or not nav_agent.is_target_reachable():
 		return
-	# ------------------------------------------------------------------------
 
 	var next_pos = nav_agent.get_next_path_position()
 	var direction := global_position.direction_to(next_pos)

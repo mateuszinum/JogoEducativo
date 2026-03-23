@@ -17,7 +17,26 @@ class_name StageData extends Resource
 @export_category("Tiles")
 @export var stage_tileset: TileSet
 @export_group("Chão")
-@export var ground_source_ids: Array[int]
+@export var ground_variants: Array[GroundVariant] = []
 
 @export_group("Barreiras")
 @export var spawn_rules: Array[GenRule] = []
+
+
+func get_random_ground_id() -> int:
+	if ground_variants.is_empty():
+		return -1
+		
+	var peso_total : float = 0.0
+	for tile in ground_variants:
+		peso_total += tile.chance_peso
+		
+	var sorteio = randf_range(0.0, peso_total)
+	var peso_acumulado : float = 0.0
+	
+	for tile in ground_variants:
+		peso_acumulado += tile.chance_peso
+		if sorteio <= peso_acumulado:
+			return tile.source_id
+			
+	return ground_variants[0].source_id

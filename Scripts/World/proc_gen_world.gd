@@ -30,9 +30,9 @@ func generate_world():
 			var pos = Vector2i(x, y)
 			var pos_vetor = Vector2(x, y)
 			
-			var chao_escolhido_id = 0
-			if stage_data.ground_source_ids.size() > 0:
-				chao_escolhido_id = stage_data.ground_source_ids.pick_random()
+			var chao_escolhido_id = stage_data.get_random_ground_id()
+			if chao_escolhido_id != -1:
+				tile_map.set_cell(0, pos, chao_escolhido_id, Vector2i(0, 0))
 				
 			tile_map.set_cell(0, pos, chao_escolhido_id, Vector2i(0, 0))
 			

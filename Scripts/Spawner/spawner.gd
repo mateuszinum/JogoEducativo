@@ -3,7 +3,6 @@ extends Node2D
 @export var enemy_scene : PackedScene
 @export var max_enemies : int = 300
 
-# Aqui você arrasta o seu arquivo .tres da fase atual!
 @export var current_stage : StageData 
 
 var distance : float = 250
@@ -22,7 +21,6 @@ func spawn(pos : Vector2, type_to_spawn: Enemy):
 	enemy_instance.type = type_to_spawn
 	enemy_instance.position = pos
 	
-	# Adiciona o inimigo como filho do pai do Spawner (o mapa World), e não da tela cheia!
 	get_parent().add_child(enemy_instance)
 
 func get_random_position() -> Vector2:

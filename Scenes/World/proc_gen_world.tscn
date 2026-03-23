@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dkbfito78h360"]
 
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
-[ext_resource type="Resource" uid="uid://uws66pebgv5v" path="res://Resources/Stages/Campos/campos_config.tres" id="2_7deaf"]
+[ext_resource type="Resource" uid="uid://cuv2y6cr6t1fs" path="res://Resources/Stages/Floresta/floresta_data.tres" id="2_3nb34"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
+[ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="5_jixqc"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="6_jixqc"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="7_7fyq5"]
@@ -16,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="11_byjoo"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
-[ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/GramaTile.png" id="12_7deaf"]
+[ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/Genérico/GramaTile.png" id="12_7deaf"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 
@@ -73,12 +74,11 @@ size = Vector2(16, 5.5)
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
-stage_data = ExtResource("2_7deaf")
+stage_data = ExtResource("2_3nb34")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=174543522]
 y_sort_enabled = true
 position = Vector2(8, 8)
-scale = Vector2(2, 2)
 format = 2
 layer_0/name = "Chao"
 layer_1/name = "Obstaculos"
