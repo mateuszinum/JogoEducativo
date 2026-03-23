@@ -30,29 +30,30 @@ func generate_world():
 			var pos = Vector2i(x, y)
 			var pos_vetor = Vector2(x, y)
 			
-			var chao_escolhido = stage_data.ground_atlas_coords.pick_random()
-			tile_map.set_cell(0, pos, stage_data.ground_source_id, chao_escolhido)
+			var chao_escolhido_id = 0
+			if stage_data.ground_source_ids.size() > 0:
+				chao_escolhido_id = stage_data.ground_source_ids.pick_random()
+				
+			tile_map.set_cell(0, pos, chao_escolhido_id, Vector2i(0, 0))
 			
 			var na_area_segura = pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn
 			if na_area_segura:
-				continue
+				continue 
 			
 			var final_obstacle_id = -1
-			var final_obstacle_coord = Vector2i.ZERO
 			
 			for regra in stage_data.spawn_rules:
-				if not regra.ruido or not regra.ruido.noise or regra.atlas_coords.is_empty():
+				if not regra.ruido or not regra.ruido.noise or regra.source_ids.is_empty():
 					continue 
 					
 				regra.ruido.noise.seed = seed_hash
 				var valor_atual_ruido = regra.ruido.noise.get_noise_2d(x, y)
 					
 				if valor_atual_ruido >= regra.valor_minimo and valor_atual_ruido <= regra.valor_maximo:
-					final_obstacle_id = regra.source_id
-					final_obstacle_coord = regra.atlas_coords.pick_random() # Variação aleatória do obstáculo
+					final_obstacle_id = regra.source_ids.pick_random()
 			
 			if final_obstacle_id != -1:
-				tile_map.set_cell(1, pos, final_obstacle_id, final_obstacle_coord)
+				tile_map.set_cell(1, pos, final_obstacle_id, Vector2i(0, 0))
 				tile_map.erase_cell(0, pos)
 						
 	var player = get_tree().get_first_node_in_group("Player")
