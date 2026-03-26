@@ -12,6 +12,8 @@ func _ready():
 	seed(seed_hash)
 	generate_world()
 	play_stage_music()
+	print("Posição do Player: " + str($Player.position))
+	print("Posição Global do Player: " + str($Player.global_position))
 
 func generate_world():
 	if not stage_data:
@@ -21,12 +23,14 @@ func generate_world():
 		tile_map.tile_set = stage_data.stage_tileset
 	
 	tile_map.clear()
-	var centro_grid_x = stage_data.map_width / 2.0
-	var centro_grid_y = stage_data.map_height / 2.0
+	var centro_grid_x = 0
+	var centro_grid_y = 0
 	var centro_vetor_grid = Vector2(centro_grid_x, centro_grid_y)
 	
-	for x in range(stage_data.map_width):
-		for y in range(stage_data.map_height):
+	var metade_largura = stage_data.map_width / 2
+	var metade_altura = stage_data.map_height / 2
+	for x in range(-metade_largura, metade_largura):
+		for y in range(-metade_altura, metade_altura):
 			var pos = Vector2i(x, y)
 			var pos_vetor = Vector2(x, y)
 			
@@ -34,7 +38,6 @@ func generate_world():
 			if chao_escolhido_id != -1:
 				tile_map.set_cell(0, pos, chao_escolhido_id, Vector2i(0, 0))
 				
-			tile_map.set_cell(0, pos, chao_escolhido_id, Vector2i(0, 0))
 			
 			var na_area_segura = pos_vetor.distance_to(centro_vetor_grid) <= stage_data.raio_seguro_spawn
 			if na_area_segura:
@@ -57,7 +60,7 @@ func generate_world():
 				tile_map.erase_cell(0, pos)
 						
 	var player = get_tree().get_first_node_in_group("Player")
-	player.position = Vector2((centro_grid_x * 32) + 24, (centro_grid_y * 32) + 24)
+	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
 
 func play_stage_music():
 	if stage_data != null and stage_data.stage_music != null:

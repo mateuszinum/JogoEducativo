@@ -104,6 +104,8 @@ func move():
 	squash_tween.tween_property(anim, "scale", Vector2(1.6, 0.6), TEMPO_ANIMACAO / 2.0)
 	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), TEMPO_ANIMACAO / 2.0)
 
+	print("Posição do Player: " + str($".".position / 32))
+	print("Posição Global do Player: " + str($".".global_position / 32))
 func move_false():
 	moving = false
 	
