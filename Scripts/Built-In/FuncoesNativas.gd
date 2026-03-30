@@ -11,18 +11,23 @@ Bugs
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_z"):
 		print("apertou z")
-		print(Partida.tempo())
+		
+		var tempo = Partida.tempo()
 		
 	elif event.is_action_pressed("debug_x"):
 		print("apertou x")
-		print(Jogador.vida_atual())
+		
+		var vida = Jogador.vida_atual()
+		print(vida)
 		
 	elif event.is_action_pressed("debug_c"):
-		print("apertou c")
-		print(Inimigo.escanearArea())
-		
+		var livre = Jogador.podeMover("Direita")
+		if livre:
+			print("caminho livre")
+		else:
+			print("tem uma parede")
+
 	elif event.is_action_pressed("debug_v"):
-		print("apertou v")
 		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
 
 class Inimigo:
@@ -112,7 +117,35 @@ class Jogador:
 	# Função posicao() (Ver Pedro)
 	
 	# Função podeMover(direcao)
-	
+	static func podeMover(direcao: String) -> bool:
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
+
+		var vetor_dir := Vector2.ZERO
+		
+		match direcao.to_lower(): 
+			"cima": vetor_dir = Vector2.UP
+			"baixo": vetor_dir = Vector2.DOWN
+			"esquerda": vetor_dir = Vector2.LEFT
+			"direita": vetor_dir = Vector2.RIGHT
+			_:
+				printerr("ERRO: Direção inválida em podeMover(). Use 'Cima', 'Baixo', 'Esquerda' ou 'Direita'.")
+				return false
+
+		var tile_size = 32.0 
+		var origem = player.global_position
+		var destino = origem + (vetor_dir * tile_size)
+
+		var space_state = player.get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(origem, destino)
+
+		var resultado = space_state.intersect_ray(query)
+
+		if not resultado.is_empty():
+			return false
+
+		return true
+
 #class Equipamento:
 # Função cinto.usarItem(indice) (Não precisa agr)
 
