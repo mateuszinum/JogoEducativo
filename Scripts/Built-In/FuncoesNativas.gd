@@ -1,9 +1,11 @@
 extends Node
 
 '''
-Bugs
+Fazer
 - tempo() e vida_atual() não estão funcionando
 - inimigo mais próximo dando "BreakPoint"
+- entender geração do level para fazer a função arena()
+- trazer o mover
 '''
 
 
@@ -27,8 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			print("tem uma parede")
 
-	elif event.is_action_pressed("debug_v"):
-		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
+	#elif event.is_action_pressed("debug_v"):
+		#print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
 
 class Inimigo:
 	# Função inimigoMaisProximo()
@@ -71,9 +73,9 @@ class Inimigo:
 		return inimigos
 
 	# Função nomeInimigo(alvo)
-	static func nomeInimigo(alvo: CharacterBody2D):
-		if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
-			return alvo.type.nome
+	#static func nomeInimigo(alvo: CharacterBody2D):
+		#if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
+			#return alvo.type.nome
 
 class Partida:
 	# Função tempo()
@@ -108,6 +110,44 @@ class Jogador:
 		return 0.0
 	
 	# Função mover(direcao)
+	static func mover(direcao):
+		var player = Engine.get_main_loop().get_first_node_in_group("Player")
+
+		if not player:
+			return
+
+		if direcao == Vector2.ZERO or player.moving:
+			return
+
+		var raycast = player.get_node("RayCast2D")
+		raycast.target_position = direcao * player.tile_size
+		raycast.force_raycast_update()
+
+		if raycast.is_colliding():
+			return 
+
+		if direcao.x != 0:
+			player.anim.flip_h = (direcao.x < 0)
+		
+		player.moving = true
+
+		if player.step_sound != null:
+			var audio = AudioStreamPlayer2D.new()
+			audio.stream = player.step_sound
+			audio.volume_db = player.step_volume
+			audio.global_position = player.global_position
+			audio.pitch_scale = randf_range(player.step_pitch_min, player.step_pitch_max)
+			player.get_parent().add_child(audio)
+			audio.play()
+			audio.finished.connect(audio.queue_free)
+
+		var tween = player.create_tween()
+		tween.tween_property(player, "position", player.position + direcao * player.tile_size, player.TEMPO_DE_PASSO)
+		tween.tween_callback(player.move_false)
+
+		var squash_tween = player.create_tween()
+		squash_tween.tween_property(player.anim, "scale", Vector2(1.6, 0.6), player.TEMPO_ANIMACAO / 2.0)
+		squash_tween.tween_property(player.anim, "scale", Vector2(1.0, 1.0), player.TEMPO_ANIMACAO / 2.0)
 
 	# Função escapar()
 	static func escapar() -> void:
