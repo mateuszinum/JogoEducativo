@@ -55,7 +55,7 @@ animations = [{
 
 [resource]
 script = ExtResource("2_so5l6")
-title = "Slime"
+nome = "Slime"
 animations = SubResource("SpriteFrames_jat16")
 health = 15.0
 damage = 5.0

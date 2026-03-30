@@ -3,10 +3,10 @@ extends Node
 # Mapeamento de Inputs para Debug sem necessidade do backend
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("check_time"):
-		Partida.exibir_tempo()
+		Partida.tempo()
 		
 	elif event.is_action_pressed("check_health"):
-		Jogador.exibir_vida()
+		Jogador.vida_atual()
 
 class Inimigo:
 	# Função inimigoMaisProximo()
@@ -49,11 +49,13 @@ class Inimigo:
 		return inimigos
 
 	# Função nomeInimigo(alvo)
-
+	static func nomeInimigo(alvo: CharacterBody2D):
+		if "type" in alvo and alvo.type != null:
+			return alvo.type.nome
 
 class Partida:
 	# Função tempo()
-	func tempo() -> Array:
+	static func tempo() -> Array:
 		var spawner = Engine.get_main_loop().get_first_node_in_group("Spawner")
 		if spawner:
 			var total = spawner.total_time_seconds
@@ -62,41 +64,26 @@ class Partida:
 			return [m, s]
 		return [0, 0]
 	
-	# Debug Tempo
-	static func exibir_tempo() -> void:
-		var spawner = Engine.get_main_loop().get_first_node_in_group("Spawner")
-		if spawner:
-			var total = spawner.total_time_seconds
-			var m = total / 60
-			var s = total % 60
-			print("Tempo atual da partida: %d:%s" % [m, str(s).lpad(2, '0')])
-	
-	# Função arena(nomeDaArena)
-	func arena(nome_arena: String):
-		const DIRETORIO_BASE = "res://Resources/Stages"
-		var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
-
-		if ResourceLoader.exists(caminho_completo):
-			var dados_da_arena = load(caminho_completo)
-		else:
-			printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
-			return null
+	# Função arena(nomeDaArena) (Entender como que funciona para mudar a cena da arena)
+	#func arena(nome_arena: String):
+		#const DIRETORIO_BASE = "res://Resources/Stages"
+		#var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
+#
+		#if ResourceLoader.exists(caminho_completo):
+			#var dados_da_arena = load(caminho_completo)
+		#else:
+			#printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
+			#return null
 		
 	# Função tesouro() (Ver Pedro)
 	
 class Jogador:
 	# Função vidaAtual()
-	func vida_atual():
+	static func vida_atual():
 		var player = Engine.get_main_loop().get_first_node_in_group("Player")
 		if player:
 			return player.health
 		return 0.0
-	
-	# Debug Vida
-	static func exibir_vida() -> void:
-		var player = Engine.get_main_loop().get_first_node_in_group("Player")
-		if player:
-			print("%d/%d" % [player.health, player.max_health])
 	
 	# Função mover(direcao)
 

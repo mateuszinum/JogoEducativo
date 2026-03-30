@@ -69,7 +69,7 @@ animations = [{
 
 [resource]
 script = ExtResource("2_tas4p")
-title = "Esqueleto"
+nome = "Esquleto"
 animations = SubResource("SpriteFrames_y0lqt")
 health = 5.0
 damage = 5.0
