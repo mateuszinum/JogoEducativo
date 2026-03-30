@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var tile_map = $"../TileMap"
 const tile_size = 32
 const TEMPO_DE_PASSO : float = 0.05
 const TEMPO_ANIMACAO : float = 0.05
@@ -104,8 +104,9 @@ func move():
 	squash_tween.tween_property(anim, "scale", Vector2(1.6, 0.6), TEMPO_ANIMACAO / 2.0)
 	squash_tween.tween_property(anim, "scale", Vector2(1.0, 1.0), TEMPO_ANIMACAO / 2.0)
 
-	print("Posição do Player: " + str($".".position / 32))
-	print("Posição Global do Player: " + str($".".global_position / 32))
+	print("Posição do Player: " + str(tile_map.local_to_map($".".position)))
+	print("Posição Global do Player: " + str(tile_map.local_to_map($".".global_position)))
+
 func move_false():
 	moving = false
 	
