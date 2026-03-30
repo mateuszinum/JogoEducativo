@@ -5,7 +5,6 @@ Fazer
 - tempo() e vida_atual() não estão funcionando
 - inimigo mais próximo dando "BreakPoint"
 - entender geração do level para fazer a função arena()
-- trazer o mover
 '''
 
 
@@ -14,7 +13,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_z"):
 		print("apertou z")
 		
-		var tempo = Partida.tempo()
+		var coordenada = Jogador.posicao()
+		
+		print(coordenada)
 		
 	elif event.is_action_pressed("debug_x"):
 		print("apertou x")
@@ -154,8 +155,19 @@ class Jogador:
 		Engine.get_main_loop().paused = false
 		Engine.get_main_loop().change_scene_to_file("res://Scenes/UI/jogo.tscn")
 
-	# Função posicao() (Ver Pedro)
-	
+	# Função posicao()
+	static func posicao():
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
+		var tilemap = tree.get_first_node_in_group("Mapa")
+
+		if not player or not tilemap:
+			return Vector2.ZERO
+
+		var coordenada_jogador = tilemap.local_to_map(player.global_position)
+
+		return coordenada_jogador
+
 	# Função podeMover(direcao)
 	static func podeMover(direcao: String) -> bool:
 		var tree = Engine.get_main_loop()
