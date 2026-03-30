@@ -65,7 +65,6 @@ func _physics_process(_delta: float) -> void:
 
 	for action in dirs:
 		if Input.is_action_just_pressed(action):
-			FuncoesNativas.Jogador.posicao()
 			FuncoesNativas.Jogador.mover(dirs[action])
 
 func move_false():

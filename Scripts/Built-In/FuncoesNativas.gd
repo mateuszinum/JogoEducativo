@@ -2,24 +2,20 @@ extends Node
 
 '''
 Fazer
-- tempo() e vida_atual() não estão funcionando
-- inimigo mais próximo dando "BreakPoint"
 - entender geração do level para fazer a função arena()
 '''
-
 
 # Mapeamento de Inputs para Debug sem necessidade do backend
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_z"):
 		print("apertou z")
 		
-		var coordenada = Jogador.posicao()
-		
+		var coordenada = Partida.tempo()
 		print(coordenada)
 		
 	elif event.is_action_pressed("debug_x"):
 		print("apertou x")
-		
+
 		var vida = Jogador.vida_atual()
 		print(vida)
 		
@@ -30,8 +26,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			print("tem uma parede")
 
-	#elif event.is_action_pressed("debug_v"):
-		#print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
+	elif event.is_action_pressed("debug_v"):
+		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
 
 class Inimigo:
 	# Função inimigoMaisProximo()
@@ -73,10 +69,10 @@ class Inimigo:
 		
 		return inimigos
 
-	# Função nomeInimigo(alvo)
-	#static func nomeInimigo(alvo: CharacterBody2D):
-		#if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
-			#return alvo.type.nome
+	#Função nomeInimigo(alvo)
+	static func nomeInimigo(alvo: CharacterBody2D):
+		if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
+			return alvo.type.nome
 
 class Partida:
 	# Função tempo()
@@ -86,6 +82,7 @@ class Partida:
 			var total = spawner.total_time_seconds
 			var m = total / 60
 			var s = total % 60
+			
 			return [m, s]
 		return [0, 0]
 	
@@ -165,7 +162,6 @@ class Jogador:
 			return Vector2.ZERO
 
 		var coordenada_jogador = tilemap.local_to_map(player.global_position)
-
 		return coordenada_jogador
 
 	# Função podeMover(direcao)
