@@ -144,6 +144,7 @@ func take_damage(amount):
 
 func _on_nearest_enemy_timer_timeout():
 	nearest_enemy = FuncoesNativas.Inimigo.inimigoMaisProximo()
+
 	
 func _on_self_damage_body_entered(body: Node2D) -> void:
 	if "damage" in body:

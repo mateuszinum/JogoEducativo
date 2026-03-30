@@ -1,12 +1,29 @@
 extends Node
 
+'''
+Bugs
+- tempo() e vida_atual() não estão funcionando
+- inimigo mais próximo dando "BreakPoint"
+'''
+
+
 # Mapeamento de Inputs para Debug sem necessidade do backend
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("check_time"):
-		Partida.tempo()
+	if event.is_action_pressed("debug_z"):
+		print("apertou z")
+		print(Partida.tempo())
 		
-	elif event.is_action_pressed("check_health"):
-		Jogador.vida_atual()
+	elif event.is_action_pressed("debug_x"):
+		print("apertou x")
+		print(Jogador.vida_atual())
+		
+	elif event.is_action_pressed("debug_c"):
+		print("apertou c")
+		print(Inimigo.escanearArea())
+		
+	elif event.is_action_pressed("debug_v"):
+		print("apertou v")
+		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
 
 class Inimigo:
 	# Função inimigoMaisProximo()
@@ -39,7 +56,7 @@ class Inimigo:
 		return mais_proximo
 		
 	# Função escanearArea()
-	static func escanearArea() -> CharacterBody2D:
+	static func escanearArea():
 		var tree = Engine.get_main_loop()
 			
 		var inimigos = tree.get_nodes_in_group("Enemy")
@@ -50,7 +67,7 @@ class Inimigo:
 
 	# Função nomeInimigo(alvo)
 	static func nomeInimigo(alvo: CharacterBody2D):
-		if "type" in alvo and alvo.type != null:
+		if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
 			return alvo.type.nome
 
 class Partida:
@@ -87,8 +104,8 @@ class Jogador:
 	
 	# Função mover(direcao)
 
-	# Função escapar() (Trazer a transição bonitinha)
-	func escapar() -> void:
+	# Função escapar()
+	static func escapar() -> void:
 		Engine.get_main_loop().paused = false
 		Engine.get_main_loop().change_scene_to_file("res://Scenes/UI/jogo.tscn")
 
