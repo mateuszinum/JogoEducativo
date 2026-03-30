@@ -1,0 +1,121 @@
+extends Node
+
+# Mapeamento de Inputs para Debug sem necessidade do backend
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("check_time"):
+		Partida.exibir_tempo()
+		
+	elif event.is_action_pressed("check_health"):
+		Jogador.exibir_vida()
+
+class Inimigo:
+	# Função inimigoMaisProximo()
+	static func inimigoMaisProximo() -> CharacterBody2D:
+		var tree = Engine.get_main_loop()
+		
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		if inimigos.is_empty():
+			return null
+		
+		var player = tree.get_first_node_in_group("Player")
+		if not player:
+			return null
+			
+		var pos_jogador = player.global_position
+
+		var mais_proximo: CharacterBody2D = null
+		var menor_distancia := INF
+
+		for inimigo in inimigos:
+			if not is_instance_valid(inimigo):
+				continue
+
+			# Compara a distância do jogador até o inimigo atual
+			var distancia = pos_jogador.distance_squared_to(inimigo.global_position)
+			if distancia < menor_distancia:
+				menor_distancia = distancia
+				mais_proximo = inimigo
+
+		return mais_proximo
+		
+	# Função escanearArea()
+	static func escanearArea() -> CharacterBody2D:
+		var tree = Engine.get_main_loop()
+			
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		if inimigos.is_empty():
+			return null
+		
+		return inimigos
+
+	# Função nomeInimigo(alvo)
+
+
+class Partida:
+	# Função tempo()
+	func tempo() -> Array:
+		var spawner = Engine.get_main_loop().get_first_node_in_group("Spawner")
+		if spawner:
+			var total = spawner.total_time_seconds
+			var m = total / 60
+			var s = total % 60
+			return [m, s]
+		return [0, 0]
+	
+	# Debug Tempo
+	static func exibir_tempo() -> void:
+		var spawner = Engine.get_main_loop().get_first_node_in_group("Spawner")
+		if spawner:
+			var total = spawner.total_time_seconds
+			var m = total / 60
+			var s = total % 60
+			print("Tempo atual da partida: %d:%s" % [m, str(s).lpad(2, '0')])
+	
+	# Função arena(nomeDaArena)
+	func arena(nome_arena: String):
+		const DIRETORIO_BASE = "res://Resources/Stages"
+		var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
+
+		if ResourceLoader.exists(caminho_completo):
+			var dados_da_arena = load(caminho_completo)
+		else:
+			printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
+			return null
+		
+	# Função tesouro() (Ver Pedro)
+	
+class Jogador:
+	# Função vidaAtual()
+	func vida_atual():
+		var player = Engine.get_main_loop().get_first_node_in_group("Player")
+		if player:
+			return player.health
+		return 0.0
+	
+	# Debug Vida
+	static func exibir_vida() -> void:
+		var player = Engine.get_main_loop().get_first_node_in_group("Player")
+		if player:
+			print("%d/%d" % [player.health, player.max_health])
+	
+	# Função mover(direcao)
+
+	# Função escapar() (Trazer a transição bonitinha)
+	func escapar() -> void:
+		Engine.get_main_loop().paused = false
+		Engine.get_main_loop().change_scene_to_file("res://Scenes/UI/jogo.tscn")
+
+	# Função posicao() (Ver Pedro)
+	
+	# Função podeMover(direcao)
+	
+#class Equipamento:
+# Função cinto.usarItem(indice) (Não precisa agr)
+
+# Função mochila.usarItem() (Não precisa agr)
+
+# Função cinto.colocarItem(item, indice) (Não precisa agr)
+
+# Função mochila.colocarItem(item) (Não precisa agr)
+
+# Função comprar(produto) (Não precisa agr)

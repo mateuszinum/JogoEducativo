@@ -21,8 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-VidaAtual="*uid://bnur40wxa54cj"
-Tempo="*uid://c52qriloxi4ay"
+FuncoesNativas="*uid://dtvtvqqqbkehv"
 
 [display]
 

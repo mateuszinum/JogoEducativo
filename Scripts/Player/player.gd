@@ -134,18 +134,16 @@ func take_damage(amount):
 		audio.play()
 		audio.finished.connect(audio.queue_free)
 
-func _on_enemy_detector_body_entered(body):
-	if body.is_in_group("Enemy"):
-		enemies_in_range.append(body)
-
-func _on_enemy_detector_body_exited(body):
-	enemies_in_range.erase(body)
+# Funções para caso precise de range para detectar o inimigo 
+#func _on_enemy_detector_body_entered(body):
+	#if body.is_in_group("Enemy"):
+		#enemies_in_range.append(body)
+#
+#func _on_enemy_detector_body_exited(body):
+	#enemies_in_range.erase(body)
 
 func _on_nearest_enemy_timer_timeout():
-	if enemies_in_range.size() > 0:
-		nearest_enemy = InimigoMaisProximo.get_nearest_enemy(global_position, enemies_in_range)
-	else:
-		nearest_enemy = null
+	nearest_enemy = FuncoesNativas.Inimigo.inimigoMaisProximo()
 	
 func _on_self_damage_body_entered(body: Node2D) -> void:
 	if "damage" in body:
