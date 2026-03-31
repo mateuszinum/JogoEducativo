@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var stage_data: StageData
+@export var cena_tesouro: PackedScene
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
 
@@ -68,3 +69,30 @@ func play_stage_music():
 		music_player.name = "StageMusicPlayer"
 		add_child(music_player)
 		music_player.play()
+
+func gerar_tesouro():
+	var limite_x = stage_data.map_width / 2
+	var limite_y = stage_data.map_height / 2
+	
+	var posicao_valida = false
+	var coordenada_sorteada: Vector2i
+	
+	while not posicao_valida:
+		var rand_x = randi_range(-limite_x, limite_x)
+		var rand_y = randi_range(-limite_y, limite_y)
+		coordenada_sorteada = Vector2i(rand_x, rand_y)
+		
+		var tem_chao = tile_map.get_cell_source_id(0, coordenada_sorteada) != -1
+		var sem_obstaculo = tile_map.get_cell_source_id(1, coordenada_sorteada) == -1
+		var fora_do_centro = coordenada_sorteada != Vector2i(0, 0)
+		
+		if tem_chao and sem_obstaculo and fora_do_centro:
+			posicao_valida = true
+			
+	# Instancia o baú e adiciona no mundo
+	var novo_tesouro = cena_tesouro.instantiate()
+	add_child(novo_tesouro)
+	
+	# Converte a coordenada da grade para pixels e posiciona o baú
+	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
+	print("Tesouro gerado na coordenada: ", coordenada_sorteada)
