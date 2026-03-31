@@ -71,7 +71,7 @@ metadata/_custom_type_script = "uid://cimi8ig206mmi"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1pf"]
 size = Vector2(16, 5.5)
 
-[node name="proc_gen_world" type="Node2D" unique_id=1776267625]
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_3nb34")
