@@ -12,8 +12,6 @@ func _ready():
 	seed(seed_hash)
 	generate_world()
 	play_stage_music()
-	print("Posição do Player: " + str(tile_map.local_to_map($Player.position)))
-	print("Posição Global do Player: " + str(tile_map.local_to_map($Player.global_position)))
 
 func generate_world():
 	if not stage_data:
