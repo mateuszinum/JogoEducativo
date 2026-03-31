@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://dgr62rkre20tq"]
+[gd_scene format=3 uid="uid://gne6nkfcnp6e"]
 
 [ext_resource type="Texture2D" uid="uid://y17js0vrnmon" path="res://Assets/Asset Packs/Chests Pack/chest_01.png" id="1_lv6xl"]
 
 [node name="Tesouro" type="Sprite2D" unique_id=432219331]
+z_index = 1
 texture = ExtResource("1_lv6xl")
