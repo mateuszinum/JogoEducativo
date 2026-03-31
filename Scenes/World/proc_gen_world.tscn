@@ -7,7 +7,61 @@
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 
+<<<<<<< HEAD
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625]
+=======
+[sub_resource type="Resource" id="Resource_01ayd"]
+script = ExtResource("8_5vcap")
+enemy_type = ExtResource("9_01xxv")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_2d58w"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 15
+enemy_type = ExtResource("10_usue8")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_3dl8p"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 20
+enemy_type = ExtResource("11_byjoo")
+spawn_rate = 1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_gdekt"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 20
+enemy_type = ExtResource("9_01xxv")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 30
+enemy_type = ExtResource("12_5t4pt")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("8_5vcap")
+time_in_seconds = 35
+enemy_type = ExtResource("10_usue8")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_841rm"]
+script = ExtResource("7_7fyq5")
+stage_name = "Floresta"
+stage_music = ExtResource("13_0ofdx")
+music_volume = -10.0
+spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1pf"]
+size = Vector2(16, 5.5)
+
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
+>>>>>>> FuncoesBuiltIn
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_3nb34")

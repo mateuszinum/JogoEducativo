@@ -8,17 +8,18 @@ Fazer
 # Mapeamento de Inputs para Debug sem necessidade do backend
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_z"):
-		print("apertou z")
+		FuncoesNativas.Partida.arena("Floresta")
 		
-		var coordenada = Partida.tempo()
-		print(coordenada)
-		
+		var mundo = get_tree().get_first_node_in_group("Mundo")
+		if mundo and mundo.stage_data != null:
+			print("O arquivo que está no Mundo agora é: ", mundo.stage_data.resource_path)	
 	elif event.is_action_pressed("debug_x"):
-		print("apertou x")
+		FuncoesNativas.Partida.arena("Genérico")
 
-		var vida = Jogador.vida_atual()
-		print(vida)
-		
+		var mundo = get_tree().get_first_node_in_group("Mundo")
+		if mundo and mundo.stage_data != null:
+			print("O arquivo que está no Mundo agora é: ", mundo.stage_data.resource_path)
+			
 	elif event.is_action_pressed("debug_c"):
 		var livre = Jogador.podeMover("Direita")
 		if livre:
@@ -86,17 +87,24 @@ class Partida:
 			return [m, s]
 		return [0, 0]
 	
-	# Função arena(nomeDaArena) (Entender como que funciona para mudar a cena da arena)
-	#func arena(nome_arena: String):
-		#const DIRETORIO_BASE = "res://Resources/Stages"
-		#var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
-#
-		#if ResourceLoader.exists(caminho_completo):
-			#var dados_da_arena = load(caminho_completo)
-		#else:
-			#printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
-			#return null
+	# Função arena(nomeDaArena)
+	static func arena(nome_arena: String):
+		const DIRETORIO_BASE = "res://Resources/Stages/"
 		
+		var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
+		var dados_da_arena
+		
+		if ResourceLoader.exists(caminho_completo):
+			dados_da_arena = load(caminho_completo)
+		else:
+			printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
+			return null
+		
+		var mundo = Engine.get_main_loop().get_first_node_in_group("Mundo")
+		
+		if dados_da_arena != null:
+			mundo.stage_data = dados_da_arena
+
 	# Função tesouro() (Ver Pedro)
 	
 class Jogador:
