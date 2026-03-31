@@ -59,7 +59,8 @@ func generate_world():
 				tile_map.erase_cell(0, pos)
 						
 	var player = get_tree().get_first_node_in_group("Player")
-	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
+	#player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
+	gerar_tesouro()
 
 func play_stage_music():
 	if stage_data != null and stage_data.stage_music != null:
