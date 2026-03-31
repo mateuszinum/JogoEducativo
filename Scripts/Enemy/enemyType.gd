@@ -1,7 +1,7 @@
 extends Resource
 class_name Enemy
 
-@export var title : String
+@export var nome : String
 @export var animations : SpriteFrames 
 
 @export var health : float = 3

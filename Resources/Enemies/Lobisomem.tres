@@ -69,7 +69,7 @@ animations = [{
 
 [resource]
 script = ExtResource("2_n0mhb")
-title = "Lobisomem"
+nome = "Lobisomem"
 animations = SubResource("SpriteFrames_0d0sj")
 damage = 20.0
 speed = 15.0
