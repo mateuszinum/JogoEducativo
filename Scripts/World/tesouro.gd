@@ -1,5 +1,12 @@
 extends Area2D
 
+@export var config: TesouroData
+
+func _ready():
+	# Se um recurso foi carregado, aplica a arte dele no Sprite2D
+	if config and config.sprite_do_bau:
+		$Sprite2D.texture = config.sprite_do_bau
+
 func _on_body_entered(body):
 	# 1. Verifica se quem pisou foi o Player (e não um inimigo, por exemplo)
 	if body.is_in_group("Player"):

@@ -93,6 +93,7 @@ func gerar_tesouro():
 	# Instancia o baú e adiciona no mundo
 	var novo_tesouro = cena_tesouro.instantiate()
 	novo_tesouro.add_to_group("Tesouro")
+	novo_tesouro.config = stage_data.tesouro_config
 	tile_map.add_child(novo_tesouro)
 	
 	# Converte a coordenada da grade para pixels e posiciona o baú
