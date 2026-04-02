@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://jrcv022lhju5" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Orc/Orc with shadows/Orc-Walk.png" id="1_sele7"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_i6dql"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_sm1jo"]
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Coin.tres" id="4_sm1jo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxnpy"]
 atlas = ExtResource("1_sele7")
@@ -67,8 +69,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_aiy86"]
+script = ExtResource("3_sm1jo")
+item = ExtResource("4_sm1jo")
+chance_de_drop = 100.0
+quantidade_maxima = 4
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
 [resource]
 script = ExtResource("2_i6dql")
 nome = "Goblin"
 animations = SubResource("SpriteFrames_nwupb")
+tabela_de_drops = Array[ExtResource("3_sm1jo")]([SubResource("Resource_aiy86")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"
