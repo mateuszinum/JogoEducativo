@@ -154,7 +154,7 @@ class Jogador:
 		var squash_tween = player.create_tween()
 		squash_tween.tween_property(player.anim, "scale", Vector2(1.6, 0.6), player.TEMPO_ANIMACAO / 2.0)
 		squash_tween.tween_property(player.anim, "scale", Vector2(1.0, 1.0), player.TEMPO_ANIMACAO / 2.0)
-
+		
 	# Função escapar()
 	static func escapar() -> void:
 		Engine.get_main_loop().paused = false

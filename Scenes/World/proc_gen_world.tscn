@@ -68,7 +68,7 @@ music_volume = -10.0
 spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
 
-[node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo", "Spawner"]]
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_3nb34")

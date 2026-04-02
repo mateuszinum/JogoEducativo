@@ -70,6 +70,8 @@ func _physics_process(_delta: float) -> void:
 func move_false():
 	moving = false
 	
+	print(FuncoesNativas.Jogador.posicao())
+	
 func take_damage(amount):
 	if $DamageTick.time_left > 0:
 		return

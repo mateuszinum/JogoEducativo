@@ -89,6 +89,8 @@ func gerar_tesouro():
 		
 		if tem_chao and sem_obstaculo and fora_do_centro:
 			posicao_valida = true
+			print("Coordenada escolhida: ", coordenada_sorteada)
+			print("O que tem na Layer 1 (Obstáculo)? ID: ", tile_map.get_cell_source_id(1, coordenada_sorteada))
 			
 	# Instancia o baú e adiciona no mundo
 	var novo_tesouro = cena_tesouro.instantiate()
