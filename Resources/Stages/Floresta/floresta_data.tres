@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="6_fyhc1"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_ts6uj"]
 [ext_resource type="Texture2D" uid="uid://btxppb382sd2p" path="res://Resources/Stages/Floresta/floresta_ruido_barreira.tres" id="8_fk5lg"]
-[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="9_nt8bn"]
 [ext_resource type="TileSet" uid="uid://cnvieb7wwswqa" path="res://Resources/Stages/Floresta/floresta_tileset.tres" id="10_e3kfy"]
 [ext_resource type="Resource" uid="uid://cbq58vn3x3gyp" path="res://Resources/Stages/Floresta/tesouro_floresta.tres" id="12_yyig3"]
 
@@ -83,7 +82,6 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 [resource]
 script = ExtResource("1_y0t0c")
 nome = "Floresta"
-stage_music = ExtResource("9_nt8bn")
 music_volume = -10.0
 spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 map_width = 100

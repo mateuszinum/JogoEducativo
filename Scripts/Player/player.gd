@@ -74,11 +74,11 @@ func move():
 	if input_dir == Vector2.ZERO or moving:
 		return
 
-	if has_node("RayCast2D"):
-		$RayCast2D.target_position = input_dir * tile_size
-		$RayCast2D.force_raycast_update()
-		if $RayCast2D.is_colliding():
-			return 
+	#if has_node("RayCast2D"):
+		#$RayCast2D.target_position = input_dir * tile_size
+		#$RayCast2D.force_raycast_update()
+		#if $RayCast2D.is_colliding():
+			#return 
 	
 	if input_dir.x != 0:
 		anim.flip_h = (input_dir.x < 0)

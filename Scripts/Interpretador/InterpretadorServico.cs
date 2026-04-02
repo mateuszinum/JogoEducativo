@@ -5,21 +5,41 @@ using System.Collections.Generic;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
+
+// ==========================================
+// O NOVO CÃO DE GUARDA DA SINTAXE (Classe Genérica)
+// ==========================================
+// O <T> permite que essa classe aceite tanto 'int' quanto 'IToken' sem dar erro!
+public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
+{
+	public void SyntaxError(TextWriter output, IRecognizer recognizer, T offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
+	{
+		// Traduzimos os erros em inglês do ANTLR para ajudar o jogador!
+		string erroTraduzido = msg.Replace("missing", "Faltando")
+								  .Replace("at", "em")
+								  .Replace("mismatched input", "Entrada incorreta")
+								  .Replace("expecting", "esperava-se")
+								  .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
+								  .Replace("no viable alternative", "Nenhuma alternativa válida encontrada");
+
+		// Dispara uma bomba que o nosso try-catch vai pegar e jogar no Popup do Godot!
+		throw new Exception($"Erro Crítico de Sintaxe (Linha {line}): {erroTraduzido}");
+	}
+}
 
 public partial class InterpretadorServico : Node, IAcoesDoJogo
 {
 	private AutoResetEvent _travaDeSincronizacao = new AutoResetEvent(false); 
 	private Node _apiNativa; 
-	private Node _gerenciador; // Variável cacheada para evitar erros de Thread
+	private Node _gerenciador; 
 	
 	private bool _execucaoAbortada = false; 
 
 	public override void _Ready()
 	{
-		// Pescamos os Autoloads na Thread Principal (Seguro)
 		_apiNativa = GetNodeOrNull("/root/FuncoesNativas");
 		_gerenciador = GetNodeOrNull("/root/GerenciadorExecucao");
-		
 		GD.Print("[C#] Interpretador Serviço pronto. Conectado à API Nativa.");
 	}
 
@@ -38,7 +58,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	{
 		_execucaoAbortada = false; 
 		
-		// Registra o interpretador usando a variável cacheada
 		if (_gerenciador != null) { _gerenciador.Call("registrar_interpretador", this); }
 
 		Task.Run(() => 
@@ -47,8 +66,18 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 			{
 				var inputStream = new AntlrInputStream(codigo);
 				var lexer = new LinguagemLexer(inputStream);
+				
+				// 1. Ativamos o cão de guarda no Lexer passando o tipo <int>
+				lexer.RemoveErrorListeners();
+				lexer.AddErrorListener(new InterpretadorErrorListener<int>());
+
 				var tokens = new CommonTokenStream(lexer);
 				var parser = new LinguagemParser(tokens);
+				
+				// 2. Ativamos o cão de guarda no Parser passando o tipo <IToken>
+				parser.RemoveErrorListeners();
+				parser.AddErrorListener(new InterpretadorErrorListener<IToken>());
+
 				var arvore = parser.programa();
 
 				var visitor = new MeuVisitor(this); 
@@ -65,7 +94,10 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		});
 	}
 
-	public void NotificarErro(string mensagem) { GD.PrintErr($"[Erro] {mensagem}"); }
+	public void NotificarErro(string mensagem) { 
+		GD.PrintErr($"[Erro] {mensagem}"); 
+		GetTree().CallGroup("Terminal", "mostrar_erro", mensagem);
+	}
 
 	// ==========================================
 	// AÇÕES COM TICK 
@@ -86,14 +118,12 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 
 		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
 		{
-			// Proteção de segurança caso o Autoload não tenha sido encontrado no _Ready
 			if (_gerenciador == null) 
 			{
-				CallDeferred(nameof(NotificarErro), "GerenciadorExecucao não encontrado no Autoload do Godot.");
+				CallDeferred(nameof(NotificarErro), "GerenciadorExecucao não encontrado.");
 				return;
 			}
 
-			// Chama o método sem usar GetNode() dentro da Thread!
 			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
 			_travaDeSincronizacao.WaitOne(); 
 			

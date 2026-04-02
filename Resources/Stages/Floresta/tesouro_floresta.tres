@@ -7,3 +7,4 @@
 script = ExtResource("1_3f6pa")
 nome_do_tesouro = "Tesouro da Floresta"
 sprite_do_bau = ExtResource("2_rla41")
+metadata/_custom_type_script = "uid://swrsg053t5vv"

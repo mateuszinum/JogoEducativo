@@ -1,37 +1,44 @@
 extends Node
 
-# ==========================================
-# CACHE DA THREAD PRINCIPAL (O "Post-it")
-# ==========================================
-# Variável segura para o C# ler a qualquer momento
 var _cache_inimigo_proximo: String = ""
+var _cache_pode_mover: Dictionary = {
+	"cima": false, "baixo": false, "esquerda": false, "direita": false
+}
+var _coordenada_logica_atual := Vector2i(0, 0)
+var _posicao_inicializada := false
 
-# O Godot atualiza isso na Thread principal a cada frame da física
 func _physics_process(_delta: float) -> void:
 	var tree = get_tree()
-	var inimigos = tree.get_nodes_in_group("Enemy")
 	var player = tree.get_first_node_in_group("Player")
+	var tile_map = tree.get_first_node_in_group("Mapa")
+	var inimigos = tree.get_nodes_in_group("Enemy")
 	
-	if inimigos.size() == 0 or not player:
-		_cache_inimigo_proximo = ""
-		return
+	if player and tile_map and player.is_inside_tree():
+		if not _posicao_inicializada:
+			_coordenada_logica_atual = tile_map.local_to_map(player.global_position)
+			_posicao_inicializada = true
 		
-	var id_mais_proximo = ""
-	var menor_distancia = INF
-	var posicao_jogador = player.global_position
-	
-	for inimigo in inimigos:
-		if is_instance_valid(inimigo):
-			var distancia = posicao_jogador.distance_to(inimigo.global_position)
-			if distancia < menor_distancia:
-				menor_distancia = distancia
-				id_mais_proximo = inimigo.name
-				
-	_cache_inimigo_proximo = id_mais_proximo
+		var direcoes_vetores = {
+			"cima": Vector2i(0, -1),
+			"baixo": Vector2i(0, 1),
+			"esquerda": Vector2i(-1, 0),
+			"direita": Vector2i(1, 0)
+		}
+		
+		for dir_nome in direcoes_vetores:
+			var coord_destino = _coordenada_logica_atual + direcoes_vetores[dir_nome]
+			
+			var tem_chao = tile_map.get_cell_source_id(0, coord_destino) != -1
+			var sem_obstaculo = tile_map.get_cell_source_id(1, coord_destino) == -1
+			
+			_cache_pode_mover[dir_nome] = tem_chao and sem_obstaculo
 
 # ==========================================
 # PORTAS DE ENTRADA DO C# (API GATEWAY)
 # ==========================================
+
+func jogoEstaPronto() -> bool:
+	return _posicao_inicializada
 
 func mover(direcao: String):
 	Jogador.mover_via_codigo(direcao)
@@ -60,12 +67,19 @@ func colocar_item_mochila(item: String):
 func colocar_item_cinto(item: String, idx: int):
 	Inventario.colocar_item_cinto(item, idx)
 
-# === A LEITURA AGORA PUXA DO CACHE ===
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
 
 func podeMover(direcao: String) -> bool:
-	return Jogador.podeMover(direcao)
+	var dir_limpa = direcao.to_lower().strip_edges() 
+	var resultado = false
+	
+	if _cache_pode_mover.has(dir_limpa): 
+		resultado = _cache_pode_mover[dir_limpa] 
+	
+	print("[DEBUG C#] O agente perguntou se pode mover para '", dir_limpa, "' -> Godot respondeu: ", resultado)
+	
+	return resultado
 
 func getTempo() -> int:
 	return Partida.getTempo()
@@ -162,7 +176,7 @@ class Partida:
 		var tree = Engine.get_main_loop()
 		
 		if em_arena:
-			tree.call_group("Terminal", "mostrar_erro", "Você já está em uma arena! Use a interface para escapar primeiro.")
+			tree.call_group("Terminal", "mostrar_erro", "Você já está em uma arena!\nUse a interface para escapar primeiro.")
 			return
 			
 		var jogo_main = tree.root.get_node_or_null("Jogo")
@@ -173,6 +187,9 @@ class Partida:
 
 		if novo_stage_data != null:
 			em_arena = true
+			
+			FuncoesNativas._posicao_inicializada = false 
+			
 			if jogo_main.has_method("carregar_arena_via_codigo"):
 				jogo_main.carregar_arena_via_codigo(novo_stage_data)
 			else:
@@ -194,9 +211,38 @@ class Vilarejo:
 
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> void:
-		if podeMover(direcao):
-			mover(direcao)
+		var dir_limpa = direcao.to_lower().strip_edges()
+		
+		# Verifica se o movimento atual é válido com base no cache atual
+		if FuncoesNativas._cache_pode_mover.has(dir_limpa) and FuncoesNativas._cache_pode_mover[dir_limpa]:
 			
+			var direcoes_vetores = {
+				"cima": Vector2i(0, -1),
+				"baixo": Vector2i(0, 1),
+				"esquerda": Vector2i(-1, 0),
+				"direita": Vector2i(1, 0)
+			}
+			
+			FuncoesNativas._coordenada_logica_atual += direcoes_vetores[dir_limpa]
+			
+			var tree = Engine.get_main_loop()
+			var tile_map = tree.get_first_node_in_group("Mapa")
+			
+			if tile_map:
+				for dir_nome in direcoes_vetores:
+					var coord_futura = FuncoesNativas._coordenada_logica_atual + direcoes_vetores[dir_nome]
+					
+					var tem_chao = tile_map.get_cell_source_id(0, coord_futura) != -1
+					var sem_obstaculo = tile_map.get_cell_source_id(1, coord_futura) == -1
+					var caminho_livre = tem_chao and sem_obstaculo
+					
+					FuncoesNativas._cache_pode_mover[dir_nome] = caminho_livre
+			
+			# 2. ATUALIZA O FRONT-END: Manda o boneco deslizar na tela
+			mover(direcao)
+		else:
+			print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
+		
 	static func mover(direcao: String) -> void:
 		var tree = Engine.get_main_loop()
 		var player = tree.get_first_node_in_group("Player")
@@ -227,31 +273,6 @@ class Jogador:
 		var tilemap = tree.get_first_node_in_group("Mapa")
 		if not player or not tilemap: return Vector2.ZERO
 		return tilemap.local_to_map(player.global_position)
-
-	static func podeMover(direcao: String) -> bool:
-		var tree = Engine.get_main_loop()
-		var player = tree.get_first_node_in_group("Player")
-		if not player: return false
-
-		var vetor_dir := Vector2.ZERO
-		match direcao.to_lower(): 
-			"cima": vetor_dir = Vector2.UP
-			"baixo": vetor_dir = Vector2.DOWN
-			"esquerda": vetor_dir = Vector2.LEFT
-			"direita": vetor_dir = Vector2.RIGHT
-			
-		if vetor_dir == Vector2.ZERO: return false
-
-		var tile_size = 32.0 
-		var origem = player.global_position
-		var destino = origem + (vetor_dir * tile_size)
-
-		var space_state = player.get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(origem, destino)
-		query.exclude = [player.get_rid()] 
-
-		var resultado = space_state.intersect_ray(query)
-		return resultado.is_empty()
 
 	static func atacar(alvo_id: String, tipo_ataque: String):
 		var tree = Engine.get_main_loop()
@@ -290,7 +311,7 @@ class Jogador:
 						projetil.hit_volume = ataque_data.hit_volume
 						projetil.pitch_min = ataque_data.pitch_min
 						projetil.pitch_max = ataque_data.pitch_max
-						
+							
 					player.get_parent().add_child(projetil)
 					
 					if ataque_data.attack_sound != null:

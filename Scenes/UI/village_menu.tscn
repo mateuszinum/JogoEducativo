@@ -3,29 +3,7 @@
 [ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
 [ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
-[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_ai1hv"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="5_ter28"]
-[ext_resource type="AudioStream" uid="uid://b7ea3c2b4dc0e" path="res://Audio/Soundtracks/vilarejo.wav" id="6_ter28"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kolhh"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iynx"]
-bg_color = Color(0.8819366, 0.8819366, 0.88193655, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
-shadow_offset = Vector2(0, 3.4)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai1hv"]
 
 [node name="VillageMenu" type="Control" unique_id=600159087]
 texture_filter = 1
@@ -51,39 +29,6 @@ grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_kolhh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=825643601]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = 99.0
-offset_right = 132.0
-offset_bottom = 154.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=533408498]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 0
-theme_override_constants/h_separation = 2
-theme_override_constants/icon_max_width = 17
-theme_override_fonts/font = ExtResource("2_k4kg0")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_kolhh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_kolhh")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7iynx")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ai1hv")
-text = "Começar"
-script = ExtResource("4_ai1hv")
-
 [node name="Label" type="Label" parent="." unique_id=1399879803]
 layout_mode = 1
 anchors_preset = 5
@@ -98,7 +43,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 6
 theme_override_fonts/font = ExtResource("2_k4kg0")
 theme_override_font_sizes/font_size = 44
-text = "Bem-Vindo ao Vilarejo!"
+text = "Bem-Vindo ao Vilarejo!
+Chame a função \"arena(Floresta)\" pra jogar!"
 horizontal_alignment = 1
 script = ExtResource("5_ter28")
 amplitude_x = 10.0
@@ -118,8 +64,5 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
-stream = ExtResource("6_ter28")
 volume_db = -10.0
 autoplay = true
-
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_game_pressed"]

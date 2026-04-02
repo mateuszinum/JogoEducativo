@@ -55,22 +55,39 @@ func configurar_cores_do_codigo() -> void:
 	# TIPOS DE DADOS E BOOLEANOS (AZUL)
 	# ==========================================
 	var cor_tipo = Color("#569cd6")
-	# Adicionamos os tipos de objetos (Inimigo, Arena, Ataque) aqui!
-	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque"]
+	# Tipos e literais booleanos continuam aqui
+	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
+	
+	# ==========================================
+	# CONSTANTES / ENUMERAÇÕES DO JOGO (VERDE-ÁGUA)
+	# ==========================================
+	var cor_constante = Color("#4ec9b0") # Cor do VS Code para Enums
+	var constantes_jogo = [
+		# Direções
+		"Cima", "Baixo", "Direita", "Esquerda",
+		# Ataques / Elementos
+		"EsferaAzul", "EsferaVermelha", "Agua", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho",
+		# Recursos
+		"Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante",
+		# Inimigos
+		"Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro",
+		# Arenas
+		"Campos", "Floresta", "Labirinto",
+	]
+	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
+	# ==========================================
+	# FUNÇÕES NATIVAS (AMARELO)
+	# ==========================================
 	var cor_funcao = Color("#dcdcaa")
 	var funcoes_nativas = [
 		"mover", "atacar", "inimigoMaisProximo", "podeMover", 
 		"getTempo", "getVidaAtual", "escapar", "escanearArea",
-		"posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar"
+		"posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar",
+		"cinto", "mochila", "usarItem", "colocarItem"
 	]
 	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
-		
-	var cor_objeto = Color("#9cdcfe")
-	var objetos = ["cinto", "mochila", "usarItem", "colocarItem"]
-	for obj in objetos: highlighter.add_keyword_color(obj, cor_objeto)
-
 	code_edit.syntax_highlighter = highlighter
 
 func ativar_modo_vilarejo():
