@@ -31,49 +31,62 @@ func _unhandled_input(event: InputEvent) -> void:
 		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
 
 class Inimigo:
-	# Função inimigoMaisProximo()
-	static func inimigoMaisProximo() -> CharacterBody2D:
+	
+	# Retorna apenas a STRING (o Nome/ID) do inimigo, e não o objeto em si
+	static func inimigoMaisProximo() -> String:
 		var tree = Engine.get_main_loop()
-		
 		var inimigos = tree.get_nodes_in_group("Enemy")
-		if inimigos.is_empty():
-			return null
-		
 		var player = tree.get_first_node_in_group("Player")
-		if not player:
-			return null
+		
+		if inimigos.size() == 0 or not player:
+			return "" # Retorna vazio se não tiver alvo
 			
-		var pos_jogador = player.global_position
-
-		var mais_proximo: CharacterBody2D = null
-		var menor_distancia := INF
-
+		var id_mais_proximo = ""
+		var menor_distancia = INF
+		var posicao_jogador = player.global_position
+		
 		for inimigo in inimigos:
-			if not is_instance_valid(inimigo):
-				continue
+			if is_instance_valid(inimigo):
+				var distancia = posicao_jogador.distance_to(inimigo.global_position)
+				if distancia < menor_distancia:
+					menor_distancia = distancia
+					id_mais_proximo = inimigo.name # <-- Captura a String Única
+					
+		return id_mais_proximo
 
-			# Compara a distância do jogador até o inimigo atual
-			var distancia = pos_jogador.distance_squared_to(inimigo.global_position)
-			if distancia < menor_distancia:
-				menor_distancia = distancia
-				mais_proximo = inimigo
-
-		return mais_proximo
-		
-	# Função escanearArea()
-	static func escanearArea():
+	# Retorna um Array de STRINGS
+	static func escanear_area() -> Array:
 		var tree = Engine.get_main_loop()
-			
 		var inimigos = tree.get_nodes_in_group("Enemy")
-		if inimigos.is_empty():
-			return null
+		var player = tree.get_first_node_in_group("Player")
 		
-		return inimigos
+		if inimigos.size() == 0 or not player:
+			return []
+			
+		var raio = 300.0
+		var posicao_jogador = player.global_position
+		var inimigos_proximos_ids = []
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo):
+				var distancia = posicao_jogador.distance_to(inimigo.global_position)
+				if distancia <= raio:
+					inimigos_proximos_ids.append(inimigo.name) # <-- Guarda a String
+					
+		return inimigos_proximos_ids
 
-	#Função nomeInimigo(alvo)
-	static func nomeInimigo(alvo: CharacterBody2D):
-		if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
-			return alvo.type.nome
+	# O utilitário que transforma o ID devolta na classe do inimigo para vermos o nome
+	static func nomeInimigo(alvo_id: String) -> String:
+		var tree = Engine.get_main_loop()
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				if "type" in inimigo and inimigo.type != null:
+					return inimigo.type.title
+				return "Inimigo Desconhecido"
+				
+		return ""
 
 class Partida:
 	# Função tempo()
