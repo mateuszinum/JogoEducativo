@@ -161,15 +161,13 @@ class Partida:
 
 	static func tesouro():
 		var tree = Engine.get_main_loop()
+		var bau = tree.get_first_node_in_group("Tesouro")
 		var tilemap = tree.get_first_node_in_group("Mapa")
-		if not tilemap: return null
-		for x in range(50):
-			for y in range(50):
-				var coord = Vector2i(x, y)
-				var tile_data = tilemap.get_cell_tile_data(0, coord)
-				if tile_data and tile_data.get_custom_data("is_treasure"): 
-					return coord 
-		return null
+		
+		if not bau or not tilemap: 
+			return null
+			
+		return tilemap.local_to_map(bau.global_position)
 
 	static func tesouroX():
 		var pos = tesouro()

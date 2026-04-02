@@ -147,19 +147,13 @@ func gerar_drops() -> void:
 			
 			for drop in type.tabela_de_drops:
 				var sorteio = randf() * 100.0 
-				print("4. Testando drop... Sorteio: ", sorteio, " | Chance necessária: <= ", drop.chance_de_drop)
 				
 				if sorteio <= drop.chance_de_drop:
-					var novo_drop = CENA_BASE_DO_DROP.instantiate()
-					
-					# --- SORTEIO DA QUANTIDADE COM TRAVA DE SEGURANÇA ---
 					var min_seguro = drop.quantidade_minima
 					var max_seguro = max(min_seguro, drop.quantidade_maxima)
-					
 					var qtd_sorteada = randi_range(min_seguro, max_seguro)
-					
-					# Passa a quantidade sorteada para o item
-					novo_drop.configurar(drop.item, qtd_sorteada)
-					
-					get_parent().call_deferred("add_child", novo_drop)
-					novo_drop.set_deferred("global_position", global_position)
+					for i in range(qtd_sorteada):
+						var novo_drop = CENA_BASE_DO_DROP.instantiate()
+						novo_drop.configurar(drop.item, 1)
+						novo_drop.global_position = global_position
+						get_parent().call_deferred("add_child", novo_drop)

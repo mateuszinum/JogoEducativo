@@ -25,6 +25,19 @@ signal health_changed(current_health)
 @export var step_pitch_min : float = 0.8
 @export var step_pitch_max : float = 1.2
 
+# --- NOVAS CONFIGURAÇÕES DE COLETA DE RECURSOS ---
+@export var collect_sound : AudioStream
+@export var collect_volume : float = 0.0
+@export var collect_pitch_min : float = 0.8
+@export var collect_pitch_max : float = 2.0
+@export var collect_pitch_step : float = 0.1
+@export var collect_pitch_reset_time : float = 1.0 
+
+var _current_collect_pitch : float = 0.8
+var _pitch_direction : int = 1
+var _pitch_reset_timer : float = 0.0
+# -------------------------------------------------
+
 var moving : bool = false
 var input_dir : Vector2 = Vector2.ZERO
 
@@ -39,6 +52,8 @@ func _ready() -> void:
 		arma_equipada = inventario_armas[0]
 		if %WeaponSlot:
 			%WeaponSlot.weapon = arma_equipada
+			
+	_current_collect_pitch = collect_pitch_min
 		
 func trocar_arma() -> void:
 	if inventario_armas.is_empty():
@@ -52,11 +67,10 @@ func trocar_arma() -> void:
 	if %WeaponSlot:
 		%WeaponSlot.weapon = arma_equipada 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_weapon"):
 		trocar_arma()
 		
-	# Movimentação Manual via Teclado usando a ponte correta
 	var dirs = {
 		"move_up":    "Cima",
 		"move_down":  "Baixo",
@@ -66,19 +80,40 @@ func _physics_process(_delta: float) -> void:
 	for action in dirs:
 		if Input.is_action_just_pressed(action):
 			FuncoesNativas.mover(dirs[action])
+			
+	if _pitch_reset_timer > 0:
+		_pitch_reset_timer -= delta
+		if _pitch_reset_timer <= 0:
+			_current_collect_pitch = collect_pitch_min
+			_pitch_direction = 1
 
-# ==========================================
+# SISTEMA DE ÁUDIO DE COLETA
+func tocar_som_coleta() -> void:
+	if collect_sound != null:
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = collect_sound
+		audio.volume_db = collect_volume
+		audio.global_position = global_position
+		audio.pitch_scale = _current_collect_pitch
+		get_parent().add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+
+		_current_collect_pitch += collect_pitch_step * _pitch_direction
+
+		if _current_collect_pitch >= collect_pitch_max:
+			_current_collect_pitch = collect_pitch_max
+			_pitch_direction = -1 
+		elif _current_collect_pitch <= collect_pitch_min:
+			_current_collect_pitch = collect_pitch_min
+			_pitch_direction = 1 
+
+		_pitch_reset_timer = collect_pitch_reset_time
+
 # FÍSICA E ANIMAÇÃO
-# ==========================================
 func move():
 	if input_dir == Vector2.ZERO or moving:
 		return
-
-	#if has_node("RayCast2D"):
-		#$RayCast2D.target_position = input_dir * tile_size
-		#$RayCast2D.force_raycast_update()
-		#if $RayCast2D.is_colliding():
-			#return 
 	
 	if input_dir.x != 0:
 		anim.flip_h = (input_dir.x < 0)

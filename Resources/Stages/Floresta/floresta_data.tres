@@ -33,23 +33,20 @@ metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_ts6uj"]
 script = ExtResource("2_h7a20")
-time_in_seconds = 1
 enemy_type = ExtResource("4_y0t0c")
-spawn_rate = 0.5
+spawn_rate = 0.35
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_fk5lg"]
 script = ExtResource("2_h7a20")
-time_in_seconds = 1
 enemy_type = ExtResource("5_h7a20")
-spawn_rate = 0.5
+spawn_rate = 0.25
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_nt8bn"]
 script = ExtResource("2_h7a20")
-time_in_seconds = 1
 enemy_type = ExtResource("6_yyig3")
-spawn_rate = 0.2
+spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_ua18n"]
