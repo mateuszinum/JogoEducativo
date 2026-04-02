@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 FuncoesNativas="*uid://dtvtvqqqbkehv"
 GerenciadorExecucao="*uid://bh7ab5lnr87fi"
+ArenasDB="*uid://bt1c01c6vt522"
 
 [display]
 

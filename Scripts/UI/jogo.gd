@@ -73,3 +73,39 @@ func limpar_viewport() -> void:
 		for child in viewport.get_children():
 			viewport.remove_child(child) 
 			child.queue_free()
+
+func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
+	if transicao_em_andamento: return
+	transicao_em_andamento = true
+	
+	fade_tv.show()
+	fade_tv.modulate.a = 0.0
+	var tween_out = create_tween()
+	tween_out.tween_property(fade_tv, "modulate:a", 1.0, 1.0)
+	
+	# Abaixa a música do vilarejo se houver
+	if viewport.get_child_count() > 0:
+		var cena_atual = viewport.get_child(0)
+		if cena_atual.has_node("MusicaVilarejo"):
+			var musica = cena_atual.get_node("MusicaVilarejo")
+			var tween_som = create_tween()
+			tween_som.tween_property(musica, "volume_db", -40.0, 1.0)
+			
+	await tween_out.finished
+	
+	limpar_viewport()
+	
+	# Instancia a Arena (proc_gen_world) e INJETA o bioma escolhido pelo código!
+	var nova_arena = CENA_ARENA.instantiate()
+	nova_arena.stage_data = novo_stage_data
+	viewport.add_child(nova_arena)
+	
+	if terminal.has_method("ativar_modo_arena"):
+		terminal.ativar_modo_arena()
+		
+	var tween_in = create_tween()
+	tween_in.tween_property(fade_tv, "modulate:a", 0.0, 1.0)
+	await tween_in.finished
+	fade_tv.hide()
+	
+	transicao_em_andamento = false

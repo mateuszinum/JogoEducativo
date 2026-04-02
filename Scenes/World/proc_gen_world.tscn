@@ -9,12 +9,8 @@
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="6_jixqc"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="7_7fyq5"]
-[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_dr08h"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="8_5vcap"]
-[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="9_01xxv"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
-[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="11_byjoo"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
@@ -89,11 +85,14 @@ current_stage = SubResource("Resource_841rm")
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
 z_index = 1
 y_sort_enabled = true
-health = null
-global_knockback_multiplier = null
-hurt_pitch_min = null
-hurt_pitch_max = null
-inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
+max_health = null
+touch_knockback_multiplier = 1.0
+hurt_sound = null
+hurt_volume = 0.0
+step_sound = null
+step_volume = 0.0
+step_pitch_min = 0.8
+step_pitch_max = 1.2
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)

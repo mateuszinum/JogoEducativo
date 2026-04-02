@@ -81,7 +81,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 
 [resource]
 script = ExtResource("1_y0t0c")
-stage_name = "floresta"
+stage_name = "Floresta"
 stage_music = ExtResource("9_nt8bn")
 music_volume = -10.0
 spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
