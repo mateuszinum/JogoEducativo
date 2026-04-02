@@ -103,7 +103,7 @@ class Inimigo:
 		for inimigo in inimigos:
 			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
 				if "type" in inimigo and inimigo.type != null:
-					return inimigo.type.title
+					return inimigo.type.nome
 				return "Inimigo Desconhecido"
 		return ""
 
@@ -247,13 +247,64 @@ class Jogador:
 		var player = tree.get_first_node_in_group("Player")
 		var inimigos = tree.get_nodes_in_group("Enemy")
 		
+		if not player:
+			return
+		
+		# Puxa todas as configurações do Ataque (Dano, Velocidade, Sons, Cena do Projétil)
+		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
+		
+		if ataque_data == null:
+			tree.call_group("Terminal", "mostrar_erro", "O ataque '" + tipo_ataque + "' não foi encontrado no grimório.")
+			return
+			
+		var alvo_encontrado = false
+		
 		for inimigo in inimigos:
 			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
-				inimigo.take_damage(10)
-				if player:
-					var push_dir = player.global_position.direction_to(inimigo.global_position)
-					inimigo.apply_knockback(1.0, push_dir)
+				alvo_encontrado = true
+				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
+				
+				# 1. Instancia o projétil que está salvo no Weapon.gd
+				if ataque_data.projectile_node != null:
+					var projetil = ataque_data.projectile_node.instantiate()
+					
+					# 2. Posiciona no jogador e calcula a direção
+					projetil.global_position = player.global_position
+					projetil.direction = player.global_position.direction_to(inimigo.global_position)
+					
+					# Faz o projétil olhar para a direção que está indo
+					projetil.rotation = projetil.direction.angle()
+					
+					# 3. Passa os status do Banco de Dados para a bala
+					projetil.speed = ataque_data.speed
+					projetil.damage = ataque_data.damage
+					projetil.knockback_multiplier = ataque_data.knockback_multiplier
+					
+					# Passa os sons de impacto para o projétil tocar quando bater
+					if "hit_sound" in projetil:
+						projetil.hit_sound = ataque_data.hit_sound
+						projetil.hit_volume = ataque_data.hit_volume
+						projetil.pitch_min = ataque_data.pitch_min
+						projetil.pitch_max = ataque_data.pitch_max
+						
+					# 4. Adiciona o projétil no mundo
+					player.get_parent().add_child(projetil)
+					
+					# 5. Toca o som do disparo no próprio Player!
+					if ataque_data.attack_sound != null:
+						var audio = AudioStreamPlayer2D.new()
+						audio.stream = ataque_data.attack_sound
+						audio.volume_db = ataque_data.attack_volume
+						audio.global_position = player.global_position
+						audio.pitch_scale = randf_range(ataque_data.pitch_min, ataque_data.pitch_max)
+						player.get_parent().add_child(audio)
+						audio.play()
+						audio.finished.connect(audio.queue_free)
+						
 				return
+				
+		if not alvo_encontrado:
+			print("[FuncoesNativas] O ataque falhou. O alvo '", alvo_id, "' não está mais na arena.")
 				
 	static func getVidaAtual() -> int:
 		var tree = Engine.get_main_loop()

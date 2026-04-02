@@ -1,6 +1,6 @@
 class_name StageData extends Resource
 
-@export var stage_name : String
+@export var nome : String
 
 @export_group("Trilha Sonora")
 @export var stage_music : AudioStream

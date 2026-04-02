@@ -1,6 +1,8 @@
 extends Resource
 class_name Weapon
 
+@export var nome : String # <-- ADICIONADO AQUI PARA O DB ACHAR!
+
 @export var damage : float
 @export var cooldown : float
 @export var speed : float

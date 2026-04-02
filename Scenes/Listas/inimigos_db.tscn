@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dq0t7frqweqt4"]
+
+[ext_resource type="Script" uid="uid://dlth2rmyx5vmv" path="res://Scripts/Listas/InimigosDB.gd" id="1_x4nbv"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_vb1md"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="3_vtmpb"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="4_wyfki"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="5_xeqqk"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="6_2ixk1"]
+
+[node name="InimigosDB" type="Node" unique_id=576416383]
+script = ExtResource("1_x4nbv")
+lista_de_inimigos = Array[ExtResource("2_vb1md")]([ExtResource("3_vtmpb"), ExtResource("4_wyfki"), ExtResource("5_xeqqk"), ExtResource("6_2ixk1")])

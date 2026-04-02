@@ -6,4 +6,4 @@
 
 [node name="ArenasDB" type="Node" unique_id=1658935375]
 script = ExtResource("1_7svwe")
-lista_de_arenas = Array[ExtResource("2_vti08")]([ExtResource("3_s1f5k")])
+lista_de_arenas = Array[ExtResource("2_vti08")]([ExtResource("3_s1f5k"), null, null])

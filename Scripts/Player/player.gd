@@ -33,10 +33,6 @@ var input_dir : Vector2 = Vector2.ZERO
 var indice_arma_atual : int = 0
 var arma_equipada : Weapon = null
 
-# VARIAVEIS RESTAURADAS PARA A ARMA FUNCIONAR
-var enemies_in_range : Array[CharacterBody2D] = []
-var nearest_enemy : CharacterBody2D = null
-
 func _ready() -> void:
 	anim.play("default")
 	if inventario_armas.size() > 0:
@@ -60,9 +56,6 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_weapon"):
 		trocar_arma()
 		
-	# Atualiza o inimigo mais próximo para a sua arma (weapon_slot) conseguir atirar
-	_atualizar_inimigo_para_arma()
-		
 	# Movimentação Manual via Teclado usando a ponte correta
 	var dirs = {
 		"move_up":    "Cima",
@@ -75,13 +68,12 @@ func _physics_process(_delta: float) -> void:
 			FuncoesNativas.mover(dirs[action])
 
 # ==========================================
-# FÍSICA E ANIMAÇÃO RECOLOCADAS
+# FÍSICA E ANIMAÇÃO
 # ==========================================
 func move():
 	if input_dir == Vector2.ZERO or moving:
 		return
 
-	# Checagem de segurança local (se houver o RayCast2D no Player)
 	if has_node("RayCast2D"):
 		$RayCast2D.target_position = input_dir * tile_size
 		$RayCast2D.force_raycast_update()
@@ -114,34 +106,6 @@ func move():
 func move_false():
 	moving = false
 
-# ==========================================
-# FUNÇÕES DE SUPORTE
-# ==========================================
-func _atualizar_inimigo_para_arma():
-	var inimigos = get_tree().get_nodes_in_group("Enemy")
-	var closest = null
-	var min_dist = INF
-	
-	for i in inimigos:
-		if is_instance_valid(i):
-			var dist = global_position.distance_to(i.global_position)
-			# Limite de 300 pixels para a arma detectar
-			if dist < min_dist and dist <= 300.0:
-				min_dist = dist
-				closest = i
-				
-	nearest_enemy = closest
-
-# Sinais antigos mantidos para não quebrar a UI
-func _on_enemy_detector_body_entered(body):
-	if body.is_in_group("Enemy"): enemies_in_range.append(body)
-
-func _on_enemy_detector_body_exited(body):
-	enemies_in_range.erase(body)
-
-func _on_nearest_enemy_timer_timeout():
-	_atualizar_inimigo_para_arma()
-	
 func take_damage(amount):
 	if $DamageTick.time_left > 0:
 		return

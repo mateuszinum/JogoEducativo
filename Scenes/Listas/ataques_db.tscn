@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ddbaqm10njfk0"]
+
+[ext_resource type="Script" uid="uid://betvjccr7dpie" path="res://Scripts/Listas/AtaquesDB.gd" id="1_royag"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="2_7d5pl"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="3_ajy5j"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="4_5nmma"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="5_ouuxu"]
+
+[node name="AtaquesDB" type="Node" unique_id=1431001925]
+script = ExtResource("1_royag")
+lista_de_ataques = Array[ExtResource("2_7d5pl")]([ExtResource("3_ajy5j"), ExtResource("4_5nmma"), ExtResource("5_ouuxu")])
