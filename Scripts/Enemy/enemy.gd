@@ -140,7 +140,7 @@ func gerar_drops() -> void:
 	print("1. Inimigo morreu. Iniciando gerar_drops().")
 	
 	if type != null:
-		print("2. Inimigo possui o type: ", type.title)
+		print("2. Inimigo possui o type: ", type.nome)
 		
 		if type.tabela_de_drops != null and type.tabela_de_drops.size() > 0:
 			print("3. Tabela de drops encontrada com ", type.tabela_de_drops.size(), " itens.")

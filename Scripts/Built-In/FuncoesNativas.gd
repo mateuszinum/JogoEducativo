@@ -19,19 +19,26 @@ func _physics_process(_delta: float) -> void:
 			_posicao_inicializada = true
 		
 		var direcoes_vetores = {
-			"cima": Vector2i(0, -1),
-			"baixo": Vector2i(0, 1),
-			"esquerda": Vector2i(-1, 0),
-			"direita": Vector2i(1, 0)
+			"cima": Vector2i(0, -1), "baixo": Vector2i(0, 1),
+			"esquerda": Vector2i(-1, 0), "direita": Vector2i(1, 0)
 		}
-		
 		for dir_nome in direcoes_vetores:
 			var coord_destino = _coordenada_logica_atual + direcoes_vetores[dir_nome]
-			
 			var tem_chao = tile_map.get_cell_source_id(0, coord_destino) != -1
 			var sem_obstaculo = tile_map.get_cell_source_id(1, coord_destino) == -1
-			
 			_cache_pode_mover[dir_nome] = tem_chao and sem_obstaculo
+
+		var nome_mais_perto = ""
+		var menor_distancia = INF
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo):
+				var dist = player.global_position.distance_to(inimigo.global_position)
+				if dist < menor_distancia:
+					menor_distancia = dist
+					nome_mais_perto = inimigo.name
+		
+		_cache_inimigo_proximo = nome_mais_perto
 
 # ==========================================
 # PORTAS DE ENTRADA DO C# (API GATEWAY)
@@ -197,14 +204,6 @@ class Partida:
 		else:
 			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
 
-
-class Inventario:
-	static func usar_item_mochila(): pass
-	static func usar_item_cinto(index): pass
-	static func colocar_item_mochila(item): pass
-	static func colocar_item_cinto(item, index): pass
-
-
 class Vilarejo:
 	static func comprar(item): pass
 
@@ -335,3 +334,8 @@ class Jogador:
 		if player and "health" in player:
 			return player.health
 		return 0
+		
+	static func usar_item_mochila(): pass
+	static func usar_item_cinto(index): pass
+	static func colocar_item_mochila(item): pass
+	static func colocar_item_cinto(item, index): pass
