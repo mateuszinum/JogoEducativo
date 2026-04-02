@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://x636pgqnar62" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/Slime-Walk.png" id="1_34gl4"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_so5l6"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_so5l6"]
+[ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Slime.tres" id="4_d4e77"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osetd"]
 atlas = ExtResource("1_34gl4")
@@ -53,10 +55,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_cucs6"]
+script = ExtResource("3_so5l6")
+item = ExtResource("4_d4e77")
+chance_de_drop = 100.0
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
 [resource]
 script = ExtResource("2_so5l6")
 nome = "Slime"
 animations = SubResource("SpriteFrames_jat16")
+tabela_de_drops = Array[ExtResource("3_so5l6")]([SubResource("Resource_cucs6")])
 health = 15.0
 damage = 5.0
 speed = 5.0

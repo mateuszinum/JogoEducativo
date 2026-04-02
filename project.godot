@@ -21,7 +21,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+<<<<<<< Updated upstream
 FuncoesNativas="*uid://dtvtvqqqbkehv"
+=======
+VidaAtual="*uid://bnur40wxa54cj"
+Tempo="*uid://c52qriloxi4ay"
+Inventario="*uid://b7q1kl3bndmpu"
+>>>>>>> Stashed changes
 
 [display]
 
@@ -46,6 +52,7 @@ folder_colors={
 "res://Resources/Enemies/": "red",
 "res://Resources/Weapons/": "orange",
 "res://Scenes/Enemy/": "red",
+"res://Scenes/Inventario/": "gray",
 "res://Scenes/Player/": "purple",
 "res://Scenes/Spawner/": "yellow",
 "res://Scenes/UI/": "pink",
@@ -54,6 +61,7 @@ folder_colors={
 "res://Scenes/World/": "green",
 "res://Scripts/Built-In/": "blue",
 "res://Scripts/Enemy/": "red",
+"res://Scripts/Inventario/": "gray",
 "res://Scripts/Player/": "purple",
 "res://Scripts/Projectiles/": "orange",
 "res://Scripts/Spawner/": "yellow",

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://o15tjecskoff"]
+
+[ext_resource type="Script" uid="uid://68v6gf16pxje" path="res://Scripts/Itens(Drops)/item_dropado.gd" id="1_w8hce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8hce"]
+
+[node name="ItemDropado" type="Area2D" unique_id=1078293084]
+z_index = 10
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_w8hce")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1518089379]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=157172361]
+scale = Vector2(0.35629085, 0.3200004)
+shape = SubResource("CircleShape2D_w8hce")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
