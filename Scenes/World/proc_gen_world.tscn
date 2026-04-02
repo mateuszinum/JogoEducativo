@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
 [ext_resource type="Resource" uid="uid://cuv2y6cr6t1fs" path="res://Resources/Stages/Floresta/floresta_data.tres" id="2_3nb34"]
+[ext_resource type="PackedScene" uid="uid://dvinnl4creows" path="res://Scenes/World/Tesouro.tscn" id="3_jixqc"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="5_jixqc"]
@@ -17,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="11_byjoo"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
-[ext_resource type="Texture2D" uid="uid://bptit856hc68f" path="res://Assets/Terrain/Genérico/GramaTile.png" id="12_7deaf"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 
@@ -68,37 +68,23 @@ music_volume = -10.0
 spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu1pf"]
-size = Vector2(16, 5.5)
-
-[node name="proc_gen_world" type="Node2D" unique_id=1776267625]
+[node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
 stage_data = ExtResource("2_3nb34")
+cena_tesouro = ExtResource("3_jixqc")
 
-[node name="TileMap" type="TileMap" parent="." unique_id=174543522]
+[node name="TileMap" type="TileMap" parent="." unique_id=174543522 groups=["Mapa"]]
 y_sort_enabled = true
 position = Vector2(8, 8)
 format = 2
 layer_0/name = "Chao"
+layer_0/z_index = -1
 layer_1/name = "Obstaculos"
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
 enemy_scene = ExtResource("5_7deaf")
 current_stage = SubResource("Resource_841rm")
-
-[node name="ObjetoBase" type="StaticBody2D" parent="." unique_id=608595169]
-position = Vector2(-85, 69)
-
-[node name="Sprite2D" type="Sprite2D" parent="ObjetoBase" unique_id=1763790118]
-position = Vector2(10, 28)
-texture = ExtResource("12_7deaf")
-centered = false
-offset = Vector2(-8, -12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjetoBase" unique_id=828235154]
-position = Vector2(10, 28)
-shape = SubResource("RectangleShape2D_wu1pf")
 
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
 z_index = 1

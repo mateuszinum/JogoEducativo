@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://gne6nkfcnp6e"]
+
+[ext_resource type="Script" uid="uid://c7f5kc6rpy888" path="res://Scenes/World/tesouro.gd" id="1_chn5w"]
+[ext_resource type="Texture2D" uid="uid://y17js0vrnmon" path="res://Assets/Asset Packs/Chests Pack/chest_01.png" id="1_lv6xl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxd86"]
+size = Vector2(32, 32)
+
+[node name="Tesouro" type="Area2D" unique_id=1764775445]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_chn5w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=432219331]
+z_index = 1
+texture = ExtResource("1_lv6xl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1554986092]
+shape = SubResource("RectangleShape2D_fxd86")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

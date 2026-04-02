@@ -52,10 +52,10 @@ func check_spawn_events():
 		if event.time_in_seconds == total_time_seconds:
 			if event.spawn_rate > 0:
 				active_spawns[event.enemy_type] = event.spawn_rate
-				print("Evento: Começando a spawnar ", event.enemy_type.title, " a ", event.spawn_rate, "/s")
+				print("Evento: Começando a spawnar ", event.enemy_type.nome, " a ", event.spawn_rate, "/s")
 			else:
 				active_spawns.erase(event.enemy_type)
-				print("Evento: Parando de spawnar ", event.enemy_type.title)
+				print("Evento: Parando de spawnar ", event.enemy_type.nome)
 
 func execute_spawns():
 	for enemy_type in active_spawns:
