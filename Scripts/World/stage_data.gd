@@ -13,6 +13,7 @@ class_name StageData extends Resource
 @export var map_width: int = 50
 @export var map_height: int = 50
 @export var raio_seguro_spawn: float = 5.0
+@export var tesouro_config: TesouroData
 
 @export_category("Tiles")
 @export var stage_tileset: TileSet
