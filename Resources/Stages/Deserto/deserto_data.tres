@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://bsp7i2lv0scbx"]
+
+[ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_fk3qj"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_gdvrt"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_32ih0"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="4_ncryi"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="5_qenfn"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="6_j6y6d"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="7_xry6a"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="8_hg2w3"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="10_ugju5"]
+[ext_resource type="TileSet" uid="uid://dth7tv7730a8t" path="res://Resources/Stages/Deserto/deserto_tileset.tres" id="11_r2cjo"]
+[ext_resource type="Resource" uid="uid://cw3fnoxjn302w" path="res://Resources/Stages/Deserto/tesouro_deserto.tres" id="12_f3t5x"]
+
+[sub_resource type="Resource" id="Resource_7i53n"]
+script = ExtResource("1_fk3qj")
+source_id = 1
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_kgp3u"]
+script = ExtResource("1_fk3qj")
+source_id = 2
+chance_peso = 0.75
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_0rd4w"]
+script = ExtResource("1_fk3qj")
+source_id = 3
+chance_peso = 0.5
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_01ayd"]
+script = ExtResource("3_32ih0")
+enemy_type = ExtResource("4_ncryi")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_2d58w"]
+script = ExtResource("3_32ih0")
+time_in_seconds = 15
+enemy_type = ExtResource("5_qenfn")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_3dl8p"]
+script = ExtResource("3_32ih0")
+time_in_seconds = 20
+enemy_type = ExtResource("6_j6y6d")
+spawn_rate = 1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_gdekt"]
+script = ExtResource("3_32ih0")
+time_in_seconds = 20
+enemy_type = ExtResource("4_ncryi")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_wi01x"]
+script = ExtResource("3_32ih0")
+time_in_seconds = 30
+enemy_type = ExtResource("7_xry6a")
+spawn_rate = 2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_j1oyk"]
+script = ExtResource("3_32ih0")
+time_in_seconds = 35
+enemy_type = ExtResource("5_qenfn")
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[resource]
+script = ExtResource("2_gdvrt")
+stage_name = "Deserto"
+stage_music = ExtResource("10_ugju5")
+spawn_events = Array[ExtResource("3_32ih0")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+map_width = 100
+tesouro_config = ExtResource("12_f3t5x")
+stage_tileset = ExtResource("11_r2cjo")
+ground_variants = Array[ExtResource("1_fk3qj")]([SubResource("Resource_7i53n"), SubResource("Resource_kgp3u"), SubResource("Resource_0rd4w")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"

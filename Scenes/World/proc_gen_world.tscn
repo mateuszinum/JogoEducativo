@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dkbfito78h360"]
 
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
-[ext_resource type="Resource" uid="uid://cuv2y6cr6t1fs" path="res://Resources/Stages/Floresta/floresta_data.tres" id="2_3nb34"]
-[ext_resource type="PackedScene" uid="uid://dvinnl4creows" path="res://Scenes/World/Tesouro.tscn" id="3_jixqc"]
+[ext_resource type="Resource" uid="uid://bsp7i2lv0scbx" path="res://Resources/Stages/Deserto/deserto_data.tres" id="2_jixqc"]
+[ext_resource type="PackedScene" uid="uid://gne6nkfcnp6e" path="res://Scenes/World/Tesouro.tscn" id="3_jixqc"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="5_jixqc"]
@@ -71,7 +71,7 @@ metadata/_custom_type_script = "uid://cimi8ig206mmi"
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
-stage_data = ExtResource("2_3nb34")
+stage_data = ExtResource("2_jixqc")
 cena_tesouro = ExtResource("3_jixqc")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=174543522 groups=["Mapa"]]
