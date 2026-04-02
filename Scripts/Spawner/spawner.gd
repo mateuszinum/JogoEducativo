@@ -3,7 +3,6 @@ extends Node2D
 @export var enemy_scene : PackedScene
 @export var max_enemies : int = 300
 
-# Aqui você arrasta o seu arquivo .tres da fase atual!
 @export var current_stage : StageData 
 
 var distance : float = 250
@@ -22,16 +21,19 @@ func spawn(pos : Vector2, type_to_spawn: Enemy):
 	enemy_instance.type = type_to_spawn
 	enemy_instance.position = pos
 	
-	# Adiciona o inimigo como filho do pai do Spawner (o mapa World), e não da tela cheia!
 	get_parent().add_child(enemy_instance)
 
 func get_random_position() -> Vector2:
-	# Agora o spawner também busca o player dinamicamente pelo grupo,
-	# evitando erros de caminhos quebrados por causa da tela dividida.
 	var player = get_tree().get_first_node_in_group("Player")
 	
 	if player != null:
-		return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		var random_dir = Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
+		var raw_pos = player.global_position + (random_dir * distance)
+		
+		var nav_map = get_world_2d().navigation_map
+		var safe_pos = NavigationServer2D.map_get_closest_point(nav_map, raw_pos)
+		
+		return safe_pos
 	
 	return Vector2.ZERO
 
@@ -50,10 +52,10 @@ func check_spawn_events():
 		if event.time_in_seconds == total_time_seconds:
 			if event.spawn_rate > 0:
 				active_spawns[event.enemy_type] = event.spawn_rate
-				print("Evento: Começando a spawnar ", event.enemy_type.title, " a ", event.spawn_rate, "/s")
+				print("Evento: Começando a spawnar ", event.enemy_type.nome, " a ", event.spawn_rate, "/s")
 			else:
 				active_spawns.erase(event.enemy_type)
-				print("Evento: Parando de spawnar ", event.enemy_type.title)
+				print("Evento: Parando de spawnar ", event.enemy_type.nome)
 
 func execute_spawns():
 	for enemy_type in active_spawns:

@@ -69,6 +69,6 @@ animations = [{
 
 [resource]
 script = ExtResource("2_i6dql")
-title = "Goblin"
+nome = "Goblin"
 animations = SubResource("SpriteFrames_nwupb")
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

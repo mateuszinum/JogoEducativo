@@ -10,7 +10,9 @@ var despawns: bool = true
 
 var knockback : Vector2
 var separation : float
-var use_navigation := false
+
+var path_timer : float = 0.0
+var path_update_interval : float = 0.2 
 
 var type : Enemy:
 	set(value):
@@ -37,6 +39,9 @@ var damage : float:
 func _ready():
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
+	
+	path_timer = randf_range(0.0, 0.2)
+	path_update_interval = randf_range(0.2, 0.3)
 
 func _physics_process(delta):
 	check_separation(delta)
@@ -48,45 +53,23 @@ func _physics_process(delta):
 	if player == null:
 		return
 
-	if not use_navigation:
-		var direction := global_position.direction_to(player.global_position)
+	path_timer -= delta
+	if path_timer <= 0.0:
+		nav_agent.target_position = player.global_position
+		path_timer = path_update_interval 
 
-		if direction.x != 0:
-			$AnimatedSprite2D.flip_h = (direction.x < 0)
-
-		$RayCast2D.target_position = direction * 64
-		$RayCast2D.force_raycast_update()
-
-		if $RayCast2D.is_colliding():
-			use_navigation = true
-			nav_agent.target_position = player.global_position
-			return
-			
-		velocity = (direction * speed) + knockback
-		move_and_slide()
-		handle_enemy_collisions(delta)
+	if nav_agent.is_navigation_finished() or not nav_agent.is_target_reachable():
 		return
 
-	if use_navigation:
-		nav_agent.target_position = player.global_position
+	var next_pos = nav_agent.get_next_path_position()
+	var direction := global_position.direction_to(next_pos)
 
-		if nav_agent.is_navigation_finished():
-			use_navigation = false
-			return
+	if direction.x != 0:
+		$AnimatedSprite2D.flip_h = (direction.x < 0)
 
-		var next_pos = nav_agent.get_next_path_position()
-		var direction := (next_pos - global_position).normalized()
-
-		if direction.x != 0:
-			$AnimatedSprite2D.flip_h = (direction.x < 0)
-
-		velocity = (direction * speed) + knockback
-		move_and_slide()
-		handle_enemy_collisions(delta)
-
-		$RayCast2D.force_raycast_update()
-		if not $RayCast2D.is_colliding():
-			use_navigation = false
+	velocity = (direction * speed) + knockback
+	move_and_slide()
+	handle_enemy_collisions(delta)
 
 func handle_enemy_collisions(delta):
 	for i in get_slide_collision_count():
@@ -140,6 +123,5 @@ func show_damage_number(amount):
 	dmg_num.global_position = global_position
 	dmg_num.global_position.x += randf_range(-12, 12)
 	dmg_num.global_position.y += randf_range(-12, 12)
-	# Adiciona o número de dano no mundo, e não na tela do menu principal!
 	get_parent().add_child(dmg_num)
 	dmg_num.setup(amount)

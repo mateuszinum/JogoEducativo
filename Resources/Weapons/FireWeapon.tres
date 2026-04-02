@@ -9,7 +9,7 @@
 script = ExtResource("2_wylcx")
 damage = 3.0
 cooldown = 1.0
-speed = 200.0
+speed = 300.0
 knockback_multiplier = 2.0
 attack_sound = ExtResource("1_4ntft")
 attack_volume = -3.0
