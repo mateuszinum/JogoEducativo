@@ -18,6 +18,15 @@ func generate_world():
 	if not stage_data:
 		return
 		
+	if has_node("Spawner"):
+		var spawner = $Spawner
+		spawner.current_stage = stage_data
+		spawner.total_time_seconds = 0
+		spawner.active_spawns.clear()
+		
+		if spawner.has_node("Timer"):
+			spawner.get_node("Timer").start()
+		
 	if stage_data.stage_tileset:
 		tile_map.tile_set = stage_data.stage_tileset
 	
