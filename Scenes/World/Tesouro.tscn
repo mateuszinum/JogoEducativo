@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gne6nkfcnp6e"]
 
-[ext_resource type="Script" uid="uid://c7f5kc6rpy888" path="res://Scripts/World/tesouro.gd" id="1_chn5w"]
+[ext_resource type="Script" path="res://Scripts/World/tesouro.gd" id="1_chn5w"]
 [ext_resource type="Texture2D" uid="uid://y17js0vrnmon" path="res://Assets/Asset Packs/Chests Pack/chest_01.png" id="1_lv6xl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxd86"]
