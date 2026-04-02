@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://v0m7wiak3fnn"]
+
+[ext_resource type="Texture2D" uid="uid://2hticylab45f" path="res://Assets/Drop/MoedaDourada.png" id="1_djh51"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="1_f1mde"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djh51"]
+atlas = ExtResource("1_djh51")
+region = Rect2(65.901184, 0, 11.60907, 16)
+
+[resource]
+script = ExtResource("1_f1mde")
+nome = "Moeda"
+icone = SubResource("AtlasTexture_djh51")
+tipo_do_item = "dinheiro"
+valor = 3
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"
