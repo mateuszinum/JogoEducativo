@@ -1,6 +1,35 @@
 extends Node
 
 # ==========================================
+# CACHE DA THREAD PRINCIPAL (O "Post-it")
+# ==========================================
+# Variável segura para o C# ler a qualquer momento
+var _cache_inimigo_proximo: String = ""
+
+# O Godot atualiza isso na Thread principal a cada frame da física
+func _physics_process(_delta: float) -> void:
+	var tree = get_tree()
+	var inimigos = tree.get_nodes_in_group("Enemy")
+	var player = tree.get_first_node_in_group("Player")
+	
+	if inimigos.size() == 0 or not player:
+		_cache_inimigo_proximo = ""
+		return
+		
+	var id_mais_proximo = ""
+	var menor_distancia = INF
+	var posicao_jogador = player.global_position
+	
+	for inimigo in inimigos:
+		if is_instance_valid(inimigo):
+			var distancia = posicao_jogador.distance_to(inimigo.global_position)
+			if distancia < menor_distancia:
+				menor_distancia = distancia
+				id_mais_proximo = inimigo.name
+				
+	_cache_inimigo_proximo = id_mais_proximo
+
+# ==========================================
 # PORTAS DE ENTRADA DO C# (API GATEWAY)
 # ==========================================
 
@@ -31,8 +60,9 @@ func colocar_item_mochila(item: String):
 func colocar_item_cinto(item: String, idx: int):
 	Inventario.colocar_item_cinto(item, idx)
 
+# === A LEITURA AGORA PUXA DO CACHE ===
 func inimigoMaisProximo() -> String:
-	return Inimigo.inimigoMaisProximo()
+	return _cache_inimigo_proximo
 
 func podeMover(direcao: String) -> bool:
 	return Jogador.podeMover(direcao)
@@ -64,23 +94,6 @@ func tesouroY() -> int:
 # ==========================================
 
 class Inimigo:
-	static func inimigoMaisProximo() -> String:
-		var tree = Engine.get_main_loop()
-		var inimigos = tree.get_nodes_in_group("Enemy")
-		var player = tree.get_first_node_in_group("Player")
-		if inimigos.size() == 0 or not player:
-			return "" 
-		var id_mais_proximo = ""
-		var menor_distancia = INF
-		var posicao_jogador = player.global_position
-		for inimigo in inimigos:
-			if is_instance_valid(inimigo):
-				var distancia = posicao_jogador.distance_to(inimigo.global_position)
-				if distancia < menor_distancia:
-					menor_distancia = distancia
-					id_mais_proximo = inimigo.name 
-		return id_mais_proximo
-
 	static func escanear_area() -> Array:
 		var tree = Engine.get_main_loop()
 		var inimigos = tree.get_nodes_in_group("Enemy")
@@ -118,7 +131,6 @@ class Partida:
 		print("Escapando da arena e voltando pro Vilarejo...")
 		
 		var tree = Engine.get_main_loop()
-		# Pede para a TV (jogo.gd) trocar de volta para o vilarejo!
 		var jogo_main = tree.root.get_node_or_null("Jogo")
 		if jogo_main and jogo_main.has_method("fazer_transicao_tv"):
 			jogo_main.fazer_transicao_tv(jogo_main.CENA_VILAREJO, "vilarejo")
@@ -166,7 +178,6 @@ class Partida:
 			else:
 				printerr("ERRO: Função 'carregar_arena_via_codigo' não encontrada em jogo.gd")
 		else:
-			# Se o banco de dados retornar nulo, dispara o nosso Popup de erro na tela!
 			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
 
 
@@ -250,7 +261,6 @@ class Jogador:
 		if not player:
 			return
 		
-		# Puxa todas as configurações do Ataque (Dano, Velocidade, Sons, Cena do Projétil)
 		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
 		
 		if ataque_data == null:
@@ -264,33 +274,25 @@ class Jogador:
 				alvo_encontrado = true
 				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
 				
-				# 1. Instancia o projétil que está salvo no Weapon.gd
 				if ataque_data.projectile_node != null:
 					var projetil = ataque_data.projectile_node.instantiate()
 					
-					# 2. Posiciona no jogador e calcula a direção
 					projetil.global_position = player.global_position
 					projetil.direction = player.global_position.direction_to(inimigo.global_position)
-					
-					# Faz o projétil olhar para a direção que está indo
 					projetil.rotation = projetil.direction.angle()
 					
-					# 3. Passa os status do Banco de Dados para a bala
 					projetil.speed = ataque_data.speed
 					projetil.damage = ataque_data.damage
 					projetil.knockback_multiplier = ataque_data.knockback_multiplier
 					
-					# Passa os sons de impacto para o projétil tocar quando bater
 					if "hit_sound" in projetil:
 						projetil.hit_sound = ataque_data.hit_sound
 						projetil.hit_volume = ataque_data.hit_volume
 						projetil.pitch_min = ataque_data.pitch_min
 						projetil.pitch_max = ataque_data.pitch_max
 						
-					# 4. Adiciona o projétil no mundo
 					player.get_parent().add_child(projetil)
 					
-					# 5. Toca o som do disparo no próprio Player!
 					if ataque_data.attack_sound != null:
 						var audio = AudioStreamPlayer2D.new()
 						audio.stream = ataque_data.attack_sound

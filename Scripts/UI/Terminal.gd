@@ -51,8 +51,12 @@ func configurar_cores_do_codigo() -> void:
 	var palavras_controle = ["se", "senao", "fim", "enquanto"]
 	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
 		
+	# ==========================================
+	# TIPOS DE DADOS E BOOLEANOS (AZUL)
+	# ==========================================
 	var cor_tipo = Color("#569cd6")
-	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso"]
+	# Adicionamos os tipos de objetos (Inimigo, Arena, Ataque) aqui!
+	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 		
 	var cor_funcao = Color("#dcdcaa")

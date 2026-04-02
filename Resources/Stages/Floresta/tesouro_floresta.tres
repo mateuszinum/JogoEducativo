@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://cbq58vn3x3gyp"]
 
-[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://tesouro_data.gd" id="1_3f6pa"]
+[ext_resource type="Script" path="res://tesouro_data.gd" id="1_3f6pa"]
 [ext_resource type="Texture2D" uid="uid://ckpaqeb168wx2" path="res://Assets/Asset Packs/Chests Pack/chest_04.png" id="2_rla41"]
 
 [resource]
