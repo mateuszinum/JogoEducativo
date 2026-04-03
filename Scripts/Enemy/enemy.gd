@@ -101,12 +101,24 @@ func check_separation(_delta):
 		
 	separation = (player.global_position - global_position).length()
 	if separation >= DISTANCIA_DESPAWN:
-		queue_free() # Aqui ele despawna por distância, então NÃO chama gerar_drops()
+		queue_free()
 
-func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):
-	health -= amount
+func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
+	var dano_final = amount
+	
+	if type != null:
+		var mult_elemento = 1.0 
+		
+		if type.multiplicadores_de_ataque != null:
+			for fraqueza in type.multiplicadores_de_ataque:
+				if fraqueza.ataque != null and fraqueza.ataque.nome == ataque_nome:
+					mult_elemento = fraqueza.multiplicador
+					break
+		dano_final *= mult_elemento
+		
+	health -= dano_final
 	apply_knockback(mult, knockback_dir)
-	show_damage_number(amount)
+	show_damage_number(dano_final)
 	
 func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
 	var player = get_tree().get_first_node_in_group("Player")

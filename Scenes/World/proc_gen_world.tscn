@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkbfito78h360"]
 
 [ext_resource type="Script" uid="uid://bair8ops60l5" path="res://Scripts/World/proc_gen_world.gd" id="1_n73w2"]
-[ext_resource type="Resource" uid="uid://cuv2y6cr6t1fs" path="res://Resources/Stages/Floresta/floresta_data.tres" id="2_7fyq5"]
+[ext_resource type="Resource" uid="uid://drqfd5tdsd6it" path="res://Resources/Stages/Campos/campos_data.tres" id="2_5vcap"]
 [ext_resource type="PackedScene" uid="uid://gne6nkfcnp6e" path="res://Scenes/World/Tesouro.tscn" id="3_jixqc"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
@@ -11,12 +11,12 @@
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="7_7fyq5"]
 [ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_dr08h"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="8_5vcap"]
-[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/FireWeapon.tres" id="8_p7fpg"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="8_p7fpg"]
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="9_01xxv"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/ArrowWeapon.tres" id="9_bkwyh"]
-[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/IceWeapon.tres" id="10_bc8hh"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="9_bkwyh"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_bc8hh"]
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
-[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="11_byjoo"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="11_byjoo"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
@@ -68,7 +68,7 @@ metadata/_custom_type_script = "uid://cimi8ig206mmi"
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
 script = ExtResource("1_n73w2")
-stage_data = ExtResource("2_7fyq5")
+stage_data = ExtResource("2_5vcap")
 cena_tesouro = ExtResource("3_jixqc")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=174543522 groups=["Mapa"]]

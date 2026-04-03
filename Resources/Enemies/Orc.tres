@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cqnnmeqrchfi8"]
+
+[ext_resource type="Texture2D" uid="uid://di6y1ufnjhuag" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Armored Orc/Armored Orc with shadows/Armored Orc-Walk.png" id="1_nevxn"]
+[ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_f1yee"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_tsw1m"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_f1yee"]
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="5_586d2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsw1m"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1yee"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586d2"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oro6y"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvx3w"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khwxm"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02twv"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tij1i"]
+atlas = ExtResource("1_nevxn")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ubjl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsw1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1yee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oro6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvx3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khwxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02twv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tij1i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_aiy86"]
+script = ExtResource("3_f1yee")
+item = ExtResource("5_586d2")
+chance_de_drop = 100.0
+quantidade_minima = 5
+quantidade_maxima = 6
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("2_tsw1m")
+nome = "Goblin"
+animations = SubResource("SpriteFrames_ubjl6")
+tabela_de_drops = Array[ExtResource("3_f1yee")]([SubResource("Resource_aiy86")])
+health = 5.0
+speed = 8.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

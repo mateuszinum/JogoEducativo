@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bufqw7ji7465l"]
 
 [ext_resource type="Texture2D" uid="uid://ccdg0rqx56d2m" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Skeleton/Skeleton with shadows/Skeleton-Walk.png" id="1_ie2g8"]
+[ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_i4mam"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_tas4p"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_p8lk4"]
 [ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="4_i4mam"]

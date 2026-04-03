@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://e7xq7j38wovw"]
+
+[ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="1_07xyc"]
+[ext_resource type="Texture2D" uid="uid://ce2x6dod3xvfo" path="res://Assets/Asset Packs/Outros/Ghost.png" id="1_b2e2w"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_b2e2w"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_3gp5y"]
+[ext_resource type="Resource" uid="uid://bfypxiau1xxp3" path="res://Resources/Drop/Plasma.tres" id="3_8cftx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2e2w"]
+atlas = ExtResource("1_b2e2w")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cftx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2e2w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_cucs6"]
+script = ExtResource("3_3gp5y")
+item = ExtResource("3_8cftx")
+quantidade_maxima = 2
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("2_b2e2w")
+nome = "Fantasma"
+animations = SubResource("SpriteFrames_8cftx")
+tabela_de_drops = Array[ExtResource("3_3gp5y")]([SubResource("Resource_cucs6")])
+health = 1.0
+damage = 5.0
+speed = 8.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

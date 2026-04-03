@@ -5,7 +5,7 @@ extends Node2D
 
 @export var current_stage : StageData 
 
-var distance : float = 250
+var distance : float = 220
 var total_time_seconds : int = 0
 
 var active_spawns : Dictionary = {}

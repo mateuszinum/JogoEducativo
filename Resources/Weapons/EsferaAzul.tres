@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://dmo3l5vfvdxq1"]
+
+[ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/Projectiles/EsferaAzul.tscn" id="1_r22qi"]
+[ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/LancarFlecha.mp3" id="1_t83o3"]
+[ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/HitFlecha.mp3" id="2_a37pu"]
+[ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_ofrdl"]
+
+[resource]
+script = ExtResource("2_ofrdl")
+nome = "EsferaAzul"
+damage = 1.0
+cooldown = 0.4
+speed = 300.0
+knockback_multiplier = 0.5
+attack_sound = ExtResource("1_t83o3")
+hit_sound = ExtResource("2_a37pu")
+metadata/_custom_type_script = "uid://dacndn1awrba2"

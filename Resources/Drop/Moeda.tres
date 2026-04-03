@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://v0m7wiak3fnn"]
+
+[ext_resource type="Texture2D" uid="uid://b5q3x0o7kv1ff" path="res://Assets/Drop/Moeda.png" id="1_uyaxt"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="2_tao5u"]
+
+[resource]
+script = ExtResource("2_tao5u")
+nome = "Moeda"
+icone = ExtResource("1_uyaxt")
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"

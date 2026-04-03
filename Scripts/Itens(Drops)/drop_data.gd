@@ -3,7 +3,7 @@ extends Resource
 class_name DropData
 
 @export var item: ItemData
-@export_range(0.0, 100.0) var chance_de_drop: float = 50.0
+@export_range(0.0, 100.0) var chance_de_drop: float = 100
 
 @export var quantidade_minima: int = 1:
 	set(valor_novo):

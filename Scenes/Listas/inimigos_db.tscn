@@ -5,8 +5,12 @@
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="3_vtmpb"]
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="4_wyfki"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="5_xeqqk"]
-[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="6_2ixk1"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="6_2ixk1"]
+[ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Enemies/SlimeDeGelo.tres" id="7_wyfki"]
+[ext_resource type="Resource" uid="uid://cqnnmeqrchfi8" path="res://Resources/Enemies/Orc.tres" id="8_xeqqk"]
+[ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Enemies/Fantasma.tres" id="9_2ixk1"]
+[ext_resource type="Resource" uid="uid://cd6v87ojvquk0" path="res://Resources/Enemies/Vampiro.tres" id="10_w2p1j"]
 
 [node name="InimigosDB" type="Node" unique_id=576416383]
 script = ExtResource("1_x4nbv")
-lista_de_inimigos = Array[ExtResource("2_vb1md")]([ExtResource("3_vtmpb"), ExtResource("4_wyfki"), ExtResource("5_xeqqk"), ExtResource("6_2ixk1")])
+lista_de_inimigos = Array[ExtResource("2_vb1md")]([ExtResource("4_wyfki"), ExtResource("3_vtmpb"), ExtResource("6_2ixk1"), ExtResource("7_wyfki"), ExtResource("5_xeqqk"), ExtResource("8_xeqqk"), ExtResource("9_2ixk1"), ExtResource("10_w2p1j")])

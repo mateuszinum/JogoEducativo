@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_h7a20"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="1_y0t0c"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="2_h7a20"]
-[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="4_y0t0c"]
-[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="5_h7a20"]
-[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/Slime.tres" id="6_yyig3"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="4_h7a20"]
+[ext_resource type="Resource" uid="uid://cqnnmeqrchfi8" path="res://Resources/Enemies/Orc.tres" id="5_yyig3"]
+[ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Enemies/Fantasma.tres" id="6_jd7mv"]
+[ext_resource type="Resource" uid="uid://cd6v87ojvquk0" path="res://Resources/Enemies/Vampiro.tres" id="7_lu5qd"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_ts6uj"]
 [ext_resource type="Texture2D" uid="uid://btxppb382sd2p" path="res://Resources/Stages/Floresta/floresta_ruido_barreira.tres" id="8_fk5lg"]
 [ext_resource type="TileSet" uid="uid://cnvieb7wwswqa" path="res://Resources/Stages/Floresta/floresta_tileset.tres" id="10_e3kfy"]
@@ -33,19 +34,25 @@ metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_ts6uj"]
 script = ExtResource("2_h7a20")
-enemy_type = ExtResource("4_y0t0c")
+enemy_type = ExtResource("4_h7a20")
 spawn_rate = 0.35
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_fk5lg"]
 script = ExtResource("2_h7a20")
-enemy_type = ExtResource("5_h7a20")
+enemy_type = ExtResource("5_yyig3")
 spawn_rate = 0.25
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_nt8bn"]
 script = ExtResource("2_h7a20")
-enemy_type = ExtResource("6_yyig3")
+enemy_type = ExtResource("6_jd7mv")
+spawn_rate = 0.1
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_e3kfy"]
+script = ExtResource("2_h7a20")
+enemy_type = ExtResource("7_lu5qd")
 spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
@@ -61,7 +68,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 script = ExtResource("1_y0t0c")
 nome = "Floresta"
 music_volume = -10.0
-spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn")])
+spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_e3kfy")])
 map_width = 100
 tesouro_config = ExtResource("12_yyig3")
 stage_tileset = ExtResource("10_e3kfy")

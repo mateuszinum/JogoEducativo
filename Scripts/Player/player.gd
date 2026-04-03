@@ -25,7 +25,6 @@ signal health_changed(current_health)
 @export var step_pitch_min : float = 0.8
 @export var step_pitch_max : float = 1.2
 
-# --- NOVAS CONFIGURAÇÕES DE COLETA DE RECURSOS ---
 @export var collect_sound : AudioStream
 @export var collect_volume : float = 0.0
 @export var collect_pitch_min : float = 0.8
@@ -43,45 +42,22 @@ var invulneravel : bool = false
 var moving : bool = false
 var input_dir : Vector2 = Vector2.ZERO
 
-@export_group("Inventory")
-@export var inventario_armas : Array[Weapon] = []
-var indice_arma_atual : int = 0
-var arma_equipada : Weapon = null
-
 func _ready() -> void:
 	anim.play("default")
-	if inventario_armas.size() > 0:
-		arma_equipada = inventario_armas[0]
-		if %WeaponSlot:
-			%WeaponSlot.weapon = arma_equipada
 			
 	_current_collect_pitch = collect_pitch_min
-		
-func trocar_arma() -> void:
-	if inventario_armas.is_empty():
-		return
-		
-	indice_arma_atual += 1
-	if indice_arma_atual >= inventario_armas.size():
-		indice_arma_atual = 0
-		
-	arma_equipada = inventario_armas[indice_arma_atual]
-	if %WeaponSlot:
-		%WeaponSlot.weapon = arma_equipada 
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("change_weapon"):
-		trocar_arma()
-		
-	var dirs = {
-		"move_up":    "Cima",
-		"move_down":  "Baixo",
-		"move_left":  "Esquerda",
-		"move_right": "Direita"
-	}
-	for action in dirs:
-		if Input.is_action_just_pressed(action):
-			FuncoesNativas.mover(dirs[action])
+func _physics_process(delta: float) -> void:		
+	if Constantes.MODO_DEV:
+		var dirs = {
+			"move_up":    "Cima",
+			"move_down":  "Baixo",
+			"move_left":  "Esquerda",
+			"move_right": "Direita"
+		}
+		for action in dirs:
+			if Input.is_action_just_pressed(action):
+				FuncoesNativas.mover(dirs[action])
 			
 	if _pitch_reset_timer > 0:
 		_pitch_reset_timer -= delta

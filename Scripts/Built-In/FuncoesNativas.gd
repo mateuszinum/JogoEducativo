@@ -319,6 +319,9 @@ class Jogador:
 					projetil.damage = ataque_data.damage
 					projetil.knockback_multiplier = ataque_data.knockback_multiplier
 					
+					if "ataque_nome" in projetil:
+						projetil.ataque_nome = ataque_data.nome
+					
 					if "hit_sound" in projetil:
 						projetil.hit_sound = ataque_data.hit_sound
 						projetil.hit_volume = ataque_data.hit_volume

@@ -8,9 +8,6 @@ extends PanelContainer
 
 @onready var botao_debug = %BotaoDebug 
 
-# determina se o botao de inserir codigo pré-pronto para debug aparece
-const MODO_DEBUG_ATIVO = true
-
 var modo_atual: String = "vilarejo"
 var erros_sintaxe_ativos: Dictionary = {}
 
@@ -23,8 +20,8 @@ func _ready() -> void:
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
 		
 	if botao_debug:
-		botao_debug.visible = MODO_DEBUG_ATIVO
-		if MODO_DEBUG_ATIVO and not botao_debug.pressed.is_connected(_on_botao_debug_pressed):
+		botao_debug.visible = Constantes.MODO_DEV
+		if Constantes.MODO_DEV and not botao_debug.pressed.is_connected(_on_botao_debug_pressed):
 			botao_debug.pressed.connect(_on_botao_debug_pressed)
 			botao_debug.focus_mode = Control.FOCUS_NONE
 	
@@ -36,7 +33,6 @@ func _ready() -> void:
 	code_edit.text_changed.connect(_on_text_changed)
 	code_edit.code_completion_requested.connect(_on_code_completion_requested)
 	
-	# TOOLTIP FLUTUANTE DE HOVER 
 	tooltip_erro = Label.new()
 	
 	tooltip_erro.autowrap_mode = TextServer.AUTOWRAP_WORD
@@ -185,7 +181,7 @@ func _on_botao_executar_pressed() -> void:
 
 
 func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Floresta)
+	var codigo_teste = """arena(Campos)
 Direcao dir = Esquerda
 
 enquanto(Verdadeiro):
@@ -199,12 +195,16 @@ enquanto(Verdadeiro):
 	mover(dir)
 	
 	Inimigo alvo = inimigoMaisProximo()
-	se(nomeInimigo(alvo) == Goblin):
-		atacar(alvo, Fogo)
-	senao:
+	se(nomeInimigo(alvo) == SlimeDeFogo):
 		atacar(alvo, Gelo)
+	senao:
+		se(nomeInimigo(alvo) == SlimeDeGelo):
+			atacar(alvo, Fogo)
+		senao:
+			atacar(alvo, EsferaAzul)
+		fim se
 	fim se
-
+	
 fim enquanto
 """
 	code_edit.text = codigo_teste
