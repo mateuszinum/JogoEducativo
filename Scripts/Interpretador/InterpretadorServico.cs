@@ -7,15 +7,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
 
-// ==========================================
-// O NOVO CÃO DE GUARDA DA SINTAXE (Classe Genérica)
-// ==========================================
-// O <T> permite que essa classe aceite tanto 'int' quanto 'IToken' sem dar erro!
 public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 {
 	public void SyntaxError(TextWriter output, IRecognizer recognizer, T offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 	{
-		// Traduzimos os erros em inglês do ANTLR para ajudar o jogador!
 		string erroTraduzido = msg.Replace("missing", "Faltando")
 								  .Replace("at", "em")
 								  .Replace("mismatched input", "Entrada incorreta")
@@ -23,7 +18,6 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 								  .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
 								  .Replace("no viable alternative", "Nenhuma alternativa válida encontrada");
 
-		// Dispara uma bomba que o nosso try-catch vai pegar e jogar no Popup do Godot!
 		throw new Exception($"Erro Crítico de Sintaxe (Linha {line}): {erroTraduzido}");
 	}
 }
@@ -35,6 +29,9 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	private Node _gerenciador; 
 	
 	private bool _execucaoAbortada = false; 
+	
+	// NOVO: Crachá de identificação da thread ativa
+	private int _threadAtivaId = -1; 
 
 	public override void _Ready()
 	{
@@ -51,30 +48,35 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public void PararExecucao()
 	{
 		_execucaoAbortada = true;
-		LiberarProximoComando(); 
+		_threadAtivaId = -1; // Invalida imediatamente o crachá da thread atual
+		_travaDeSincronizacao.Set(); 
 	}
 
 	public void ExecutarCodigoDoJogador(string codigo, Node personagem)
 	{
+		// 1. Limpa o terreno antes de começar uma nova execução
+		PararExecucao(); 
 		_execucaoAbortada = false; 
+		_travaDeSincronizacao.Reset(); // NOVO: Esvazia qualquer "sinal verde" fantasma que tenha ficado no buffer
 		
 		if (_gerenciador != null) { _gerenciador.Call("registrar_interpretador", this); }
 
 		Task.Run(() => 
 		{
+			// 2. A nova thread guarda o seu próprio ID de identificação
+			_threadAtivaId = Thread.CurrentThread.ManagedThreadId;
+			
 			try 
 			{
 				var inputStream = new AntlrInputStream(codigo);
 				var lexer = new LinguagemLexer(inputStream);
 				
-				// 1. Ativamos o cão de guarda no Lexer passando o tipo <int>
 				lexer.RemoveErrorListeners();
 				lexer.AddErrorListener(new InterpretadorErrorListener<int>());
 
 				var tokens = new CommonTokenStream(lexer);
 				var parser = new LinguagemParser(tokens);
 				
-				// 2. Ativamos o cão de guarda no Parser passando o tipo <IToken>
 				parser.RemoveErrorListeners();
 				parser.AddErrorListener(new InterpretadorErrorListener<IToken>());
 
@@ -86,7 +88,7 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 			catch (Exception ex) 
 			{ 
 				if (ex.Message == "Execução abortada pelo jogador.") {
-					GD.Print("[C#] Loop infinito interrompido com sucesso.");
+					GD.Print("[C#] Loop infinito ou thread fantasma interrompida com sucesso.");
 				} else {
 					CallDeferred(nameof(NotificarErro), ex.Message); 
 				}
@@ -114,7 +116,9 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 
 	private void ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
 	{
-		if (_execucaoAbortada) throw new Exception("Execução abortada pelo jogador.");
+		// NOVO: Verifica se a thread que está a tentar executar é a oficial. Se for zombie, ela é eliminada.
+		if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) 
+			throw new Exception("Execução abortada pelo jogador.");
 
 		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
 		{
@@ -127,7 +131,9 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
 			_travaDeSincronizacao.WaitOne(); 
 			
-			if (_execucaoAbortada) throw new Exception("Execução abortada pelo jogador.");
+			// Verifica novamente logo após acordar da espera
+			if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) 
+				throw new Exception("Execução abortada pelo jogador.");
 		}
 		else { CallDeferred(nameof(NotificarErro), $"Função '{metodo}' não implementada em FuncoesNativas.gd."); }
 	}
@@ -146,7 +152,11 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		return res != null ? new List<string>(res) : new List<string>();
 	}
 	
-	public string GetNomeInimigo(string alvo) => alvo;
+	// A nossa correção antiga contínua aqui!
+	public string GetNomeInimigo(string alvo) 
+	{ 
+		return _apiNativa?.Call("nomeInimigo", alvo).AsString() ?? ""; 
+	}
 
 	public int GetPosicaoPlayerX() { return _apiNativa?.Call("posicaoX").AsInt32() ?? 0; }
 	public int GetPosicaoPlayerY() { return _apiNativa?.Call("posicaoY").AsInt32() ?? 0; }

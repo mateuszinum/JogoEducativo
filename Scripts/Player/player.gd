@@ -38,6 +38,8 @@ var _pitch_direction : int = 1
 var _pitch_reset_timer : float = 0.0
 # -------------------------------------------------
 
+var invulneravel : bool = false
+
 var moving : bool = false
 var input_dir : Vector2 = Vector2.ZERO
 
@@ -142,7 +144,7 @@ func move_false():
 	moving = false
 
 func take_damage(amount):
-	if $DamageTick.time_left > 0:
+	if invulneravel or $DamageTick.time_left > 0:
 		return
 	
 	health -= amount

@@ -24,7 +24,7 @@ func _on_body_entered(body):
 		
 		var mapa = get_tree().get_first_node_in_group("Mundo")
 		if mapa:
-			mapa.gerar_tesouro() 
+			mapa.call_deferred("gerar_tesouro")
 			
 		print("Pegou o tesouro e dropou os itens!")
 		queue_free()

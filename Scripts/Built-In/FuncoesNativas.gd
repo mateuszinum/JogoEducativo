@@ -76,6 +76,9 @@ func colocar_item_cinto(item: String, idx: int):
 
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
+	
+func nomeInimigo(alvo_id: String) -> String:
+	return Inimigo.nomeInimigo(alvo_id)
 
 func podeMover(direcao: String) -> bool:
 	var dir_limpa = direcao.to_lower().strip_edges() 
@@ -152,6 +155,11 @@ class Partida:
 		print("Escapando da arena e voltando pro Vilarejo...")
 		
 		var tree = Engine.get_main_loop()
+		
+		var player = tree.get_first_node_in_group("Player")
+		if player and "invulneravel" in player:
+			player.invulneravel = true
+			
 		var jogo_main = tree.root.get_node_or_null("Jogo")
 		if jogo_main and jogo_main.has_method("fazer_transicao_tv"):
 			jogo_main.fazer_transicao_tv(jogo_main.CENA_VILAREJO, "vilarejo")
