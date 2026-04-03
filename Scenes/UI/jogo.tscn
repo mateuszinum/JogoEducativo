@@ -75,6 +75,13 @@ text = "arquivo.py"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="BotaoDebug" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1087665595]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "[DEBUG] INSERIR CÓDIGO"
+
 [node name="BotaoExecutar" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=642814574]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)

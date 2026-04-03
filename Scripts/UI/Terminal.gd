@@ -6,18 +6,22 @@ extends PanelContainer
 @onready var interpretador = %InterpretadorServico
 @onready var viewport = %SubViewport
 
+@onready var botao_debug = %BotaoDebug 
+
+#determina se o botao de inserir código de teste vai aparecer ou não
+const MODO_DEBUG_ATIVO = true
+
 var modo_atual: String = "vilarejo"
 
 func _ready() -> void:
 	add_to_group("Terminal") 
-	
-	# ==========================================
-	# FIX À PROVA DE BALAS: Força a conexão do botão via código!
-	# Isso garante que ele vai funcionar mesmo se o editor bugar.
-	# ==========================================
 	if not botao_executar.pressed.is_connected(_on_botao_executar_pressed):
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
-		print("[DEBUG] Botão de Executar foi conectado com sucesso via código.")
+	if botao_debug:
+		botao_debug.visible = MODO_DEBUG_ATIVO
+		if MODO_DEBUG_ATIVO and not botao_debug.pressed.is_connected(_on_botao_debug_pressed):
+			botao_debug.pressed.connect(_on_botao_debug_pressed)
+			botao_debug.focus_mode = Control.FOCUS_NONE
 	
 	botao_executar.focus_mode = Control.FOCUS_NONE
 	code_edit.focus_mode = Control.FOCUS_CLICK
@@ -131,3 +135,32 @@ func _on_botao_executar_pressed() -> void:
 			
 		print("[DEBUG TERMINAL] 4. Escapando da Arena...")
 		FuncoesNativas.escapar()
+		
+# ==========================================
+# FERRAMENTA DE DEBUG - INJEÇÃO DE CÓDIGO
+# ==========================================
+func _on_botao_debug_pressed() -> void:
+	var codigo_teste = """arena(Floresta)
+Direcao dir = Esquerda
+
+enquanto(Verdadeiro):
+
+	se(podeMover(Esquerda) == Falso):
+		dir = Direita
+	fim se
+	se(podeMover(Direita) == Falso):
+		dir = Esquerda
+	fim se
+	mover(dir)
+	
+	Inimigo alvo = inimigoMaisProximo()
+	se(nomeInimigo(alvo) == Goblin):
+		atacar(alvo, Fogo)
+	senao:
+		atacar(alvo, Gelo)
+	fim se
+
+fim enquanto
+"""
+	code_edit.text = codigo_teste
+	print("[DEBUG TERMINAL] Código de teste injetado com sucesso!")
