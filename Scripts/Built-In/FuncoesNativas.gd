@@ -7,11 +7,14 @@ var _cache_pode_mover: Dictionary = {
 var _coordenada_logica_atual := Vector2i(0, 0)
 var _posicao_inicializada := false
 
+var _cache_tesouro_pos := Vector2i(-1, -1)
+
 func _physics_process(_delta: float) -> void:
 	var tree = get_tree()
 	var player = tree.get_first_node_in_group("Player")
 	var tile_map = tree.get_first_node_in_group("Mapa")
 	var inimigos = tree.get_nodes_in_group("Enemy")
+	var bau = tree.get_first_node_in_group("Tesouro")
 	
 	if player and tile_map and player.is_inside_tree():
 		if not _posicao_inicializada:
@@ -39,6 +42,11 @@ func _physics_process(_delta: float) -> void:
 					nome_mais_perto = inimigo.name
 		
 		_cache_inimigo_proximo = nome_mais_perto
+		
+		if bau:
+			_cache_tesouro_pos = tile_map.local_to_map(bau.global_position)
+		else:
+			_cache_tesouro_pos = Vector2i(-1, -1)
 
 # ==========================================
 # PORTAS DE ENTRADA DO C# (API GATEWAY)
@@ -101,16 +109,16 @@ func escanearArea() -> Array:
 	return Inimigo.escanear_area()
 
 func posicaoX() -> int:
-	return Jogador.posicaoX()
+	return _coordenada_logica_atual.x
 
 func posicaoY() -> int:
-	return Jogador.posicaoY()
+	return _coordenada_logica_atual.y
 
 func tesouroX() -> int:
-	return Partida.tesouroX()
+	return _cache_tesouro_pos.x
 
 func tesouroY() -> int:
-	return Partida.tesouroY()
+	return _cache_tesouro_pos.y
 
 
 # ==========================================

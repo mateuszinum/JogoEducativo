@@ -8,10 +8,13 @@ extends PanelContainer
 
 @onready var botao_debug = %BotaoDebug 
 
-# determina se o botao de inserir código de teste vai aparecer ou não
+# determina se o botao de inserir codigo pré-pronto para debug aparece
 const MODO_DEBUG_ATIVO = true
 
 var modo_atual: String = "vilarejo"
+var erros_sintaxe_ativos: Dictionary = {}
+
+var tooltip_erro: Label
 
 func _ready() -> void:
 	add_to_group("Terminal") 
@@ -29,36 +32,96 @@ func _ready() -> void:
 	code_edit.focus_mode = Control.FOCUS_CLICK
 	configurar_cores_do_codigo()
 	
-	# ==========================================
-	# ATIVAÇÃO DO AUTOCOMPLETE "LIVE"
-	# ==========================================
 	code_edit.code_completion_enabled = true
-	
-	# Avisa o Godot para disparar a checagem toda vez que você apertar qualquer tecla
 	code_edit.text_changed.connect(_on_text_changed)
 	code_edit.code_completion_requested.connect(_on_code_completion_requested)
+	
+	# TOOLTIP FLUTUANTE DE HOVER 
+	tooltip_erro = Label.new()
+	
+	tooltip_erro.autowrap_mode = TextServer.AUTOWRAP_WORD
+	tooltip_erro.custom_minimum_size = Vector2(280, 0)
+	tooltip_erro.add_theme_font_size_override("font_size", 13)
+	
+	var estilo = StyleBoxFlat.new()
+	estilo.bg_color = Color(0.12, 0.1, 0.1, 0.98) 
+	estilo.border_color = Color(0.8, 0.2, 0.2, 0.9) 
+	estilo.set_border_width_all(2)
+	estilo.corner_radius_top_left = 6
+	estilo.corner_radius_top_right = 6
+	estilo.corner_radius_bottom_left = 6
+	estilo.corner_radius_bottom_right = 6
+	estilo.content_margin_left = 12
+	estilo.content_margin_right = 12
+	estilo.content_margin_top = 8
+	estilo.content_margin_bottom = 8
+	
+	tooltip_erro.add_theme_stylebox_override("normal", estilo)
+	
+	tooltip_erro.top_level = true 
+	tooltip_erro.z_index = 100 
+	tooltip_erro.visible = false
+	
+	code_edit.add_child(tooltip_erro)
+	
+	code_edit.gui_input.connect(_on_code_edit_gui_input)
+	code_edit.mouse_exited.connect(func(): tooltip_erro.visible = false)
+	code_edit.text_changed.connect(limpar_erros_de_sintaxe)
 
-# ==========================================
-# FEEDBACK DE ERRO VISUAL (O Popup)
-# ==========================================
-func mostrar_erro(mensagem: String):
-	print("[DEBUG TERMINAL] Mostrando popup de erro para o jogador.")
-	var dialog = AcceptDialog.new()
-	dialog.title = "Erro de Sintaxe!"
-	dialog.dialog_text = "O Interpretador encontrou um problema no seu código:\n\n" + mensagem
-	add_child(dialog)
-	dialog.popup_centered()
+
+func _on_code_edit_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var pos_texto = code_edit.get_line_column_at_pos(Vector2i(event.position))
+		var linha_hover = pos_texto.y
+		
+		if erros_sintaxe_ativos.has(linha_hover):
+			tooltip_erro.text = "⚠️ " + erros_sintaxe_ativos[linha_hover]
+			tooltip_erro.visible = true
+			tooltip_erro.global_position = code_edit.get_global_mouse_position() + Vector2(15, 15)
+		else:
+			tooltip_erro.visible = false
+
+
+func mostrar_erros_de_sintaxe(lista_erros: Array):
+	limpar_erros_de_sintaxe()
+	for erro in lista_erros:
+		var linha = erro["linha"]
+		var msg = erro["mensagem"]
+		erros_sintaxe_ativos[linha] = msg
+		code_edit.set_line_background_color(linha, Color(0.8, 0.1, 0.1, 0.3))
 	
 	if modo_atual == "vilarejo":
+		botao_executar.text = "Existem Erros!"
+
+
+func limpar_erros_de_sintaxe():
+	if erros_sintaxe_ativos.is_empty(): return
+	erros_sintaxe_ativos.clear()
+	for i in range(code_edit.get_line_count()):
+		code_edit.set_line_background_color(i, Color(0, 0, 0, 0))
+	tooltip_erro.visible = false
+	if modo_atual == "vilarejo":
 		botao_executar.text = "Rodar Código"
-	else:
-		botao_executar.text = "Parar e Escapar"
+
+
+func mostrar_erro_runtime(mensagem: String):
+	var dialog = AcceptDialog.new()
+	dialog.title = "Erro Fatal da Engine!"
+	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
+	add_child(dialog)
+	dialog.popup_centered()
+	if modo_atual == "vilarejo": botao_executar.text = "Rodar Código"
+	else: botao_executar.text = "Parar e Escapar"
+
 
 func configurar_cores_do_codigo() -> void:
 	var highlighter = CodeHighlighter.new()
 	highlighter.number_color = Color("#b5cea8") 
 	highlighter.symbol_color = Color("#d4d4d4") 
 	highlighter.function_color = Color("#dcdcaa") 
+	
+	highlighter.member_variable_color = Color("#9cdcfe")
+	
 	highlighter.add_color_region('"', '"', Color("#ce9178"), false) 
 	highlighter.add_color_region('#', '', Color("#6a9955"), true)   
 	
@@ -67,7 +130,7 @@ func configurar_cores_do_codigo() -> void:
 	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
 		
 	var cor_tipo = Color("#569cd6")
-	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao"]
+	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 
@@ -84,17 +147,23 @@ func configurar_cores_do_codigo() -> void:
 	var funcoes_nativas = [
 		"mover", "atacar", "inimigoMaisProximo", "podeMover", 
 		"getTempo", "getVidaAtual", "escapar", "escanearArea",
-		"posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar",
-		"cinto", "mochila", "usarItem", "colocarItem"
+		"posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar"
 	]
 	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
+	
+	var funcoes_membro = ["usarItem", "colocarItem"]
+	for func_membro in funcoes_membro: 
+		highlighter.add_member_keyword_color(func_membro, cor_funcao)
+		
 	code_edit.syntax_highlighter = highlighter
+
 
 func ativar_modo_vilarejo():
 	modo_atual = "vilarejo"
 	code_edit.editable = true
 	botao_executar.visible = true
 	botao_executar.text = "Rodar Código"
+
 
 func ativar_modo_arena():
 	modo_atual = "arena"
@@ -103,37 +172,18 @@ func ativar_modo_arena():
 	botao_executar.text = "Parar e Escapar"
 	code_edit.release_focus() 
 
-# ==========================================
-# O BOTÃO DE EXECUTAR / ESCAPAR
-# ==========================================
-func _on_botao_executar_pressed() -> void:
-	print("\n--- INICIANDO FLUXO DE EXECUÇÃO ---")
-	print("[DEBUG TERMINAL] 1. Clique detectado no botão!")
-	print("[DEBUG TERMINAL] 2. Modo atual é: ", modo_atual)
 
+func _on_botao_executar_pressed() -> void:
 	if modo_atual == "vilarejo":
 		var codigo_digitado = code_edit.text
-		print("[DEBUG TERMINAL] 3. Lendo código:\n", codigo_digitado)
-		
-		if codigo_digitado.strip_edges() == "":
-			print("[DEBUG TERMINAL] ERRO: Código está vazio. Cancelando.")
-			return
-			
-		print("[DEBUG TERMINAL] 4. Enviando código para o C#...")
+		if codigo_digitado.strip_edges() == "": return
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
-		print("[DEBUG TERMINAL] 5. Sinal enviado pro C# com sucesso!")
-		
 	elif modo_atual == "arena":
-		print("[DEBUG TERMINAL] 3. Acionando Kill Switch no C#...")
 		if interpretador.has_method("PararExecucao"):
 			interpretador.PararExecucao()
-			
-		print("[DEBUG TERMINAL] 4. Escapando da Arena...")
 		FuncoesNativas.escapar()
-		
-# ==========================================
-# FERRAMENTA DE DEBUG - INJEÇÃO DE CÓDIGO
-# ==========================================
+
+
 func _on_botao_debug_pressed() -> void:
 	var codigo_teste = """arena(Floresta)
 Direcao dir = Esquerda
@@ -158,14 +208,11 @@ enquanto(Verdadeiro):
 fim enquanto
 """
 	code_edit.text = codigo_teste
-	print("[DEBUG TERMINAL] Código de teste injetado com sucesso!")
 
 
-# ==========================================
-# LÓGICA DO AUTOCOMPLETE LIVE E PARÊNTESES
-# ==========================================
 func _on_text_changed() -> void:
 	code_edit.request_code_completion(true)
+
 
 func _on_code_completion_requested() -> void:
 	var current_line = code_edit.get_caret_line()
@@ -185,21 +232,14 @@ func _on_code_completion_requested() -> void:
 
 	for termo in AutocompleteDB.termos.keys():
 		if termo.to_lower().begins_with(prefixo_digitado.to_lower()) and termo != prefixo_digitado:
-			
 			var tipo_icone = CodeEdit.KIND_PLAIN_TEXT
-			if termo.contains("()"):
-				tipo_icone = CodeEdit.KIND_FUNCTION
-				
+			if termo.contains("()"): tipo_icone = CodeEdit.KIND_FUNCTION
 			code_edit.add_code_completion_option(tipo_icone, termo, termo)
 			sugestoes_encontradas += 1
+		if sugestoes_encontradas >= 5: break
 
-		if sugestoes_encontradas >= 5:
-			break
-
-	if sugestoes_encontradas > 0:
-		code_edit.update_code_completion_options(true)
-	else:
-		code_edit.cancel_code_completion()
+	if sugestoes_encontradas > 0: code_edit.update_code_completion_options(true)
+	else: code_edit.cancel_code_completion()
 
 
 func _input(event: InputEvent) -> void:
@@ -215,10 +255,6 @@ func _verificar_cursor_pos_autocomplete() -> void:
 	
 	for termo in AutocompleteDB.termos.keys():
 		if texto_linha.ends_with(termo):
-			
 			var recuo = AutocompleteDB.termos[termo] 
-			
-			if recuo > 0:
-				code_edit.set_caret_column(col - recuo)
-				
+			if recuo > 0: code_edit.set_caret_column(col - recuo)
 			break

@@ -9,16 +9,31 @@ using System.IO;
 
 public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 {
+	public Godot.Collections.Array ErrosEncontrados { get; } = new Godot.Collections.Array();
+
 	public void SyntaxError(TextWriter output, IRecognizer recognizer, T offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 	{
-		string erroTraduzido = msg.Replace("missing", "Faltando")
-								  .Replace("at", "em")
-								  .Replace("mismatched input", "Entrada incorreta")
-								  .Replace("expecting", "esperava-se")
-								  .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
-								  .Replace("no viable alternative", "Nenhuma alternativa válida encontrada");
+		string erroTraduzido = msg;
 
-		throw new Exception($"Erro Crítico de Sintaxe (Linha {line}): {erroTraduzido}");
+		// Limpa a mensagem robótica de erro de final de arquivo
+		if (erroTraduzido.Contains("missing 'fim' at '<EOF>'")) {
+			erroTraduzido = "Faltou fechar o bloco com 'fim' (o arquivo terminou antes).";
+		} else {
+			erroTraduzido = erroTraduzido.Replace("missing", "Faltando")
+										 .Replace("at", "em")
+										 .Replace("mismatched input", "Entrada incorreta")
+										 .Replace("expecting", "esperava-se")
+										 .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
+										 .Replace("no viable alternative", "Comando inválido ou incompleto")
+										 .Replace("<EOF>", "fim do arquivo");
+		}
+
+		var erro = new Godot.Collections.Dictionary
+		{
+			{ "linha", line - 1 }, 
+			{ "mensagem", erroTraduzido }
+		};
+		ErrosEncontrados.Add(erro);
 	}
 }
 
@@ -29,41 +44,33 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	private Node _gerenciador; 
 	
 	private bool _execucaoAbortada = false; 
-	
-	// NOVO: Crachá de identificação da thread ativa
 	private int _threadAtivaId = -1; 
 
 	public override void _Ready()
 	{
 		_apiNativa = GetNodeOrNull("/root/FuncoesNativas");
 		_gerenciador = GetNodeOrNull("/root/GerenciadorExecucao");
-		GD.Print("[C#] Interpretador Serviço pronto. Conectado à API Nativa.");
 	}
 
-	public void LiberarProximoComando()
-	{
-		_travaDeSincronizacao.Set(); 
-	}
+	public void LiberarProximoComando() { _travaDeSincronizacao.Set(); }
 
 	public void PararExecucao()
 	{
 		_execucaoAbortada = true;
-		_threadAtivaId = -1; // Invalida imediatamente o crachá da thread atual
+		_threadAtivaId = -1; 
 		_travaDeSincronizacao.Set(); 
 	}
 
 	public void ExecutarCodigoDoJogador(string codigo, Node personagem)
 	{
-		// 1. Limpa o terreno antes de começar uma nova execução
 		PararExecucao(); 
 		_execucaoAbortada = false; 
-		_travaDeSincronizacao.Reset(); // NOVO: Esvazia qualquer "sinal verde" fantasma que tenha ficado no buffer
+		_travaDeSincronizacao.Reset(); 
 		
 		if (_gerenciador != null) { _gerenciador.Call("registrar_interpretador", this); }
 
 		Task.Run(() => 
 		{
-			// 2. A nova thread guarda o seu próprio ID de identificação
 			_threadAtivaId = Thread.CurrentThread.ManagedThreadId;
 			
 			try 
@@ -71,16 +78,30 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 				var inputStream = new AntlrInputStream(codigo);
 				var lexer = new LinguagemLexer(inputStream);
 				
+				var lexerListener = new InterpretadorErrorListener<int>();
 				lexer.RemoveErrorListeners();
-				lexer.AddErrorListener(new InterpretadorErrorListener<int>());
+				lexer.AddErrorListener(lexerListener);
 
 				var tokens = new CommonTokenStream(lexer);
 				var parser = new LinguagemParser(tokens);
 				
+				var parserListener = new InterpretadorErrorListener<IToken>();
 				parser.RemoveErrorListeners();
-				parser.AddErrorListener(new InterpretadorErrorListener<IToken>());
+				parser.AddErrorListener(parserListener);
 
 				var arvore = parser.programa();
+
+				var todosErros = new Godot.Collections.Array();
+				foreach (var e in lexerListener.ErrosEncontrados) todosErros.Add(e);
+				foreach (var e in parserListener.ErrosEncontrados) todosErros.Add(e);
+
+				if (todosErros.Count > 0)
+				{
+					CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros);
+					return; 
+				}
+				
+				CallDeferred(nameof(LimparErrosVisuais));
 
 				var visitor = new MeuVisitor(this); 
 				visitor.Visit(arvore);
@@ -88,22 +109,51 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 			catch (Exception ex) 
 			{ 
 				if (ex.Message == "Execução abortada pelo jogador.") {
-					GD.Print("[C#] Loop infinito ou thread fantasma interrompida com sucesso.");
+					GD.Print("[C#] Execução limpa abortada.");
+				} else if (ex.Message.StartsWith("L:")) {
+					
+					// ==========================================
+					// NOVO: MAPEAMENTO DE ERROS SEMÂNTICOS PARA A UI
+					// Se o erro começar com "L:" ele NÃO cria pop-up, vira Highlight!
+					// ==========================================
+					var parts = ex.Message.Split(new char[] { '|' }, 2);
+					if (int.TryParse(parts[0].Substring(2), out int linha)) {
+						var erro = new Godot.Collections.Dictionary {
+							{ "linha", linha - 1 }, 
+							{ "mensagem", parts[1] }
+						};
+						var todosErros = new Godot.Collections.Array { erro };
+						CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros);
+					}
 				} else {
-					CallDeferred(nameof(NotificarErro), ex.Message); 
+					// Só cai no pop-up se for algo bizarro fora do script do jogador
+					CallDeferred(nameof(DelegarErroParaMainThread), ex.Message); 
 				}
 			}
 		});
 	}
 
-	public void NotificarErro(string mensagem) { 
-		GD.PrintErr($"[Erro] {mensagem}"); 
-		GetTree().CallGroup("Terminal", "mostrar_erro", mensagem);
+	public void EnviarErrosDeSintaxe(Godot.Collections.Array erros) 
+	{ 
+		GetTree().CallGroup("Terminal", "mostrar_erros_de_sintaxe", erros);
 	}
 
-	// ==========================================
-	// AÇÕES COM TICK 
-	// ==========================================
+	public void LimparErrosVisuais() 
+	{ 
+		GetTree().CallGroup("Terminal", "limpar_erros_de_sintaxe");
+	}
+
+	public void NotificarErro(string mensagem) 
+	{ 
+		CallDeferred(nameof(DelegarErroParaMainThread), mensagem);
+	}
+
+	private void DelegarErroParaMainThread(string mensagem)
+	{
+		GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
+	}
+	
+	// ... FUNÇÕES DE JOGO INALTERADAS ...
 	public void Mover(string direcao) { ExecutarAcaoComTick("mover", new Godot.Collections.Array { direcao }); }
 	public void Atacar(string alvo, string tipo) { ExecutarAcaoComTick("atacar", new Godot.Collections.Array { alvo, tipo }); }
 	public void Escapar() { ExecutarAcaoComTick("escapar", new Godot.Collections.Array()); }
@@ -116,48 +166,26 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 
 	private void ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
 	{
-		// NOVO: Verifica se a thread que está a tentar executar é a oficial. Se for zombie, ela é eliminada.
-		if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) 
-			throw new Exception("Execução abortada pelo jogador.");
-
+		if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) throw new Exception("Execução abortada pelo jogador.");
 		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
 		{
-			if (_gerenciador == null) 
-			{
-				CallDeferred(nameof(NotificarErro), "GerenciadorExecucao não encontrado.");
-				return;
-			}
-
+			if (_gerenciador == null) return;
 			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
 			_travaDeSincronizacao.WaitOne(); 
-			
-			// Verifica novamente logo após acordar da espera
-			if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) 
-				throw new Exception("Execução abortada pelo jogador.");
+			if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) throw new Exception("Execução abortada pelo jogador.");
 		}
-		else { CallDeferred(nameof(NotificarErro), $"Função '{metodo}' não implementada em FuncoesNativas.gd."); }
 	}
 
-	// ==========================================
-	// LEITURAS (Lê direto da API instantaneamente)
-	// ==========================================
 	public string InimigoMaisProximo() { return _apiNativa?.Call("inimigoMaisProximo").AsString() ?? ""; }
 	public bool PodeMover(string direcao) { return _apiNativa?.Call("podeMover", direcao).AsBool() ?? false; }
 	public int GetTempo() { return _apiNativa?.Call("getTempo").AsInt32() ?? 0; }
 	public int GetVidaAtual() { return _apiNativa?.Call("getVidaAtual").AsInt32() ?? 0; }
-	
 	public List<string> EscanearArea()
 	{
 		var res = _apiNativa?.Call("escanearArea").AsStringArray();
 		return res != null ? new List<string>(res) : new List<string>();
 	}
-	
-	// A nossa correção antiga contínua aqui!
-	public string GetNomeInimigo(string alvo) 
-	{ 
-		return _apiNativa?.Call("nomeInimigo", alvo).AsString() ?? ""; 
-	}
-
+	public string GetNomeInimigo(string alvo) { return _apiNativa?.Call("nomeInimigo", alvo).AsString() ?? ""; }
 	public int GetPosicaoPlayerX() { return _apiNativa?.Call("posicaoX").AsInt32() ?? 0; }
 	public int GetPosicaoPlayerY() { return _apiNativa?.Call("posicaoY").AsInt32() ?? 0; }
 	public int GetPosicaoTesouroX() { return _apiNativa?.Call("tesouroX").AsInt32() ?? 0; }
