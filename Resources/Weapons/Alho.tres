@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://bhexvkqu7x5it"]
+
+[ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/LancarFlecha.mp3" id="1_8khxr"]
+[ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/HitFlecha.mp3" id="2_s2ay1"]
+[ext_resource type="PackedScene" uid="uid://dcqxtd5tubknx" path="res://Scenes/Weapons/Alho.tscn" id="3_8khxr"]
+[ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_3g8hj"]
+
+[resource]
+script = ExtResource("4_3g8hj")
+nome = "Alho"
+damage = 1.0
+speed = 300.0
+knockback_multiplier = 0.5
+attack_sound = ExtResource("1_8khxr")
+hit_sound = ExtResource("2_s2ay1")
+projectile_node = ExtResource("3_8khxr")
+metadata/_custom_type_script = "uid://dacndn1awrba2"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvgoyvr0mrdsy"
-path="res://.godot/imported/gelo.png-50f3fb9c5cc2a5715dc33d092e373f3b.ctex"
+uid="uid://7ea10sue8aya"
+path="res://.godot/imported/Gelo.png-275ea8f22119e2764ef6901078991ef0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Projectiles/gelo.png"
-dest_files=["res://.godot/imported/gelo.png-50f3fb9c5cc2a5715dc33d092e373f3b.ctex"]
+source_file="res://Assets/Projectiles/Gelo.png"
+dest_files=["res://.godot/imported/Gelo.png-275ea8f22119e2764ef6901078991ef0.ctex"]
 
 [params]
 

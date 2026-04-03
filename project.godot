@@ -57,7 +57,6 @@ folder_colors={
 "res://Scenes/Spawner/": "yellow",
 "res://Scenes/UI/": "pink",
 "res://Scenes/Weapons/": "orange",
-"res://Scenes/Weapons/Projectiles/": "orange",
 "res://Scenes/World/": "green",
 "res://Scripts/Built-In/": "blue",
 "res://Scripts/Enemy/": "red",

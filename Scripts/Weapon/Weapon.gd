@@ -16,7 +16,7 @@ class_name Weapon
 @export var pitch_max : float = 1.2
 
 @export_group("Projectile")
-@export var projectile_node : PackedScene = preload("res://Scenes/Weapons/Projectiles/EsferaAzul.tscn")
+@export var projectile_node : PackedScene = preload("res://Scenes/Weapons/EsferaAzul.tscn")
 
 func activate(_source, _target, _scene_tree):
 	pass

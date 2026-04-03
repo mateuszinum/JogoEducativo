@@ -73,7 +73,6 @@ metadata/_custom_type_script = "uid://cbobvrteab571"
 [sub_resource type="Resource" id="Resource_cucs6"]
 script = ExtResource("3_fk416")
 item = ExtResource("4_yx0nd")
-chance_de_drop = 100.0
 quantidade_maxima = 2
 metadata/_custom_type_script = "uid://cvs37xuengnw4"
 

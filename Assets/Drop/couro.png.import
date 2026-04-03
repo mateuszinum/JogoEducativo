@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csh6uiksf1rsu"
-path="res://.godot/imported/couro.png-c5a9a6d1b0035143b9900f6d43c9d297.ctex"
+uid="uid://ctkp2qxm78p8"
+path="res://.godot/imported/Couro.png-eaa9c36334e1679fcfa8c5d48d3e3290.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Drop/couro.png"
-dest_files=["res://.godot/imported/couro.png-c5a9a6d1b0035143b9900f6d43c9d297.ctex"]
+source_file="res://Assets/Drop/Couro.png"
+dest_files=["res://.godot/imported/Couro.png-eaa9c36334e1679fcfa8c5d48d3e3290.ctex"]
 
 [params]
 
