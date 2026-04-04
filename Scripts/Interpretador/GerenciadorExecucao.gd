@@ -2,7 +2,7 @@ extends Node
 
 # Esta é a variável que o jogador pode dar UPGRADE!
 # Quanto menor o número, mais rápido o código do jogador roda.
-var tempo_tick: float = 0.5
+var tempo_tick: float = 0.8
 
 var interpretador_csharp: Node = null
 

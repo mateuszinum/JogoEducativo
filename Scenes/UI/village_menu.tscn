@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
 [ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
+[ext_resource type="AudioStream" uid="uid://b2ptb77gvq22a" path="res://Audio/Soundtracks/Tutorial.wav" id="2_li3q7"]
 [ext_resource type="PackedScene" uid="uid://47gpu1l8i1cx" path="res://Scenes/UI/loja_bruxa.tscn" id="5_ai1hv"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_pg2by"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="5_ter28"]
@@ -11,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://doh77mpn3yqve" path="res://Scenes/UI/loja_biblioteca.tscn" id="9_mri60"]
 [ext_resource type="PackedScene" uid="uid://cwy5acmn1mf2w" path="res://Scenes/UI/loja_mago_velho.tscn" id="10_yu54g"]
 [ext_resource type="PackedScene" uid="uid://xcdslswds8he" path="res://Scenes/UI/loja_comerciante.tscn" id="11_li3q7"]
+[ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Scripts/Polimento/PosProcessamentoJogo.tres" id="12_yu54g"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="14_1kxp1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mri60"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
@@ -52,8 +55,8 @@ grow_vertical = 2
 script = ExtResource("1_qhw0b")
 
 [node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
+stream = ExtResource("2_li3q7")
 volume_db = -10.0
-autoplay = true
 
 [node name="Background" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
@@ -211,6 +214,21 @@ layout_mode = 1
 [node name="LojaComerciante" parent="." unique_id=2059698802 instance=ExtResource("11_li3q7")]
 visible = false
 layout_mode = 1
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=591691817]
+layer = 10
+
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=860173356 groups=["EfeitoSangue"]]
+material = ExtResource("12_yu54g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=710526355]
+environment = ExtResource("14_1kxp1")
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1738301207]
 visible = false

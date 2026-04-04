@@ -2,6 +2,7 @@ extends Control
 
 static var intro_ja_exibida: bool = false
 
+@onready var musica_menu = $MusicaMenu
 @onready var anim_intro = $AnimationPlayer
 @onready var intro_layer = $IntroLayer
 @onready var transition_rect = $TransitionLayer/ColorRect
@@ -12,6 +13,13 @@ func _ready() -> void:
 		intro_ja_exibida = true
 	else:
 		pular_intro()
+	
+	if not Constantes.MODO_DEV:
+		musica_menu.play()
+	
+	if not Constantes.USAR_EFEITOS_TELA:
+		if has_node("PosProcessamento"):
+			$PosProcessamento.hide()
 
 func revelar_menu():
 	intro_layer.hide()
@@ -21,7 +29,7 @@ func pular_intro():
 	anim_intro.stop()
 
 func _on_start_pressed() -> void:
-	if $AudioStreamPlayer: $AudioStreamPlayer.stop()
+	if musica_menu: musica_menu.stop()
 	if has_node("SfxEntrar"): $SfxEntrar.play()
 	
 	var botao_start = $VBoxContainer/Button

@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
+[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Scripts/Polimento/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="17_3h8o7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjdf"]
 shader = ExtResource("4_k33u3")
@@ -168,6 +170,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i2xx2")
+
+[node name="MusicaMenu" type="AudioStreamPlayer" parent="." unique_id=1334439971]
+stream = ExtResource("3_o14dv")
+volume_db = -6.0
+
+[node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
+stream = ExtResource("10_wqme5")
+volume_db = -6.0
 
 [node name="Fundo" type="TextureRect" parent="." unique_id=298731134]
 layout_mode = 1
@@ -376,15 +386,6 @@ volume_clique_db = -5.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
 libraries/ = SubResource("AnimationLibrary_mrfpk")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1334439971]
-stream = ExtResource("3_o14dv")
-volume_db = -6.0
-autoplay = true
-
-[node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
-stream = ExtResource("10_wqme5")
-volume_db = -6.0
-
 [node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
 visible = false
 layout_mode = 1
@@ -434,6 +435,21 @@ offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_xp0kt")
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=2082542245]
+layer = 10
+
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=1988947040 groups=["EfeitoSangue"]]
+material = ExtResource("16_1yfdm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=723040478]
+environment = ExtResource("17_3h8o7")
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
 

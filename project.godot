@@ -26,6 +26,7 @@ GerenciadorExecucao="*uid://bh7ab5lnr87fi"
 ArenasDB="*uid://bt1c01c6vt522"
 AtaquesDB="*uid://ddbaqm10njfk0"
 InimigosDB="*uid://dq0t7frqweqt4"
+ProdutosDB="*uid://cesmlx8lqyoa8"
 Inventario="*uid://b7q1kl3bndmpu"
 Constantes="*uid://dke7kdeokw5g2"
 

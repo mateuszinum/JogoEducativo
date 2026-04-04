@@ -12,7 +12,11 @@ func _ready():
 	seed_hash = randi()
 	seed(seed_hash)
 	generate_world()
-	play_stage_music()
+	if not Constantes.MODO_DEV:
+		play_stage_music()
+	if not Constantes.USAR_EFEITOS_TELA:
+		if has_node("PosProcessamento"):
+			$PosProcessamento.hide()
 
 func generate_world():
 	if not stage_data:

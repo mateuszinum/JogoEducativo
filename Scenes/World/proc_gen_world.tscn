@@ -9,18 +9,16 @@
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="6_jixqc"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="6_nkw66"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="7_7fyq5"]
-[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_dr08h"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="8_5vcap"]
-[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="8_p7fpg"]
 [ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="9_01xxv"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="9_bkwyh"]
-[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_bc8hh"]
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="10_usue8"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="11_byjoo"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 [ext_resource type="AudioStream" uid="uid://dfi1awr5r7w4f" path="res://Audio/SFX/Collect.mp3" id="16_5vcap"]
+[ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Scripts/Polimento/PosProcessamentoJogo.tres" id="19_3nb34"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="20_jixqc"]
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="21_7fyq5"]
 
 [sub_resource type="Resource" id="Resource_01ayd"]
@@ -89,7 +87,6 @@ y_sort_enabled = true
 collect_sound = ExtResource("16_5vcap")
 collect_volume = -10.0
 collect_pitch_min = 1.0
-inventario_armas = Array[ExtResource("7_dr08h")]([ExtResource("8_p7fpg"), ExtResource("9_bkwyh"), ExtResource("10_bc8hh")])
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)
@@ -101,5 +98,20 @@ process_mode = 3
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("13_nkw66")]
 
 [node name="HUD_Inventario" parent="." unique_id=319363314 instance=ExtResource("21_7fyq5")]
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=217816066]
+layer = 10
+
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=1154637137 groups=["EfeitoSangue"]]
+material = ExtResource("19_3nb34")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=727459518]
+environment = ExtResource("20_jixqc")
 
 [editable path="Player"]
