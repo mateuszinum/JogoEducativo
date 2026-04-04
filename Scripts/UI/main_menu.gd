@@ -12,6 +12,10 @@ func _ready() -> void:
 		intro_ja_exibida = true
 	else:
 		pular_intro()
+		
+	if not Constantes.USAR_EFEITOS_TELA:
+		if has_node("PosProcessamento"):
+			$PosProcessamento.hide()
 
 func revelar_menu():
 	intro_layer.hide()

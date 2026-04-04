@@ -18,6 +18,10 @@ func _ready() -> void:
 	if loja_comerciante: loja_comerciante.hide()
 	if loja_biblioteca: loja_biblioteca.hide()
 	if loja_mago_velho: loja_mago_velho.hide()
+	
+	if not Constantes.USAR_EFEITOS_TELA:
+		if has_node("PosProcessamento"):
+			$PosProcessamento.hide()
 
 # ==========================================
 # SINAIS DOS BOTÕES DO MENU (ABRIR)

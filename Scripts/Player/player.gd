@@ -142,6 +142,8 @@ func take_damage(amount):
 		get_parent().add_child(audio)
 		audio.play()
 		audio.finished.connect(audio.queue_free)
+		
+	play_damage_effect()
 
 func _on_self_damage_body_entered(body: Node2D) -> void:
 	if "damage" in body: take_damage(body.damage)
@@ -152,3 +154,48 @@ func _on_self_damage_body_entered(body: Node2D) -> void:
 func _on_damage_tick_timeout() -> void:
 	modulate.a = 1
 	anim.play("default")
+
+func play_damage_effect() -> void:
+	# Chama o tremor da tela imediatamente!
+	shake_screen(6.0) 
+	
+	# Se os efeitos estiverem desligados, para por aqui e não anima o sangue
+	if not Constantes.USAR_EFEITOS_TELA:
+		return
+
+	var tela_sangue = get_tree().get_first_node_in_group("EfeitoSangue")
+	if tela_sangue == null or tela_sangue.material == null:
+		return
+		
+	var mat = tela_sangue.material as ShaderMaterial
+	var intensidade_maxima = lerp(0.8, 0.2, 0.6)
+	
+	var tween = create_tween()
+	tween.tween_method(
+		func(valor: float): mat.set_shader_parameter("sangue_intensidade", valor),
+		0.0, intensidade_maxima, 0.1
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_method(
+		func(valor: float): mat.set_shader_parameter("sangue_intensidade", valor),
+		intensidade_maxima, 0.0, 0.4
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+# --- NOVA FUNÇÃO DE SHAKE ---
+func shake_screen(intensidade: float) -> void:
+	var camera = $Camera2D # Garanta que a Camera2D é filha do Player
+	if camera == null: return
+	
+	var tween = create_tween()
+	
+	# Tremer 5 vezes seguidas
+	for i in range(5):
+		# Sorteia uma direção aleatória e multiplica pela força atual
+		var deslocamento = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized() * intensidade
+		tween.tween_property(camera, "offset", deslocamento, 0.04)
+		
+		# Reduz a intensidade em 30% a cada solavanco para dar um efeito de dissipação
+		intensidade *= 0.7 
+		
+	# Volta a câmera perfeitamente pro centro
+	tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)

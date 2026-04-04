@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cesmlx8lqyoa8"]
+
+[ext_resource type="Script" uid="uid://cqcwapcctl1qv" path="res://Scripts/Listas/ProdutosDB.gd" id="1_ktuyk"]
+
+[node name="ProdutosDB" type="Node" unique_id=1779632007]
+script = ExtResource("1_ktuyk")

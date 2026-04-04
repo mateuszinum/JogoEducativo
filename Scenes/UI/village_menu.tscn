@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://doh77mpn3yqve" path="res://Scenes/UI/loja_biblioteca.tscn" id="9_mri60"]
 [ext_resource type="PackedScene" uid="uid://cwy5acmn1mf2w" path="res://Scenes/UI/loja_mago_velho.tscn" id="10_yu54g"]
 [ext_resource type="PackedScene" uid="uid://xcdslswds8he" path="res://Scenes/UI/loja_comerciante.tscn" id="11_li3q7"]
+[ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Scripts/Polimento/PosProcessamentoJogo.tres" id="12_yu54g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mri60"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
@@ -211,6 +212,18 @@ layout_mode = 1
 [node name="LojaComerciante" parent="." unique_id=2059698802 instance=ExtResource("11_li3q7")]
 visible = false
 layout_mode = 1
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=591691817]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="PosProcessamento" unique_id=860173356 groups=["EfeitoSangue"]]
+material = ExtResource("12_yu54g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1738301207]
 visible = false
