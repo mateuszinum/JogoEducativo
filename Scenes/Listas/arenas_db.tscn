@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bt1c01c6vt522"]
+
+[ext_resource type="Script" uid="uid://dw44653e1brq8" path="res://Scripts/Listas/ArenasDB.gd" id="1_7svwe"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_vti08"]
+[ext_resource type="Resource" uid="uid://drqfd5tdsd6it" path="res://Resources/Stages/Campos/campos_data.tres" id="3_8w3qp"]
+[ext_resource type="Resource" uid="uid://cuv2y6cr6t1fs" path="res://Resources/Stages/Floresta/floresta_data.tres" id="3_s1f5k"]
+[ext_resource type="Resource" uid="uid://bsp7i2lv0scbx" path="res://Resources/Stages/Labirinto/deserto_data.tres" id="4_s1f5k"]
+
+[node name="ArenasDB" type="Node" unique_id=1658935375]
+script = ExtResource("1_7svwe")
+lista_de_arenas = Array[ExtResource("2_vti08")]([ExtResource("3_8w3qp"), ExtResource("3_s1f5k"), ExtResource("4_s1f5k")])

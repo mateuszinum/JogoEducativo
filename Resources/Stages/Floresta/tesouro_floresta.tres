@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://cbq58vn3x3gyp"]
+
+[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://Scripts/World/tesouro_data.gd" id="1_h5xa0"]
+[ext_resource type="Texture2D" uid="uid://ckpaqeb168wx2" path="res://Assets/Asset Packs/Chests Pack/chest_04.png" id="2_rla41"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_rhaft"]
+[ext_resource type="Resource" uid="uid://cbq1la4am4u0r" path="res://Resources/Drop/Esmeralda.tres" id="4_h5xa0"]
+
+[sub_resource type="Resource" id="Resource_5se4y"]
+script = ExtResource("3_rhaft")
+item = ExtResource("4_h5xa0")
+quantidade_minima = 10
+quantidade_maxima = 20
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("1_h5xa0")
+nome_do_tesouro = "Tesouro da Floresta"
+sprite_do_bau = ExtResource("2_rla41")
+tabela_de_drops = Array[ExtResource("3_rhaft")]([SubResource("Resource_5se4y")])
+metadata/_custom_type_script = "uid://swrsg053t5vv"

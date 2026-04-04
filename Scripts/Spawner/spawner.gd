@@ -1,17 +1,15 @@
 extends Node2D
 
 @export var enemy_scene : PackedScene
-@export var max_enemies : int = 300
+@export var max_enemies : int = 50
 
 @export var current_stage : StageData 
 
-var distance : float = 250
+var distance : float = 220
 var total_time_seconds : int = 0
 
 var active_spawns : Dictionary = {}
-
-func _ready():
-	check_spawn_events()
+var spawn_accumulators : Dictionary = {}
 
 func spawn(pos : Vector2, type_to_spawn: Enemy):
 	if get_tree().get_node_count_in_group("Enemy") >= max_enemies:
@@ -49,20 +47,30 @@ func check_spawn_events():
 	if current_stage == null: return
 	
 	for event in current_stage.spawn_events:
-		if event.time_in_seconds == total_time_seconds:
-			if event.spawn_rate > 0:
+		var tempo_alvo = event.time_in_seconds
+		if tempo_alvo == 0:
+			tempo_alvo = 1
+			
+		if tempo_alvo == total_time_seconds:
+			if event.spawn_rate > 0.01:
 				active_spawns[event.enemy_type] = event.spawn_rate
-				print("Evento: Começando a spawnar ", event.enemy_type.nome, " a ", event.spawn_rate, "/s")
+				print("Evento: Começando a spawnar ", event.enemy_type.nome)
 			else:
 				active_spawns.erase(event.enemy_type)
 				print("Evento: Parando de spawnar ", event.enemy_type.nome)
 
 func execute_spawns():
 	for enemy_type in active_spawns:
-		var amount_to_spawn = active_spawns[enemy_type]
+		var rate = active_spawns[enemy_type]
 		
-		for i in range(amount_to_spawn):
+		if not spawn_accumulators.has(enemy_type):
+			spawn_accumulators[enemy_type] = 0.0
+			
+		spawn_accumulators[enemy_type] += rate
+		
+		while spawn_accumulators[enemy_type] >= 1.0:
 			spawn(get_random_position(), enemy_type)
+			spawn_accumulators[enemy_type] -= 1.0
 
 func update_ui_clock():
 	var m = total_time_seconds / 60

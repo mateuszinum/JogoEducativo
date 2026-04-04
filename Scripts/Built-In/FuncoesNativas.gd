@@ -1,214 +1,358 @@
 extends Node
 
-'''
-Fazer
-- entender geração do level para fazer a função arena()
-'''
+var _cache_inimigo_proximo: String = ""
+var _cache_pode_mover: Dictionary = {
+	"cima": false, "baixo": false, "esquerda": false, "direita": false
+}
+var _coordenada_logica_atual := Vector2i(0, 0)
+var _posicao_inicializada := false
 
-# Mapeamento de Inputs para Debug sem necessidade do backend
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_z"):
-		FuncoesNativas.Partida.arena("Floresta")
+var _cache_tesouro_pos := Vector2i(-1, -1)
+
+func _physics_process(_delta: float) -> void:
+	var tree = get_tree()
+	var player = tree.get_first_node_in_group("Player")
+	var tile_map = tree.get_first_node_in_group("Mapa")
+	var inimigos = tree.get_nodes_in_group("Enemy")
+	var bau = tree.get_first_node_in_group("Tesouro")
+	
+	if player and tile_map and player.is_inside_tree():
+		if not _posicao_inicializada:
+			_coordenada_logica_atual = tile_map.local_to_map(player.global_position)
+			_posicao_inicializada = true
 		
-		var mundo = get_tree().get_first_node_in_group("Mundo")
-		if mundo and mundo.stage_data != null:
-			print("O arquivo que está no Mundo agora é: ", mundo.stage_data.resource_path)	
-	elif event.is_action_pressed("debug_x"):
-		FuncoesNativas.Partida.arena("Genérico")
+		var direcoes_vetores = {
+			"cima": Vector2i(0, -1), "baixo": Vector2i(0, 1),
+			"esquerda": Vector2i(-1, 0), "direita": Vector2i(1, 0)
+		}
+		for dir_nome in direcoes_vetores:
+			var coord_destino = _coordenada_logica_atual + direcoes_vetores[dir_nome]
+			var tem_chao = tile_map.get_cell_source_id(0, coord_destino) != -1
+			var sem_obstaculo = tile_map.get_cell_source_id(1, coord_destino) == -1
+			_cache_pode_mover[dir_nome] = tem_chao and sem_obstaculo
 
-		var mundo = get_tree().get_first_node_in_group("Mundo")
-		if mundo and mundo.stage_data != null:
-			print("O arquivo que está no Mundo agora é: ", mundo.stage_data.resource_path)
-			
-	elif event.is_action_pressed("debug_c"):
-		var livre = Jogador.podeMover("Direita")
-		if livre:
-			print("caminho livre")
+		var nome_mais_perto = ""
+		var menor_distancia = INF
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo):
+				var dist = player.global_position.distance_to(inimigo.global_position)
+				if dist < menor_distancia:
+					menor_distancia = dist
+					nome_mais_perto = inimigo.name
+		
+		_cache_inimigo_proximo = nome_mais_perto
+		
+		if bau:
+			_cache_tesouro_pos = tile_map.local_to_map(bau.global_position)
 		else:
-			print("tem uma parede")
+			_cache_tesouro_pos = Vector2i(-1, -1)
 
-	elif event.is_action_pressed("debug_v"):
-		print(Inimigo.nomeInimigo(Inimigo.inimigoMaisProximo()))
+# ==========================================
+# PORTAS DE ENTRADA DO C# (API GATEWAY)
+# ==========================================
+
+func jogoEstaPronto() -> bool:
+	return _posicao_inicializada
+
+func mover(direcao: String):
+	Jogador.mover_via_codigo(direcao)
+
+func atacar(alvo: String, tipo: String):
+	Jogador.atacar(alvo, tipo)
+
+func escapar():
+	Partida.escapar()
+
+func usar_item_cinto(indice: int):
+	Inventario.usar_item_cinto(indice)
+
+func usar_item_mochila():
+	Inventario.usar_item_mochila()
+
+func comprar(item: String):
+	Vilarejo.comprar(item)
+
+func arena(nome_arena: String):
+	Partida.arena(nome_arena)
+
+func colocar_item_mochila(item: String):
+	Inventario.colocar_item_mochila(item)
+
+func colocar_item_cinto(item: String, idx: int):
+	Inventario.colocar_item_cinto(item, idx)
+
+func inimigoMaisProximo() -> String:
+	return _cache_inimigo_proximo
+	
+func nomeInimigo(alvo_id: String) -> String:
+	return Inimigo.nomeInimigo(alvo_id)
+
+func podeMover(direcao: String) -> bool:
+	var dir_limpa = direcao.to_lower().strip_edges() 
+	var resultado = false
+	
+	if _cache_pode_mover.has(dir_limpa): 
+		resultado = _cache_pode_mover[dir_limpa] 
+	
+	print("[DEBUG C#] O agente perguntou se pode mover para '", dir_limpa, "' -> Godot respondeu: ", resultado)
+	
+	return resultado
+
+func getTempo() -> int:
+	return Partida.getTempo()
+
+func getVidaAtual() -> int:
+	return Jogador.getVidaAtual()
+
+func escanearArea() -> Array:
+	return Inimigo.escanear_area()
+
+func posicaoX() -> int:
+	return _coordenada_logica_atual.x
+
+func posicaoY() -> int:
+	return _coordenada_logica_atual.y
+
+func tesouroX() -> int:
+	return _cache_tesouro_pos.x
+
+func tesouroY() -> int:
+	return _cache_tesouro_pos.y
+
+
+# ==========================================
+# LÓGICA INTERNA DAS CLASSES
+# ==========================================
 
 class Inimigo:
-	# Função inimigoMaisProximo()
-	static func inimigoMaisProximo() -> CharacterBody2D:
+	static func escanear_area() -> Array:
 		var tree = Engine.get_main_loop()
-		
 		var inimigos = tree.get_nodes_in_group("Enemy")
-		if inimigos.is_empty():
-			return null
-		
 		var player = tree.get_first_node_in_group("Player")
-		if not player:
-			return null
-			
-		var pos_jogador = player.global_position
-
-		var mais_proximo: CharacterBody2D = null
-		var menor_distancia := INF
-
+		if inimigos.size() == 0 or not player:
+			return []
+		var raio = 300.0
+		var posicao_jogador = player.global_position
+		var inimigos_proximos_ids = []
 		for inimigo in inimigos:
-			if not is_instance_valid(inimigo):
-				continue
+			if is_instance_valid(inimigo):
+				var distancia = posicao_jogador.distance_to(inimigo.global_position)
+				if distancia <= raio:
+					inimigos_proximos_ids.append(inimigo.name) 
+		return inimigos_proximos_ids
 
-			# Compara a distância do jogador até o inimigo atual
-			var distancia = pos_jogador.distance_squared_to(inimigo.global_position)
-			if distancia < menor_distancia:
-				menor_distancia = distancia
-				mais_proximo = inimigo
-
-		return mais_proximo
-		
-	# Função escanearArea()
-	static func escanearArea():
+	static func nomeInimigo(alvo_id: String) -> String:
 		var tree = Engine.get_main_loop()
-			
 		var inimigos = tree.get_nodes_in_group("Enemy")
-		if inimigos.is_empty():
-			return null
-		
-		return inimigos
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				if "type" in inimigo and inimigo.type != null:
+					return inimigo.type.nome
+				return "Inimigo Desconhecido"
+		return ""
 
-	#Função nomeInimigo(alvo)
-	static func nomeInimigo(alvo: CharacterBody2D):
-		if is_instance_valid(alvo) and "type" in alvo and alvo.type != null:
-			return alvo.type.nome
 
 class Partida:
-	# Função tempo()
-	static func tempo() -> Array:
-		var spawner = Engine.get_main_loop().get_first_node_in_group("Spawner")
-		if spawner:
-			var total = spawner.total_time_seconds
-			var m = total / 60
-			var s = total % 60
+	static var em_arena: bool = false
+
+	static func escapar():
+		if not em_arena:
+			return
+		em_arena = false
+		print("Escapando da arena e voltando pro Vilarejo...")
+		
+		var tree = Engine.get_main_loop()
+		
+		var player = tree.get_first_node_in_group("Player")
+		if player and "invulneravel" in player:
+			player.invulneravel = true
 			
-			return [m, s]
-		return [0, 0]
-	
-	# Função arena(nomeDaArena)
-	static func arena(nome_arena: String):
-		const DIRETORIO_BASE = "res://Resources/Stages/"
-		
-		var caminho_completo = DIRETORIO_BASE + nome_arena + "/" + nome_arena + "_data.tres"
-		var dados_da_arena
-		
-		if ResourceLoader.exists(caminho_completo):
-			dados_da_arena = load(caminho_completo)
-		else:
-			printerr("ERRO: Os dados da arena '%s' não foram encontrados no caminho: %s" % [nome_arena, caminho_completo])
-			return null
-		
-		var mundo = Engine.get_main_loop().get_first_node_in_group("Mundo")
-		
-		if dados_da_arena != null:
-			mundo.stage_data = dados_da_arena
+		var jogo_main = tree.root.get_node_or_null("Jogo")
+		if jogo_main and jogo_main.has_method("fazer_transicao_tv"):
+			jogo_main.fazer_transicao_tv(jogo_main.CENA_VILAREJO, "vilarejo")
 
-	# Função tesouro() (Ver Pedro)
-	
-class Jogador:
-	# Função vidaAtual()
-	static func vida_atual():
-		var player = Engine.get_main_loop().get_first_node_in_group("Player")
-		if player:
-			return player.health
-		return 0.0
-	
-	# Função mover(direcao)
-	static func mover(direcao):
-		var player = Engine.get_main_loop().get_first_node_in_group("Player")
+	static func getTempo():
+		return 0
 
-		if not player:
-			return
-
-		if direcao == Vector2.ZERO or player.moving:
-			return
-
-		var raycast = player.get_node("RayCast2D")
-		raycast.target_position = direcao * player.tile_size
-		raycast.force_raycast_update()
-
-		if raycast.is_colliding():
-			return 
-
-		if direcao.x != 0:
-			player.anim.flip_h = (direcao.x < 0)
-		
-		player.moving = true
-
-		if player.step_sound != null:
-			var audio = AudioStreamPlayer2D.new()
-			audio.stream = player.step_sound
-			audio.volume_db = player.step_volume
-			audio.global_position = player.global_position
-			audio.pitch_scale = randf_range(player.step_pitch_min, player.step_pitch_max)
-			player.get_parent().add_child(audio)
-			audio.play()
-			audio.finished.connect(audio.queue_free)
-
-		var tween = player.create_tween()
-		tween.tween_property(player, "position", player.position + direcao * player.tile_size, player.TEMPO_DE_PASSO)
-		tween.tween_callback(player.move_false)
-
-		var squash_tween = player.create_tween()
-		squash_tween.tween_property(player.anim, "scale", Vector2(1.6, 0.6), player.TEMPO_ANIMACAO / 2.0)
-		squash_tween.tween_property(player.anim, "scale", Vector2(1.0, 1.0), player.TEMPO_ANIMACAO / 2.0)
-		
-	# Função escapar()
-	static func escapar() -> void:
-		Engine.get_main_loop().paused = false
-		Engine.get_main_loop().change_scene_to_file("res://Scenes/UI/jogo.tscn")
-
-	# Função posicao()
-	static func posicao():
+	static func tesouro():
 		var tree = Engine.get_main_loop()
-		var player = tree.get_first_node_in_group("Player")
+		var bau = tree.get_first_node_in_group("Tesouro")
 		var tilemap = tree.get_first_node_in_group("Mapa")
+		
+		if not bau or not tilemap: 
+			return null
+			
+		return tilemap.local_to_map(bau.global_position)
 
-		if not player or not tilemap:
-			return Vector2.ZERO
+	static func tesouroX():
+		var pos = tesouro()
+		return pos.x if pos != null else -1
 
-		var coordenada_jogador = tilemap.local_to_map(player.global_position)
-		return coordenada_jogador
+	static func tesouroY():
+		var pos = tesouro()
+		return pos.y if pos != null else -1
 
-	# Função podeMover(direcao)
-	static func podeMover(direcao: String) -> bool:
+	static func arena(nome: String):
+		var tree = Engine.get_main_loop()
+		
+		if em_arena:
+			tree.call_group("Terminal", "mostrar_erro", "Você já está em uma arena!\nUse a interface para escapar primeiro.")
+			return
+			
+		var jogo_main = tree.root.get_node_or_null("Jogo")
+		if not jogo_main:
+			printerr("ERRO: Cena principal 'Jogo' não encontrada.")
+			return
+		var novo_stage_data = ArenasDB.get_stage_data(nome)
+
+		if novo_stage_data != null:
+			em_arena = true
+			
+			FuncoesNativas._posicao_inicializada = false 
+			
+			if jogo_main.has_method("carregar_arena_via_codigo"):
+				jogo_main.carregar_arena_via_codigo(novo_stage_data)
+			else:
+				printerr("ERRO: Função 'carregar_arena_via_codigo' não encontrada em jogo.gd")
+		else:
+			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
+
+class Vilarejo:
+	static func comprar(item): pass
+
+
+class Jogador:
+	static func mover_via_codigo(direcao: String) -> void:
+		var dir_limpa = direcao.to_lower().strip_edges()
+		
+		# Verifica se o movimento atual é válido com base no cache atual
+		if FuncoesNativas._cache_pode_mover.has(dir_limpa) and FuncoesNativas._cache_pode_mover[dir_limpa]:
+			
+			var direcoes_vetores = {
+				"cima": Vector2i(0, -1),
+				"baixo": Vector2i(0, 1),
+				"esquerda": Vector2i(-1, 0),
+				"direita": Vector2i(1, 0)
+			}
+			
+			FuncoesNativas._coordenada_logica_atual += direcoes_vetores[dir_limpa]
+			
+			var tree = Engine.get_main_loop()
+			var tile_map = tree.get_first_node_in_group("Mapa")
+			
+			if tile_map:
+				for dir_nome in direcoes_vetores:
+					var coord_futura = FuncoesNativas._coordenada_logica_atual + direcoes_vetores[dir_nome]
+					
+					var tem_chao = tile_map.get_cell_source_id(0, coord_futura) != -1
+					var sem_obstaculo = tile_map.get_cell_source_id(1, coord_futura) == -1
+					var caminho_livre = tem_chao and sem_obstaculo
+					
+					FuncoesNativas._cache_pode_mover[dir_nome] = caminho_livre
+			
+			# 2. ATUALIZA O FRONT-END: Manda o boneco deslizar na tela
+			mover(direcao)
+		else:
+			print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
+		
+	static func mover(direcao: String) -> void:
 		var tree = Engine.get_main_loop()
 		var player = tree.get_first_node_in_group("Player")
+		if not player: return
 
 		var vetor_dir := Vector2.ZERO
-		
-		match direcao.to_lower(): 
+		match direcao.to_lower():
 			"cima": vetor_dir = Vector2.UP
 			"baixo": vetor_dir = Vector2.DOWN
 			"esquerda": vetor_dir = Vector2.LEFT
 			"direita": vetor_dir = Vector2.RIGHT
-			_:
-				printerr("ERRO: Direção inválida em podeMover(). Use 'Cima', 'Baixo', 'Esquerda' ou 'Direita'.")
-				return false
+		
+		if vetor_dir != Vector2.ZERO:
+			player.input_dir = vetor_dir
+			player.move()
 
-		var tile_size = 32.0 
-		var origem = player.global_position
-		var destino = origem + (vetor_dir * tile_size)
+	static func posicaoX():
+		var coord = posicao()
+		return coord.x if coord != null else -1
 
-		var space_state = player.get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(origem, destino)
+	static func posicaoY():
+		var coord = posicao()
+		return coord.y if coord != null else -1
 
-		var resultado = space_state.intersect_ray(query)
+	static func posicao():
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
+		var tilemap = tree.get_first_node_in_group("Mapa")
+		if not player or not tilemap: return Vector2.ZERO
+		return tilemap.local_to_map(player.global_position)
 
-		if not resultado.is_empty():
-			return false
-
-		return true
-
-#class Equipamento:
-# Função cinto.usarItem(indice) (Não precisa agr)
-
-# Função mochila.usarItem() (Não precisa agr)
-
-# Função cinto.colocarItem(item, indice) (Não precisa agr)
-
-# Função mochila.colocarItem(item) (Não precisa agr)
-
-# Função comprar(produto) (Não precisa agr)
+	static func atacar(alvo_id: String, tipo_ataque: String):
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		
+		if not player:
+			return
+		
+		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
+		
+		if ataque_data == null:
+			tree.call_group("Terminal", "mostrar_erro", "O ataque '" + tipo_ataque + "' não foi encontrado no grimório.")
+			return
+			
+		var alvo_encontrado = false
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				alvo_encontrado = true
+				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
+				
+				if ataque_data.projectile_node != null:
+					var projetil = ataque_data.projectile_node.instantiate()
+					
+					projetil.global_position = player.global_position
+					projetil.direction = player.global_position.direction_to(inimigo.global_position)
+					projetil.rotation = projetil.direction.angle()
+					
+					projetil.speed = ataque_data.speed
+					projetil.damage = ataque_data.damage
+					projetil.knockback_multiplier = ataque_data.knockback_multiplier
+					
+					if "ataque_nome" in projetil:
+						projetil.ataque_nome = ataque_data.nome
+					
+					if "hit_sound" in projetil:
+						projetil.hit_sound = ataque_data.hit_sound
+						projetil.hit_volume = ataque_data.hit_volume
+						projetil.pitch_min = ataque_data.pitch_min
+						projetil.pitch_max = ataque_data.pitch_max
+							
+					player.get_parent().add_child(projetil)
+					
+					if ataque_data.attack_sound != null:
+						var audio = AudioStreamPlayer2D.new()
+						audio.stream = ataque_data.attack_sound
+						audio.volume_db = ataque_data.attack_volume
+						audio.global_position = player.global_position
+						audio.pitch_scale = randf_range(ataque_data.pitch_min, ataque_data.pitch_max)
+						player.get_parent().add_child(audio)
+						audio.play()
+						audio.finished.connect(audio.queue_free)
+						
+				return
+				
+		if not alvo_encontrado:
+			print("[FuncoesNativas] O ataque falhou. O alvo '", alvo_id, "' não está mais na arena.")
+				
+	static func getVidaAtual() -> int:
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
+		if player and "health" in player:
+			return player.health
+		return 0
+		
+	static func usar_item_mochila(): pass
+	static func usar_item_cinto(index): pass
+	static func colocar_item_mochila(item): pass
+	static func colocar_item_cinto(item, index): pass

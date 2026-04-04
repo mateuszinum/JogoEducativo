@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bx2b1hghklvwh"]
+
+[ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/SlimeGelo-Walk.png" id="1_yx0nd"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_20ui5"]
+[ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_fk416"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_fk416"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="3_oyh8b"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="4_oyh8b"]
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="4_yx0nd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20ui5"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk416"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyh8b"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44fir"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duf1u"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk645"]
+atlas = ExtResource("1_yx0nd")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfuk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20ui5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk416")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyh8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44fir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duf1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk645")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_44fir"]
+script = ExtResource("2_fk416")
+ataque = ExtResource("3_oyh8b")
+multiplicador = 5.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_duf1u"]
+script = ExtResource("2_fk416")
+ataque = ExtResource("4_oyh8b")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_cucs6"]
+script = ExtResource("3_fk416")
+item = ExtResource("4_yx0nd")
+quantidade_maxima = 2
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("2_20ui5")
+nome = "SlimeDeGelo"
+animations = SubResource("SpriteFrames_gfuk8")
+tabela_de_drops = Array[ExtResource("3_fk416")]([SubResource("Resource_cucs6")])
+health = 10.0
+damage = 5.0
+speed = 6.0
+multiplicadores_de_ataque = Array[ExtResource("2_fk416")]([SubResource("Resource_44fir"), SubResource("Resource_duf1u")])
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://bmq8xbv3qshx1"]
+
+[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://Scripts/World/tesouro_data.gd" id="1_vm1ke"]
+[ext_resource type="Texture2D" uid="uid://cnxfpougyq8hk" path="res://Assets/Asset Packs/Chests Pack/chest_02.png" id="2_vm1ke"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_2ebxt"]
+[ext_resource type="Resource" uid="uid://bo6nq8i6ri5cp" path="res://Resources/Drop/Safira.tres" id="4_vm1ke"]
+
+[sub_resource type="Resource" id="Resource_5se4y"]
+script = ExtResource("3_2ebxt")
+item = ExtResource("4_vm1ke")
+quantidade_minima = 10
+quantidade_maxima = 20
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("1_vm1ke")
+nome_do_tesouro = "Tesouro dos Campos"
+sprite_do_bau = ExtResource("2_vm1ke")
+tabela_de_drops = Array[ExtResource("3_2ebxt")]([SubResource("Resource_5se4y")])
+metadata/_custom_type_script = "uid://swrsg053t5vv"

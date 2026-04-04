@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ciih8qpmcof52"]
+
+[ext_resource type="Texture2D" uid="uid://bnfv64avvujn7" path="res://Assets/Drop/Magma.png" id="1_hwa8l"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="1_iufil"]
+
+[resource]
+script = ExtResource("1_iufil")
+nome = "Magma"
+icone = ExtResource("1_hwa8l")
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"

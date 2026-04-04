@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cd6v87ojvquk0"]
+
+[ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="1_6q5bk"]
+[ext_resource type="Texture2D" uid="uid://cv6gvw41jdkuq" path="res://Assets/Asset Packs/Outros/Vampire-Glide.png" id="1_w6m35"]
+[ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_w6m35"]
+[ext_resource type="Resource" uid="uid://dj4cnce40c7d" path="res://Resources/Drop/Sangue.tres" id="3_4osdr"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_hdp3d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdp3d"]
+atlas = ExtResource("1_w6m35")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwpqh"]
+atlas = ExtResource("1_w6m35")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8lf6"]
+atlas = ExtResource("1_w6m35")
+region = Rect2(48, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcdnt"]
+atlas = ExtResource("1_w6m35")
+region = Rect2(72, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_716s8"]
+atlas = ExtResource("1_w6m35")
+region = Rect2(96, 0, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4osdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdp3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwpqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8lf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcdnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_716s8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_cucs6"]
+script = ExtResource("3_hdp3d")
+item = ExtResource("3_4osdr")
+quantidade_maxima = 2
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("2_w6m35")
+nome = "Vampiro"
+animations = SubResource("SpriteFrames_4osdr")
+tabela_de_drops = Array[ExtResource("3_hdp3d")]([SubResource("Resource_cucs6")])
+health = 5.0
+damage = 5.0
+metadata/_custom_type_script = "uid://b2i50jlxpbinp"

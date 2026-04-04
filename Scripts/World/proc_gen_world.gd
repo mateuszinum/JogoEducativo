@@ -18,6 +18,15 @@ func generate_world():
 	if not stage_data:
 		return
 		
+	if has_node("Spawner"):
+		var spawner = $Spawner
+		spawner.current_stage = stage_data
+		spawner.total_time_seconds = 0
+		spawner.active_spawns.clear()
+		
+		if spawner.has_node("Timer"):
+			spawner.get_node("Timer").start()
+		
 	if stage_data.stage_tileset:
 		tile_map.tile_set = stage_data.stage_tileset
 	
@@ -90,11 +99,9 @@ func gerar_tesouro():
 		if tem_chao and sem_obstaculo and fora_do_centro:
 			posicao_valida = true
 			
-	# Instancia o baú e adiciona no mundo
 	var novo_tesouro = cena_tesouro.instantiate()
 	novo_tesouro.add_to_group("Tesouro")
+	novo_tesouro.config = stage_data.tesouro_config
 	tile_map.add_child(novo_tesouro)
 	
-	# Converte a coordenada da grade para pixels e posiciona o baú
 	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
-	#print("Tesouro gerado na coordenada: ", coordenada_sorteada) Descomente para ver onde o tesouro spawna

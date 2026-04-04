@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bh3b78fwkrh5o"]
+
+[ext_resource type="Texture2D" uid="uid://bkxif1aw5x1o1" path="res://Assets/Drop/Cristal.png" id="1_ydtnp"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="2_s404b"]
+
+[resource]
+script = ExtResource("2_s404b")
+nome = "Cristal"
+icone = ExtResource("1_ydtnp")
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"

@@ -1,8 +1,9 @@
 extends Resource
 class_name Weapon
 
+@export var nome : String # <-- ADICIONADO AQUI PARA O DB ACHAR!
+
 @export var damage : float
-@export var cooldown : float
 @export var speed : float
 @export var knockback_multiplier : float = 1.0
 
@@ -15,7 +16,7 @@ class_name Weapon
 @export var pitch_max : float = 1.2
 
 @export_group("Projectile")
-@export var projectile_node : PackedScene = preload("res://Scenes/Weapons/Projectiles/arrow_shot.tscn")
+@export var projectile_node : PackedScene = preload("res://Scenes/Weapons/EsferaAzul.tscn")
 
 func activate(_source, _target, _scene_tree):
 	pass

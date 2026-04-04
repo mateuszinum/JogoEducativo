@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cgnw0nw66jgr"]
+
+[ext_resource type="Texture2D" uid="uid://dqm30im6m0n2u" path="res://Assets/Drop/Osso.png" id="1_cdvs2"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="1_sl2rw"]
+
+[resource]
+script = ExtResource("1_sl2rw")
+nome = "Osso"
+icone = ExtResource("1_cdvs2")
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"

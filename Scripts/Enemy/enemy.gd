@@ -1,12 +1,18 @@
 extends CharacterBody2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
+# --- PASSO 4: PRELOAD DA CENA DO DROP (ATUALIZE ESTE CAMINHO PARA A SUA CENA!) ---
+const CENA_BASE_DO_DROP = preload("res://Scenes/Drops/drop.tscn") 
+
 const KNOCKBACK_FORCE : float = 400.0
 const DISTANCIA_DESPAWN : float = 300.0
 
 var speed: float = 60
 var despawns: bool = true
 @export var nav_agent: NavigationAgent2D
+
+
+
 
 var knockback : Vector2
 var separation : float
@@ -30,6 +36,7 @@ var health : float:
 	set(value):
 		health = value
 		if health <= 0:
+			gerar_drops() #  CHAMA A FUNÇÃO DE DROPS ANTES DE MORRER 
 			queue_free()
 
 var damage : float:
@@ -96,10 +103,22 @@ func check_separation(_delta):
 	if separation >= DISTANCIA_DESPAWN:
 		queue_free()
 
-func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO):
-	health -= amount
+func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
+	var dano_final = amount
+	
+	if type != null:
+		var mult_elemento = 1.0 
+		
+		if type.multiplicadores_de_ataque != null:
+			for fraqueza in type.multiplicadores_de_ataque:
+				if fraqueza.ataque != null and fraqueza.ataque.nome == ataque_nome:
+					mult_elemento = fraqueza.multiplicador
+					break
+		dano_final *= mult_elemento
+		
+	health -= dano_final
 	apply_knockback(mult, knockback_dir)
-	show_damage_number(amount)
+	show_damage_number(dano_final)
 	
 func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
 	var player = get_tree().get_first_node_in_group("Player")
@@ -125,3 +144,28 @@ func show_damage_number(amount):
 	dmg_num.global_position.y += randf_range(-12, 12)
 	get_parent().add_child(dmg_num)
 	dmg_num.setup(amount)
+	
+	
+
+func gerar_drops() -> void:
+	print("--- LOG DE DROP ---")
+	print("1. Inimigo morreu. Iniciando gerar_drops().")
+	
+	if type != null:
+		print("2. Inimigo possui o type: ", type.nome)
+		
+		if type.tabela_de_drops != null and type.tabela_de_drops.size() > 0:
+			print("3. Tabela de drops encontrada com ", type.tabela_de_drops.size(), " itens.")
+			
+			for drop in type.tabela_de_drops:
+				var sorteio = randf() * 100.0 
+				
+				if sorteio <= drop.chance_de_drop:
+					var min_seguro = drop.quantidade_minima
+					var max_seguro = max(min_seguro, drop.quantidade_maxima)
+					var qtd_sorteada = randi_range(min_seguro, max_seguro)
+					for i in range(qtd_sorteada):
+						var novo_drop = CENA_BASE_DO_DROP.instantiate()
+						novo_drop.configurar(drop.item, 1)
+						novo_drop.global_position = global_position
+						get_parent().call_deferred("add_child", novo_drop)

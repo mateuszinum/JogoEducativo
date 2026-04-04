@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bo6nq8i6ri5cp"]
+
+[ext_resource type="Texture2D" uid="uid://bkfs8pw5jw1pm" path="res://Assets/Drop/Safira.png" id="1_ce2pa"]
+[ext_resource type="Script" uid="uid://cr66twlbvhs4x" path="res://Scripts/Itens(Drops)/item_data.gd" id="2_agn36"]
+
+[resource]
+script = ExtResource("2_agn36")
+nome = "Safira"
+icone = ExtResource("1_ce2pa")
+metadata/_custom_type_script = "uid://cr66twlbvhs4x"
