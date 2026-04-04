@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://doh77mpn3yqve"]
+
+[ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_v8lro"]
+
+[node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
+
+[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
+text = "BIBLIOTECA"

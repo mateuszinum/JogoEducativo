@@ -3,7 +3,43 @@
 [ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
 [ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
+[ext_resource type="PackedScene" uid="uid://47gpu1l8i1cx" path="res://Scenes/UI/loja_bruxa.tscn" id="5_ai1hv"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_pg2by"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="5_ter28"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="6_jqgal"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="7_s2xrj"]
+[ext_resource type="PackedScene" uid="uid://doh77mpn3yqve" path="res://Scenes/UI/loja_biblioteca.tscn" id="9_mri60"]
+[ext_resource type="PackedScene" uid="uid://cwy5acmn1mf2w" path="res://Scenes/UI/loja_mago_velho.tscn" id="10_yu54g"]
+[ext_resource type="PackedScene" uid="uid://xcdslswds8he" path="res://Scenes/UI/loja_comerciante.tscn" id="11_li3q7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mri60"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu54g"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_li3q7"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kxp1"]
 
 [node name="VillageMenu" type="Control" unique_id=600159087]
 texture_filter = 1
@@ -15,21 +51,130 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhw0b")
 
-[node name="ColorRect" type="TextureRect" parent="." unique_id=414701676]
+[node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
+volume_db = -10.0
+autoplay = true
+
+[node name="Background" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -75.99999
-offset_right = 616.0
-offset_bottom = 284.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.67, 0.67)
 texture = ExtResource("2_kolhh")
 
-[node name="Label" type="Label" parent="." unique_id=1399879803]
+[node name="Buttons" type="Node2D" parent="Background" unique_id=1457950987]
+scale = Vector2(0.74626863, 0.74626863)
+
+[node name="ButtonBruxa" type="Button" parent="Background/Buttons" unique_id=397101318]
+offset_left = 826.0
+offset_top = 1078.0
+offset_right = 985.0
+offset_bottom = 1129.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mri60")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu54g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_li3q7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kxp1")
+text = "BRUXA"
+script = ExtResource("5_pg2by")
+som_hover = ExtResource("6_jqgal")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_s2xrj")
+volume_clique_db = -5.0
+
+[node name="ButtonComerciante" type="Button" parent="Background/Buttons" unique_id=388143445]
+offset_left = 1548.0
+offset_top = 1006.0
+offset_right = 1873.0
+offset_bottom = 1057.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mri60")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu54g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_li3q7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kxp1")
+text = "COMERCIANTE"
+script = ExtResource("5_pg2by")
+som_hover = ExtResource("6_jqgal")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_s2xrj")
+volume_clique_db = -5.0
+
+[node name="ButtonBiblioteca" type="Button" parent="Background/Buttons" unique_id=81656469]
+offset_left = 1296.0
+offset_top = 660.0
+offset_right = 1564.0
+offset_bottom = 711.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mri60")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu54g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_li3q7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kxp1")
+text = "BIBLIOTECA"
+script = ExtResource("5_pg2by")
+som_hover = ExtResource("6_jqgal")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_s2xrj")
+volume_clique_db = -5.0
+
+[node name="ButtonMagoVelho" type="Button" parent="Background/Buttons" unique_id=935207510]
+offset_left = 976.0
+offset_top = 808.0
+offset_right = 1272.0
+offset_bottom = 859.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_mri60")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yu54g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_li3q7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kxp1")
+text = "MAGO VELHO"
+script = ExtResource("5_pg2by")
+som_hover = ExtResource("6_jqgal")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_s2xrj")
+volume_clique_db = -5.0
+
+[node name="TextoFlutuante" type="Label" parent="." unique_id=1399879803]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,13 +188,29 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 6
 theme_override_fonts/font = ExtResource("2_k4kg0")
 theme_override_font_sizes/font_size = 28
-text = "Bem-Vindo ao Vilarejo!
-Chame a função \"arena(Floresta)\" pra jogar!"
+text = "Bem-Vindo ao Vilarejo!"
 horizontal_alignment = 1
 script = ExtResource("5_ter28")
 amplitude_x = 10.0
 amplitude_y = 6.0
 amplitude_rotacao = 1.2
+
+[node name="LojaBruxa" parent="." unique_id=1722254578 instance=ExtResource("5_ai1hv")]
+visible = false
+layout_mode = 1
+mouse_filter = 0
+
+[node name="LojaBiblioteca" parent="." unique_id=2108552616 instance=ExtResource("9_mri60")]
+visible = false
+layout_mode = 1
+
+[node name="LojaMagoVelho" parent="." unique_id=1426047850 instance=ExtResource("10_yu54g")]
+visible = false
+layout_mode = 1
+
+[node name="LojaComerciante" parent="." unique_id=2059698802 instance=ExtResource("11_li3q7")]
+visible = false
+layout_mode = 1
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1738301207]
 visible = false
@@ -63,6 +224,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
-volume_db = -10.0
-autoplay = true
+[connection signal="pressed" from="Background/Buttons/ButtonBruxa" to="." method="_on_button_bruxa_pressed"]
+[connection signal="pressed" from="Background/Buttons/ButtonComerciante" to="." method="_on_button_comerciante_pressed"]
+[connection signal="pressed" from="Background/Buttons/ButtonBiblioteca" to="." method="_on_button_biblioteca_pressed"]
+[connection signal="pressed" from="Background/Buttons/ButtonMagoVelho" to="." method="_on_button_mago_velho_pressed"]
+[connection signal="fechou_loja" from="LojaBruxa" to="." method="_on_loja_bruxa_fechou_loja"]
+[connection signal="fechou_loja" from="LojaBiblioteca" to="." method="_on_loja_biblioteca_fechou_loja"]
+[connection signal="fechou_loja" from="LojaMagoVelho" to="." method="_on_loja_mago_velho_fechou_loja"]
+[connection signal="fechou_loja" from="LojaComerciante" to="." method="_on_loja_comerciante_fechou_loja"]

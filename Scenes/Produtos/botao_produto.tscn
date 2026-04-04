@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dme8jpy7soqbx"]
+
+[ext_resource type="Script" uid="uid://cgyu2pcvx6mek" path="res://Scripts/Produtos/botao_produto.gd" id="1_seum3"]
+[ext_resource type="Texture2D" uid="uid://e82bqu4ve5cf" path="res://Assets/Asset Packs/items/item1.png" id="2_4gav2"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_8qpmc"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_0xya4"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_ekic0"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_8qpmc")
+descricao_atual = "Multiplicador de força: 2x"
+descricao_upgrade = "Aumenta multiplicador de 2x para 3x"
+custo_item = ExtResource("4_0xya4")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_8qpmc")
+descricao_atual = "Multiplicador de força: 3x"
+descricao_upgrade = "Aumenta multiplicador de 3x para 4x"
+custo_item = ExtResource("4_0xya4")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_u6ld1"]
+script = ExtResource("3_8qpmc")
+descricao_atual = "Multiplicador de força: 4x"
+descricao_upgrade = "Nível máximo!"
+custo_item = ExtResource("4_0xya4")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_7ckxg"]
+script = ExtResource("5_ekic0")
+nome = "Teste"
+icone = ExtResource("2_4gav2")
+tipo = 2
+descricao_atual_base = "Multiplicador de força: 1x"
+descricao_upgrade_base = "Aumenta multiplicador de 1x para 2x"
+niveis = Array[ExtResource("3_8qpmc")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_u6ld1")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"
+
+[node name="BotaoProduto" type="Button" unique_id=1255495614]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_seum3")
+produto = SubResource("Resource_7ckxg")
+
+[node name="MargemIcone" type="MarginContainer" parent="." unique_id=561669259]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 22
+
+[node name="IconeProduto" type="TextureRect" parent="MargemIcone" unique_id=1760340921]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginBolinhas" type="MarginContainer" parent="." unique_id=587865647]
+layout_mode = 0
+offset_top = 47.99997
+offset_right = 80.0
+offset_bottom = 79.99997
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="ContainerBolinhas" type="HBoxContainer" parent="MarginBolinhas" unique_id=1332242449]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Margem" type="MarginContainer" parent="TooltipBox" unique_id=1380819482]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="OrganizadorVertical" type="VBoxContainer" parent="TooltipBox/Margem" unique_id=2017648440]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TooltipNome" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1317509966]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+
+[node name="TooltipDescricao" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1965983211]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2
+
+[node name="AreaDoPreco" type="HBoxContainer" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1690222296]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TooltipCustoIcone" type="TextureRect" parent="TooltipBox/Margem/OrganizadorVertical/AreaDoPreco" unique_id=17434461]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TooltipCustoValor" type="Label" parent="TooltipBox/Margem/OrganizadorVertical/AreaDoPreco" unique_id=12197869]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
