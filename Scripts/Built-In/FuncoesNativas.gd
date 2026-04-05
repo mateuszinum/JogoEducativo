@@ -1,5 +1,7 @@
 extends Node
 
+const ALCANCE_MAXIMO : float = 175.0
+
 var _cache_inimigo_proximo: String = ""
 var _cache_pode_mover: Dictionary = {
 	"cima": false, "baixo": false, "esquerda": false, "direita": false
@@ -37,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		for inimigo in inimigos:
 			if is_instance_valid(inimigo):
 				var dist = player.global_position.distance_to(inimigo.global_position)
-				if dist < menor_distancia:
+				if dist < menor_distancia and dist <= ALCANCE_MAXIMO:
 					menor_distancia = dist
 					nome_mais_perto = inimigo.name
 		
@@ -306,6 +308,10 @@ class Jogador:
 		for inimigo in inimigos:
 			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
 				alvo_encontrado = true
+				var distancia = player.global_position.distance_to(inimigo.global_position)
+				if distancia > FuncoesNativas.ALCANCE_MAXIMO:
+					print("[FuncoesNativas] Tentou atacar um inimigo muito longe!")
+					return
 				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
 				
 				if ataque_data.projectile_node != null:

@@ -1,6 +1,5 @@
 extends Node
 
-# Agora é uma Lista simples de arquivos StageData!
 @export var lista_de_arenas: Array[StageData] = []
 
 func get_stage_data(nome_procurado: String) -> Resource:

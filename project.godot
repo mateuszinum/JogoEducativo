@@ -27,6 +27,7 @@ ArenasDB="*uid://bt1c01c6vt522"
 AtaquesDB="*uid://ddbaqm10njfk0"
 InimigosDB="*uid://dq0t7frqweqt4"
 ProdutosDB="*uid://cesmlx8lqyoa8"
+RecursosDB="*uid://gh4ut8a5ncef"
 Inventario="*uid://b7q1kl3bndmpu"
 Constantes="*uid://dke7kdeokw5g2"
 
@@ -34,6 +35,7 @@ Constantes="*uid://dke7kdeokw5g2"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://dnjsxjshcl3ax"

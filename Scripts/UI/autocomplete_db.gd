@@ -1,7 +1,7 @@
 class_name AutocompleteDB
 extends Resource
 
-# o  numero na frente da palavra é o recuo do cursor após usar o autocomplete
+# o numero na frente da palavra é o recuo do cursor após usar o autocomplete
 static var termos : Dictionary = {
 	# Estruturas de Controle e Tipos
 	"se():": 2, 
