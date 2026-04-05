@@ -1,0 +1,468 @@
+[gd_scene format=3 uid="uid://dlet84vusyyr6"]
+
+[ext_resource type="Script" uid="uid://fahp554uy14i" path="res://Scripts/UI/main_menu.gd" id="1_i2xx2"]
+[ext_resource type="Texture2D" uid="uid://dwsp5g03b6x68" path="res://Assets/UI/fundo1.jpg" id="2_4pqbp"]
+[ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="3_gih0s"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="3_o14dv"]
+[ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="4_k33u3"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_mrfpk"]
+[ext_resource type="Texture2D" uid="uid://b36diiavsxrpb" path="res://Assets/UI/Logo.png" id="4_u7lva"]
+[ext_resource type="Texture2D" uid="uid://bugrjyp35c455" path="res://Assets/UI/Sunburst.png" id="5_jewm6"]
+[ext_resource type="Script" uid="uid://c6wsjp2cr7gkg" path="res://Scripts/Polimento/rotacao_continua.gd" id="6_cejvf"]
+[ext_resource type="Texture2D" uid="uid://b0ahs13ryy5bn" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard/Wizard-Idle.png" id="6_wqme5"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_wqme5"]
+[ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/HitGelo.mp3" id="10_wqme5"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
+[ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
+[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Scripts/Polimento/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="17_3h8o7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjdf"]
+shader = ExtResource("4_k33u3")
+shader_parameter/lod = 1.302000061845
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jewm6"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cejvf"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru8vt"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypsd1"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp0kt"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yfdm"]
+atlas = ExtResource("6_wqme5")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3h8o7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jewm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cejvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru8vt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypsd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp0kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yfdm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o14dv"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7lva"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o14dv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqbp"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="Animation" id="Animation_o14dv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_u7lva"]
+resource_name = "SplashIntro"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 2, 4.7, 5.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.69),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mrfpk"]
+_data = {
+&"RESET": SubResource("Animation_o14dv"),
+&"SplashIntro": SubResource("Animation_u7lva")
+}
+
+[node name="MainMenu" type="Control" unique_id=1821145701]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2xx2")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=298731134]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_4pqbp")
+script = ExtResource("3_gih0s")
+amplitude_rotacao = 1.0
+
+[node name="BlurRect" type="ColorRect" parent="." unique_id=574691369]
+material = SubResource("ShaderMaterial_lrjdf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Personagem" type="Control" parent="." unique_id=630321643]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.0
+offset_top = 60.0
+offset_right = 281.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gih0s")
+amplitude_x = 11.21
+velocidade_x = 0.295
+amplitude_y = 4.73
+velocidade_y = 0.5
+amplitude_rotacao = 1.215
+velocidade_rotacao = 0.915
+
+[node name="Raios" type="TextureRect" parent="Personagem" unique_id=1380382746]
+modulate = Color(1, 1, 1, 0.6862745)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1477.9999
+offset_top = -1513.0
+offset_right = 1522.0001
+offset_bottom = 1487.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 6.2831855
+pivot_offset = Vector2(1500, 1500)
+texture = ExtResource("5_jewm6")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("6_cejvf")
+amplitude_pulso = 0.4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personagem" unique_id=982547945]
+scale = Vector2(29.57, 29.57)
+sprite_frames = SubResource("SpriteFrames_3h8o7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.334193
+speed_scale = 1.5
+
+[node name="Logo" type="Control" parent="." unique_id=1083697683]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -175.0
+offset_right = -262.0
+offset_bottom = -175.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gih0s")
+amplitude_x = 3.0
+velocidade_x = 1.0
+amplitude_y = 3.0
+velocidade_y = 1.0
+amplitude_rotacao = 1.095
+velocidade_rotacao = 1.825
+
+[node name="Logo" type="Sprite2D" parent="Logo" unique_id=1022398578]
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("4_u7lva")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=583712999]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1094.0
+offset_top = -363.0
+offset_right = -716.0
+offset_bottom = -89.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 18
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=837130793]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "JOGAR"
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1909921654]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "CONFIGURAÇÕES"
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=895490790]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "CRÉDITOS"
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1865725634]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "SAIR"
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
+libraries/ = SubResource("AnimationLibrary_mrfpk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1334439971]
+stream = ExtResource("3_o14dv")
+volume_db = -6.0
+autoplay = true
+
+[node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
+stream = ExtResource("10_wqme5")
+volume_db = -6.0
+
+[node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.00012207031
+offset_top = -6.1035156e-05
+offset_right = 0.00012207031
+offset_bottom = 6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="IntroLayer" unique_id=1828069636]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="IntroLayer" unique_id=98034796]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 77
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="IntroLayer/Label" unique_id=352888535]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -86.0
+offset_right = 327.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_xp0kt")
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=2082542245]
+layer = 10
+
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=1988947040 groups=["EfeitoSangue"]]
+material = ExtResource("16_1yfdm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=723040478]
+environment = ExtResource("17_3h8o7")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=1152524501]
+visible = false
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]

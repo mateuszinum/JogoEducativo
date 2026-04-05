@@ -2,22 +2,19 @@ extends Control
 
 @onready var musica_vilarejo = $MusicaVilarejo
 
-# Referências para todas as lojas instanciadas
 @onready var loja_bruxa = $LojaBruxa
 @onready var loja_comerciante = $LojaComerciante
 @onready var loja_biblioteca = $LojaBiblioteca
 @onready var loja_mago_velho = $LojaMagoVelho
 
 func _ready() -> void:
-	if musica_vilarejo and not musica_vilarejo.playing:
-		musica_vilarejo.volume_db = 0.0 
-		musica_vilarejo.play()
-		
-	# Garantia de segurança: força todas as lojas a começarem escondidas
 	if loja_bruxa: loja_bruxa.hide()
 	if loja_comerciante: loja_comerciante.hide()
 	if loja_biblioteca: loja_biblioteca.hide()
 	if loja_mago_velho: loja_mago_velho.hide()
+	
+	if not Constantes.MODO_DEV:
+		musica_vilarejo.play()
 	
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):

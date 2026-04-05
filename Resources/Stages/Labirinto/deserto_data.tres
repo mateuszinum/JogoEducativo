@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_fk3qj"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_gdvrt"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_32ih0"]
+[ext_resource type="AudioStream" uid="uid://bxsx2gs23pi2u" path="res://Audio/Soundtracks/Labirinto.wav" id="5_fyay1"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="8_hg2w3"]
 [ext_resource type="TileSet" uid="uid://dth7tv7730a8t" path="res://Resources/Stages/Labirinto/deserto_tileset.tres" id="11_r2cjo"]
 [ext_resource type="Resource" uid="uid://cw3fnoxjn302w" path="res://Resources/Stages/Labirinto/tesouro_deserto.tres" id="12_f3t5x"]
@@ -27,6 +28,8 @@ metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 [resource]
 script = ExtResource("2_gdvrt")
 nome = "Labirinto"
+stage_music = ExtResource("5_fyay1")
+music_volume = -10.0
 map_width = 100
 tesouro_config = ExtResource("12_f3t5x")
 stage_tileset = ExtResource("11_r2cjo")

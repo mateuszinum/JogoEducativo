@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 [ext_resource type="AudioStream" uid="uid://dfi1awr5r7w4f" path="res://Audio/SFX/Collect.mp3" id="16_5vcap"]
 [ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Scripts/Polimento/PosProcessamentoJogo.tres" id="19_3nb34"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="20_jixqc"]
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="21_7fyq5"]
 
 [sub_resource type="Resource" id="Resource_01ayd"]
@@ -101,7 +102,7 @@ process_mode = 3
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=217816066]
 layer = 10
 
-[node name="ColorRect" type="ColorRect" parent="PosProcessamento" unique_id=1154637137 groups=["EfeitoSangue"]]
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=1154637137 groups=["EfeitoSangue"]]
 material = ExtResource("19_3nb34")
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,5 +110,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=727459518]
+environment = ExtResource("20_jixqc")
 
 [editable path="Player"]
