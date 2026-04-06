@@ -4,4 +4,4 @@ extends Node
 const MODO_DEV : bool = true
 
 # define se vai ter efeitos de pós processamento
-const USAR_EFEITOS_TELA : bool = false
+const USAR_EFEITOS_TELA : bool = true

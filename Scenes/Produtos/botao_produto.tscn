@@ -33,6 +33,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_ekic0")
 nome = "Teste"
 icone = ExtResource("2_4gav2")
+pre_requisitos = null
 tipo = 2
 descricao_atual_base = "Multiplicador de força: 1x"
 descricao_upgrade_base = "Aumenta multiplicador de 1x para 2x"
