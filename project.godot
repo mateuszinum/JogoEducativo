@@ -30,6 +30,7 @@ ProdutosDB="*uid://cesmlx8lqyoa8"
 RecursosDB="*uid://gh4ut8a5ncef"
 Inventario="*uid://b7q1kl3bndmpu"
 Constantes="*uid://dke7kdeokw5g2"
+ProgressoDB="*uid://dbwday27iykbu"
 
 [display]
 

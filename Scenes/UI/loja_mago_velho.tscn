@@ -6,9 +6,6 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
 
-[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
-text = "MAGO VELHO"
-
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="2" unique_id=1255495614]
 visible = false
 
@@ -31,9 +28,9 @@ mouse_filter = 2
 
 [node name="AreaLimite" type="ColorRect" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="0" unique_id=884083534]
 layout_mode = 0
-offset_left = -624.0
+offset_left = -741.0
 offset_top = 19.0
-offset_right = 1128.0
+offset_right = 1194.0
 offset_bottom = 1051.0
 
 [node name="Conexoes" type="Node2D" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="1" unique_id=489600333]
@@ -190,3 +187,9 @@ offset_left = -405.0
 offset_top = 390.0
 offset_right = -325.0
 offset_bottom = 470.0
+
+[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
+text = "MAGO VELHO"
+
+[node name="PersonagemImagem" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="1" unique_id=1626689645]
+visible = true

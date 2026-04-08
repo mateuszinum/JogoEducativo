@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cpma83vicbdah"]
+
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_xaj54"]
+[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_puepr"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_w425r"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_jnxwo"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_tk6a2"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_w425r")
+custo_item = ExtResource("4_jnxwo")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_w425r")
+custo_item = ExtResource("4_jnxwo")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_w425r")
+custo_item = ExtResource("4_jnxwo")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_tk6a2")
+icone = ExtResource("2_puepr")
+custo_item_simples = ExtResource("1_xaj54")
+niveis = Array[ExtResource("3_w425r")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

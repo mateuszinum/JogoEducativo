@@ -24,6 +24,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.98331875, 0.8181131, 0.6599038, 1)
 
+[node name="Conteudo" type="Node2D" parent="." unique_id=1289543832]
+
+[node name="BarraSuperior" type="ColorRect" parent="Conteudo" unique_id=700372077]
+offset_left = 150.0
+offset_right = 640.0
+offset_bottom = 58.0
+color = Color(0.69658035, 0.8366634, 1, 1)
+
+[node name="HUD_Inventario" parent="Conteudo" unique_id=319363314 instance=ExtResource("1_aitj0")]
+
+[node name="BotaoProduto" parent="Conteudo" unique_id=1255495614 instance=ExtResource("4_76fqn")]
+offset_left = 192.0
+offset_top = 90.0
+offset_right = 272.0
+offset_bottom = 170.0
+
 [node name="Lateral" type="Node2D" parent="." unique_id=285029944]
 
 [node name="BarraLateral" type="ColorRect" parent="Lateral" unique_id=626937840]
@@ -62,22 +78,6 @@ scale = Vector2(1.645, 1.645)
 mouse_filter = 2
 texture = ExtResource("1_icypo")
 expand_mode = 4
-
-[node name="Conteudo" type="Node2D" parent="." unique_id=1289543832]
-
-[node name="BarraSuperior" type="ColorRect" parent="Conteudo" unique_id=700372077]
-offset_left = 150.0
-offset_right = 640.0
-offset_bottom = 58.0
-color = Color(0.69658035, 0.8366634, 1, 1)
-
-[node name="HUD_Inventario" parent="Conteudo" unique_id=319363314 instance=ExtResource("1_aitj0")]
-
-[node name="BotaoProduto" parent="Conteudo" unique_id=1255495614 instance=ExtResource("4_76fqn")]
-offset_left = 192.0
-offset_top = 90.0
-offset_right = 272.0
-offset_bottom = 170.0
 
 [node name="Barreira" type="ColorRect" parent="." unique_id=51565971]
 layout_mode = 0
