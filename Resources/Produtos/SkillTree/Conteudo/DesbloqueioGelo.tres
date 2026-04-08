@@ -25,7 +25,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_f2r3j")
+nome = "Gelo"
 icone = ExtResource("2_q05yc")
+tipo = 3
 custo_item_simples = ExtResource("1_v4hsg")
 niveis = Array[ExtResource("3_ohnj3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

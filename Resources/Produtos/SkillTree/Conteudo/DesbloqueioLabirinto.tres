@@ -25,7 +25,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_qtoqs")
+nome = "Labirinto"
 icone = ExtResource("2_eaqbv")
+tipo = 3
 custo_item_simples = ExtResource("1_gqeto")
 niveis = Array[ExtResource("3_ydich")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

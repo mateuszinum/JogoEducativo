@@ -25,7 +25,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_tk6a2")
+nome = "Sensores 2"
 icone = ExtResource("2_puepr")
+tipo = 1
 custo_item_simples = ExtResource("1_xaj54")
 niveis = Array[ExtResource("3_w425r")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
