@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://n1cnxwxjj7t0"
-path="res://.godot/imported/Skranji-Regular.ttf-93618520f073f5a598bc92e6d0115381.fontdata"
+uid="uid://txymlrea05ny"
+path="res://.godot/imported/SourceSerif4-VariableFont_opsz,wght.ttf-6070ae9946086d04d062c9d8aa0d9f07.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/Skranji-Regular.ttf"
-dest_files=["res://.godot/imported/Skranji-Regular.ttf-93618520f073f5a598bc92e6d0115381.fontdata"]
+source_file="res://Assets/Fonts/Código/SourceSerif4-VariableFont_opsz,wght.ttf"
+dest_files=["res://.godot/imported/SourceSerif4-VariableFont_opsz,wght.ttf-6070ae9946086d04d062c9d8aa0d9f07.fontdata"]
 
 [params]
 

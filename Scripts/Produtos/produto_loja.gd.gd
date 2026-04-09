@@ -6,6 +6,7 @@ enum TipoProduto { ITEM_UNICO, DESBLOQUEIO_UNICO, UPGRADE, DESBLOQUEIO_PROGRESSI
 
 @export var nome: String
 @export var icone: Texture2D
+@export var pre_requisitos: Array[ProdutoLoja] = []
 
 @export var tipo: TipoProduto = TipoProduto.ITEM_UNICO:
 	set(value):

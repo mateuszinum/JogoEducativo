@@ -44,6 +44,14 @@ shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kxp1"]
 
+[sub_resource type="Gradient" id="Gradient_yljls"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.27108434)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kxp1"]
+gradient = SubResource("Gradient_yljls")
+
 [node name="VillageMenu" type="Control" unique_id=600159087]
 texture_filter = 1
 layout_mode = 3
@@ -56,7 +64,7 @@ script = ExtResource("1_qhw0b")
 
 [node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
 stream = ExtResource("2_li3q7")
-volume_db = -10.0
+volume_db = -4.0
 
 [node name="Background" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
@@ -176,6 +184,13 @@ som_hover = ExtResource("6_jqgal")
 volume_hover_db = -10.0
 som_clique = ExtResource("7_s2xrj")
 volume_clique_db = -5.0
+
+[node name="Sombra" type="TextureRect" parent="." unique_id=2125492208]
+layout_mode = 0
+offset_left = 604.825
+offset_right = 860.82526
+offset_bottom = 720.0
+texture = SubResource("GradientTexture1D_1kxp1")
 
 [node name="TextoFlutuante" type="Label" parent="." unique_id=1399879803]
 layout_mode = 1

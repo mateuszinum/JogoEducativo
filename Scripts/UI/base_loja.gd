@@ -12,7 +12,6 @@ var fila_de_dialogos: Array[String] = []
 func _ready() -> void:
 	pass
 
-# Função chamada pelo botão de seta "<-"
 func _on_botao_voltar_pressed() -> void:
 	fechou_loja.emit()
 	hide()

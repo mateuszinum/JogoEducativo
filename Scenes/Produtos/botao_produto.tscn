@@ -5,6 +5,18 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_8qpmc"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_0xya4"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_ekic0"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="6_0xya4"]
+[ext_resource type="Texture2D" uid="uid://cvs7eu83q8mo8" path="res://Assets/UI/BaseLoja/Elemento.png" id="6_8qpmc"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="7_ekic0"]
+[ext_resource type="AudioStream" uid="uid://dy7oih3iu8jee" path="res://Audio/SFX/UI/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="8_7ckxg"]
+[ext_resource type="Texture2D" uid="uid://du5n76k22oycc" path="res://Assets/UI/BaseLoja/Tooltip.png" id="10_7ol41"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_d2b7l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qpmc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xya4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekic0"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_8qpmc")
@@ -39,88 +51,176 @@ descricao_upgrade_base = "Aumenta multiplicador de 1x para 2x"
 niveis = Array[ExtResource("3_8qpmc")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_u6ld1")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
 
-[node name="BotaoProduto" type="Button" unique_id=1255495614]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ol41"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.99607843, 1, 1, 0.7176471)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_df68o"]
+texture = ExtResource("10_7ol41")
+texture_margin_left = 22.0
+texture_margin_top = 22.0
+texture_margin_right = 22.0
+texture_margin_bottom = 22.0
+
+[node name="BotaoProduto" type="Button" unique_id=1255495614 node_paths=PackedStringArray("visual_animado", "fundo_colorido")]
 custom_minimum_size = Vector2(80, 80)
-offset_right = 8.0
-offset_bottom = 8.0
+anchors_preset = -1
+anchor_right = 0.49
+offset_right = -547.2
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8qpmc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0xya4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ekic0")
 script = ExtResource("1_seum3")
 produto = SubResource("Resource_7ckxg")
+visual_animado = NodePath("Conteúdo")
+fundo_colorido = NodePath("Conteúdo/Background")
+escala_normal = Vector2(2.05, 2.05)
+escala_hover = Vector2(2.25, 2.25)
+escala_clique = Vector2(1.95, 1.95)
+tempo_requisito_conquistado = 0.2
+tempo_desbloqueando = 0.1
+som_hover = ExtResource("6_0xya4")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_ekic0")
+volume_clique_db = -5.0
+som_erro = ExtResource("8_7ckxg")
+volume_erro_db = -5.0
+escala_tooltip = Vector2(0.4, 0.4)
 
-[node name="MargemIcone" type="MarginContainer" parent="." unique_id=561669259]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-mouse_filter = 2
-theme_override_constants/margin_left = 18
-theme_override_constants/margin_top = 14
-theme_override_constants/margin_right = 18
-theme_override_constants/margin_bottom = 22
-
-[node name="IconeProduto" type="TextureRect" parent="MargemIcone" unique_id=1760340921]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-expand_mode = 1
-stretch_mode = 5
-
-[node name="MarginBolinhas" type="MarginContainer" parent="." unique_id=587865647]
-layout_mode = 0
-offset_top = 47.99997
-offset_right = 80.0
-offset_bottom = 79.99997
-mouse_filter = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 14
-
-[node name="ContainerBolinhas" type="HBoxContainer" parent="MarginBolinhas" unique_id=1332242449]
-unique_name_in_owner = true
-layout_mode = 2
-alignment = 1
-
-[node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Conteúdo" type="Control" parent="." unique_id=2035524980]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.375
+offset_top = -0.70500183
+offset_right = -1.375
+offset_bottom = -0.70500183
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.05, 2.05)
 mouse_filter = 2
 
-[node name="Margem" type="MarginContainer" parent="TooltipBox" unique_id=1380819482]
-layout_mode = 2
+[node name="Background" type="TextureRect" parent="Conteúdo" unique_id=1741709746]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 519.0
+offset_bottom = 519.0
+scale = Vector2(0.073, 0.073)
+mouse_filter = 2
+texture = ExtResource("6_8qpmc")
+
+[node name="MargemIcone" type="MarginContainer" parent="Conteúdo" unique_id=561669259]
+layout_mode = 0
+offset_left = -18.841465
+offset_top = -19.168293
+offset_right = 20.499535
+offset_bottom = 19.855705
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
+[node name="IconeProduto" type="TextureRect" parent="Conteúdo/MargemIcone" unique_id=1760340921]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginBolinhas" type="PanelContainer" parent="Conteúdo" unique_id=1149843935]
+layout_mode = 0
+offset_left = -9.573172
+offset_top = 8.148783
+offset_right = 44.085373
+offset_bottom = 20.831715
+scale = Vector2(0.4, 0.4)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ol41")
+
+[node name="ContainerBolinhas" type="HBoxContainer" parent="Conteúdo/MarginBolinhas" unique_id=1332242449]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+mouse_filter = 2
+alignment = 1
+
+[node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
+unique_name_in_owner = true
+z_index = 50
+custom_minimum_size = Vector2(400, 172)
+layout_mode = 0
+offset_left = 90.0
+offset_top = 90.0
+offset_right = 490.0
+offset_bottom = 253.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_df68o")
+
+[node name="Margem" type="MarginContainer" parent="TooltipBox" unique_id=1380819482]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
 [node name="OrganizadorVertical" type="VBoxContainer" parent="TooltipBox/Margem" unique_id=2017648440]
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="TooltipNome" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1317509966]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
+theme_override_fonts/font = ExtResource("10_d2b7l")
+theme_override_font_sizes/font_size = 60
+text = "Título"
 
 [node name="TooltipDescricao" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1965983211]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
+theme_override_fonts/font = ExtResource("10_d2b7l")
+theme_override_font_sizes/font_size = 40
+text = "Descrição"
 autowrap_mode = 2
 
 [node name="AreaDoPreco" type="HBoxContainer" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1690222296]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TooltipCustoIcone" type="TextureRect" parent="TooltipBox/Margem/OrganizadorVertical/AreaDoPreco" unique_id=17434461]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(24, 24)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+texture = ExtResource("2_4gav2")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TooltipCustoValor" type="Label" parent="TooltipBox/Margem/OrganizadorVertical/AreaDoPreco" unique_id=12197869]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
+theme_override_fonts/font = ExtResource("10_d2b7l")
+theme_override_font_sizes/font_size = 50
+text = "XX"

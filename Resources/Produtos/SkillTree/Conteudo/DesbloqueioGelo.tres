@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://dyix8gscaq3ab"]
+
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_v4hsg"]
+[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_q05yc"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ohnj3"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_85m7k"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_f2r3j"]
+[ext_resource type="Resource" uid="uid://cmkhmo0t2l5b1" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioInicio.tres" id="6_slbvi"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_ohnj3")
+custo_item = ExtResource("4_85m7k")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_ohnj3")
+custo_item = ExtResource("4_85m7k")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_ohnj3")
+custo_item = ExtResource("4_85m7k")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_f2r3j")
+nome = "Gelo"
+icone = ExtResource("2_q05yc")
+pre_requisitos = Array[ExtResource("5_f2r3j")]([ExtResource("6_slbvi")])
+tipo = 3
+custo_item_simples = ExtResource("1_v4hsg")
+niveis = Array[ExtResource("3_ohnj3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

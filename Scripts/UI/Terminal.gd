@@ -34,7 +34,6 @@ func _ready() -> void:
 	code_edit.code_completion_requested.connect(_on_code_completion_requested)
 	
 	tooltip_erro = Label.new()
-	
 	tooltip_erro.autowrap_mode = TextServer.AUTOWRAP_WORD
 	tooltip_erro.custom_minimum_size = Vector2(280, 0)
 	tooltip_erro.add_theme_font_size_override("font_size", 13)
@@ -97,7 +96,7 @@ func limpar_erros_de_sintaxe():
 		code_edit.set_line_background_color(i, Color(0, 0, 0, 0))
 	tooltip_erro.visible = false
 	if modo_atual == "vilarejo":
-		botao_executar.text = "Rodar Código"
+		botao_executar.text = "RODAR CÓDIGO"
 
 
 func mostrar_erro_runtime(mensagem: String):
@@ -106,8 +105,8 @@ func mostrar_erro_runtime(mensagem: String):
 	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
 	add_child(dialog)
 	dialog.popup_centered()
-	if modo_atual == "vilarejo": botao_executar.text = "Rodar Código"
-	else: botao_executar.text = "Parar e Escapar"
+	if modo_atual == "vilarejo": botao_executar.text = "RODAR CÓDIGO"
+	else: botao_executar.text = "PARAR E ESCAPAR"
 
 
 func configurar_cores_do_codigo() -> void:
@@ -158,14 +157,14 @@ func ativar_modo_vilarejo():
 	modo_atual = "vilarejo"
 	code_edit.editable = true
 	botao_executar.visible = true
-	botao_executar.text = "Rodar Código"
+	botao_executar.text = "RODAR CÓDIGO"
 
 
 func ativar_modo_arena():
 	modo_atual = "arena"
 	code_edit.editable = false 
 	botao_executar.visible = true
-	botao_executar.text = "Parar e Escapar"
+	botao_executar.text = "PARAR E ESCAPAR"
 	code_edit.release_focus() 
 
 
@@ -173,6 +172,14 @@ func _on_botao_executar_pressed() -> void:
 	if modo_atual == "vilarejo":
 		var codigo_digitado = code_edit.text
 		if codigo_digitado.strip_edges() == "": return
+		
+		# --- VERIFICAÇÃO DE PROGRESSÃO ---
+		var erro_bloqueio = validar_codigo_bloqueado(codigo_digitado)
+		if erro_bloqueio != "":
+			mostrar_erro_runtime(erro_bloqueio)
+			return
+		# ---------------------------------
+		
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
 	elif modo_atual == "arena":
 		if interpretador.has_method("PararExecucao"):
@@ -219,6 +226,14 @@ func _on_code_completion_requested() -> void:
 	var current_col = code_edit.get_caret_column()
 	var line_text = code_edit.get_line(current_line).substr(0, current_col)
 
+	# --- CORREÇÃO DO BUG DO 'FIM ENQUANTO' ---
+	# Impede que o autocomplete abra e engula o ENTER do jogador.
+	var texto_limpo = line_text.strip_edges()
+	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se"):
+		code_edit.cancel_code_completion()
+		return
+	# -----------------------------------------
+
 	var regex = RegEx.new()
 	regex.compile("[a-zA-Z0-9_\\.]+$") 
 	var match = regex.search(line_text)
@@ -231,6 +246,13 @@ func _on_code_completion_requested() -> void:
 	var sugestoes_encontradas = 0
 
 	for termo in AutocompleteDB.termos.keys():
+		var dados = AutocompleteDB.termos[termo]
+		var requisito = dados[1] 
+		
+		# SÓ SUGERE SE TIVER O REQUISITO
+		if not ProgressoDB.tem_desbloqueado(requisito):
+			continue
+			
 		if termo.to_lower().begins_with(prefixo_digitado.to_lower()) and termo != prefixo_digitado:
 			var tipo_icone = CodeEdit.KIND_PLAIN_TEXT
 			if termo.contains("()"): tipo_icone = CodeEdit.KIND_FUNCTION
@@ -255,6 +277,21 @@ func _verificar_cursor_pos_autocomplete() -> void:
 	
 	for termo in AutocompleteDB.termos.keys():
 		if texto_linha.ends_with(termo):
-			var recuo = AutocompleteDB.termos[termo] 
+			var recuo = AutocompleteDB.termos[termo][0]
 			if recuo > 0: code_edit.set_caret_column(col - recuo)
 			break
+			
+func validar_codigo_bloqueado(codigo: String) -> String:
+	for termo in AutocompleteDB.termos.keys():
+		var requisito = AutocompleteDB.termos[termo][1]
+		
+		if not ProgressoDB.tem_desbloqueado(requisito):
+			var termo_limpo = termo.replace("():", "").replace("()", "").replace(":", "").strip_edges()
+			
+			var regex = RegEx.new()
+			regex.compile("\\b" + termo_limpo.replace(".", "\\.") + "\\b")
+			
+			if regex.search(codigo):
+				return "Acesso Negado! Desbloqueie o conhecimento '" + requisito + "' na Árvore de Habilidades para usar o comando: " + termo_limpo
+				
+	return ""

@@ -4,5 +4,17 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
 
-[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
+[node name="FundoOverlay" parent="." index="0" unique_id=786979508]
+visible = false
+
+[node name="BarraSuperior" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="1" unique_id=700372077]
+visible = false
+
+[node name="HUD_Inventario" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="2" unique_id=319363314]
+visible = false
+
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="3" unique_id=1255495614]
+visible = false
+
+[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
 text = "BIBLIOTECA"

@@ -2,7 +2,59 @@
 
 [ext_resource type="Script" uid="uid://clfmn82bf6t82" path="res://Scripts/UI/jogo.gd" id="1_kv1y8"]
 [ext_resource type="Script" uid="uid://cev7x6bw6m835" path="res://Scripts/UI/Terminal.gd" id="2_8gbds"]
+[ext_resource type="Texture2D" uid="uid://de6peqjsu3q7h" path="res://Assets/UI/Terminal/Terminal.jpg" id="2_l4t8i"]
 [ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_n1i2u"]
+[ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Scripts/Polimento/PosProcessamentoTerminal.tres" id="5_a105h"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_kjdr6"]
+[ext_resource type="Texture2D" uid="uid://dj142akcgvgfv" path="res://Assets/UI/Terminal/play.png" id="6_inkna"]
+[ext_resource type="FontFile" uid="uid://txymlrea05ny" path="res://Assets/Fonts/Código/SourceSerif4-VariableFont_opsz,wght.ttf" id="7_5rjbm"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="7_kjdr6"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_tvy04"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_yljls"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
+texture = ExtResource("2_l4t8i")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a105h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjdr6"]
+content_margin_left = 8.0
+content_margin_right = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inkna"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rjbm"]
+content_margin_left = 8.0
+content_margin_right = 6.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n1i2u"]
+content_margin_left = 26.0
+content_margin_top = 26.0
+content_margin_right = 26.0
+content_margin_bottom = 26.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4t8i"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a105h"]
+content_margin_left = 26.0
+content_margin_top = 26.0
+content_margin_right = 26.0
+content_margin_bottom = 26.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
 
 [node name="Jogo" type="Control" unique_id=984641298]
 layout_mode = 3
@@ -20,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="AreaDoJogo" type="PanelContainer" parent="HBoxContainer" unique_id=907539882]
 layout_mode = 2
@@ -43,7 +96,7 @@ process_mode = 3
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(849, 720)
+size = Vector2i(849, 719)
 size_2d_override = Vector2i(640, 540)
 size_2d_override_stretch = true
 render_target_update_mode = 4
@@ -58,40 +111,106 @@ color = Color(0, 0, 0, 1)
 
 [node name="PainelTerminal" type="PanelContainer" parent="HBoxContainer" unique_id=1269295781]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(431, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_l4t8i")
 script = ExtResource("2_8gbds")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PainelTerminal" unique_id=1770846262]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=2033328512]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=1074448828]
 layout_mode = 2
 
+[node name="Espaço" type="Control" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=623900464]
+custom_minimum_size = Vector2(14.695, 12)
+layout_mode = 2
+
 [node name="Label" type="Label" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=2118135461]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "arquivo.py"
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a105h")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="BotaoDebug" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1087665595]
+[node name="BotaoDebug" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1426945878]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "[DEBUG] INSERIR CÓDIGO"
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "[DEBUG] Colocar código"
+script = ExtResource("5_kjdr6")
 
 [node name="BotaoExecutar" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=642814574]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
-text = "PARAR E ESCAPAR"
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "RODAR CÓDIGO"
+icon = ExtResource("6_inkna")
+icon_alignment = 2
+script = ExtResource("5_kjdr6")
+som_hover = ExtResource("7_tvy04")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_yljls")
+volume_clique_db = -5.0
+
+[node name="Espaço2" type="Control" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1898226199]
+custom_minimum_size = Vector2(14.695, 12)
+layout_mode = 2
 
 [node name="CodeEdit" type="CodeEdit" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=1340550873]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("7_5rjbm")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_n1i2u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_l4t8i")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_a105h")
+emoji_menu_enabled = false
+
+[node name="PosProcessamento" type="CanvasLayer" parent="HBoxContainer/PainelTerminal" unique_id=353547333]
+layer = 10
+offset = Vector2(4, 0)
+transform = Transform2D(1, 0, 0, 1, 4, 0)
+
+[node name="Efeitos" type="ColorRect" parent="HBoxContainer/PainelTerminal/PosProcessamento" unique_id=666054493 groups=["EfeitoSangue"]]
+material = ExtResource("5_a105h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 845.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="HBoxContainer/PainelTerminal/PosProcessamento" unique_id=2084198506]
+environment = ExtResource("7_kjdr6")
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1454908466]
 visible = false
@@ -110,4 +229,5 @@ color = Color(0, 0, 0, 1)
 unique_name_in_owner = true
 script = ExtResource("3_8gbds")
 
+[connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoDebug" to="." method="_on_botao_debug_pressed"]
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]

@@ -1,8 +1,385 @@
 [gd_scene format=3 uid="uid://cwy5acmn1mf2w"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_jp173"]
+[ext_resource type="Script" uid="uid://b7pddh7hubyyk" path="res://Scripts/UI/skill_tree_movimento.gd" id="2_j3yet"]
+[ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_j3yet"]
+[ext_resource type="Resource" uid="uid://cmkhmo0t2l5b1" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioInicio.tres" id="4_piamn"]
+[ext_resource type="Resource" uid="uid://se4vuh5ryinu" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="5_spist"]
+[ext_resource type="Resource" uid="uid://2faeufq3p63t" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioDebug.tres" id="6_55bkk"]
+[ext_resource type="Resource" uid="uid://bkxmslye5w0vy" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioOperadores.tres" id="7_7k5ma"]
+[ext_resource type="Resource" uid="uid://pgflit1x10ut" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioVariaveis.tres" id="8_x0qlo"]
+[ext_resource type="Resource" uid="uid://cwjpv35uuwh4d" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioListas.tres" id="9_j7bgc"]
+[ext_resource type="Resource" uid="uid://db1pvg7jegd2i" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioSensores1.tres" id="10_fqpdv"]
+[ext_resource type="Resource" uid="uid://cpma83vicbdah" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioSensores2.tres" id="11_uf3g2"]
+[ext_resource type="Resource" uid="uid://tqfpv3gwdwed" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLocalizacao.tres" id="12_tki0f"]
+[ext_resource type="Resource" uid="uid://b6a5utl3rfqtb" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioSensores3.tres" id="13_c2mca"]
+[ext_resource type="Resource" uid="uid://0y5qnmmav5jd" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioAutomacao1.tres" id="14_c56la"]
+[ext_resource type="Resource" uid="uid://cjir7wxqc0i01" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioFuncoes.tres" id="15_tnlql"]
+[ext_resource type="Resource" uid="uid://bj5tvui624wgd" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioItens.tres" id="16_tm52l"]
+[ext_resource type="Resource" uid="uid://cr8ln6oi2331" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioAutomacao2.tres" id="17_tmlqk"]
+[ext_resource type="Resource" uid="uid://crbdt5bosvqxo" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioUtilidades.tres" id="18_4t3wo"]
+[ext_resource type="Resource" uid="uid://dyix8gscaq3ab" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioGelo.tres" id="19_xvabl"]
+[ext_resource type="Resource" uid="uid://bri3042g08d8m" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFogo.tres" id="20_m64yk"]
+[ext_resource type="Resource" uid="uid://dhjladwnppl8p" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioEsferaVermelha.tres" id="21_cd25m"]
+[ext_resource type="Resource" uid="uid://cyeyaud5aq154" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoFogo.tres" id="22_soyyb"]
+[ext_resource type="Resource" uid="uid://b4a2qf6bx15hs" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFloresta.tres" id="23_hs0yn"]
+[ext_resource type="Resource" uid="uid://bu4bx8hlvnugg" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoGelo.tres" id="24_ep0q0"]
+[ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="25_ep0q0"]
+[ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="26_oqm2m"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
 
-[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
+[node name="SkillTreeMascara" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="3" unique_id=2013930762]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 166.0
+offset_top = 75.0
+offset_right = 626.0
+offset_bottom = 511.0
+mouse_filter = 1
+script = ExtResource("2_j3yet")
+zoom_inicial = 0.6
+
+[node name="CanvasArraste" type="Control" parent="Conteudo/SkillTreeMascara" index="0" unique_id=331041175]
+anchors_preset = 0
+offset_right = 490.0
+offset_bottom = 482.0
+mouse_filter = 2
+
+[node name="AreaLimite" type="ColorRect" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="0" unique_id=884083534]
+layout_mode = 0
+offset_left = -333.0
+offset_top = 13.0
+offset_right = 1367.0
+offset_bottom = 1259.0
+color = Color(1, 1, 1, 0)
+
+[node name="Conexoes" type="Node2D" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="1" unique_id=489600333]
+
+[node name="BotoesCodigo" type="Control" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="2" unique_id=1932808838]
+anchors_preset = 0
+offset_left = 37.54001
+offset_right = 37.54001
+
+[node name="BotaoProduto" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="0" unique_id=1306100104 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 200.45999
+offset_top = 132.0
+offset_right = 280.46
+offset_bottom = 212.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("4_piamn")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="CentroFoco" type="Marker2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/BotaoProduto" index="2" unique_id=1712658640]
+position = Vector2(40, 39)
+
+[node name="BotaoProduto2" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="1" unique_id=436071097 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 368.46002
+offset_top = 332.0
+offset_right = 448.46002
+offset_bottom = 412.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("5_spist")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto3" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="2" unique_id=364264349 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 581.46
+offset_top = 177.0
+offset_right = 661.46
+offset_bottom = 257.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("6_55bkk")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto4" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="3" unique_id=259499143 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 588.46
+offset_top = 330.0
+offset_right = 668.46
+offset_bottom = 410.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("7_7k5ma")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto5" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="4" unique_id=1102444366 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 806.45996
+offset_top = 320.0
+offset_right = 886.45996
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("8_x0qlo")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto6" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="5" unique_id=384249697 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 833.45996
+offset_top = 521.0
+offset_right = 913.45996
+offset_bottom = 601.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("9_j7bgc")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto7" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="6" unique_id=213515963 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 367.66998
+offset_top = 511.0
+offset_right = 447.66998
+offset_bottom = 591.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("10_fqpdv")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto8" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="7" unique_id=1616777381 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 297.46
+offset_top = 681.0
+offset_right = 377.46
+offset_bottom = 761.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("11_uf3g2")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto9" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="8" unique_id=96607190 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 520.45996
+offset_top = 683.0
+offset_right = 600.45996
+offset_bottom = 763.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("12_tki0f")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto10" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="9" unique_id=1523573316 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 383.46
+offset_top = 823.0
+offset_right = 463.46
+offset_bottom = 903.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("13_c2mca")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto11" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="10" unique_id=1295124709 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 595.46
+offset_top = 521.0
+offset_right = 675.46
+offset_bottom = 601.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("14_c56la")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto12" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="11" unique_id=670218252 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 765.45996
+offset_top = 673.0
+offset_right = 845.45996
+offset_bottom = 753.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("15_tnlql")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto13" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="12" unique_id=1894458085 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 987.45996
+offset_top = 675.0
+offset_right = 1067.46
+offset_bottom = 755.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("16_tm52l")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto14" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="13" unique_id=2035096975 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 982.45996
+offset_top = 806.0
+offset_right = 1062.46
+offset_bottom = 886.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("17_tmlqk")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto15" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="14" unique_id=1654986754 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 762.45996
+offset_top = 805.0
+offset_right = 842.45996
+offset_bottom = 885.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("18_4t3wo")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotoesConteudo" type="Control" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="3" unique_id=544611202]
+anchors_preset = 0
+offset_left = 37.54001
+offset_right = 37.54001
+
+[node name="BotaoProduto16" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="0" unique_id=1617538214 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -195.54001
+offset_top = 320.0
+offset_right = -115.54001
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("20_m64yk")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto17" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="1" unique_id=667926312 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 14.459991
+offset_top = 319.0
+offset_right = 94.45999
+offset_bottom = 399.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("19_xvabl")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto18" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="2" unique_id=694895894 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -51.54001
+offset_top = 437.0
+offset_right = 28.459991
+offset_bottom = 517.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("21_cd25m")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto19" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="3" unique_id=2074171592 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -49.54001
+offset_top = 582.0
+offset_right = 30.459991
+offset_bottom = 662.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("22_soyyb")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto21" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="4" unique_id=1488258733 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -174.54001
+offset_top = 768.0
+offset_right = -94.54001
+offset_bottom = 848.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("23_hs0yn")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto22" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="5" unique_id=1314487451 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 46.45999
+offset_top = 765.0
+offset_right = 126.45999
+offset_bottom = 845.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("24_ep0q0")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto23" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="6" unique_id=1540892238 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 46.45999
+offset_top = 886.0
+offset_right = 126.45999
+offset_bottom = 966.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("25_ep0q0")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto24" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="7" unique_id=1924821081 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -166.54001
+offset_top = 1004.0
+offset_right = -86.54001
+offset_bottom = 1084.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("26_oqm2m")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="4" unique_id=1255495614]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="PersonagemImagem" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="1" unique_id=1626689645]
+visible = true
+
+[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
 text = "MAGO VELHO"
