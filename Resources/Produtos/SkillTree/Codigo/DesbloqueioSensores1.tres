@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_4fy0p"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_ka18e"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_mprdk"]
+[ext_resource type="Resource" uid="uid://se4vuh5ryinu" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="6_yt7n5"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_4fy0p")
@@ -27,7 +28,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_mprdk")
 nome = "Sensores 1"
 icone = ExtResource("2_b6mqs")
+pre_requisitos = Array[ExtResource("5_mprdk")]([ExtResource("6_yt7n5")])
 tipo = 1
+descricao_simples = "nomeInimigo()"
 custo_item_simples = ExtResource("1_l1wcg")
 niveis = Array[ExtResource("3_4fy0p")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

@@ -4,7 +4,7 @@ extends Node
 const MODO_DEV : bool = true
 
 # Define se vai ter efeitos de pós processamento
-const USAR_EFEITOS_TELA : bool = true
+const USAR_EFEITOS_TELA : bool = false
 
 # NOVO: Se verdadeiro, ignora os bloqueios de progressão para facilitar testes
-const TUDO_DESBLOQUEADO : bool = false
+const TUDO_DESBLOQUEADO : bool = true

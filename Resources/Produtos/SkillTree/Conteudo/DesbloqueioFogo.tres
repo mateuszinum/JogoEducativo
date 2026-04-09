@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ctc1p"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_6ek1e"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_cslyi"]
+[ext_resource type="Resource" uid="uid://cmkhmo0t2l5b1" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioInicio.tres" id="6_1w3jm"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_ctc1p")
@@ -27,6 +28,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_cslyi")
 nome = "Fogo"
 icone = ExtResource("2_tptck")
+pre_requisitos = Array[ExtResource("5_cslyi")]([ExtResource("6_1w3jm")])
 tipo = 3
 custo_item_simples = ExtResource("1_r2ejy")
 niveis = Array[ExtResource("3_ctc1p")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

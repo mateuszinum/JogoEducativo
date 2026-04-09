@@ -28,6 +28,11 @@ script = ExtResource("5_xxrc8")
 nome = "Início"
 icone = ExtResource("2_ujj5e")
 tipo = 1
+descricao_simples = "arena()
+atacar()
+inimigoMaisProximo()
+Campos
+EsferaAzul"
 custo_item_simples = ExtResource("1_mxbgm")
 niveis = Array[ExtResource("3_o2rix")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

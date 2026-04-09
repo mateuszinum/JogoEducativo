@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_k6in4"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_8ancy"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_hckvb"]
+[ext_resource type="Resource" uid="uid://bri3042g08d8m" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFogo.tres" id="6_y22yp"]
+[ext_resource type="Resource" uid="uid://dyix8gscaq3ab" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioGelo.tres" id="7_l6aha"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_k6in4")
@@ -27,6 +29,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_hckvb")
 nome = "Esfera Vermelha"
 icone = ExtResource("2_06str")
+pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp"), ExtResource("7_l6aha")])
 tipo = 3
 custo_item_simples = ExtResource("1_ymvp7")
 niveis = Array[ExtResource("3_k6in4")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

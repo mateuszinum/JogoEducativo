@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_t0w4e"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_xa74j"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_jd25p"]
+[ext_resource type="Resource" uid="uid://b4a2qf6bx15hs" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFloresta.tres" id="6_kwox0"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_t0w4e")
@@ -27,6 +28,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_jd25p")
 nome = "Explosão de Gelo"
 icone = ExtResource("2_kwox0")
+pre_requisitos = Array[ExtResource("5_jd25p")]([ExtResource("6_kwox0")])
 tipo = 3
 custo_item_simples = ExtResource("1_7cy82")
 niveis = Array[ExtResource("3_t0w4e")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_npjni"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_l360q"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_vfxon"]
+[ext_resource type="Resource" uid="uid://db1pvg7jegd2i" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioSensores1.tres" id="6_x44yy"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_npjni")
@@ -27,7 +28,12 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 script = ExtResource("5_vfxon")
 nome = "Localização"
 icone = ExtResource("2_1kojt")
+pre_requisitos = Array[ExtResource("5_vfxon")]([ExtResource("6_x44yy")])
 tipo = 1
+descricao_simples = "posicaoX()
+posicaoY()
+tesouroX()
+tesouroY()"
 custo_item_simples = ExtResource("1_1yvfo")
 niveis = Array[ExtResource("3_npjni")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
