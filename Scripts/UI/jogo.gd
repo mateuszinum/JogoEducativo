@@ -109,3 +109,7 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	fade_tv.hide()
 	
 	transicao_em_andamento = false
+
+
+func _on_botao_debug_pressed() -> void:
+	pass # Replace with function body.

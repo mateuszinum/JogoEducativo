@@ -96,7 +96,7 @@ func limpar_erros_de_sintaxe():
 		code_edit.set_line_background_color(i, Color(0, 0, 0, 0))
 	tooltip_erro.visible = false
 	if modo_atual == "vilarejo":
-		botao_executar.text = "Rodar Código"
+		botao_executar.text = "RODAR CÓDIGO"
 
 
 func mostrar_erro_runtime(mensagem: String):
@@ -105,8 +105,8 @@ func mostrar_erro_runtime(mensagem: String):
 	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
 	add_child(dialog)
 	dialog.popup_centered()
-	if modo_atual == "vilarejo": botao_executar.text = "Rodar Código"
-	else: botao_executar.text = "Parar e Escapar"
+	if modo_atual == "vilarejo": botao_executar.text = "RODAR CÓDIGO"
+	else: botao_executar.text = "PARAR E ESCAPAR"
 
 
 func configurar_cores_do_codigo() -> void:
@@ -157,14 +157,14 @@ func ativar_modo_vilarejo():
 	modo_atual = "vilarejo"
 	code_edit.editable = true
 	botao_executar.visible = true
-	botao_executar.text = "Rodar Código"
+	botao_executar.text = "RODAR CÓDIGO"
 
 
 func ativar_modo_arena():
 	modo_atual = "arena"
 	code_edit.editable = false 
 	botao_executar.visible = true
-	botao_executar.text = "Parar e Escapar"
+	botao_executar.text = "PARAR E ESCAPAR"
 	code_edit.release_focus() 
 
 

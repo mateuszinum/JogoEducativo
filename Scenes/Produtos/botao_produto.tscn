@@ -192,7 +192,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
 theme_override_fonts/font = ExtResource("10_d2b7l")
 theme_override_font_sizes/font_size = 60
-text = "Texto"
+text = "Título"
 
 [node name="TooltipDescricao" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1965983211]
 unique_name_in_owner = true
@@ -201,18 +201,19 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
 theme_override_fonts/font = ExtResource("10_d2b7l")
 theme_override_font_sizes/font_size = 40
-text = "Texto"
+text = "Descrição"
 autowrap_mode = 2
 
 [node name="AreaDoPreco" type="HBoxContainer" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1690222296]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TooltipCustoIcone" type="TextureRect" parent="TooltipBox/Margem/OrganizadorVertical/AreaDoPreco" unique_id=17434461]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+texture = ExtResource("2_4gav2")
 expand_mode = 1
 stretch_mode = 5
 
@@ -221,5 +222,5 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
 theme_override_fonts/font = ExtResource("10_d2b7l")
-theme_override_font_sizes/font_size = 40
-text = "Texto"
+theme_override_font_sizes/font_size = 50
+text = "XX"

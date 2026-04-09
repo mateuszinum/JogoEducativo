@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="6_u5um8"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_8mo0i"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_d0m2b"]
-[ext_resource type="Texture2D" uid="uid://c2pmgbpjm7mun" path="res://Assets/UI/arrow_w.png" id="8_p8kjq"]
+[ext_resource type="Texture2D" uid="uid://c2pmgbpjm7mun" path="res://Assets/UI/BaseLoja/arrow_w.png" id="8_p8kjq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mo0i"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
@@ -72,7 +72,7 @@ offset_right = 640.0
 offset_bottom = 540.0
 
 [node name="BarraSuperior" type="ColorRect" parent="Conteudo" unique_id=700372077]
-offset_left = 150.0
+offset_left = 149.0
 offset_right = 640.0
 offset_bottom = 58.0
 color = Color(0.11119685, 0.11119684, 0.11119684, 1)
@@ -91,16 +91,16 @@ area_limite_tooltip = NodePath("../AreaLimiteTooltip")
 [node name="Lateral" type="Node2D" parent="." unique_id=285029944]
 
 [node name="BarraLateral" type="Sprite2D" parent="Lateral" unique_id=1481958355]
-position = Vector2(85, 269.13333)
+position = Vector2(84.99999, 269.13333)
 scale = Vector2(0.14756943, 0.15182509)
 texture = ExtResource("4_co7d0")
 
 [node name="PersonagemImagem" type="TextureRect" parent="Lateral" unique_id=1626689645]
 unique_name_in_owner = true
 offset_left = -445.00003
-offset_top = -162.00002
+offset_top = -149.0
 offset_right = 215.18234
-offset_bottom = 581.0
+offset_bottom = 594.0
 scale = Vector2(1.645, 1.645)
 mouse_filter = 2
 texture = ExtResource("1_icypo")

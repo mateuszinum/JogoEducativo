@@ -271,6 +271,8 @@ func atualizar_visual() -> void:
 				estilo.bg_color = cor_bolinha_inativa 
 				
 			bolinha.add_theme_stylebox_override("panel", estilo)
+			
+	carregar_dados_do_tooltip()
 
 func carregar_dados_do_tooltip() -> void:
 	var texto_final: String = ""

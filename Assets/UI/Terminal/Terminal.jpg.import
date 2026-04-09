@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2pmgbpjm7mun"
-path="res://.godot/imported/arrow_w.png-36e3ed735c2702b4db063a865a0efbea.ctex"
+uid="uid://de6peqjsu3q7h"
+path="res://.godot/imported/Terminal.jpg-caec19bffce1df5eaa27fb19589d1e97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/arrow_w.png"
-dest_files=["res://.godot/imported/arrow_w.png-36e3ed735c2702b4db063a865a0efbea.ctex"]
+source_file="res://Assets/UI/Terminal/Terminal.jpg"
+dest_files=["res://.godot/imported/Terminal.jpg-caec19bffce1df5eaa27fb19589d1e97.ctex"]
 
 [params]
 

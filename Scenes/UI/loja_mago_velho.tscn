@@ -378,5 +378,8 @@ offset_bottom = 80.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="PersonagemImagem" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="1" unique_id=1626689645]
+visible = true
+
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
 text = "MAGO VELHO"
