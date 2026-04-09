@@ -4,5 +4,5 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_7qgq5")]
 
-[node name="TituloLoja" parent="Lateral/BarraLateral/VBoxContainer" parent_id_path=PackedInt32Array(940291786) index="1" unique_id=1092297232]
+[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
 text = "COMERCIANTE"

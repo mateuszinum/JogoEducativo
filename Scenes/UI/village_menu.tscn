@@ -56,7 +56,7 @@ script = ExtResource("1_qhw0b")
 
 [node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
 stream = ExtResource("2_li3q7")
-volume_db = -10.0
+volume_db = -4.0
 
 [node name="Background" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
