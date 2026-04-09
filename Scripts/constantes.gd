@@ -7,4 +7,4 @@ var MODO_DEV : bool = true
 var USAR_EFEITOS_TELA : bool = true
 
 # NOVO: Se verdadeiro, ignora os bloqueios de progressão para facilitar testes
-var TUDO_DESBLOQUEADO : bool = false
+var TUDO_DESBLOQUEADO : bool = true
