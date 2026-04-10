@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://de6peqjsu3q7h" path="res://Assets/UI/Terminal/Terminal.jpg" id="2_l4t8i"]
 [ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_n1i2u"]
-[ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Scripts/Polimento/PosProcessamentoTerminal.tres" id="5_a105h"]
+[ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Resources/Shaders/PosProcessamentoTerminal.tres" id="5_a105h"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_kjdr6"]
+[ext_resource type="Texture2D" uid="uid://cqmsncqpj3bfx" path="res://Assets/UI/Terminal/stop.png" id="5_lkp2e"]
 [ext_resource type="Texture2D" uid="uid://dj142akcgvgfv" path="res://Assets/UI/Terminal/play.png" id="6_inkna"]
 [ext_resource type="FontFile" uid="uid://txymlrea05ny" path="res://Assets/Fonts/Código/SourceSerif4-VariableFont_opsz,wght.ttf" id="7_5rjbm"]
-[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="7_kjdr6"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="7_kjdr6"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_tvy04"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_yljls"]
 
@@ -96,7 +97,7 @@ process_mode = 3
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
-size = Vector2i(849, 719)
+size = Vector2i(2, 2)
 size_2d_override = Vector2i(640, 540)
 size_2d_override_stretch = true
 render_target_update_mode = 4
@@ -115,6 +116,10 @@ custom_minimum_size = Vector2(431, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_l4t8i")
 script = ExtResource("2_8gbds")
+icone_rodar = ExtResource("6_inkna")
+icone_parar = ExtResource("5_lkp2e")
+icone_escapar = ExtResource("5_lkp2e")
+tempo_cooldown = 1.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PainelTerminal" unique_id=1770846262]
 layout_mode = 2
@@ -170,6 +175,7 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kjdr6")
 text = "RODAR CÓDIGO"
 icon = ExtResource("6_inkna")
 icon_alignment = 2

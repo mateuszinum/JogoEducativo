@@ -2,16 +2,21 @@ extends PanelContainer
 
 @onready var code_edit = %CodeEdit
 @onready var botao_executar = %BotaoExecutar 
-
 @onready var interpretador = %InterpretadorServico
 @onready var viewport = %SubViewport
-
 @onready var botao_debug = %BotaoDebug 
 
-var modo_atual: String = "vilarejo"
-var erros_sintaxe_ativos: Dictionary = {}
+@export_group("Customização do Botão")
+@export var icone_rodar: Texture2D
+@export var icone_parar: Texture2D
+@export var icone_escapar: Texture2D
+@export var tempo_cooldown: float = 1.0
 
+var modo_atual: String = "vilarejo"
+var codigo_rodando: bool = false
+var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
+var _timer_cooldown: SceneTreeTimer
 
 func _ready() -> void:
 	add_to_group("Terminal") 
@@ -33,6 +38,10 @@ func _ready() -> void:
 	code_edit.text_changed.connect(_on_text_changed)
 	code_edit.code_completion_requested.connect(_on_code_completion_requested)
 	
+	_configurar_tooltip_erro()
+	atualizar_estado_botao()
+
+func _configurar_tooltip_erro() -> void:
 	tooltip_erro = Label.new()
 	tooltip_erro.autowrap_mode = TextServer.AUTOWRAP_WORD
 	tooltip_erro.custom_minimum_size = Vector2(280, 0)
@@ -52,17 +61,93 @@ func _ready() -> void:
 	estilo.content_margin_bottom = 8
 	
 	tooltip_erro.add_theme_stylebox_override("normal", estilo)
-	
 	tooltip_erro.top_level = true 
 	tooltip_erro.z_index = 100 
 	tooltip_erro.visible = false
 	
 	code_edit.add_child(tooltip_erro)
-	
 	code_edit.gui_input.connect(_on_code_edit_gui_input)
 	code_edit.mouse_exited.connect(func(): tooltip_erro.visible = false)
 	code_edit.text_changed.connect(limpar_erros_de_sintaxe)
 
+func atualizar_estado_botao() -> void:
+	if modo_atual == "vilarejo":
+		if codigo_rodando:
+			botao_executar.text = "PARAR CÓDIGO"
+			if icone_parar: botao_executar.icon = icone_parar
+		else:
+			botao_executar.text = "RODAR CÓDIGO"
+			if icone_rodar: botao_executar.icon = icone_rodar
+	elif modo_atual == "arena":
+		botao_executar.text = "PARAR E ESCAPAR"
+		if icone_escapar: botao_executar.icon = icone_escapar
+
+func iniciar_cooldown_seguranca() -> void:
+	botao_executar.disabled = true
+	
+	if _timer_cooldown:
+		_timer_cooldown.disconnect("timeout", _liberar_botao)
+		
+	_timer_cooldown = get_tree().create_timer(tempo_cooldown)
+	_timer_cooldown.connect("timeout", _liberar_botao)
+
+func _liberar_botao() -> void:
+	botao_executar.disabled = false
+
+func ativar_modo_vilarejo():
+	modo_atual = "vilarejo"
+	code_edit.editable = not codigo_rodando
+	botao_executar.visible = true
+	atualizar_estado_botao()
+	iniciar_cooldown_seguranca()
+
+func ativar_modo_arena():
+	modo_atual = "arena"
+	code_edit.editable = false 
+	botao_executar.visible = true
+	atualizar_estado_botao()
+	code_edit.release_focus() 
+	iniciar_cooldown_seguranca()
+
+func _on_botao_executar_pressed() -> void:
+	if botao_executar.disabled: return 
+
+	if modo_atual == "vilarejo" and not codigo_rodando:
+		var codigo_digitado = code_edit.text
+		if codigo_digitado.strip_edges() == "": return
+		
+		var erro_bloqueio = validar_codigo_bloqueado(codigo_digitado)
+		if erro_bloqueio != "":
+			mostrar_erro_runtime(erro_bloqueio)
+			return
+		
+		codigo_rodando = true
+		code_edit.editable = false
+		atualizar_estado_botao()
+		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
+		iniciar_cooldown_seguranca()
+
+	elif modo_atual == "vilarejo" and codigo_rodando:
+		if interpretador.has_method("PararExecucao"):
+			interpretador.PararExecucao()
+			
+		codigo_rodando = false
+		code_edit.editable = true
+		atualizar_estado_botao()
+		iniciar_cooldown_seguranca()
+
+	elif modo_atual == "arena":
+		if interpretador.has_method("PararExecucao"):
+			interpretador.PararExecucao()
+			
+		codigo_rodando = false
+		limpar_erros_de_sintaxe() 
+		
+		botao_executar.disabled = true 
+		ativar_modo_vilarejo()
+		
+		if FuncoesNativas.has_method("escapar"):
+			FuncoesNativas.escapar()
 
 func _on_code_edit_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -76,7 +161,6 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 		else:
 			tooltip_erro.visible = false
 
-
 func mostrar_erros_de_sintaxe(lista_erros: Array):
 	limpar_erros_de_sintaxe()
 	for erro in lista_erros:
@@ -85,9 +169,11 @@ func mostrar_erros_de_sintaxe(lista_erros: Array):
 		erros_sintaxe_ativos[linha] = msg
 		code_edit.set_line_background_color(linha, Color(0.8, 0.1, 0.1, 0.3))
 	
+	codigo_rodando = false
+	code_edit.editable = true
 	if modo_atual == "vilarejo":
 		botao_executar.text = "Existem Erros!"
-
+	iniciar_cooldown_seguranca()
 
 func limpar_erros_de_sintaxe():
 	if erros_sintaxe_ativos.is_empty(): return
@@ -95,26 +181,25 @@ func limpar_erros_de_sintaxe():
 	for i in range(code_edit.get_line_count()):
 		code_edit.set_line_background_color(i, Color(0, 0, 0, 0))
 	tooltip_erro.visible = false
-	if modo_atual == "vilarejo":
-		botao_executar.text = "RODAR CÓDIGO"
-
+	atualizar_estado_botao()
 
 func mostrar_erro_runtime(mensagem: String):
+	codigo_rodando = false
+	code_edit.editable = (modo_atual == "vilarejo")
+	atualizar_estado_botao()
+	iniciar_cooldown_seguranca()
+	
 	var dialog = AcceptDialog.new()
 	dialog.title = "Erro Fatal da Engine!"
 	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
 	add_child(dialog)
 	dialog.popup_centered()
-	if modo_atual == "vilarejo": botao_executar.text = "RODAR CÓDIGO"
-	else: botao_executar.text = "PARAR E ESCAPAR"
-
 
 func configurar_cores_do_codigo() -> void:
 	var highlighter = CodeHighlighter.new()
 	highlighter.number_color = Color("#b5cea8") 
 	highlighter.symbol_color = Color("#d4d4d4") 
 	highlighter.function_color = Color("#dcdcaa") 
-	
 	highlighter.member_variable_color = Color("#9cdcfe")
 	
 	highlighter.add_color_region('"', '"', Color("#ce9178"), false) 
@@ -129,21 +214,11 @@ func configurar_cores_do_codigo() -> void:
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 
-	var constantes_jogo = [
-		"Cima", "Baixo", "Direita", "Esquerda",
-		"EsferaAzul", "EsferaVermelha", "Agua", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho",
-		"Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante",
-		"Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro",
-		"Campos", "Floresta", "Labirinto",
-	]
+	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Agua", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
 	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
 	var cor_funcao = Color("#dcdcaa")
-	var funcoes_nativas = [
-		"mover", "atacar", "inimigoMaisProximo", "podeMover", 
-		"getTempo", "getVidaAtual", "escapar", "escanearArea",
-		"posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar"
-	]
+	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar"]
 	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
 	
 	var funcoes_membro = ["usarItem", "colocarItem"]
@@ -152,87 +227,22 @@ func configurar_cores_do_codigo() -> void:
 		
 	code_edit.syntax_highlighter = highlighter
 
-
-func ativar_modo_vilarejo():
-	modo_atual = "vilarejo"
-	code_edit.editable = true
-	botao_executar.visible = true
-	botao_executar.text = "RODAR CÓDIGO"
-
-
-func ativar_modo_arena():
-	modo_atual = "arena"
-	code_edit.editable = false 
-	botao_executar.visible = true
-	botao_executar.text = "PARAR E ESCAPAR"
-	code_edit.release_focus() 
-
-
-func _on_botao_executar_pressed() -> void:
-	if modo_atual == "vilarejo":
-		var codigo_digitado = code_edit.text
-		if codigo_digitado.strip_edges() == "": return
-		
-		# --- VERIFICAÇÃO DE PROGRESSÃO ---
-		var erro_bloqueio = validar_codigo_bloqueado(codigo_digitado)
-		if erro_bloqueio != "":
-			mostrar_erro_runtime(erro_bloqueio)
-			return
-		# ---------------------------------
-		
-		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
-	elif modo_atual == "arena":
-		if interpretador.has_method("PararExecucao"):
-			interpretador.PararExecucao()
-		FuncoesNativas.escapar()
-
-
 func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Campos)
-Direcao dir = Esquerda
-
-enquanto(Verdadeiro):
-
-	se(podeMover(Esquerda) == Falso):
-		dir = Direita
-	fim se
-	se(podeMover(Direita) == Falso):
-		dir = Esquerda
-	fim se
-	mover(dir)
-	
-	Inimigo alvo = inimigoMaisProximo()
-	se(nomeInimigo(alvo) == SlimeDeFogo):
-		atacar(alvo, Gelo)
-	senao:
-		se(nomeInimigo(alvo) == SlimeDeGelo):
-			atacar(alvo, Fogo)
-		senao:
-			atacar(alvo, EsferaAzul)
-		fim se
-	fim se
-	
-fim enquanto
-"""
+	var codigo_teste = """arena(Campos)\nDirecao dir = Esquerda\nenquanto(Verdadeiro):\n\tse(podeMover(Esquerda) == Falso):\n\t\tdir = Direita\n\tfim se\n\tse(podeMover(Direita) == Falso):\n\t\tdir = Esquerda\n\tfim se\n\tmover(dir)\n\t\n\tInimigo alvo = inimigoMaisProximo()\n\tse(nomeInimigo(alvo) == SlimeDeFogo):\n\t\tatacar(alvo, Gelo)\n\tsenao:\n\t\tse(nomeInimigo(alvo) == SlimeDeGelo):\n\t\t\tatacar(alvo, Fogo)\n\t\tsenao:\n\t\t\tatacar(alvo, EsferaAzul)\n\t\tfim se\n\tfim se\nfim enquanto"""
 	code_edit.text = codigo_teste
-
 
 func _on_text_changed() -> void:
 	code_edit.request_code_completion(true)
-
 
 func _on_code_completion_requested() -> void:
 	var current_line = code_edit.get_caret_line()
 	var current_col = code_edit.get_caret_column()
 	var line_text = code_edit.get_line(current_line).substr(0, current_col)
 
-	# --- CORREÇÃO DO BUG DO 'FIM ENQUANTO' ---
-	# Impede que o autocomplete abra e engula o ENTER do jogador.
 	var texto_limpo = line_text.strip_edges()
 	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se"):
 		code_edit.cancel_code_completion()
 		return
-	# -----------------------------------------
 
 	var regex = RegEx.new()
 	regex.compile("[a-zA-Z0-9_\\.]+$") 
@@ -249,7 +259,6 @@ func _on_code_completion_requested() -> void:
 		var dados = AutocompleteDB.termos[termo]
 		var requisito = dados[1] 
 		
-		# SÓ SUGERE SE TIVER O REQUISITO
 		if not ProgressoDB.tem_desbloqueado(requisito):
 			continue
 			
@@ -263,12 +272,10 @@ func _on_code_completion_requested() -> void:
 	if sugestoes_encontradas > 0: code_edit.update_code_completion_options(true)
 	else: code_edit.cancel_code_completion()
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_text_completion_accept") or event.is_action_pressed("ui_accept"):
 		if code_edit.has_focus():
 			call_deferred("_verificar_cursor_pos_autocomplete")
-
 
 func _verificar_cursor_pos_autocomplete() -> void:
 	var linha = code_edit.get_caret_line()
@@ -284,14 +291,10 @@ func _verificar_cursor_pos_autocomplete() -> void:
 func validar_codigo_bloqueado(codigo: String) -> String:
 	for termo in AutocompleteDB.termos.keys():
 		var requisito = AutocompleteDB.termos[termo][1]
-		
 		if not ProgressoDB.tem_desbloqueado(requisito):
 			var termo_limpo = termo.replace("():", "").replace("()", "").replace(":", "").strip_edges()
-			
 			var regex = RegEx.new()
 			regex.compile("\\b" + termo_limpo.replace(".", "\\.") + "\\b")
-			
 			if regex.search(codigo):
-				return "Acesso Negado! Desbloqueie o conhecimento '" + requisito + "' na Árvore de Habilidades para usar o comando: " + termo_limpo
-				
+				return "Acesso Negado!\nDesbloqueie o conhecimento '" + requisito + "' na Árvore de Habilidades para usar o comando: " + termo_limpo
 	return ""

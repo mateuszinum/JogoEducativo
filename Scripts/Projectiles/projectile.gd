@@ -29,6 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 			var audio = AudioStreamPlayer2D.new()
 			audio.stream = hit_sound
 			audio.volume_db = hit_volume
+			audio.bus = "SFX"
 			audio.global_position = global_position
 			audio.pitch_scale = randf_range(pitch_min, pitch_max)
 			get_tree().current_scene.add_child(audio)
@@ -40,6 +41,5 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	pass # Replace with function body.
+	pass

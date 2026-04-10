@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1wyfosl4ttgf"]
+
+[ext_resource type="Shader" uid="uid://qqpoumbbl8ya" path="res://Scripts/Polimento/Shaders/VisualArena.gdshader" id="1_af0yj"]
+
+[resource]
+shader = ExtResource("1_af0yj")
+shader_parameter/scanline_count = 300.0
+shader_parameter/scanline_opacidade = 0.1
+shader_parameter/tubo_sombra = 0.30000001425
+shader_parameter/aberracao_forca = 0.001
+shader_parameter/sangue_intensidade = 0.0
+shader_parameter/sangue_cor = Color(0.8, 0, 0, 1)

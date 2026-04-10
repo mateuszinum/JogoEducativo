@@ -15,8 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
-[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Scripts/Polimento/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
-[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="17_3h8o7"]
+[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjdf"]
 shader = ExtResource("4_k33u3")
@@ -170,14 +170,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i2xx2")
-
-[node name="MusicaMenu" type="AudioStreamPlayer" parent="." unique_id=1334439971]
-stream = ExtResource("3_o14dv")
-volume_db = -6.0
-
-[node name="SfxEntrar" type="AudioStreamPlayer" parent="." unique_id=1451506828]
-stream = ExtResource("10_wqme5")
-volume_db = -6.0
+musica_tema = ExtResource("3_o14dv")
+volume_musica_db = -6.0
+sfx_entrar = ExtResource("10_wqme5")
+volume_sfx_entrar_db = -6.0
 
 [node name="Fundo" type="TextureRect" parent="." unique_id=298731134]
 layout_mode = 1

@@ -18,9 +18,9 @@ extends Button
 @export var cor_disponivel: Color = Color(0.25, 0.25, 0.25, 1.0) 
 @export var cor_bloqueado: Color = Color(0.6, 0.15, 0.15, 1.0) 
 @export var cor_erro_piscar: Color = Color(1.0, 0.2, 0.2, 1.0) 
-# NOVO: Cores customizáveis para as bolinhas!
-@export var cor_bolinha_ativa: Color = Color(0.2, 0.8, 0.2, 1.0) # Verde por padrão
-@export var cor_bolinha_inativa: Color = Color(0.3, 0.3, 0.3, 1.0) # Cinza escuro por padrão
+# Cores customizáveis para as bolinhas!
+@export var cor_bolinha_ativa: Color = Color(0.2, 0.8, 0.2, 1.0) 
+@export var cor_bolinha_inativa: Color = Color(0.3, 0.3, 0.3, 1.0) 
 
 @export_group("Transições de Cor (Fades)")
 @export var tempo_requisito_conquistado: float = 0.8 
@@ -71,6 +71,7 @@ func _ready() -> void:
 	button_up.connect(_on_button_up) 
 	
 	sfx_player = AudioStreamPlayer.new()
+	sfx_player.bus = "SFX" # Conecta ao Bus Nativo de Efeitos Sonoros!
 	add_child(sfx_player)
 	
 	if visual_animado:
@@ -182,7 +183,6 @@ func _on_progresso_alterado() -> void:
 	sincronizar_niveis()
 	verificar_pre_requisitos()
 	atualizar_visual()
-	
 
 func sincronizar_niveis() -> void:
 	if produto.tipo == ProdutoLoja.TipoProduto.ITEM_UNICO:
@@ -253,10 +253,9 @@ func atualizar_visual() -> void:
 		# --- NOVA LÓGICA DE VISIBILIDADE ---
 		var caixa_fundo = %ContainerBolinhas.get_parent()
 		if produto.tipo == ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO and nivel_atual == 0:
-			caixa_fundo.hide() # Oculta tudo (fundo e bolinhas) se for Progressivo no Nível 0
+			caixa_fundo.hide() 
 		else:
-			caixa_fundo.show() # Garante que vai aparecer pro Upgrade (Nv 1+) e pro Progressivo (Nv 1+)
-		# -----------------------------------
+			caixa_fundo.show() 
 		
 		for i in range(%ContainerBolinhas.get_child_count()):
 			var aspect = %ContainerBolinhas.get_child(i)
@@ -264,7 +263,6 @@ func atualizar_visual() -> void:
 			
 			var estilo = bolinha.get_theme_stylebox("panel").duplicate()
 			
-			# NOVO: Usa as variáveis do Inspector!
 			if i < nivel_atual: 
 				estilo.bg_color = cor_bolinha_ativa 
 			else: 
@@ -376,7 +374,6 @@ func preparar_bolinhas() -> void:
 		estilo.corner_radius_top_right = 4
 		estilo.corner_radius_bottom_left = 4
 		estilo.corner_radius_bottom_right = 4
-		# NOVO: Usa a cor inativa configurada no Inspector ao criar a bolinha
 		estilo.bg_color = cor_bolinha_inativa 
 		
 		bolinha.add_theme_stylebox_override("panel", estilo)
