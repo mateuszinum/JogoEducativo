@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwy5acmn1mf2w"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_jp173"]
-[ext_resource type="Script" uid="uid://b7pddh7hubyyk" path="res://Scripts/UI/skill_tree_movimento.gd" id="2_j3yet"]
+[ext_resource type="Script" uid="uid://b7pddh7hubyyk" path="res://Scripts/UI/skill_tree.gd" id="2_j3yet"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_j3yet"]
 [ext_resource type="Resource" uid="uid://cmkhmo0t2l5b1" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioInicio.tres" id="4_piamn"]
 [ext_resource type="Resource" uid="uid://se4vuh5ryinu" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="5_spist"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://b4a2qf6bx15hs" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFloresta.tres" id="23_hs0yn"]
 [ext_resource type="Resource" uid="uid://bu4bx8hlvnugg" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoGelo.tres" id="24_ep0q0"]
 [ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="25_ep0q0"]
+[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioBrilhinhos.tres" id="25_ew12h"]
 [ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="26_oqm2m"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
@@ -43,33 +44,128 @@ zoom_inicial = 0.6
 
 [node name="CanvasArraste" type="Control" parent="Conteudo/SkillTreeMascara" index="0" unique_id=331041175]
 anchors_preset = 0
-offset_right = 490.0
-offset_bottom = 482.0
+offset_right = 461.0
+offset_bottom = 437.0
 mouse_filter = 2
 
 [node name="AreaLimite" type="ColorRect" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="0" unique_id=884083534]
 layout_mode = 0
-offset_left = -333.0
+offset_left = -257.0
 offset_top = 13.0
-offset_right = 1367.0
-offset_bottom = 1259.0
+offset_right = 1296.0
+offset_bottom = 1182.0
 color = Color(1, 1, 1, 0)
 
 [node name="Conexoes" type="Node2D" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="1" unique_id=489600333]
 
+[node name="LineVertical" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="0" unique_id=38713505]
+position = Vector2(0, 131.046)
+scale = Vector2(1, 0.26789835)
+points = PackedVector2Array(324, 189, 324, 593.337)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical2" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="1" unique_id=995714713]
+position = Vector2(350, 118.293)
+scale = Vector2(1, 0.5011547)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical3" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="2" unique_id=992888547]
+position = Vector2(141, 51.999996)
+points = PackedVector2Array(-163, 930.425, -163, 240.467, 333, 240.467, 333, 797.385)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="3" unique_id=681698310]
+position = Vector2(-145, 242.26563)
+scale = Vector2(1, 0.2717725)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical5" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="4" unique_id=1956303245]
+position = Vector2(550, 466.293)
+scale = Vector2(1, 0.40021554)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="5" unique_id=1782379805]
+position = Vector2(350, 476)
+scale = Vector2(1, 0.40021554)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical6" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="6" unique_id=19794881]
+position = Vector2(750, 463.293)
+scale = Vector2(1, 0.40021554)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical8" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="7" unique_id=1757250643]
+position = Vector2(-346, -17.818)
+scale = Vector2(1, 1.6581985)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal3" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="8" unique_id=388950964]
+position = Vector2(1331.458, 67)
+rotation = 1.5707964
+scale = Vector2(1, 1.372)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal6" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="9" unique_id=1539775279]
+position = Vector2(1336.871, 217)
+rotation = 1.5707964
+scale = Vector2(1, 1.3723383)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="10" unique_id=1087290711]
+position = Vector2(273, 217)
+rotation = 1.5707964
+scale = Vector2(1, 0.4647169)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="11" unique_id=1742124528]
+position = Vector2(263, 367)
+rotation = 1.5707964
+scale = Vector2(1, 0.4647169)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal11" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="12" unique_id=2038780976]
+position = Vector2(262, 517)
+rotation = 1.5707964
+scale = Vector2(1, 0.4647169)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
 [node name="BotoesCodigo" type="Control" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="2" unique_id=1932808838]
 anchors_preset = 0
-offset_left = 37.54001
-offset_right = 37.54001
+offset_left = 34.0
+offset_right = 34.0
 
 [node name="BotaoProduto" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="0" unique_id=1306100104 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 200.45999
-offset_top = 132.0
-offset_right = 280.46
-offset_bottom = 212.0
+offset_left = 250.0
+offset_top = 150.0
+offset_right = 330.00018
+offset_bottom = 230.00006
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("4_piamn")
@@ -82,10 +178,10 @@ position = Vector2(40, 39)
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 368.46002
-offset_top = 332.0
-offset_right = 448.46002
-offset_bottom = 412.0
+offset_left = 400.0
+offset_top = 350.0
+offset_right = 480.0
+offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("5_spist")
@@ -95,10 +191,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 581.46
-offset_top = 177.0
-offset_right = 661.46
-offset_bottom = 257.0
+offset_left = 600.0
+offset_top = 200.0
+offset_right = 680.0
+offset_bottom = 280.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("6_55bkk")
@@ -108,10 +204,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 588.46
-offset_top = 330.0
-offset_right = 668.46
-offset_bottom = 410.0
+offset_left = 600.0
+offset_top = 350.0
+offset_right = 680.0
+offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("7_7k5ma")
@@ -121,10 +217,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 806.45996
-offset_top = 320.0
-offset_right = 886.45996
-offset_bottom = 400.0
+offset_left = 800.0
+offset_top = 350.0
+offset_right = 880.0
+offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("8_x0qlo")
@@ -134,10 +230,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 833.45996
-offset_top = 521.0
-offset_right = 913.45996
-offset_bottom = 601.0
+offset_left = 1000.0
+offset_top = 350.0
+offset_right = 1080.0
+offset_bottom = 430.00006
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("9_j7bgc")
@@ -147,10 +243,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 367.66998
-offset_top = 511.0
-offset_right = 447.66998
-offset_bottom = 591.0
+offset_left = 400.0
+offset_top = 500.0
+offset_right = 480.0
+offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("10_fqpdv")
@@ -160,10 +256,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 297.46
-offset_top = 681.0
-offset_right = 377.46
-offset_bottom = 761.0
+offset_left = 400.0
+offset_top = 650.0
+offset_right = 480.0
+offset_bottom = 730.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("11_uf3g2")
@@ -173,10 +269,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 520.45996
-offset_top = 683.0
-offset_right = 600.45996
-offset_bottom = 763.0
+offset_left = 601.0
+offset_top = 650.0
+offset_right = 681.0
+offset_bottom = 730.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("12_tki0f")
@@ -186,10 +282,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 383.46
-offset_top = 823.0
-offset_right = 463.46
-offset_bottom = 903.0
+offset_left = 400.0
+offset_top = 800.0
+offset_right = 480.0
+offset_bottom = 880.0001
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("13_c2mca")
@@ -199,10 +295,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 595.46
-offset_top = 521.0
-offset_right = 675.46
-offset_bottom = 601.0
+offset_left = 600.0
+offset_top = 500.0
+offset_right = 680.0
+offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("14_c56la")
@@ -212,10 +308,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 765.45996
-offset_top = 673.0
-offset_right = 845.45996
-offset_bottom = 753.0
+offset_left = 800.0
+offset_top = 500.0
+offset_right = 880.0
+offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("15_tnlql")
@@ -225,10 +321,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 987.45996
-offset_top = 675.0
-offset_right = 1067.46
-offset_bottom = 755.0
+offset_left = 1000.0
+offset_top = 500.0
+offset_right = 1080.0
+offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("16_tm52l")
@@ -238,10 +334,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 982.45996
-offset_top = 806.0
-offset_right = 1062.46
-offset_bottom = 886.0
+offset_left = 1000.0
+offset_top = 650.0
+offset_right = 1080.0
+offset_bottom = 730.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("17_tmlqk")
@@ -251,10 +347,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 762.45996
-offset_top = 805.0
-offset_right = 842.45996
-offset_bottom = 885.0
+offset_left = 800.0
+offset_top = 650.0
+offset_right = 880.0
+offset_bottom = 730.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("18_4t3wo")
@@ -269,10 +365,10 @@ offset_right = 37.54001
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = -195.54001
-offset_top = 320.0
-offset_right = -115.54001
-offset_bottom = 400.0
+offset_left = -100.0
+offset_top = 352.0
+offset_right = -20.0
+offset_bottom = 432.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("20_m64yk")
@@ -282,10 +378,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 14.459991
-offset_top = 319.0
-offset_right = 94.45999
-offset_bottom = 399.0
+offset_left = 100.0
+offset_top = 350.0
+offset_right = 180.0
+offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("19_xvabl")
@@ -295,10 +391,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = -51.54001
-offset_top = 437.0
-offset_right = 28.459991
-offset_bottom = 517.0
+offset_left = -100.0
+offset_top = 500.0
+offset_right = -20.0
+offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("21_cd25m")
@@ -308,10 +404,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = -49.54001
-offset_top = 582.0
-offset_right = 30.459991
-offset_bottom = 662.0
+offset_left = -100.0
+offset_top = 652.0
+offset_right = -20.0
+offset_bottom = 732.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("22_soyyb")
@@ -321,10 +417,10 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = -174.54001
-offset_top = 768.0
-offset_right = -94.54001
-offset_bottom = 848.0
+offset_left = -100.0
+offset_top = 800.0
+offset_right = -20.0
+offset_bottom = 880.0001
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("23_hs0yn")
@@ -334,36 +430,49 @@ area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 46.45999
-offset_top = 765.0
-offset_right = 126.45999
-offset_bottom = 845.0
-grow_horizontal = 1
-grow_vertical = 1
-produto = ExtResource("24_ep0q0")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
-
-[node name="BotaoProduto23" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="6" unique_id=1540892238 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-offset_left = 46.45999
-offset_top = 886.0
-offset_right = 126.45999
-offset_bottom = 966.0
+offset_left = 100.0
+offset_top = 800.0
+offset_right = 180.00009
+offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("25_ep0q0")
 area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto24" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="7" unique_id=1924821081 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto25" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="6" unique_id=1306875737 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = -166.54001
-offset_top = 1004.0
-offset_right = -86.54001
-offset_bottom = 1084.0
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 180.00009
+offset_bottom = 580.00006
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("25_ew12h")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto23" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="7" unique_id=1540892238 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 100.0
+offset_top = 650.0
+offset_right = 180.00009
+offset_bottom = 730.0
+grow_horizontal = 1
+grow_vertical = 1
+produto = ExtResource("24_ep0q0")
+area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto24" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="8" unique_id=1924821081 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -100.0
+offset_top = 950.0
+offset_right = -20.0
+offset_bottom = 1030.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("26_oqm2m")
@@ -377,9 +486,6 @@ offset_right = 80.0
 offset_bottom = 80.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="PersonagemImagem" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="1" unique_id=1626689645]
-visible = true
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
 text = "MAGO VELHO"

@@ -166,6 +166,7 @@ alignment = 1
 
 [node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
 unique_name_in_owner = true
+visible = false
 z_index = 50
 custom_minimum_size = Vector2(400, 172)
 layout_mode = 0

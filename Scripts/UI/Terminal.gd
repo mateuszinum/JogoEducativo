@@ -12,6 +12,10 @@ extends PanelContainer
 @export var icone_escapar: Texture2D
 @export var tempo_cooldown: float = 1.0
 
+# --- NOVO: Array para você arrastar suas fontes no Inspector ---
+@export_group("Fontes do Terminal")
+@export var fontes_disponiveis: Array[Font] = []
+
 var modo_atual: String = "vilarejo"
 var codigo_rodando: bool = false
 var erros_sintaxe_ativos: Dictionary = {}
@@ -32,7 +36,9 @@ func _ready() -> void:
 	
 	botao_executar.focus_mode = Control.FOCUS_NONE
 	code_edit.focus_mode = Control.FOCUS_CLICK
+	
 	configurar_cores_do_codigo()
+	aplicar_fonte() # <--- Chama a configuração de fonte logo ao iniciar
 	
 	code_edit.code_completion_enabled = true
 	code_edit.text_changed.connect(_on_text_changed)
@@ -40,6 +46,17 @@ func _ready() -> void:
 	
 	_configurar_tooltip_erro()
 	atualizar_estado_botao()
+
+# --- NOVA FUNÇÃO PARA APLICAR A FONTE ---
+func aplicar_fonte() -> void:
+	var indice = Constantes.FONTE_TERMINAL
+	# Checa se o número é válido e se existe dentro do array que você configurou no editor
+	if indice >= 0 and indice < fontes_disponiveis.size():
+		var fonte_escolhida = fontes_disponiveis[indice]
+		if fonte_escolhida != null:
+			# Sobrescreve a fonte padrão do CodeEdit via código
+			code_edit.add_theme_font_override("font", fonte_escolhida)
+# ----------------------------------------
 
 func _configurar_tooltip_erro() -> void:
 	tooltip_erro = Label.new()

@@ -21,7 +21,6 @@ func _ready() -> void:
 		canvas.get_node("AreaLimite").visible = false
 		
 	call_deferred("centralizar_no_inicio")
-	call_deferred("desenhar_linhas_da_arvore")
 
 func centralizar_no_inicio() -> void:
 	if canvas.has_node("CentroFoco"):
@@ -88,22 +87,6 @@ func aplicar_limites_da_area() -> void:
 # ==========================================
 # DESENHO DAS CONEXÕES
 # ==========================================
-func desenhar_linhas_da_arvore() -> void:
-	for child in container_conexoes.get_children():
-		child.queue_free()
-		
-	for botao in canvas.get_children():
-		if botao is Button and "produto" in botao and botao.produto != null:
-			for requisito in botao.produto.pre_requisitos:
-				var botao_pai = encontrar_botao_do_produto(requisito)
-				if botao_pai != null:
-					var linha = Line2D.new()
-					linha.add_point(botao_pai.position + (botao_pai.size / 2.0))
-					linha.add_point(botao.position + (botao.size / 2.0))
-					linha.width = 4.0
-					linha.default_color = Color(0.4, 0.4, 0.4, 1.0) 
-					linha.z_index = -1 
-					container_conexoes.add_child(linha)
 
 func encontrar_botao_do_produto(produto_alvo: ProdutoLoja) -> Node:
 	for botao in canvas.get_children():
