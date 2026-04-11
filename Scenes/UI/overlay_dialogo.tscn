@@ -4,6 +4,19 @@
 [ext_resource type="AudioStream" uid="uid://2argyloyeoa3" path="res://Audio/SFX/Dialogo/Typing.wav" id="2_d1yip"]
 [ext_resource type="Resource" uid="uid://bqgabgldlbwfv" path="res://Resources/Dialogo/DialogoGenerico.tres" id="3_ni0pr"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ame8j"]
+[ext_resource type="Texture2D" uid="uid://ceqouinvjoqg6" path="res://Assets/UI/Dialogo/CaixaDialogo.png" id="4_d1yip"]
+[ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="5_ame8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni0pr"]
+shader = ExtResource("5_ame8j")
+shader_parameter/lod = 1.0000000475
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1yip"]
+texture = ExtResource("4_d1yip")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [node name="OverlayDialogo" type="Control" unique_id=1203743968]
 layout_mode = 3
@@ -13,16 +26,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hg8d8")
+velocidade_texto = 0.04
+cor_fundo = Color(0, 0, 0, 0.48235294)
+intensidade_blur = 1.0
+tempo_fade_out = 0.1
 som_voz = ExtResource("2_d1yip")
 pitch_min = 0.9
 rotacao_maxima_graus = 0.0
 escala_pulo_caixa = Vector2(1.05, 1.05)
-ativar_teste_dialogo = true
 dialogo_de_teste = ExtResource("3_ni0pr")
+
+[node name="Blur" type="ColorRect" parent="." unique_id=1147266459]
+material = SubResource("ShaderMaterial_ni0pr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1467260602]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.48235294)
 
 [node name="CaixaDialogo" type="PanelContainer" parent="." unique_id=10008605]
 unique_name_in_owner = true
-z_index = 2
+z_index = 10
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -33,6 +70,7 @@ offset_right = 239.345
 offset_bottom = -177.87
 grow_vertical = 0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d1yip")
 
 [node name="MarginContainer" type="MarginContainer" parent="CaixaDialogo" unique_id=251984475]
 layout_mode = 2
@@ -46,6 +84,7 @@ theme_override_constants/margin_bottom = 15
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/default_color = Color(0.07214553, 0.02720956, 0.0035472063, 1)
 theme_override_fonts/normal_font = ExtResource("4_ame8j")
 theme_override_font_sizes/normal_font_size = 22
 text = "Texto"

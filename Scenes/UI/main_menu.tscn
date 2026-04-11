@@ -18,9 +18,9 @@
 [ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrjdf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]
 shader = ExtResource("4_k33u3")
-shader_parameter/lod = 1.302000061845
+shader_parameter/lod = 2.000000095
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jewm6"]
 atlas = ExtResource("6_wqme5")
@@ -187,8 +187,8 @@ texture = ExtResource("2_4pqbp")
 script = ExtResource("3_gih0s")
 amplitude_rotacao = 1.0
 
-[node name="BlurRect" type="ColorRect" parent="." unique_id=574691369]
-material = SubResource("ShaderMaterial_lrjdf")
+[node name="Blur" type="ColorRect" parent="." unique_id=1835359209]
+material = SubResource("ShaderMaterial_3h8o7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

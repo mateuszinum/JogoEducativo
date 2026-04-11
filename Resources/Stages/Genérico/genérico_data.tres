@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 script = ExtResource("2_vxnoe")
 nome = "Genérico"
 stage_music = ExtResource("10_ojxpx")
+music_volume = -6.0
 map_width = 100
 stage_tileset = ExtResource("11_ef35g")
 spawn_rules = Array[ExtResource("8_ca1nu")]([SubResource("Resource_ua18n")])

@@ -7,11 +7,16 @@ const TEMPO_RESTORE_ANIM = 0.06
 
 @onready var caixa_dialogo = %CaixaDialogo
 @onready var texto_dialogo = %TextoDialogo 
+@onready var fundo = $Fundo
 
 @export var velocidade_texto: float = 0.03
-
 @export var personagem_animado: Control 
 
+@export_group("Efeitos de Fundo")
+@export var cor_fundo: Color = Color(0.0, 0.0, 0.0, 0.6)
+@export var usar_blur: bool = true
+@export var intensidade_blur: float = 2.0
+@export var tempo_fade_out: float = 0.2
 
 @export_group("Tamanho da Caixa")
 @export var largura_minima_caixa: float = 100.0
@@ -46,6 +51,7 @@ var linha_atual: int = 0
 var digitando: bool = false
 var animacao_personagem: Tween
 var animacao_caixa: Tween
+var animacao_fade: Tween
 
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "dialogo_de_teste":
@@ -56,10 +62,10 @@ func _ready() -> void:
 	if Engine.is_editor_hint(): return 
 		
 	hide()
-	mouse_filter = Control.MOUSE_FILTER_STOP
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	sfx_voz = AudioStreamPlayer.new()
-	sfx_voz.bus = "SFX"
+	sfx_voz.bus = "UI"
 	add_child(sfx_voz)
 	
 	var pai = get_parent()
@@ -77,6 +83,19 @@ func iniciar_dialogo(recurso: DialogoResource) -> void:
 	
 	if recurso == null or recurso.linhas.is_empty():
 		return
+		
+	if animacao_fade and animacao_fade.is_valid():
+		animacao_fade.kill()
+		
+	modulate = Color.WHITE
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	if fundo:
+		fundo.color = cor_fundo
+		if usar_blur and fundo.material is ShaderMaterial:
+			fundo.material.set_shader_parameter("lod", intensidade_blur)
+		elif fundo.material is ShaderMaterial:
+			fundo.material.set_shader_parameter("lod", 0.0)
 		
 	dialogo_atual = recurso
 	linha_atual = 0
@@ -168,9 +187,17 @@ func avancar_dialogo() -> void:
 		encerrar_dialogo()
 
 func encerrar_dialogo() -> void:
-	hide()
 	dialogo_atual = null
 	parar_animacao_fala()
+	
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+	if animacao_fade and animacao_fade.is_valid():
+		animacao_fade.kill()
+		
+	animacao_fade = create_tween()
+	animacao_fade.tween_property(self, "modulate", Color.TRANSPARENT, tempo_fade_out)
+	animacao_fade.tween_callback(func(): hide())
 
 func animar_pulo_caixa() -> void:
 	if caixa_dialogo.size.y > 0 and caixa_dialogo.size.x > 0:

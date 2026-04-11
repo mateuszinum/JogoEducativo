@@ -71,7 +71,7 @@ func _ready() -> void:
 	button_up.connect(_on_button_up) 
 	
 	sfx_player = AudioStreamPlayer.new()
-	sfx_player.bus = "SFX" # Conecta ao Bus Nativo de Efeitos Sonoros!
+	sfx_player.bus = "UI"
 	add_child(sfx_player)
 	
 	if visual_animado:

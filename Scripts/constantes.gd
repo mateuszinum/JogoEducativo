@@ -15,6 +15,7 @@ var USAR_EFEITOS_TELA : bool = true
 var VOLUME_MASTER : float = 0.5 
 var VOLUME_MUSICA : float = 0.5
 var VOLUME_SFX : float = 0.5
+var VOLUME_UI : float = 0.5
 
 # Define se jogo está em tela cheia
 var TELA_CHEIA : bool = true

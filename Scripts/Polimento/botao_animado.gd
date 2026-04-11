@@ -24,7 +24,7 @@ func _ready() -> void:
 	pivot_offset = size / 2 
 	
 	sfx_player = AudioStreamPlayer.new()
-	sfx_player.bus = "SFX"
+	sfx_player.bus = "UI"
 	add_child(sfx_player)
 
 func travar_no_clique() -> void:

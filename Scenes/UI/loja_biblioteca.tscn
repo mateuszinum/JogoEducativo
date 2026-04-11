@@ -4,10 +4,13 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
 
+[node name="Fundo" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="0" unique_id=1823747467]
+color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+
 [node name="FundoOverlay" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="1" unique_id=1375536134]
 visible = false
 
-[node name="BarraSuperior" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="3" unique_id=700372077]
+[node name="BarraSuperior" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="2" unique_id=7503734]
 visible = false
 
 [node name="HUD_Inventario" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=319363314]
@@ -18,3 +21,6 @@ visible = false
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BIBLIOTECA"
+
+[node name="EspacoPersonagem" parent="." index="3" unique_id=1732438903]
+visible = false

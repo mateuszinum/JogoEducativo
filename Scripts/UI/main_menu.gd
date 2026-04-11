@@ -41,7 +41,7 @@ func tocar_sfx_entrar() -> void:
 		var player_sfx = AudioStreamPlayer.new()
 		player_sfx.stream = sfx_entrar
 		player_sfx.volume_db = volume_sfx_entrar_db
-		player_sfx.bus = "SFX" 
+		player_sfx.bus = "UI" 
 		add_child(player_sfx)
 		player_sfx.play()
 
