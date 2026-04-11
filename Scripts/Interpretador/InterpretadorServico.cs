@@ -15,7 +15,6 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 	{
 		string erroTraduzido = msg;
 
-		// Limpa a mensagem robótica de erro de final de arquivo
 		if (erroTraduzido.Contains("missing 'fim' at '<EOF>'")) {
 			erroTraduzido = "Faltou fechar o bloco com 'fim' (o arquivo terminou antes).";
 		} else {
@@ -51,6 +50,14 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		_apiNativa = GetNodeOrNull("/root/FuncoesNativas");
 		_gerenciador = GetNodeOrNull("/root/GerenciadorExecucao");
 	}
+	
+	private void VerificarAbortagem()
+	{
+		if (_execucaoAbortada || (_threadAtivaId != -1 && Thread.CurrentThread.ManagedThreadId != _threadAtivaId))
+		{
+			throw new Exception("Execução abortada pelo jogador.");
+		}
+	}	
 
 	public void LiberarProximoComando() { _travaDeSincronizacao.Set(); }
 
@@ -109,13 +116,8 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 			catch (Exception ex) 
 			{ 
 				if (ex.Message == "Execução abortada pelo jogador.") {
-					GD.Print("[C#] Execução limpa abortada.");
+					// Parou limpo, ignora o log.
 				} else if (ex.Message.StartsWith("L:")) {
-					
-					// ==========================================
-					// NOVO: MAPEAMENTO DE ERROS SEMÂNTICOS PARA A UI
-					// Se o erro começar com "L:" ele NÃO cria pop-up, vira Highlight!
-					// ==========================================
 					var parts = ex.Message.Split(new char[] { '|' }, 2);
 					if (int.TryParse(parts[0].Substring(2), out int linha)) {
 						var erro = new Godot.Collections.Dictionary {
@@ -126,7 +128,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 						CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros);
 					}
 				} else {
-					// Só cai no pop-up se for algo bizarro fora do script do jogador
 					CallDeferred(nameof(DelegarErroParaMainThread), ex.Message); 
 				}
 			}
@@ -153,7 +154,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
 	}
 	
-	// ... FUNÇÕES DE JOGO INALTERADAS ...
 	public void Mover(string direcao) { ExecutarAcaoComTick("mover", new Godot.Collections.Array { direcao }); }
 	public void Atacar(string alvo, string tipo) { ExecutarAcaoComTick("atacar", new Godot.Collections.Array { alvo, tipo }); }
 	public void Escapar() { ExecutarAcaoComTick("escapar", new Godot.Collections.Array()); }
@@ -166,13 +166,16 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 
 	private void ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
 	{
-		if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) throw new Exception("Execução abortada pelo jogador.");
+		VerificarAbortagem();
+		
 		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
 		{
 			if (_gerenciador == null) return;
 			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
+			
 			_travaDeSincronizacao.WaitOne(); 
-			if (_execucaoAbortada || Thread.CurrentThread.ManagedThreadId != _threadAtivaId) throw new Exception("Execução abortada pelo jogador.");
+			
+			VerificarAbortagem();
 		}
 	}
 

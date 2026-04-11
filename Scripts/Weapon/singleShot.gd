@@ -9,9 +9,9 @@ func shoot(source, target, scene_tree):
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = attack_sound
 		audio.volume_db = attack_volume
+		audio.bus = "SFX"
 		audio.global_position = source.global_position
 		audio.pitch_scale = randf_range(pitch_min, pitch_max)
-		# Garante que o som saia dentro do mapa onde o Player está
 		source.get_parent().add_child(audio)
 		audio.play()
 		audio.finished.connect(audio.queue_free)
@@ -27,6 +27,9 @@ func shoot(source, target, scene_tree):
 	projectile.pitch_max = pitch_max
 	projectile.direction = (target.position - source.position).normalized()
 	projectile.look_at(target.global_position)
+	
+	if "ataque_nome" in projectile:
+		projectile.ataque_nome = nome
 	
 	source.get_parent().add_child(projectile)
 	

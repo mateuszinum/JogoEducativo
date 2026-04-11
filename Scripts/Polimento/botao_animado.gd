@@ -7,9 +7,9 @@ extends Button
 
 @export_group("Sons")
 @export var som_hover: AudioStream
-@export_range(-40.0, 10.0) var volume_hover_db: float = 0.0 # Slider de volume pro Hover
+@export_range(-40.0, 10.0) var volume_hover_db: float = 0.0
 @export var som_clique: AudioStream
-@export_range(-40.0, 10.0) var volume_clique_db: float = 0.0 # Slider de volume pro Clique
+@export_range(-40.0, 10.0) var volume_clique_db: float = 0.0
 @export var pitch_min: float = 0.9
 @export var pitch_max: float = 1.1
 
@@ -24,6 +24,7 @@ func _ready() -> void:
 	pivot_offset = size / 2 
 	
 	sfx_player = AudioStreamPlayer.new()
+	sfx_player.bus = "UI"
 	add_child(sfx_player)
 
 func travar_no_clique() -> void:
@@ -55,7 +56,6 @@ func _animar_escala(target_scale: Vector2) -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) 
 	tween.tween_property(self, "scale", target_scale, tempo_transicao)
 
-# Função atualizada para aplicar a randomização
 func _tocar_som(stream: AudioStream, volume: float) -> void:
 	if stream:
 		sfx_player.stream = stream

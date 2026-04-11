@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://dhjladwnppl8p"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_ymvp7"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_06str"]
+[ext_resource type="Texture2D" uid="uid://cqkybmu1g2p8b" path="res://Assets/Projectiles/EsferaVermelha.png" id="2_dv37w"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_k6in4"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_8ancy"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_hckvb"]
 [ext_resource type="Resource" uid="uid://bri3042g08d8m" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFogo.tres" id="6_y22yp"]
-[ext_resource type="Resource" uid="uid://dyix8gscaq3ab" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioGelo.tres" id="7_l6aha"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_k6in4")
@@ -28,8 +27,8 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_hckvb")
 nome = "Esfera Vermelha"
-icone = ExtResource("2_06str")
-pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp"), ExtResource("7_l6aha")])
+icone = ExtResource("2_dv37w")
+pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp")])
 tipo = 3
 custo_item_simples = ExtResource("1_ymvp7")
 niveis = Array[ExtResource("3_k6in4")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

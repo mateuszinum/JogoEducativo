@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://d3j5fnsthjsdh"]
 
-[ext_resource type="AudioStream" uid="uid://dfaycvcw37ly1" path="res://Audio/SFX/LancarFogo.mp3" id="1_38qnp"]
-[ext_resource type="AudioStream" uid="uid://dxivslkaq3whe" path="res://Audio/SFX/HitFogo.mp3" id="2_ekt2k"]
+[ext_resource type="AudioStream" uid="uid://dfaycvcw37ly1" path="res://Audio/SFX/Ataque/LancarFogo.mp3" id="1_38qnp"]
+[ext_resource type="AudioStream" uid="uid://dxivslkaq3whe" path="res://Audio/SFX/Ataque/HitFogo.mp3" id="2_ekt2k"]
 [ext_resource type="PackedScene" uid="uid://c2lpghfx75udb" path="res://Scenes/Weapons/Fogo.tscn" id="3_38qnp"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_v0c3d"]
 

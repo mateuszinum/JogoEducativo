@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://bkxmslye5w0vy"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_ht1vw"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_f4a6e"]
+[ext_resource type="Texture2D" uid="uid://clbo3ydiym00a" path="res://Assets/Produtos/Skilltree/operador.png" id="2_tspay"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_m15dp"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_5mav0"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_ma3ew"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_ma3ew")
 nome = "Operadores"
-icone = ExtResource("2_f4a6e")
+icone = ExtResource("2_tspay")
 pre_requisitos = Array[ExtResource("5_ma3ew")]([ExtResource("6_tspay")])
 tipo = 1
 descricao_simples = "Operadores"

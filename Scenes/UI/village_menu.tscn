@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://doh77mpn3yqve" path="res://Scenes/UI/loja_biblioteca.tscn" id="9_mri60"]
 [ext_resource type="PackedScene" uid="uid://cwy5acmn1mf2w" path="res://Scenes/UI/loja_mago_velho.tscn" id="10_yu54g"]
 [ext_resource type="PackedScene" uid="uid://xcdslswds8he" path="res://Scenes/UI/loja_comerciante.tscn" id="11_li3q7"]
-[ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Scripts/Polimento/PosProcessamentoJogo.tres" id="12_yu54g"]
-[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Scripts/Polimento/Bloom.tres" id="14_1kxp1"]
+[ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/PosProcessamentoVilarejo.tres" id="13_1kxp1"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="14_1kxp1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mri60"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
@@ -61,10 +61,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhw0b")
-
-[node name="MusicaVilarejo" type="AudioStreamPlayer" parent="." unique_id=1582201435]
-stream = ExtResource("2_li3q7")
-volume_db = -4.0
+musica_tema = ExtResource("2_li3q7")
+volume_musica_db = -4.0
 
 [node name="Background" type="TextureRect" parent="." unique_id=414701676]
 layout_mode = 1
@@ -234,7 +232,7 @@ layout_mode = 1
 layer = 10
 
 [node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=860173356 groups=["EfeitoSangue"]]
-material = ExtResource("12_yu54g")
+material = ExtResource("13_1kxp1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,11 +1,14 @@
 extends Control
 
-@onready var musica_vilarejo = $MusicaVilarejo
+@export var musica_tema: AudioStream
+@export var volume_musica_db: float = 0.0
 
 @onready var loja_bruxa = $LojaBruxa
 @onready var loja_comerciante = $LojaComerciante
 @onready var loja_biblioteca = $LojaBiblioteca
 @onready var loja_mago_velho = $LojaMagoVelho
+
+var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
 	if loja_bruxa: loja_bruxa.hide()
@@ -13,12 +16,20 @@ func _ready() -> void:
 	if loja_biblioteca: loja_biblioteca.hide()
 	if loja_mago_velho: loja_mago_velho.hide()
 	
-	if not Constantes.MODO_DEV:
-		musica_vilarejo.play()
+	iniciar_musica()
 	
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
+
+func iniciar_musica() -> void:
+	if Constantes.TOCAR_MUSICA and musica_tema != null:
+		player_musica = AudioStreamPlayer.new()
+		player_musica.stream = musica_tema
+		player_musica.volume_db = volume_musica_db
+		player_musica.bus = "Musica" 
+		add_child(player_musica)
+		player_musica.play()
 
 # ==========================================
 # SINAIS DOS BOTÕES DO MENU (ABRIR)

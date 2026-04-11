@@ -2,10 +2,17 @@ extends Control
 
 static var intro_ja_exibida: bool = false
 
-@onready var musica_menu = $MusicaMenu
+@export var musica_tema: AudioStream
+@export var volume_musica_db: float = 0.0
+
+@export var sfx_entrar: AudioStream
+@export var volume_sfx_entrar_db: float = 0.0
+
 @onready var anim_intro = $AnimationPlayer
 @onready var intro_layer = $IntroLayer
 @onready var transition_rect = $TransitionLayer/ColorRect
+
+var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
 	if not Constantes.MODO_DEV and not intro_ja_exibida:
@@ -14,12 +21,29 @@ func _ready() -> void:
 	else:
 		pular_intro()
 	
-	if not Constantes.MODO_DEV:
-		musica_menu.play()
+	iniciar_musica()
 	
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
+
+func iniciar_musica() -> void:
+	if Constantes.TOCAR_MUSICA and musica_tema != null:
+		player_musica = AudioStreamPlayer.new()
+		player_musica.stream = musica_tema
+		player_musica.volume_db = volume_musica_db
+		player_musica.bus = "Musica" 
+		add_child(player_musica)
+		player_musica.play()
+
+func tocar_sfx_entrar() -> void:
+	if sfx_entrar != null:
+		var player_sfx = AudioStreamPlayer.new()
+		player_sfx.stream = sfx_entrar
+		player_sfx.volume_db = volume_sfx_entrar_db
+		player_sfx.bus = "UI" 
+		add_child(player_sfx)
+		player_sfx.play()
 
 func revelar_menu():
 	intro_layer.hide()
@@ -29,8 +53,9 @@ func pular_intro():
 	anim_intro.stop()
 
 func _on_start_pressed() -> void:
-	if musica_menu: musica_menu.stop()
-	if has_node("SfxEntrar"): $SfxEntrar.play()
+	if player_musica: player_musica.stop()
+	
+	tocar_sfx_entrar()
 	
 	var botao_start = $VBoxContainer/Button
 	

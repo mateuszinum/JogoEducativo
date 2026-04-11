@@ -71,6 +71,7 @@ func tocar_som_coleta() -> void:
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = collect_sound
 		audio.volume_db = collect_volume
+		audio.bus = "SFX" # <--- CONECTADO AO BUS
 		audio.global_position = global_position
 		audio.pitch_scale = _current_collect_pitch
 		get_parent().add_child(audio)
@@ -102,6 +103,7 @@ func move():
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = step_sound
 		audio.volume_db = step_volume
+		audio.bus = "SFX" # <--- CONECTADO AO BUS
 		audio.global_position = global_position
 		audio.pitch_scale = randf_range(step_pitch_min, step_pitch_max)
 		get_parent().add_child(audio)
@@ -137,6 +139,7 @@ func take_damage(amount):
 		var audio = AudioStreamPlayer2D.new()
 		audio.stream = hurt_sound
 		audio.volume_db = hurt_volume
+		audio.bus = "SFX" # <--- CONECTADO AO BUS
 		audio.global_position = global_position
 		audio.pitch_scale = randf_range(hurt_pitch_min, hurt_pitch_max)
 		get_parent().add_child(audio)
@@ -156,10 +159,8 @@ func _on_damage_tick_timeout() -> void:
 	anim.play("default")
 
 func play_damage_effect() -> void:
-	# Chama o tremor da tela imediatamente!
 	shake_screen(6.0) 
 	
-	# Se os efeitos estiverem desligados, para por aqui e não anima o sangue
 	if not Constantes.USAR_EFEITOS_TELA:
 		return
 
@@ -181,21 +182,13 @@ func play_damage_effect() -> void:
 		intensidade_maxima, 0.0, 0.4
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
-# --- NOVA FUNÇÃO DE SHAKE ---
 func shake_screen(intensidade: float) -> void:
-	var camera = $Camera2D # Garanta que a Camera2D é filha do Player
-	if camera == null: return
-	
-	var tween = create_tween()
-	
-	# Tremer 5 vezes seguidas
-	for i in range(5):
-		# Sorteia uma direção aleatória e multiplica pela força atual
-		var deslocamento = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized() * intensidade
-		tween.tween_property(camera, "offset", deslocamento, 0.04)
-		
-		# Reduz a intensidade em 30% a cada solavanco para dar um efeito de dissipação
-		intensidade *= 0.7 
-		
-	# Volta a câmera perfeitamente pro centro
-	tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
+	if Constantes.USAR_SHAKE:
+		var camera = $Camera2D
+		if camera == null: return
+		var tween = create_tween()
+		for i in range(5):
+			var deslocamento = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized() * intensidade
+			tween.tween_property(camera, "offset", deslocamento, 0.04)
+			intensidade *= 0.7 
+		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)

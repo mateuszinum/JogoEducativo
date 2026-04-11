@@ -12,7 +12,7 @@ func _ready():
 	seed_hash = randi()
 	seed(seed_hash)
 	generate_world()
-	if not Constantes.MODO_DEV:
+	if Constantes.TOCAR_MUSICA:
 		play_stage_music()
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
@@ -80,6 +80,7 @@ func play_stage_music():
 		var music_player = AudioStreamPlayer.new()
 		music_player.stream = stage_data.stage_music
 		music_player.volume_db = stage_data.music_volume
+		music_player.bus = "Musica" 
 		music_player.name = "StageMusicPlayer"
 		add_child(music_player)
 		music_player.play()

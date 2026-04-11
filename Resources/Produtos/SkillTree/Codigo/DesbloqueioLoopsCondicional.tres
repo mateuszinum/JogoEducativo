@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://se4vuh5ryinu"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_mn4eq"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_nhjwi"]
+[ext_resource type="Texture2D" uid="uid://3yf4ro5wknr8" path="res://Assets/Produtos/Skilltree/loop.png" id="2_3wx8i"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_xidyp"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_rmkpk"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_mremj"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_mremj")
 nome = "Loop e Condicional"
-icone = ExtResource("2_nhjwi")
+icone = ExtResource("2_3wx8i")
 pre_requisitos = Array[ExtResource("5_mremj")]([ExtResource("6_3wx8i")])
 tipo = 1
 descricao_simples = "enquanto

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bs44buiwvb8n4" path="res://Scripts/UI/base_loja.gd" id="1_5duuu"]
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="1_aitj0"]
-[ext_resource type="Texture2D" uid="uid://ddj4xvni38a3i" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard/Character.png" id="1_icypo"]
 [ext_resource type="Texture2D" uid="uid://bpod7lgo1t24e" path="res://Assets/UI/BaseLoja/Board.png" id="2_ipeki"]
+[ext_resource type="Texture2D" uid="uid://c2ydxomq2gxmc" path="res://Assets/UI/BaseLoja/BarraSuperior.jpg" id="3_wt6ah"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="4_76fqn"]
 [ext_resource type="Texture2D" uid="uid://bddtbvvdvgqk7" path="res://Assets/UI/BaseLoja/BarraLateral.png" id="4_co7d0"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_bj3g6"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_8mo0i"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_d0m2b"]
 [ext_resource type="Texture2D" uid="uid://c2pmgbpjm7mun" path="res://Assets/UI/BaseLoja/arrow_w.png" id="8_p8kjq"]
+[ext_resource type="PackedScene" uid="uid://bvuxjcskaqwuh" path="res://Scenes/UI/overlay_dialogo.tscn" id="12_evj2b"]
+[ext_resource type="Texture2D" uid="uid://bbfcpr32bklan" path="res://Assets/Personagens/Personagem.png" id="13_wt6ah"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mo0i"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
@@ -56,58 +58,76 @@ size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("1_5duuu")
 
-[node name="FundoOverlay" type="Sprite2D" parent="." unique_id=786979508]
-position = Vector2(394.5, 299)
+[node name="Texturas" type="Control" parent="." unique_id=1026332895]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fundo" type="ColorRect" parent="Texturas" unique_id=1823747467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 711.0
+offset_bottom = 568.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FundoOverlay" type="TextureRect" parent="Texturas" unique_id=1375536134]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 57.999992
+offset_right = 2165.0
+offset_bottom = 2186.0
 scale = Vector2(0.24355157, 0.22650376)
 texture = ExtResource("2_ipeki")
 
-[node name="Conteudo" type="Node2D" parent="." unique_id=1289543832]
+[node name="BarraSuperior" type="TextureRect" parent="Texturas" unique_id=7503734]
+layout_mode = 0
+offset_left = 148.0
+offset_right = 1201.0
+offset_bottom = 124.0
+scale = Vector2(0.468, 0.468)
+texture = ExtResource("3_wt6ah")
+
+[node name="BarraLateral" type="TextureRect" parent="Texturas" unique_id=482410668]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -4.9999995
+offset_right = 1151.0
+offset_bottom = 3593.0
+scale = Vector2(0.14756943, 0.15182509)
+texture = ExtResource("4_co7d0")
+
+[node name="Conteudo" type="Control" parent="." unique_id=597489730]
+anchors_preset = 0
 
 [node name="AreaLimiteTooltip" type="Control" parent="Conteudo" unique_id=1604915852]
-layout_mode = 3
 anchors_preset = 0
-offset_left = 150.0
+offset_left = 149.0
 offset_top = 58.0
 offset_right = 640.0
 offset_bottom = 540.0
-
-[node name="BarraSuperior" type="ColorRect" parent="Conteudo" unique_id=700372077]
-offset_left = 149.0
-offset_right = 640.0
-offset_bottom = 58.0
-color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 
 [node name="HUD_Inventario" parent="Conteudo" unique_id=319363314 instance=ExtResource("1_aitj0")]
 offset = Vector2(150, 0)
 transform = Transform2D(1, 0, 0, 1, 150, 0)
 
 [node name="BotaoProduto" parent="Conteudo" unique_id=1255495614 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("4_76fqn")]
+layout_mode = 1
 offset_left = 192.0
 offset_top = 90.0
 offset_right = 272.0
 offset_bottom = 170.0
 area_limite_tooltip = NodePath("../AreaLimiteTooltip")
 
-[node name="Lateral" type="Node2D" parent="." unique_id=285029944]
-
-[node name="BarraLateral" type="Sprite2D" parent="Lateral" unique_id=1481958355]
-position = Vector2(84.99999, 269.13333)
-scale = Vector2(0.14756943, 0.15182509)
-texture = ExtResource("4_co7d0")
-
-[node name="PersonagemImagem" type="TextureRect" parent="Lateral" unique_id=1626689645]
-unique_name_in_owner = true
-offset_left = -445.00003
-offset_top = -149.0
-offset_right = 215.18234
-offset_bottom = 594.0
-scale = Vector2(1.645, 1.645)
-mouse_filter = 2
-texture = ExtResource("1_icypo")
-expand_mode = 4
+[node name="Lateral" type="Control" parent="." unique_id=610877546]
+anchors_preset = 0
 
 [node name="TituloLoja" type="Label" parent="Lateral" unique_id=1433500361]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 4.0
 offset_top = 73.0
 offset_right = 145.0
@@ -118,22 +138,7 @@ text = "TÍTULO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Barreira" type="ColorRect" parent="." unique_id=51565971]
-layout_mode = 0
-offset_left = 640.0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="Barreira" unique_id=1760894832]
-layout_mode = 0
-offset_left = -640.0
-offset_top = 540.0
-offset_right = 150.0
-offset_bottom = 720.0
-color = Color(0, 0, 0, 1)
-
-[node name="BotaoVoltar" type="Button" parent="." unique_id=624095006]
+[node name="BotaoVoltar" type="Button" parent="Lateral" unique_id=624095006]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 15.0
@@ -166,4 +171,47 @@ volume_hover_db = -10.0
 som_clique = ExtResource("8_d0m2b")
 volume_clique_db = -5.0
 
-[connection signal="pressed" from="BotaoVoltar" to="." method="_on_botao_voltar_pressed"]
+[node name="EspacoPersonagem" type="Control" parent="." unique_id=1732438903]
+unique_name_in_owner = true
+z_index = 10
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 0
+offset_top = 345.325
+offset_right = 200.0
+offset_bottom = 545.3251
+
+[node name="PersonagemImagem" type="TextureRect" parent="EspacoPersonagem" unique_id=897123767]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+offset_left = 1.0
+offset_top = 7.674988
+offset_right = 201.0
+offset_bottom = 207.67499
+texture = ExtResource("13_wt6ah")
+
+[node name="OverlayDialogo" parent="." unique_id=1203743968 node_paths=PackedStringArray("personagem_animado") instance=ExtResource("12_evj2b")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = -12.0
+offset_top = -13.0
+offset_right = 63.0
+offset_bottom = 8.0
+personagem_animado = NodePath("../EspacoPersonagem")
+
+[node name="Barreira" type="ColorRect" parent="." unique_id=51565971]
+layout_mode = 0
+offset_left = 640.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Barreira" unique_id=1760894832]
+layout_mode = 0
+offset_left = -640.0
+offset_top = 540.0
+offset_right = 150.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Lateral/BotaoVoltar" to="." method="_on_botao_voltar_pressed"]

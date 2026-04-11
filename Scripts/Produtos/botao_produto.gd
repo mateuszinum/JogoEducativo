@@ -1,9 +1,9 @@
+@tool
 extends Button
 
 @export var produto: ProdutoLoja
 @onready var tooltip = %TooltipBox
 
-# --- VARIÁVEIS DE VISUAL E ANIMAÇÃO ---
 @export_group("Animação e Visual")
 @export var visual_animado: Control 
 @export var fundo_colorido: CanvasItem 
@@ -13,16 +13,24 @@ extends Button
 @export var escala_clique: Vector2 = Vector2(0.9, 0.9) 
 @export var tempo_transicao: float = 0.1 
 
+@export_group("Ícone Monocromático")
+@export var icone_monocromatico: bool = false:
+	set(valor):
+		icone_monocromatico = valor
+		notify_property_list_changed()
+
+@export var cor_icone_bloqueado: Color = Color(0.2, 0.2, 0.2, 1.0)
+@export var cor_icone_desbloqueado: Color = Color.WHITE
+
 @export_group("Cores de Estado")
 @export var cor_desbloqueado: Color = Color.WHITE
 @export var cor_disponivel: Color = Color(0.25, 0.25, 0.25, 1.0) 
 @export var cor_bloqueado: Color = Color(0.6, 0.15, 0.15, 1.0) 
 @export var cor_erro_piscar: Color = Color(1.0, 0.2, 0.2, 1.0) 
-# NOVO: Cores customizáveis para as bolinhas!
-@export var cor_bolinha_ativa: Color = Color(0.2, 0.8, 0.2, 1.0) # Verde por padrão
-@export var cor_bolinha_inativa: Color = Color(0.3, 0.3, 0.3, 1.0) # Cinza escuro por padrão
+@export var cor_bolinha_ativa: Color = Color(0.2, 0.8, 0.2, 1.0) 
+@export var cor_bolinha_inativa: Color = Color(0.3, 0.3, 0.3, 1.0) 
 
-@export_group("Transições de Cor (Fades)")
+@export_group("Transições de Cor")
 @export var tempo_requisito_conquistado: float = 0.8 
 @export var tempo_desbloqueando: float = 0.2         
 
@@ -54,12 +62,18 @@ var inicializado: bool = false
 
 enum EstadoUI { BLOQUEADO, DISPONIVEL, COMPRADO }
 var estado_visual_atual: EstadoUI = EstadoUI.BLOQUEADO
-# ----------------------------------------------------------------
 
 var nivel_atual: int = 0
 var falta_requisito: bool = false
 
+func _validate_property(property: Dictionary) -> void:
+	if property.name == "cor_icone_bloqueado" or property.name == "cor_icone_desbloqueado":
+		if not icone_monocromatico:
+			property.usage = PROPERTY_USAGE_NO_EDITOR
+
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
+	
 	tooltip.hide()
 	
 	if tooltip:
@@ -71,10 +85,11 @@ func _ready() -> void:
 	button_up.connect(_on_button_up) 
 	
 	sfx_player = AudioStreamPlayer.new()
+	sfx_player.bus = "UI"
 	add_child(sfx_player)
 	
 	if visual_animado:
-		visual_animado.pivot_offset = visual_animado.size / 2 
+		visual_animado.pivot_offset = visual_animado.size / 2.0 
 	
 	if produto:
 		ProgressoDB.progresso_alterado.connect(_on_progresso_alterado)
@@ -82,10 +97,6 @@ func _ready() -> void:
 		_on_progresso_alterado()
 		
 		inicializado = true
-
-# ==========================================
-# SISTEMA DE VALIDAÇÃO E CORES
-# ==========================================
 
 func pode_comprar() -> bool:
 	if falta_requisito: 
@@ -129,10 +140,6 @@ func disparar_erro() -> void:
 		tween_cor = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween_cor.tween_property(fundo_colorido, "modulate", cor_base, 0.3)
 
-# ==========================================
-# LÓGICA DE ANIMAÇÃO E INTERAÇÃO
-# ==========================================
-
 func _on_mouse_entered() -> void: 
 	tooltip.show()
 	if travado: return
@@ -174,15 +181,10 @@ func _tocar_som(stream: AudioStream, volume: float) -> void:
 		sfx_player.pitch_scale = randf_range(pitch_min, pitch_max)
 		sfx_player.play()
 
-# ==========================================
-# LÓGICA DA LOJA E PROGRESSÃO
-# ==========================================
-
 func _on_progresso_alterado() -> void:
 	sincronizar_niveis()
 	verificar_pre_requisitos()
 	atualizar_visual()
-	
 
 func sincronizar_niveis() -> void:
 	if produto.tipo == ProdutoLoja.TipoProduto.ITEM_UNICO:
@@ -208,7 +210,7 @@ func _pressed() -> void:
 func efetivar_compra() -> void:
 	match produto.tipo:
 		ProdutoLoja.TipoProduto.ITEM_UNICO:
-			print("Item Único Comprado: Vai para o Inventário")
+			pass
 			
 		ProdutoLoja.TipoProduto.DESBLOQUEIO_UNICO:
 			nivel_atual = 1
@@ -218,13 +220,20 @@ func efetivar_compra() -> void:
 			nivel_atual += 1
 			ProgressoDB.desbloquear(produto.nome, nivel_atual)
 
-# ==========================================
-# ATUALIZAÇÃO VISUAL (BOLINHAS E CORES)
-# ==========================================
-
 func atualizar_visual() -> void:
-	if %IconeProduto: %IconeProduto.texture = produto.icone
-	if %TooltipNome: %TooltipNome.text = produto.nome
+	if %IconeProduto: 
+		%IconeProduto.texture = produto.icone
+		
+		if icone_monocromatico:
+			if nivel_atual > 0:
+				%IconeProduto.modulate = cor_icone_desbloqueado
+			else:
+				%IconeProduto.modulate = cor_icone_bloqueado
+		else:
+			%IconeProduto.modulate = Color.WHITE
+			
+	if %TooltipNome: 
+		%TooltipNome.text = produto.nome
 	
 	if fundo_colorido:
 		var novo_estado = obter_estado_visual()
@@ -250,13 +259,11 @@ func atualizar_visual() -> void:
 		
 	if produto.tipo == ProdutoLoja.TipoProduto.UPGRADE or produto.tipo == ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
 		
-		# --- NOVA LÓGICA DE VISIBILIDADE ---
 		var caixa_fundo = %ContainerBolinhas.get_parent()
 		if produto.tipo == ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO and nivel_atual == 0:
-			caixa_fundo.hide() # Oculta tudo (fundo e bolinhas) se for Progressivo no Nível 0
+			caixa_fundo.hide() 
 		else:
-			caixa_fundo.show() # Garante que vai aparecer pro Upgrade (Nv 1+) e pro Progressivo (Nv 1+)
-		# -----------------------------------
+			caixa_fundo.show() 
 		
 		for i in range(%ContainerBolinhas.get_child_count()):
 			var aspect = %ContainerBolinhas.get_child(i)
@@ -264,7 +271,6 @@ func atualizar_visual() -> void:
 			
 			var estilo = bolinha.get_theme_stylebox("panel").duplicate()
 			
-			# NOVO: Usa as variáveis do Inspector!
 			if i < nivel_atual: 
 				estilo.bg_color = cor_bolinha_ativa 
 			else: 
@@ -376,19 +382,16 @@ func preparar_bolinhas() -> void:
 		estilo.corner_radius_top_right = 4
 		estilo.corner_radius_bottom_left = 4
 		estilo.corner_radius_bottom_right = 4
-		# NOVO: Usa a cor inativa configurada no Inspector ao criar a bolinha
 		estilo.bg_color = cor_bolinha_inativa 
 		
 		bolinha.add_theme_stylebox_override("panel", estilo)
 		
 		aspect.add_child(bolinha)
 		%ContainerBolinhas.add_child(aspect)
-		
 
-# ==========================================
-# POSICIONAMENTO DO TOOLTIP
-# ==========================================
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	
 	if tooltip.visible:
 		tooltip.scale = escala_tooltip 
 		

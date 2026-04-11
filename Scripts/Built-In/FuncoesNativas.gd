@@ -314,37 +314,10 @@ class Jogador:
 					return
 				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
 				
-				if ataque_data.projectile_node != null:
-					var projetil = ataque_data.projectile_node.instantiate()
-					
-					projetil.global_position = player.global_position
-					projetil.direction = player.global_position.direction_to(inimigo.global_position)
-					projetil.rotation = projetil.direction.angle()
-					
-					projetil.speed = ataque_data.speed
-					projetil.damage = ataque_data.damage
-					projetil.knockback_multiplier = ataque_data.knockback_multiplier
-					
-					if "ataque_nome" in projetil:
-						projetil.ataque_nome = ataque_data.nome
-					
-					if "hit_sound" in projetil:
-						projetil.hit_sound = ataque_data.hit_sound
-						projetil.hit_volume = ataque_data.hit_volume
-						projetil.pitch_min = ataque_data.pitch_min
-						projetil.pitch_max = ataque_data.pitch_max
-							
-					player.get_parent().add_child(projetil)
-					
-					if ataque_data.attack_sound != null:
-						var audio = AudioStreamPlayer2D.new()
-						audio.stream = ataque_data.attack_sound
-						audio.volume_db = ataque_data.attack_volume
-						audio.global_position = player.global_position
-						audio.pitch_scale = randf_range(ataque_data.pitch_min, ataque_data.pitch_max)
-						player.get_parent().add_child(audio)
-						audio.play()
-						audio.finished.connect(audio.queue_free)
+				if ataque_data.has_method("activate"):
+					ataque_data.activate(player, inimigo, tree)
+				else:
+					print("[Erro] O ataque ", ataque_data.nome, " não possui um script válido associado.")
 						
 				return
 				
