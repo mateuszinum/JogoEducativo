@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://de6peqjsu3q7h" path="res://Assets/UI/Terminal/Terminal.jpg" id="2_l4t8i"]
 [ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_n1i2u"]
-[ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Resources/Shaders/PosProcessamentoTerminal.tres" id="5_a105h"]
+[ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Resources/Shaders/Configs/PosProcessamentoTerminal.tres" id="5_a105h"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_kjdr6"]
 [ext_resource type="Texture2D" uid="uid://cqmsncqpj3bfx" path="res://Assets/UI/Terminal/stop.png" id="5_lkp2e"]
 [ext_resource type="Texture2D" uid="uid://dj142akcgvgfv" path="res://Assets/UI/Terminal/play.png" id="6_inkna"]

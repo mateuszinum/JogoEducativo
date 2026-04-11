@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
-[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
+[ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/Configs/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]

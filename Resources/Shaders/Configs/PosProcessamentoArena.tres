@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://mnapuagnst6g"]
 
-[ext_resource type="Shader" uid="uid://qqpoumbbl8ya" path="res://Scripts/Polimento/Shaders/VisualArena.gdshader" id="1_2ktvt"]
+[ext_resource type="Shader" uid="uid://qqpoumbbl8ya" path="res://Resources/Shaders/PosProcessamento.gdshader" id="1_51fhf"]
 
 [resource]
-shader = ExtResource("1_2ktvt")
+shader = ExtResource("1_51fhf")
 shader_parameter/scanline_count = 300.0
 shader_parameter/scanline_opacidade = 0.1
 shader_parameter/tubo_sombra = 0.30000001425

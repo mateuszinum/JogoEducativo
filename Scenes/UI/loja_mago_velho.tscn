@@ -27,10 +27,11 @@
 [ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="25_ep0q0"]
 [ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioBrilhinhos.tres" id="25_ew12h"]
 [ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="26_oqm2m"]
+[ext_resource type="Texture2D" uid="uid://3mo8kk7lyfvd" path="res://Assets/Personagens/MagoVelho.png" id="28_n146t"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
 
-[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=1255495614]
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
 visible = false
 offset_left = 0.0
 offset_top = 0.0
@@ -39,7 +40,7 @@ offset_bottom = 80.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="SkillTreeMascara" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=2013930762]
+[node name="SkillTreeMascara" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=2013930762]
 clip_contents = true
 anchors_preset = 0
 offset_left = 166.0
@@ -166,7 +167,7 @@ anchors_preset = 0
 offset_left = 34.0
 offset_right = 34.0
 
-[node name="BotaoProduto" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="0" unique_id=1306100104 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="0" unique_id=1306100104 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -178,12 +179,11 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("4_piamn")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
 [node name="CentroFoco" type="Marker2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/BotaoProduto" index="2" unique_id=1712658640]
 position = Vector2(40, 39)
 
-[node name="BotaoProduto2" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="1" unique_id=436071097 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto2" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="1" unique_id=436071097 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -195,9 +195,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("5_spist")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto3" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="2" unique_id=364264349 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto3" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="2" unique_id=364264349 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -209,9 +208,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("6_55bkk")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto4" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="3" unique_id=259499143 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto4" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="3" unique_id=259499143 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -223,9 +221,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("7_7k5ma")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto5" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="4" unique_id=1102444366 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto5" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="4" unique_id=1102444366 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -237,9 +234,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("8_x0qlo")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto6" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="5" unique_id=384249697 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto6" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="5" unique_id=384249697 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -251,9 +247,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("9_j7bgc")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto7" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="6" unique_id=213515963 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto7" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="6" unique_id=213515963 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -265,9 +260,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("10_fqpdv")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto8" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="7" unique_id=1616777381 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto8" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="7" unique_id=1616777381 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -279,9 +273,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("11_uf3g2")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto9" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="8" unique_id=96607190 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto9" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="8" unique_id=96607190 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -293,9 +286,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("12_tki0f")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto10" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="9" unique_id=1523573316 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto10" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="9" unique_id=1523573316 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -307,9 +299,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("13_c2mca")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto11" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="10" unique_id=1295124709 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto11" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="10" unique_id=1295124709 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -321,9 +312,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("14_c56la")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto12" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="11" unique_id=670218252 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto12" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="11" unique_id=670218252 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -335,9 +325,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("15_tnlql")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto13" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="12" unique_id=1894458085 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto13" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="12" unique_id=1894458085 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -349,9 +338,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("16_tm52l")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto14" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="13" unique_id=2035096975 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto14" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="13" unique_id=2035096975 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -363,9 +351,8 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("17_tmlqk")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto15" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="14" unique_id=1654986754 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto15" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo" index="14" unique_id=1654986754 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -377,14 +364,13 @@ grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("18_4t3wo")
 icone_monocromatico = true
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
 [node name="BotoesConteudo" type="Control" parent="Conteudo/SkillTreeMascara/CanvasArraste" index="3" unique_id=544611202]
 anchors_preset = 0
 offset_left = 37.54001
 offset_right = 37.54001
 
-[node name="BotaoProduto16" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="0" unique_id=1617538214 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto16" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="0" unique_id=1617538214 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -395,9 +381,8 @@ offset_bottom = 432.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("20_m64yk")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto17" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="1" unique_id=667926312 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto17" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="1" unique_id=667926312 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -408,9 +393,8 @@ offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("19_xvabl")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto18" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="2" unique_id=694895894 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto18" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="2" unique_id=694895894 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -421,9 +405,8 @@ offset_bottom = 580.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("21_cd25m")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto19" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="3" unique_id=2074171592 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto19" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="3" unique_id=2074171592 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -434,9 +417,8 @@ offset_bottom = 732.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("22_soyyb")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto21" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="4" unique_id=1488258733 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto21" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="4" unique_id=1488258733 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -447,9 +429,8 @@ offset_bottom = 880.0001
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("23_hs0yn")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto22" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="5" unique_id=1314487451 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto22" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="5" unique_id=1314487451 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -460,9 +441,8 @@ offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("25_ep0q0")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto25" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="6" unique_id=1306875737 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto25" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="6" unique_id=1306875737 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -473,9 +453,8 @@ offset_bottom = 580.00006
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("25_ew12h")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto23" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="7" unique_id=1540892238 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto23" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="7" unique_id=1540892238 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -486,9 +465,8 @@ offset_bottom = 730.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("24_ep0q0")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto24" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="8" unique_id=1924821081 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_j3yet")]
+[node name="BotaoProduto24" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesConteudo" index="8" unique_id=1924821081 instance=ExtResource("3_j3yet")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -499,7 +477,9 @@ offset_bottom = 1030.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("26_oqm2m")
-area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "MAGO VELHO"
+
+[node name="PersonagemImagem" parent="Personagem/EspacoPersonagem" parent_id_path=PackedInt32Array(1732438903) index="0" unique_id=897123767]
+texture = ExtResource("28_n146t")

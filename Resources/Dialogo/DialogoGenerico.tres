@@ -1,8 +1,15 @@
 [gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://bqgabgldlbwfv"]
 
 [ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="1_hfjfw"]
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_vvlgo"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_muab3"]
+
+[sub_resource type="Resource" id="Resource_she6p"]
+script = ExtResource("1_vvlgo")
+texto = "Diálogo!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [resource]
 script = ExtResource("1_hfjfw")
-linhas = Array[String](["Diálogo!"])
+linhas = Array[ExtResource("1_vvlgo")]([SubResource("Resource_she6p")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

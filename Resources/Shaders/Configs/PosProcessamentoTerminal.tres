@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dpdabhrh8ymba"]
 
-[ext_resource type="Shader" uid="uid://qqpoumbbl8ya" path="res://Scripts/Polimento/Shaders/VisualArena.gdshader" id="1_6fdqo"]
+[ext_resource type="Shader" uid="uid://qqpoumbbl8ya" path="res://Resources/Shaders/PosProcessamento.gdshader" id="1_6fdqo"]
 
 [resource]
 shader = ExtResource("1_6fdqo")

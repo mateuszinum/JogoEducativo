@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://bnda7muc577u0"]
+
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_7eupd"]
+[ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="1_e10hs"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_x2355"]
+
+[sub_resource type="Resource" id="Resource_7eupd"]
+script = ExtResource("1_7eupd")
+texto = "Você precisa ir para uma arena derrotar inimigos. Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_5actq"]
+script = ExtResource("2_x2355")
+texto_opcao = "O que eu tenho que fazer?"
+linhas = Array[ExtResource("1_7eupd")]([SubResource("Resource_7eupd")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_0ej5d"]
+script = ExtResource("2_x2355")
+texto_opcao = "Nada não! [SAIR]"
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_8t35l"]
+script = ExtResource("1_7eupd")
+texto = "Olá! Como posso te ajudar, novato?"
+tem_opcoes = true
+opcoes = Array[ExtResource("2_x2355")]([SubResource("Resource_5actq"), SubResource("Resource_0ej5d")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[resource]
+script = ExtResource("1_e10hs")
+linhas = Array[ExtResource("1_7eupd")]([SubResource("Resource_8t35l")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

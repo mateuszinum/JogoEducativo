@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vsgcngso2lhm" path="res://Scripts/Dialogo/sistema_dialogo.gd" id="1_hg8d8"]
 [ext_resource type="AudioStream" uid="uid://2argyloyeoa3" path="res://Audio/SFX/Dialogo/Typing.wav" id="2_d1yip"]
-[ext_resource type="Resource" uid="uid://bqgabgldlbwfv" path="res://Resources/Dialogo/DialogoGenerico.tres" id="3_ni0pr"]
+[ext_resource type="PackedScene" uid="uid://dxvpfq25mjulq" path="res://Scenes/UI/botao_resposta.tscn" id="2_ni0pr"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ame8j"]
 [ext_resource type="Texture2D" uid="uid://ceqouinvjoqg6" path="res://Assets/UI/Dialogo/CaixaDialogo.png" id="4_d1yip"]
 [ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="5_ame8j"]
@@ -26,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hg8d8")
+prefab_botao_resposta = ExtResource("2_ni0pr")
 velocidade_texto = 0.04
 cor_fundo = Color(0, 0, 0, 0.48235294)
 intensidade_blur = 1.0
@@ -34,7 +35,6 @@ som_voz = ExtResource("2_d1yip")
 pitch_min = 0.9
 rotacao_maxima_graus = 0.0
 escala_pulo_caixa = Vector2(1.05, 1.05)
-dialogo_de_teste = ExtResource("3_ni0pr")
 
 [node name="Blur" type="ColorRect" parent="." unique_id=1147266459]
 material = SubResource("ShaderMaterial_ni0pr")
@@ -80,7 +80,12 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="TextoDialogo" type="RichTextLabel" parent="CaixaDialogo/MarginContainer" unique_id=937791904]
+[node name="LayoutCaixa" type="VBoxContainer" parent="CaixaDialogo/MarginContainer" unique_id=199507579]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextoDialogo" type="RichTextLabel" parent="CaixaDialogo/MarginContainer/LayoutCaixa" unique_id=937791904]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -90,3 +95,7 @@ theme_override_font_sizes/normal_font_size = 22
 text = "Texto"
 fit_content = true
 autowrap_mode = 2
+
+[node name="ContainerOpcoes" type="VBoxContainer" parent="CaixaDialogo/MarginContainer/LayoutCaixa" unique_id=495443462]
+unique_name_in_owner = true
+layout_mode = 2

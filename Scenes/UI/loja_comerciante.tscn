@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://xcdslswds8he"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_7qgq5"]
+[ext_resource type="Texture2D" uid="uid://cjkv8x545rshp" path="res://Assets/Personagens/Comerciante.png" id="2_iljke"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_7qgq5")]
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "COMERCIANTE"
+
+[node name="PersonagemImagem" parent="Personagem/EspacoPersonagem" parent_id_path=PackedInt32Array(1732438903) index="0" unique_id=897123767]
+texture = ExtResource("2_iljke")

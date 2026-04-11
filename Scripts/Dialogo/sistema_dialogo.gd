@@ -1,4 +1,3 @@
-@tool
 extends Control
 class_name SistemaDialogo
 
@@ -8,9 +7,14 @@ const TEMPO_RESTORE_ANIM = 0.06
 @onready var caixa_dialogo = %CaixaDialogo
 @onready var texto_dialogo = %TextoDialogo 
 @onready var fundo = $Fundo
+@onready var container_opcoes = %ContainerOpcoes
 
-@export var velocidade_texto: float = 0.03
+@export_group("Referências Externas")
 @export var personagem_animado: Control 
+@export var prefab_botao_resposta: PackedScene
+
+@export_group("Configurações de Diálogo")
+@export var velocidade_texto: float = 0.03
 
 @export_group("Efeitos de Fundo")
 @export var cor_fundo: Color = Color(0.0, 0.0, 0.0, 0.6)
@@ -18,9 +22,10 @@ const TEMPO_RESTORE_ANIM = 0.06
 @export var intensidade_blur: float = 2.0
 @export var tempo_fade_out: float = 0.2
 
-@export_group("Tamanho da Caixa")
+@export_group("Tamanho e Layout")
 @export var largura_minima_caixa: float = 100.0
 @export var largura_maxima_caixa: float = 275.0
+@export var espaco_acima_opcoes: float = 12.0
 
 @export_group("Áudio do Diálogo")
 @export var som_voz: AudioStream
@@ -37,50 +42,25 @@ const TEMPO_RESTORE_ANIM = 0.06
 @export var escala_pulo_caixa: Vector2 = Vector2(1.1, 1.1)
 @export var tempo_pulo_caixa: float = 0.15
 
-@export_group("Modo de Teste")
-@export var ativar_teste_dialogo: bool = false:
-	set(valor):
-		ativar_teste_dialogo = valor
-		notify_property_list_changed() 
-
-@export var dialogo_de_teste: DialogoResource
-
 var sfx_voz: AudioStreamPlayer
 var dialogo_atual: DialogoResource
-var linha_atual: int = 0
+var pilha_dialogos: Array[Dictionary] = []
+var lista_linhas_atual: Array[LinhaDialogo] = []
+var indice_linha_atual: int = 0
 var digitando: bool = false
 var animacao_personagem: Tween
 var animacao_caixa: Tween
 var animacao_fade: Tween
 
-func _validate_property(property: Dictionary) -> void:
-	if property.name == "dialogo_de_teste":
-		if not ativar_teste_dialogo:
-			property.usage = PROPERTY_USAGE_NO_EDITOR 
-
 func _ready() -> void:
-	if Engine.is_editor_hint(): return 
-		
 	hide()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	sfx_voz = AudioStreamPlayer.new()
 	sfx_voz.bus = "UI"
 	add_child(sfx_voz)
-	
-	var pai = get_parent()
-	if pai and pai.has_signal("visibility_changed"):
-		pai.visibility_changed.connect(_on_pai_visibility_changed)
-
-func _on_pai_visibility_changed() -> void:
-	if Engine.is_editor_hint(): return
-	
-	if get_parent().visible and ativar_teste_dialogo and dialogo_de_teste != null:
-		iniciar_dialogo(dialogo_de_teste)
 
 func iniciar_dialogo(recurso: DialogoResource) -> void:
-	if Engine.is_editor_hint(): return
-	
 	if recurso == null or recurso.linhas.is_empty():
 		return
 		
@@ -96,13 +76,15 @@ func iniciar_dialogo(recurso: DialogoResource) -> void:
 			fundo.material.set_shader_parameter("lod", intensidade_blur)
 		elif fundo.material is ShaderMaterial:
 			fundo.material.set_shader_parameter("lod", 0.0)
-		
+			
+	pilha_dialogos.clear()
 	dialogo_atual = recurso
-	linha_atual = 0
+	lista_linhas_atual = recurso.linhas
+	indice_linha_atual = 0
 	show() 
 	mostrar_linha()
 
-func calcular_largura_perfeita(texto: String) -> float:
+func calcular_largura_perfeita(texto: String, opcoes: Array[OpcaoDialogo] = []) -> float:
 	var font = texto_dialogo.get_theme_font("normal_font")
 	if not font: font = ThemeDB.fallback_font
 	var font_size = texto_dialogo.get_theme_font_size("normal_font_size")
@@ -136,24 +118,81 @@ func calcular_largura_perfeita(texto: String) -> float:
 		if resto_limpo > maior_largura:
 			maior_largura = resto_limpo
 			
+	for opcao in opcoes:
+		if opcao == null: continue
+		var largura_opcao = font.get_string_size(opcao.texto_opcao, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x + 32.0
+		if largura_opcao > maior_largura:
+			maior_largura = largura_opcao
+			
 	return maior_largura
 
-func ajustar_tamanho_caixa(texto_puro: String) -> void:
+func ajustar_tamanho_caixa(texto_puro: String, opcoes: Array[OpcaoDialogo] = []) -> void:
 	texto_dialogo.autowrap_mode = TextServer.AUTOWRAP_WORD
-	var largura_calculada = calcular_largura_perfeita(texto_puro)
+	var largura_calculada = calcular_largura_perfeita(texto_puro, opcoes)
 	texto_dialogo.custom_minimum_size.x = clamp(largura_calculada, largura_minima_caixa, largura_maxima_caixa)
+
+func _descartar_botao(botao: Node) -> void:
+	container_opcoes.remove_child(botao)
+	add_child(botao)
+	if botao is CanvasItem:
+		botao.hide()
+	get_tree().create_timer(1.5).timeout.connect(botao.queue_free)
 
 func mostrar_linha() -> void:
 	digitando = true
-	texto_dialogo.text = dialogo_atual.linhas[linha_atual]
-	texto_dialogo.visible_characters = 0
+	
+	for child in container_opcoes.get_children():
+		_descartar_botao(child)
+		
+	var linha_atual_obj = lista_linhas_atual[indice_linha_atual]
+	
+	caixa_dialogo.custom_minimum_size = Vector2.ZERO
+	
+	texto_dialogo.text = linha_atual_obj.texto
+	texto_dialogo.visible_characters = -1
 	
 	var texto_puro = texto_dialogo.get_parsed_text()
 	var total_caracteres = texto_puro.length()
 	
-	ajustar_tamanho_caixa(texto_puro)
+	var array_opcoes: Array[OpcaoDialogo] = []
+	if linha_atual_obj.tem_opcoes:
+		array_opcoes = linha_atual_obj.opcoes
+		
+	ajustar_tamanho_caixa(texto_puro, array_opcoes)
+	
+	if array_opcoes.is_empty():
+		container_opcoes.hide()
+	else:
+		container_opcoes.show()
+		var espacador = Control.new()
+		espacador.custom_minimum_size.y = espaco_acima_opcoes
+		container_opcoes.add_child(espacador)
+		
+	for opcao in array_opcoes:
+		if opcao == null: continue
+		
+		var btn: Button
+		if prefab_botao_resposta:
+			btn = prefab_botao_resposta.instantiate() as Button
+		else:
+			btn = Button.new()
+			
+		btn.text = opcao.texto_opcao
+		btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		btn.pressed.connect(func(): _on_opcao_escolhida(opcao))
+		
+		btn.modulate.a = 0.0
+		btn.disabled = true
+		btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		
+		container_opcoes.add_child(btn)
 	
 	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	caixa_dialogo.custom_minimum_size = caixa_dialogo.size
+	
+	texto_dialogo.visible_characters = 0
 	
 	iniciar_animacao_fala()
 	animar_pulo_caixa()
@@ -171,20 +210,53 @@ func mostrar_linha() -> void:
 			sfx_voz.play()
 			
 		await get_tree().create_timer(velocidade_texto).timeout
-		
+			
 	finalizar_escrita()
 
 func finalizar_escrita() -> void:
 	digitando = false
 	texto_dialogo.visible_characters = -1 
 	parar_animacao_fala()
+	
+	for btn in container_opcoes.get_children():
+		if btn is Button:
+			btn.disabled = false
+			btn.mouse_filter = Control.MOUSE_FILTER_STOP
+			
+			var tween = create_tween()
+			tween.tween_property(btn, "modulate:a", 1.0, 0.15)
 
-func avancar_dialogo() -> void:
-	linha_atual += 1
-	if linha_atual < dialogo_atual.linhas.size():
+func _on_opcao_escolhida(opcao: OpcaoDialogo) -> void:
+	for child in container_opcoes.get_children():
+		_descartar_botao(child)
+		
+	if opcao.linhas.size() > 0:
+		pilha_dialogos.push_back({
+			"lista": lista_linhas_atual,
+			"indice": indice_linha_atual
+		})
+		lista_linhas_atual = opcao.linhas
+		indice_linha_atual = 0
 		mostrar_linha()
 	else:
 		encerrar_dialogo()
+
+func avancar_dialogo() -> void:
+	var linha_atual_obj = lista_linhas_atual[indice_linha_atual]
+	if linha_atual_obj.tem_opcoes and container_opcoes.get_child_count() > 0:
+		return
+		
+	indice_linha_atual += 1
+	if indice_linha_atual < lista_linhas_atual.size():
+		mostrar_linha()
+	else:
+		if pilha_dialogos.size() > 0:
+			var estado = pilha_dialogos.pop_back()
+			lista_linhas_atual = estado.lista
+			indice_linha_atual = estado.indice
+			avancar_dialogo()
+		else:
+			encerrar_dialogo()
 
 func encerrar_dialogo() -> void:
 	dialogo_atual = null
@@ -247,4 +319,6 @@ func _gui_input(event: InputEvent) -> void:
 		if digitando:
 			digitando = false 
 		else:
-			avancar_dialogo()
+			var linha_atual_obj = lista_linhas_atual[indice_linha_atual]
+			if not linha_atual_obj.tem_opcoes:
+				avancar_dialogo()
