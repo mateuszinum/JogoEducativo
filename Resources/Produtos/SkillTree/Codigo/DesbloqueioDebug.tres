@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://2faeufq3p63t"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_k1nid"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_4fttk"]
+[ext_resource type="Texture2D" uid="uid://dm6ilxplkt2jg" path="res://Assets/Produtos/Skilltree/debug.png" id="2_v2fyr"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_qw8vh"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_c4mft"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_apnv1"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_apnv1")
 nome = "Debug"
-icone = ExtResource("2_4fttk")
+icone = ExtResource("2_v2fyr")
 pre_requisitos = Array[ExtResource("5_apnv1")]([ExtResource("6_v2fyr")])
 tipo = 1
 descricao_simples = "escrever()"

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cmkhmo0t2l5b1"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_mxbgm"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_ujj5e"]
+[ext_resource type="Texture2D" uid="uid://bip234btmkqmm" path="res://Assets/Produtos/Skilltree/Inicio.png" id="2_mxbgm"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_o2rix"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_84u57"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_xxrc8"]
@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_xxrc8")
 nome = "Início"
-icone = ExtResource("2_ujj5e")
+icone = ExtResource("2_mxbgm")
 tipo = 1
 descricao_simples = "arena()
 atacar()

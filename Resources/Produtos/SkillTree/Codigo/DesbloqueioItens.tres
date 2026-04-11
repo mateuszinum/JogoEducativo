@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://bj5tvui624wgd"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_w38gk"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_mo2w4"]
+[ext_resource type="Texture2D" uid="uid://ckha00c4gkb4l" path="res://Assets/Produtos/Skilltree/itens.png" id="2_ywuj6"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_a68qi"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_dh2ly"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_5h8bc"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_5h8bc")
 nome = "Itens"
-icone = ExtResource("2_mo2w4")
+icone = ExtResource("2_ywuj6")
 pre_requisitos = Array[ExtResource("5_5h8bc")]([ExtResource("6_ywuj6")])
 tipo = 1
 descricao_simples = "cinto.usarItem()

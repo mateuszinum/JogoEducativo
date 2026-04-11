@@ -90,6 +90,8 @@ fundo_colorido = NodePath("Conteúdo/Background")
 escala_normal = Vector2(2.05, 2.05)
 escala_hover = Vector2(2.25, 2.25)
 escala_clique = Vector2(1.95, 1.95)
+cor_icone_bloqueado = Color(1, 1, 1, 1)
+cor_icone_desbloqueado = Color(0.20392157, 0.10980392, 0.019607844, 1)
 tempo_requisito_conquistado = 0.2
 tempo_desbloqueando = 0.1
 som_hover = ExtResource("6_0xya4")
@@ -117,11 +119,11 @@ scale = Vector2(2.05, 2.05)
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="Conteúdo" unique_id=1741709746]
-layout_mode = 0
-offset_left = -19.0
-offset_top = -19.0
-offset_right = 519.0
-offset_bottom = 519.0
+layout_mode = 1
+offset_left = -18.841465
+offset_top = -19.168295
+offset_right = 519.1585
+offset_bottom = 518.8317
 scale = Vector2(0.073, 0.073)
 mouse_filter = 2
 texture = ExtResource("6_8qpmc")
@@ -136,7 +138,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 7
 
 [node name="IconeProduto" type="TextureRect" parent="Conteúdo/MargemIcone" unique_id=1760340921]
 unique_name_in_owner = true
@@ -148,10 +150,10 @@ stretch_mode = 5
 
 [node name="MarginBolinhas" type="PanelContainer" parent="Conteúdo" unique_id=1149843935]
 layout_mode = 0
-offset_left = -9.573172
-offset_top = 8.148783
-offset_right = 44.085373
-offset_bottom = 20.831715
+offset_left = -10.54878
+offset_top = 8.148781
+offset_right = 46.768295
+offset_bottom = 20.831713
 scale = Vector2(0.4, 0.4)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ol41")

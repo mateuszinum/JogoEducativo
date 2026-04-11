@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://crbdt5bosvqxo"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_l8gmp"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_8lblv"]
+[ext_resource type="Texture2D" uid="uid://buv15tb7w05xm" path="res://Assets/Produtos/Skilltree/utilidades.png" id="2_wqmaf"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_sx0pd"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_y7pqm"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_ax4ot"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_ax4ot")
 nome = "Utilidades"
-icone = ExtResource("2_8lblv")
+icone = ExtResource("2_wqmaf")
 pre_requisitos = Array[ExtResource("5_ax4ot")]([ExtResource("6_wqmaf")])
 tipo = 1
 descricao_simples = "aleatorio()

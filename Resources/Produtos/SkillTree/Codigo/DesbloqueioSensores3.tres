@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://b6a5utl3rfqtb"]
 
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_0ncic"]
-[ext_resource type="Texture2D" uid="uid://o1cev66lnhvo" path="res://Assets/Asset Packs/items/item24.png" id="2_40rsa"]
+[ext_resource type="Texture2D" uid="uid://clrvf4pw8c2cs" path="res://Assets/Produtos/Skilltree/SENSOR.png" id="2_7lgmt"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ggh8e"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_lpr6o"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_qufq1"]
@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_qufq1")
 nome = "Sensores 3"
-icone = ExtResource("2_40rsa")
+icone = ExtResource("2_7lgmt")
 pre_requisitos = Array[ExtResource("5_qufq1")]([ExtResource("6_7lgmt")])
 tipo = 1
 descricao_simples = "escanearArea()
