@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddj4xvni38a3i"
-path="res://.godot/imported/Character.png-5248534bdf22da1f47334c537ccab248.ctex"
+uid="uid://bbfcpr32bklan"
+path="res://.godot/imported/character.png-b3762c0eb3d93d43e320187b77c05a20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard/Character.png"
-dest_files=["res://.godot/imported/Character.png-5248534bdf22da1f47334c537ccab248.ctex"]
+source_file="res://Assets/Asset Packs/character.png"
+dest_files=["res://.godot/imported/character.png-b3762c0eb3d93d43e320187b77c05a20.ctex"]
 
 [params]
 

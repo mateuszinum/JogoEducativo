@@ -30,9 +30,17 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
 
-[node name="SkillTreeMascara" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="3" unique_id=2013930762]
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=1255495614]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SkillTreeMascara" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=2013930762]
 clip_contents = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = 166.0
 offset_top = 75.0
@@ -478,14 +486,5 @@ grow_vertical = 1
 produto = ExtResource("26_oqm2m")
 area_limite_tooltip = NodePath("../../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(1289543832) index="4" unique_id=1255495614]
-visible = false
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 80.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(285029944) index="2" unique_id=1433500361]
+[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "MAGO VELHO"

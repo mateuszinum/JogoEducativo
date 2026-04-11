@@ -17,14 +17,12 @@ var VOLUME_MUSICA : float = 0.5
 var VOLUME_SFX : float = 0.5
 
 # Define se jogo está em tela cheia
-var TELA_CHEIA : bool = false
+var TELA_CHEIA : bool = true
 
 # Define se efeitos de shake de tela estão ativos ou não
 var USAR_SHAKE : bool = true
 
 # Define o índice da fonte do terminal. 
 var FONTE_TERMINAL : int = 0
-
-
 
 # -------------------------------------------------- #

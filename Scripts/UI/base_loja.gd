@@ -1,13 +1,10 @@
 extends Control
 class_name BaseLoja
 
-# Sinal emitido quando o jogador clica em voltar
 signal fechou_loja
 
 @onready var label_titulo = %TituloLoja
-@onready var texture_personagem = %PersonagemImagem
-
-var fila_de_dialogos: Array[String] = []
+@onready var overlay_dialogo = %OverlayDialogo
 
 func _ready() -> void:
 	pass

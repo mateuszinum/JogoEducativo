@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bvuxjcskaqwuh"]
+
+[ext_resource type="Script" uid="uid://vsgcngso2lhm" path="res://Scripts/Dialogo/sistema_dialogo.gd" id="1_hg8d8"]
+[ext_resource type="AudioStream" uid="uid://2argyloyeoa3" path="res://Audio/SFX/Dialogo/Typing.wav" id="2_d1yip"]
+[ext_resource type="Resource" uid="uid://bqgabgldlbwfv" path="res://Resources/Dialogo/DialogoGenerico.tres" id="3_ni0pr"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ame8j"]
+
+[node name="OverlayDialogo" type="Control" unique_id=1203743968]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hg8d8")
+som_voz = ExtResource("2_d1yip")
+pitch_min = 0.9
+rotacao_maxima_graus = 0.0
+escala_pulo_caixa = Vector2(1.05, 1.05)
+ativar_teste_dialogo = true
+dialogo_de_teste = ExtResource("3_ni0pr")
+
+[node name="CaixaDialogo" type="PanelContainer" parent="." unique_id=10008605]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 139.345
+offset_top = -230.87
+offset_right = 239.345
+offset_bottom = -177.87
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CaixaDialogo" unique_id=251984475]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="TextoDialogo" type="RichTextLabel" parent="CaixaDialogo/MarginContainer" unique_id=937791904]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("4_ame8j")
+theme_override_font_sizes/normal_font_size = 22
+text = "Texto"
+fit_content = true
+autowrap_mode = 2

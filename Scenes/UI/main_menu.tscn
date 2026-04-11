@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c6wsjp2cr7gkg" path="res://Scripts/Polimento/rotacao_continua.gd" id="6_cejvf"]
 [ext_resource type="Texture2D" uid="uid://b0ahs13ryy5bn" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard/Wizard-Idle.png" id="6_wqme5"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_wqme5"]
-[ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/HitGelo.mp3" id="10_wqme5"]
+[ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/Ataque/HitGelo.mp3" id="10_wqme5"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="11_ypsd1"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="12_xp0kt"]
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
