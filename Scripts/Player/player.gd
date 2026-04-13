@@ -10,10 +10,8 @@ const OPACIDADE_NO_DANO : float = 1.0
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
 
-@export var health = 50
-@export var max_health = health
+var health : int
 @export var touch_knockback_multiplier: float = 1.0
-@export var global_knockback_multiplier: float = 1.0
 
 @export_group("Audio")
 @export var hurt_sound : AudioStream
@@ -46,6 +44,8 @@ func _ready() -> void:
 	anim.play("default")
 			
 	_current_collect_pitch = collect_pitch_min
+	
+	health = Atributos.max_health
 
 func _physics_process(delta: float) -> void:		
 	if Constantes.MODO_DEV:

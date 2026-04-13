@@ -125,7 +125,7 @@ func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
 	var globalMult = 1.0
 	
 	if player != null:
-		globalMult = player.global_knockback_multiplier
+		globalMult = Atributos.global_knockback_multiplier
 	
 	knockback = knockback_dir * KNOCKBACK_FORCE * mult * globalMult
 	
