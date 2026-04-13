@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cgek2g4tndduc"]
+
+[ext_resource type="Texture2D" uid="uid://w2g1wamcmder" path="res://Assets/Asset Packs/items/item269.png" id="1_as6ae"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="1_bgg2k"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="2_x4bt0"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="3_g2w2u"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("1_bgg2k")
+descricao_atual = "0.6/segundo"
+descricao_upgrade = "0.4/segundo"
+custo_item = ExtResource("2_x4bt0")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("1_bgg2k")
+descricao_atual = "0.4/segundo"
+descricao_upgrade = "0.2/segundo"
+custo_item = ExtResource("2_x4bt0")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("1_bgg2k")
+descricao_atual = "0.2"
+descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+custo_item = ExtResource("2_x4bt0")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("3_g2w2u")
+nome = "Agilidade"
+icone = ExtResource("1_as6ae")
+tipo = 2
+descricao_atual_base = "0.8/segundo"
+descricao_upgrade_base = "0.6/segundo"
+niveis = Array[ExtResource("1_bgg2k")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"
