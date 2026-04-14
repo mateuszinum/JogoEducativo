@@ -57,11 +57,11 @@ func _physics_process(_delta: float) -> void:
 func jogoEstaPronto() -> bool:
 	return _posicao_inicializada
 
-func mover(direcao: String):
-	Jogador.mover_via_codigo(direcao)
+func mover(direcao: String) -> bool:
+	return Jogador.mover_via_codigo(direcao)
 
-func atacar(alvo: String, tipo: String):
-	Jogador.atacar(alvo, tipo)
+func atacar(alvo: String, tipo: String) -> bool:
+	return Jogador.atacar(alvo, tipo)
 
 func escapar():
 	Partida.escapar()
@@ -225,7 +225,7 @@ class Vilarejo:
 
 
 class Jogador:
-	static func mover_via_codigo(direcao: String) -> void:
+	static func mover_via_codigo(direcao: String) -> bool:
 		var dir_limpa = direcao.to_lower().strip_edges()
 		
 		# Verifica se o movimento atual é válido com base no cache atual
@@ -253,10 +253,11 @@ class Jogador:
 					
 					FuncoesNativas._cache_pode_mover[dir_nome] = caminho_livre
 			
-			# 2. ATUALIZA O FRONT-END: Manda o boneco deslizar na tela
 			mover(direcao)
+			return true
 		else:
 			print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
+			return false
 		
 	static func mover(direcao: String) -> void:
 		var tree = Engine.get_main_loop()
@@ -289,19 +290,18 @@ class Jogador:
 		if not player or not tilemap: return Vector2.ZERO
 		return tilemap.local_to_map(player.global_position)
 
-	static func atacar(alvo_id: String, tipo_ataque: String):
+	static func atacar(alvo_id: String, tipo_ataque: String) -> bool:
 		var tree = Engine.get_main_loop()
 		var player = tree.get_first_node_in_group("Player")
 		var inimigos = tree.get_nodes_in_group("Enemy")
 		
-		if not player:
-			return
+		if not player: return false
 		
 		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
 		
 		if ataque_data == null:
 			tree.call_group("Terminal", "mostrar_erro", "O ataque '" + tipo_ataque + "' não foi encontrado no grimório.")
-			return
+			return false
 			
 		var alvo_encontrado = false
 		
@@ -309,20 +309,25 @@ class Jogador:
 			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
 				alvo_encontrado = true
 				var distancia = player.global_position.distance_to(inimigo.global_position)
+				
 				if distancia > FuncoesNativas.ALCANCE_MAXIMO:
 					print("[FuncoesNativas] Tentou atacar um inimigo muito longe!")
-					return
+					return false
+					
 				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
 				
 				if ataque_data.has_method("activate"):
 					ataque_data.activate(player, inimigo, tree)
+					return true
 				else:
 					print("[Erro] O ataque ", ataque_data.nome, " não possui um script válido associado.")
-						
-				return
+					return false
 				
 		if not alvo_encontrado:
 			print("[FuncoesNativas] O ataque falhou. O alvo '", alvo_id, "' não está mais na arena.")
+			return false
+			
+		return false
 				
 	static func getVidaAtual() -> int:
 		var tree = Engine.get_main_loop()
