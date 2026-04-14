@@ -12,43 +12,52 @@
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_pasot")]
 
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
+visible = false
 produto = ExtResource("2_ke52h")
 
-[node name="BotaoProduto2" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=1510168506 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
-layout_mode = 1
-offset_left = 345.0
-offset_top = 91.0
-offset_right = 425.0
-offset_bottom = 171.0
+[node name="GridContainer" type="GridContainer" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=255437998]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 111.0
+offset_right = 602.0
+offset_bottom = 191.0
+theme_override_constants/h_separation = 74
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="BotaoProduto" parent="Conteudo/GridContainer" index="0" unique_id=341226701 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("2_ke52h")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto2" parent="Conteudo/GridContainer" index="1" unique_id=1068275327 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
 produto = ExtResource("4_lhnmh")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto3" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=1138550543 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
-layout_mode = 1
-offset_left = 502.0
-offset_top = 91.0
-offset_right = 582.0
-offset_bottom = 171.0
+[node name="BotaoProduto3" parent="Conteudo/GridContainer" index="2" unique_id=252948687 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
 produto = ExtResource("5_x8pao")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
 
-[node name="BotaoProduto4" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="4" unique_id=252948687 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
-layout_mode = 1
-offset_left = 428.0
-offset_top = 211.0
-offset_right = 508.0
-offset_bottom = 291.0
-produto = ExtResource("6_3k5vv")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
+[node name="GridContainer2" type="GridContainer" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=1296421440]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 231.0
+offset_right = 518.0
+offset_bottom = 311.0
+theme_override_constants/h_separation = 74
+columns = 2
 
-[node name="BotaoProduto5" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="5" unique_id=1068275327 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
-layout_mode = 1
-offset_left = 265.0
-offset_top = 207.0
-offset_right = 345.0
-offset_bottom = 287.0
+[node name="BotaoProduto" parent="Conteudo/GridContainer2" index="0" unique_id=1138550543 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
 produto = ExtResource("7_ylo7x")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto2" parent="Conteudo/GridContainer2" index="1" unique_id=1510168506 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("6_3k5vv")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BRUXA"
