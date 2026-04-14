@@ -104,7 +104,7 @@ func check_separation(_delta):
 		queue_free()
 
 func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
-	var dano_final = amount
+	var dano_final = amount * Atributos.forca_multiplier
 	
 	if type != null:
 		var mult_elemento = 1.0 
@@ -115,7 +115,9 @@ func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataq
 					mult_elemento = fraqueza.multiplicador
 					break
 		dano_final *= mult_elemento
-		
+	
+	dano_final = floori(dano_final)
+	
 	health -= dano_final
 	apply_knockback(mult, knockback_dir)
 	show_damage_number(dano_final)
