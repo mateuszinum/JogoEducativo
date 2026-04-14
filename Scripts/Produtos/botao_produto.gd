@@ -219,6 +219,7 @@ func efetivar_compra() -> void:
 		ProdutoLoja.TipoProduto.UPGRADE:
 			nivel_atual += 1
 			Atributos.comprar_upgrade(produto.nome, nivel_atual)
+			ProgressoDB.desbloquear(produto.nome, nivel_atual)
 			
 		ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
 			nivel_atual += 1
