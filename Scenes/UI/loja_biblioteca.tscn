@@ -1,6 +1,30 @@
 [gd_scene format=3 uid="uid://doh77mpn3yqve"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_v8lro"]
+[ext_resource type="Script" uid="uid://dj7o16agtuopo" path="res://Scenes/UI/biblioteca_pagina.gd" id="2_ht610"]
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="3_3yqwk"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="4_0wyyo"]
+
+[sub_resource type="Resource" id="Resource_qff5g"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Teste"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cgv5h"]
+script = ExtResource("3_3yqwk")
+texto = "Isso aqui é só um teste"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_t3afg"]
+script = ExtResource("3_3yqwk")
+texto = "[color=#a8ca58]Isso aqui[/color] é outro teste"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_woxhb"]
+script = ExtResource("4_0wyyo")
+blocos_de_conteudo = Array[ExtResource("3_3yqwk")]([SubResource("Resource_qff5g"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg")])
+metadata/_custom_type_script = "uid://be6x46yhir5k7"
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
 
@@ -21,6 +45,25 @@ visible = false
 
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
 visible = false
+
+[node name="Control" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=1757430195]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ht610")
+pagina_para_testar = SubResource("Resource_woxhb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control" index="0" unique_id=410580321]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 40.0
+offset_right = 730.0
+offset_bottom = 469.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Conteudo/Control/VBoxContainer" index="0" unique_id=1730906309]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BIBLIOTECA"
