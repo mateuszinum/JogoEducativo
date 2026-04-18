@@ -8,22 +8,91 @@
 [sub_resource type="Resource" id="Resource_qff5g"]
 script = ExtResource("3_3yqwk")
 tipo = 1
-texto = "Teste"
+texto = "Informações Geral"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3yqwk"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "creditos introducao"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0wyyo"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Conceitos de Programação"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_cgv5h"]
 script = ExtResource("3_3yqwk")
-texto = "Isso aqui é só um teste"
+tipo = 4
+texto = "tipos_de_dados variaveis operadores se enquanto funcoes listas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_t3afg"]
 script = ExtResource("3_3yqwk")
-texto = "[color=#a8ca58]Isso aqui[/color] é outro teste"
+tipo = 1
+texto = "Funções Nativas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_or0xj"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "todas_funcoes_nativas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_m47yt"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Recursos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7jufl"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "moeda osso couro magma cristal plasma sangue safira esmeralda diamante"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_mroc1"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Ataques"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_sbsfi"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "esfera_azul esfera_vermelha gelo fogo explosao_fogo explosao_gelo alho"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_kpn3u"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Inimigos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_fpef0"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "goblin esqueleto slime_de_fogo slime_de_gelo lobisomem orc fantasma vampiro
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_f7nr2"]
+script = ExtResource("3_3yqwk")
+tipo = 1
+texto = "Arenas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_mc6gf"]
+script = ExtResource("3_3yqwk")
+tipo = 4
+texto = "campos floresta labirinto"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_woxhb"]
 script = ExtResource("4_0wyyo")
-blocos_de_conteudo = Array[ExtResource("3_3yqwk")]([SubResource("Resource_qff5g"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg")])
+blocos_de_conteudo = Array[ExtResource("3_3yqwk")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf")])
 metadata/_custom_type_script = "uid://be6x46yhir5k7"
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
@@ -53,17 +122,32 @@ offset_bottom = 40.0
 script = ExtResource("2_ht610")
 pagina_para_testar = SubResource("Resource_woxhb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control" index="0" unique_id=410580321]
-layout_mode = 0
-offset_left = 167.0
-offset_top = 40.0
-offset_right = 730.0
-offset_bottom = 469.0
+[node name="ScrollContainer" type="ScrollContainer" parent="Conteudo/Control" index="0" unique_id=1705521741]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.3250003
+anchor_top = 0.5
+anchor_right = 15.175501
+anchor_bottom = 12.125001
+offset_left = -1.5258789e-05
+offset_right = 5.9799805
+offset_bottom = -3.0517578e-05
+horizontal_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Conteudo/Control/VBoxContainer" index="0" unique_id=1730906309]
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control/ScrollContainer" index="0" unique_id=410580321]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Conteudo/Control/ScrollContainer/VBoxContainer" index="0" unique_id=1730906309]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 3
 bbcode_enabled = true
 fit_content = true
+autowrap_mode = 2
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BIBLIOTECA"
