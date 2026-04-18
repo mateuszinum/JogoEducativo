@@ -5,7 +5,7 @@ class_name SequenciaRequisito
 @export var sequencia_obrigatoria: Array[Weapon] = []
 
 func verificar(_jogador: Node, _arma: Resource) -> bool:
-	var historico = HistoricoAtaques.ultimos_ataques
+	var historico = HistoricoAcoes.ultimos_ataques
 	var tamanho_req = sequencia_obrigatoria.size()
 	
 	if historico.size() < tamanho_req:

@@ -253,6 +253,7 @@ class Jogador:
 					
 					FuncoesNativas._cache_pode_mover[dir_nome] = caminho_livre
 			
+			HistoricoAcoes.registrar_movimento(dir_limpa)
 			mover(direcao)
 			return true
 		else:
@@ -325,7 +326,7 @@ class Jogador:
 				# SUCESSO: Tudo certo, o ataque acontece!
 				if ataque_data.has_method("activate"):
 					ataque_data.activate(player, inimigo, tree)
-					HistoricoAtaques.registrar(tipo_ataque)
+					HistoricoAcoes.registrar_ataque(tipo_ataque)
 					return true
 				else:
 					# ERRO 4: Script da arma está quebrado

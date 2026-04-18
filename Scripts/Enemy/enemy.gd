@@ -159,8 +159,6 @@ func show_damage_number(amount):
 	get_parent().add_child(dmg_num)
 	dmg_num.setup(amount)
 	
-	
-
 func gerar_drops() -> void:
 	print("--- LOG DE DROP ---")
 	print("1. Inimigo morreu. Iniciando gerar_drops().")
