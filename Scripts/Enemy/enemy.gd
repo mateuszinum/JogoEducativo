@@ -1,11 +1,16 @@
 extends CharacterBody2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
-# --- PASSO 4: PRELOAD DA CENA DO DROP (ATUALIZE ESTE CAMINHO PARA A SUA CENA!) ---
 const CENA_BASE_DO_DROP = preload("res://Scenes/Drops/drop.tscn") 
 
 const KNOCKBACK_FORCE : float = 400.0
 const DISTANCIA_DESPAWN : float = 300.0
+
+# --- CONSTANTES E VARIÁVEIS DE GELO ---
+const TEMPO_CONGELAMENTO : float = 2.0
+var timer_congelamento : float = 0.0
+var is_frozen : bool = false
+# --------------------------------------------
 
 var speed: float = 60
 var despawns: bool = true
@@ -57,6 +62,11 @@ func _ready():
 func _physics_process(delta):
 	check_separation(delta)
 	
+	if is_frozen:
+		timer_congelamento -= delta
+		if timer_congelamento <= 0.0:
+			_descongelar()
+	
 	if knockback != Vector2.ZERO:
 		knockback = knockback.lerp(Vector2.ZERO, 10 * delta)
 	
@@ -69,16 +79,19 @@ func _physics_process(delta):
 		nav_agent.target_position = player.global_position
 		path_timer = path_update_interval 
 
-	if nav_agent.is_navigation_finished() or not nav_agent.is_target_reachable():
-		return
+	var direction := Vector2.ZERO
+	if not nav_agent.is_navigation_finished() and nav_agent.is_target_reachable():
+		var next_pos = nav_agent.get_next_path_position()
+		direction = global_position.direction_to(next_pos)
 
-	var next_pos = nav_agent.get_next_path_position()
-	var direction := global_position.direction_to(next_pos)
+		if direction.x != 0 and not is_frozen:
+			$AnimatedSprite2D.flip_h = (direction.x < 0)
 
-	if direction.x != 0:
-		$AnimatedSprite2D.flip_h = (direction.x < 0)
-
-	velocity = (direction * speed) + knockback
+	var velocidade_movimento = direction * speed
+	if is_frozen:
+		velocidade_movimento = Vector2.ZERO
+		
+	velocity = velocidade_movimento + knockback
 	
 	_processar_comportamentos_especiais()
 	move_and_slide()
@@ -98,12 +111,9 @@ func handle_enemy_collisions(delta):
 			knockback += repel_dir * 400 * delta
 
 func check_separation(_delta):
-	if !despawns:
-		return
-		
+	if !despawns: return
 	var player = get_tree().get_first_node_in_group("Player")
-	if player == null:
-		return
+	if player == null: return
 		
 	separation = (player.global_position - global_position).length()
 	if separation >= DISTANCIA_DESPAWN:
@@ -118,15 +128,30 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 	ultimo_ataque_recebido = ataque_nome
 	
 	var mult = 1.0
-	if type != null and ataque_nome != "":
-		for weak in type.multiplicadores_de_ataque:
-			if weak.ataque != null and "nome" in weak.ataque and weak.ataque.nome == ataque_nome:
-				mult = weak.multiplicador
-				break
+	var is_slime_gelo = false
+	
+	if type != null:
+		if type.nome == "SlimeDeGelo":
+			is_slime_gelo = true
+			
+		if ataque_nome != "":
+			for weak in type.multiplicadores_de_ataque:
+				if weak.ataque != null and "nome" in weak.ataque and weak.ataque.nome == ataque_nome:
+					mult = weak.multiplicador
+					break
 	
 	var final_damage = amount * mult
 	health -= final_damage
 	show_damage_number(final_damage)
+	
+	# Verifica se congela e PAUSA a animação 
+	if (ataque_nome == "Gelo" or ataque_nome == "ExplosaoGelo") and not is_slime_gelo:
+		if not is_frozen:
+			$AnimatedSprite2D.pause()
+		is_frozen = true
+		timer_congelamento = TEMPO_CONGELAMENTO
+	
+	_aplicar_flash_dano()
 	
 	if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
 		apply_knockback(kb_mult, knockback_dir)
@@ -134,17 +159,31 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 func apply_knockback(mult: float, knockback_dir: Vector2):
 	var globalMult = Atributos.global_knockback_multiplier
 	knockback = knockback_dir * KNOCKBACK_FORCE * mult * globalMult
-	
-	if invulneravel:
-		return
-		
+
+func _aplicar_flash_dano():
 	if animacao_dano and animacao_dano.is_valid():
 		animacao_dano.kill()
 		
-	$AnimatedSprite2D.modulate = Color.RED
 	animacao_dano = create_tween()
-	animacao_dano.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
 	
+	if is_frozen:
+		$AnimatedSprite2D.modulate = Color(0.8, 0.9, 1.0) 
+		animacao_dano.tween_property($AnimatedSprite2D, "modulate", Color(0.4, 0.7, 1.0), 0.2)
+	else:
+		$AnimatedSprite2D.modulate = Color.RED
+		animacao_dano.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
+		
+	animacao_dano.tween_callback(_atualizar_visual)
+
+# Retoma a animação ao descongelar 
+func _descongelar():
+	is_frozen = false
+	$AnimatedSprite2D.play() 
+	if animacao_dano and animacao_dano.is_valid():
+		animacao_dano.kill()
+		
+	animacao_dano = create_tween()
+	animacao_dano.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.15)
 	animacao_dano.tween_callback(_atualizar_visual)
 
 func apply_chain_knockback(force: Vector2):
@@ -160,37 +199,31 @@ func show_damage_number(amount):
 	dmg_num.setup(amount)
 	
 func gerar_drops() -> void:
-	print("--- LOG DE DROP ---")
-	print("1. Inimigo morreu. Iniciando gerar_drops().")
-	
 	var multiplicador = 1
 	if ultimo_ataque_recebido == "FeixeLuz":
 		multiplicador = 2
 	
-	if type != null:
-		print("2. Inimigo possui o type: ", type.nome)
-		
-		if type.tabela_de_drops != null and type.tabela_de_drops.size() > 0:
-			print("3. Tabela de drops encontrada com ", type.tabela_de_drops.size(), " itens.")
-			
-			for drop in type.tabela_de_drops:
-				var sorteio = randf() * 100.0 
-				
-				if sorteio <= drop.chance_de_drop:
-					var min_seguro = drop.quantidade_minima
-					var max_seguro = max(min_seguro, drop.quantidade_maxima)
-					var qtd_sorteada = randi_range(min_seguro, max_seguro)
-					qtd_sorteada = qtd_sorteada * multiplicador
-					for i in range(qtd_sorteada):
-						var novo_drop = CENA_BASE_DO_DROP.instantiate()
-						novo_drop.configurar(drop.item, 1)
-						novo_drop.global_position = global_position
-						get_parent().call_deferred("add_child", novo_drop)
+	if type != null and type.tabela_de_drops != null:
+		for drop in type.tabela_de_drops:
+			var sorteio = randf() * 100.0 
+			if sorteio <= drop.chance_de_drop:
+				var min_seguro = drop.quantidade_minima
+				var max_seguro = max(min_seguro, drop.quantidade_maxima)
+				var qtd_sorteada = randi_range(min_seguro, max_seguro)
+				qtd_sorteada = qtd_sorteada * multiplicador
+				for i in range(qtd_sorteada):
+					var novo_drop = CENA_BASE_DO_DROP.instantiate()
+					novo_drop.configurar(drop.item, 1)
+					novo_drop.global_position = global_position
+					get_parent().call_deferred("add_child", novo_drop)
 
 func _atualizar_visual() -> void:
 	if type == null: return
 	
-	$AnimatedSprite2D.modulate = Color.WHITE
+	if is_frozen:
+		$AnimatedSprite2D.modulate = Color(0.4, 0.7, 1.0)
+	else:
+		$AnimatedSprite2D.modulate = Color.WHITE
 	
 	match type.comportamento_especial:
 		Enemy.Comportamento.FANTASMA:
@@ -203,14 +236,11 @@ func _atualizar_visual() -> void:
 
 func _processar_comportamentos_especiais():
 	if type == null: return
-		
 	match type.comportamento_especial:
-		Enemy.Comportamento.FANTASMA:
-			_comportamento_fantasma()
+		Enemy.Comportamento.FANTASMA: _comportamento_fantasma()
 
 func _comportamento_fantasma():
-	if not is_instance_valid(spawner_ref): 
-		return
+	if not is_instance_valid(spawner_ref): return
 	
 	var tempo_global = spawner_ref.total_time_seconds
 	var tempo_solido = type.fantasma_tempo_solido

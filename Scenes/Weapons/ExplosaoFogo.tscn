@@ -1,24 +1,23 @@
-[gd_scene format=3 uid="uid://c2lpghfx75udb"]
+[gd_scene format=3 uid="uid://bq5iprxrmiipw"]
 
-[ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_pr2ei"]
-[ext_resource type="Texture2D" uid="uid://bbht7rpnvmy7i" path="res://Assets/Projectiles/Fire.png" id="2_7ypa3"]
+[ext_resource type="Script" uid="uid://bbaf57hb26tgp" path="res://Scripts/Projectiles/projectile_explosion.gd" id="1_61wa8"]
+[ext_resource type="Texture2D" uid="uid://bbht7rpnvmy7i" path="res://Assets/Projectiles/Fire.png" id="2_ux6p3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpoxt"]
-radius = 59.89303
-height = 216.57123
+radius = 30.774847
+height = 122.56757
 
 [node name="Projectile" type="Area2D" unique_id=382399043]
 rotation = -3.1219354
-scale = Vector2(0.164, 0.16)
 collision_layer = 5
 collision_mask = 4
-script = ExtResource("1_pr2ei")
+script = ExtResource("1_61wa8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=433406543]
-position = Vector2(-13.99, 5)
-rotation = -3.1415927
-scale = Vector2(0.115625, 0.12888889)
-texture = ExtResource("2_7ypa3")
+position = Vector2(6.1364326, 6.880711)
+rotation = 3.1415927
+scale = Vector2(0.04, 0.044)
+texture = ExtResource("2_ux6p3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2018636140]
 position = Vector2(1, 5.0000005)
@@ -28,6 +27,7 @@ shape = SubResource("CapsuleShape2D_gpoxt")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1526691671]
 position = Vector2(0.11304884, 5.879815)
 scale = Vector2(6.385, 2.945)
+rect = Rect2(-5.0637927, -4.9155416, 10.278353, 9.69401)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

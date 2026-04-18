@@ -306,10 +306,11 @@ class Jogador:
 			return false
 		
 		# ERRO 2: Faltou requisito (sequência, dinheiro, etc)
-		for req in ataque_data.requisitos:
-			if not req.verificar(player, ataque_data):
-				player.feedback_erro_ataque(ataque_data)
-				return false
+		if not Constantes.REQUISITOS_DESATIVADOS:
+			for req in ataque_data.requisitos:
+				if not req.verificar(player, ataque_data):
+					player.feedback_erro_ataque(ataque_data)
+					return false
 				
 		var alvo_encontrado = false
 		

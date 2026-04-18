@@ -1,38 +1,43 @@
-[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://cv28g7leo3bx2"]
+[gd_resource type="Resource" script_class="AtaqueEmArea" format=3 uid="uid://cv28g7leo3bx2"]
 
-[ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/Ataque/AlhoLancar.mp3" id="1_p7nqc"]
+[ext_resource type="AudioStream" uid="uid://b2hq62qywh438" path="res://Audio/SFX/Ataque/ExplosaoGeloLancar.wav" id="1_qwujo"]
 [ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_80u0u"]
-[ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/EsferaAzul.tscn" id="3_80u0u"]
 [ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="3_kouaa"]
-[ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_kouaa"]
-[ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/AlhoHit.mp3" id="4_vkngd"]
+[ext_resource type="AudioStream" uid="uid://dq2px01m8ck7" path="res://Audio/SFX/Ataque/ExplosaoGeloHit.wav" id="4_mqfsi"]
+[ext_resource type="PackedScene" uid="uid://bpe17cbmth5ji" path="res://Scenes/Weapons/ExplosaoGelo.tscn" id="5_vkngd"]
 [ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_p7nqc"]
 [ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="7_vkngd"]
 [ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="8_3jsds"]
-[ext_resource type="Resource" uid="uid://dw2jlap2mhmhu" path="res://Resources/Weapons/EsferaVermelha.tres" id="9_pq1mw"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="10_agu7a"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="11_l60fp"]
-[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="12_rwcq5"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="11_mqfsi"]
+[ext_resource type="Script" uid="uid://dloj4xl1hv344" path="res://Scripts/Weapon/ataque_area.gd" id="13_p7nqc"]
 
 [sub_resource type="Resource" id="Resource_ckajv"]
 script = ExtResource("2_80u0u")
 item = ExtResource("3_kouaa")
-quantidade = 10
+quantidade = 3
 metadata/_custom_type_script = "uid://r105lsf2iv8d"
 
 [sub_resource type="Resource" id="Resource_xtryj"]
 script = ExtResource("7_vkngd")
-sequencia_obrigatoria = Array[ExtResource("8_3jsds")]([ExtResource("9_pq1mw"), ExtResource("10_agu7a"), ExtResource("11_l60fp"), ExtResource("10_agu7a"), ExtResource("12_rwcq5"), ExtResource("11_l60fp"), ExtResource("11_l60fp")])
+sequencia_obrigatoria = Array[ExtResource("8_3jsds")]([ExtResource("10_agu7a"), ExtResource("11_l60fp"), ExtResource("11_mqfsi"), ExtResource("11_l60fp")])
 metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
-script = ExtResource("4_kouaa")
+script = ExtResource("13_p7nqc")
+raio_explosao = 60.0
+tempo_visual = 0.5
+cor_explosao = Color(0, 0.65882355, 1, 0.5019608)
 nome = "ExplosaoGelo"
-damage = 10.0
-speed = 300.0
-knockback_multiplier = 0.5
+damage = 12.0
+speed = 400.0
+knockback_multiplier = 2.0
 custo_do_ataque = Array[ExtResource("2_80u0u")]([SubResource("Resource_ckajv")])
 requisitos = Array[ExtResource("6_p7nqc")]([SubResource("Resource_xtryj")])
-attack_sound = ExtResource("1_p7nqc")
-hit_sound = ExtResource("4_vkngd")
+attack_sound = ExtResource("1_qwujo")
+attack_volume = -4.0
+hit_sound = ExtResource("4_mqfsi")
+hit_volume = -4.0
+projectile_node = ExtResource("5_vkngd")
 metadata/_custom_type_script = "uid://dacndn1awrba2"

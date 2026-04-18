@@ -16,8 +16,8 @@ metadata/_custom_type_script = "uid://r105lsf2iv8d"
 [resource]
 script = ExtResource("4_v0c3d")
 nome = "Fogo"
-damage = 3.0
-speed = 300.0
+damage = 4.0
+speed = 400.0
 knockback_multiplier = 2.0
 custo_do_ataque = Array[ExtResource("2_2ixjv")]([SubResource("Resource_p3hfx")])
 attack_sound = ExtResource("1_v0c3d")

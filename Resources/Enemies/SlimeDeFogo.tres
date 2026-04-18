@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_b4lv7"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_vsxb5"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="3_kd1pv"]
+[ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="4_jlt05"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="4_kd1pv"]
+[ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="6_75drv"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="6_vsxb5"]
 [ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="7_kd1pv"]
 
@@ -64,9 +66,21 @@ ataque = ExtResource("3_kd1pv")
 multiplicador = 3.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
+[sub_resource type="Resource" id="Resource_j1vkf"]
+script = ExtResource("2_vsxb5")
+ataque = ExtResource("4_jlt05")
+multiplicador = 3.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
 [sub_resource type="Resource" id="Resource_kd1pv"]
 script = ExtResource("2_vsxb5")
 ataque = ExtResource("4_kd1pv")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_qo6hd"]
+script = ExtResource("2_vsxb5")
+ataque = ExtResource("6_75drv")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
@@ -84,5 +98,5 @@ tabela_de_drops = Array[ExtResource("6_vsxb5")]([SubResource("Resource_vsxb5")])
 health = 15.0
 damage = 5.0
 speed = 6.0
-multiplicadores_de_ataque = Array[ExtResource("2_vsxb5")]([SubResource("Resource_ghktv"), SubResource("Resource_kd1pv")])
+multiplicadores_de_ataque = Array[ExtResource("2_vsxb5")]([SubResource("Resource_ghktv"), SubResource("Resource_j1vkf"), SubResource("Resource_kd1pv"), SubResource("Resource_qo6hd")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

@@ -248,8 +248,8 @@ func configurar_cores_do_codigo() -> void:
 
 func _on_botao_debug_pressed() -> void:
 	var codigo_teste = """arena(Campos)
-Direcao dir = [Esquerda, Cima, Direita, Baixo]
-Ataque atk = [EsferaAzul, EsferaAzul, EsferaAzul, EsferaVermelha]
+Direcao dir = [Esquerda, Cima, Direita, Baixo, Baixo]
+Ataque atk = [EsferaAzul, Gelo, FeixeLuz, Gelo, ExplosaoGelo]
 bool f = !Verdadeiro
 int i = 0
 
@@ -280,7 +280,7 @@ enquanto(Verdadeiro):
 	Movimento()
 	AtacarInimigoMaisProximo()
 	
-	Incremento(3)
+	Incremento(4)
 fim enquanto"""
 	code_edit.text = codigo_teste
 

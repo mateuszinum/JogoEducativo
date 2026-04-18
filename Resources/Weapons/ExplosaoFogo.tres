@@ -1,28 +1,43 @@
-[gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://dm21qnbr3o0nw"]
+[gd_resource type="Resource" script_class="AtaqueAreaEscalonavel" format=3 uid="uid://dm21qnbr3o0nw"]
 
 [ext_resource type="AudioStream" uid="uid://xanxetcbm7gc" path="res://Audio/SFX/Ataque/ExplosaoFogoLancar.wav" id="1_q8efw"]
 [ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_h5tir"]
-[ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/EsferaAzul.tscn" id="3_h5tir"]
 [ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="3_q8efw"]
 [ext_resource type="AudioStream" uid="uid://csi2upf55t6uv" path="res://Audio/SFX/Ataque/ExplosaoFogoHit.wav" id="4_a7auv"]
-[ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_q8efw"]
-[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_cpux5"]
+[ext_resource type="PackedScene" uid="uid://bq5iprxrmiipw" path="res://Scenes/Weapons/ExplosaoFogo.tscn" id="5_a7auv"]
+[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_j3fo6"]
+[ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="7_ra6k8"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="8_q7n2v"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_gsa5f"]
+[ext_resource type="Script" uid="uid://cv52xleepstsb" path="res://Scripts/Weapon/ataque_area_escalonavel.gd" id="10_j3fo6"]
 
 [sub_resource type="Resource" id="Resource_a7auv"]
 script = ExtResource("2_h5tir")
 item = ExtResource("3_q8efw")
-quantidade = 10
+quantidade = 3
 metadata/_custom_type_script = "uid://r105lsf2iv8d"
 
+[sub_resource type="Resource" id="Resource_wcm43"]
+script = ExtResource("7_ra6k8")
+sequencia_obrigatoria = Array[ExtResource("8_q7n2v")]([ExtResource("9_gsa5f")])
+metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
+
 [resource]
-script = ExtResource("4_q8efw")
+script = ExtResource("10_j3fo6")
+magia_do_combo = ExtResource("9_gsa5f")
+raios_por_nivel = Array[float]([20.0, 35.0, 60.0, 90.0])
+raio_explosao = 30.0
+tempo_visual = 0.5
+cor_explosao = Color(0.8475789, 0.37399092, 0, 0.5019608)
 nome = "ExplosaoFogo"
 damage = 6.0
-speed = 300.0
-knockback_multiplier = 0.5
+speed = 400.0
+knockback_multiplier = 2.0
 custo_do_ataque = Array[ExtResource("2_h5tir")]([SubResource("Resource_a7auv")])
+requisitos = Array[ExtResource("6_j3fo6")]([SubResource("Resource_wcm43")])
 attack_sound = ExtResource("1_q8efw")
 attack_volume = -4.0
 hit_sound = ExtResource("4_a7auv")
 hit_volume = -4.0
+projectile_node = ExtResource("5_a7auv")
 metadata/_custom_type_script = "uid://dacndn1awrba2"
