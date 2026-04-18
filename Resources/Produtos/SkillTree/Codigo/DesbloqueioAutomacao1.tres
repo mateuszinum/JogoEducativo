@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://0y5qnmmav5jd"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_5eh6n"]
 [ext_resource type="Texture2D" uid="uid://cncn57xiaibht" path="res://Assets/Produtos/Skilltree/AUTO.png" id="2_4ne2s"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_asr4t"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_okc6q"]
@@ -31,6 +30,5 @@ icone = ExtResource("2_4ne2s")
 pre_requisitos = Array[ExtResource("5_lsr6j")]([ExtResource("6_4ne2s")])
 tipo = 1
 descricao_simples = "escapar()"
-custo_item_simples = ExtResource("1_5eh6n")
 niveis = Array[ExtResource("3_asr4t")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

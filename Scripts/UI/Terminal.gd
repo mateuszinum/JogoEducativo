@@ -258,6 +258,7 @@ fim funcao
 
 vazio Movimento():
 	mover(GetDirecao(i))
+	Incremento(3)
 	retorna
 fim funcao
 
@@ -267,6 +268,8 @@ vazio AtacarInimigoMaisProximo():
 		atacar(alvo, Gelo)
 	senao se(nomeInimigo(alvo) == SlimeDeGelo):
 			atacar(alvo, Fogo)
+	senao se(nomeInimigo(alvo) == Vampiro):
+			atacar(alvo, Alho)
 	senao:
 			atacar(alvo, EsferaAzul)
 	fim se
@@ -284,7 +287,6 @@ fim funcao
 enquanto(Verdadeiro):
 	Movimento()
 	AtacarInimigoMaisProximo()
-	Incremento(3)
 fim enquanto"""
 	code_edit.text = codigo_teste
 

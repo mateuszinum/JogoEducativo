@@ -3,8 +3,15 @@
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="1_6q5bk"]
 [ext_resource type="Texture2D" uid="uid://cv6gvw41jdkuq" path="res://Assets/Asset Packs/Outros/Vampire-Glide.png" id="1_w6m35"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_w6m35"]
-[ext_resource type="Resource" uid="uid://dj4cnce40c7d" path="res://Resources/Drop/Sangue.tres" id="3_4osdr"]
-[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_hdp3d"]
+[ext_resource type="Resource" uid="uid://bhexvkqu7x5it" path="res://Resources/Weapons/Alho.tres" id="3_76cyu"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="4_05qj5"]
+[ext_resource type="Resource" uid="uid://dw2jlap2mhmhu" path="res://Resources/Weapons/EsferaVermelha.tres" id="5_ssbtr"]
+[ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="6_7lbbs"]
+[ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="7_br0c2"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="8_g2dys"]
+[ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_qiyho"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_ipvl6"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="12_cfpjy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdp3d"]
 atlas = ExtResource("1_w6m35")
@@ -49,17 +56,59 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_cucs6"]
-script = ExtResource("3_hdp3d")
-item = ExtResource("3_4osdr")
-quantidade_maxima = 2
-metadata/_custom_type_script = "uid://cvs37xuengnw4"
+[sub_resource type="Resource" id="Resource_w6m35"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("3_76cyu")
+multiplicador = 2.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_hdp3d"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("4_05qj5")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_uwpqh"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("5_ssbtr")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_d8lf6"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("6_7lbbs")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_kcdnt"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("7_br0c2")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_716s8"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("8_g2dys")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_a4pfi"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("9_qiyho")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_cfpjy"]
+script = ExtResource("1_6q5bk")
+ataque = ExtResource("10_ipvl6")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
 
 [resource]
 script = ExtResource("2_w6m35")
 nome = "Vampiro"
 animations = SubResource("SpriteFrames_4osdr")
-tabela_de_drops = Array[ExtResource("3_hdp3d")]([SubResource("Resource_cucs6")])
-health = 5.0
+health = 8.0
 damage = 5.0
+multiplicadores_de_ataque = Array[ExtResource("1_6q5bk")]([SubResource("Resource_w6m35"), SubResource("Resource_hdp3d"), SubResource("Resource_uwpqh"), SubResource("Resource_d8lf6"), SubResource("Resource_kcdnt"), SubResource("Resource_716s8"), SubResource("Resource_a4pfi"), SubResource("Resource_cfpjy")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

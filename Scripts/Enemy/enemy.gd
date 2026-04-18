@@ -11,8 +11,9 @@ var speed: float = 60
 var despawns: bool = true
 @export var nav_agent: NavigationAgent2D
 
-
-
+var invulneravel: bool = false
+var spawner_ref: Node = null
+var animacao_dano: Tween
 
 var knockback : Vector2
 var separation : float
@@ -36,7 +37,7 @@ var health : float:
 	set(value):
 		health = value
 		if health <= 0:
-			gerar_drops() #  CHAMA A FUNÇÃO DE DROPS ANTES DE MORRER 
+			gerar_drops()
 			queue_free()
 
 var damage : float:
@@ -49,6 +50,8 @@ func _ready():
 	
 	path_timer = randf_range(0.0, 0.2)
 	path_update_interval = randf_range(0.2, 0.3)
+	
+	spawner_ref = get_tree().get_first_node_in_group("Spawner")
 
 func _physics_process(delta):
 	check_separation(delta)
@@ -75,6 +78,8 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = (direction.x < 0)
 
 	velocity = (direction * speed) + knockback
+	
+	_processar_comportamentos_especiais()
 	move_and_slide()
 	handle_enemy_collisions(delta)
 
@@ -103,37 +108,41 @@ func check_separation(_delta):
 	if separation >= DISTANCIA_DESPAWN:
 		queue_free()
 
-func take_damage(amount, mult = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
-	var dano_final = amount * Atributos.forca_multiplier
+func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
+	if invulneravel:
+		if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
+			apply_knockback(kb_mult, knockback_dir)
+		return
+
+	var mult = 1.0
+	if type != null and ataque_nome != "":
+		for weak in type.multiplicadores_de_ataque:
+			if weak.ataque != null and "nome" in weak.ataque and weak.ataque.nome == ataque_nome:
+				mult = weak.multiplicador
+				break
 	
-	if type != null:
-		var mult_elemento = 1.0 
-		
-		if type.multiplicadores_de_ataque != null:
-			for fraqueza in type.multiplicadores_de_ataque:
-				if fraqueza.ataque != null and fraqueza.ataque.nome == ataque_nome:
-					mult_elemento = fraqueza.multiplicador
-					break
-		dano_final *= mult_elemento
+	var final_damage = amount * mult
+	health -= final_damage
+	show_damage_number(final_damage)
 	
-	dano_final = floori(dano_final)
+	if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
+		apply_knockback(kb_mult, knockback_dir)
 	
-	health -= dano_final
-	apply_knockback(mult, knockback_dir)
-	show_damage_number(dano_final)
-	
-func apply_knockback(mult, knockback_dir: Vector2 = Vector2.ZERO):
-	var player = get_tree().get_first_node_in_group("Player")
-	var globalMult = 1.0
-	
-	if player != null:
-		globalMult = Atributos.global_knockback_multiplier
-	
+func apply_knockback(mult: float, knockback_dir: Vector2):
+	var globalMult = Atributos.global_knockback_multiplier
 	knockback = knockback_dir * KNOCKBACK_FORCE * mult * globalMult
 	
+	if invulneravel:
+		return
+		
+	if animacao_dano and animacao_dano.is_valid():
+		animacao_dano.kill()
+		
 	$AnimatedSprite2D.modulate = Color.RED
-	var tween = create_tween()
-	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
+	animacao_dano = create_tween()
+	animacao_dano.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
+	
+	animacao_dano.tween_callback(_atualizar_visual)
 
 func apply_chain_knockback(force: Vector2):
 	if force.length() > knockback.length():
@@ -171,3 +180,53 @@ func gerar_drops() -> void:
 						novo_drop.configurar(drop.item, 1)
 						novo_drop.global_position = global_position
 						get_parent().call_deferred("add_child", novo_drop)
+
+func _atualizar_visual() -> void:
+	if type == null: return
+	
+	$AnimatedSprite2D.modulate = Color.WHITE
+	
+	match type.comportamento_especial:
+		Enemy.Comportamento.FANTASMA:
+			if invulneravel:
+				$AnimatedSprite2D.modulate.a = type.fantasma_alpha_translucido
+			else:
+				$AnimatedSprite2D.modulate.a = type.fantasma_alpha_solido
+		_:
+			$AnimatedSprite2D.modulate.a = 1.0
+
+func _processar_comportamentos_especiais():
+	if type == null: return
+		
+	match type.comportamento_especial:
+		Enemy.Comportamento.FANTASMA:
+			_comportamento_fantasma()
+
+func _comportamento_fantasma():
+	if not is_instance_valid(spawner_ref): 
+		return
+	
+	var tempo_global = spawner_ref.total_time_seconds
+	var tempo_solido = type.fantasma_tempo_solido
+	var tempo_trans = type.fantasma_tempo_translucido
+	var tempo_ciclo = tempo_solido + tempo_trans
+	
+	if tempo_ciclo <= 0: return
+	
+	var tempo_atual_no_ciclo = fmod(tempo_global, tempo_ciclo)
+	var fase_fantasma = tempo_atual_no_ciclo >= tempo_solido
+	
+	if fase_fantasma != invulneravel:
+		invulneravel = fase_fantasma
+		
+		if invulneravel and animacao_dano and animacao_dano.is_valid():
+			animacao_dano.kill()
+			
+		_atualizar_visual()
+		
+		if invulneravel:
+			set_collision_mask_value(1, false)
+			set_collision_mask_value(2, false)
+		else:
+			set_collision_mask_value(1, true)
+			set_collision_mask_value(2, true)

@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://b6a5utl3rfqtb"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_0ncic"]
 [ext_resource type="Texture2D" uid="uid://clrvf4pw8c2cs" path="res://Assets/Produtos/Skilltree/SENSOR.png" id="2_7lgmt"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ggh8e"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_lpr6o"]
@@ -33,6 +32,5 @@ tipo = 1
 descricao_simples = "escanearArea()
 vidaInimigo()
 velocidadeInimigo()"
-custo_item_simples = ExtResource("1_0ncic")
 niveis = Array[ExtResource("3_ggh8e")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

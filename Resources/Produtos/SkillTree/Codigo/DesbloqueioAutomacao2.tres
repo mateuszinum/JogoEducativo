@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cr8ln6oi2331"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_jaih2"]
 [ext_resource type="Texture2D" uid="uid://cncn57xiaibht" path="res://Assets/Produtos/Skilltree/AUTO.png" id="2_g6k0n"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_mef3c"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_w736l"]
@@ -32,6 +31,5 @@ pre_requisitos = Array[ExtResource("5_seite")]([ExtResource("6_g6k0n")])
 tipo = 1
 descricao_simples = "comprar()
 venderTudo()"
-custo_item_simples = ExtResource("1_jaih2")
 niveis = Array[ExtResource("3_mef3c")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
