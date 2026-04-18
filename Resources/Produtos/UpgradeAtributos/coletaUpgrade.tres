@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://djmwjd4b30bhe"]
+
+[ext_resource type="Texture2D" uid="uid://dues6kom2uj00" path="res://Assets/Asset Packs/items/item764.png" id="1_44sig"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="1_agpqs"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="2_d2ojk"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="3_mq0fr"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("1_agpqs")
+descricao_atual = "Drops x2"
+descricao_upgrade = "Drops x3"
+custo_item = ExtResource("2_d2ojk")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("1_agpqs")
+descricao_atual = "Drops x3"
+descricao_upgrade = "Drops x4"
+custo_item = ExtResource("2_d2ojk")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("1_agpqs")
+descricao_atual = "Drops x4"
+descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+custo_item = ExtResource("2_d2ojk")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("3_mq0fr")
+nome = "Coleta"
+icone = ExtResource("1_44sig")
+tipo = 2
+descricao_atual_base = "Drops x1"
+descricao_upgrade_base = "Drops x2"
+niveis = Array[ExtResource("1_agpqs")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"
