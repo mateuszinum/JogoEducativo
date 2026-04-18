@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_qiyho"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_ipvl6"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="12_cfpjy"]
+[ext_resource type="Resource" uid="uid://dj4cnce40c7d" path="res://Resources/Drop/Sangue.tres" id="13_76cyu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdp3d"]
 atlas = ExtResource("1_w6m35")
@@ -104,10 +105,17 @@ ataque = ExtResource("10_ipvl6")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
+[sub_resource type="Resource" id="Resource_05qj5"]
+script = ExtResource("12_cfpjy")
+item = ExtResource("13_76cyu")
+quantidade_maxima = 2
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
 [resource]
 script = ExtResource("2_w6m35")
 nome = "Vampiro"
 animations = SubResource("SpriteFrames_4osdr")
+tabela_de_drops = Array[ExtResource("12_cfpjy")]([SubResource("Resource_05qj5")])
 health = 8.0
 damage = 5.0
 multiplicadores_de_ataque = Array[ExtResource("1_6q5bk")]([SubResource("Resource_w6m35"), SubResource("Resource_hdp3d"), SubResource("Resource_uwpqh"), SubResource("Resource_d8lf6"), SubResource("Resource_kcdnt"), SubResource("Resource_716s8"), SubResource("Resource_a4pfi"), SubResource("Resource_cfpjy")])

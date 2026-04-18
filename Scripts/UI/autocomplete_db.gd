@@ -21,7 +21,7 @@ static var termos : Dictionary = {
 	"Cima": [0, ""], "Baixo": [0, ""], "Direita": [0, ""], "Esquerda": [0, ""],
 
 	# --- Ataques ---
-	"EsferaAzul": [0, "Início"], "EsferaVermelha": [0, "Esfera Vermelha"], "Gelo": [0, "Gelo"], "Fogo": [0, "Fogo"], "ExplosaoFogo": [0, "Explosão de Fogo"], "ExplosaoGelo": [0, "Explosão de Gelo"], "Alho": [0, "Alho"],
+	"EsferaAzul": [0, "Início"], "EsferaVermelha": [0, "Esfera Vermelha"], "Gelo": [0, "Gelo"], "Fogo": [0, "Fogo"], "ExplosaoFogo": [0, "Explosão de Fogo"], "ExplosaoGelo": [0, "Explosão de Gelo"], "Alho": [0, "Alho"], "FeixeLuz": [0, "Feixe de Luz"],
 
 	# --- Inimigos ---
 	"Goblin": [0, "Início"], "Esqueleto": [0, "Início"], "SlimeDeFogo": [0, "Início"], "SlimeDeGelo": [0, "Início"], "Lobisomem": [0, "Floresta"], "Orc": [0, "Floresta"], "Fantasma": [0, "Floresta"], "Vampiro": [0, "Floresta"],

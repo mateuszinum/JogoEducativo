@@ -12,14 +12,14 @@
 
 [sub_resource type="Resource" id="Resource_5b4wr"]
 script = ExtResource("6_yskeq")
-sequencia_obrigatoria = Array[ExtResource("7_811w6")]([ExtResource("8_yskeq"), ExtResource("8_yskeq"), ExtResource("8_yskeq"), ExtResource("8_yskeq")])
+sequencia_obrigatoria = Array[ExtResource("7_811w6")]([ExtResource("8_yskeq"), ExtResource("8_yskeq"), ExtResource("8_yskeq")])
 metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
 script = ExtResource("4_p8rwk")
 nome = "EsferaVermelha"
-damage = 3.0
-speed = 300.0
+damage = 4.0
+speed = 400.0
 knockback_multiplier = 0.5
 requisitos = Array[ExtResource("5_811w6")]([SubResource("Resource_5b4wr")])
 attack_sound = ExtResource("1_8y0pk")

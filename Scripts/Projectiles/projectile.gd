@@ -3,6 +3,7 @@ extends Area2D
 @export var direction : Vector2 = Vector2.RIGHT
 @export var speed : float = 200.0
 @export var damage : float = 1.0
+@export var pierce_enemies : bool = false
 var knockback_multiplier : float = 1.0
 
 var ataque_nome : String = "" 
@@ -14,6 +15,8 @@ var pitch_max : float = 1.2
 
 var tempo_de_vida : float = 1
 
+var _inimigos_atingidos: Array[Node] = []
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
@@ -23,6 +26,12 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
+		# Se já bateu neste cara, ignora (crucial para projéteis que atravessam)
+		if body in _inimigos_atingidos:
+			return
+			
+		_inimigos_atingidos.append(body)
+		
 		body.take_damage(damage, knockback_multiplier, direction, ataque_nome)
 		
 		if hit_sound != null:
@@ -36,10 +45,9 @@ func _on_body_entered(body: Node2D) -> void:
 			audio.play()
 			audio.finished.connect(audio.queue_free)
 			
-	queue_free()
+		# NOVO: Só se destrói se NÃO for perfurante
+		if not pierce_enemies:
+			queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
-
-func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	pass

@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="3_kd1pv"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="4_kd1pv"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="6_vsxb5"]
+[ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="7_kd1pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4lv7"]
 atlas = ExtResource("1_tomep")
@@ -69,10 +70,17 @@ ataque = ExtResource("4_kd1pv")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
+[sub_resource type="Resource" id="Resource_vsxb5"]
+script = ExtResource("6_vsxb5")
+item = ExtResource("7_kd1pv")
+quantidade_maxima = 2
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
 [resource]
 script = ExtResource("2_b4lv7")
 nome = "SlimeDeFogo"
 animations = SubResource("SpriteFrames_j1vkf")
+tabela_de_drops = Array[ExtResource("6_vsxb5")]([SubResource("Resource_vsxb5")])
 health = 15.0
 damage = 5.0
 speed = 6.0

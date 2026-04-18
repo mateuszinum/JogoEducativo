@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://crbdt5bosvqxo" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioUtilidades.tres" id="21_ob71j"]
 [ext_resource type="Resource" uid="uid://pgflit1x10ut" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioVariaveis.tres" id="22_xrugt"]
 [ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="23_886yd"]
-[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioBrilhinhos.tres" id="24_pgeyx"]
+[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFeixeLuz.tres" id="24_pgeyx"]
 [ext_resource type="Resource" uid="uid://dhjladwnppl8p" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioEsferaVermelha.tres" id="25_odsje"]
 [ext_resource type="Resource" uid="uid://cyeyaud5aq154" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoFogo.tres" id="26_rvw8m"]
 [ext_resource type="Resource" uid="uid://bu4bx8hlvnugg" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoGelo.tres" id="27_6471j"]

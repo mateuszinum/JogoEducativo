@@ -14,6 +14,7 @@ var despawns: bool = true
 var invulneravel: bool = false
 var spawner_ref: Node = null
 var animacao_dano: Tween
+var ultimo_ataque_recebido: String = ""
 
 var knockback : Vector2
 var separation : float
@@ -113,7 +114,9 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 		if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
 			apply_knockback(kb_mult, knockback_dir)
 		return
-
+	
+	ultimo_ataque_recebido = ataque_nome
+	
 	var mult = 1.0
 	if type != null and ataque_nome != "":
 		for weak in type.multiplicadores_de_ataque:
@@ -162,6 +165,10 @@ func gerar_drops() -> void:
 	print("--- LOG DE DROP ---")
 	print("1. Inimigo morreu. Iniciando gerar_drops().")
 	
+	var multiplicador = 1
+	if ultimo_ataque_recebido == "FeixeLuz":
+		multiplicador = 2
+	
 	if type != null:
 		print("2. Inimigo possui o type: ", type.nome)
 		
@@ -175,6 +182,7 @@ func gerar_drops() -> void:
 					var min_seguro = drop.quantidade_minima
 					var max_seguro = max(min_seguro, drop.quantidade_maxima)
 					var qtd_sorteada = randi_range(min_seguro, max_seguro)
+					qtd_sorteada = qtd_sorteada * multiplicador
 					for i in range(qtd_sorteada):
 						var novo_drop = CENA_BASE_DO_DROP.instantiate()
 						novo_drop.configurar(drop.item, 1)
