@@ -192,3 +192,26 @@ func shake_screen(intensidade: float) -> void:
 			tween.tween_property(camera, "offset", deslocamento, 0.04)
 			intensidade *= 0.7 
 		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
+		
+func feedback_erro_ataque(arma: Weapon):
+	# 1. Feedback Sonoro
+	if arma.som_erro != null:
+		var audio = AudioStreamPlayer2D.new()
+		audio.stream = arma.som_erro
+		audio.volume_db = arma.volume_erro
+		audio.bus = "SFX"
+		add_child(audio)
+		audio.play()
+		audio.finished.connect(audio.queue_free)
+	
+	# 2. Feedback Visual (Exclamação)
+	# Aqui podes instanciar um Sprite ou ativar um nó de exclamação que já tenhas na cabeça
+	var label_erro = Label.new() # Exemplo simples com texto, podes trocar por um Sprite
+	label_erro.text = "!"
+	label_erro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label_erro.position = Vector2(-10, -40) # Posição acima da cabeça
+	add_child(label_erro)
+	
+	var tween = create_tween()
+	tween.tween_property(label_erro, "modulate:a", 0.0, 0.5).set_delay(0.5)
+	tween.tween_callback(label_erro.queue_free)

@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/Ataque/LancarFlecha.mp3" id="1_66wjx"]
 [ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/HitFlecha.mp3" id="2_kp6q3"]
+[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_qaa6x"]
 [ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/EsferaAzul.tscn" id="3_xgdgw"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_48r6u"]
 

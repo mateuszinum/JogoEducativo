@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://bhexvkqu7x5it"]
 
 [ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/Ataque/LancarFlecha.mp3" id="1_8khxr"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="2_54jlt"]
 [ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/HitFlecha.mp3" id="2_s2ay1"]
 [ext_resource type="PackedScene" uid="uid://dcqxtd5tubknx" path="res://Scenes/Weapons/Alho.tscn" id="3_8khxr"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_3g8hj"]

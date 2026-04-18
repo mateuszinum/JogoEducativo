@@ -2,15 +2,25 @@
 
 [ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/Ataque/LancarFlecha.mp3" id="1_r4lif"]
 [ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/HitFlecha.mp3" id="2_begfu"]
+[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_h5tir"]
 [ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/EsferaAzul.tscn" id="3_h5tir"]
+[ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="3_q8efw"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_q8efw"]
+[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/ataque_requisito.gd" id="6_q8efw"]
+
+[sub_resource type="Resource" id="Resource_a7auv"]
+script = ExtResource("2_h5tir")
+item = ExtResource("3_q8efw")
+quantidade = 10
+metadata/_custom_type_script = "uid://r105lsf2iv8d"
 
 [resource]
 script = ExtResource("4_q8efw")
 nome = "ExplosaoFogo"
-damage = 1.0
+damage = 6.0
 speed = 300.0
 knockback_multiplier = 0.5
+custo_do_ataque = Array[ExtResource("2_h5tir")]([SubResource("Resource_a7auv")])
 attack_sound = ExtResource("1_r4lif")
 hit_sound = ExtResource("2_begfu")
 metadata/_custom_type_script = "uid://dacndn1awrba2"

@@ -3,12 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://bxasuwt0mgxbv" path="res://Scenes/Weapons/EsferaAzul.tscn" id="1_r22qi"]
 [ext_resource type="AudioStream" uid="uid://lhj67vsvam5c" path="res://Audio/SFX/Ataque/LancarFlecha.mp3" id="1_t83o3"]
 [ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/HitFlecha.mp3" id="2_a37pu"]
+[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_aft7j"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="2_ofrdl"]
+[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/ataque_requisito.gd" id="5_mt581"]
 
 [resource]
 script = ExtResource("2_ofrdl")
 nome = "EsferaAzul"
-damage = 1.0
+damage = 2.0
 speed = 300.0
 knockback_multiplier = 0.5
 attack_sound = ExtResource("1_t83o3")
