@@ -96,6 +96,14 @@ collect_sound = ExtResource("16_5vcap")
 collect_volume = -10.0
 collect_pitch_min = 1.0
 
+[node name="HUD_Inventario" parent="Player/AnimatedSprite2D" parent_id_path=PackedInt32Array(848872761, 2056011674) index="0" unique_id=319363314 instance=ExtResource("21_7fyq5")]
+layout_direction = 4
+offset_left = -293.0
+offset_top = -167.0
+offset_right = -293.0
+offset_bottom = -167.0
+scale = Vector2(0.7, 0.7)
+
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
@@ -104,8 +112,6 @@ position_smoothing_enabled = true
 process_mode = 3
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1618265714 instance=ExtResource("13_nkw66")]
-
-[node name="HUD_Inventario" parent="." unique_id=319363314 instance=ExtResource("21_7fyq5")]
 
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=217816066]
 layer = 10

@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_c6xs5")
-nome = "Poção"
+nome = "Poção de Fortalecimento"
 icone = ExtResource("2_ymksr")
 descricao_simples = "Uma poção da boa, vai te deixar cheio( aumento temporario da vida) "
 custo_item_simples = ExtResource("1_ymksr")
