@@ -1,19 +1,27 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://d3j5fnsthjsdh"]
 
-[ext_resource type="AudioStream" uid="uid://dfaycvcw37ly1" path="res://Audio/SFX/Ataque/LancarFogo.mp3" id="1_38qnp"]
-[ext_resource type="AudioStream" uid="uid://dxivslkaq3whe" path="res://Audio/SFX/Ataque/HitFogo.mp3" id="2_ekt2k"]
+[ext_resource type="AudioStream" uid="uid://dfaycvcw37ly1" path="res://Audio/SFX/Ataque/FogoLancar.mp3" id="1_v0c3d"]
+[ext_resource type="Script" path="res://Scripts/Weapon/custo_ataque.gd" id="2_2ixjv"]
 [ext_resource type="PackedScene" uid="uid://c2lpghfx75udb" path="res://Scenes/Weapons/Fogo.tscn" id="3_38qnp"]
+[ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="3_v0c3d"]
+[ext_resource type="AudioStream" uid="uid://dxivslkaq3whe" path="res://Audio/SFX/Ataque/FogoHit.mp3" id="4_p3hfx"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_v0c3d"]
+[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_aae1s"]
+
+[sub_resource type="Resource" id="Resource_p3hfx"]
+script = ExtResource("2_2ixjv")
+item = ExtResource("3_v0c3d")
 
 [resource]
 script = ExtResource("4_v0c3d")
 nome = "Fogo"
-damage = 3.0
-speed = 300.0
+damage = 4.0
+speed = 400.0
 knockback_multiplier = 2.0
-attack_sound = ExtResource("1_38qnp")
+custo_do_ataque = Array[ExtResource("2_2ixjv")]([SubResource("Resource_p3hfx")])
+attack_sound = ExtResource("1_v0c3d")
 attack_volume = -3.0
-hit_sound = ExtResource("2_ekt2k")
+hit_sound = ExtResource("4_p3hfx")
 hit_volume = -3.0
 projectile_node = ExtResource("3_38qnp")
 metadata/_custom_type_script = "uid://dacndn1awrba2"

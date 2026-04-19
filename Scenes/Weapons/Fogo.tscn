@@ -9,13 +9,14 @@ height = 216.57123
 
 [node name="Projectile" type="Area2D" unique_id=382399043]
 rotation = -3.1219354
-scale = Vector2(0.3477438, 0.34008098)
+scale = Vector2(0.164, 0.16)
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_pr2ei")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=433406543]
-position = Vector2(14.000061, 5)
+position = Vector2(-13.99, 5)
+rotation = -3.1415927
 scale = Vector2(0.115625, 0.12888889)
 texture = ExtResource("2_7ypa3")
 

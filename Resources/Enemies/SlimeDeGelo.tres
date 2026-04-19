@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bx2b1hghklvwh"]
 
-[ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/SlimeGelo-Walk.png" id="1_yx0nd"]
+[ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Inimigos/SlimeGelo-Walk.png" id="1_yx0nd"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_20ui5"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_fk416"]
-[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_fk416"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="3_oyh8b"]
+[ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="4_duf1u"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="4_oyh8b"]
-[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="4_yx0nd"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="6_fk416"]
+[ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="6_gk645"]
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="7_oyh8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20ui5"]
 atlas = ExtResource("1_yx0nd")
@@ -61,7 +63,13 @@ animations = [{
 [sub_resource type="Resource" id="Resource_44fir"]
 script = ExtResource("2_fk416")
 ataque = ExtResource("3_oyh8b")
-multiplicador = 5.0
+multiplicador = 3.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_gfuk8"]
+script = ExtResource("2_fk416")
+ataque = ExtResource("4_duf1u")
+multiplicador = 3.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
 [sub_resource type="Resource" id="Resource_duf1u"]
@@ -70,9 +78,15 @@ ataque = ExtResource("4_oyh8b")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
-[sub_resource type="Resource" id="Resource_cucs6"]
-script = ExtResource("3_fk416")
-item = ExtResource("4_yx0nd")
+[sub_resource type="Resource" id="Resource_yuk0g"]
+script = ExtResource("2_fk416")
+ataque = ExtResource("6_gk645")
+multiplicador = 0.0
+metadata/_custom_type_script = "uid://cbobvrteab571"
+
+[sub_resource type="Resource" id="Resource_fk416"]
+script = ExtResource("6_fk416")
+item = ExtResource("7_oyh8b")
 quantidade_maxima = 2
 metadata/_custom_type_script = "uid://cvs37xuengnw4"
 
@@ -80,9 +94,9 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_20ui5")
 nome = "SlimeDeGelo"
 animations = SubResource("SpriteFrames_gfuk8")
-tabela_de_drops = Array[ExtResource("3_fk416")]([SubResource("Resource_cucs6")])
-health = 10.0
+tabela_de_drops = Array[ExtResource("6_fk416")]([SubResource("Resource_fk416")])
+health = 15.0
 damage = 5.0
 speed = 6.0
-multiplicadores_de_ataque = Array[ExtResource("2_fk416")]([SubResource("Resource_44fir"), SubResource("Resource_duf1u")])
+multiplicadores_de_ataque = Array[ExtResource("2_fk416")]([SubResource("Resource_44fir"), SubResource("Resource_gfuk8"), SubResource("Resource_duf1u"), SubResource("Resource_yuk0g")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

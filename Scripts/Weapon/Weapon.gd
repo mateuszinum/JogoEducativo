@@ -1,11 +1,18 @@
 extends Resource
 class_name Weapon
 
-@export var nome : String # <-- ADICIONADO AQUI PARA O DB ACHAR!
+@export var nome : String 
 
 @export var damage : float
 @export var speed : float
 @export var knockback_multiplier : float = 1.0
+
+@export_group("Custos")
+@export var custo_do_ataque: Array[CustoAtaque] = []
+
+# Weapon.gd (Adiciona estes campos)
+@export_group("Requisitos")
+@export var requisitos: Array[AtaqueRequisito] = []
 
 @export_group("Audio")
 @export var attack_sound : AudioStream

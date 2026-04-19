@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://b4a2qf6bx15hs" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFloresta.tres" id="23_hs0yn"]
 [ext_resource type="Resource" uid="uid://bu4bx8hlvnugg" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoGelo.tres" id="24_ep0q0"]
 [ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="25_ep0q0"]
-[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioBrilhinhos.tres" id="25_ew12h"]
+[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFeixeLuz.tres" id="25_ew12h"]
 [ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="26_oqm2m"]
 [ext_resource type="Texture2D" uid="uid://3mo8kk7lyfvd" path="res://Assets/Personagens/MagoVelho.png" id="28_n146t"]
 

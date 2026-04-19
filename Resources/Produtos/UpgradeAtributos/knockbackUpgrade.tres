@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://bsu0jo5l3gd2h"]
+
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="1_uwkeq"]
+[ext_resource type="Texture2D" uid="uid://v64k86yylldg" path="res://Assets/Asset Packs/items/item349.png" id="1_wbmy8"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="2_aog4n"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="3_5g2yy"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("1_uwkeq")
+descricao_atual = "Multiplicador x1.5"
+descricao_upgrade = "Multiplicador x2"
+custo_item = ExtResource("2_aog4n")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("1_uwkeq")
+descricao_atual = "Multiplicador x2"
+descricao_upgrade = "Multiplicador x3"
+custo_item = ExtResource("2_aog4n")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("1_uwkeq")
+descricao_atual = "Multiplicador x3"
+descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+custo_item = ExtResource("2_aog4n")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("3_5g2yy")
+nome = "Knockback"
+icone = ExtResource("1_wbmy8")
+tipo = 2
+descricao_atual_base = "Multiplicador x1"
+descricao_upgrade_base = "Multiplicador x1.5"
+niveis = Array[ExtResource("1_uwkeq")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

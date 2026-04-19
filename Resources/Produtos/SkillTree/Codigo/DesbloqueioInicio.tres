@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cmkhmo0t2l5b1"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_mxbgm"]
 [ext_resource type="Texture2D" uid="uid://bip234btmkqmm" path="res://Assets/Produtos/Skilltree/Inicio.png" id="2_mxbgm"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_o2rix"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_84u57"]
@@ -33,6 +32,5 @@ atacar()
 inimigoMaisProximo()
 Campos
 EsferaAzul"
-custo_item_simples = ExtResource("1_mxbgm")
 niveis = Array[ExtResource("3_o2rix")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
