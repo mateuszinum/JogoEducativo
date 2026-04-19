@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://pgflit1x10ut"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_tecsl"]
 [ext_resource type="Texture2D" uid="uid://bln273beivkaa" path="res://Assets/Produtos/Skilltree/var.png" id="2_j7fc2"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_xv76h"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_qwk72"]
@@ -31,6 +30,5 @@ icone = ExtResource("2_j7fc2")
 pre_requisitos = Array[ExtResource("5_vcxkv")]([ExtResource("6_j7fc2")])
 tipo = 1
 descricao_simples = "Variáveis"
-custo_item_simples = ExtResource("1_tecsl")
 niveis = Array[ExtResource("3_xv76h")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

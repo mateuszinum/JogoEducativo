@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://5nomjiy7lqdc"]
 
 [ext_resource type="Script" uid="uid://bat1qbms14i3l" path="res://Scripts/UI/DamageNumber.gd" id="1_x1qsi"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_fp20q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8v7ec"]
-font_size = 10
 font_color = Color(0.7490196, 0.16078432, 0.16862746, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -16,6 +16,7 @@ offset_left = -20.0
 offset_top = -34.0
 offset_right = 20.0
 offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("2_fp20q")
 text = "100"
 label_settings = SubResource("LabelSettings_8v7ec")
 horizontal_alignment = 1

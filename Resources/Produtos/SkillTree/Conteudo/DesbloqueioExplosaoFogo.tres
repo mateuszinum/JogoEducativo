@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cyeyaud5aq154"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_w5hkq"]
 [ext_resource type="Texture2D" uid="uid://mq6ltpu0i4pg" path="res://Assets/Produtos/Skilltree/vazio.png" id="2_qg6vf"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_iyqt3"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_c64un"]
@@ -30,6 +29,5 @@ nome = "Explosão de Fogo"
 icone = ExtResource("2_qg6vf")
 pre_requisitos = Array[ExtResource("5_n84rw")]([ExtResource("6_qg6vf")])
 tipo = 3
-custo_item_simples = ExtResource("1_w5hkq")
 niveis = Array[ExtResource("3_iyqt3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

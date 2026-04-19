@@ -223,15 +223,17 @@ func configurar_cores_do_codigo() -> void:
 	highlighter.add_color_region('#', '', Color("#6a9955"), true)   
 	
 	var cor_controle = Color("#c586c0")
-	var palavras_controle = ["se", "senao", "fim", "enquanto"]
+	# ADICIONADO: "retorna" e "funcao"
+	var palavras_controle = ["se", "senao", "fim", "enquanto", "retorna", "funcao"]
 	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
 		
 	var cor_tipo = Color("#569cd6")
-	var palavras_tipo = ["int", "float", "bool", "string", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
+	# ADICIONADO: "vazio"
+	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 
-	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Agua", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
+	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "FeixeLuz", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
 	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
 	var cor_funcao = Color("#dcdcaa")
@@ -245,7 +247,41 @@ func configurar_cores_do_codigo() -> void:
 	code_edit.syntax_highlighter = highlighter
 
 func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Campos)\nDirecao dir = Esquerda\nenquanto(Verdadeiro):\n\tse(podeMover(Esquerda) == Falso):\n\t\tdir = Direita\n\tfim se\n\tse(podeMover(Direita) == Falso):\n\t\tdir = Esquerda\n\tfim se\n\tmover(dir)\n\t\n\tInimigo alvo = inimigoMaisProximo()\n\tse(nomeInimigo(alvo) == SlimeDeFogo):\n\t\tatacar(alvo, Gelo)\n\tsenao:\n\t\tse(nomeInimigo(alvo) == SlimeDeGelo):\n\t\t\tatacar(alvo, Fogo)\n\t\tsenao:\n\t\t\tatacar(alvo, EsferaAzul)\n\t\tfim se\n\tfim se\nfim enquanto"""
+	var codigo_teste = """arena(Campos)
+Direcao dir = [Esquerda, Cima, Direita, Baixo, Baixo]
+Ataque atk = [EsferaAzul, Gelo, FeixeLuz, Gelo, ExplosaoGelo]
+bool f = !Verdadeiro
+int i = 0
+
+Direcao GetDirecao(int j):
+	retorna dir[j]
+fim funcao
+
+vazio Movimento():
+	mover(GetDirecao(i))
+	retorna
+fim funcao
+
+vazio AtacarInimigoMaisProximo():
+	Inimigo alvo = inimigoMaisProximo()
+	atacar(alvo, atk[i])
+	retorna
+fim funcao
+
+vazio Incremento(int maior):
+	i = i + 1
+	se(i > maior):
+		i = 0
+	fim se
+	retorna
+fim funcao
+	
+enquanto(Verdadeiro):
+	Movimento()
+	AtacarInimigoMaisProximo()
+	
+	Incremento(4)
+fim enquanto"""
 	code_edit.text = codigo_teste
 
 func _on_text_changed() -> void:
@@ -257,7 +293,8 @@ func _on_code_completion_requested() -> void:
 	var line_text = code_edit.get_line(current_line).substr(0, current_col)
 
 	var texto_limpo = line_text.strip_edges()
-	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se"):
+	# ADICIONADO: "fim funcao" para cancelar o menu popup na hora errada
+	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se") or texto_limpo.ends_with("fim funcao"):
 		code_edit.cancel_code_completion()
 		return
 

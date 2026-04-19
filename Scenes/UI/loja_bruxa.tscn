@@ -1,9 +1,63 @@
 [gd_scene format=3 uid="uid://47gpu1l8i1cx"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_pasot"]
+[ext_resource type="Resource" uid="uid://cgek2g4tndduc" path="res://Resources/Produtos/UpgradeAtributos/agilidadeUpgrade.tres" id="2_ke52h"]
 [ext_resource type="Texture2D" uid="uid://d4non5uc1t5r0" path="res://Assets/Personagens/Bruxa.png" id="2_xvemy"]
+[ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_cxqjs"]
+[ext_resource type="Resource" uid="uid://djmwjd4b30bhe" path="res://Resources/Produtos/UpgradeAtributos/coletaUpgrade.tres" id="4_lhnmh"]
+[ext_resource type="Resource" uid="uid://bhvgfks1vi1no" path="res://Resources/Produtos/UpgradeAtributos/forcaUpgrade.tres" id="5_x8pao"]
+[ext_resource type="Resource" uid="uid://cpbdvsir52ey5" path="res://Resources/Produtos/UpgradeAtributos/vidaMaximaUpgrade.tres" id="6_3k5vv"]
+[ext_resource type="Resource" uid="uid://bsu0jo5l3gd2h" path="res://Resources/Produtos/UpgradeAtributos/knockbackUpgrade.tres" id="7_ylo7x"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_pasot")]
+
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
+visible = false
+produto = ExtResource("2_ke52h")
+
+[node name="GridContainer" type="GridContainer" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=255437998]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 111.0
+offset_right = 602.0
+offset_bottom = 191.0
+theme_override_constants/h_separation = 74
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="BotaoProduto" parent="Conteudo/GridContainer" index="0" unique_id=341226701 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("2_ke52h")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto2" parent="Conteudo/GridContainer" index="1" unique_id=1068275327 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("4_lhnmh")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto3" parent="Conteudo/GridContainer" index="2" unique_id=252948687 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("5_x8pao")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="GridContainer2" type="GridContainer" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=1296421440]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 231.0
+offset_right = 518.0
+offset_bottom = 311.0
+theme_override_constants/h_separation = 74
+columns = 2
+
+[node name="BotaoProduto" parent="Conteudo/GridContainer2" index="0" unique_id=1138550543 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("7_ylo7x")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="BotaoProduto2" parent="Conteudo/GridContainer2" index="1" unique_id=1510168506 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("3_cxqjs")]
+layout_mode = 2
+produto = ExtResource("6_3k5vv")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BRUXA"

@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://hrs804g1pltj"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_7lmda"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_0rfgp"]
+
+[sub_resource type="Resource" id="Resource_qff5g"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "Informação Geral"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3yqwk"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "Créditos Introdução"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0wyyo"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Loop e Condicional]Conceitos de Programação[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cgv5h"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Sensores 1]AtributosDeInimigo[/req] [req=Loop e Condicional]enquanto[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Loop e Condicional]se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_t3afg"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "Funções Nativas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_or0xj"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Utilidades]aleatorio()[/req] [req=Início]arena()[/req] [req=Início]atacar()[/req] [req=Itens]cinto.usarItem()[/req] [req=Automação 2]comprar()[/req] [req=Automação 1]escapar()[/req] [req=Sensores 3]escanearArea()[/req] [req=Debug]escrever()[/req] [req=Início]inimigoMaisProximo()[/req] [req=Utilidades]max()[/req] [req=Utilidades]min()[/req] [req=Itens]mochila.usarItem()[/req] mover() [req=Sensores 2]podeMover()[/req] [req=Localização]posicaoX()[/req] [req=Localização]posicaoY()[/req] [req=Sensores 2]tempo()[/req] [req=Localização]tesouroX()[/req] [req=Localização]tesouroY()[/req] [req=Automação 2]venderTudo()[/req] [req=Sensores 2]vidaAtual()[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_m47yt"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Início]Recursos[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7jufl"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Floresta]Couro[/req] [req=Campos]Cristal[/req] [req=Labirinto]Diamante[/req] [req=Floresta]Esmeralda[/req] [req=Campos]Magma[/req] [req=Campos]Moeda[/req] [req=Campos]Osso[/req] [req=Floresta]Plasma[/req] [req=Campos]Safira[/req] [req=Floresta]Sangue[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_mroc1"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Início]Ataques[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_sbsfi"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=ExplosaoFogo]ExplosaoFogo[/req] [req=ExplosaoGelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=FeixeLuz]FeixeLuz[/req] [req=Gelo]Gelo[/req]
+       "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_kpn3u"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Início]Inimigos[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_fpef0"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Início]Esqueleto[/req] [req=Floresta]Fantasma[/req] [req=Início]Goblin[/req] [req=Floresta]Lobisomem[/req]  [req=Floresta]Orc[/req] [req=Início]SlimeDeFogo[/req] [req=Início]SlimeDeGelo[/req] [req=Floresta]Vampiro[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_f7nr2"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Início]Arenas[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_mc6gf"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Início]Campos[/req] [req=Floresta]Floresta[/req] [req=Labirinto]Labirinto[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_0rfgp")
+blocos_de_conteudo = Array[ExtResource("1_7lmda")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf")])
+metadata/_custom_type_script = "uid://be6x46yhir5k7"
