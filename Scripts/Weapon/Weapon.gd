@@ -22,10 +22,6 @@ class_name Weapon
 @export var pitch_min : float = 0.8
 @export var pitch_max : float = 1.2
 
-@export_group("Audio Erro")
-@export var som_erro : AudioStream
-@export var volume_erro : float = 0.0
-
 @export_group("Projectile")
 @export var projectile_node : PackedScene = preload("res://Scenes/Weapons/EsferaAzul.tscn")
 

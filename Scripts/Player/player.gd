@@ -7,6 +7,8 @@ const TEMPO_ANIMACAO : float = 0.05
 
 const OPACIDADE_NO_DANO : float = 1.0
 
+const ERROR_FEEDBACK = preload("res://Scenes/UI/error_feedback.tscn")
+
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
 
@@ -194,24 +196,11 @@ func shake_screen(intensidade: float) -> void:
 		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
 		
 func feedback_erro_ataque(arma: Weapon):
-	# 1. Feedback Sonoro
-	if arma.som_erro != null:
-		var audio = AudioStreamPlayer2D.new()
-		audio.stream = arma.som_erro
-		audio.volume_db = arma.volume_erro
-		audio.bus = "SFX"
-		add_child(audio)
-		audio.play()
-		audio.finished.connect(audio.queue_free)
-	
-	# 2. Feedback Visual (Exclamação)
-	# Aqui podes instanciar um Sprite ou ativar um nó de exclamação que já tenhas na cabeça
-	var label_erro = Label.new() # Exemplo simples com texto, podes trocar por um Sprite
-	label_erro.text = "!"
-	label_erro.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label_erro.position = Vector2(-10, -40) # Posição acima da cabeça
-	add_child(label_erro)
-	
-	var tween = create_tween()
-	tween.tween_property(label_erro, "modulate:a", 0.0, 0.5).set_delay(0.5)
-	tween.tween_callback(label_erro.queue_free)
+	if ERROR_FEEDBACK != null:
+		var erro_inst = ERROR_FEEDBACK.instantiate()
+		
+		var pos_aleatoria = Vector2(randf_range(-15, 15), -40 + randf_range(-10, 10))
+		erro_inst.global_position = global_position + pos_aleatoria
+		
+		get_parent().add_child(erro_inst)
+		erro_inst.setup()
