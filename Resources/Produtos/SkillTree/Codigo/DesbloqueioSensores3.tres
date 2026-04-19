@@ -29,8 +29,6 @@ nome = "Sensores 3"
 icone = ExtResource("2_7lgmt")
 pre_requisitos = Array[ExtResource("5_qufq1")]([ExtResource("6_7lgmt")])
 tipo = 1
-descricao_simples = "escanearArea()
-vidaInimigo()
-velocidadeInimigo()"
+descricao_simples = "escanearArea()"
 niveis = Array[ExtResource("3_ggh8e")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
