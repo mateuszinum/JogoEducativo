@@ -1,19 +1,11 @@
 [gd_resource type="Resource" script_class="SingleShot" format=3 uid="uid://dw2jlap2mhmhu"]
 
 [ext_resource type="AudioStream" uid="uid://d3kdaa84bqvwq" path="res://Audio/SFX/Ataque/EsferaVermelhaHit.wav" id="1_yskeq"]
-[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_p8rwk"]
+[ext_resource type="Script" path="res://Scripts/Weapon/custo_ataque.gd" id="2_p8rwk"]
 [ext_resource type="AudioStream" uid="uid://b6oob7cxd8igb" path="res://Audio/SFX/Ataque/EsferaVermelhaLancar.wav" id="3_5b4wr"]
 [ext_resource type="PackedScene" uid="uid://c74eu2ijrmw7s" path="res://Scenes/Weapons/EsferaVermelha.tscn" id="3_8y0pk"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_p8rwk"]
 [ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="5_cd8h3"]
-[ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="6_yt8hi"]
-[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_811w6"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="8_yskeq"]
-
-[sub_resource type="Resource" id="Resource_5b4wr"]
-script = ExtResource("6_yt8hi")
-sequencia_obrigatoria = Array[ExtResource("7_811w6")]([ExtResource("8_yskeq"), ExtResource("8_yskeq"), ExtResource("8_yskeq")])
-metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
 script = ExtResource("4_p8rwk")
@@ -21,7 +13,6 @@ nome = "EsferaVermelha"
 damage = 5.0
 speed = 400.0
 knockback_multiplier = 0.5
-requisitos = Array[ExtResource("5_cd8h3")]([SubResource("Resource_5b4wr")])
 attack_sound = ExtResource("3_5b4wr")
 attack_volume = -6.0
 hit_sound = ExtResource("1_yskeq")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cd6v87ojvquk0"]
 
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="1_6q5bk"]
-[ext_resource type="Texture2D" uid="uid://cv6gvw41jdkuq" path="res://Assets/Asset Packs/Outros/Vampire-Glide.png" id="1_w6m35"]
+[ext_resource type="Texture2D" uid="uid://hl10eihxtv2a" path="res://Assets/Inimigos/Vampiro_Walk.png" id="1_76cyu"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_w6m35"]
 [ext_resource type="Resource" uid="uid://bhexvkqu7x5it" path="res://Resources/Weapons/Alho.tres" id="3_76cyu"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="4_05qj5"]
@@ -14,43 +14,64 @@
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="12_cfpjy"]
 [ext_resource type="Resource" uid="uid://dj4cnce40c7d" path="res://Resources/Drop/Sangue.tres" id="13_76cyu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdp3d"]
-atlas = ExtResource("1_w6m35")
-region = Rect2(0, 0, 24, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_05qj5"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwpqh"]
-atlas = ExtResource("1_w6m35")
-region = Rect2(24, 0, 24, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssbtr"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8lf6"]
-atlas = ExtResource("1_w6m35")
-region = Rect2(48, 0, 24, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lbbs"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcdnt"]
-atlas = ExtResource("1_w6m35")
-region = Rect2(72, 0, 24, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_br0c2"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_716s8"]
-atlas = ExtResource("1_w6m35")
-region = Rect2(96, 0, 24, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2dys"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4osdr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiyho"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipvl6"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emsxs"]
+atlas = ExtResource("1_76cyu")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fjwx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hdp3d")
+"texture": SubResource("AtlasTexture_05qj5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uwpqh")
+"texture": SubResource("AtlasTexture_ssbtr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d8lf6")
+"texture": SubResource("AtlasTexture_7lbbs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kcdnt")
+"texture": SubResource("AtlasTexture_br0c2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_716s8")
+"texture": SubResource("AtlasTexture_g2dys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiyho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipvl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emsxs")
 }],
 "loop": true,
 "name": &"default",
@@ -114,7 +135,7 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 [resource]
 script = ExtResource("2_w6m35")
 nome = "Vampiro"
-animations = SubResource("SpriteFrames_4osdr")
+animations = SubResource("SpriteFrames_1fjwx")
 tabela_de_drops = Array[ExtResource("12_cfpjy")]([SubResource("Resource_05qj5")])
 health = 7.0
 damage = 5.0
