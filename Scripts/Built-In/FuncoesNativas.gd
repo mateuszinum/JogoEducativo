@@ -253,6 +253,7 @@ class Jogador:
 					
 					FuncoesNativas._cache_pode_mover[dir_nome] = caminho_livre
 			
+			HistoricoAcoes.registrar_movimento(dir_limpa)
 			mover(direcao)
 			return true
 		else:
@@ -299,10 +300,18 @@ class Jogador:
 		
 		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
 		
+		# ERRO 1: Ataque nem existe no jogo
 		if ataque_data == null:
 			tree.call_group("Terminal", "mostrar_erro", "O ataque '" + tipo_ataque + "' não foi encontrado no grimório.")
 			return false
-			
+		
+		# ERRO 2: Faltou requisito (sequência, dinheiro, etc)
+		if not Constantes.REQUISITOS_DESATIVADOS:
+			for req in ataque_data.requisitos:
+				if not req.verificar(player, ataque_data):
+					player.feedback_erro_ataque(ataque_data)
+					return false
+				
 		var alvo_encontrado = false
 		
 		for inimigo in inimigos:
@@ -310,21 +319,24 @@ class Jogador:
 				alvo_encontrado = true
 				var distancia = player.global_position.distance_to(inimigo.global_position)
 				
+				# ERRO 3: Inimigo está muito longe
 				if distancia > FuncoesNativas.ALCANCE_MAXIMO:
-					print("[FuncoesNativas] Tentou atacar um inimigo muito longe!")
+					player.feedback_erro_ataque(ataque_data)
 					return false
 					
-				print("[FuncoesNativas] Disparando projétil no alvo ", alvo_id, " com: ", ataque_data.nome)
-				
+				# SUCESSO: Tudo certo, o ataque acontece!
 				if ataque_data.has_method("activate"):
 					ataque_data.activate(player, inimigo, tree)
+					HistoricoAcoes.registrar_ataque(tipo_ataque)
 					return true
 				else:
-					print("[Erro] O ataque ", ataque_data.nome, " não possui um script válido associado.")
+					# ERRO 4: Script da arma está quebrado
+					player.feedback_erro_ataque(ataque_data)
 					return false
-				
+					
+		# ERRO 5: Inimigo com esse ID não foi encontrado na arena
 		if not alvo_encontrado:
-			print("[FuncoesNativas] O ataque falhou. O alvo '", alvo_id, "' não está mais na arena.")
+			player.feedback_erro_ataque(ataque_data)
 			return false
 			
 		return false

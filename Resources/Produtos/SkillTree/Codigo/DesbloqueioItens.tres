@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://bj5tvui624wgd"]
 
-[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_w38gk"]
 [ext_resource type="Texture2D" uid="uid://ckha00c4gkb4l" path="res://Assets/Produtos/Skilltree/itens.png" id="2_ywuj6"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_a68qi"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_dh2ly"]
@@ -32,6 +31,5 @@ pre_requisitos = Array[ExtResource("5_5h8bc")]([ExtResource("6_ywuj6")])
 tipo = 1
 descricao_simples = "cinto.usarItem()
 mochila.usarItem()"
-custo_item_simples = ExtResource("1_w38gk")
 niveis = Array[ExtResource("3_a68qi")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

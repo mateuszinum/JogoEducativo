@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://df5pgu4xfpxtc"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_83hmu"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_g3cxe"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_83hmu")
+tipo = 1
+texto = "Titulo (Colocar nome da Pagina)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_83hmu")
+texto = "(Conteúdo do documento)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_g3cxe")
+blocos_de_conteudo = Array[ExtResource("1_83hmu")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

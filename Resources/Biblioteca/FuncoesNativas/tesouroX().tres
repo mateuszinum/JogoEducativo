@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://debln7bbgwbp5"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_mrgpt"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_24r0a"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_mrgpt")
+tipo = 1
+texto = "Créditos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_mrgpt")
+texto = "Créditos para pessoas legais."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_24r0a")
+blocos_de_conteudo = Array[ExtResource("1_mrgpt")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

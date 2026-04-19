@@ -7,6 +7,8 @@ const TEMPO_ANIMACAO : float = 0.05
 
 const OPACIDADE_NO_DANO : float = 1.0
 
+const ERROR_FEEDBACK = preload("res://Scenes/UI/error_feedback.tscn")
+
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
 
@@ -192,3 +194,13 @@ func shake_screen(intensidade: float) -> void:
 			tween.tween_property(camera, "offset", deslocamento, 0.04)
 			intensidade *= 0.7 
 		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
+		
+func feedback_erro_ataque(arma: Weapon):
+	if ERROR_FEEDBACK != null:
+		var erro_inst = ERROR_FEEDBACK.instantiate()
+		
+		var pos_aleatoria = Vector2(randf_range(-15, 15), -40 + randf_range(-10, 10))
+		erro_inst.global_position = global_position + pos_aleatoria
+		
+		get_parent().add_child(erro_inst)
+		erro_inst.setup()

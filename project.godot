@@ -38,6 +38,7 @@ ProgressoDB="*uid://dbwday27iykbu"
 GerenciadorAudio="*uid://cpo7addrhdod2"
 GerenciadorVideo="*uid://c32lnvgvqma6v"
 Atributos="*uid://cldoa2rub50er"
+HistoricoAcoes="*res://Scripts/player/historico_acoes.gd"
 
 [display]
 

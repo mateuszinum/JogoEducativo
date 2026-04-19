@@ -233,7 +233,7 @@ func configurar_cores_do_codigo() -> void:
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 
-	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Agua", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
+	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "FeixeLuz", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
 	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
 	var cor_funcao = Color("#dcdcaa")
@@ -248,7 +248,8 @@ func configurar_cores_do_codigo() -> void:
 
 func _on_botao_debug_pressed() -> void:
 	var codigo_teste = """arena(Campos)
-Direcao dir = [Esquerda, Cima, Direita, Baixo]
+Direcao dir = [Esquerda, Cima, Direita, Baixo, Baixo]
+Ataque atk = [EsferaAzul, Gelo, FeixeLuz, Gelo, ExplosaoGelo]
 bool f = !Verdadeiro
 int i = 0
 
@@ -263,13 +264,7 @@ fim funcao
 
 vazio AtacarInimigoMaisProximo():
 	Inimigo alvo = inimigoMaisProximo()
-	se(nomeInimigo(alvo) == SlimeDeFogo):
-		atacar(alvo, Gelo)
-	senao se(nomeInimigo(alvo) == SlimeDeGelo):
-			atacar(alvo, Fogo)
-	senao:
-			atacar(alvo, EsferaAzul)
-	fim se
+	atacar(alvo, atk[i])
 	retorna
 fim funcao
 
@@ -284,7 +279,8 @@ fim funcao
 enquanto(Verdadeiro):
 	Movimento()
 	AtacarInimigoMaisProximo()
-	Incremento(3)
+	
+	Incremento(4)
 fim enquanto"""
 	code_edit.text = codigo_teste
 

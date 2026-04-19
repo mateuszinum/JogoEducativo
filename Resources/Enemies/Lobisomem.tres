@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dj8iit3oemlpe"]
 
-[ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Werewolf/Werewolf with shadows/Werewolf-Walk.png" id="1_qa7hl"]
+[ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Inimigos/Werewolf-Walk.png" id="1_qa7hl"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_huyki"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_n0mhb"]
-[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_3n37o"]
-[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_huyki"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="4_3n37o"]
+[ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="5_huyki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0mhb"]
 atlas = ExtResource("1_qa7hl")
@@ -70,9 +70,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_kqvqy"]
-script = ExtResource("3_3n37o")
-item = ExtResource("4_huyki")
+[sub_resource type="Resource" id="Resource_3n37o"]
+script = ExtResource("4_3n37o")
+item = ExtResource("5_huyki")
 quantidade_maxima = 2
 metadata/_custom_type_script = "uid://cvs37xuengnw4"
 
@@ -80,8 +80,8 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_n0mhb")
 nome = "Lobisomem"
 animations = SubResource("SpriteFrames_0d0sj")
-tabela_de_drops = Array[ExtResource("3_3n37o")]([SubResource("Resource_kqvqy")])
-health = 5.0
-damage = 20.0
+tabela_de_drops = Array[ExtResource("4_3n37o")]([SubResource("Resource_3n37o")])
+health = 15.0
+damage = 5.0
 speed = 12.0
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

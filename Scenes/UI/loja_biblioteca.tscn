@@ -1,131 +1,40 @@
 [gd_scene format=3 uid="uid://doh77mpn3yqve"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_v8lro"]
-[ext_resource type="Script" uid="uid://dj7o16agtuopo" path="res://Scenes/UI/biblioteca_pagina.gd" id="2_ht610"]
-[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="3_3yqwk"]
-[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="4_0wyyo"]
+[ext_resource type="Script" uid="uid://dj7o16agtuopo" path="res://Scripts/Biblioteca/biblioteca_pagina.gd" id="2_woxhb"]
+[ext_resource type="Resource" uid="uid://hrs804g1pltj" path="res://Resources/Biblioteca/PaginaInicial.tres" id="3_t3afg"]
+[ext_resource type="Texture2D" uid="uid://1xcct0mwebrk" path="res://Assets/UI/Terminal/x.png" id="5_or0xj"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_woxhb"]
-[ext_resource type="Texture2D" uid="uid://c2pmgbpjm7mun" path="res://Assets/UI/BaseLoja/arrow_w.png" id="6_or0xj"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="7_m47yt"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="8_7jufl"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="9_mroc1"]
-
-[sub_resource type="Resource" id="Resource_qff5g"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Informações Geral"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_3yqwk"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "creditos introducao"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_0wyyo"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Conceitos de Programação"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_cgv5h"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "tipos_de_dados variaveis operadores se enquanto funcoes listas"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_t3afg"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Funções Nativas"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_or0xj"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "todas_funcoes_nativas"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_m47yt"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Recursos"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_7jufl"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "moeda osso couro magma cristal plasma sangue safira esmeralda diamante"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_mroc1"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Ataques"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_sbsfi"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "esfera_azul esfera_vermelha gelo fogo explosao_fogo explosao_gelo alho"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_kpn3u"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Inimigos"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_fpef0"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "goblin esqueleto slime_de_fogo slime_de_gelo lobisomem orc fantasma vampiro
-"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_f7nr2"]
-script = ExtResource("3_3yqwk")
-tipo = 1
-texto = "Arenas"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_mc6gf"]
-script = ExtResource("3_3yqwk")
-tipo = 4
-texto = "campos floresta labirinto"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_woxhb"]
-script = ExtResource("4_0wyyo")
-blocos_de_conteudo = Array[ExtResource("3_3yqwk")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf")])
-metadata/_custom_type_script = "uid://be6x46yhir5k7"
+[ext_resource type="FontFile" uid="uid://txymlrea05ny" path="res://Assets/Fonts/Código/SourceSerif4-VariableFont_opsz,wght.ttf" id="9_woxhb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mo0i"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
 draw_center = false
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0m2b"]
 bg_color = Color(16.77929, 16.77929, 16.77929, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 20
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.19215687)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evj2b"]
 bg_color = Color(16.77929, 16.77929, 16.77929, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 shadow_color = Color(0, 0, 0, 0.19215687)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
@@ -135,6 +44,8 @@ shadow_offset = Vector2(0, 3.4)
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_v8lro")]
 
 [node name="Fundo" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="1" unique_id=1823747467]
+offset_right = 600.0
+offset_bottom = 500.0
 color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
 [node name="FundoOverlay" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="2" unique_id=1375536134]
@@ -156,8 +67,8 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_ht610")
-pagina_para_testar = SubResource("Resource_woxhb")
+script = ExtResource("2_woxhb")
+pagina_para_testar = ExtResource("3_t3afg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control" index="0" unique_id=1306380306]
 layout_mode = 1
@@ -168,15 +79,36 @@ anchor_right = 15.700001
 anchor_bottom = 12.575001
 offset_bottom = -3.0517578e-05
 
-[node name="ContainerBotao" type="MarginContainer" parent="Conteudo/Control/VBoxContainer" index="0" unique_id=442108983]
+[node name="ScrollContainer" type="ScrollContainer" parent="Conteudo/Control/VBoxContainer" index="0" unique_id=1705521741]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_right = 0
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="BotaoVoltarBiblioteca" type="Button" parent="Conteudo/Control/VBoxContainer/ContainerBotao" index="0" unique_id=608626678]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(35, 20)
+[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control/VBoxContainer/ScrollContainer" index="0" unique_id=410580321]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Conteudo/Control/VBoxContainer/ScrollContainer/VBoxContainer" index="0" unique_id=1730906309]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("9_woxhb")
+theme_override_fonts/bold_font = ExtResource("9_woxhb")
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 2
+
+[node name="BotaoVoltarBiblioteca" type="Button" parent="Conteudo/Control" index="1" unique_id=608626678]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 598.0
+offset_top = 20.0
+offset_right = 626.0
+offset_bottom = 48.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -194,32 +126,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8mo0i")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d0m2b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_evj2b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wt6ah")
-icon = ExtResource("6_or0xj")
+icon = ExtResource("5_or0xj")
+icon_alignment = 1
 script = ExtResource("7_m47yt")
 som_hover = ExtResource("8_7jufl")
 volume_hover_db = -10.0
 som_clique = ExtResource("9_mroc1")
 volume_clique_db = -5.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Conteudo/Control/VBoxContainer" index="1" unique_id=1705521741]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Conteudo/Control/VBoxContainer/ScrollContainer" index="0" unique_id=410580321]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Conteudo/Control/VBoxContainer/ScrollContainer/VBoxContainer" index="0" unique_id=1730906309]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-fit_content = true
-autowrap_mode = 2
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
 text = "BIBLIOTECA"
@@ -227,4 +140,4 @@ text = "BIBLIOTECA"
 [node name="Personagem" parent="." index="4" unique_id=1276183026]
 visible = false
 
-[connection signal="pressed" from="Conteudo/Control/VBoxContainer/ContainerBotao/BotaoVoltarBiblioteca" to="Conteudo/Control" method="_on_botao_voltar_biblioteca_pressed"]
+[connection signal="pressed" from="Conteudo/Control/BotaoVoltarBiblioteca" to="Conteudo/Control" method="_on_botao_voltar_biblioteca_pressed"]
