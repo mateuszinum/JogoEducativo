@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cqnnmeqrchfi8"]
 
-[ext_resource type="Texture2D" uid="uid://di6y1ufnjhuag" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Armored Orc/Armored Orc with shadows/Armored Orc-Walk.png" id="1_nevxn"]
+[ext_resource type="Texture2D" uid="uid://di6y1ufnjhuag" path="res://Assets/Inimigos/Armored Orc-Walk.png" id="1_nevxn"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_f1yee"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_tsw1m"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="3_f1yee"]

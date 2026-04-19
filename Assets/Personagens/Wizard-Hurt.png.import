@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccdg0rqx56d2m"
-path="res://.godot/imported/Skeleton-Walk.png-1cbc41fe631a90a9ea4914bb55572563.ctex"
+uid="uid://dogxdhaswpp14"
+path="res://.godot/imported/Wizard-Hurt.png-e6567308bd91df7953d6b77a8061c817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Skeleton/Skeleton with shadows/Skeleton-Walk.png"
-dest_files=["res://.godot/imported/Skeleton-Walk.png-1cbc41fe631a90a9ea4914bb55572563.ctex"]
+source_file="res://Assets/Personagens/Wizard-Hurt.png"
+dest_files=["res://.godot/imported/Wizard-Hurt.png-e6567308bd91df7953d6b77a8061c817.ctex"]
 
 [params]
 

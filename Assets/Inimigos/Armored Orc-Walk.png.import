@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq0ahlrktt22n"
-path="res://.godot/imported/Wizard-DEATH.png-96b923028e5086ade1985c481d620ba2.ctex"
+uid="uid://di6y1ufnjhuag"
+path="res://.godot/imported/Armored Orc-Walk.png-7652187cdf8f8de4b91dc3b3726c2acb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard with shadows/Wizard-DEATH.png"
-dest_files=["res://.godot/imported/Wizard-DEATH.png-96b923028e5086ade1985c481d620ba2.ctex"]
+source_file="res://Assets/Inimigos/Armored Orc-Walk.png"
+dest_files=["res://.godot/imported/Armored Orc-Walk.png-7652187cdf8f8de4b91dc3b3726c2acb.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv6gvw41jdkuq"
-path="res://.godot/imported/Vampire-Glide.png-84dc224bbc671ddf942c59ea42f0b22c.ctex"
+uid="uid://bq0ahlrktt22n"
+path="res://.godot/imported/Wizard-DEATH.png-1bd354181116bbdcc63d7ba227b77e97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Outros/Vampire-Glide.png"
-dest_files=["res://.godot/imported/Vampire-Glide.png-84dc224bbc671ddf942c59ea42f0b22c.ctex"]
+source_file="res://Assets/Personagens/Wizard-DEATH.png"
+dest_files=["res://.godot/imported/Wizard-DEATH.png-1bd354181116bbdcc63d7ba227b77e97.ctex"]
 
 [params]
 

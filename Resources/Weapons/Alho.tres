@@ -6,6 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://bl20l3fppbvlb" path="res://Audio/SFX/Ataque/AlhoHit.mp3" id="3_a4ts6"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_3g8hj"]
 [ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="5_a4ts6"]
+[ext_resource type="Script" uid="uid://g1v6k7uj71ms" path="res://Scripts/Weapon/Requisitos de ataques/movimento_requisito.gd" id="6_3g8hj"]
+
+[sub_resource type="Resource" id="Resource_a4ts6"]
+script = ExtResource("6_3g8hj")
+sequencia_obrigatoria = Array[String](["Cima", "Baixo"])
+metadata/_custom_type_script = "uid://g1v6k7uj71ms"
 
 [resource]
 script = ExtResource("4_3g8hj")
@@ -13,6 +19,7 @@ nome = "Alho"
 damage = 1.0
 speed = 300.0
 knockback_multiplier = 0.5
+requisitos = Array[ExtResource("5_a4ts6")]([SubResource("Resource_a4ts6")])
 attack_sound = ExtResource("1_3g8hj")
 hit_sound = ExtResource("3_a4ts6")
 projectile_node = ExtResource("3_8khxr")

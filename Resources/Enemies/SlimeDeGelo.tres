@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bx2b1hghklvwh"]
 
-[ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/SlimeGelo-Walk.png" id="1_yx0nd"]
+[ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Inimigos/SlimeGelo-Walk.png" id="1_yx0nd"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_20ui5"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_fk416"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="3_oyh8b"]

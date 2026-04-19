@@ -5,14 +5,21 @@
 [ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="3_q8efw"]
 [ext_resource type="AudioStream" uid="uid://csi2upf55t6uv" path="res://Audio/SFX/Ataque/ExplosaoFogoHit.wav" id="4_a7auv"]
 [ext_resource type="PackedScene" uid="uid://bq5iprxrmiipw" path="res://Scenes/Weapons/ExplosaoFogo.tscn" id="5_a7auv"]
+[ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="7_a7auv"]
+[ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="8_j3fo6"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_gsa5f"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="9_ra6k8"]
 [ext_resource type="Script" path="res://Scripts/Weapon/ataque_area_escalonavel.gd" id="10_j3fo6"]
 
 [sub_resource type="Resource" id="Resource_a7auv"]
 script = ExtResource("2_h5tir")
 item = ExtResource("3_q8efw")
 quantidade = 3
-metadata/_custom_type_script = "uid://r105lsf2iv8d"
+
+[sub_resource type="Resource" id="Resource_q7n2v"]
+script = ExtResource("8_j3fo6")
+sequencia_obrigatoria = Array[ExtResource("9_ra6k8")]([ExtResource("9_gsa5f")])
+metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
 script = ExtResource("10_j3fo6")
@@ -26,6 +33,7 @@ damage = 6.0
 speed = 400.0
 knockback_multiplier = 2.0
 custo_do_ataque = Array[ExtResource("2_h5tir")]([SubResource("Resource_a7auv")])
+requisitos = Array[ExtResource("7_a7auv")]([SubResource("Resource_q7n2v")])
 attack_sound = ExtResource("1_q8efw")
 attack_volume = -4.0
 hit_sound = ExtResource("4_a7auv")

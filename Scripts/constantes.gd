@@ -8,10 +8,10 @@ var MODO_DEV : bool = true
 var TUDO_DESBLOQUEADO : bool = true
 
 # define se os ataques precisam de requisitos para serem lançados
-var REQUISITOS_DESATIVADOS : bool = false 
+var REQUISITOS_DESATIVADOS : bool = true 
 # -------------------------------------------------- #
 # Define se vai ter efeitos de pós processamento e música
-var TOCAR_MUSICA : bool = true
+var TOCAR_MUSICA : bool = false
 var USAR_EFEITOS_TELA : bool = true
 # -------------------------------------------------- #
 # CONFIGURAÇÕES DO JOGADOR

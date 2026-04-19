@@ -2,10 +2,26 @@
 
 [ext_resource type="AudioStream" uid="uid://b2hq62qywh438" path="res://Audio/SFX/Ataque/ExplosaoGeloLancar.wav" id="1_qwujo"]
 [ext_resource type="Script" path="res://Scripts/Weapon/custo_ataque.gd" id="2_80u0u"]
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="3_mqfsi"]
 [ext_resource type="AudioStream" uid="uid://dq2px01m8ck7" path="res://Audio/SFX/Ataque/ExplosaoGeloHit.wav" id="4_mqfsi"]
 [ext_resource type="PackedScene" uid="uid://bpe17cbmth5ji" path="res://Scenes/Weapons/ExplosaoGelo.tscn" id="5_vkngd"]
 [ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_p7nqc"]
+[ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="6_qwujo"]
+[ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_mqfsi"]
+[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="8_p7nqc"]
+[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="9_vkngd"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="10_3jsds"]
 [ext_resource type="Script" path="res://Scripts/Weapon/ataque_area.gd" id="13_p7nqc"]
+
+[sub_resource type="Resource" id="Resource_qwujo"]
+script = ExtResource("2_80u0u")
+item = ExtResource("3_mqfsi")
+quantidade = 3
+
+[sub_resource type="Resource" id="Resource_pq1mw"]
+script = ExtResource("6_qwujo")
+sequencia_obrigatoria = Array[ExtResource("7_mqfsi")]([ExtResource("8_p7nqc"), ExtResource("9_vkngd"), ExtResource("10_3jsds"), ExtResource("9_vkngd")])
+metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
 script = ExtResource("13_p7nqc")
@@ -16,6 +32,8 @@ nome = "ExplosaoGelo"
 damage = 12.0
 speed = 400.0
 knockback_multiplier = 2.0
+custo_do_ataque = Array[ExtResource("2_80u0u")]([SubResource("Resource_qwujo")])
+requisitos = Array[ExtResource("6_p7nqc")]([SubResource("Resource_pq1mw")])
 attack_sound = ExtResource("1_qwujo")
 attack_volume = -4.0
 hit_sound = ExtResource("4_mqfsi")

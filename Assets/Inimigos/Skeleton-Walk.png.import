@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nlhay1dsuwwa"
-path="res://.godot/imported/SlimeGelo-Walk.png-3bbbf9d3c5803394fda3d7e0653b6d89.ctex"
+uid="uid://ccdg0rqx56d2m"
+path="res://.godot/imported/Skeleton-Walk.png-d83333a3862a1da936e8a3c35229d208.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/SlimeGelo-Walk.png"
-dest_files=["res://.godot/imported/SlimeGelo-Walk.png-3bbbf9d3c5803394fda3d7e0653b6d89.ctex"]
+source_file="res://Assets/Inimigos/Skeleton-Walk.png"
+dest_files=["res://.godot/imported/Skeleton-Walk.png-d83333a3862a1da936e8a3c35229d208.ctex"]
 
 [params]
 

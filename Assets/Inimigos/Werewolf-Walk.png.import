@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q8d0xoikups1"
-path="res://.godot/imported/SlimeFogo-Walk.png-7eb34cc56374c3d264e7f7cb40490687.ctex"
+uid="uid://w2hwql3enqb6"
+path="res://.godot/imported/Werewolf-Walk.png-f5b333fc659cb006b0b57c0cece06bf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/SlimeFogo-Walk.png"
-dest_files=["res://.godot/imported/SlimeFogo-Walk.png-7eb34cc56374c3d264e7f7cb40490687.ctex"]
+source_file="res://Assets/Inimigos/Werewolf-Walk.png"
+dest_files=["res://.godot/imported/Werewolf-Walk.png-f5b333fc659cb006b0b57c0cece06bf3.ctex"]
 
 [params]
 

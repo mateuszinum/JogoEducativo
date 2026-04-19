@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w2hwql3enqb6"
-path="res://.godot/imported/Werewolf-Walk.png-b2f82dffd85b5b51c4b8ac0b2f9eb1e0.ctex"
+uid="uid://cbiy4cbddr6x0"
+path="res://.godot/imported/Wizard-Idle.png-bbc03eaf41aca27ed114b9bb6a0b426b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Werewolf/Werewolf with shadows/Werewolf-Walk.png"
-dest_files=["res://.godot/imported/Werewolf-Walk.png-b2f82dffd85b5b51c4b8ac0b2f9eb1e0.ctex"]
+source_file="res://Assets/Personagens/Wizard-Idle.png"
+dest_files=["res://.godot/imported/Wizard-Idle.png-bbc03eaf41aca27ed114b9bb6a0b426b.ctex"]
 
 [params]
 

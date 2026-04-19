@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce2x6dod3xvfo"
-path="res://.godot/imported/Ghost.png-b1a4652037b5ecca823dab8fed2a0985.ctex"
+uid="uid://q8d0xoikups1"
+path="res://.godot/imported/SlimeFogo-Walk.png-8e9a7bd8dad1cbb9e7694d4ddf56f34a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Outros/Ghost.png"
-dest_files=["res://.godot/imported/Ghost.png-b1a4652037b5ecca823dab8fed2a0985.ctex"]
+source_file="res://Assets/Inimigos/SlimeFogo-Walk.png"
+dest_files=["res://.godot/imported/SlimeFogo-Walk.png-8e9a7bd8dad1cbb9e7694d4ddf56f34a.ctex"]
 
 [params]
 

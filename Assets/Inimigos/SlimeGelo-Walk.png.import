@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dogxdhaswpp14"
-path="res://.godot/imported/Wizard-Hurt.png-5b59a7ccfd8cf34bba703581f8b08c55.ctex"
+uid="uid://nlhay1dsuwwa"
+path="res://.godot/imported/SlimeGelo-Walk.png-d16adda7f554c690a552a450607a99f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Wizard/Wizard with shadows/Wizard-Hurt.png"
-dest_files=["res://.godot/imported/Wizard-Hurt.png-5b59a7ccfd8cf34bba703581f8b08c55.ctex"]
+source_file="res://Assets/Inimigos/SlimeGelo-Walk.png"
+dest_files=["res://.godot/imported/SlimeGelo-Walk.png-d16adda7f554c690a552a450607a99f2.ctex"]
 
 [params]
 
