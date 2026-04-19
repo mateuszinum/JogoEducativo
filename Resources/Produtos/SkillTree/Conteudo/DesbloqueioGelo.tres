@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://dyix8gscaq3ab"]
 
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_v4hsg"]
 [ext_resource type="Texture2D" uid="uid://7ea10sue8aya" path="res://Assets/Projectiles/Gelo.png" id="2_slbvi"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ohnj3"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_85m7k"]
