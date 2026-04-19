@@ -28,6 +28,9 @@ var TELA_CHEIA : bool = true
 # Define se efeitos de shake de tela estão ativos ou não
 var USAR_SHAKE : bool = true
 
+# Define se vai ter luz e partículas nos ataques
+var GRÁFICO_HIGH : bool = true
+
 # Define o índice da fonte do terminal. 
 var FONTE_TERMINAL : int = 0
 

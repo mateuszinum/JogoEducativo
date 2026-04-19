@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bxasuwt0mgxbv"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_t6l6k"]
+[ext_resource type="PackedScene" uid="uid://c2jkygu7oqui1" path="res://Scenes/Polimento/RastroAtaque.tscn" id="2_5ucqc"]
 [ext_resource type="Texture2D" uid="uid://bnqf03qu0g5vr" path="res://Assets/Projectiles/EsferaAzul.png" id="2_42wjn"]
+[ext_resource type="PackedScene" uid="uid://4cdp5nndd18r" path="res://Scenes/Polimento/LuzAtaque.tscn" id="3_42wjn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]
 radius = 15.355084
@@ -10,6 +12,9 @@ radius = 15.355084
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_t6l6k")
+
+[node name="RastroAtaque" parent="." unique_id=683874523 instance=ExtResource("2_5ucqc")]
+cor_rastro = Color(0, 0.4745098, 1, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301682816]
 position = Vector2(0, -3.5527137e-15)
@@ -22,6 +27,10 @@ shape = SubResource("CircleShape2D_aihi3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1177137662]
 scale = Vector2(0.5, 0.5)
+
+[node name="LuzAtaque" parent="." unique_id=241437762 instance=ExtResource("3_42wjn")]
+cor_luz = Color(0.2916211, 0.51333153, 1, 1)
+energia_base = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbht7rpnvmy7i"
-path="res://.godot/imported/Fire.png-4c993c81ddf80daf1965d1c33695fb0a.ctex"
+path="res://.godot/imported/FogoFrame.png-75d39862baa0bd0654d88306634ce642.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Projectiles/Fire.png"
-dest_files=["res://.godot/imported/Fire.png-4c993c81ddf80daf1965d1c33695fb0a.ctex"]
+source_file="res://Assets/Projectiles/FogoFrame.png"
+dest_files=["res://.godot/imported/FogoFrame.png-75d39862baa0bd0654d88306634ce642.ctex"]
 
 [params]
 

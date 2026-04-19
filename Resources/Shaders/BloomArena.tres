@@ -1,0 +1,7 @@
+[gd_resource type="Environment" format=3 uid="uid://cyatv46g2drbh"]
+
+[resource]
+background_mode = 3
+glow_enabled = true
+glow_strength = 2.0
+glow_bloom = 0.01

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const DAMAGE_NUMBER = preload("res://Scenes/UI/damage_number.tscn")
+const DAMAGE_NUMBER = preload("res://Scenes/Polimento/damage_number.tscn")
 const CENA_BASE_DO_DROP = preload("res://Scenes/Drops/drop.tscn") 
 
 const KNOCKBACK_FORCE : float = 400.0

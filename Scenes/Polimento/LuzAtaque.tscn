@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://4cdp5nndd18r"]
+
+[ext_resource type="Texture2D" uid="uid://pyxp50xxhcq0" path="res://Assets/Light Texture/pointlight.png" id="1_f1jri"]
+[ext_resource type="Script" uid="uid://o4c5s1saftc2" path="res://Scripts/Polimento/ataque_luz.gd" id="2_swowy"]
+
+[node name="LuzAtaque" type="PointLight2D" unique_id=241437762]
+color = Color(0, 0.6575393, 0.7794034, 1)
+texture = ExtResource("1_f1jri")
+script = ExtResource("2_swowy")
+cor_luz = Color(0.99999994, 0.7058907, 0.386437, 1)
+energia_base = 0.75
+escala_base = 0.1

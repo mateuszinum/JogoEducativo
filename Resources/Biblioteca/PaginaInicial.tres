@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_sbsfi"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=ExplosaoFogo]ExplosaoFogo[/req] [req=ExplosaoGelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=FeixeLuz]FeixeLuz[/req] [req=Gelo]Gelo[/req]
+texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=ExplosaoFogo]ExplosaoFogo[/req] [req=ExplosaoGelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=Gelo]Gelo[/req] [req=Raio]Raio[/req]
        "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
