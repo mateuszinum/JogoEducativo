@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://b1364qruepsy6"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_yll3l"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_8y02y"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_yll3l")
+tipo = 1
+texto = "Introdução"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_yll3l")
+texto = "Seja bem vindo a Documentação."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_8y02y")
+blocos_de_conteudo = Array[ExtResource("1_yll3l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

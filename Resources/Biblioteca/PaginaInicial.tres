@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_qff5g"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Informações Geral"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_0wyyo"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Conceitos de Programação"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_t3afg"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Funções Nativas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -41,7 +41,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_m47yt"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Recursos"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -53,7 +53,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_mroc1"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Ataques"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -65,7 +65,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_kpn3u"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Inimigos"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -78,7 +78,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_f7nr2"]
 script = ExtResource("1_7lmda")
-tipo = 1
+tipo = 2
 texto = "Arenas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
