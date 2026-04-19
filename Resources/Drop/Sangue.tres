@@ -7,4 +7,5 @@
 script = ExtResource("2_63gt6")
 nome = "Sangue"
 icone = ExtResource("1_4djvl")
+preco_venda = 2
 metadata/_custom_type_script = "uid://cr66twlbvhs4x"
