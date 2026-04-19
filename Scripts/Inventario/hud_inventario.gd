@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var container = $MarginContainer/HBoxContainer
 
@@ -22,7 +22,7 @@ func atualizar_tela() -> void:
 		# Cria a imagem (TextureRect)
 		var icone = TextureRect.new()
 		icone.texture = item.icone
-		icone.custom_minimum_size = Vector2(32, 32)
+		icone.custom_minimum_size = Vector2(20, 20)
 		icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		

@@ -7,4 +7,5 @@
 script = ExtResource("2_agn36")
 nome = "Safira"
 icone = ExtResource("1_ce2pa")
+preco_venda = 4
 metadata/_custom_type_script = "uid://cr66twlbvhs4x"

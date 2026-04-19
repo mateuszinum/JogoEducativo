@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://kfvmsbbnmqvi"]
+
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_lij1d"]
+[ext_resource type="Texture2D" uid="uid://dceq63g3niuuq" path="res://Assets/Asset Packs/potions/potion240.png" id="2_lij1d"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_rpayf"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_p314o"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_woobs"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_rpayf")
+custo_item = ExtResource("4_p314o")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_rpayf")
+custo_item = ExtResource("4_p314o")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_rpayf")
+custo_item = ExtResource("4_p314o")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_woobs")
+nome = "Poção"
+icone = ExtResource("2_lij1d")
+descricao_simples = "Uma poção da boa, aumenta seu dano (só provando para saber quanto aumenta ;) )"
+custo_item_simples = ExtResource("1_lij1d")
+custo_quantidade_simples = 2
+niveis = Array[ExtResource("3_rpayf")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"
