@@ -17,12 +17,18 @@ var tempo_de_vida : float = 1
 
 var _inimigos_atingidos: Array[Node] = []
 
+func destruir_com_estilo() -> void:
+	for child in get_children():
+		if child.has_method("dissipar"):
+			child.dissipar()
+	queue_free()
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
 	tempo_de_vida -= delta
 	if tempo_de_vida <= 0:
-		queue_free()
+		destruir_com_estilo()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):

@@ -7,7 +7,7 @@ const TEMPO_ANIMACAO : float = 0.05
 
 const OPACIDADE_NO_DANO : float = 1.0
 
-const ERROR_FEEDBACK = preload("res://Scenes/UI/error_feedback.tscn")
+const ERROR_FEEDBACK = preload("res://Scenes/Polimento/error_feedback.tscn")
 
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)

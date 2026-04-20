@@ -8,7 +8,7 @@ var forca_multiplier : float = 1.0
 
 var ganhos_health = [4, 6, 8]
 var ganhos_kb = [1.5, 2.0, 3.0]
-var ganhos_agilidade = [0.6, 0.4, 0.2]
+var ganhos_agilidade = [0.7, 0.5, 0.3]
 var ganhos_coleta = [2.0, 3.0, 4.0]
 var ganhos_forca = [1.5, 2.0, 3.0]
 

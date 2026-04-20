@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://42aie6sgfyut" path="res://Audio/SFX/Ataque/GeloLancar.mp3" id="1_id1bn"]
 [ext_resource type="AudioStream" uid="uid://btw7nokj1wd1j" path="res://Audio/SFX/Ataque/GeloHit.mp3" id="2_2yf15"]
-[ext_resource type="Script" path="res://Scripts/Weapon/custo_ataque.gd" id="2_lmqyn"]
+[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_lmqyn"]
 [ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="3_h82c7"]
 [ext_resource type="PackedScene" uid="uid://k1ywcxxasbkl" path="res://Scenes/Weapons/Gelo.tscn" id="3_id1bn"]
 [ext_resource type="Script" uid="uid://dacndn1awrba2" path="res://Scripts/Weapon/singleShot.gd" id="4_h82c7"]

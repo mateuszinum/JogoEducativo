@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://bx2b1hghklvwh"]
 
+[ext_resource type="Texture2D" uid="uid://bww5nevsb7t63" path="res://Assets/Inimigos/SlimeGelo-Death.png" id="1_gk645"]
 [ext_resource type="Texture2D" uid="uid://nlhay1dsuwwa" path="res://Assets/Inimigos/SlimeGelo-Walk.png" id="1_yx0nd"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_20ui5"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_fk416"]
@@ -9,6 +10,22 @@
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="6_fk416"]
 [ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="6_gk645"]
 [ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="7_oyh8b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfuk8"]
+atlas = ExtResource("1_gk645")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuk0g"]
+atlas = ExtResource("1_gk645")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puia3"]
+atlas = ExtResource("1_gk645")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ypn6"]
+atlas = ExtResource("1_gk645")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20ui5"]
 atlas = ExtResource("1_yx0nd")
@@ -36,6 +53,23 @@ region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gfuk8"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfuk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuk0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puia3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ypn6")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_20ui5")
@@ -94,6 +128,7 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_20ui5")
 nome = "SlimeDeGelo"
 animations = SubResource("SpriteFrames_gfuk8")
+tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("6_fk416")]([SubResource("Resource_fk416")])
 health = 15.0
 damage = 5.0

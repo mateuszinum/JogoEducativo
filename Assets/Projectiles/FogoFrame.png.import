@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0vlad8qrsirk"
-path="res://.godot/imported/Slime-Death.png-599688d384c062c1d11e18742ba869df.ctex"
+uid="uid://bbht7rpnvmy7i"
+path="res://.godot/imported/FogoFrame.png-75d39862baa0bd0654d88306634ce642.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Slime/Slime with shadows/Slime-Death.png"
-dest_files=["res://.godot/imported/Slime-Death.png-599688d384c062c1d11e18742ba869df.ctex"]
+source_file="res://Assets/Projectiles/FogoFrame.png"
+dest_files=["res://.godot/imported/FogoFrame.png-75d39862baa0bd0654d88306634ce642.ctex"]
 
 [params]
 

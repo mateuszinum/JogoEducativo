@@ -233,11 +233,11 @@ func configurar_cores_do_codigo() -> void:
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 
-	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "FeixeLuz", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
+	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Raio", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
 	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
 	var cor_funcao = Color("#dcdcaa")
-	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar"]
+	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho"]
 	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
 	
 	var funcoes_membro = ["usarItem", "colocarItem"]
@@ -247,9 +247,9 @@ func configurar_cores_do_codigo() -> void:
 	code_edit.syntax_highlighter = highlighter
 
 func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Campos)
-Direcao dir = [Esquerda, Cima, Direita, Baixo, Baixo]
-Ataque atk = [EsferaAzul, Gelo, FeixeLuz, Gelo, ExplosaoGelo]
+	var codigo_teste = """arena(Floresta)
+Direcao dir = [Esquerda, Cima, Direita, Baixo, Esquerda, Cima, Direita, Baixo]
+Ataque atk = [EsferaAzul, EsferaVermelha, Raio, Gelo, ExplosaoGelo, Fogo, ExplosaoFogo, Alho]
 bool f = !Verdadeiro
 int i = 0
 
@@ -280,7 +280,7 @@ enquanto(Verdadeiro):
 	Movimento()
 	AtacarInimigoMaisProximo()
 	
-	Incremento(4)
+	Incremento(7)
 fim enquanto"""
 	code_edit.text = codigo_teste
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cx8mqrdgaah4s"]
 
 [ext_resource type="Script" uid="uid://bgbqc3a28lw77" path="res://Scripts/UI/error_feedback.gd" id="1_wbxbh"]
-[ext_resource type="AudioStream" uid="uid://c3y4h6etfwv00" path="res://Audio/SFX/UI/Error.wav" id="2_8mfgg"]
 [ext_resource type="FontFile" uid="uid://cjr57eg2elhgi" path="res://Assets/Fonts/Código/MPLUSCodeLatin-VariableFont_wdth,wght.ttf" id="2_uhilv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uhilv"]
@@ -12,8 +11,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="ErrorFeedback" type="Node2D" unique_id=2017503513]
 script = ExtResource("1_wbxbh")
-som_erro = ExtResource("2_8mfgg")
-volume_erro = -16.0
 
 [node name="Label" type="Label" parent="." unique_id=438498528]
 offset_left = -20.0

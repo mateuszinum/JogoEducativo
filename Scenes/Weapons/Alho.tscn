@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcqxtd5tubknx"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_jr6t7"]
+[ext_resource type="PackedScene" uid="uid://c2jkygu7oqui1" path="res://Scenes/Polimento/RastroAtaque.tscn" id="2_fdr6s"]
 [ext_resource type="Texture2D" uid="uid://c33t8v0d5dpeq" path="res://Assets/Projectiles/Alho.png" id="2_jr6t7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]
@@ -11,7 +12,12 @@ collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_jr6t7")
 
+[node name="RastroAtaque" parent="." unique_id=683874523 instance=ExtResource("2_fdr6s")]
+cor_rastro = Color(1, 1, 1, 0.8)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301682816]
+position = Vector2(0.54, 0)
+rotation = 1.5707964
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_jr6t7")
 

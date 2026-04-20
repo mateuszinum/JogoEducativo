@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="8_2o231"]
 [ext_resource type="Resource" uid="uid://bhexvkqu7x5it" path="res://Resources/Weapons/Alho.tres" id="8_wnvu7"]
 [ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="9_cbno8"]
-[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="10_io0lb"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/Raio.tres" id="10_io0lb"]
 
 [node name="AtaquesDB" type="Node" unique_id=1431001925]
 script = ExtResource("1_royag")

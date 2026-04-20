@@ -1,10 +1,27 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://yv3gmlvil4l3"]
 
+[ext_resource type="Texture2D" uid="uid://bvj1h1gjp4y4" path="res://Assets/Inimigos/Orc-Death.png" id="1_hkn3j"]
 [ext_resource type="Texture2D" uid="uid://jrcv022lhju5" path="res://Assets/Inimigos/Orc-Walk.png" id="1_sele7"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_aiy86"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_i6dql"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="4_sm1jo"]
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="5_aiy86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr38p"]
+atlas = ExtResource("1_hkn3j")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gre71"]
+atlas = ExtResource("1_hkn3j")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggdh7"]
+atlas = ExtResource("1_hkn3j")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag7pw"]
+atlas = ExtResource("1_hkn3j")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxnpy"]
 atlas = ExtResource("1_sele7")
@@ -40,6 +57,23 @@ region = Rect2(700, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nwupb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr38p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gre71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggdh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag7pw")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sxnpy")
@@ -80,6 +114,7 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_i6dql")
 nome = "Goblin"
 animations = SubResource("SpriteFrames_nwupb")
+tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("4_sm1jo")]([SubResource("Resource_sm1jo")])
 health = 5.0
 damage = 5.0

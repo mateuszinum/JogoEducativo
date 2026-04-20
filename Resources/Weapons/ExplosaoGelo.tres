@@ -1,17 +1,58 @@
 [gd_resource type="Resource" script_class="AtaqueEmArea" format=3 uid="uid://cv28g7leo3bx2"]
 
+[ext_resource type="Texture2D" uid="uid://cxshda0bshukp" path="res://Assets/Projectiles/ExplosaoGeloArea.png" id="1_p7nqc"]
 [ext_resource type="AudioStream" uid="uid://b2hq62qywh438" path="res://Audio/SFX/Ataque/ExplosaoGeloLancar.wav" id="1_qwujo"]
-[ext_resource type="Script" path="res://Scripts/Weapon/custo_ataque.gd" id="2_80u0u"]
+[ext_resource type="Script" uid="uid://r105lsf2iv8d" path="res://Scripts/Weapon/custo_ataque.gd" id="2_80u0u"]
 [ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="3_mqfsi"]
 [ext_resource type="AudioStream" uid="uid://dq2px01m8ck7" path="res://Audio/SFX/Ataque/ExplosaoGeloHit.wav" id="4_mqfsi"]
 [ext_resource type="PackedScene" uid="uid://bpe17cbmth5ji" path="res://Scenes/Weapons/ExplosaoGelo.tscn" id="5_vkngd"]
 [ext_resource type="Script" uid="uid://b0mvjb74hiqgf" path="res://Scripts/Weapon/Requisitos de ataques/ataque_requisito.gd" id="6_p7nqc"]
 [ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="6_qwujo"]
+[ext_resource type="Texture2D" uid="uid://pyxp50xxhcq0" path="res://Assets/Light Texture/pointlight.png" id="6_vkngd"]
 [ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_mqfsi"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="8_p7nqc"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="9_vkngd"]
-[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="10_3jsds"]
-[ext_resource type="Script" path="res://Scripts/Weapon/ataque_area.gd" id="13_p7nqc"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/Raio.tres" id="11_mqfsi"]
+[ext_resource type="Script" uid="uid://dloj4xl1hv344" path="res://Scripts/Weapon/ataque_area.gd" id="13_p7nqc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkngd"]
+atlas = ExtResource("1_p7nqc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jsds"]
+atlas = ExtResource("1_p7nqc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq1mw"]
+atlas = ExtResource("1_p7nqc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agu7a"]
+atlas = ExtResource("1_p7nqc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l60fp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkngd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jsds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq1mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agu7a")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [sub_resource type="Resource" id="Resource_qwujo"]
 script = ExtResource("2_80u0u")
@@ -20,18 +61,24 @@ quantidade = 3
 
 [sub_resource type="Resource" id="Resource_pq1mw"]
 script = ExtResource("6_qwujo")
-sequencia_obrigatoria = Array[ExtResource("7_mqfsi")]([ExtResource("8_p7nqc"), ExtResource("9_vkngd"), ExtResource("10_3jsds"), ExtResource("9_vkngd")])
+sequencia_obrigatoria = Array[ExtResource("7_mqfsi")]([ExtResource("8_p7nqc"), ExtResource("9_vkngd"), ExtResource("11_mqfsi"), ExtResource("9_vkngd")])
 metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]
 script = ExtResource("13_p7nqc")
 raio_explosao = 60.0
-tempo_visual = 0.5
-cor_explosao = Color(0, 0.65882355, 1, 0.5019608)
+usar_textura_para_explosao = true
+animacao_explosao = SubResource("SpriteFrames_l60fp")
+usar_luz_na_explosao = true
+luz_cor = Color(0.7494324, 0.93537104, 0.9994388, 1)
+luz_energia = 500.0
+luz_tempo_fade = 1.0
+luz_textura = ExtResource("6_vkngd")
+luz_multiplicador_area = 2.0
 nome = "ExplosaoGelo"
 damage = 12.0
 speed = 400.0
-knockback_multiplier = 2.0
+knockback_multiplier = 1.5
 custo_do_ataque = Array[ExtResource("2_80u0u")]([SubResource("Resource_qwujo")])
 requisitos = Array[ExtResource("6_p7nqc")]([SubResource("Resource_pq1mw")])
 attack_sound = ExtResource("1_qwujo")
