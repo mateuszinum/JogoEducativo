@@ -9,6 +9,10 @@ class_name StageData extends Resource
 @export_group("Spawn de Inimigos")
 @export var spawn_events : Array[SpawnEvent] = []
 
+@export_group("Incremento Contínuo de Spawn")
+@export var aumentar_spawn_com_tempo : bool = true
+@export var tempo_para_incremento : float = 4.0
+
 @export_group("Outras configurações")
 @export var map_width: int = 50
 @export var map_height: int = 50
@@ -22,7 +26,6 @@ class_name StageData extends Resource
 
 @export_group("Barreiras")
 @export var spawn_rules: Array[GenRule] = []
-
 
 func get_random_ground_id() -> int:
 	if ground_variants.is_empty():
