@@ -14,6 +14,10 @@ var REQUISITOS_DESATIVADOS : bool = true
 var TOCAR_MUSICA : bool = false
 var USAR_EFEITOS_TELA : bool = true
 # -------------------------------------------------- #
+
+
+
+# -------------------------------------------------- #
 # CONFIGURAÇÕES DO JOGADOR
 
 # Valor de 0 a 1, o padrão é 0.5 (0.5 = 100%)

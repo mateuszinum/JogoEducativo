@@ -7,6 +7,9 @@ enum Comportamento { PADRAO, FANTASMA }
 @export_group("Infos básicas")
 @export var nome : String
 @export var animations : SpriteFrames 
+@export var tem_animacao_morte : bool = false
+@export var fps_morte : int = 16
+@export var tempo_fade_morte : float = 0.5
 @export var tabela_de_drops: Array[DropData] = []
 
 @export var comportamento_especial: Comportamento = Comportamento.PADRAO:

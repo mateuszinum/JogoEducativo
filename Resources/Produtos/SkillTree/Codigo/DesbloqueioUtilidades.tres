@@ -31,6 +31,7 @@ pre_requisitos = Array[ExtResource("5_ax4ot")]([ExtResource("6_wqmaf")])
 tipo = 1
 descricao_simples = "aleatorio()
 min()
-max()"
+max()
+tamanho()"
 niveis = Array[ExtResource("3_sx0pd")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

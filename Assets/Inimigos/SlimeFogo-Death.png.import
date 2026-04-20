@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvj1h1gjp4y4"
-path="res://.godot/imported/Orc-Death.png-695d5eb67e0e3670e9193fe243f27e9f.ctex"
+uid="uid://c0vlad8qrsirk"
+path="res://.godot/imported/SlimeFogo-Death.png-8783e2f77025ef0af51b1432ba3b383a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Orc/Orc with shadows/Orc-Death.png"
-dest_files=["res://.godot/imported/Orc-Death.png-695d5eb67e0e3670e9193fe243f27e9f.ctex"]
+source_file="res://Assets/Inimigos/SlimeFogo-Death.png"
+dest_files=["res://.godot/imported/SlimeFogo-Death.png-8783e2f77025ef0af51b1432ba3b383a.ctex"]
 
 [params]
 

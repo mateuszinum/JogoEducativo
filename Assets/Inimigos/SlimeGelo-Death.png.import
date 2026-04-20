@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnirigj3qdvqg"
-path="res://.godot/imported/Armored Orc-Death.png-5547351ce4c7dadb3b8c33c2d0f39ddf.ctex"
+uid="uid://bww5nevsb7t63"
+path="res://.godot/imported/SlimeGelo-Death.png-2775d4e7e2a76369d58b746d7dca468b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Asset Packs/Tiny RPG Character/Characters/Armored Orc/Armored Orc with shadows/Armored Orc-Death.png"
-dest_files=["res://.godot/imported/Armored Orc-Death.png-5547351ce4c7dadb3b8c33c2d0f39ddf.ctex"]
+source_file="res://Assets/Inimigos/SlimeGelo-Death.png"
+dest_files=["res://.godot/imported/SlimeGelo-Death.png-2775d4e7e2a76369d58b746d7dca468b.ctex"]
 
 [params]
 

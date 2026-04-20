@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_or0xj"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Utilidades]aleatorio()[/req] [req=Início]arena()[/req] [req=Início]atacar()[/req] [req=Itens]cinto.usarItem()[/req] [req=Automação 2]comprar()[/req] [req=Automação 1]escapar()[/req] [req=Sensores 3]escanearArea()[/req] [req=Debug]escrever()[/req] [req=Início]inimigoMaisProximo()[/req] [req=Utilidades]max()[/req] [req=Utilidades]min()[/req] [req=Itens]mochila.usarItem()[/req] mover() [req=Sensores 2]podeMover()[/req] [req=Localização]posicaoX()[/req] [req=Localização]posicaoY()[/req] [req=Sensores 2]tempo()[/req] [req=Localização]tesouroX()[/req] [req=Localização]tesouroY()[/req] [req=Automação 2]venderTudo()[/req] [req=Sensores 2]vidaAtual()[/req]"
+texto = "[req=Utilidades]aleatorio()[/req] [req=Início]arena()[/req] [req=Início]atacar()[/req] [req=Itens]cinto.usarItem()[/req] [req=Automação 2]comprar()[/req] [req=Automação 1]escapar()[/req] [req=Sensores 3]escanearArea()[/req] [req=Debug]escrever()[/req] [req=Início]inimigoMaisProximo()[/req] [req=Utilidades]max()[/req] [req=Utilidades]min()[/req] [req=Itens]mochila.usarItem()[/req] mover() [req=Sensores 2]podeMover()[/req] [req=Localização]posicaoX()[/req] [req=Localização]posicaoY()[/req] [req=Sensores 2]tempo()[/req] [req=Utilidades]tamanho()[/req] [req=Localização]tesouroX()[/req] [req=Localização]tesouroY()[/req] [req=Automação 2]venderTudo()[/req] [req=Sensores 2]vidaAtual()[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_m47yt"]

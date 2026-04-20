@@ -6,11 +6,9 @@ const CENA_BASE_DO_DROP = preload("res://Scenes/Drops/drop.tscn")
 const KNOCKBACK_FORCE : float = 400.0
 const DISTANCIA_DESPAWN : float = 300.0
 
-# --- CONSTANTES E VARIÁVEIS DE GELO ---
 const TEMPO_CONGELAMENTO : float = 2.0
 var timer_congelamento : float = 0.0
 var is_frozen : bool = false
-# --------------------------------------------
 
 var speed: float = 60
 var despawns: bool = true
@@ -20,6 +18,7 @@ var invulneravel: bool = false
 var spawner_ref: Node = null
 var animacao_dano: Tween
 var ultimo_ataque_recebido: String = ""
+var _morrendo: bool = false
 
 var knockback : Vector2
 var separation : float
@@ -39,12 +38,16 @@ var type : Enemy:
 		speed = value.speed * 6.0
 		despawns = value.despawns
 
-var health : float:
+var health: float:
 	set(value):
+		if _morrendo:
+			return
+			
 		health = value
 		if health <= 0:
+			_morrendo = true
 			gerar_drops()
-			queue_free()
+			_animar_morte()
 
 var damage : float:
 	set(value):
@@ -120,6 +123,9 @@ func check_separation(_delta):
 		queue_free()
 
 func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = Vector2.ZERO, ataque_nome: String = ""):
+	if _morrendo: 
+		return 
+		
 	if invulneravel:
 		if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
 			apply_knockback(kb_mult, knockback_dir)
@@ -144,7 +150,16 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 	health -= final_damage
 	show_damage_number(final_damage)
 	
-	# Verifica se congela e PAUSA a animação 
+	if _morrendo:
+		if (ataque_nome == "Gelo" or ataque_nome == "ExplosaoGelo") and not is_slime_gelo:
+			$AnimatedSprite2D.modulate = Color(0.4, 0.7, 1.0)
+		else:
+			_aplicar_flash_dano()
+			
+		if kb_mult > 0.0 and knockback_dir != Vector2.ZERO:
+			apply_knockback(kb_mult, knockback_dir)
+		return
+	
 	if (ataque_nome == "Gelo" or ataque_nome == "ExplosaoGelo") and not is_slime_gelo:
 		if not is_frozen:
 			$AnimatedSprite2D.pause()
@@ -175,7 +190,6 @@ func _aplicar_flash_dano():
 		
 	animacao_dano.tween_callback(_atualizar_visual)
 
-# Retoma a animação ao descongelar 
 func _descongelar():
 	is_frozen = false
 	$AnimatedSprite2D.play() 
@@ -266,3 +280,40 @@ func _comportamento_fantasma():
 		else:
 			set_collision_mask_value(1, true)
 			set_collision_mask_value(2, true)
+			
+func _animar_morte() -> void:
+	if is_in_group("Enemy"):
+		remove_from_group("Enemy")
+		
+	set_physics_process(false)
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(2, false)
+	
+	is_frozen = false
+	
+	if animacao_dano and animacao_dano.is_valid():
+		animacao_dano.kill()
+		
+	if type != null and type.tem_animacao_morte and $AnimatedSprite2D.sprite_frames.has_animation("death"):
+		$AnimatedSprite2D.modulate.a = 1.0
+		$AnimatedSprite2D.scale = Vector2.ONE
+		
+		if type.fps_morte > 0:
+			var fps_original = $AnimatedSprite2D.sprite_frames.get_animation_speed("death")
+			$AnimatedSprite2D.speed_scale = float(type.fps_morte) / fps_original
+		
+		$AnimatedSprite2D.play("death")
+		
+		var fade_tween = create_tween()
+		fade_tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, type.tempo_fade_morte)
+		
+		$AnimatedSprite2D.animation_finished.connect(queue_free)
+	else:
+		var tween = create_tween().set_parallel(true)
+		
+		tween.tween_property($AnimatedSprite2D, "modulate:a", 0.0, 0.3)
+		tween.tween_property($AnimatedSprite2D, "scale", Vector2(0.2, 1.5), 0.3)
+		tween.tween_property($AnimatedSprite2D, "position:y", $AnimatedSprite2D.position.y - 15.0, 0.3)
+		
+		tween.chain().tween_callback(queue_free)
