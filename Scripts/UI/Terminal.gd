@@ -126,6 +126,19 @@ func ativar_modo_arena():
 	code_edit.release_focus() 
 	iniciar_cooldown_seguranca()
 
+func abortar_arena():
+	if interpretador.has_method("PararExecucao"):
+		interpretador.PararExecucao()
+			
+	codigo_rodando = false
+	limpar_erros_de_sintaxe() 
+		
+	botao_executar.disabled = true 
+	ativar_modo_vilarejo()
+		
+	if FuncoesNativas.has_method("escapar"):
+		FuncoesNativas.escapar()
+
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
 
@@ -154,17 +167,7 @@ func _on_botao_executar_pressed() -> void:
 		iniciar_cooldown_seguranca()
 
 	elif modo_atual == "arena":
-		if interpretador.has_method("PararExecucao"):
-			interpretador.PararExecucao()
-			
-		codigo_rodando = false
-		limpar_erros_de_sintaxe() 
-		
-		botao_executar.disabled = true 
-		ativar_modo_vilarejo()
-		
-		if FuncoesNativas.has_method("escapar"):
-			FuncoesNativas.escapar()
+		abortar_arena()
 
 func _on_code_edit_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
