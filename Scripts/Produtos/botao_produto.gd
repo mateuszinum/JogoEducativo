@@ -204,8 +204,21 @@ func verificar_pre_requisitos() -> void:
 			break
 
 func _pressed() -> void:
+	# Verifica se os pré-requisitos estão OK (nível, etc)
 	if pode_comprar():
-		efetivar_compra()
+		
+		# Tenta fazer a transação no Inventário passando as informações deste produto
+		var compra_aprovada = Inventario.tentar_comprar_via_botao(produto)
+		
+		if compra_aprovada:
+			# Se o Inventário disse "true" (deu certo e cobrou), finaliza a compra!
+			efetivar_compra()
+			# Opcional: Se quiser tocar um som de compra bem-sucedida, pode chamar o _tocar_som() aqui.
+		else:
+			# Se o Inventário disse "false" (não tem dinheiro/material), dispara o erro visual!
+			disparar_erro() 
+	else:
+		disparar_erro()
 
 func efetivar_compra() -> void:
 	match produto.tipo:

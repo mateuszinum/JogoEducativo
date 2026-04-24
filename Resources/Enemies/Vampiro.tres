@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://dw2jlap2mhmhu" path="res://Resources/Weapons/EsferaVermelha.tres" id="5_ssbtr"]
 [ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="6_7lbbs"]
 [ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="7_br0c2"]
-[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/FeixeLuz.tres" id="8_g2dys"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_qiyho"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_ipvl6"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="12_cfpjy"]
@@ -108,9 +107,12 @@ ataque = ExtResource("7_br0c2")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
+[sub_resource type="Resource" id="Resource_76cyu"]
+metadata/__load_path__ = "res://Resources/Weapons/Raio.tres"
+
 [sub_resource type="Resource" id="Resource_716s8"]
 script = ExtResource("1_6q5bk")
-ataque = ExtResource("8_g2dys")
+ataque = SubResource("Resource_76cyu")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 

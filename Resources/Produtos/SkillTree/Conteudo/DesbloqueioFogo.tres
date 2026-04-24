@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://bri3042g08d8m"]
 
-[ext_resource type="Texture2D" uid="uid://bbht7rpnvmy7i" path="res://Assets/Projectiles/Fire.png" id="2_1w3jm"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ctc1p"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_6ek1e"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_cslyi"]
@@ -26,7 +25,6 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_cslyi")
 nome = "Fogo"
-icone = ExtResource("2_1w3jm")
 pre_requisitos = Array[ExtResource("5_cslyi")]([ExtResource("6_1w3jm")])
 tipo = 3
 niveis = Array[ExtResource("3_ctc1p")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

@@ -18,3 +18,15 @@ func _on_botao_voltar_pressed() -> void:
 func _on_personagem_pressed() -> void:
 	if dialogo_personagem != null:
 		overlay_dialogo.iniciar_dialogo(dialogo_personagem)
+
+
+func _on_botao_trocar_inventario_pressed() -> void:
+	# Alterna entre Cinto (0) e Mochila (1)
+	if Inventario.inventario_ativo == Inventario.TipoInventario.CINTO:
+		Inventario.trocar_inventario(Inventario.TipoInventario.MOCHILA)
+	else:
+		Inventario.trocar_inventario(Inventario.TipoInventario.CINTO)
+
+
+func _on_vender_tudo_pressed() -> void:
+	Inventario.vender_tudo()
