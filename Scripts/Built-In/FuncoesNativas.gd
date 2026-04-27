@@ -15,12 +15,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.keycode == KEY_Z and event.pressed and not event.echo:
 		print("--- Tecla Z pressionada! Iniciando teste de compra ---")
 		
-		Vilarejo.comprar("Poção de Cura")
+		InventarioPlayer.usar_item_cinto(0)
 
 	if event is InputEventKey and event.keycode == KEY_X and event.pressed and not event.echo:
 		print("--- Tecla X pressionada!")
 		
-		InventarioPlayer.vender_tudo()
+		InventarioPlayer.usar_item_mochila()
 
 func _physics_process(_delta: float) -> void:
 	var tree = get_tree()
@@ -384,9 +384,30 @@ class Jogador:
 		return 0
 
 class InventarioPlayer:
-	static func usar_item_mochila(): pass
+	static func usar_item_mochila():
+		if Inventario.itens_mochila.size() > 0:
+			var produto_usado = Inventario.itens_mochila.pop_front()
+			Inventario.inventario_comprados_atualizado.emit()
+			print("Você usou o item do topo da mochila: ", produto_usado.nome)
+			return true
+	 
+		else:
+			print("Falha: A mochila está completamente vazia!")
+			return false
 
 	static func usar_item_cinto(index): pass
+		#if index >= 0 and index < Inventario.itens_cinto.size():
+			#var produto_index = Inventario.itens_cinto[index]
+#
+			#Inventario.itens_cinto.remove_at(index)
+			#Inventario.inventario_comprados_atualizado.emit()
+			#
+			#print("Você usou o item do cinto: ", produto_index.nome)
+			#return true
+#
+		#else:
+			#print("Falha: Não há nenhum item no índice ", index, " do cinto.")
+			#return false
 	
 	static func colocar_item_mochila(item): pass
 	
