@@ -317,7 +317,7 @@ class Jogador:
 		var player = tree.get_first_node_in_group("Player")
 		var inimigos = tree.get_nodes_in_group("Enemy")
 		
-		if not player: return false
+		if not player or player.health <= 0: return false
 		
 		var ataque_data = AtaquesDB.get_ataque(tipo_ataque)
 		
