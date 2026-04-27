@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dsltr00ychkc4"]
 
+[ext_resource type="Texture2D" uid="uid://c0vlad8qrsirk" path="res://Assets/Inimigos/SlimeFogo-Death.png" id="1_75drv"]
 [ext_resource type="Texture2D" uid="uid://q8d0xoikups1" path="res://Assets/Inimigos/SlimeFogo-Walk.png" id="1_tomep"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_b4lv7"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_vsxb5"]
@@ -9,6 +10,22 @@
 [ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="6_75drv"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="6_vsxb5"]
 [ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="7_kd1pv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1vkf"]
+atlas = ExtResource("1_75drv")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo6hd"]
+atlas = ExtResource("1_75drv")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs4w7"]
+atlas = ExtResource("1_75drv")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxacu"]
+atlas = ExtResource("1_75drv")
+region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4lv7"]
 atlas = ExtResource("1_tomep")
@@ -36,6 +53,23 @@ region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j1vkf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1vkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo6hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs4w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxacu")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b4lv7")
@@ -94,6 +128,7 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_b4lv7")
 nome = "SlimeDeFogo"
 animations = SubResource("SpriteFrames_j1vkf")
+tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("6_vsxb5")]([SubResource("Resource_vsxb5")])
 health = 15.0
 damage = 5.0

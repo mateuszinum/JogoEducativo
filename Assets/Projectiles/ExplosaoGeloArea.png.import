@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c13iiin1bqp8f"
-path="res://.godot/imported/item601.png-4eafca79f5b805c6c98e21c7ccff8b29.ctex"
+uid="uid://cxshda0bshukp"
+path="res://.godot/imported/ExplosaoGeloArea.png-bdb7bb594e48277dcbfc7d09275f09ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Projectiles/item601.png"
-dest_files=["res://.godot/imported/item601.png-4eafca79f5b805c6c98e21c7ccff8b29.ctex"]
+source_file="res://Assets/Projectiles/ExplosaoGeloArea.png"
+dest_files=["res://.godot/imported/ExplosaoGeloArea.png-bdb7bb594e48277dcbfc7d09275f09ec.ctex"]
 
 [params]
 

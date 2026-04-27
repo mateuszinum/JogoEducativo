@@ -14,6 +14,10 @@ var REQUISITOS_DESATIVADOS : bool = true
 var TOCAR_MUSICA : bool = false
 var USAR_EFEITOS_TELA : bool = true
 # -------------------------------------------------- #
+
+
+
+# -------------------------------------------------- #
 # CONFIGURAÇÕES DO JOGADOR
 
 # Valor de 0 a 1, o padrão é 0.5 (0.5 = 100%)
@@ -27,6 +31,9 @@ var TELA_CHEIA : bool = true
 
 # Define se efeitos de shake de tela estão ativos ou não
 var USAR_SHAKE : bool = true
+
+# Define se vai ter luz e partículas nos ataques
+var GRÁFICO_HIGH : bool = true
 
 # Define o índice da fonte do terminal. 
 var FONTE_TERMINAL : int = 0

@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://dw2jlap2mhmhu" path="res://Resources/Weapons/EsferaVermelha.tres" id="5_ssbtr"]
 [ext_resource type="Resource" uid="uid://dm21qnbr3o0nw" path="res://Resources/Weapons/ExplosaoFogo.tres" id="6_7lbbs"]
 [ext_resource type="Resource" uid="uid://cv28g7leo3bx2" path="res://Resources/Weapons/ExplosaoGelo.tres" id="7_br0c2"]
+[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/Raio.tres" id="8_76cyu"]
 [ext_resource type="Resource" uid="uid://d3j5fnsthjsdh" path="res://Resources/Weapons/Fogo.tres" id="9_qiyho"]
 [ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="10_ipvl6"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="12_cfpjy"]
@@ -107,12 +108,9 @@ ataque = ExtResource("7_br0c2")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
-[sub_resource type="Resource" id="Resource_76cyu"]
-metadata/__load_path__ = "res://Resources/Weapons/Raio.tres"
-
 [sub_resource type="Resource" id="Resource_716s8"]
 script = ExtResource("1_6q5bk")
-ataque = SubResource("Resource_76cyu")
+ataque = ExtResource("8_76cyu")
 multiplicador = 0.0
 metadata/_custom_type_script = "uid://cbobvrteab571"
 
@@ -141,5 +139,6 @@ animations = SubResource("SpriteFrames_1fjwx")
 tabela_de_drops = Array[ExtResource("12_cfpjy")]([SubResource("Resource_05qj5")])
 health = 7.0
 damage = 5.0
+speed = 7.0
 multiplicadores_de_ataque = Array[ExtResource("1_6q5bk")]([SubResource("Resource_w6m35"), SubResource("Resource_hdp3d"), SubResource("Resource_uwpqh"), SubResource("Resource_d8lf6"), SubResource("Resource_kcdnt"), SubResource("Resource_716s8"), SubResource("Resource_a4pfi"), SubResource("Resource_cfpjy")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

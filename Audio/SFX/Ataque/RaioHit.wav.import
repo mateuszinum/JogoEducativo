@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://spoa0vsxepx4"
-path="res://.godot/imported/FeixeLuzHit.wav-7e68164a26fab9a7b55fd8bf34ee3867.sample"
+path="res://.godot/imported/RaioHit.wav-8dff9ae0c52745910a9f43a5ead0d2fc.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Ataque/FeixeLuzHit.wav"
-dest_files=["res://.godot/imported/FeixeLuzHit.wav-7e68164a26fab9a7b55fd8bf34ee3867.sample"]
+source_file="res://Audio/SFX/Ataque/RaioHit.wav"
+dest_files=["res://.godot/imported/RaioHit.wav-8dff9ae0c52745910a9f43a5ead0d2fc.sample"]
 
 [params]
 

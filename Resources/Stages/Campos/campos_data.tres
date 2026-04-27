@@ -47,14 +47,14 @@ metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_nt8bn"]
 script = ExtResource("3_0o20v")
-time_in_seconds = 10
+time_in_seconds = 20
 enemy_type = ExtResource("6_ttsbp")
 spawn_rate = 0.2
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_0o20v"]
 script = ExtResource("3_0o20v")
-time_in_seconds = 10
+time_in_seconds = 20
 enemy_type = ExtResource("7_mfjtu")
 spawn_rate = 0.2
 metadata/_custom_type_script = "uid://croimo2sgqusx"

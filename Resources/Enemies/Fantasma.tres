@@ -1,10 +1,39 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://e7xq7j38wovw"]
 
+[ext_resource type="Texture2D" uid="uid://b08ja5l8ery7r" path="res://Assets/Inimigos/fantasma_death.png" id="1_3gp5y"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="1_07xyc"]
 [ext_resource type="Texture2D" uid="uid://d27tol6xj2l5t" path="res://Assets/Inimigos/fantasma_walk.png" id="1_b2e2w"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_b2e2w"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="4_07xyc"]
 [ext_resource type="Resource" uid="uid://bfypxiau1xxp3" path="res://Resources/Drop/Plasma.tres" id="5_b2e2w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0spe"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3pfs"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a37g"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oci4f"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avuap"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oalp8"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is4ui"]
+atlas = ExtResource("1_3gp5y")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3gp5y"]
 atlas = ExtResource("1_b2e2w")
@@ -24,6 +53,32 @@ region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l0spe"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0spe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3pfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a37g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oci4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avuap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oalp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is4ui")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3gp5y")
@@ -52,6 +107,7 @@ metadata/_custom_type_script = "uid://cvs37xuengnw4"
 script = ExtResource("2_b2e2w")
 nome = "Fantasma"
 animations = SubResource("SpriteFrames_l0spe")
+tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("4_07xyc")]([SubResource("Resource_07xyc")])
 comportamento_especial = 1
 health = 5.0

@@ -7,22 +7,22 @@
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("1_bgg2k")
-descricao_atual = "0.6/segundo"
-descricao_upgrade = "0.4/segundo"
+descricao_atual = "+43%"
+descricao_upgrade = "+100%"
 custo_item = ExtResource("2_x4bt0")
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_ji3o2"]
 script = ExtResource("1_bgg2k")
-descricao_atual = "0.4/segundo"
-descricao_upgrade = "0.2/segundo"
+descricao_atual = "+100%"
+descricao_upgrade = "+233%"
 custo_item = ExtResource("2_x4bt0")
 custo_quantidade = 50
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_6x1o3"]
 script = ExtResource("1_bgg2k")
-descricao_atual = "0.2"
+descricao_atual = "+233%"
 descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
 custo_item = ExtResource("2_x4bt0")
 custo_quantidade = 100
@@ -33,7 +33,7 @@ script = ExtResource("3_g2w2u")
 nome = "Agilidade"
 icone = ExtResource("1_as6ae")
 tipo = 2
-descricao_atual_base = "0.8/segundo"
-descricao_upgrade_base = "0.6/segundo"
+descricao_atual_base = "Valor inicial de agilidade!"
+descricao_upgrade_base = "+43%"
 niveis = Array[ExtResource("1_bgg2k")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

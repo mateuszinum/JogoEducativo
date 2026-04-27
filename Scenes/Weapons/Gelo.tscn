@@ -1,27 +1,35 @@
 [gd_scene format=3 uid="uid://k1ywcxxasbkl"]
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_7thkf"]
+[ext_resource type="PackedScene" uid="uid://c2jkygu7oqui1" path="res://Scenes/Polimento/RastroAtaque.tscn" id="2_rgflu"]
 [ext_resource type="Texture2D" uid="uid://7ea10sue8aya" path="res://Assets/Projectiles/Gelo.png" id="2_tqx12"]
+[ext_resource type="PackedScene" uid="uid://4cdp5nndd18r" path="res://Scenes/Polimento/LuzAtaque.tscn" id="3_w1waj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]
-radius = 9.999999
+radius = 7.0
 
 [node name="Projectile" type="Area2D" unique_id=370326199]
-scale = Vector2(1, 0.9816315)
 collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_7thkf")
 
+[node name="RastroAtaque" parent="." unique_id=683874523 instance=ExtResource("2_rgflu")]
+cor_rastro = Color(0.3764706, 0.84313726, 1, 0.8)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=888094688]
 position = Vector2(-0.99999994, 2.980232e-08)
 rotation = -2.347468
-scale = Vector2(1.0199999, 1.019356)
+scale = Vector2(0.68, 0.68)
 texture = ExtResource("2_tqx12")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1126426344]
 shape = SubResource("CircleShape2D_aihi3")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1242545708]
+rect = Rect2(-7, -7, 14, 14)
+
+[node name="LuzAtaque" parent="." unique_id=241437762 instance=ExtResource("3_w1waj")]
+cor_luz = Color(0.40784314, 0.8352941, 1, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

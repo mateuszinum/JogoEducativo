@@ -5,7 +5,7 @@ var interpretador_csharp: Node = null
 # ==========================================
 # CONFIGURAÇÃO DE DELAYS 
 
-const TEMPO_FALHA = 0.05
+const TEMPO_FALHA = 1.0
 # ==========================================
 
 # 1. AÇÕES VINCULADAS À AGILIDADE (Multiplicam o tempo_tick)
@@ -67,7 +67,7 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 	var sucesso = alvo.callv(metodo, argumentos)
 	
 	if typeof(sucesso) == TYPE_BOOL and sucesso == false:
-		tempo_espera_pos = TEMPO_FALHA 
+		tempo_espera_pos = TEMPO_FALHA * Atributos.tempo_tick
 		
 		if _ultimo_uso_da_acao.has(metodo):
 			_ultimo_uso_da_acao.erase(metodo)

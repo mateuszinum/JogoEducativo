@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bxkcw1aen7uec"
-path="res://.godot/imported/FeixeLuzLancar.wav-2cd954c5175c71d8dbbf226e45d692d6.sample"
+path="res://.godot/imported/RaioLancar.wav-f5c2cdecf1561ea4efc1616e03c4e18c.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Ataque/FeixeLuzLancar.wav"
-dest_files=["res://.godot/imported/FeixeLuzLancar.wav-2cd954c5175c71d8dbbf226e45d692d6.sample"]
+source_file="res://Audio/SFX/Ataque/RaioLancar.wav"
+dest_files=["res://.godot/imported/RaioLancar.wav-f5c2cdecf1561ea4efc1616e03c4e18c.sample"]
 
 [params]
 
