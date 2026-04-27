@@ -85,7 +85,7 @@ func colocar_item_cinto(item: String, idx: int):
 	InventarioPlayer.colocar_item_cinto(item, idx)
 
 func venderTudo():
-	return InventarioPlayer.vender_tudo()
+	InventarioPlayer.vender_tudo()
 
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
@@ -232,7 +232,6 @@ class Vilarejo:
 		if produto_data == null:
 			print("não achou")
 			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
-			return false
 		
 		var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
 		
@@ -240,13 +239,11 @@ class Vilarejo:
 			# Efetuar compraz
 			print("Compra de " + item + " efetuada com sucesso!")
 			
-			return true
 		else:
 			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
 				print("Este compartimento está cheio!")
 			else:
 				print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
-			return false
 
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> bool:

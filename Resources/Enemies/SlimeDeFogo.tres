@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dsltr00ychkc4"]
 
-[ext_resource type="Texture2D" uid="uid://c0vlad8qrsirk" path="res://Assets/Inimigos/SlimeFogo-Death.png" id="1_75drv"]
 [ext_resource type="Texture2D" uid="uid://q8d0xoikups1" path="res://Assets/Inimigos/SlimeFogo-Walk.png" id="1_tomep"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_b4lv7"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_vsxb5"]
@@ -12,19 +11,15 @@
 [ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="7_kd1pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1vkf"]
-atlas = ExtResource("1_75drv")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qo6hd"]
-atlas = ExtResource("1_75drv")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs4w7"]
-atlas = ExtResource("1_75drv")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxacu"]
-atlas = ExtResource("1_75drv")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4lv7"]

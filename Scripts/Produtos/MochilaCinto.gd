@@ -13,14 +13,11 @@ func _ready() -> void:
 	atualizar_slots_comprados()
 
 func atualizar_slots_comprados() -> void:
-	# 1. Limpa tudo
 	for filho in container_cinto.get_children(): filho.queue_free()
 	for filho in container_mochila.get_children(): filho.queue_free()
 	
-	# 2. Configura a UI baseada no modo ativo
 	if Inventario.inventario_ativo == Inventario.TipoInventario.CINTO:
 		titulo.text = "CINTO"
-		# Opcional: Ajuste o tamanho do fundo via código, ou deixe o Godot fazer automático
 		fundo.custom_minimum_size = Vector2(150, 100) 
 		
 		container_cinto.show()
@@ -35,27 +32,21 @@ func atualizar_slots_comprados() -> void:
 		container_cinto.hide()
 		_desenhar_slots(container_mochila)
 
-# 3. A Função que resolve a invisibilidade
 
 func _desenhar_slots(container_alvo: Control) -> void:
 	var lista_atual = Inventario.get_lista_ativa()
 	var capacidade = Inventario.get_capacidade_maxima()
 	
-	# O SEGREDO ESTÁ AQUI: Definimos a direção do loop!
-	# Cinto: Array normal [0, 1] (Desenha da Esquerda para a Direita)
 	var ordem_dos_slots = range(capacidade) 
 	
 	if Inventario.inventario_ativo == Inventario.TipoInventario.MOCHILA:
-		# Mochila: Array Invertido [3, 2, 1, 0] (O maior índice é desenhado primeiro no topo)
 		ordem_dos_slots = range(capacidade - 1, -1, -1)
 	
-	# Agora o for usa a nossa ordem customizada
 	for i in ordem_dos_slots:
 		
 		var slot_fundo = Panel.new()
 		slot_fundo.custom_minimum_size = Vector2(50, 50) 
 		
-		# Se a mochila tiver o item deste índice, desenha o ícone
 		if i < lista_atual.size():
 			var produto = lista_atual[i]
 			
@@ -71,5 +62,4 @@ func _desenhar_slots(container_alvo: Control) -> void:
 				
 				slot_fundo.add_child(botao_item)
 			
-		# Adiciona o slot (com ou sem item) na tela
 		container_alvo.add_child(slot_fundo)

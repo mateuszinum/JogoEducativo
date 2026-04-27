@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_tosrt")
-nome = "Poção de Fúria"
+nome = "PocaoDeFuria"
 icone = ExtResource("2_ixjor")
 descricao_simples = "Fique extremamente zangado (dano e velocidade aumentam!!!!)"
 custo_item_simples = ExtResource("1_ixjor")

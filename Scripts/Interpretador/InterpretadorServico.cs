@@ -160,6 +160,7 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public void UsarItemCinto(int indice) { ExecutarAcaoComTick("usar_item_cinto", new Godot.Collections.Array { indice }); }
 	public void UsarItemMochila() { ExecutarAcaoComTick("usar_item_mochila", new Godot.Collections.Array()); }
 	public void Comprar(string item) { ExecutarAcaoComTick("comprar", new Godot.Collections.Array { item }); }
+	public void VenderTudo() { ExecutarAcaoComTick("venderTudo", new Godot.Collections.Array()); }
 	public void EntrarArena(string arena) { ExecutarAcaoComTick("arena", new Godot.Collections.Array { arena }); }
 	public void ColocarItemMochila(string item) { ExecutarAcaoComTick("colocar_item_mochila", new Godot.Collections.Array { item }); }
 	public void ColocarItemCinto(string item, int idx) { ExecutarAcaoComTick("colocar_item_cinto", new Godot.Collections.Array { item, idx }); }

@@ -12,7 +12,7 @@ static var termos : Dictionary = {
 	"retorna": [0, "Funções"], "fim funcao": [0, "Funções"],
 
 	# --- Funções COM parâmetros ---
-	"mover()": [1, ""], "podeMover()": [1, "Sensores 2"], "atacar()": [1, "Início"], "nomeInimigo()": [1, "Sensores 1"], "arena()": [1, "Início"], "comprar()": [1, "Automação 2"], "cinto.usarItem()": [1, "Itens"], "escrever()": [1, "Debug"], "tamanho()": [1, "Utilidades"], "min()": [1, "Utilidades"], "max()": [1, "Utilidades"], "vidaInimigo()": [1, "Sensores 3"], "velocidadeInimigo()": [1, "Sensores 3"],
+	"mover()": [1, ""], "podeMover()": [1, "Sensores 2"], "atacar()": [1, "Início"], "arena()": [1, "Início"], "comprar()": [1, "Automação 2"], "cinto.usarItem()": [1, "Itens"], "escrever()": [1, "Debug"], "tamanho()": [1, "Utilidades"], "trunca()": [1, "Utilidades"], "min()": [1, "Utilidades"], "max()": [1, "Utilidades"], "vidaInimigo()": [1, "Sensores 3"], "velocidadeInimigo()": [1, "Sensores 3"],
 
 	# --- Funções SEM parâmetros ---
 	"inimigoMaisProximo()": [0, "Início"], "tempo()": [0, "Sensores 2"], "vidaAtual()": [0, "Sensores 2"], "escanearArea()": [0, "Sensores 3"], "posicaoX()": [0, "Localização"], "posicaoY()": [0, "Localização"], "tesouroX()": [0, "Localização"], "tesouroY()": [0, "Localização"], "escapar()": [0, "Automação 1"], "mochila.usarItem()": [0, "Itens"], "venderTudo()": [0, "Automação 2"], "aleatorio()": [0, "Utilidades"],

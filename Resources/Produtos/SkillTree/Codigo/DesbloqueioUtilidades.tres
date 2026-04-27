@@ -32,6 +32,7 @@ tipo = 1
 descricao_simples = "aleatorio()
 min()
 max()
-tamanho()"
+tamanho()
+trunca()"
 niveis = Array[ExtResource("3_sx0pd")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

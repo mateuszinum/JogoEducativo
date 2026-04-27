@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_omn7t"]
 [ext_resource type="Texture2D" uid="uid://x4r6bahncc3" path="res://Resources/Stages/Campos/campos_ruido_barreira.tres" id="8_lndgn"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
-[ext_resource type="AudioStream" uid="uid://bxsx2gs23pi2u" path="res://Audio/Soundtracks/Labirinto.wav" id="10_0o20v"]
+[ext_resource type="AudioStream" uid="uid://dchxhehlqsmty" path="res://Audio/Soundtracks/Campos.wav" id="10_0o20v"]
 [ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/tesouro_campos.tres" id="10_u4kak"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]
@@ -71,7 +71,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 script = ExtResource("2_mfjtu")
 nome = "Campos"
 stage_music = ExtResource("10_0o20v")
-music_volume = -6.0
+music_volume = -10.0
 spawn_events = Array[ExtResource("3_0o20v")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_0o20v")])
 map_width = 100
 tesouro_config = ExtResource("10_u4kak")
