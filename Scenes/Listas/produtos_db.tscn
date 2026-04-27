@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://crbdt5bosvqxo" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioUtilidades.tres" id="21_ob71j"]
 [ext_resource type="Resource" uid="uid://pgflit1x10ut" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioVariaveis.tres" id="22_xrugt"]
 [ext_resource type="Resource" uid="uid://cpm7fj240m7s8" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioAlho.tres" id="23_886yd"]
-[ext_resource type="Resource" uid="uid://cmoxdom3udak5" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFeixeLuz.tres" id="24_pgeyx"]
+[ext_resource type="Resource" uid="uid://fkd7vvqmkuvr" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFeixeLuz.tres" id="24_pgeyx"]
 [ext_resource type="Resource" uid="uid://dhjladwnppl8p" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioEsferaVermelha.tres" id="25_odsje"]
 [ext_resource type="Resource" uid="uid://cyeyaud5aq154" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoFogo.tres" id="26_rvw8m"]
 [ext_resource type="Resource" uid="uid://bu4bx8hlvnugg" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioExplosaoGelo.tres" id="27_6471j"]
@@ -31,7 +31,12 @@
 [ext_resource type="Resource" uid="uid://bri3042g08d8m" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioFogo.tres" id="29_w431c"]
 [ext_resource type="Resource" uid="uid://dyix8gscaq3ab" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioGelo.tres" id="30_58lhm"]
 [ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="31_0cb2v"]
+[ext_resource type="Resource" uid="uid://b00x6w0s0mq1m" path="res://Resources/Produtos/ProdutoComerciante/produtoCura.tres" id="32_uo25k"]
+[ext_resource type="Resource" uid="uid://kfvmsbbnmqvi" path="res://Resources/Produtos/ProdutoComerciante/produtoDano.tres" id="33_keg5n"]
+[ext_resource type="Resource" uid="uid://bw1fqkt0n2c4c" path="res://Resources/Produtos/ProdutoComerciante/produtoFuria.tres" id="34_ce4qm"]
+[ext_resource type="Resource" uid="uid://3j6lmlig7071" path="res://Resources/Produtos/ProdutoComerciante/produtoPressa.tres" id="35_mfrpq"]
+[ext_resource type="Resource" uid="uid://dmt2u2skd8mh" path="res://Resources/Produtos/ProdutoComerciante/produtoVidaMaior.tres" id="36_vqufk"]
 
 [node name="ProdutosDB" type="Node" unique_id=1779632007]
 script = ExtResource("1_ktuyk")
-lista_de_produtos = Array[ExtResource("2_50dy5")]([ExtResource("3_uo25k"), ExtResource("4_wcoxk"), ExtResource("5_skuho"), ExtResource("6_qmdwn"), ExtResource("7_keg5n"), ExtResource("8_ce4qm"), ExtResource("9_mfrpq"), ExtResource("10_vqufk"), ExtResource("11_on5rq"), ExtResource("12_mptma"), ExtResource("13_yc8f8"), ExtResource("14_gokth"), ExtResource("15_x1tas"), ExtResource("16_ny7ck"), ExtResource("17_s7dqf"), ExtResource("18_0b4b5"), ExtResource("19_xdt6e"), ExtResource("20_ysjbo"), ExtResource("21_ob71j"), ExtResource("22_xrugt"), ExtResource("23_886yd"), ExtResource("24_pgeyx"), ExtResource("25_odsje"), ExtResource("26_rvw8m"), ExtResource("27_6471j"), ExtResource("28_0fyxc"), ExtResource("29_w431c"), ExtResource("30_58lhm"), ExtResource("31_0cb2v"), null, null, null, null, null])
+lista_de_produtos = Array[ExtResource("2_50dy5")]([ExtResource("3_uo25k"), ExtResource("4_wcoxk"), ExtResource("5_skuho"), ExtResource("6_qmdwn"), ExtResource("7_keg5n"), ExtResource("8_ce4qm"), ExtResource("9_mfrpq"), ExtResource("10_vqufk"), ExtResource("11_on5rq"), ExtResource("12_mptma"), ExtResource("13_yc8f8"), ExtResource("14_gokth"), ExtResource("15_x1tas"), ExtResource("16_ny7ck"), ExtResource("17_s7dqf"), ExtResource("18_0b4b5"), ExtResource("19_xdt6e"), ExtResource("20_ysjbo"), ExtResource("21_ob71j"), ExtResource("22_xrugt"), ExtResource("23_886yd"), ExtResource("24_pgeyx"), ExtResource("25_odsje"), ExtResource("26_rvw8m"), ExtResource("27_6471j"), ExtResource("28_0fyxc"), ExtResource("29_w431c"), ExtResource("30_58lhm"), ExtResource("31_0cb2v"), ExtResource("32_uo25k"), ExtResource("33_keg5n"), ExtResource("34_ce4qm"), ExtResource("35_mfrpq"), ExtResource("36_vqufk")])

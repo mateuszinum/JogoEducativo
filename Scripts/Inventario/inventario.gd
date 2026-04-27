@@ -99,6 +99,8 @@ func trocar_inventario(novo_tipo: TipoInventario) -> void:
 		capacidade_atual = 4
 		
 func vender_tudo() -> void:
+	# CASO FOR DELETAR ESSA FUNÇÃO, PASSAR ELA PARA FuncoesNativas.gd, na parte de vender_tudo
+	
 	# 1. Identificamos qual a lista que deve ser limpa (Cinto ou Mochila)
 	var lista_atual = get_lista_ativa()
 	

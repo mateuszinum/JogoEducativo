@@ -11,6 +11,17 @@ var _posicao_inicializada := false
 
 var _cache_tesouro_pos := Vector2i(-1, -1)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_Z and event.pressed and not event.echo:
+		print("--- Tecla Z pressionada! Iniciando teste de compra ---")
+		
+		Vilarejo.comprar("Poção de Cura")
+
+	if event is InputEventKey and event.keycode == KEY_X and event.pressed and not event.echo:
+		print("--- Tecla X pressionada!")
+		
+		InventarioPlayer.vender_tudo()
+
 func _physics_process(_delta: float) -> void:
 	var tree = get_tree()
 	var player = tree.get_first_node_in_group("Player")
@@ -67,10 +78,10 @@ func escapar():
 	Partida.escapar()
 
 func usar_item_cinto(indice: int):
-	Inventario.usar_item_cinto(indice)
+	InventarioPlayer.usar_item_cinto(indice)
 
 func usar_item_mochila():
-	Inventario.usar_item_mochila()
+	InventarioPlayer.usar_item_mochila()
 
 func comprar(item: String):
 	Vilarejo.comprar(item)
@@ -79,10 +90,13 @@ func arena(nome_arena: String):
 	Partida.arena(nome_arena)
 
 func colocar_item_mochila(item: String):
-	Inventario.colocar_item_mochila(item)
+	InventarioPlayer.colocar_item_mochila(item)
 
 func colocar_item_cinto(item: String, idx: int):
-	Inventario.colocar_item_cinto(item, idx)
+	InventarioPlayer.colocar_item_cinto(item, idx)
+
+func venderTudo():
+	return InventarioPlayer.vender_tudo()
 
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
@@ -121,6 +135,7 @@ func tesouroX() -> int:
 
 func tesouroY() -> int:
 	return _cache_tesouro_pos.y
+
 
 
 # ==========================================
@@ -221,8 +236,28 @@ class Partida:
 			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
 
 class Vilarejo:
-	static func comprar(item): pass
-
+	static func comprar(item: String):
+		var tree = Engine.get_main_loop()
+		var produto_data = ProdutosDB.get_produto(item)
+		
+		if produto_data == null:
+			print("não achou")
+			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
+			return false
+		
+		var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
+		
+		if compra_aprovada:
+			# Efetuar compraz
+			print("Compra de " + item + " efetuada com sucesso!")
+			
+			return true
+		else:
+			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
+				print("Este compartimento está cheio!")
+			else:
+				print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
+			return false
 
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> bool:
@@ -347,8 +382,15 @@ class Jogador:
 		if player and "health" in player:
 			return player.health
 		return 0
-		
+
+class InventarioPlayer:
 	static func usar_item_mochila(): pass
+
 	static func usar_item_cinto(index): pass
+	
 	static func colocar_item_mochila(item): pass
+	
 	static func colocar_item_cinto(item, index): pass
+	
+	static func vender_tudo():
+		Inventario.vender_tudo()
