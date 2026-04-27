@@ -58,16 +58,18 @@ func _desenhar_slots(container_alvo: Control) -> void:
 		# Se a mochila tiver o item deste índice, desenha o ícone
 		if i < lista_atual.size():
 			var produto = lista_atual[i]
-			var botao_item = TextureButton.new()
 			
-			botao_item.texture_normal = produto.icone
-			botao_item.ignore_texture_size = true
-			botao_item.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
-			botao_item.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-			
-			botao_item.pressed.connect(func(): Inventario.vender_item(i))
-			
-			slot_fundo.add_child(botao_item)
+			if produto != null:
+				var botao_item = TextureButton.new()
+				
+				botao_item.texture_normal = produto.icone
+				botao_item.ignore_texture_size = true
+				botao_item.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+				botao_item.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+				
+				botao_item.pressed.connect(func(): Inventario.vender_item(i))
+				
+				slot_fundo.add_child(botao_item)
 			
 		# Adiciona o slot (com ou sem item) na tela
 		container_alvo.add_child(slot_fundo)

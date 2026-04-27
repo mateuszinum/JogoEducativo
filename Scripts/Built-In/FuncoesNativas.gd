@@ -67,10 +67,10 @@ func escapar():
 	Partida.escapar()
 
 func usar_item_cinto(indice: int):
-	Inventario.usar_item_cinto(indice)
+	InventarioPlayer.usar_item_cinto(indice)
 
 func usar_item_mochila():
-	Inventario.usar_item_mochila()
+	InventarioPlayer.usar_item_mochila()
 
 func comprar(item: String):
 	Vilarejo.comprar(item)
@@ -79,10 +79,13 @@ func arena(nome_arena: String):
 	Partida.arena(nome_arena)
 
 func colocar_item_mochila(item: String):
-	Inventario.colocar_item_mochila(item)
+	InventarioPlayer.colocar_item_mochila(item)
 
 func colocar_item_cinto(item: String, idx: int):
-	Inventario.colocar_item_cinto(item, idx)
+	InventarioPlayer.colocar_item_cinto(item, idx)
+
+func venderTudo():
+	return InventarioPlayer.vender_tudo()
 
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
@@ -121,6 +124,7 @@ func tesouroX() -> int:
 
 func tesouroY() -> int:
 	return _cache_tesouro_pos.y
+
 
 
 # ==========================================
@@ -221,8 +225,28 @@ class Partida:
 			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
 
 class Vilarejo:
-	static func comprar(item): pass
-
+	static func comprar(item: String):
+		var tree = Engine.get_main_loop()
+		var produto_data = ProdutosDB.get_produto(item)
+		
+		if produto_data == null:
+			print("não achou")
+			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
+			return false
+		
+		var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
+		
+		if compra_aprovada:
+			# Efetuar compraz
+			print("Compra de " + item + " efetuada com sucesso!")
+			
+			return true
+		else:
+			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
+				print("Este compartimento está cheio!")
+			else:
+				print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
+			return false
 
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> bool:
@@ -347,8 +371,42 @@ class Jogador:
 		if player and "health" in player:
 			return player.health
 		return 0
+
+class InventarioPlayer:
+	static func usar_item_mochila():
+		for i in range(Inventario.itens_mochila.size() - 1, -1, -1):
+			var produto_usado = Inventario.itens_mochila[i]
+			
+			if produto_usado != null:
+				Inventario.itens_mochila[i] = null
+				Inventario.inventario_comprados_atualizado.emit()
+				print("Você usou o item do topo da mochila: ", produto_usado.nome)
+				return true
+
+		print("Falha: A mochila está completamente vazia!")
+		return false
+
+	static func usar_item_cinto(index):
+		if index >= 0 and index < Inventario.itens_cinto.size():
+			var produto_index = Inventario.itens_cinto[index]
+			
+			if produto_index != null:
+				Inventario.itens_cinto[index] = null
+				Inventario.inventario_comprados_atualizado.emit()
+			
+				print("Você usou o item do cinto: ", produto_index.nome)
+				return true
+
+			else:
+				print("Não há nenhum item no índice ", index, " do cinto.")
+				return false
 		
-	static func usar_item_mochila(): pass
-	static func usar_item_cinto(index): pass
+		else:
+			print("Você inseriu um index inválido para o cinto")
+	
 	static func colocar_item_mochila(item): pass
+	
 	static func colocar_item_cinto(item, index): pass
+	
+	static func vender_tudo():
+		Inventario.vender_tudo()

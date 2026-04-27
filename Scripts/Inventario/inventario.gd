@@ -29,8 +29,8 @@ enum TipoInventario { CINTO, MOCHILA }
 var inventario_ativo: TipoInventario = TipoInventario.CINTO
 
 # AGORA TEMOS DUAS LISTAS SEPARADAS
-var itens_cinto: Array = []
-var itens_mochila: Array = []
+var itens_cinto: Array = [null, null]
+var itens_mochila: Array = [null, null, null, null]
 
 # Função auxiliar para pegar a lista que está em uso no momento
 func get_lista_ativa() -> Array:
@@ -44,9 +44,15 @@ func get_capacidade_maxima() -> int:
 # --- Lógica de Compra Atualizada ---
 func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 	var lista_atual = get_lista_ativa()
+
+	var slot_livre = -1
+	for i in range(lista_atual.size()):
+		if lista_atual[i] == null:
+			slot_livre = i
+			break
 	
-	if lista_atual.size() >= get_capacidade_maxima():
-		print("Este compartimento está cheio!")
+	if slot_livre == -1:
+		print("Ese compartimento está cheio!")
 		return false
 
 	var material_custo = produto.custo_item_simples
@@ -58,7 +64,7 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 			itens_coletados.erase(material_custo)
 			
 		# Adiciona apenas na lista ativa (Cinto ou Mochila)
-		lista_atual.push_front(produto)
+		lista_atual[slot_livre] = produto
 		
 		inventario_atualizado.emit() 
 		inventario_comprados_atualizado.emit() 
@@ -68,20 +74,23 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 # --- Venda e Troca ---
 func vender_item(index: int) -> void:
 	var lista_atual = get_lista_ativa()
-	if index < 0 or index >= lista_atual.size(): return
+	if index < 0 or index >= lista_atual.size():
+		return
 	
 	var produto_vendido = lista_atual[index]
+	if produto_vendido == null:
+		return
+	
 	var recurso = produto_vendido.custo_item_simples
 	var qtd_reembolso = produto_vendido.custo_quantidade_simples
 
-	# Verifica se a chave existe no dicionário
 	if itens_coletados.has(recurso):
-		itens_coletados[recurso] += qtd_reembolso # Se sim, apenas soma
+		itens_coletados[recurso] += qtd_reembolso
+		
 	else:
-		itens_coletados[recurso] = qtd_reembolso  # Se não, recria a chave com o valor devolvido
+		itens_coletados[recurso] = qtd_reembolso
 			
-	# Estas linhas devem rodar SEMPRE, por isso ficam alinhadas na esquerda (fora do if/else)
-	lista_atual.remove_at(index)
+	lista_atual[index] = null
 	inventario_atualizado.emit()
 	inventario_comprados_atualizado.emit()
 	
@@ -99,16 +108,10 @@ func trocar_inventario(novo_tipo: TipoInventario) -> void:
 		capacidade_atual = 4
 		
 func vender_tudo() -> void:
-	# 1. Identificamos qual a lista que deve ser limpa (Cinto ou Mochila)
+	# CASO FOR DELETAR ESSA FUNÇÃO, PASSAR ELA PARA FuncoesNativas.gd, na parte de vender_tudo
 	var lista_atual = get_lista_ativa()
-	
-	# 2. Loop Reverso: Começamos do último índice para o primeiro.
-	# Isso é vital porque, ao remover o último, os índices dos anteriores não mudam.
-	for i in range(lista_atual.size() - 1, -1, -1):
+	for i in range(lista_atual.size()):
 		vender_item(i)
 	
-	# 3. Garantimos que a UI sabe que tudo foi vendido
-	inventario_comprados_atualizado.emit()
 	print("Venda em massa concluída para: ", "Cinto" if inventario_ativo == TipoInventario.CINTO else "Mochila")
-		
 	inventario_comprados_atualizado.emit()
