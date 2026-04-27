@@ -97,12 +97,8 @@ collect_volume = -10.0
 collect_pitch_min = 1.0
 
 [node name="HUD_Inventario" parent="Player/AnimatedSprite2D" parent_id_path=PackedInt32Array(848872761, 2056011674) index="0" unique_id=319363314 instance=ExtResource("21_7fyq5")]
-layout_direction = 4
-offset_left = -293.0
-offset_top = -167.0
-offset_right = -293.0
-offset_bottom = -167.0
 scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)

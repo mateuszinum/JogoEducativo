@@ -8,6 +8,7 @@ extends Node2D
 @onready var interpretador = %InterpretadorServico
 
 var seed_hash: int
+var recursos_iniciais: Dictionary
 
 func _ready():
 	randomize()
@@ -72,7 +73,9 @@ func generate_world():
 			if final_obstacle_id != -1:
 				tile_map.set_cell(1, pos, final_obstacle_id, Vector2i(0, 0))
 				tile_map.erase_cell(0, pos)
-						
+			
+	recursos_iniciais = RecursosManager.listarRecursos().duplicate(true)	
+	print(recursos_iniciais)				
 	var player = get_tree().get_first_node_in_group("Player")
 	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
 	player.connect("vida_zerada", _on_player_morreu)
@@ -115,6 +118,9 @@ func gerar_tesouro():
 	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
 
 func _on_player_morreu():
+	print(recursos_iniciais)
+	RecursosManager.aplicarListaRecursos(recursos_iniciais)
+	
 	$TelaMorte.show()
 	
 	await get_tree().create_timer(3.0).timeout
