@@ -11,17 +11,6 @@ var _posicao_inicializada := false
 
 var _cache_tesouro_pos := Vector2i(-1, -1)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.keycode == KEY_Z and event.pressed and not event.echo:
-		print("--- Tecla Z pressionada! Iniciando teste de compra ---")
-		
-		InventarioPlayer.usar_item_cinto(0)
-
-	if event is InputEventKey and event.keycode == KEY_X and event.pressed and not event.echo:
-		print("--- Tecla X pressionada!")
-		
-		InventarioPlayer.usar_item_mochila()
-
 func _physics_process(_delta: float) -> void:
 	var tree = get_tree()
 	var player = tree.get_first_node_in_group("Player")
@@ -385,29 +374,35 @@ class Jogador:
 
 class InventarioPlayer:
 	static func usar_item_mochila():
-		if Inventario.itens_mochila.size() > 0:
-			var produto_usado = Inventario.itens_mochila.pop_front()
-			Inventario.inventario_comprados_atualizado.emit()
-			print("Você usou o item do topo da mochila: ", produto_usado.nome)
-			return true
-	 
-		else:
-			print("Falha: A mochila está completamente vazia!")
-			return false
+		for i in range(Inventario.itens_mochila.size() - 1, -1, -1):
+			var produto_usado = Inventario.itens_mochila[i]
+			
+			if produto_usado != null:
+				Inventario.itens_mochila[i] = null
+				Inventario.inventario_comprados_atualizado.emit()
+				print("Você usou o item do topo da mochila: ", produto_usado.nome)
+				return true
 
-	static func usar_item_cinto(index): pass
-		#if index >= 0 and index < Inventario.itens_cinto.size():
-			#var produto_index = Inventario.itens_cinto[index]
-#
-			#Inventario.itens_cinto.remove_at(index)
-			#Inventario.inventario_comprados_atualizado.emit()
-			#
-			#print("Você usou o item do cinto: ", produto_index.nome)
-			#return true
-#
-		#else:
-			#print("Falha: Não há nenhum item no índice ", index, " do cinto.")
-			#return false
+		print("Falha: A mochila está completamente vazia!")
+		return false
+
+	static func usar_item_cinto(index):
+		if index >= 0 and index < Inventario.itens_cinto.size():
+			var produto_index = Inventario.itens_cinto[index]
+			
+			if produto_index != null:
+				Inventario.itens_cinto[index] = null
+				Inventario.inventario_comprados_atualizado.emit()
+			
+				print("Você usou o item do cinto: ", produto_index.nome)
+				return true
+
+			else:
+				print("Não há nenhum item no índice ", index, " do cinto.")
+				return false
+		
+		else:
+			print("Você inseriu um index inválido para o cinto")
 	
 	static func colocar_item_mochila(item): pass
 	
