@@ -1,15 +1,13 @@
 <Project Sdk="Godot.NET.Sdk/4.6.1">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RootNamespace>jogoeducativo</RootNamespace>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="C:\Dev\backend-extensao\Jogo.Core\Jogo.Core.csproj" />
-    <ProjectReference Include="..\backend-extensao\Jogo.Core\Jogo.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
-  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>jogoeducativo</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+  </ItemGroup><ItemGroup>
+  <ProjectReference Include="..\backend-extensao\Jogo.Core\Jogo.Core.csproj" />
+</ItemGroup>
 </Project>

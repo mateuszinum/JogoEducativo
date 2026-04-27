@@ -2,8 +2,10 @@ extends Node2D
 
 @export var stage_data: StageData
 @export var cena_tesouro: PackedScene
+@export var terminal: Node
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
+@onready var interpretador = %InterpretadorServico
 
 var seed_hash: int
 
@@ -73,6 +75,7 @@ func generate_world():
 						
 	var player = get_tree().get_first_node_in_group("Player")
 	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
+	player.connect("vida_zerada", _on_player_morreu)
 	gerar_tesouro()
 
 func play_stage_music():
@@ -110,3 +113,13 @@ func gerar_tesouro():
 	tile_map.add_child(novo_tesouro)
 	
 	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
+
+func _on_player_morreu():
+	$TelaMorte.show()
+	
+	await get_tree().create_timer(3.0).timeout
+	
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	if terminal:
+		terminal.abortar_arena()
+	

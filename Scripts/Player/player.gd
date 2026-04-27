@@ -11,6 +11,7 @@ const ERROR_FEEDBACK = preload("res://Scenes/Polimento/error_feedback.tscn")
 
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
+signal vida_zerada
 
 var health : int
 @export var touch_knockback_multiplier: float = 1.0
@@ -129,6 +130,9 @@ func take_damage(amount):
 	
 	health -= amount
 	health_changed.emit(health)
+	if health <= 0:
+		health = 0
+		vida_zerada.emit()
 	$DamageTick.start()
 	modulate.a = OPACIDADE_NO_DANO
 	
