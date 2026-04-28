@@ -324,10 +324,13 @@ func efetivar_compra() -> void:
 			ProgressoDB.desbloquear(produto.nome, nivel_atual)
 
 func carregar_dados_do_tooltip() -> void:
+	if %TooltipNome: %TooltipNome.text = produto.nome
+
 	var texto_final: String = ""
 	var item_custo: ItemData = null
 	var qtd_custo: int = 0
 	var mostrar_custo: bool = true
+	
 	match produto.tipo:
 		ProdutoLoja.TipoProduto.ITEM_UNICO:
 			texto_final = produto.descricao_simples
@@ -361,8 +364,11 @@ func carregar_dados_do_tooltip() -> void:
 				item_custo = produto.niveis[nivel_atual].custo_item
 				qtd_custo = produto.niveis[nivel_atual].custo_quantidade
 			else: mostrar_custo = false
+			
 	if item_custo == null: mostrar_custo = false
+	
 	if %TooltipDescricao: %TooltipDescricao.text = texto_final
+	
 	if mostrar_custo:
 		%AreaDoPreco.show()
 		if %TooltipCustoValor: %TooltipCustoValor.text = str(qtd_custo)
