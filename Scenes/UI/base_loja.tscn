@@ -154,8 +154,7 @@ texture = SubResource("GradientTexture1D_jo0wy")
 anchors_preset = 0
 
 [node name="HUD_Inventario" parent="Conteudo" unique_id=319363314 instance=ExtResource("1_aitj0")]
-offset = Vector2(150, 0)
-transform = Transform2D(1, 0, 0, 1, 150, 0)
+layout_mode = 0
 
 [node name="BotaoProduto" parent="Conteudo" unique_id=1255495614 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("4_76fqn")]
 layout_mode = 1

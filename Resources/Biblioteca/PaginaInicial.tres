@@ -60,8 +60,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_sbsfi"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=ExplosaoFogo]ExplosaoFogo[/req] [req=ExplosaoGelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=Gelo]Gelo[/req] [req=Raio]Raio[/req]
-       "
+texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=ExplosaoFogo]ExplosaoFogo[/req] [req=ExplosaoGelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=Gelo]Gelo[/req] [req=Raio]Raio[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_kpn3u"]
@@ -85,7 +84,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_mc6gf"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Início]Campos[/req] [req=Floresta]Floresta[/req] [req=Labirinto]Labirinto[/req]"
+texto = "[req=Início]Campos[/req] [req=Floresta]Floresta[/req] [req=Labirinto]Labirinto[/req]
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

@@ -2,7 +2,6 @@ extends Node2D
 
 @export var stage_data: StageData
 @export var cena_tesouro: PackedScene
-@export var terminal: Node
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
 
@@ -41,7 +40,9 @@ func generate_world():
 	var centro_grid_y = 0
 	var centro_vetor_grid = Vector2(centro_grid_x, centro_grid_y)
 	
+	@warning_ignore("integer_division")
 	var metade_largura = stage_data.map_width / 2
+	@warning_ignore("integer_division")
 	var metade_altura = stage_data.map_height / 2
 	for x in range(-metade_largura, metade_largura):
 		for y in range(-metade_altura, metade_altura):
@@ -91,7 +92,9 @@ func play_stage_music():
 		music_player.play()
 
 func gerar_tesouro():
+	@warning_ignore("integer_division")
 	var limite_x = stage_data.map_width / 2
+	@warning_ignore("integer_division")
 	var limite_y = stage_data.map_height / 2
 	
 	var posicao_valida = false
@@ -117,6 +120,10 @@ func gerar_tesouro():
 	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
 
 func _on_player_morreu():
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	if terminal:
+		terminal.desativar_botao_executar()
+
 	var player = get_tree().get_first_node_in_group("Player")
 	if player and "invulneravel" in player:
 		player.invulneravel = true
@@ -127,7 +134,7 @@ func _on_player_morreu():
 	print(recursos_iniciais)
 	RecursosManager.aplicarListaRecursos(recursos_iniciais)
 	
-	var terminal = get_tree().get_first_node_in_group("Terminal")
+	
 	if terminal:
 		terminal.abortar_arena()
 	

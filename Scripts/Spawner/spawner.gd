@@ -93,7 +93,9 @@ func execute_spawns():
 			spawn_accumulators[enemy_type] -= 1.0
 
 func update_ui_clock():
+	@warning_ignore("integer_division")
 	var m = total_time_seconds / 60
+	@warning_ignore("integer_division")
 	var s = total_time_seconds % 60
 	
 	var minute_node = get_node_or_null("%Minute")

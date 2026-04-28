@@ -15,5 +15,6 @@ func aplicar_configuracoes_de_tela() -> void:
 		
 		var tela_atual = DisplayServer.window_get_current_screen()
 		var tamanho_da_tela = DisplayServer.screen_get_size(tela_atual)
+		@warning_ignore("integer_division")
 		var posicao_central = (tamanho_da_tela - resolucao) / 2
 		DisplayServer.window_set_position(posicao_central)

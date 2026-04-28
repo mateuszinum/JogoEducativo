@@ -157,8 +157,6 @@ func _on_button_down() -> void:
 	
 	if pode_comprar():
 		_tocar_som(som_clique, volume_clique_db)
-	else:
-		disparar_erro()
 
 func _on_button_up() -> void: 
 	if travado: return

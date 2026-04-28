@@ -14,7 +14,7 @@ collision_mask = 4
 script = ExtResource("1_t6l6k")
 
 [node name="RastroAtaque" parent="." unique_id=683874523 instance=ExtResource("2_5ucqc")]
-cor_rastro = Color(0, 0.4745098, 1, 0.8)
+cor_rastro = Color(0, 0.27100557, 0.5945545, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301682816]
 position = Vector2(0, -3.5527137e-15)
@@ -29,7 +29,7 @@ shape = SubResource("CircleShape2D_aihi3")
 scale = Vector2(0.5, 0.5)
 
 [node name="LuzAtaque" parent="." unique_id=241437762 instance=ExtResource("3_42wjn")]
-cor_luz = Color(0.2916211, 0.51333153, 1, 1)
+cor_luz = Color(0, 0.46060467, 0.90721494, 1)
 energia_base = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
