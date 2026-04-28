@@ -16,7 +16,6 @@
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="12_5t4pt"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
-[ext_resource type="AudioStream" uid="uid://dfi1awr5r7w4f" path="res://Audio/SFX/Collect.mp3" id="16_5vcap"]
 [ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Resources/Shaders/Configs/PosProcessamentoArena.tres" id="19_3nb34"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="20_jixqc"]
 
@@ -91,9 +90,6 @@ current_stage = SubResource("Resource_841rm")
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
 z_index = 1
 y_sort_enabled = true
-collect_sound = ExtResource("16_5vcap")
-collect_volume = -10.0
-collect_pitch_min = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)

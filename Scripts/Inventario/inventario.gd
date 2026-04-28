@@ -64,30 +64,28 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 
 func vender_item(index: int) -> void:
 	var lista_atual = get_lista_ativa()
-	if index < 0 or index >= lista_atual.size():
-		return
+	if index < 0 or index >= lista_atual.size(): return
 	
 	var produto_vendido = lista_atual[index]
-	if produto_vendido == null:
-		return
+	if produto_vendido == null: return
 	
 	var nome_recurso = produto_vendido.custo_item_simples.nome
 	var qtd_reembolso = produto_vendido.custo_quantidade_simples
-
 	RecursosManager.receberRecurso(nome_recurso, qtd_reembolso)
-			
+	
 	lista_atual[index] = null
 	
-	var itens_restantes = []
-	for item in lista_atual:
-		if item != null:
-			itens_restantes.append(item)
-			
-	for i in range(lista_atual.size()):
-		if i < itens_restantes.size():
-			lista_atual[i] = itens_restantes[i]
-		else:
-			lista_atual[i] = null
+	if inventario_ativo == TipoInventario.MOCHILA:
+		var itens_restantes = []
+		for item in lista_atual:
+			if item != null:
+				itens_restantes.append(item)
+				
+		for i in range(lista_atual.size()):
+			if i < itens_restantes.size():
+				lista_atual[i] = itens_restantes[i]
+			else:
+				lista_atual[i] = null
 	
 	inventario_atualizado.emit()
 	inventario_comprados_atualizado.emit()
@@ -113,5 +111,4 @@ func vender_tudo() -> void:
 		if lista_atual[i] != null:
 			vender_item(i)
 	
-	print("Venda em massa concluída para: ", "Cinto" if inventario_ativo == TipoInventario.CINTO else "Mochila")
 	inventario_comprados_atualizado.emit()

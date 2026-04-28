@@ -5,123 +5,330 @@
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="2_xj0aw"]
 [ext_resource type="Script" uid="uid://d1lu27ctfo7ko" path="res://Scripts/Produtos/MochilaCinto.gd" id="2_y57jt"]
 [ext_resource type="Resource" uid="uid://b00x6w0s0mq1m" path="res://Resources/Produtos/ProdutoComerciante/produtoCura.tres" id="3_3romc"]
-[ext_resource type="Texture2D" uid="uid://3yf4ro5wknr8" path="res://Assets/Produtos/Skilltree/loop.png" id="3_l06el"]
+[ext_resource type="Texture2D" uid="uid://ddrjrvd3okaqb" path="res://Assets/UI/BaseLoja/CintoGrafico.png" id="3_4jp1i"]
+[ext_resource type="Texture2D" uid="uid://nwlembxi1jr" path="res://Assets/UI/BaseLoja/EstandeComerciante.png" id="3_fr10v"]
+[ext_resource type="AudioStream" uid="uid://23s446m4cgsm" path="res://Audio/SFX/UI/AbrirCinto.wav" id="3_pvuae"]
+[ext_resource type="AudioStream" uid="uid://thachuvux1aa" path="res://Audio/SFX/UI/AbrirMochila.wav" id="4_0s06y"]
 [ext_resource type="Resource" uid="uid://3j6lmlig7071" path="res://Resources/Produtos/ProdutoComerciante/produtoPressa.tres" id="4_l04tu"]
-[ext_resource type="Texture2D" uid="uid://cpqiki2be1br3" path="res://Assets/Terrain/Deserto/sand_1.png" id="4_wl6l6"]
-[ext_resource type="StyleBox" uid="uid://bre6lys6mak0r" path="res://Resources/UI/botaoNormal.tres" id="5_wl6l6"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_qonm2"]
+[ext_resource type="Texture2D" uid="uid://12v4dqdspu36" path="res://Assets/UI/BaseLoja/MochilaGrafico.png" id="4_ruy3p"]
+[ext_resource type="Texture2D" uid="uid://dmrxy5cmu33c2" path="res://Assets/UI/BaseLoja/BoardTopo.png" id="5_4h44i"]
 [ext_resource type="Resource" uid="uid://bw1fqkt0n2c4c" path="res://Resources/Produtos/ProdutoComerciante/produtoFuria.tres" id="5_y57jt"]
 [ext_resource type="Resource" uid="uid://kfvmsbbnmqvi" path="res://Resources/Produtos/ProdutoComerciante/produtoDano.tres" id="6_fb8rp"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="6_ruy3p"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_4h44i"]
 [ext_resource type="Resource" uid="uid://dmt2u2skd8mh" path="res://Resources/Produtos/ProdutoComerciante/produtoVidaMaior.tres" id="7_l06el"]
+[ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_fr10v"]
+[ext_resource type="Texture2D" uid="uid://b0bujbbl5y3lk" path="res://Assets/UI/BaseLoja/arrow_giro.png" id="8_qonm2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qonm2"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jp1i"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruy3p"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h44i"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mo0i"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0m2b"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evj2b"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wt6ah"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_7qgq5")]
 
 [node name="AreaLimiteTooltip" parent="." index="0" unique_id=1604915852]
 script = ExtResource("2_y57jt")
+duracao_fade = 0.15
+som_abrir_cinto = ExtResource("3_pvuae")
+som_abrir_mochila = ExtResource("4_0s06y")
+volume_troca_db = -6.0
 
-[node name="BotaoTrocarInventario" type="Button" parent="AreaLimiteTooltip" index="0" unique_id=1221836440]
-top_level = true
+[node name="EstandeComerciante" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="3" unique_id=393870855]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 355.0
-offset_right = 2410.0
-offset_bottom = 2411.0
-scale = Vector2(-0.019496541, -0.022812884)
-tooltip_text = "Trocar"
-text = "Troca inventario "
-icon = ExtResource("3_l06el")
+offset_left = 137.4
+offset_top = 21.0
+offset_right = 2153.402
+offset_bottom = 2149.0
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("3_fr10v")
 
-[node name="VenderTudo" type="Button" parent="AreaLimiteTooltip" index="1" unique_id=141284233]
-top_level = true
+[node name="CintoGrafico" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="4" unique_id=1872856885]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 240.0
-offset_top = 315.0
-offset_right = 380.0
-offset_bottom = 355.0
-text = "Vender tudo"
-icon = ExtResource("4_wl6l6")
+offset_left = 85.99999
+offset_top = -79.00001
+offset_right = 2102.0
+offset_bottom = 2049.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_4jp1i")
 
-[node name="FundoInventario" type="Panel" parent="AreaLimiteTooltip" index="2" unique_id=1493116363]
+[node name="MochilaGrafico" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="5" unique_id=1124616416]
+unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(11.96, 11.280002)
-theme_override_styles/panel = ExtResource("5_wl6l6")
+offset_left = 137.4
+offset_top = 29.23
+offset_right = 2153.402
+offset_bottom = 2157.23
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("4_ruy3p")
 
-[node name="Titulo" type="Label" parent="AreaLimiteTooltip/FundoInventario" index="0" unique_id=403914422]
+[node name="FundoTop" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="6" unique_id=608161589]
 layout_mode = 0
-offset_left = 1.9230769
-offset_top = 23.492905
-offset_right = 41.923077
-offset_bottom = 46.492905
-scale = Vector2(0.93283737, 0.7075509)
+offset_left = 149.0
+offset_top = 57.999992
+offset_right = 2165.0
+offset_bottom = 2186.0
+scale = Vector2(0.24355157, 0.22650376)
+texture = ExtResource("5_4h44i")
 
-[node name="Cinto" type="HBoxContainer" parent="AreaLimiteTooltip/FundoInventario" index="1" unique_id=1212667397]
-top_level = true
-layout_mode = 0
-offset_left = 187.0
-offset_top = 406.0
-offset_right = 227.0
-offset_bottom = 446.0
-
-[node name="Mochila" type="VBoxContainer" parent="AreaLimiteTooltip/FundoInventario" index="2" unique_id=566367822]
-top_level = true
-layout_mode = 0
-offset_left = 561.0
-offset_top = 211.0
-offset_right = 601.0
-offset_bottom = 251.0
-
-[node name="BotaoProduto2" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="0" unique_id=1056203910 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
-layout_mode = 1
-offset_left = 279.0
-offset_top = 92.0
-offset_right = 359.0
-offset_bottom = 172.0
-produto = ExtResource("3_3romc")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
-
-[node name="BotaoProduto3" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
-layout_mode = 1
-offset_left = 476.0
-offset_top = 92.0
-offset_right = 556.0
-offset_bottom = 172.0
-produto = ExtResource("4_l04tu")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
-
-[node name="BotaoProduto4" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=1017298116 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
-layout_mode = 1
-offset_left = 374.0
-offset_top = 92.0
-offset_right = 454.0
-offset_bottom = 172.0
-produto = ExtResource("5_y57jt")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
-
-[node name="HUD_Inventario" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=319363314]
-layout_mode = 0
-
-[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="4" unique_id=1255495614]
+[node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
+visible = false
 offset_left = 184.0
 offset_top = 93.0
 offset_right = 264.0
 offset_bottom = 173.0
 produto = ExtResource("6_fb8rp")
 
-[node name="BotaoProduto5" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="5" unique_id=669868599 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
-layout_mode = 1
-offset_left = 188.0
-offset_top = 189.0
-offset_right = 268.0
-offset_bottom = 269.0
-produto = ExtResource("7_l06el")
-area_limite_tooltip = NodePath("../../AreaLimiteTooltip")
+[node name="ContainersInventario" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="2" unique_id=962187101]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.00006
 
-[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
+[node name="MochilaContainer" type="VBoxContainer" parent="Conteudo/ContainersInventario" index="0" unique_id=566367822]
+unique_name_in_owner = true
+top_level = true
+layout_mode = 0
+offset_left = 360.91
+offset_top = 202.865
+offset_right = 440.91
+offset_bottom = 576.8648
+scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 1
+
+[node name="BotaoProduto1" parent="Conteudo/ContainersInventario/MochilaContainer" index="0" unique_id=68358027 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+modo_operacao = 1
+
+[node name="Control" type="Control" parent="Conteudo/ContainersInventario/MochilaContainer" index="1" unique_id=490374657]
+custom_minimum_size = Vector2(0, 16.925)
+layout_mode = 2
+
+[node name="BotaoProduto2" parent="Conteudo/ContainersInventario/MochilaContainer" index="2" unique_id=2033847155 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+modo_operacao = 1
+
+[node name="Control2" type="Control" parent="Conteudo/ContainersInventario/MochilaContainer" index="3" unique_id=370223167]
+custom_minimum_size = Vector2(0, 14.15)
+layout_mode = 2
+
+[node name="BotaoProduto3" parent="Conteudo/ContainersInventario/MochilaContainer" index="4" unique_id=1859741689 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+modo_operacao = 1
+
+[node name="Control3" type="Control" parent="Conteudo/ContainersInventario/MochilaContainer" index="5" unique_id=958093853]
+custom_minimum_size = Vector2(0, 13.27)
+layout_mode = 2
+
+[node name="BotaoProduto4" parent="Conteudo/ContainersInventario/MochilaContainer" index="6" unique_id=127850406 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+modo_operacao = 1
+
+[node name="CintoContainer" type="HBoxContainer" parent="Conteudo/ContainersInventario" index="1" unique_id=1212667397]
+unique_name_in_owner = true
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 296.3
+offset_top = 297.875
+offset_right = 512.3
+offset_bottom = 377.875
+theme_override_constants/separation = 28
+
+[node name="BotaoProduto5" parent="Conteudo/ContainersInventario/CintoContainer" index="0" unique_id=953733251 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+cor_disponivel = Color(0.2509804, 0.2509804, 0.2509804, 0)
+cor_bloqueado = Color(0.6, 0.14901961, 0.14901961, 0)
+cor_erro_piscar = Color(1, 0.2, 0.2, 0)
+cor_bolinha_ativa = Color(0.2, 0.8, 0.2, 0)
+cor_bolinha_inativa = Color(0.3019608, 0.3019608, 0.3019608, 0)
+modo_operacao = 1
+
+[node name="BotaoProduto6" parent="Conteudo/ContainersInventario/CintoContainer" index="1" unique_id=1788010269 instance=ExtResource("2_xj0aw")]
+layout_mode = 2
+cor_disponivel = Color(0.2509804, 0.2509804, 0.2509804, 0)
+cor_bloqueado = Color(0.6, 0.14901961, 0.14901961, 0)
+cor_erro_piscar = Color(1, 0.2, 0.2, 0)
+cor_bolinha_ativa = Color(0.2, 0.8, 0.2, 0)
+cor_bolinha_inativa = Color(0.3019608, 0.3019608, 0.3019608, 0)
+modo_operacao = 1
+
+[node name="Control" type="Control" parent="Conteudo/ContainersInventario/CintoContainer" index="2" unique_id=398967173]
+layout_mode = 2
+
+[node name="Produtos" type="Control" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="3" unique_id=2124073206]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 393.0
+offset_top = 85.0
+offset_right = 432.9999
+offset_bottom = 124.999985
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+
+[node name="Produto1" parent="Conteudo/Produtos" index="0" unique_id=1960410529 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
+layout_mode = 1
+offset_left = -250.0
+offset_right = -169.59999
+produto = ExtResource("6_fb8rp")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="Produto2" parent="Conteudo/Produtos" index="1" unique_id=1056203910 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
+layout_mode = 1
+offset_left = -150.0
+offset_right = -69.6
+produto = ExtResource("3_3romc")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="Produto3" parent="Conteudo/Produtos" index="2" unique_id=1017298116 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
+layout_mode = 1
+offset_left = -50.0
+offset_right = 30.400003
+produto = ExtResource("5_y57jt")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="Produto4" parent="Conteudo/Produtos" index="3" unique_id=333905492 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
+layout_mode = 1
+offset_left = 50.0
+offset_right = 130.40001
+produto = ExtResource("4_l04tu")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="Produto5" parent="Conteudo/Produtos" index="4" unique_id=669868599 node_paths=PackedStringArray("area_limite_tooltip") instance=ExtResource("2_xj0aw")]
+layout_mode = 1
+offset_left = 150.0
+offset_right = 230.40001
+produto = ExtResource("7_l06el")
+area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
+
+[node name="TituloInventario" type="Label" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1226234536]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 132.0
+offset_right = 130.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("4_qonm2")
+theme_override_font_sizes/font_size = 24
+text = "MOCHILA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotaoTrocarInventario" type="Button" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="1" unique_id=1959393873]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 156.0
+offset_right = 130.0
+offset_bottom = 180.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 8
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("4_qonm2")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_qonm2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4jp1i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ruy3p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4h44i")
+text = "TROCAR"
+icon = ExtResource("8_qonm2")
+script = ExtResource("6_ruy3p")
+som_hover = ExtResource("7_4h44i")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_fr10v")
+volume_clique_db = -5.0
+
+[node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="2" unique_id=1433500361]
 text = "COMERCIANTE"
+
+[node name="BotaoVoltar" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="3" unique_id=624095006]
+theme_override_styles/normal = SubResource("StyleBoxFlat_8mo0i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d0m2b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_evj2b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wt6ah")
 
 [node name="PersonagemImagem" parent="Personagem/EspacoPersonagem" parent_id_path=PackedInt32Array(1732438903) index="0" unique_id=897123767]
 texture = ExtResource("2_iljke")
 
-[connection signal="pressed" from="AreaLimiteTooltip/BotaoTrocarInventario" to="." method="_on_botao_trocar_inventario_pressed"]
-[connection signal="pressed" from="AreaLimiteTooltip/VenderTudo" to="." method="_on_vender_tudo_pressed"]
+[connection signal="pressed" from="Lateral/BotaoTrocarInventario" to="." method="_on_botao_trocar_inventario_pressed"]

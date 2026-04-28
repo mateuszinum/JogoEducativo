@@ -12,6 +12,9 @@ var JOGADOR_IMORTAL : bool = false # define se o jogador é invulnerável ou nã
 # Mude tudo aqui para 'true' na hora de compilar o jogo final pro público!
 var TOCAR_MUSICA : bool = true # liga ou desliga todas as músicas
 var USAR_EFEITOS_TELA : bool = true # define se vai ter efeitos de pós processamento
+
+# Define o índice da fonte do terminal. Atualmente só temos 0 e 1
+var FONTE_TERMINAL : int = 0
 # -------------------------------------------------- #
 
 
@@ -34,8 +37,4 @@ var USAR_SHAKE : bool = true
 
 # Define se vai ter luz e partículas nos ataques
 var GRÁFICO_HIGH : bool = true
-
-# Define o índice da fonte do terminal. Atualmente só temos 0 e 1
-var FONTE_TERMINAL : int = 0
-
 # -------------------------------------------------- #
