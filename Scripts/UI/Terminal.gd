@@ -12,7 +12,6 @@ extends PanelContainer
 @export var icone_escapar: Texture2D
 @export var tempo_cooldown: float = 1.0
 
-# --- NOVO: Array para você arrastar suas fontes no Inspector ---
 @export_group("Fontes do Terminal")
 @export var fontes_disponiveis: Array[Font] = []
 
@@ -38,7 +37,7 @@ func _ready() -> void:
 	code_edit.focus_mode = Control.FOCUS_CLICK
 	
 	configurar_cores_do_codigo()
-	aplicar_fonte() # <--- Chama a configuração de fonte logo ao iniciar
+	aplicar_fonte()
 	
 	code_edit.code_completion_enabled = true
 	code_edit.text_changed.connect(_on_text_changed)
@@ -47,16 +46,12 @@ func _ready() -> void:
 	_configurar_tooltip_erro()
 	atualizar_estado_botao()
 
-# --- NOVA FUNÇÃO PARA APLICAR A FONTE ---
 func aplicar_fonte() -> void:
 	var indice = Constantes.FONTE_TERMINAL
-	# Checa se o número é válido e se existe dentro do array que você configurou no editor
 	if indice >= 0 and indice < fontes_disponiveis.size():
 		var fonte_escolhida = fontes_disponiveis[indice]
 		if fonte_escolhida != null:
-			# Sobrescreve a fonte padrão do CodeEdit via código
 			code_edit.add_theme_font_override("font", fonte_escolhida)
-# ----------------------------------------
 
 func _configurar_tooltip_erro() -> void:
 	tooltip_erro = Label.new()
@@ -126,6 +121,19 @@ func ativar_modo_arena():
 	code_edit.release_focus() 
 	iniciar_cooldown_seguranca()
 
+func abortar_arena():
+	if interpretador.has_method("PararExecucao"):
+		interpretador.PararExecucao()
+			
+	codigo_rodando = false
+	limpar_erros_de_sintaxe() 
+		
+	botao_executar.disabled = true 
+	ativar_modo_vilarejo()
+		
+	if FuncoesNativas.has_method("escapar"):
+		FuncoesNativas.escapar()
+
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
 
@@ -154,17 +162,7 @@ func _on_botao_executar_pressed() -> void:
 		iniciar_cooldown_seguranca()
 
 	elif modo_atual == "arena":
-		if interpretador.has_method("PararExecucao"):
-			interpretador.PararExecucao()
-			
-		codigo_rodando = false
-		limpar_erros_de_sintaxe() 
-		
-		botao_executar.disabled = true 
-		ativar_modo_vilarejo()
-		
-		if FuncoesNativas.has_method("escapar"):
-			FuncoesNativas.escapar()
+		abortar_arena()
 
 func _on_code_edit_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -237,13 +235,13 @@ func configurar_cores_do_codigo() -> void:
 	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
 		
 	var cor_funcao = Color("#dcdcaa")
-	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho"]
+	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho", "trunca", "aleatorio", "escreva"]
 	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
-	
+
 	var funcoes_membro = ["usarItem", "colocarItem"]
 	for func_membro in funcoes_membro: 
 		highlighter.add_member_keyword_color(func_membro, cor_funcao)
-		
+
 	code_edit.syntax_highlighter = highlighter
 
 func _on_botao_debug_pressed() -> void:
@@ -293,7 +291,6 @@ func _on_code_completion_requested() -> void:
 	var line_text = code_edit.get_line(current_line).substr(0, current_col)
 
 	var texto_limpo = line_text.strip_edges()
-	# ADICIONADO: "fim funcao" para cancelar o menu popup na hora errada
 	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se") or texto_limpo.ends_with("fim funcao"):
 		code_edit.cancel_code_completion()
 		return

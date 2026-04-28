@@ -6,12 +6,13 @@ extends Node
 # Coisas de desenvolvimento
 var MODO_DEV : bool = true
 var TUDO_DESBLOQUEADO : bool = true
+var TUDO_GRATIS : bool = true
 
 # define se os ataques precisam de requisitos para serem lançados
 var REQUISITOS_DESATIVADOS : bool = true 
 # -------------------------------------------------- #
 # Define se vai ter efeitos de pós processamento e música
-var TOCAR_MUSICA : bool = false
+var TOCAR_MUSICA : bool = true
 var USAR_EFEITOS_TELA : bool = true
 # -------------------------------------------------- #
 

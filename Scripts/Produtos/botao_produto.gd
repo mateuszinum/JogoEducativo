@@ -205,7 +205,32 @@ func verificar_pre_requisitos() -> void:
 
 func _pressed() -> void:
 	if pode_comprar():
-		efetivar_compra()
+		if produto.tipo == ProdutoLoja.TipoProduto.ITEM_UNICO:
+			var compra_aprovada = Inventario.tentar_comprar_via_botao(produto)
+			if compra_aprovada:
+				efetivar_compra()
+			else:
+				disparar_erro() 
+				
+		else:
+			var custo_data = obter_custo_atual()
+			var item_custo = custo_data["item"]
+			var qtd_custo = custo_data["qtd"]
+			
+			var pago = false
+			
+			if Constantes.TUDO_GRATIS or item_custo == null:
+				pago = true
+			else:
+				pago = RecursosManager.pagarRecurso(item_custo.nome, qtd_custo)
+				
+			if pago:
+				efetivar_compra()
+				atualizar_visual()
+			else:
+				disparar_erro()
+	else:
+		disparar_erro()
 
 func efetivar_compra() -> void:
 	match produto.tipo:
@@ -422,3 +447,33 @@ func _process(_delta: float) -> void:
 		pos_alvo.y = max(pos_alvo.y, rect_limite.position.y + margem_borda.y)
 		
 		tooltip.global_position = pos_alvo
+
+func obter_custo_atual() -> Dictionary:
+	var item_custo: ItemData = null
+	var qtd_custo: int = 0
+	
+	match produto.tipo:
+		ProdutoLoja.TipoProduto.ITEM_UNICO:
+			item_custo = produto.custo_item_simples
+			qtd_custo = produto.custo_quantidade_simples
+			
+		ProdutoLoja.TipoProduto.DESBLOQUEIO_UNICO:
+			if nivel_atual == 0:
+				item_custo = produto.custo_item_simples
+				qtd_custo = produto.custo_quantidade_simples
+				
+		ProdutoLoja.TipoProduto.UPGRADE:
+			var max_niveis = produto.niveis.size() + 1
+			if nivel_atual < max_niveis:
+				var index_proximo = nivel_atual - 1
+				item_custo = produto.niveis[index_proximo].custo_item
+				qtd_custo = produto.niveis[index_proximo].custo_quantidade
+				
+		ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
+			var max_niveis = produto.niveis.size()
+			if nivel_atual < max_niveis:
+				var index_proximo = nivel_atual
+				item_custo = produto.niveis[index_proximo].custo_item
+				qtd_custo = produto.niveis[index_proximo].custo_quantidade
+
+	return {"item": item_custo, "qtd": qtd_custo}

@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://dtg8o2ug6bsgf" path="res://Scripts/Weapon/Requisitos de ataques/sequencia_requisito.gd" id="6_qwujo"]
 [ext_resource type="Texture2D" uid="uid://pyxp50xxhcq0" path="res://Assets/Light Texture/pointlight.png" id="6_vkngd"]
 [ext_resource type="Script" uid="uid://brcgkayh57l4n" path="res://Scripts/Weapon/Weapon.gd" id="7_mqfsi"]
-[ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="8_p7nqc"]
-[ext_resource type="Resource" uid="uid://8pxt5qb4yqnu" path="res://Resources/Weapons/Gelo.tres" id="9_vkngd"]
-[ext_resource type="Resource" uid="uid://bsqee3u0n3ebm" path="res://Resources/Weapons/Raio.tres" id="11_mqfsi"]
 [ext_resource type="Script" uid="uid://dloj4xl1hv344" path="res://Scripts/Weapon/ataque_area.gd" id="13_p7nqc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkngd"]
@@ -61,7 +58,6 @@ quantidade = 3
 
 [sub_resource type="Resource" id="Resource_pq1mw"]
 script = ExtResource("6_qwujo")
-sequencia_obrigatoria = Array[ExtResource("7_mqfsi")]([ExtResource("8_p7nqc"), ExtResource("9_vkngd"), ExtResource("11_mqfsi"), ExtResource("9_vkngd")])
 metadata/_custom_type_script = "uid://dtg8o2ug6bsgf"
 
 [resource]

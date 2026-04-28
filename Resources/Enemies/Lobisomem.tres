@@ -1,26 +1,21 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://dj8iit3oemlpe"]
 
-[ext_resource type="Texture2D" uid="uid://dc8m6q40x67pg" path="res://Assets/Inimigos/Werewolf-Death.png" id="1_kqvqy"]
 [ext_resource type="Texture2D" uid="uid://w2hwql3enqb6" path="res://Assets/Inimigos/Werewolf-Walk.png" id="1_qa7hl"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_huyki"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_n0mhb"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="4_3n37o"]
-[ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="5_huyki"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="5_huyki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d0sj"]
-atlas = ExtResource("1_kqvqy")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e73qh"]
-atlas = ExtResource("1_kqvqy")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsv78"]
-atlas = ExtResource("1_kqvqy")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pepg"]
-atlas = ExtResource("1_kqvqy")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0mhb"]

@@ -16,7 +16,8 @@ const MULTIPLICADOR_TICK = {
 	"usar_item_mochila": 0.1,
 	"colocar_item_cinto": 0.1,
 	"colocar_item_mochila": 0.1,
-	"comprar": 0.0
+	"comprar": 0.2,
+	"venderTudo": 0.2
 }
 
 # 2. COOLDOWNS MÍNIMOS (Multiplicam o tempo_tick)

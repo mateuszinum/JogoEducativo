@@ -2,10 +2,12 @@ extends Node2D
 
 @export var stage_data: StageData
 @export var cena_tesouro: PackedScene
+@export var terminal: Node
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
 
 var seed_hash: int
+var recursos_iniciais: Dictionary
 
 func _ready():
 	randomize()
@@ -70,9 +72,12 @@ func generate_world():
 			if final_obstacle_id != -1:
 				tile_map.set_cell(1, pos, final_obstacle_id, Vector2i(0, 0))
 				tile_map.erase_cell(0, pos)
-						
+			
+	recursos_iniciais = RecursosManager.listarRecursos().duplicate()	
+	print(recursos_iniciais)				
 	var player = get_tree().get_first_node_in_group("Player")
 	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
+	player.connect("vida_zerada", _on_player_morreu)
 	gerar_tesouro()
 
 func play_stage_music():
@@ -110,3 +115,19 @@ func gerar_tesouro():
 	tile_map.add_child(novo_tesouro)
 	
 	novo_tesouro.position = tile_map.map_to_local(coordenada_sorteada)
+
+func _on_player_morreu():
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and "invulneravel" in player:
+		player.invulneravel = true
+	
+	$TelaMorte.show()
+	
+	await get_tree().create_timer(3.0).timeout
+	print(recursos_iniciais)
+	RecursosManager.aplicarListaRecursos(recursos_iniciais)
+	
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	if terminal:
+		terminal.abortar_arena()
+	

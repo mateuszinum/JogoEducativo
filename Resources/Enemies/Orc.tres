@@ -1,7 +1,6 @@
 [gd_resource type="Resource" script_class="Enemy" format=3 uid="uid://cqnnmeqrchfi8"]
 
 [ext_resource type="Texture2D" uid="uid://di6y1ufnjhuag" path="res://Assets/Inimigos/Armored Orc-Walk.png" id="1_nevxn"]
-[ext_resource type="Texture2D" uid="uid://dnirigj3qdvqg" path="res://Assets/Inimigos/Armored Orc-Death.png" id="1_oro6y"]
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_f1yee"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_tsw1m"]
 [ext_resource type="Resource" uid="uid://dmo3l5vfvdxq1" path="res://Resources/Weapons/EsferaAzul.tres" id="3_f1yee"]
@@ -10,19 +9,15 @@
 [ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="7_586d2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubjl6"]
-atlas = ExtResource("1_oro6y")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sp2fd"]
-atlas = ExtResource("1_oro6y")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a1rrt"]
-atlas = ExtResource("1_oro6y")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mus6g"]
-atlas = ExtResource("1_oro6y")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tsw1m"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fahp554uy14i" path="res://Scripts/UI/main_menu.gd" id="1_i2xx2"]
 [ext_resource type="Texture2D" uid="uid://dwsp5g03b6x68" path="res://Assets/UI/fundo1.jpg" id="2_4pqbp"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="3_gih0s"]
-[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/musica 8bit_2.wav" id="3_o14dv"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="3_o14dv"]
 [ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="4_k33u3"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_mrfpk"]
 [ext_resource type="Texture2D" uid="uid://b36diiavsxrpb" path="res://Assets/UI/Logo.png" id="4_u7lva"]
