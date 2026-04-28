@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://doh77mpn3yqve"]
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_v8lro"]
+[ext_resource type="Texture2D" uid="uid://dbf6dqrtu2mqa" path="res://Assets/UI/Biblioteca.jpg" id="2_or0xj"]
 [ext_resource type="Script" uid="uid://dj7o16agtuopo" path="res://Scripts/Biblioteca/biblioteca_pagina.gd" id="2_woxhb"]
 [ext_resource type="Resource" uid="uid://hrs804g1pltj" path="res://Resources/Biblioteca/PaginaInicial.tres" id="3_t3afg"]
 [ext_resource type="Texture2D" uid="uid://1xcct0mwebrk" path="res://Assets/UI/Terminal/x.png" id="5_or0xj"]
@@ -48,13 +49,22 @@ offset_right = 600.0
 offset_bottom = 500.0
 color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 
-[node name="FundoOverlay" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="2" unique_id=1375536134]
+[node name="TextureRect" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="2" unique_id=1865794898]
+layout_mode = 0
+offset_left = 145.0
+offset_top = -6.285
+offset_right = 2545.0
+offset_bottom = 2643.715
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("2_or0xj")
+
+[node name="FundoOverlay" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="3" unique_id=1375536134]
 visible = false
 
-[node name="BarraSuperior" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="3" unique_id=7503734]
+[node name="BarraSuperior" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="4" unique_id=7503734]
 visible = false
 
-[node name="SombraPersonagem" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="5" unique_id=378721249]
+[node name="SombraPersonagem" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="6" unique_id=378721249]
 visible = false
 
 [node name="HUD_Inventario" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="0" unique_id=319363314]
@@ -77,7 +87,7 @@ anchor_left = 4.025
 anchor_top = 0.25
 anchor_right = 15.700001
 anchor_bottom = 12.575001
-offset_bottom = -3.0517578e-05
+offset_bottom = 36.99997
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Conteudo/Control/VBoxContainer" index="0" unique_id=1705521741]
 layout_mode = 2

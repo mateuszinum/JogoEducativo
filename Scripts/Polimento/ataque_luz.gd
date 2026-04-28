@@ -21,7 +21,7 @@ func _ready() -> void:
 	energy = energia_base
 	texture_scale = escala_base
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if pulsar and not _morrendo:
 		# Cria um efeito de oscilação natural na energia da luz
 		energy = energia_base + (sin(Time.get_ticks_msec() * 0.001 * pulso_velocidade) * pulso_intensidade)

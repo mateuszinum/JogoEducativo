@@ -21,7 +21,6 @@ func _on_personagem_pressed() -> void:
 
 
 func _on_botao_trocar_inventario_pressed() -> void:
-	# Alterna entre Cinto (0) e Mochila (1)
 	if Inventario.inventario_ativo == Inventario.TipoInventario.CINTO:
 		Inventario.trocar_inventario(Inventario.TipoInventario.MOCHILA)
 	else:

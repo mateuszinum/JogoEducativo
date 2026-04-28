@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var interpretador = %InterpretadorServico
 @onready var viewport = %SubViewport
 @onready var botao_debug = %BotaoDebug 
+@onready var botao_recurso = %BotaoRecurso
 
 @export_group("Customização do Botão")
 @export var icone_rodar: Texture2D
@@ -27,6 +28,9 @@ func _ready() -> void:
 	if not botao_executar.pressed.is_connected(_on_botao_executar_pressed):
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
 		
+	if botao_recurso:
+		botao_recurso.visible = Constantes.MODO_DEV
+	
 	if botao_debug:
 		botao_debug.visible = Constantes.MODO_DEV
 		if Constantes.MODO_DEV and not botao_debug.pressed.is_connected(_on_botao_debug_pressed):
@@ -120,6 +124,9 @@ func ativar_modo_arena():
 	atualizar_estado_botao()
 	code_edit.release_focus() 
 	iniciar_cooldown_seguranca()
+
+func desativar_botao_executar():
+	botao_executar.disabled = true 
 
 func abortar_arena():
 	if interpretador.has_method("PararExecucao"):
@@ -221,12 +228,10 @@ func configurar_cores_do_codigo() -> void:
 	highlighter.add_color_region('#', '', Color("#6a9955"), true)   
 	
 	var cor_controle = Color("#c586c0")
-	# ADICIONADO: "retorna" e "funcao"
 	var palavras_controle = ["se", "senao", "fim", "enquanto", "retorna", "funcao"]
 	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
 		
 	var cor_tipo = Color("#569cd6")
-	# ADICIONADO: "vazio"
 	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
@@ -245,7 +250,7 @@ func configurar_cores_do_codigo() -> void:
 	code_edit.syntax_highlighter = highlighter
 
 func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Floresta)
+	var codigo_teste = """arena(Campos)
 Direcao dir = [Esquerda, Cima, Direita, Baixo, Esquerda, Cima, Direita, Baixo]
 Ataque atk = [EsferaAzul, EsferaVermelha, Raio, Gelo, ExplosaoGelo, Fogo, ExplosaoFogo, Alho]
 bool f = !Verdadeiro

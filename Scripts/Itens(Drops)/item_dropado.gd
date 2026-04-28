@@ -51,6 +51,7 @@ func _on_body_entered(body: Node2D) -> void:
 		coletar_item()
 
 func coletar_item() -> void:
+	@warning_ignore("narrowing_conversion")
 	Inventario.adicionar_item(dados_do_item, quantidade_neste_drop * Atributos.coleta_multiplier) 
 	
 	if player != null and player.has_method("tocar_som_coleta"):

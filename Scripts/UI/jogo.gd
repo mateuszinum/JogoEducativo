@@ -83,7 +83,6 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	var tween_out = create_tween()
 	tween_out.tween_property(fade_tv, "modulate:a", 1.0, 1.0)
 	
-	# Abaixa a música do vilarejo se houver
 	if viewport.get_child_count() > 0:
 		var cena_atual = viewport.get_child(0)
 		if cena_atual.has_node("MusicaVilarejo"):
@@ -95,7 +94,6 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	
 	limpar_viewport()
 	
-	# Instancia a Arena (proc_gen_world) e INJETA o bioma escolhido pelo código!
 	var nova_arena = CENA_ARENA.instantiate()
 	nova_arena.stage_data = novo_stage_data
 	viewport.add_child(nova_arena)
@@ -110,6 +108,18 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	
 	transicao_em_andamento = false
 
-
 func _on_botao_debug_pressed() -> void:
-	pass # Replace with function body.
+	pass
+
+func _on_botao_recurso_pressed() -> void:
+	RecursosManager.receberRecurso("Couro", 100)
+	RecursosManager.receberRecurso("Cristal", 200)
+	RecursosManager.receberRecurso("Diamante", 300)
+	RecursosManager.receberRecurso("Esmeralda", 400)
+	RecursosManager.receberRecurso("Magma", 500)
+	RecursosManager.receberRecurso("Moeda", 9000000000)
+	RecursosManager.receberRecurso("Osso", 1000)
+	RecursosManager.receberRecurso("Plasma", 56)
+	RecursosManager.receberRecurso("Safira", 275)
+	RecursosManager.receberRecurso("Sangue", 5125)
+	pass

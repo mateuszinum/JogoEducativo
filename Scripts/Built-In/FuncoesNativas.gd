@@ -78,12 +78,6 @@ func comprar(item: String):
 func arena(nome_arena: String):
 	Partida.arena(nome_arena)
 
-func colocar_item_mochila(item: String):
-	InventarioPlayer.colocar_item_mochila(item)
-
-func colocar_item_cinto(item: String, idx: int):
-	InventarioPlayer.colocar_item_cinto(item, idx)
-
 func venderTudo():
 	InventarioPlayer.vender_tudo()
 
@@ -400,10 +394,6 @@ class InventarioPlayer:
 		
 		else:
 			print("Você inseriu um index inválido para o cinto")
-	
-	static func colocar_item_mochila(item): pass
-	
-	static func colocar_item_cinto(item, index): pass
 	
 	static func vender_tudo():
 		Inventario.vender_tudo()

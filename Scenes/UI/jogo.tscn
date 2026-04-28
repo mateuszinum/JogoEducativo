@@ -147,6 +147,21 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_a105h")
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="BotaoRecurso" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1189409194]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Ganhar recursos"
+script = ExtResource("5_kjdr6")
+
 [node name="BotaoDebug" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1426945878]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
@@ -159,7 +174,7 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "[DEBUG] Colocar código"
+text = "Colocar código"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoExecutar" type="Button" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=642814574]
@@ -237,5 +252,6 @@ color = Color(0, 0, 0, 1)
 unique_name_in_owner = true
 script = ExtResource("3_8gbds")
 
+[connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoRecurso" to="." method="_on_botao_recurso_pressed"]
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoDebug" to="." method="_on_botao_debug_pressed"]
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]

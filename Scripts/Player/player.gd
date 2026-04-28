@@ -125,7 +125,7 @@ func move_false():
 	moving = false
 
 func take_damage(amount):
-	if invulneravel or $DamageTick.time_left > 0:
+	if invulneravel or $DamageTick.time_left > 0 or Constantes.JOGADOR_IMORTAL:
 		return
 	
 	health -= amount
@@ -199,7 +199,7 @@ func shake_screen(intensidade: float) -> void:
 			intensidade *= 0.7 
 		tween.tween_property(camera, "offset", Vector2.ZERO, 0.05)
 		
-func feedback_erro_ataque(arma: Weapon):
+func feedback_erro_ataque(_arma: Weapon):
 	if ERROR_FEEDBACK != null:
 		var erro_inst = ERROR_FEEDBACK.instantiate()
 		

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b0dfuc7lgsag6"]
 
 [ext_resource type="Script" uid="uid://dl6gqihkbwj4y" path="res://Scripts/Spawner/spawner.gd" id="1_kiceh"]
+[ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="2_rd5sa"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_wbtia"]
 
 [node name="Spawner" type="Node2D" unique_id=179975569 groups=["Spawner"]]
 script = ExtResource("1_kiceh")
@@ -8,24 +10,42 @@ max_enemies = 200
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=233284635]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=332268405]
-offset_left = 68.0
-offset_top = 64.0
-offset_right = 110.0
-offset_bottom = 104.0
+[node name="HUD_Inventario" parent="UI" unique_id=1523922618 instance=ExtResource("2_rd5sa")]
+offset_left = -133.285
+offset_top = 18.0
+offset_right = -133.285
+offset_bottom = 18.0
+escala_pulo = Vector2(1.6, 1.6)
+duracao_pulo = 0.4
+intensidade_tremer = 0.4
+duracao_tremer = 0.2
 
-[node name="Minute" type="Label" parent="UI/HBoxContainer" unique_id=1393564040]
+[node name="Tempo" type="HBoxContainer" parent="UI" unique_id=332268405]
+anchors_preset = -1
+offset_left = 550.0
+offset_top = 38.0
+offset_right = 595.0
+offset_bottom = 62.0
+grow_horizontal = 0
+
+[node name="Minute" type="Label" parent="UI/Tempo" unique_id=1393564040]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wbtia")
+theme_override_font_sizes/font_size = 24
 text = "0"
 
-[node name="Label2" type="Label" parent="UI/HBoxContainer" unique_id=3446363]
+[node name="Label2" type="Label" parent="UI/Tempo" unique_id=3446363]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wbtia")
+theme_override_font_sizes/font_size = 24
 text = ":"
 
-[node name="Seconds" type="Label" parent="UI/HBoxContainer" unique_id=1390939422]
+[node name="Seconds" type="Label" parent="UI/Tempo" unique_id=1390939422]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wbtia")
+theme_override_font_sizes/font_size = 24
 text = "00"
 
 [node name="Timer" type="Timer" parent="." unique_id=1316115701]

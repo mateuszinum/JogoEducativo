@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://dr4f7eely5wgw"]
+
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_gbtfw"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_hr1r0"]
+[ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="3_dwsyw"]
+
+[sub_resource type="Resource" id="Resource_7eupd"]
+script = ExtResource("1_gbtfw")
+texto = "Ele tem uma mente fechada, só isso."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_5actq"]
+script = ExtResource("2_hr1r0")
+texto_opcao = "Porque o mago velho não gosta de você?"
+linhas = Array[ExtResource("1_gbtfw")]([SubResource("Resource_7eupd")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_gbtfw"]
+script = ExtResource("1_gbtfw")
+texto = "Você precisa ir para as arenas e encontrar tesouros em cada uma delas."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_hr1r0"]
+script = ExtResource("2_hr1r0")
+texto_opcao = "Como eu consigo os recursos que você precisa?"
+linhas = Array[ExtResource("1_gbtfw")]([SubResource("Resource_gbtfw")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_0ej5d"]
+script = ExtResource("2_hr1r0")
+texto_opcao = "Deixa pra lá... [SAIR]"
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_8t35l"]
+script = ExtResource("1_gbtfw")
+texto = "Que saco! O que você quer agora?"
+tem_opcoes = true
+opcoes = Array[ExtResource("2_hr1r0")]([SubResource("Resource_5actq"), SubResource("Resource_hr1r0"), SubResource("Resource_0ej5d")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[resource]
+script = ExtResource("3_dwsyw")
+linhas = Array[ExtResource("1_gbtfw")]([SubResource("Resource_8t35l")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

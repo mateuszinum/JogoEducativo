@@ -48,7 +48,7 @@ func _get_property_list() -> Array:
 		
 	return properties
 
-func shoot(source, target, scene_tree):
+func shoot(source, target, _scene_tree):
 	if target == null: return
 		
 	if attack_sound != null:
