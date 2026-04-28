@@ -5,7 +5,6 @@ extends Node2D
 @export var terminal: Node
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
-@onready var interpretador = %InterpretadorServico
 
 var seed_hash: int
 var recursos_iniciais: Dictionary

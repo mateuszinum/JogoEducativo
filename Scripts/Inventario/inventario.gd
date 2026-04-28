@@ -38,10 +38,23 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 		print("Este compartimento está cheio!")
 		return false
 
-	var nome_material = produto.custo_item_simples.nome
-	var qtd_custo = produto.custo_quantidade_simples
+	if produto.tipo != ProdutoLoja.TipoProduto.ITEM_UNICO:
+		printerr("Erro: Tentativa de colocar Upgrade no Inventário!")
+		return false
+		
+	var nome_material = ""
+	var qtd_custo = 0
+	if produto.custo_item_simples != null:
+		nome_material = produto.custo_item_simples.nome
+		qtd_custo = produto.custo_quantidade_simples
 	
-	if RecursosManager.pagarRecurso(nome_material, qtd_custo):
+	var pago = false
+	if Constantes.TUDO_GRATIS or (nome_material == "" and qtd_custo <= 0):
+		pago = true
+	else:
+		pago = RecursosManager.pagarRecurso(nome_material, qtd_custo)
+		
+	if pago:
 		lista_atual[slot_livre] = produto
 		inventario_atualizado.emit() 
 		inventario_comprados_atualizado.emit() 

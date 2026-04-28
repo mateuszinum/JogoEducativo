@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cbobvrteab571" path="res://Scripts/Enemy/weakness_data.gd" id="2_huyki"]
 [ext_resource type="Script" uid="uid://b2i50jlxpbinp" path="res://Scripts/Enemy/enemyType.gd" id="2_n0mhb"]
 [ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="4_3n37o"]
-[ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="5_huyki"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="5_huyki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0d0sj"]
 region = Rect2(0, 0, 100, 100)
