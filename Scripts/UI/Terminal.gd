@@ -267,8 +267,14 @@ fim funcao
 
 vazio AtacarInimigoMaisProximo():
 	Inimigo alvo = inimigoMaisProximo()
-	atacar(alvo, atk[i])
-	retorna
+	Ataque atk = atk[i]
+	se(alvo.nome == "NULO"):
+		retorna
+	senao:
+		escreva("Ataquei um " + alvo.nome)
+		atacar(alvo, atk)
+		retorna
+	fim se
 fim funcao
 
 vazio Incremento(int maior):
@@ -318,15 +324,42 @@ func _on_code_completion_requested() -> void:
 		if not ProgressoDB.tem_desbloqueado(requisito):
 			continue
 			
-		if termo.to_lower().begins_with(prefixo_digitado.to_lower()) and termo != prefixo_digitado:
+		var match_encontrado = false
+		var texto_insercao = termo
+		
+		if prefixo_digitado.contains("."):
+			var partes = prefixo_digitado.rsplit(".", true, 1)
+			var sufixo = partes[1]
+			
+			if termo.begins_with("."):
+				if termo.to_lower().begins_with("." + sufixo.to_lower()) and "." + sufixo != termo:
+					match_encontrado = true
+					texto_insercao = termo.substr(1) 
+					
+			elif termo.to_lower().begins_with(prefixo_digitado.to_lower()) and prefixo_digitado != termo:
+				match_encontrado = true
+				var termo_partes = termo.rsplit(".", true, 1)
+				if termo_partes.size() > 1:
+					texto_insercao = termo_partes[1] 
+
+		else:
+			if termo.to_lower().begins_with(prefixo_digitado.to_lower()) and termo != prefixo_digitado:
+				if not termo.begins_with("."):
+					match_encontrado = true
+
+		if match_encontrado:
 			var tipo_icone = CodeEdit.KIND_PLAIN_TEXT
 			if termo.contains("()"): tipo_icone = CodeEdit.KIND_FUNCTION
-			code_edit.add_code_completion_option(tipo_icone, termo, termo)
+			
+			code_edit.add_code_completion_option(tipo_icone, termo, texto_insercao)
 			sugestoes_encontradas += 1
+			
 		if sugestoes_encontradas >= 5: break
 
-	if sugestoes_encontradas > 0: code_edit.update_code_completion_options(true)
-	else: code_edit.cancel_code_completion()
+	if sugestoes_encontradas > 0: 
+		code_edit.update_code_completion_options(true)
+	else: 
+		code_edit.cancel_code_completion()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_text_completion_accept") or event.is_action_pressed("ui_accept"):

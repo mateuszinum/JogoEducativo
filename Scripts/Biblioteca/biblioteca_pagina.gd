@@ -19,8 +19,6 @@ func _ready():
 	if pagina_para_testar != null:
 		pagina_atual_caminho = pagina_para_testar.resource_path
 		carregar_pagina(pagina_para_testar)
-	else:
-		print("Faltou colocar um texto aqui")
 
 # ==========================================
 # NOVO: FILTRO DINÂMICO DE PROGRESSÃO
@@ -93,8 +91,6 @@ func carregar_pagina(pagina: BibliotecaResource):
 func _on_link_clicado(meta: String):
 	if mapa_de_paginas.has(meta):
 		ir_para_pagina(mapa_de_paginas[meta])
-	else:
-		print("Erro: A página '", meta, "' não foi encontrada no mapa_de_paginas.")
 		
 func mapear_todos_os_arquivos(caminho_da_pasta: String):
 	var dir = DirAccess.open(caminho_da_pasta)
@@ -125,7 +121,7 @@ func ir_para_pagina(caminho_do_arquivo: String) -> void:
 		scroll_container.scroll_vertical = 0
 		btn_voltar.visible = historico.size() > 0
 	else:
-		print("Erro: Não foi possível carregar -> ", caminho_do_arquivo)
+		printerr("Erro: Não foi possível carregar -> ", caminho_do_arquivo)
 
 func _on_botao_voltar_biblioteca_pressed() -> void:
 	if historico.size() > 0:

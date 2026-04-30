@@ -26,5 +26,5 @@ func _on_body_entered(body):
 		if mapa:
 			mapa.call_deferred("gerar_tesouro")
 			
-		print("Pegou o tesouro e dropou os itens!")
+		#print("Pegou o tesouro e dropou os itens!")
 		queue_free()

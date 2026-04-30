@@ -35,7 +35,7 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 			break
 	
 	if slot_livre == -1:
-		print("Este compartimento está cheio!")
+		#print("Este compartimento está cheio!")
 		return false
 
 	if produto.tipo != ProdutoLoja.TipoProduto.ITEM_UNICO:

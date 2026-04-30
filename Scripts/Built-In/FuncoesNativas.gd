@@ -50,42 +50,20 @@ func _physics_process(_delta: float) -> void:
 		else:
 			_cache_tesouro_pos = Vector2i(-1, -1)
 
-# ==========================================
-# PORTAS DE ENTRADA DO C# (API GATEWAY)
-# ==========================================
-
 func jogoEstaPronto() -> bool:
 	return _posicao_inicializada
+
+# ==============================================================================
+# PORTAS DE ENTRADA DO C# (API GATEWAY)
+# ==============================================================================
+
+#Jogador
 
 func mover(direcao: String) -> bool:
 	return Jogador.mover_via_codigo(direcao)
 
 func atacar(alvo: String, tipo: String) -> bool:
 	return Jogador.atacar(alvo, tipo)
-
-func escapar():
-	Partida.escapar()
-
-func usar_item_cinto(indice: int):
-	InventarioPlayer.usar_item_cinto(indice)
-
-func usar_item_mochila():
-	InventarioPlayer.usar_item_mochila()
-
-func comprar(item: String):
-	Vilarejo.comprar(item)
-
-func arena(nome_arena: String):
-	Partida.arena(nome_arena)
-
-func venderTudo():
-	InventarioPlayer.vender_tudo()
-
-func inimigoMaisProximo() -> String:
-	return _cache_inimigo_proximo
-	
-func nomeInimigo(alvo_id: String) -> String:
-	return Inimigo.nomeInimigo(alvo_id)
 
 func podeMover(direcao: String) -> bool:
 	var dir_limpa = direcao.to_lower().strip_edges() 
@@ -94,24 +72,28 @@ func podeMover(direcao: String) -> bool:
 	if _cache_pode_mover.has(dir_limpa): 
 		resultado = _cache_pode_mover[dir_limpa] 
 	
-	print("[DEBUG C#] O agente perguntou se pode mover para '", dir_limpa, "' -> Godot respondeu: ", resultado)
-	
 	return resultado
-
-func getTempo() -> int:
-	return Partida.getTempo()
-
+	
 func getVidaAtual() -> int:
 	return Jogador.getVidaAtual()
-
-func escanearArea() -> Array:
-	return Inimigo.escanear_area()
-
+	
 func posicaoX() -> int:
 	return _coordenada_logica_atual.x
 
 func posicaoY() -> int:
 	return _coordenada_logica_atual.y
+
+
+#Partida
+
+func escapar():
+	Partida.escapar()
+
+func arena(nome_arena: String):
+	Partida.arena(nome_arena)
+
+func getTempo() -> int:
+	return Partida.getTempo()
 
 func tesouroX() -> int:
 	return _cache_tesouro_pos.x
@@ -120,10 +102,68 @@ func tesouroY() -> int:
 	return _cache_tesouro_pos.y
 
 
+#Inimigo
 
-# ==========================================
+func inimigoMaisProximo() -> String:
+	return _cache_inimigo_proximo
+
+func escanearArea() -> Array:
+	return Inimigo.escanear_area()
+
+func nomeInimigo(alvo_id: String) -> String:
+	return Inimigo.inimigo_nome(alvo_id)
+
+func obterVelocidadeInimigo(alvo_id: String) -> float:
+	return Inimigo.inimigo_velocidade(alvo_id)
+
+func obterPosicaoXInimigo(alvo_id: String) -> int:
+	return Inimigo.inimigo_posicaoX(alvo_id)
+
+func obterPosicaoYInimigo(alvo_id: String) -> int:
+	return Inimigo.inimigo_posicaoY(alvo_id)
+
+func obterVidaInimigo(alvo_id: String) -> float:
+	return Inimigo.inimigo_vida(alvo_id)
+
+
+#Produtos
+
+func usar_item_cinto(indice: int):
+	Produtos.usar_item_cinto(indice)
+
+func usar_item_mochila():
+	Produtos.usar_item_mochila()
+
+func comprar(item: String):
+	Produtos.comprar(item)
+
+func venderTudo():
+	Produtos.vender_tudo()
+
+
+#Outros
+
+func escreva(texto: String) -> void:
+	Outros.debug_escreva(texto)
+
+func trunca(valor: float) -> int:
+	return Outros.util_trunca(valor)
+
+func min(a: float, b: float) -> float:
+	return Outros.util_min(a, b)
+
+func max(a: float, b: float) -> float:
+	return Outros.util_max(a, b)
+
+func aleatorio() -> float:
+	return Outros.util_aleatorio()
+
+
+
+
+# ==============================================================================
 # LÓGICA INTERNA DAS CLASSES
-# ==========================================
+# ==============================================================================
 
 class Inimigo:
 	static func escanear_area() -> Array:
@@ -142,7 +182,7 @@ class Inimigo:
 					inimigos_proximos_ids.append(inimigo.name) 
 		return inimigos_proximos_ids
 
-	static func nomeInimigo(alvo_id: String) -> String:
+	static func inimigo_nome(alvo_id: String) -> String:
 		var tree = Engine.get_main_loop()
 		var inimigos = tree.get_nodes_in_group("Enemy")
 		for inimigo in inimigos:
@@ -150,8 +190,26 @@ class Inimigo:
 				if "type" in inimigo and inimigo.type != null:
 					return inimigo.type.nome
 				return "Inimigo Desconhecido"
-		return ""
-
+		return "NULO"
+		
+	static func inimigo_vida(alvo_id: String) -> float:
+		var tree = Engine.get_main_loop()
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				if "health" in inimigo:
+					return float(inimigo.health)
+		return 0.0
+		
+	static func inimigo_posicaoX(_alvo_id: String) -> int:
+		return 0
+		
+	static func inimigo_posicaoY(_alvo_id: String) -> int:
+		return 0
+		
+	static func inimigo_velocidade(_alvo_id: String) -> float:
+		return 0.0
 
 class Partida:
 	static var em_arena: bool = false
@@ -160,7 +218,6 @@ class Partida:
 		if not em_arena:
 			return
 		em_arena = false
-		print("Escapando da arena e voltando pro Vilarejo...")
 		
 		var tree = Engine.get_main_loop()
 		
@@ -218,27 +275,6 @@ class Partida:
 		else:
 			tree.call_group("Terminal", "mostrar_erro", "A arena '" + nome + "' não foi encontrada no banco de dados.")
 
-class Vilarejo:
-	static func comprar(item: String):
-		var tree = Engine.get_main_loop()
-		var produto_data = ProdutosDB.get_produto(item)
-		
-		if produto_data == null:
-			print("não achou")
-			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
-		
-		var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
-		
-		if compra_aprovada:
-			# Efetuar compraz
-			print("Compra de " + item + " efetuada com sucesso!")
-			
-		else:
-			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
-				print("Este compartimento está cheio!")
-			else:
-				print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
-
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> bool:
 		var dir_limpa = direcao.to_lower().strip_edges()
@@ -272,7 +308,7 @@ class Jogador:
 			mover(direcao)
 			return true
 		else:
-			print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
+			#print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
 			return false
 		
 	static func mover(direcao: String) -> void:
@@ -363,7 +399,26 @@ class Jogador:
 			return player.health
 		return 0
 
-class InventarioPlayer:
+class Produtos:
+	static func comprar(item: String):
+		var tree = Engine.get_main_loop()
+		var produto_data = ProdutosDB.get_produto(item)
+		
+		if produto_data == null:
+			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
+		
+		#var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
+		
+		#if compra_aprovada:
+			# Efetuar compraz
+			#print("Compra de " + item + " efetuada com sucesso!")
+			
+		#else:
+			#if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
+				#print("Este compartimento está cheio!")
+			#else:
+				#print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
+	
 	static func usar_item_mochila():
 		for i in range(Inventario.itens_mochila.size() - 1, -1, -1):
 			var produto_usado = Inventario.itens_mochila[i]
@@ -391,9 +446,22 @@ class InventarioPlayer:
 			else:
 				print("Não há nenhum item no índice ", index, " do cinto.")
 				return false
-		
-		else:
-			print("Você inseriu um index inválido para o cinto")
 	
 	static func vender_tudo():
 		Inventario.vender_tudo()
+
+class Outros:
+	static func debug_escreva(texto: String):
+		Engine.get_main_loop().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "Jogo", "escrever_debug", texto)
+
+	static func util_min(valor1: float, valor2: float):
+		return min(valor1, valor2)
+
+	static func util_max(valor1: float, valor2: float):
+		return max(valor1, valor2)
+
+	static func util_aleatorio():
+		return snapped(randf(), 0.01)
+
+	static func util_trunca(valor: float):
+		return int(valor)

@@ -58,14 +58,6 @@ content_margin_right = 26.0
 content_margin_bottom = 26.0
 bg_color = Color(0.1, 0.1, 0.1, 0.3)
 
-[sub_resource type="Gradient" id="Gradient_p4t22"]
-offsets = PackedFloat32Array(0.61764705, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x77am"]
-gradient = SubResource("Gradient_p4t22")
-fill_from = Vector2(1, 1)
-
 [node name="Jogo" type="Control" unique_id=984641298]
 layout_mode = 3
 anchors_preset = 15
@@ -74,14 +66,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kv1y8")
-fonte_debug = ExtResource("7_5rjbm")
-espacamento_linhas_debug = -3
-alinhamento_h_debug = 1
-cor_sombra_debug = Color(0, 0, 0, 0.18431373)
-tamanho_sombra_debug = 5
-deslocamento_sombra_x = 0
-deslocamento_sombra_y = 0
-tempo_animacao_surgir = 0.65
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1907880983]
 layout_mode = 1
@@ -251,30 +235,16 @@ mouse_filter = 2
 [node name="Bloom" type="WorldEnvironment" parent="HBoxContainer/PainelTerminal/PosProcessamento" unique_id=2084198506]
 environment = ExtResource("7_kjdr6")
 
-[node name="DebugChat" type="TextureRect" parent="." unique_id=1766562716]
-clip_children = 1
-layout_mode = 0
-offset_left = 598.0
-offset_top = 179.0
-offset_right = 831.0
-offset_bottom = 702.0
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_x77am")
-
-[node name="TextoDebug" type="VBoxContainer" parent="DebugChat" unique_id=643547039]
+[node name="TextoDebug" type="Label" parent="." unique_id=1606395669]
 unique_name_in_owner = true
-clip_children = 1
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -370.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-theme_override_constants/separation = 6
-alignment = 2
+layout_mode = 0
+offset_left = 549.0
+offset_top = 290.0
+offset_right = 837.0
+offset_bottom = 707.0
+theme_override_fonts/font = ExtResource("7_5rjbm")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1454908466]
 visible = false

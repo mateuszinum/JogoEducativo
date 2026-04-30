@@ -12,10 +12,10 @@ static var termos : Dictionary = {
 	"retorna": [0, "Funções"], "fim funcao": [0, "Funções"],
 
 	# --- Funções COM parâmetros ---
-	"mover()": [1, ""], "podeMover()": [1, "Sensores 2"], "atacar()": [1, "Início"], "arena()": [1, "Início"], "comprar()": [1, "Automação 2"], "cinto.usarItem()": [1, "Itens"], "escrever()": [1, "Debug"], "tamanho()": [1, "Utilidades"], "trunca()": [1, "Utilidades"], "min()": [1, "Utilidades"], "max()": [1, "Utilidades"], "vidaInimigo()": [1, "Sensores 3"], "velocidadeInimigo()": [1, "Sensores 3"],
+	"mover()": [1, ""], "podeMover()": [1, "Sensores 2"], "atacar()": [1, "Início"], "arena()": [1, "Início"], "comprar()": [1, "Automação 2"], "cinto.usarItem()": [1, "Itens"], "escreva()": [1, "Debug"], "tamanho()": [1, "Utilidades"], "trunca()": [1, "Utilidades"], "min()": [1, "Utilidades"], "max()": [1, "Utilidades"], "vidaInimigo()": [1, "Sensores 3"], "velocidadeInimigo()": [1, "Sensores 3"],
 
 	# --- Funções SEM parâmetros ---
-	"inimigoMaisProximo()": [0, "Início"], "tempo()": [0, "Sensores 2"], "vidaAtual()": [0, "Sensores 2"], "escanearArea()": [0, "Sensores 3"], "posicaoX()": [0, "Localização"], "posicaoY()": [0, "Localização"], "tesouroX()": [0, "Localização"], "tesouroY()": [0, "Localização"], "escapar()": [0, "Automação 1"], "mochila.usarItem()": [0, "Itens"], "venderTudo()": [0, "Automação 2"], "aleatorio()": [0, "Utilidades"],
+	"inimigoMaisProximo()": [0, "Início"], "tempo()": [0, "Sensores 1"], "vidaAtual()": [0, "Sensores 2"], "escanearArea()": [0, "Sensores 3"], "posicaoX()": [0, "Localização"], "posicaoY()": [0, "Localização"], "tesouroX()": [0, "Localização"], "tesouroY()": [0, "Localização"], "escapar()": [0, "Automação 1"], "mochila.usarItem()": [0, "Itens"], "venderTudo()": [0, "Automação 2"], "aleatorio()": [0, "Utilidades"],
 
 	# --- Direções ---
 	"Cima": [0, ""], "Baixo": [0, ""], "Direita": [0, ""], "Esquerda": [0, ""],
@@ -27,5 +27,8 @@ static var termos : Dictionary = {
 	"Goblin": [0, "Início"], "Esqueleto": [0, "Início"], "SlimeDeFogo": [0, "Início"], "SlimeDeGelo": [0, "Início"], "Lobisomem": [0, "Floresta"], "Orc": [0, "Floresta"], "Fantasma": [0, "Floresta"], "Vampiro": [0, "Floresta"],
 
 	# --- Arenas ---
-	"Campos": [0, "Início"], "Floresta": [0, "Floresta"], "Labirinto": [0, "Labirinto"]
+	"Campos": [0, "Início"], "Floresta": [0, "Floresta"], "Labirinto": [0, "Labirinto"],
+
+	# --- Atributos de inimigos ---
+	".nome": [0, "Sensores 1"], ".vida": [0, "Sensores 2"], ".posicaoX": [0, "Sensores 3"], ".posicaoY": [0, "Sensores 3"],
 }

@@ -41,7 +41,6 @@ func _ready() -> void:
 func atualizar_slots() -> void:
 	var is_cinto = (Inventario.inventario_ativo == Inventario.TipoInventario.CINTO)
 	
-	# Toca o som apenas se houve uma troca real de inventário
 	if _foi_inicializado and is_cinto != _ultimo_modo_cinto:
 		_tocar_som_troca(is_cinto)
 	_ultimo_modo_cinto = is_cinto

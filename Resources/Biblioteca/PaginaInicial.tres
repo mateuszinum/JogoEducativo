@@ -24,7 +24,19 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_cgv5h"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Sensores 1]AtributosDeInimigo[/req] [req=Loop e Condicional]enquanto[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Loop e Condicional]se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
+texto = "[req=Loop e Condicional]enquanto[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Loop e Condicional]se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7lmda"]
+script = ExtResource("1_7lmda")
+tipo = 2
+texto = "[req=Sensores 1]Acessando Atributos de |Inimigos[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0rfgp"]
+script = ExtResource("1_7lmda")
+tipo = 4
+texto = "[req=Sensores 1]inimigo.nome[/req] [req=Sensores 3]inimigo.posicaoX inimigo.posicaoY[/req] [req=Sensores 2]inimigo.vida[/req] "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_t3afg"]
@@ -36,7 +48,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_or0xj"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Utilidades]aleatorio()[/req] [req=Início]arena()[/req] [req=Início]atacar()[/req] [req=Itens]cinto.usarItem()[/req] [req=Automação 2]comprar()[/req] [req=Automação 1]escapar()[/req] [req=Sensores 3]escanearArea()[/req] [req=Debug]escrever()[/req] [req=Início]inimigoMaisProximo()[/req] [req=Utilidades]max()[/req] [req=Utilidades]min()[/req] [req=Itens]mochila.usarItem()[/req] mover() [req=Sensores 2]podeMover()[/req] [req=Localização]posicaoX()[/req] [req=Localização]posicaoY()[/req] [req=Sensores 2]tempo()[/req] [req=Utilidades]tamanho()[/req] [req=Localização]tesouroX()[/req] [req=Localização]tesouroY()[/req] [req=Utilidades]trunca()[/req]  [req=Automação 2]venderTudo()[/req] [req=Sensores 2]vidaAtual()[/req]"
+texto = "[req=Utilidades]aleatorio()[/req] [req=Início]arena()[/req] [req=Início]atacar()[/req] [req=Itens]cinto.usarItem()[/req] [req=Automação 2]comprar()[/req] [req=Automação 1]escapar()[/req] [req=Sensores 3]escanearArea()[/req] [req=Debug]escreva()[/req] [req=Início]inimigoMaisProximo()[/req] [req=Utilidades]max()[/req] [req=Utilidades]min()[/req] [req=Itens]mochila.usarItem()[/req] mover() [req=Sensores 2]podeMover()[/req] [req=Localização]posicaoX()[/req] [req=Localização]posicaoY()[/req] [req=Sensores 1]tempo()[/req] [req=Utilidades]tamanho()[/req] [req=Localização]tesouroX()[/req] [req=Localização]tesouroY()[/req] [req=Utilidades]trunca()[/req]  [req=Automação 2]venderTudo()[/req] [req=Sensores 2]vidaAtual()[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_m47yt"]
@@ -90,5 +102,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_0rfgp")
-blocos_de_conteudo = Array[ExtResource("1_7lmda")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf")])
+blocos_de_conteudo = Array[ExtResource("1_7lmda")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_7lmda"), SubResource("Resource_0rfgp"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf")])
 metadata/_custom_type_script = "uid://be6x46yhir5k7"

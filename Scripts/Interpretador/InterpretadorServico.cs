@@ -14,24 +14,17 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 	public void SyntaxError(TextWriter output, IRecognizer recognizer, T offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 	{
 		string erroTraduzido = msg;
-
 		if (erroTraduzido.Contains("missing 'fim' at '<EOF>'")) {
 			erroTraduzido = "Faltou fechar o bloco com 'fim' (o arquivo terminou antes).";
 		} else {
-			erroTraduzido = erroTraduzido.Replace("missing", "Faltando")
-										 .Replace("at", "em")
+			erroTraduzido = erroTraduzido.Replace("missing", "Faltando").Replace("at", "em")
 										 .Replace("mismatched input", "Entrada incorreta")
 										 .Replace("expecting", "esperava-se")
 										 .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
 										 .Replace("no viable alternative", "Comando inválido ou incompleto")
 										 .Replace("<EOF>", "fim do arquivo");
 		}
-
-		var erro = new Godot.Collections.Dictionary
-		{
-			{ "linha", line - 1 }, 
-			{ "mensagem", erroTraduzido }
-		};
+		var erro = new Godot.Collections.Dictionary { { "linha", line - 1 }, { "mensagem", erroTraduzido } };
 		ErrosEncontrados.Add(erro);
 	}
 }
@@ -41,7 +34,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	private AutoResetEvent _travaDeSincronizacao = new AutoResetEvent(false); 
 	private Node _apiNativa; 
 	private Node _gerenciador; 
-	
 	private bool _execucaoAbortada = false; 
 	private int _threadAtivaId = -1; 
 
@@ -51,147 +43,104 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		_gerenciador = GetNodeOrNull("/root/GerenciadorExecucao");
 	}
 	
-	private void VerificarAbortagem()
-	{
-		if (_execucaoAbortada || (_threadAtivaId != -1 && Thread.CurrentThread.ManagedThreadId != _threadAtivaId))
-		{
-			throw new Exception("Execução abortada pelo jogador.");
-		}
-	}	
-
+	private void VerificarAbortagem() { if (_execucaoAbortada || (_threadAtivaId != -1 && Thread.CurrentThread.ManagedThreadId != _threadAtivaId)) throw new Exception("Execução abortada pelo jogador."); }	
 	public void LiberarProximoComando() { _travaDeSincronizacao.Set(); }
-
-	public void PararExecucao()
-	{
-		_execucaoAbortada = true;
-		_threadAtivaId = -1; 
-		_travaDeSincronizacao.Set(); 
-	}
+	public void PararExecucao() { _execucaoAbortada = true; _threadAtivaId = -1; _travaDeSincronizacao.Set(); }
 
 	public void ExecutarCodigoDoJogador(string codigo, Node personagem)
 	{
-		PararExecucao(); 
-		_execucaoAbortada = false; 
-		_travaDeSincronizacao.Reset(); 
-		
-		if (_gerenciador != null) { _gerenciador.Call("registrar_interpretador", this); }
+		PararExecucao(); _execucaoAbortada = false; _travaDeSincronizacao.Reset(); 
+		if (_gerenciador != null) _gerenciador.Call("registrar_interpretador", this);
 
-		Task.Run(() => 
-		{
+		Task.Run(() => {
 			_threadAtivaId = Thread.CurrentThread.ManagedThreadId;
-			
-			try 
-			{
+			try {
 				var inputStream = new AntlrInputStream(codigo);
 				var lexer = new LinguagemLexer(inputStream);
-				
 				var lexerListener = new InterpretadorErrorListener<int>();
-				lexer.RemoveErrorListeners();
-				lexer.AddErrorListener(lexerListener);
-
+				lexer.RemoveErrorListeners(); lexer.AddErrorListener(lexerListener);
 				var tokens = new CommonTokenStream(lexer);
 				var parser = new LinguagemParser(tokens);
-				
 				var parserListener = new InterpretadorErrorListener<IToken>();
-				parser.RemoveErrorListeners();
-				parser.AddErrorListener(parserListener);
-
+				parser.RemoveErrorListeners(); parser.AddErrorListener(parserListener);
 				var arvore = parser.programa();
-
 				var todosErros = new Godot.Collections.Array();
 				foreach (var e in lexerListener.ErrosEncontrados) todosErros.Add(e);
 				foreach (var e in parserListener.ErrosEncontrados) todosErros.Add(e);
-
-				if (todosErros.Count > 0)
-				{
-					CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros);
-					return; 
-				}
-				
+				if (todosErros.Count > 0) { CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros); return; }
 				CallDeferred(nameof(LimparErrosVisuais));
-
-				var visitor = new MeuVisitor(this); 
-				visitor.Visit(arvore);
-			}
-			catch (Exception ex) 
-			{ 
-				if (ex.Message == "Execução abortada pelo jogador.") {
-					// Parou limpo, ignora o log.
-				} else if (ex.Message.StartsWith("L:")) {
-					var parts = ex.Message.Split(new char[] { '|' }, 2);
+				var visitor = new MeuVisitor(this); visitor.Visit(arvore);
+			} catch (Exception ex) { 
+				if (ex.Message.StartsWith("L:")) {
+					var parts = ex.Message.Split('|', 2);
 					if (int.TryParse(parts[0].Substring(2), out int linha)) {
-						var erro = new Godot.Collections.Dictionary {
-							{ "linha", linha - 1 }, 
-							{ "mensagem", parts[1] }
-						};
-						var todosErros = new Godot.Collections.Array { erro };
-						CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros);
+						var erro = new Godot.Collections.Dictionary { { "linha", linha - 1 }, { "mensagem", parts[1] } };
+						CallDeferred(nameof(EnviarErrosDeSintaxe), new Godot.Collections.Array { erro });
 					}
-				} else {
-					CallDeferred(nameof(DelegarErroParaMainThread), ex.Message); 
-				}
+				} else if (ex.Message != "Execução abortada pelo jogador.") CallDeferred(nameof(DelegarErroParaMainThread), ex.Message);
 			}
 		});
 	}
 
-	public void EnviarErrosDeSintaxe(Godot.Collections.Array erros) 
-	{ 
-		GetTree().CallGroup("Terminal", "mostrar_erros_de_sintaxe", erros);
-	}
+	public void EnviarErrosDeSintaxe(Godot.Collections.Array erros) => GetTree().CallGroup("Terminal", "mostrar_erros_de_sintaxe", erros);
+	public void LimparErrosVisuais() => GetTree().CallGroup("Terminal", "limpar_erros_de_sintaxe");
+	public void NotificarErro(string mensagem) => CallDeferred(nameof(DelegarErroParaMainThread), mensagem);
+	private void DelegarErroParaMainThread(string mensagem) => GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
 
-	public void LimparErrosVisuais() 
-	{ 
-		GetTree().CallGroup("Terminal", "limpar_erros_de_sintaxe");
-	}
+	private Variant _ultimoResultado;
 
-	public void NotificarErro(string mensagem) 
-	{ 
-		CallDeferred(nameof(DelegarErroParaMainThread), mensagem);
-	}
-
-	private void DelegarErroParaMainThread(string mensagem)
-	{
-		GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
-	}
-	
-	public void Mover(string direcao) { ExecutarAcaoComTick("mover", new Godot.Collections.Array { direcao }); }
-	public void Atacar(string alvo, string tipo) { ExecutarAcaoComTick("atacar", new Godot.Collections.Array { alvo, tipo }); }
-	public void Escapar() { ExecutarAcaoComTick("escapar", new Godot.Collections.Array()); }
-	public void UsarItemCinto(int indice) { ExecutarAcaoComTick("usar_item_cinto", new Godot.Collections.Array { indice }); }
-	public void UsarItemMochila() { ExecutarAcaoComTick("usar_item_mochila", new Godot.Collections.Array()); }
-	public void Comprar(string item) { ExecutarAcaoComTick("comprar", new Godot.Collections.Array { item }); }
-	public void VenderTudo() { ExecutarAcaoComTick("venderTudo", new Godot.Collections.Array()); }
-	public void EntrarArena(string arena) { ExecutarAcaoComTick("arena", new Godot.Collections.Array { arena }); }
-	public void ColocarItemMochila(string item) { ExecutarAcaoComTick("colocar_item_mochila", new Godot.Collections.Array { item }); }
-	public void ColocarItemCinto(string item, int idx) { ExecutarAcaoComTick("colocar_item_cinto", new Godot.Collections.Array { item, idx }); }
-
-	private void ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
+	private Variant ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
 	{
 		VerificarAbortagem();
-		
-		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
-		{
-			if (_gerenciador == null) return;
+		if (_apiNativa != null && _apiNativa.HasMethod(metodo)) {
+			if (_gerenciador == null) return default;
 			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
-			
 			_travaDeSincronizacao.WaitOne(); 
-			
 			VerificarAbortagem();
+			return _ultimoResultado; 
 		}
+		return default;
 	}
 
-	public string InimigoMaisProximo() { return _apiNativa?.Call("inimigoMaisProximo").AsString() ?? ""; }
-	public bool PodeMover(string direcao) { return _apiNativa?.Call("podeMover", direcao).AsBool() ?? false; }
-	public int GetTempo() { return _apiNativa?.Call("getTempo").AsInt32() ?? 0; }
-	public int GetVidaAtual() { return _apiNativa?.Call("getVidaAtual").AsInt32() ?? 0; }
-	public List<string> EscanearArea()
-	{
-		var res = _apiNativa?.Call("escanearArea").AsStringArray();
-		return res != null ? new List<string>(res) : new List<string>();
+	public void Mover(string direcao) => ExecutarAcaoComTick("mover", new Godot.Collections.Array { direcao });
+	public void Atacar(string alvo, string tipo) => ExecutarAcaoComTick("atacar", new Godot.Collections.Array { alvo, tipo });
+	public void Escapar() => ExecutarAcaoComTick("escapar", new Godot.Collections.Array());
+	public void UsarItemCinto(int indice) => ExecutarAcaoComTick("usar_item_cinto", new Godot.Collections.Array { indice });
+	public void UsarItemMochila() => ExecutarAcaoComTick("usar_item_mochila", new Godot.Collections.Array());
+	public void Comprar(string item) => ExecutarAcaoComTick("comprar", new Godot.Collections.Array { item });
+	public void VenderTudo() => ExecutarAcaoComTick("venderTudo", new Godot.Collections.Array());
+	public void EntrarArena(string arena) => ExecutarAcaoComTick("arena", new Godot.Collections.Array { arena });
+	public void ColocarItemMochila(string item) => ExecutarAcaoComTick("colocar_item_mochila", new Godot.Collections.Array { item });
+	public void ColocarItemCinto(string item, int idx) => ExecutarAcaoComTick("colocar_item_cinto", new Godot.Collections.Array { item, idx });
+
+	// SENSORES E AMBIENTE (Agora com Tick de Segurança)
+	public string InimigoMaisProximo() => ExecutarAcaoComTick("inimigoMaisProximo", new Godot.Collections.Array()).AsString();
+	public bool PodeMover(string direcao) => ExecutarAcaoComTick("podeMover", new Godot.Collections.Array { direcao }).AsBool();
+	public int GetTempo() => ExecutarAcaoComTick("getTempo", new Godot.Collections.Array()).AsInt32();
+	public int GetVidaAtual() => ExecutarAcaoComTick("getVidaAtual", new Godot.Collections.Array()).AsInt32();
+	public List<string> EscanearArea() { 
+		var res = ExecutarAcaoComTick("escanearArea", new Godot.Collections.Array()).AsStringArray(); 
+		return res != null ? new List<string>(res) : new List<string>(); 
 	}
-	public string GetNomeInimigo(string alvo) { return _apiNativa?.Call("nomeInimigo", alvo).AsString() ?? ""; }
-	public int GetPosicaoPlayerX() { return _apiNativa?.Call("posicaoX").AsInt32() ?? 0; }
-	public int GetPosicaoPlayerY() { return _apiNativa?.Call("posicaoY").AsInt32() ?? 0; }
-	public int GetPosicaoTesouroX() { return _apiNativa?.Call("tesouroX").AsInt32() ?? 0; }
-	public int GetPosicaoTesouroY() { return _apiNativa?.Call("tesouroY").AsInt32() ?? 0; }
-}
+
+	// COORDENADAS
+	public int GetPosicaoPlayerX() => ExecutarAcaoComTick("posicaoX", new Godot.Collections.Array()).AsInt32();
+	public int GetPosicaoPlayerY() => ExecutarAcaoComTick("posicaoY", new Godot.Collections.Array()).AsInt32();
+	public int GetPosicaoTesouroX() => ExecutarAcaoComTick("tesouroX", new Godot.Collections.Array()).AsInt32();
+	public int GetPosicaoTesouroY() => ExecutarAcaoComTick("tesouroY", new Godot.Collections.Array()).AsInt32();
+
+	// MATEMÁTICA E UTILIDADES
+	public int Trunca(float valor) => ExecutarAcaoComTick("trunca", new Godot.Collections.Array { valor }).AsInt32();
+	public float Min(float a, float b) => ExecutarAcaoComTick("min", new Godot.Collections.Array { a, b }).AsSingle();
+	public float Max(float a, float b) => ExecutarAcaoComTick("max", new Godot.Collections.Array { a, b }).AsSingle();
+	public float Aleatorio() => ExecutarAcaoComTick("aleatorio", new Godot.Collections.Array()).AsSingle();
+	public void Escreva(string texto) => ExecutarAcaoComTick("escreva", new Godot.Collections.Array { texto });
+
+	// ATRIBUTOS DE INIMIGO
+	public string GetNomeInimigo(string alvo) => ExecutarAcaoComTick("nomeInimigo", new Godot.Collections.Array { alvo }).AsString();
+	public string ObterNomeInimigo(string inimigoId) => ExecutarAcaoComTick("nomeInimigo", new Godot.Collections.Array { inimigoId }).AsString();
+	public float ObterVidaInimigo(string inimigoId) => ExecutarAcaoComTick("obterVidaInimigo", new Godot.Collections.Array { inimigoId }).AsSingle();
+	public float ObterVelocidadeInimigo(string inimigoId) => ExecutarAcaoComTick("obterVelocidadeInimigo", new Godot.Collections.Array { inimigoId }).AsSingle();
+	public int ObterPosicaoXInimigo(string inimigoId) => ExecutarAcaoComTick("obterPosicaoXInimigo", new Godot.Collections.Array { inimigoId }).AsInt32();
+	public int ObterPosicaoYInimigo(string inimigoId) => ExecutarAcaoComTick("obterPosicaoYInimigo", new Godot.Collections.Array { inimigoId }).AsInt32();
+	}

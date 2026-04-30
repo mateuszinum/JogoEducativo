@@ -1,5 +1,29 @@
 extends Control
 
+@export_group("Estética do Debug")
+@export var fonte_debug: Font
+@export var tamanho_fonte_debug: int = 14
+@export var cor_texto_debug: Color = Color.WHITE
+@export var espacamento_linhas_debug: int = 0
+
+@export_subgroup("Alinhamento e Posição")
+@export var alinhamento_h_debug: HorizontalAlignment = HORIZONTAL_ALIGNMENT_RIGHT
+@export var alinhamento_v_debug: VerticalAlignment = VERTICAL_ALIGNMENT_BOTTOM
+@export var alinhamento_bloco_debug: BoxContainer.AlignmentMode = BoxContainer.ALIGNMENT_END
+
+@export_subgroup("Sombra")
+@export var cor_sombra_debug: Color = Color(0, 0, 0, 0.8)
+@export var tamanho_sombra_debug: int = 1
+@export var deslocamento_sombra_x: int = 1
+@export var deslocamento_sombra_y: int = 1
+
+@export_subgroup("Contorno (Borda)")
+@export var cor_borda_debug: Color = Color.TRANSPARENT
+@export var tamanho_borda_debug: int = 0
+
+@export_subgroup("Animação")
+@export var tempo_animacao_surgir: float = 0.25
+
 @onready var viewport = %SubViewport
 @onready var terminal = %PainelTerminal
 @onready var fade_tv = %FadeTV 
@@ -11,6 +35,7 @@ const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
 var transicao_em_andamento: bool = false 
 
 func _ready() -> void:
+	add_to_group("Jogo") 
 	limpar_viewport()
 	var vilarejo = CENA_VILAREJO.instantiate()
 	viewport.add_child(vilarejo)
@@ -123,3 +148,60 @@ func _on_botao_recurso_pressed() -> void:
 	RecursosManager.receberRecurso("Safira", 275)
 	RecursosManager.receberRecurso("Sangue", 5125)
 	pass
+	
+func escrever_debug(texto: String) -> void:
+	var container = get_node_or_null("%TextoDebug")
+	if not container: return
+	
+	if container is VBoxContainer:
+		container.alignment = alinhamento_bloco_debug
+	
+	var nova_mensagem = Label.new()
+	nova_mensagem.text = texto
+	nova_mensagem.autowrap_mode = TextServer.AUTOWRAP_WORD
+	
+	nova_mensagem.horizontal_alignment = alinhamento_h_debug
+	nova_mensagem.vertical_alignment = alinhamento_v_debug
+	nova_mensagem.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	
+	if fonte_debug:
+		nova_mensagem.add_theme_font_override("font", fonte_debug)
+	nova_mensagem.add_theme_font_size_override("font_size", tamanho_fonte_debug)
+	nova_mensagem.add_theme_color_override("font_color", cor_texto_debug)
+	nova_mensagem.add_theme_constant_override("line_spacing", espacamento_linhas_debug)
+	nova_mensagem.add_theme_color_override("font_shadow_color", cor_sombra_debug)
+	nova_mensagem.add_theme_constant_override("shadow_outline_size", tamanho_sombra_debug)
+	nova_mensagem.add_theme_constant_override("shadow_offset_x", deslocamento_sombra_x)
+	nova_mensagem.add_theme_constant_override("shadow_offset_y", deslocamento_sombra_y)
+	
+	if tamanho_borda_debug > 0:
+		nova_mensagem.add_theme_color_override("font_outline_color", cor_borda_debug)
+		nova_mensagem.add_theme_constant_override("outline_size", tamanho_borda_debug)
+	
+	nova_mensagem.modulate.a = 0.0
+	nova_mensagem.scale = Vector2(0.5, 0.5)
+	
+	container.add_child(nova_mensagem)
+	
+	await get_tree().process_frame
+	if not is_instance_valid(nova_mensagem): return
+	
+	nova_mensagem.pivot_offset = nova_mensagem.size / 2
+	
+	var tween_surgir = create_tween().set_parallel(true).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween_surgir.tween_property(nova_mensagem, "modulate:a", 1.0, tempo_animacao_surgir)
+	tween_surgir.tween_property(nova_mensagem, "scale", Vector2.ONE, tempo_animacao_surgir)
+	
+	if container.get_child_count() > 50:
+		var mensagem_velha = container.get_child(0)
+		mensagem_velha.queue_free()
+		
+	await get_tree().create_timer(Constantes.TEMPO_ESCREVA).timeout
+	
+	if is_instance_valid(nova_mensagem):
+		var tween_sumir = create_tween()
+		tween_sumir.tween_property(nova_mensagem, "modulate:a", 0.0, 1.0)
+		await tween_sumir.finished
+		
+		if is_instance_valid(nova_mensagem):
+			nova_mensagem.queue_free()

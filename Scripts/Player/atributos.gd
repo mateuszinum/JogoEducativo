@@ -18,28 +18,28 @@ func comprar_upgrade(nome_upgrade, nivel_atual):
 			var novo_valor = ganhos_agilidade[nivel_atual - 2]
 	
 			tempo_tick = novo_valor
-			print("Upgrade Nível ", nivel_atual, "! Agilidade está em:", novo_valor)
+			#print("Upgrade Nível ", nivel_atual, "! Agilidade está em:", novo_valor)
 		
 		"Vida Máxima":
 			var valor_adicional = ganhos_health[nivel_atual - 2]
 	
 			max_health += valor_adicional
-			print("Upgrade Nível ", nivel_atual, "! Ganhou +", valor_adicional, " de Vida.")
+			#print("Upgrade Nível ", nivel_atual, "! Ganhou +", valor_adicional, " de Vida.")
 			
 		"Knockback":
 			var novo_valor = ganhos_kb[nivel_atual - 2]
 	
 			global_knockback_multiplier = novo_valor
-			print("Upgrade Nível ", nivel_atual, "! Multiplicador de knockback está em: ", novo_valor, " x")
+			#print("Upgrade Nível ", nivel_atual, "! Multiplicador de knockback está em: ", novo_valor, " x")
 		
 		"Coleta":
 			var novo_valor = ganhos_coleta[nivel_atual - 2]
 	
 			coleta_multiplier = novo_valor
-			print("Upgrade Nível ", nivel_atual, "! Multiplicador de Coleta está em: ", novo_valor, " x")
+			#print("Upgrade Nível ", nivel_atual, "! Multiplicador de Coleta está em: ", novo_valor, " x")
 		
 		"Força":
 			var novo_valor = ganhos_forca[nivel_atual - 2]
 	
 			forca_multiplier = novo_valor
-			print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
+			#print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
