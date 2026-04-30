@@ -94,6 +94,7 @@ func ir_para_arena() -> void:
 	fazer_transicao_tv(CENA_ARENA, "arena")
 
 func limpar_viewport() -> void:
+	Atributos.resetar_multiplicador_labirinto(1.0)
 	if viewport:
 		for child in viewport.get_children():
 			viewport.remove_child(child) 

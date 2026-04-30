@@ -4,16 +4,12 @@
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_vxnoe"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_hlt65"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="8_ca1nu"]
-[ext_resource type="Texture2D" uid="uid://c4nljqjj78lte" path="res://Resources/Stages/Genérico/generico_ruido_barreira.tres" id="9_l6xmd"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="10_ojxpx"]
 [ext_resource type="TileSet" uid="uid://cfy6xd5tosqa1" path="res://Resources/Stages/Genérico/generico_tileset.tres" id="11_ef35g"]
 
 [sub_resource type="Resource" id="Resource_ua18n"]
 script = ExtResource("8_ca1nu")
-nome_obstaculo = "Barreira"
 source_ids = Array[int]([10])
-ruido = ExtResource("9_l6xmd")
-valor_minimo = 0.8
 metadata/_custom_type_script = "uid://dlk027vsi110o"
 
 [resource]

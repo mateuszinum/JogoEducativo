@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Enemies/Fantasma.tres" id="6_jd7mv"]
 [ext_resource type="Resource" uid="uid://cd6v87ojvquk0" path="res://Resources/Enemies/Vampiro.tres" id="7_lu5qd"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_ts6uj"]
-[ext_resource type="Texture2D" uid="uid://btxppb382sd2p" path="res://Resources/Stages/Floresta/floresta_ruido_barreira.tres" id="8_fk5lg"]
 [ext_resource type="TileSet" uid="uid://cnvieb7wwswqa" path="res://Resources/Stages/Floresta/floresta_tileset.tres" id="10_e3kfy"]
 [ext_resource type="AudioStream" uid="uid://dhj8psak03ska" path="res://Audio/Soundtracks/Floresta.wav" id="10_yyig3"]
 [ext_resource type="Resource" uid="uid://cbq58vn3x3gyp" path="res://Resources/Stages/Floresta/tesouro_floresta.tres" id="12_yyig3"]
@@ -21,16 +20,55 @@ metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 [sub_resource type="Resource" id="Resource_jd7mv"]
 script = ExtResource("1_h7a20")
 source_id = 1
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_lu5qd"]
 script = ExtResource("1_h7a20")
 source_id = 2
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_fyhc1"]
 script = ExtResource("1_h7a20")
 source_id = 3
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_h7a20"]
+script = ExtResource("1_h7a20")
+source_id = 4
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_i4qaj"]
+script = ExtResource("1_h7a20")
+source_id = 5
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_geens"]
+script = ExtResource("1_h7a20")
+source_id = 6
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_fne73"]
+script = ExtResource("1_h7a20")
+source_id = 7
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_sd3pf"]
+script = ExtResource("1_h7a20")
+source_id = 8
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_p407s"]
+script = ExtResource("1_h7a20")
+source_id = 9
+chance_peso = 0.2
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_ts6uj"]
@@ -62,10 +100,7 @@ metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_ua18n"]
 script = ExtResource("7_ts6uj")
-nome_obstaculo = "Barreira"
 source_ids = Array[int]([10])
-ruido = ExtResource("8_fk5lg")
-valor_minimo = 0.8
 metadata/_custom_type_script = "uid://dlk027vsi110o"
 
 [resource]
@@ -77,6 +112,6 @@ spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_ts6uj"), Sub
 map_width = 100
 tesouro_config = ExtResource("12_yyig3")
 stage_tileset = ExtResource("10_e3kfy")
-ground_variants = Array[ExtResource("1_h7a20")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1")])
+ground_variants = Array[ExtResource("1_h7a20")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_h7a20"), SubResource("Resource_i4qaj"), SubResource("Resource_geens"), SubResource("Resource_fne73"), SubResource("Resource_sd3pf"), SubResource("Resource_p407s")])
 spawn_rules = Array[ExtResource("7_ts6uj")]([SubResource("Resource_ua18n")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkha2yaarqp6y"
-path="res://.godot/imported/sand_3.png-503ca2a8548bd2abc40459ab7c81236a.ctex"
+uid="uid://y0qtmhd4ema2"
+path="res://.godot/imported/gramaFloresta(0).png-9499c5aee6a37fd22ebdebaf5442ef4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Deserto/sand_3.png"
-dest_files=["res://.godot/imported/sand_3.png-503ca2a8548bd2abc40459ab7c81236a.ctex"]
+source_file="res://Assets/Terrain/Floresta/gramaFloresta(0).png"
+dest_files=["res://.godot/imported/gramaFloresta(0).png-9499c5aee6a37fd22ebdebaf5442ef4c.ctex"]
 
 [params]
 

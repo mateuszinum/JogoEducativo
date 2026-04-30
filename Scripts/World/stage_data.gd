@@ -1,6 +1,14 @@
+@tool
 class_name StageData extends Resource
 
+enum TipoMapa { ARENA_ABERTA, LABIRINTO }
+
 @export var nome : String
+
+@export var tipo_mapa: TipoMapa = TipoMapa.ARENA_ABERTA:
+	set(value):
+		tipo_mapa = value
+		notify_property_list_changed()
 
 @export_group("Trilha Sonora")
 @export var stage_music : AudioStream
@@ -21,6 +29,20 @@ class_name StageData extends Resource
 
 @export_category("Tiles")
 @export var stage_tileset: TileSet
+
+@export_group("Configuração do Labirinto")
+@export var source_id_parede_labirinto: int = 0
+@export var labirinto_largura: int = 11
+@export var labirinto_altura: int = 9
+@export var labirinto_zoom_camera: Vector2 = Vector2(2.0, 2.0)
+@export var labirinto_offset_camera: Vector2 = Vector2.ZERO
+@export var recurso_destaque_labirinto: ItemData
+
+@export_subgroup("Multiplicador de velocidade")
+@export var labirinto_multiplicador_inicial: float = 1.0
+@export var labirinto_multiplicador_maximo: float = 2.0
+@export var labirinto_tesouros_para_maximo: int = 10
+
 @export_group("Chão")
 @export var ground_variants: Array[GroundVariant] = []
 
@@ -44,3 +66,22 @@ func get_random_ground_id() -> int:
 			return tile.source_id
 			
 	return ground_variants[0].source_id
+
+func _validate_property(property: Dictionary):
+	var props_labirinto = [
+		"source_id_parede_labirinto", 
+		"labirinto_largura", 
+		"labirinto_altura", 
+		"labirinto_zoom_camera",
+		"labirinto_offset_camera",
+		"recurso_destaque_labirinto",
+		"labirinto_multiplicador_inicial",
+		"labirinto_multiplicador_maximo",
+		"labirinto_tesouros_para_maximo"
+	]
+	
+	if property.name in props_labirinto and tipo_mapa != TipoMapa.LABIRINTO:
+		property.usage = PROPERTY_USAGE_NO_EDITOR
+		
+	if property.name == "spawn_rules" and tipo_mapa == TipoMapa.LABIRINTO:
+		property.usage = PROPERTY_USAGE_NO_EDITOR

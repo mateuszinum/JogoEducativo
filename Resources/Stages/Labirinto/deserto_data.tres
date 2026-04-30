@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_fk3qj"]
 [ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_gdvrt"]
+[ext_resource type="Resource" uid="uid://dfsb7ee5ixfs4" path="res://Resources/Drop/Diamante.tres" id="2_jmsaq"]
 [ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_32ih0"]
 [ext_resource type="AudioStream" uid="uid://bxsx2gs23pi2u" path="res://Audio/Soundtracks/Labirinto.wav" id="5_fyay1"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="8_hg2w3"]
@@ -10,28 +11,38 @@
 
 [sub_resource type="Resource" id="Resource_7i53n"]
 script = ExtResource("1_fk3qj")
-source_id = 1
+chance_peso = 10.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_kgp3u"]
 script = ExtResource("1_fk3qj")
-source_id = 2
-chance_peso = 0.75
+source_id = 1
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_0rd4w"]
 script = ExtResource("1_fk3qj")
+source_id = 2
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_fyay1"]
+script = ExtResource("1_fk3qj")
 source_id = 3
-chance_peso = 0.5
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [resource]
 script = ExtResource("2_gdvrt")
 nome = "Labirinto"
+tipo_mapa = 1
 stage_music = ExtResource("5_fyay1")
 music_volume = -10.0
 map_width = 100
 tesouro_config = ExtResource("12_f3t5x")
 stage_tileset = ExtResource("11_r2cjo")
-ground_variants = Array[ExtResource("1_fk3qj")]([SubResource("Resource_7i53n"), SubResource("Resource_kgp3u"), SubResource("Resource_0rd4w")])
+source_id_parede_labirinto = 10
+labirinto_offset_camera = Vector2(7, 8)
+recurso_destaque_labirinto = ExtResource("2_jmsaq")
+ground_variants = Array[ExtResource("1_fk3qj")]([SubResource("Resource_7i53n"), SubResource("Resource_kgp3u"), SubResource("Resource_0rd4w"), SubResource("Resource_fyay1")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"

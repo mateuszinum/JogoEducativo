@@ -10,6 +10,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="ErrorFeedback" type="Node2D" unique_id=2017503513]
+z_index = 2
 script = ExtResource("1_wbxbh")
 
 [node name="Label" type="Label" parent="." unique_id=438498528]

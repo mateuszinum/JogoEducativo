@@ -21,12 +21,6 @@ script = ExtResource("1_nd8js")
 largura_do_slot = 32
 ordem_preferencial = Array[ExtResource("3_oxs5w")]([ExtResource("4_0nkuf"), ExtResource("5_k374l"), ExtResource("6_dnfme"), ExtResource("7_vwdii"), ExtResource("8_ll7ya"), ExtResource("9_6gw7i"), ExtResource("10_bd8gs"), ExtResource("11_l3ane"), ExtResource("12_ap53y"), ExtResource("13_gx054")])
 fonte_customizada = ExtResource("2_x2xlg")
-tamanho_fonte = 16
-escala_ao_ganhar = Vector2(1.2, 1.2)
-escala_ao_gastar = Vector2(0.8, 0.8)
-escala_ao_falhar = Vector2(0.8, 0.8)
-duracao_ganhar = 0.1
-duracao_gastar = 0.1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=321198106]
 layout_mode = 0

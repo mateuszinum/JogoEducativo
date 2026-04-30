@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clxnblpviprpd"
-path="res://.godot/imported/tile105.png-36dff12cfcafa8279ef359633b44ac15.ctex"
+uid="uid://cf3otaouros7t"
+path="res://.godot/imported/ArbustoCampos2.png-c9f4e02cf9a6b30a7b011b7e91ae5561.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Floresta/tile105.png"
-dest_files=["res://.godot/imported/tile105.png-36dff12cfcafa8279ef359633b44ac15.ctex"]
+source_file="res://Assets/Terrain/Campos/ArbustoCampos2.png"
+dest_files=["res://.godot/imported/ArbustoCampos2.png-c9f4e02cf9a6b30a7b011b7e91ae5561.ctex"]
 
 [params]
 

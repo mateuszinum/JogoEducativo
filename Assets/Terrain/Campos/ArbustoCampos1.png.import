@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4grh3n4vd6fj"
-path="res://.godot/imported/sand_2.png-88f6efc772840a52bb71623f816dc27e.ctex"
+uid="uid://callq1gkuxxbm"
+path="res://.godot/imported/ArbustoCampos1.png-911f5fc822e3f2e26043bc4bdfb9d998.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Deserto/sand_2.png"
-dest_files=["res://.godot/imported/sand_2.png-88f6efc772840a52bb71623f816dc27e.ctex"]
+source_file="res://Assets/Terrain/Campos/ArbustoCampos1.png"
+dest_files=["res://.godot/imported/ArbustoCampos1.png-911f5fc822e3f2e26043bc4bdfb9d998.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hekw56et4q6g"
-path="res://.godot/imported/tile104.png-d3529a95038c5d29c026a79c657101c8.ctex"
+uid="uid://mcx6nojiwdkg"
+path="res://.godot/imported/grama (7).png-3abe7dcb1224d466424707bc9df193a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Floresta/tile104.png"
-dest_files=["res://.godot/imported/tile104.png-d3529a95038c5d29c026a79c657101c8.ctex"]
+source_file="res://Assets/Terrain/Campos/grama (7).png"
+dest_files=["res://.godot/imported/grama (7).png-3abe7dcb1224d466424707bc9df193a4.ctex"]
 
 [params]
 

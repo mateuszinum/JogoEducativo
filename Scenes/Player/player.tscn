@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://cg62prdwrcolt" path="res://Audio/SFX/PassosPlayer.mp3" id="3_gk6dx"]
 [ext_resource type="AudioStream" uid="uid://b6olxjv3sluok" path="res://Audio/SFX/Coleta.wav" id="4_0u5uq"]
 [ext_resource type="Texture2D" uid="uid://dogxdhaswpp14" path="res://Assets/Personagens/Wizard-Hurt.png" id="6_dd0ac"]
+[ext_resource type="Texture2D" uid="uid://byprs2c3pp1oa" path="res://Assets/Drop/Diamante.png" id="6_gk6dx"]
+[ext_resource type="Script" uid="uid://kq4xclbqiiyo" path="res://Scripts/UI/ui_recurso_labirinto.gd" id="6_jhyir"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_jhyir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
@@ -19,6 +22,13 @@ radius = 249.00201
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtuoh"]
 bg_color = Color(0.98039216, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gk6dx"]
+line_spacing = 0.0
+font = ExtResource("7_jhyir")
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_htcer"]
 atlas = ExtResource("2_htcer")
@@ -105,7 +115,7 @@ animations = [{
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dd0ac"]
 
-[node name="Player" type="CharacterBody2D" unique_id=848872761 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=848872761 node_paths=PackedStringArray("ui_barra_vida", "ui_recurso_labirinto") groups=["Player"]]
 collision_layer = 2097154
 collision_mask = 3
 motion_mode = 1
@@ -120,6 +130,8 @@ step_pitch_max = 2.4
 collect_sound = ExtResource("4_0u5uq")
 collect_volume = -15.0
 collect_pitch_min = 1.0
+ui_barra_vida = NodePath("HealthBar")
+ui_recurso_labirinto = NodePath("UIRecursoLabirinto")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
@@ -167,6 +179,33 @@ offset_bottom = -18.32
 theme_override_styles/fill = SubResource("StyleBoxFlat_mtuoh")
 value = 100.0
 show_percentage = false
+
+[node name="UIRecursoLabirinto" type="VBoxContainer" parent="." unique_id=1674007776]
+visible = false
+custom_minimum_size = Vector2(50, 0)
+offset_left = -10.0
+offset_top = -29.91
+offset_right = 40.0
+offset_bottom = 6.09
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = -2
+script = ExtResource("6_jhyir")
+fonte_customizada = ExtResource("7_jhyir")
+
+[node name="IconeRecursoLabirinto" type="TextureRect" parent="UIRecursoLabirinto" unique_id=64022776]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_gk6dx")
+stretch_mode = 4
+
+[node name="TextoRecursoLabirinto" type="Label" parent="UIRecursoLabirinto" unique_id=805387874]
+unique_name_in_owner = true
+layout_mode = 2
+text = "900M"
+label_settings = SubResource("LabelSettings_gk6dx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056011674]
 sprite_frames = SubResource("SpriteFrames_74mp2")

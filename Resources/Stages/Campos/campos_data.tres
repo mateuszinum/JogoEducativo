@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="6_ttsbp"]
 [ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Enemies/SlimeDeGelo.tres" id="7_mfjtu"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_omn7t"]
-[ext_resource type="Texture2D" uid="uid://x4r6bahncc3" path="res://Resources/Stages/Campos/campos_ruido_barreira.tres" id="8_lndgn"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
 [ext_resource type="AudioStream" uid="uid://dchxhehlqsmty" path="res://Audio/Soundtracks/Campos.wav" id="10_0o20v"]
 [ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/tesouro_campos.tres" id="10_u4kak"]
@@ -21,16 +20,55 @@ metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 [sub_resource type="Resource" id="Resource_jd7mv"]
 script = ExtResource("1_ii8eh")
 source_id = 1
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_lu5qd"]
 script = ExtResource("1_ii8eh")
 source_id = 2
+chance_peso = 2.0
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_fyhc1"]
 script = ExtResource("1_ii8eh")
 source_id = 3
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_mfjtu"]
+script = ExtResource("1_ii8eh")
+source_id = 4
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_0vmxh"]
+script = ExtResource("1_ii8eh")
+source_id = 5
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_ttsbp"]
+script = ExtResource("1_ii8eh")
+source_id = 6
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_lndgn"]
+script = ExtResource("1_ii8eh")
+source_id = 7
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_omn7t"]
+script = ExtResource("1_ii8eh")
+source_id = 8
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_ytlo0"]
+script = ExtResource("1_ii8eh")
+source_id = 9
+chance_peso = 0.2
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
 [sub_resource type="Resource" id="Resource_ts6uj"]
@@ -61,10 +99,27 @@ metadata/_custom_type_script = "uid://croimo2sgqusx"
 
 [sub_resource type="Resource" id="Resource_ua18n"]
 script = ExtResource("7_omn7t")
-nome_obstaculo = "Barreira"
+nome_obstaculo = "Arbusto"
+source_ids = Array[int]([12, 13, 14])
+frequencia = 0.2
+cluster_max = 1
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[sub_resource type="Resource" id="Resource_6ohbw"]
+script = ExtResource("7_omn7t")
+nome_obstaculo = "Arvore"
+source_ids = Array[int]([11])
+cluster_max = 3
+cluster_redondo = false
+afastar_obstaculos = Array[String](["Arbusto"])
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[sub_resource type="Resource" id="Resource_u4kak"]
+script = ExtResource("7_omn7t")
 source_ids = Array[int]([10])
-ruido = ExtResource("8_lndgn")
-valor_minimo = 0.8
+cluster_min = 30
+cluster_max = 40
+afastar_obstaculos = Array[String](["Arvore", "Arbusto"])
 metadata/_custom_type_script = "uid://dlk027vsi110o"
 
 [resource]
@@ -76,6 +131,6 @@ spawn_events = Array[ExtResource("3_0o20v")]([SubResource("Resource_ts6uj"), Sub
 map_width = 100
 tesouro_config = ExtResource("10_u4kak")
 stage_tileset = ExtResource("9_ytlo0")
-ground_variants = Array[ExtResource("1_ii8eh")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1")])
-spawn_rules = Array[ExtResource("7_omn7t")]([SubResource("Resource_ua18n")])
+ground_variants = Array[ExtResource("1_ii8eh")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_mfjtu"), SubResource("Resource_0vmxh"), SubResource("Resource_ttsbp"), SubResource("Resource_lndgn"), SubResource("Resource_omn7t"), SubResource("Resource_ytlo0")])
+spawn_rules = Array[ExtResource("7_omn7t")]([SubResource("Resource_ua18n"), SubResource("Resource_6ohbw"), SubResource("Resource_u4kak")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"

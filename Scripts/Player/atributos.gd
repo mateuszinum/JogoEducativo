@@ -12,6 +12,13 @@ var ganhos_agilidade = [0.7, 0.5, 0.3]
 var ganhos_coleta = [2.0, 3.0, 4.0]
 var ganhos_forca = [1.5, 2.0, 3.0]
 
+# ------------------------------------- #
+
+var multiplicador_labirinto : float = 1.0
+
+func GetTempoTick():
+	return tempo_tick / multiplicador_labirinto
+
 func comprar_upgrade(nome_upgrade, nivel_atual):
 	match nome_upgrade:
 		"Agilidade":
@@ -43,3 +50,13 @@ func comprar_upgrade(nome_upgrade, nivel_atual):
 	
 			forca_multiplier = novo_valor
 			#print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
+
+func resetar_multiplicador_labirinto(valor: float) -> void:
+	multiplicador_labirinto = valor
+
+func incrementar_multiplicador_labirinto(incremento: float, valor_maximo: float) -> void:
+	multiplicador_labirinto += incremento
+	if multiplicador_labirinto > valor_maximo:
+		multiplicador_labirinto = valor_maximo
+		
+	print(GetTempoTick())

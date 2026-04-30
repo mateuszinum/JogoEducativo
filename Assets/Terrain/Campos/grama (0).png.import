@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnjsxjshcl3ax"
-path="res://.godot/imported/pointer_toon_b.png-1e1a7aeab7de0063a595790223bb7b3e.ctex"
+uid="uid://cxfvq2ulimnyr"
+path="res://.godot/imported/grama (0).png-5b0a5bf2a0110f9c023032c536ffbe76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/pointer_toon_b.png"
-dest_files=["res://.godot/imported/pointer_toon_b.png-1e1a7aeab7de0063a595790223bb7b3e.ctex"]
+source_file="res://Assets/Terrain/Campos/grama (0).png"
+dest_files=["res://.godot/imported/grama (0).png-5b0a5bf2a0110f9c023032c536ffbe76.ctex"]
 
 [params]
 

@@ -1,10 +1,16 @@
 [gd_resource type="TileSet" format=3 uid="uid://cnvieb7wwswqa"]
 
-[ext_resource type="Texture2D" uid="uid://y0qtmhd4ema2" path="res://Assets/Terrain/Floresta/tile102.png" id="1_vj3nu"]
-[ext_resource type="Texture2D" uid="uid://mi2pl6r5v67r" path="res://Assets/Terrain/Floresta/tile103.png" id="2_4v0mx"]
-[ext_resource type="Texture2D" uid="uid://d0uvt0c1xh0yt" path="res://Assets/Terrain/Genérico/BarreiraTile.png" id="2_m3ci6"]
-[ext_resource type="Texture2D" uid="uid://hekw56et4q6g" path="res://Assets/Terrain/Floresta/tile104.png" id="4_rskf6"]
-[ext_resource type="Texture2D" uid="uid://clxnblpviprpd" path="res://Assets/Terrain/Floresta/tile105.png" id="5_p12gx"]
+[ext_resource type="Texture2D" uid="uid://y0qtmhd4ema2" path="res://Assets/Terrain/Floresta/gramaFloresta(0).png" id="1_krpqg"]
+[ext_resource type="Texture2D" uid="uid://mi2pl6r5v67r" path="res://Assets/Terrain/Floresta/gramaFloresta(1).png" id="2_8gviy"]
+[ext_resource type="Texture2D" uid="uid://ci5e8pxutg1ob" path="res://Assets/Terrain/Floresta/FlorestaBarreiraTile.png" id="3_krpqg"]
+[ext_resource type="Texture2D" uid="uid://hekw56et4q6g" path="res://Assets/Terrain/Floresta/gramaFloresta(2).png" id="4_1fl8r"]
+[ext_resource type="Texture2D" uid="uid://clxnblpviprpd" path="res://Assets/Terrain/Floresta/gramaFloresta(3).png" id="5_s2bm0"]
+[ext_resource type="Texture2D" uid="uid://dsa01lxqt14ka" path="res://Assets/Terrain/Floresta/gramaFloresta(4).png" id="6_o0osj"]
+[ext_resource type="Texture2D" uid="uid://lg3t0nel4in7" path="res://Assets/Terrain/Floresta/gramaFloresta(5).png" id="7_rysi1"]
+[ext_resource type="Texture2D" uid="uid://cm6ff5nt64afb" path="res://Assets/Terrain/Floresta/gramaFloresta(6).png" id="8_exuw8"]
+[ext_resource type="Texture2D" uid="uid://bpe6bbrrlp3mr" path="res://Assets/Terrain/Floresta/gramaFloresta(7).png" id="9_loi52"]
+[ext_resource type="Texture2D" uid="uid://nb7nanoaiq86" path="res://Assets/Terrain/Floresta/gramaFloresta(8).png" id="10_yphvv"]
+[ext_resource type="Texture2D" uid="uid://bcxxphpoypwf7" path="res://Assets/Terrain/Floresta/gramaFloresta(9).png" id="11_2jyvf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vj3nu"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -13,7 +19,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vj3nu"]
-texture = ExtResource("1_vj3nu")
+texture = ExtResource("1_krpqg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vj3nu")
@@ -25,7 +31,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4v0mx"]
-texture = ExtResource("2_4v0mx")
+texture = ExtResource("2_8gviy")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4v0mx")
@@ -33,7 +39,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_viv7m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ph6x"]
-texture = ExtResource("2_m3ci6")
+texture = ExtResource("3_krpqg")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -46,7 +52,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rskf6"]
-texture = ExtResource("4_rskf6")
+texture = ExtResource("4_1fl8r")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rskf6")
@@ -58,10 +64,82 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p12gx"]
-texture = ExtResource("5_p12gx")
+texture = ExtResource("5_s2bm0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_p12gx")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_krpqg"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8ami"]
+texture = ExtResource("6_o0osj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_krpqg")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8gviy"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfuwo"]
+texture = ExtResource("7_rysi1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_8gviy")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1fl8r"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y2vqx"]
+texture = ExtResource("8_exuw8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_1fl8r")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_s2bm0"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8i3mj"]
+texture = ExtResource("9_loi52")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_s2bm0")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_o0osj"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wp42w"]
+texture = ExtResource("10_yphvv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_o0osj")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rysi1"]
+vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ps18m"]
+texture = ExtResource("11_2jyvf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rysi1")
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -75,3 +153,9 @@ sources/0 = SubResource("TileSetAtlasSource_vj3nu")
 sources/1 = SubResource("TileSetAtlasSource_4v0mx")
 sources/2 = SubResource("TileSetAtlasSource_rskf6")
 sources/3 = SubResource("TileSetAtlasSource_p12gx")
+sources/4 = SubResource("TileSetAtlasSource_c8ami")
+sources/5 = SubResource("TileSetAtlasSource_tfuwo")
+sources/6 = SubResource("TileSetAtlasSource_y2vqx")
+sources/7 = SubResource("TileSetAtlasSource_8i3mj")
+sources/8 = SubResource("TileSetAtlasSource_wp42w")
+sources/9 = SubResource("TileSetAtlasSource_ps18m")

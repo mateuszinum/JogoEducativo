@@ -59,6 +59,10 @@ script = ExtResource("7_7fyq5")
 stage_music = ExtResource("13_0ofdx")
 music_volume = -10.0
 spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
+labirinto_largura = null
+labirinto_altura = null
+labirinto_zoom_camera = null
+labirinto_offset_camera = null
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
 
 [sub_resource type="Gradient" id="Gradient_yljls"]

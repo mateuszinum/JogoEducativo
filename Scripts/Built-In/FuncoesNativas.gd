@@ -277,9 +277,10 @@ class Partida:
 
 class Jogador:
 	static func mover_via_codigo(direcao: String) -> bool:
+		var tree = Engine.get_main_loop()
+		var player = tree.get_first_node_in_group("Player")
 		var dir_limpa = direcao.to_lower().strip_edges()
 		
-		# Verifica se o movimento atual é válido com base no cache atual
 		if FuncoesNativas._cache_pode_mover.has(dir_limpa) and FuncoesNativas._cache_pode_mover[dir_limpa]:
 			
 			var direcoes_vetores = {
@@ -291,7 +292,6 @@ class Jogador:
 			
 			FuncoesNativas._coordenada_logica_atual += direcoes_vetores[dir_limpa]
 			
-			var tree = Engine.get_main_loop()
 			var tile_map = tree.get_first_node_in_group("Mapa")
 			
 			if tile_map:
@@ -308,7 +308,7 @@ class Jogador:
 			mover(direcao)
 			return true
 		else:
-			#print("\n[Debug] O agente tentou ir para '", dir_limpa, "', mas bateu na parede/abismo!")
+			player.feedback_erro_comando()
 			return false
 		
 	static func mover(direcao: String) -> void:
@@ -360,7 +360,7 @@ class Jogador:
 		if not Constantes.REQUISITOS_DESATIVADOS:
 			for req in ataque_data.requisitos:
 				if not req.verificar(player, ataque_data):
-					player.feedback_erro_ataque(ataque_data)
+					player.feedback_erro_comando()
 					return false
 				
 		var alvo_encontrado = false
@@ -372,7 +372,7 @@ class Jogador:
 				
 				# ERRO 3: Inimigo está muito longe
 				if distancia > FuncoesNativas.ALCANCE_MAXIMO:
-					player.feedback_erro_ataque(ataque_data)
+					player.feedback_erro_comando()
 					return false
 					
 				# SUCESSO: Tudo certo, o ataque acontece!
@@ -382,12 +382,12 @@ class Jogador:
 					return true
 				else:
 					# ERRO 4: Script da arma está quebrado
-					player.feedback_erro_ataque(ataque_data)
+					player.feedback_erro_comando()
 					return false
 					
 		# ERRO 5: Inimigo com esse ID não foi encontrado na arena
 		if not alvo_encontrado:
-			player.feedback_erro_ataque(ataque_data)
+			player.feedback_erro_comando()
 			return false
 			
 		return false

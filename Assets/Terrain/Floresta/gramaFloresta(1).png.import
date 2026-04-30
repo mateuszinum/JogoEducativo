@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mi2pl6r5v67r"
-path="res://.godot/imported/tile103.png-6a27927e0c11b26df49328bf290b995e.ctex"
+path="res://.godot/imported/gramaFloresta(1).png-1e5fad42b4f6f2adf60f634e3e86e14e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Floresta/tile103.png"
-dest_files=["res://.godot/imported/tile103.png-6a27927e0c11b26df49328bf290b995e.ctex"]
+source_file="res://Assets/Terrain/Floresta/gramaFloresta(1).png"
+dest_files=["res://.godot/imported/gramaFloresta(1).png-1e5fad42b4f6f2adf60f634e3e86e14e.ctex"]
 
 [params]
 

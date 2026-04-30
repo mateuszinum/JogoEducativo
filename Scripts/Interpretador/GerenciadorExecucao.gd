@@ -24,7 +24,8 @@ const MULTIPLICADOR_TICK = {
 # Todos as funções nativas possuem um valor padrão de cooldown,
 # valores definidos aqui servem apenas como override do valor padrão.
 const COOLDOWNS_MINIMOS = {
-	"mover": 1.0
+	"mover": 1.0,
+	"podeMover": 0.05
 }
 
 # 3. AÇÕES DE TEMPO FIXO (Ignoram os atributos do jogador, em Segundos)
@@ -49,10 +50,10 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 		tempo_espera_pos = TEMPO_FIXO_SEGUNDOS[metodo]
 	else:
 		var peso = MULTIPLICADOR_TICK.get(metodo, 0.0)
-		tempo_espera_pos = Atributos.tempo_tick * peso
+		tempo_espera_pos = Atributos.GetTempoTick() * peso
 		
 		var multiplicador_cooldown = COOLDOWNS_MINIMOS.get(metodo, COOLDOWN_UNIVERSAL)
-		var cooldown_exigido = Atributos.tempo_tick * multiplicador_cooldown
+		var cooldown_exigido = Atributos.GetTempoTick() * multiplicador_cooldown
 		
 		if _ultimo_uso_da_acao.has(metodo):
 			var tempo_passado = (tempo_atual_msec - _ultimo_uso_da_acao[metodo]) / 1000.0
@@ -67,7 +68,7 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 	var sucesso = alvo.callv(metodo, argumentos)
 	
 	if typeof(sucesso) == TYPE_BOOL and sucesso == false:
-		tempo_espera_pos = TEMPO_FALHA * Atributos.tempo_tick
+		tempo_espera_pos = TEMPO_FALHA * Atributos.GetTempoTick()
 		
 		if _ultimo_uso_da_acao.has(metodo):
 			_ultimo_uso_da_acao.erase(metodo)

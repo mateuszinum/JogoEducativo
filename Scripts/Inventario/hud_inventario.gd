@@ -11,25 +11,28 @@ extends Control
 
 @export_group("Configurações do Texto")
 @export var fonte_customizada: Font
-@export var tamanho_fonte: int = 14
+@export var tamanho_fonte: int = 16
 @export var cor_fonte: Color = Color.WHITE
 @export var cor_contorno: Color = Color.BLACK
 @export var tamanho_contorno: int = 0
 
 @export_group("Escalas de Feedback")
-@export var escala_ao_ganhar: Vector2 = Vector2(1.4, 1.4)
-@export var escala_ao_gastar: Vector2 = Vector2(1.2, 1.2)
-@export var escala_ao_falhar: Vector2 = Vector2(0.7, 0.7)
+@export var escala_ao_ganhar: Vector2 = Vector2(1.2, 1.2)
+@export var escala_ao_gastar: Vector2 = Vector2(0.8, 0.8)
+@export var escala_ao_falhar: Vector2 = Vector2(0.8, 0.8)
 
 @export_group("Velocidades (Segundos)")
-@export var duracao_ganhar: float = 0.2
-@export var duracao_gastar: float = 0.15
+@export var cooldown_animacao_ganhar: float = 0.15
+@export var duracao_ganhar: float = 0.1
+@export var duracao_gastar: float = 0.1
 @export var duracao_falha: float = 0.1
 @export var cor_erro: Color = Color(1.0, 0.2, 0.2)
 
 var slots_ativos: Dictionary = {} 
+var _ultimo_pulo_por_item: Dictionary = {}
 
 func _ready() -> void:
+	add_to_group("UI_Inventario") 
 	RecursosManager.recursos_alterados.connect(atualizar_tela)
 	RecursosManager.recurso_ganho.connect(_ao_ganhar_recurso)
 	RecursosManager.recurso_gasto.connect(_ao_gastar_recurso)
@@ -107,7 +110,12 @@ func _criar_slot_visual(item: ItemData) -> VBoxContainer:
 	return slot
 
 func _ao_ganhar_recurso(item: ItemData) -> void:
-	_animar_pulo(item, escala_ao_ganhar, duracao_ganhar)
+	var tempo_atual = Time.get_ticks_msec()
+	var ultimo_tempo = _ultimo_pulo_por_item.get(item, 0)
+	var cooldown_msec = int(cooldown_animacao_ganhar * 1000)
+	if tempo_atual - ultimo_tempo >= cooldown_msec:
+		_ultimo_pulo_por_item[item] = tempo_atual
+		_animar_pulo(item, escala_ao_ganhar, duracao_ganhar)
 
 func _ao_gastar_recurso(item: ItemData) -> void:
 	_animar_pulo(item, escala_ao_gastar, duracao_gastar)
