@@ -410,14 +410,13 @@ class Produtos:
 		#var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
 		
 		#if compra_aprovada:
-			# Efetuar compraz
-			#print("Compra de " + item + " efetuada com sucesso!")
+			if Constantes.DEBUG: print("Compra de " + item + " efetuada com sucesso!")
 			
-		#else:
-			#if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
-				#print("Este compartimento está cheio!")
-			#else:
-				#print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
+		else:
+			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
+				if Constantes.DEBUG: print("Este compartimento está cheio!")
+			else:
+				if Constantes.DEBUG: print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
 	
 	static func usar_item_mochila():
 		for i in range(Inventario.itens_mochila.size() - 1, -1, -1):
@@ -426,10 +425,10 @@ class Produtos:
 			if produto_usado != null:
 				Inventario.itens_mochila[i] = null
 				Inventario.inventario_comprados_atualizado.emit()
-				print("Você usou o item do topo da mochila: ", produto_usado.nome)
+				if Constantes.DEBUG: print("Você usou o item do topo da mochila: ", produto_usado.nome)
 				return true
 
-		print("Falha: A mochila está completamente vazia!")
+		if Constantes.DEBUG: print("Falha: A mochila está completamente vazia!")
 		return false
 
 	static func usar_item_cinto(index):
@@ -440,11 +439,11 @@ class Produtos:
 				Inventario.itens_cinto[index] = null
 				Inventario.inventario_comprados_atualizado.emit()
 			
-				print("Você usou o item do cinto: ", produto_index.nome)
+				if Constantes.DEBUG: print("Você usou o item do cinto: ", produto_index.nome)
 				return true
 
 			else:
-				print("Não há nenhum item no índice ", index, " do cinto.")
+				if Constantes.DEBUG: print("Não há nenhum item no índice ", index, " do cinto.")
 				return false
 	
 	static func vender_tudo():

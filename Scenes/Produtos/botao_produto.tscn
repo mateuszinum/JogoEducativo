@@ -206,7 +206,7 @@ text = "Título"
 
 [node name="TooltipDescricao" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1965983211]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(330, 10)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
 theme_override_fonts/font = ExtResource("10_d2b7l")

@@ -28,6 +28,10 @@ script = ExtResource("5_jj7xm")
 nome = "Floresta"
 icone = ExtResource("2_fwy0u")
 pre_requisitos = Array[ExtResource("5_jj7xm")]([ExtResource("6_fwy0u")])
-tipo = 3
+tipo = 1
+descricao_simples = "Arena nova!
++1 espaço de código!"
+descricao_bloqueada = "Nova arena!
++1 espaço de código!"
 niveis = Array[ExtResource("3_n8kxy")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

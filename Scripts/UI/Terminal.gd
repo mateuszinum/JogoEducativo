@@ -4,8 +4,15 @@ extends PanelContainer
 @onready var botao_executar = %BotaoExecutar 
 @onready var interpretador = %InterpretadorServico
 @onready var viewport = %SubViewport
-@onready var botao_debug = %BotaoDebug 
-@onready var botao_recurso = %BotaoRecurso
+
+@onready var seletor_slot = %SeletorSlotCodigo
+
+@export_group("Requisitos dos Slots de Código")
+@export var requisito_slot_0: String = ""
+@export var requisito_slot_1: String = ""
+@export var requisito_slot_2: String = ""
+@export var requisito_slot_3: String = ""
+@export var requisito_slot_4: String = ""
 
 @export_group("Customização do Botão")
 @export var icone_rodar: Texture2D
@@ -22,20 +29,21 @@ var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
 var _timer_cooldown: SceneTreeTimer
 
+var slots_codigo: Array = [
+	{"nome": "Código A", "codigo": ""},
+	{"nome": "Código B", "codigo": ""},
+	{"nome": "Código C", "codigo": ""},
+	{"nome": "Código D", "codigo": ""},
+	{"nome": "Código E", "codigo": ""}
+]
+
+var slot_atual_idx: int = 0
+
 func _ready() -> void:
 	add_to_group("Terminal") 
 	
 	if not botao_executar.pressed.is_connected(_on_botao_executar_pressed):
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
-		
-	if botao_recurso:
-		botao_recurso.visible = Constantes.MODO_DEV
-	
-	if botao_debug:
-		botao_debug.visible = Constantes.MODO_DEV
-		if Constantes.MODO_DEV and not botao_debug.pressed.is_connected(_on_botao_debug_pressed):
-			botao_debug.pressed.connect(_on_botao_debug_pressed)
-			botao_debug.focus_mode = Control.FOCUS_NONE
 	
 	botao_executar.focus_mode = Control.FOCUS_NONE
 	code_edit.focus_mode = Control.FOCUS_CLICK
@@ -49,6 +57,12 @@ func _ready() -> void:
 	
 	_configurar_tooltip_erro()
 	atualizar_estado_botao()
+	
+	if seletor_slot:
+		seletor_slot.item_selected.connect(_on_seletor_slot_item_selected)
+		
+	ProgressoDB.progresso_alterado.connect(_atualizar_seletor_slots)
+	_atualizar_seletor_slots()
 
 func aplicar_fonte() -> void:
 	var indice = Constantes.FONTE_TERMINAL
@@ -115,6 +129,7 @@ func ativar_modo_vilarejo():
 	code_edit.editable = not codigo_rodando
 	botao_executar.visible = true
 	atualizar_estado_botao()
+	atualizar_travas_da_interface()
 	iniciar_cooldown_seguranca()
 
 func ativar_modo_arena():
@@ -122,6 +137,7 @@ func ativar_modo_arena():
 	code_edit.editable = false 
 	botao_executar.visible = true
 	atualizar_estado_botao()
+	atualizar_travas_da_interface()
 	code_edit.release_focus() 
 	iniciar_cooldown_seguranca()
 
@@ -156,6 +172,7 @@ func _on_botao_executar_pressed() -> void:
 		codigo_rodando = true
 		code_edit.editable = false
 		atualizar_estado_botao()
+		atualizar_travas_da_interface()
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
 		iniciar_cooldown_seguranca()
 
@@ -166,6 +183,7 @@ func _on_botao_executar_pressed() -> void:
 		codigo_rodando = false
 		code_edit.editable = true
 		atualizar_estado_botao()
+		atualizar_travas_da_interface()
 		iniciar_cooldown_seguranca()
 
 	elif modo_atual == "arena":
@@ -193,6 +211,7 @@ func mostrar_erros_de_sintaxe(lista_erros: Array):
 	
 	codigo_rodando = false
 	code_edit.editable = true
+	atualizar_travas_da_interface()
 	if modo_atual == "vilarejo":
 		botao_executar.text = "Existem Erros!"
 	iniciar_cooldown_seguranca()
@@ -209,6 +228,7 @@ func mostrar_erro_runtime(mensagem: String):
 	codigo_rodando = false
 	code_edit.editable = (modo_atual == "vilarejo")
 	atualizar_estado_botao()
+	atualizar_travas_da_interface()
 	iniciar_cooldown_seguranca()
 	
 	var dialog = AcceptDialog.new()
@@ -249,51 +269,9 @@ func configurar_cores_do_codigo() -> void:
 
 	code_edit.syntax_highlighter = highlighter
 
-func _on_botao_debug_pressed() -> void:
-	var codigo_teste = """arena(Campos)
-Direcao dir = [Esquerda, Cima, Direita, Baixo, Esquerda, Cima, Direita, Baixo]
-Ataque atk = [EsferaAzul, EsferaVermelha, Raio, Gelo, ExplosaoGelo, Fogo, ExplosaoFogo, Alho]
-bool f = !Verdadeiro
-int i = 0
-
-Direcao GetDirecao(int j):
-	retorna dir[j]
-fim funcao
-
-vazio Movimento():
-	mover(GetDirecao(i))
-	retorna
-fim funcao
-
-vazio AtacarInimigoMaisProximo():
-	Inimigo alvo = inimigoMaisProximo()
-	Ataque atk = atk[i]
-	se(alvo.nome == "NULO"):
-		retorna
-	senao:
-		escreva("Ataquei um " + alvo.nome)
-		atacar(alvo, atk)
-		retorna
-	fim se
-fim funcao
-
-vazio Incremento(int maior):
-	i = i + 1
-	se(i > maior):
-		i = 0
-	fim se
-	retorna
-fim funcao
-	
-enquanto(Verdadeiro):
-	Movimento()
-	AtacarInimigoMaisProximo()
-	
-	Incremento(7)
-fim enquanto"""
-	code_edit.text = codigo_teste
-
 func _on_text_changed() -> void:
+	slots_codigo[slot_atual_idx]["codigo"] = code_edit.text
+	
 	code_edit.request_code_completion(true)
 
 func _on_code_completion_requested() -> void:
@@ -387,3 +365,68 @@ func validar_codigo_bloqueado(codigo: String) -> String:
 			if regex.search(codigo):
 				return "Acesso Negado!\nDesbloqueie o conhecimento '" + requisito + "' na Árvore de Habilidades para usar o comando: " + termo_limpo
 	return ""
+
+func _atualizar_seletor_slots() -> void:
+	if not seletor_slot: return
+	
+	var qtd_desbloqueada = 0
+	
+	var requisitos = [
+		requisito_slot_0, 
+		requisito_slot_1, 
+		requisito_slot_2, 
+		requisito_slot_3, 
+		requisito_slot_4
+	]
+	
+	for i in range(5):
+		var req = requisitos[i]
+		
+		if ProgressoDB.tem_desbloqueado(req):
+			qtd_desbloqueada += 1
+		else:
+			break 
+			
+	if qtd_desbloqueada == 0:
+		qtd_desbloqueada = 1
+	
+	seletor_slot.visible = (qtd_desbloqueada > 1)
+	
+	seletor_slot.clear()
+	for i in range(qtd_desbloqueada):
+		seletor_slot.add_item(slots_codigo[i]["nome"], i)
+
+	if slot_atual_idx >= qtd_desbloqueada:
+		_on_seletor_slot_item_selected(0)
+	else:
+		seletor_slot.select(slot_atual_idx)
+
+func _on_seletor_slot_item_selected(index: int) -> void:
+	slots_codigo[slot_atual_idx]["codigo"] = code_edit.text
+	
+	slot_atual_idx = index
+	
+	code_edit.text = slots_codigo[slot_atual_idx]["codigo"]
+	
+	limpar_erros_de_sintaxe()
+	
+func atualizar_travas_da_interface() -> void:
+	if seletor_slot:
+		var pode_editar = (modo_atual == "vilarejo") and not codigo_rodando
+		seletor_slot.disabled = not pode_editar
+	
+func definir_codigo_slot(indice: int, codigo: String) -> void:
+	if indice < 0 or indice >= slots_codigo.size():
+		return
+		
+	slots_codigo[indice]["codigo"] = codigo
+	
+	if indice == slot_atual_idx:
+		code_edit.text = codigo
+		limpar_erros_de_sintaxe()
+
+func get_codigo_slot(indice: int) -> String:
+	if indice < 0 or indice >= slots_codigo.size():
+		return ""
+		
+	return slots_codigo[indice]["codigo"]

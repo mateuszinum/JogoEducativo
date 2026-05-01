@@ -28,6 +28,6 @@ script = ExtResource("5_f2r3j")
 nome = "Gelo"
 icone = ExtResource("1_bl3de")
 pre_requisitos = Array[ExtResource("5_f2r3j")]([ExtResource("6_slbvi")])
-tipo = 3
+tipo = 1
 niveis = Array[ExtResource("3_ohnj3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

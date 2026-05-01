@@ -28,6 +28,10 @@ script = ExtResource("5_qtoqs")
 nome = "Labirinto"
 icone = ExtResource("2_eaqbv")
 pre_requisitos = Array[ExtResource("5_qtoqs")]([ExtResource("6_eaqbv")])
-tipo = 3
+tipo = 1
+descricao_simples = "Arena nova!
++1 espaço de código!"
+descricao_bloqueada = "Nova arena!
++1 espaço de código!"
 niveis = Array[ExtResource("3_ydich")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

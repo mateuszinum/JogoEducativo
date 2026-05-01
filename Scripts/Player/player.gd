@@ -50,8 +50,10 @@ func _ready() -> void:
 	anim.play("default")
 	_current_collect_pitch = collect_pitch_min
 	health = Atributos.max_health
+	
 
 func _physics_process(delta: float) -> void:		
+	#Atributos.debug_tempo_tick()
 	if Constantes.MODO_DEV:
 		var dirs = {
 			"move_up":    "Cima",

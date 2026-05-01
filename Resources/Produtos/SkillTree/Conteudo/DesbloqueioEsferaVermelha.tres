@@ -28,6 +28,6 @@ script = ExtResource("5_hckvb")
 nome = "Esfera Vermelha"
 icone = ExtResource("2_dv37w")
 pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp")])
-tipo = 3
+tipo = 1
 niveis = Array[ExtResource("3_k6in4")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

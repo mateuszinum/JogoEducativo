@@ -7,10 +7,11 @@ var TUDO_DESBLOQUEADO : bool = true # começa com tudo da skilltree já desbloqu
 var REQUISITOS_DESATIVADOS : bool = true # define se os ataques precisam de requisitos para serem lançados
 var TUDO_GRATIS : bool = false # custos de produtos ignorados
 var JOGADOR_IMORTAL : bool = false # define se o jogador é invulnerável ou não
+var DEBUG : bool = false # ativa/desativa prints úteis para debug
 
 
 # Mude tudo aqui para 'true' na hora de compilar o jogo final pro público!
-var TOCAR_MUSICA : bool = false # liga ou desliga todas as músicas
+var TOCAR_MUSICA : bool = true # liga ou desliga todas as músicas
 var USAR_EFEITOS_TELA : bool = true # define se vai ter efeitos de pós processamento
 
 # Define o índice da fonte do terminal. Atualmente só temos 0 e 1

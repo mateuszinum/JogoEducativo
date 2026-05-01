@@ -5,13 +5,13 @@ var interpretador_csharp: Node = null
 # ==========================================
 # CONFIGURAÇÃO DE DELAYS 
 
-const TEMPO_FALHA = 1.0
-const COOLDOWN_UNIVERSAL = 0.2
+const TEMPO_FALHA = 0.4 
+const COOLDOWN_UNIVERSAL = 0.1 
 # ==========================================
 
 # 1. AÇÕES VINCULADAS À AGILIDADE (Multiplicam o tempo_tick)
 const MULTIPLICADOR_TICK = {
-	"atacar": 1.0,
+	"atacar": 0.8,
 	"mover": 0.1,
 	"usar_item_cinto": 0.2,
 	"usar_item_mochila": 0.2,
@@ -19,13 +19,9 @@ const MULTIPLICADOR_TICK = {
 	"venderTudo": 0.2
 }
 
-# 2. COOLDOWNS MÍNIMOS (Multiplicam o tempo_tick)
-# Impede que a mesma ação seja metralhada seguidamente.
-# Todos as funções nativas possuem um valor padrão de cooldown,
-# valores definidos aqui servem apenas como override do valor padrão.
+# 2. COOLDOWNS MÍNIMOS DE AÇÕES ESPECÍFICAS (Multiplicam o tempo_tick)
 const COOLDOWNS_MINIMOS = {
-	"mover": 1.0,
-	"podeMover": 0.05
+	"mover": 1.0
 }
 
 # 3. AÇÕES DE TEMPO FIXO (Ignoram os atributos do jogador, em Segundos)
@@ -57,6 +53,7 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 		
 		if _ultimo_uso_da_acao.has(metodo):
 			var tempo_passado = (tempo_atual_msec - _ultimo_uso_da_acao[metodo]) / 1000.0
+			
 			if tempo_passado < cooldown_exigido:
 				tempo_espera_pre = cooldown_exigido - tempo_passado
 		
@@ -68,10 +65,10 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 	var sucesso = alvo.callv(metodo, argumentos)
 	
 	if typeof(sucesso) == TYPE_BOOL and sucesso == false:
-		tempo_espera_pos = TEMPO_FALHA * Atributos.GetTempoTick()
-		
-		if _ultimo_uso_da_acao.has(metodo):
-			_ultimo_uso_da_acao.erase(metodo)
+		if MULTIPLICADOR_TICK.has(metodo):
+			tempo_espera_pos = TEMPO_FALHA * Atributos.GetTempoTick()
+			if _ultimo_uso_da_acao.has(metodo):
+				_ultimo_uso_da_acao.erase(metodo)
 	
 	if tempo_espera_pos > 0.0:
 		await get_tree().create_timer(tempo_espera_pos).timeout

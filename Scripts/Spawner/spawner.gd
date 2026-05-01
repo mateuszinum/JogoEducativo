@@ -1,7 +1,5 @@
 extends Node2D
 
-const DEBUG = false
-
 @export var enemy_scene : PackedScene
 @export var max_enemies : int = 50
 
@@ -58,8 +56,7 @@ func aplicar_incremento_de_tempo() -> void:
 	
 	for enemy_type in active_spawns:
 		active_spawns[enemy_type] += incremento_neste_segundo
-		if DEBUG: 
-			print("DEBUG INCREMENTO -> ", enemy_type.nome, " | Incrementado: +", incremento_neste_segundo, " | Novo Rate: ", active_spawns[enemy_type])
+		if Constantes.DEBUG: print("DEBUG INCREMENTO -> ", enemy_type.nome, " | Incrementado: +", incremento_neste_segundo, " | Novo Rate: ", active_spawns[enemy_type])
 
 func check_spawn_events():
 	if current_stage == null: return
@@ -72,12 +69,10 @@ func check_spawn_events():
 		if tempo_alvo == total_time_seconds:
 			if event.spawn_rate >= 0.01:
 				active_spawns[event.enemy_type] = event.spawn_rate
-				if DEBUG: 
-					print("Evento: Definindo spawn de ", event.enemy_type.nome, " para ", event.spawn_rate)
+				if Constantes.DEBUG: print("Evento: Definindo spawn de ", event.enemy_type.nome, " para ", event.spawn_rate)
 			else:
 				active_spawns.erase(event.enemy_type)
-				if DEBUG: 
-					print("Evento: Parando de spawnar ", event.enemy_type.nome)
+				if Constantes.DEBUG: print("Evento: Parando de spawnar ", event.enemy_type.nome)
 
 func execute_spawns():
 	for enemy_type in active_spawns:

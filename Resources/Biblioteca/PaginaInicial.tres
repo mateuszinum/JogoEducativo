@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_7lmda"]
 script = ExtResource("1_7lmda")
 tipo = 2
-texto = "[req=Sensores 1]Acessando Atributos de |Inimigos[/req]"
+texto = "[req=Sensores 1]Acessando Atributos de Inimigos[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_0rfgp"]
