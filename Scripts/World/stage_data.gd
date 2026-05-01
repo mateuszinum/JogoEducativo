@@ -26,12 +26,15 @@ enum TipoMapa { ARENA_ABERTA, LABIRINTO }
 @export var map_height: int = 50
 @export var raio_seguro_spawn: float = 5.0
 @export var tesouro_config: TesouroData
+@export var cor_escuridao: Color = Color("ffffffff")
+@export var ativar_luz_player: bool = false
 
 @export_category("Tiles")
 @export var stage_tileset: TileSet
 
 @export_group("Configuração do Labirinto")
-@export var source_id_parede_labirinto: int = 0
+@export var labirinto_terrain_set: int = 0
+@export var labirinto_terrain_id: int = 0
 @export var labirinto_largura: int = 11
 @export var labirinto_altura: int = 9
 @export var labirinto_zoom_camera: Vector2 = Vector2(2.0, 2.0)
@@ -69,7 +72,8 @@ func get_random_ground_id() -> int:
 
 func _validate_property(property: Dictionary):
 	var props_labirinto = [
-		"source_id_parede_labirinto", 
+		"labirinto_terrain_set",
+		"labirinto_terrain_id",
 		"labirinto_largura", 
 		"labirinto_altura", 
 		"labirinto_zoom_camera",

@@ -268,6 +268,14 @@ icone_parar = ExtResource("5_lkp2e")
 icone_escapar = ExtResource("5_lkp2e")
 tempo_cooldown = 1.5
 fontes_disponiveis = Array[Font]([ExtResource("7_5rjbm"), ExtResource("7_p4t22")])
+cor_destaque_linha = Color(1, 1, 0.85882354, 0.50980395)
+tempo_fade_destaque = 0.75
+hl_declaracao_var = false
+hl_origem_var = false
+hl_fim_se = false
+hl_fim_enquanto = false
+hl_corpo_funcao = false
+hl_fim_funcao = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PainelTerminal" unique_id=1770846262]
 layout_mode = 2
@@ -370,16 +378,34 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_v5liu")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_lcihl")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_1mes2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6v4bt")
+script = ExtResource("5_kjdr6")
+escala_hover = Vector2(1, 1)
+som_hover = ExtResource("7_tvy04")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_yljls")
+volume_clique_db = -5.0
 
 [node name="BotoesDebug" type="VBoxContainer" parent="." unique_id=624225630]
-visible = false
 layout_mode = 1
 offset_left = 30.0
-offset_top = 257.0
+offset_top = 271.0
 offset_right = 171.0
 offset_bottom = 309.0
-alignment = 2
 script = ExtResource("14_x77am")
+
+[node name="BotaoDebug" type="Button" parent="BotoesDebug" unique_id=1426945878]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Colocar código"
+script = ExtResource("5_kjdr6")
 
 [node name="BotaoRecurso" type="Button" parent="BotoesDebug" unique_id=1189409194]
 unique_name_in_owner = true
@@ -395,7 +421,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 text = "Ganhar recursos"
 script = ExtResource("5_kjdr6")
 
-[node name="BotaoDebug" type="Button" parent="BotoesDebug" unique_id=1426945878]
+[node name="BotaoAgilidade" type="Button" parent="BotoesDebug" unique_id=2115188333]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
@@ -406,7 +432,21 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Colocar código"
+text = "Agilidade Máxima"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoMusica" type="Button" parent="BotoesDebug" unique_id=726031151]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Toggle Música"
 script = ExtResource("5_kjdr6")
 
 [node name="DebugChat" type="TextureRect" parent="." unique_id=1766562716]
@@ -452,5 +492,7 @@ unique_name_in_owner = true
 script = ExtResource("3_8gbds")
 
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="." method="_on_botao_recurso_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebug" to="." method="_on_botao_debug_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="." method="_on_botao_recurso_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="." method="_on_botao_atributos_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoMusica" to="." method="_on_botao_musica_pressed"]

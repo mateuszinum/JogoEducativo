@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://uws66pebgv5v"]
+
+[ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_4uux3"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_rhv8d"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_83iwt"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="4_bj25e"]
+[ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="5_gcy85"]
+[ext_resource type="TileSet" uid="uid://cfy6xd5tosqa1" path="res://Resources/Stages/Genérico/generico_tileset.tres" id="6_4kigh"]
+
+[sub_resource type="Resource" id="Resource_ua18n"]
+script = ExtResource("4_bj25e")
+source_ids = Array[int]([10])
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[resource]
+script = ExtResource("2_rhv8d")
+nome = "Genérico"
+stage_music = ExtResource("5_gcy85")
+music_volume = -6.0
+map_width = 100
+stage_tileset = ExtResource("6_4kigh")
+spawn_rules = Array[ExtResource("4_bj25e")]([SubResource("Resource_ua18n")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"

@@ -1,8 +1,5 @@
 extends Node2D
 
-const CORTE_MAX = 1.0
-const CORTE_MIN = -1.0
-
 @export var stage_data: StageData
 @export var cena_tesouro: PackedScene
 @onready var tile_map = $TileMap
@@ -25,6 +22,15 @@ func _ready():
 func generate_world():
 	if not stage_data:
 		return
+		
+	if has_node("%Escuridao"):
+		var escuridao = get_node("%Escuridao")
+		escuridao.color = stage_data.cor_escuridao
+		
+	var player_luz = get_tree().get_first_node_in_group("Player")
+	if player_luz and player_luz.has_node("%LuzPlayer"):
+		var luz = player_luz.get_node("%LuzPlayer")
+		luz.enabled = stage_data.ativar_luz_player
 		
 	if has_node("Spawner"):
 		var spawner = $Spawner
@@ -126,7 +132,10 @@ func _gerar_modo_arena():
 
 		for pos in malha_temporaria:
 			grid_obstaculos[pos] = {
-				"id": regra.source_ids.pick_random(),
+				"usa_autotile": regra.usa_autotile,
+				"id": regra.source_ids.pick_random() if not regra.usa_autotile else -1,
+				"terrain_set": regra.terrain_set,
+				"terrain_id": regra.terrain_id,
 				"nome": regra.nome_obstaculo
 			}
 			
@@ -141,9 +150,25 @@ func _gerar_modo_arena():
 								remover.append(vizinho)
 			for p in remover: grid_obstaculos.erase(p)
 
+	var terrenos_para_conectar = {}
+	
 	for pos in grid_obstaculos:
-		tile_map.set_cell(1, pos, grid_obstaculos[pos].id, Vector2i(0, 0))
+		var obs = grid_obstaculos[pos]
+		if obs.usa_autotile:
+			var key = str(obs.terrain_set) + "_" + str(obs.terrain_id)
+			if not terrenos_para_conectar.has(key):
+				terrenos_para_conectar[key] = []
+			terrenos_para_conectar[key].append(pos)
+		else:
+			tile_map.set_cell(1, pos, obs.id, Vector2i(0, 0))
+			
 		tile_map.erase_cell(0, pos)
+		
+	for key in terrenos_para_conectar:
+		var partes = key.split("_")
+		var t_set = int(partes[0])
+		var t_id = int(partes[1])
+		tile_map.set_cells_terrain_connect(1, terrenos_para_conectar[key], t_set, t_id)
 		
 	var player = get_tree().get_first_node_in_group("Player")
 	player.position = tile_map.map_to_local(Vector2i(0, 0)) + Vector2(8, 8)
@@ -172,11 +197,16 @@ func _gerar_modo_labirinto(manter_posicao_jogador: bool = false):
 	
 	var px = 1
 	var py = 1
+	var input_x = 0
+	var input_y = 0
 	
 	if manter_posicao_jogador and player:
 		var pos_atual_grid = tile_map.local_to_map(player.position)
 		px = clamp(pos_atual_grid.x - offset_x, 1, w - 2)
 		py = clamp(pos_atual_grid.y - offset_y, 1, h - 2)
+		if player.get("input_dir") != null and player.input_dir != Vector2.ZERO:
+			input_x = int(player.input_dir.x)
+			input_y = int(player.input_dir.y)
 
 	var maze = []
 	for x in range(w):
@@ -186,29 +216,32 @@ func _gerar_modo_labirinto(manter_posicao_jogador: bool = false):
 			
 	var stack = []
 	
-	if px % 2 != 0 and py % 2 != 0:
-		maze[px][py] = 0
-		stack.append(Vector2i(px, py))
+	var blocos_protegidos = [Vector2i(px, py)]
+	if input_x != 0 or input_y != 0:
+		blocos_protegidos.append(Vector2i(clamp(px - input_x, 1, w - 2), clamp(py - input_y, 1, h - 2)))
+		blocos_protegidos.append(Vector2i(clamp(px + input_x, 1, w - 2), clamp(py + input_y, 1, h - 2)))
+
+	for bloco in blocos_protegidos:
+		var bx = bloco.x
+		var by = bloco.y
+		maze[bx][by] = 0
 		
-	elif px % 2 == 0 and py % 2 != 0:
-		maze[px-1][py] = 0
-		maze[px][py] = 0
-		maze[px+1][py] = 0
-		stack.append(Vector2i(px-1, py))
-		stack.append(Vector2i(px+1, py))
-		
-	elif px % 2 != 0 and py % 2 == 0:
-		maze[px][py-1] = 0
-		maze[px][py] = 0
-		maze[px][py+1] = 0
-		stack.append(Vector2i(px, py-1))
-		stack.append(Vector2i(px, py+1))
-		
-	else:
-		maze[px][py] = 0
-		maze[px-1][py-1] = 0
-		maze[px][py-1] = 0
-		stack.append(Vector2i(px-1, py-1))
+		if bx % 2 != 0 and by % 2 != 0:
+			if not stack.has(Vector2i(bx, by)): stack.append(Vector2i(bx, by))
+		elif bx % 2 == 0 and by % 2 != 0:
+			maze[bx-1][by] = 0
+			maze[bx+1][by] = 0
+			if not stack.has(Vector2i(bx-1, by)): stack.append(Vector2i(bx-1, by))
+			if not stack.has(Vector2i(bx+1, by)): stack.append(Vector2i(bx+1, by))
+		elif bx % 2 != 0 and by % 2 == 0:
+			maze[bx][by-1] = 0
+			maze[bx][by+1] = 0
+			if not stack.has(Vector2i(bx, by-1)): stack.append(Vector2i(bx, by-1))
+			if not stack.has(Vector2i(bx, by+1)): stack.append(Vector2i(bx, by+1))
+		else:
+			maze[bx-1][by-1] = 0
+			if not stack.has(Vector2i(bx-1, by-1)): stack.append(Vector2i(bx-1, by-1))
+			
 	while stack.size() > 0:
 		var atual = stack.back()
 		var dirs = [Vector2i(0, -2), Vector2i(0, 2), Vector2i(-2, 0), Vector2i(2, 0)]
@@ -229,14 +262,37 @@ func _gerar_modo_labirinto(manter_posicao_jogador: bool = false):
 		else:
 			stack.pop_back()
 			
+	if manter_posicao_jogador and player:
+		var pos_atual_grid = tile_map.local_to_map(player.position)
+		var gx = clamp(pos_atual_grid.x - offset_x, 1, w - 2)
+		var gy = clamp(pos_atual_grid.y - offset_y, 1, h - 2)
+		
+		maze[gx][gy] = 0
+		
+		if player.get("input_dir") != null and player.input_dir != Vector2.ZERO:
+			var dir_x = int(player.input_dir.x)
+			var dir_y = int(player.input_dir.y)
+			
+			var prev_x = clamp(gx - dir_x, 1, w - 2)
+			var prev_y = clamp(gy - dir_y, 1, h - 2)
+			var next_x = clamp(gx + dir_x, 1, w - 2)
+			var next_y = clamp(gy + dir_y, 1, h - 2)
+			
+			maze[prev_x][prev_y] = 0
+			maze[next_x][next_y] = 0		
+	
+	var paredes_labirinto = []
+	
 	for x in range(w):
 		for y in range(h):
 			var pos = Vector2i(x + offset_x, y + offset_y)
 			tile_map.set_cell(0, pos, stage_data.get_random_ground_id(), Vector2i(0, 0))
 			
 			if maze[x][y] == 1:
-				tile_map.set_cell(1, pos, stage_data.source_id_parede_labirinto, Vector2i(0, 0))
+				paredes_labirinto.append(pos)
 				
+	tile_map.set_cells_terrain_connect(1, paredes_labirinto, stage_data.labirinto_terrain_set, stage_data.labirinto_terrain_id)
+	
 	if not manter_posicao_jogador and player:
 		var pos_player_grid = Vector2i(1 + offset_x, 1 + offset_y)
 		player.position = tile_map.map_to_local(pos_player_grid) + Vector2(8, 8)

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dckuqroh6u0au"]
+
+[ext_resource type="Script" uid="uid://dmx2iudco37ne" path="res://Scripts/Polimento/luz_entidades.gd" id="1_jupjx"]
+
+[sub_resource type="Gradient" id="Gradient_jhyir"]
+offsets = PackedFloat32Array(0, 0.5706667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_74mp2"]
+gradient = SubResource("Gradient_jhyir")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="LuzEntidades" type="PointLight2D" unique_id=1979411036]
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.45490196)
+texture = SubResource("GradientTexture2D_74mp2")
+script = ExtResource("1_jupjx")

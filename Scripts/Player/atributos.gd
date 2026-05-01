@@ -51,6 +51,10 @@ func comprar_upgrade(nome_upgrade, nivel_atual):
 			forca_multiplier = novo_valor
 			if Constantes.DEBUG: print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
 
+func maximizar_agilidade() -> void:
+	tempo_tick = ganhos_agilidade[-1]
+	if Constantes.DEBUG: print("A agilidade foi maximizada!")
+
 func resetar_multiplicador_labirinto(valor: float) -> void:
 	multiplicador_labirinto = valor
 

@@ -1,4 +1,5 @@
 extends Node
+signal volume_alterado
 
 # -------------------------------------------------- #
 # Mude tudo aqui para 'false' na hora de compilar o jogo final pro público!
@@ -28,10 +29,25 @@ var TEMPO_ESCREVA : float = 3.0
 # essas são as coisas que o jogador vai conseguir alterar por contra própria
 
 # Valor de 0 a 1 para o slider, o padrão é 0.5 (0.5 = 100%)
-var VOLUME_MASTER : float = 0.5 
-var VOLUME_MUSICA : float = 0.5
-var VOLUME_SFX : float = 0.5
-var VOLUME_UI : float = 0.5
+var VOLUME_MASTER : float = 0.5:
+	set(value):
+		VOLUME_MASTER = value
+		volume_alterado.emit()
+
+var VOLUME_MUSICA : float = 0.5:
+	set(value):
+		VOLUME_MUSICA = value
+		volume_alterado.emit()
+
+var VOLUME_SFX : float = 0.5:
+	set(value):
+		VOLUME_SFX = value
+		volume_alterado.emit()
+
+var VOLUME_UI : float = 0.5:
+	set(value):
+		VOLUME_UI = value
+		volume_alterado.emit()
 
 # Define se jogo está em tela cheia
 var TELA_CHEIA : bool = true

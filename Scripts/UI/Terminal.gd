@@ -23,11 +23,30 @@ extends PanelContainer
 @export_group("Fontes do Terminal")
 @export var fontes_disponiveis: Array[Font] = []
 
+@export_group("Animação de Destaque de Código")
+@export var cor_destaque_linha: Color = Color(1.0, 1.0, 1.0, 0.4)
+@export var tempo_fade_destaque: float = 0.35
+@export_subgroup("Filtros de Destaque")
+@export var hl_declaracao_var: bool = true # Ex: int a = 0
+@export var hl_leitura_var: bool = true # Ex: a + 1
+@export var hl_origem_var: bool = true # A linha lá em cima onde a variável 'a' nasceu
+@export var hl_atribuicao: bool = true # Ex: a = 2
+@export var hl_se_senao: bool = true # Ex: se, senao se, senao
+@export var hl_fim_se: bool = true # Ex: fim se
+@export var hl_enquanto: bool = true # Ex: enquanto()
+@export var hl_fim_enquanto: bool = true # Ex: fim enquanto
+@export var hl_chamada_funcao: bool = true # Ex: mover(), getDirecao()
+@export var hl_corpo_funcao: bool = true # Ex: A declaração da função lá no topo
+@export var hl_fim_funcao: bool = true # Ex: fim funcao
+@export var hl_retorna: bool = true # Ex: retorna
+
 var modo_atual: String = "vilarejo"
 var codigo_rodando: bool = false
 var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
 var _timer_cooldown: SceneTreeTimer
+
+var _tweens_destaque: Dictionary = {}
 
 var slots_codigo: Array = [
 	{"nome": "Código A", "codigo": ""},
@@ -430,3 +449,44 @@ func get_codigo_slot(indice: int) -> String:
 		return ""
 		
 	return slots_codigo[indice]["codigo"]
+
+func destacar_linha_execucao(linha_raw: int, categoria: String = "") -> void:
+	match categoria:
+		"declaracao_var": if not hl_declaracao_var: return
+		"leitura_var": if not hl_leitura_var: return
+		"origem_var": if not hl_origem_var: return
+		"atribuicao": if not hl_atribuicao: return
+		"se_senao": if not hl_se_senao: return
+		"fim_se": if not hl_fim_se: return
+		"enquanto": if not hl_enquanto: return
+		"fim_enquanto": if not hl_fim_enquanto: return
+		"chamada_funcao": if not hl_chamada_funcao: return
+		"corpo_funcao": if not hl_corpo_funcao: return
+		"fim_funcao": if not hl_fim_funcao: return
+		"retorna": if not hl_retorna: return
+		
+	var linha = linha_raw - 1 
+	
+	if _tweens_destaque.has(linha) and _tweens_destaque[linha] and _tweens_destaque[linha].is_valid():
+		_tweens_destaque[linha].kill()
+		
+	var tween = create_tween()
+	_tweens_destaque[linha] = tween
+	
+	var cor_transparente = Color(cor_destaque_linha.r, cor_destaque_linha.g, cor_destaque_linha.b, 0.0)
+	
+	tween.tween_method(
+		func(cor_atual: Color): code_edit.set_line_background_color(linha, cor_atual),
+		cor_destaque_linha, 
+		cor_transparente, 
+		tempo_fade_destaque
+	).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(func(): _tweens_destaque.erase(linha))
+
+func limpar_destaque_execucao() -> void:
+	for linha in _tweens_destaque.keys():
+		if _tweens_destaque[linha] and _tweens_destaque[linha].is_valid():
+			_tweens_destaque[linha].kill()
+		code_edit.set_line_background_color(linha, Color(0, 0, 0, 0))
+		
+	_tweens_destaque.clear()

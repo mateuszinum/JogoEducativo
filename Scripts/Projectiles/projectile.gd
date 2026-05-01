@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
-		# Se já bateu neste cara, ignora (crucial para projéteis que atravessam)
 		if body in _inimigos_atingidos:
 			return
 			
@@ -51,7 +50,6 @@ func _on_body_entered(body: Node2D) -> void:
 			audio.play()
 			audio.finished.connect(audio.queue_free)
 			
-		# NOVO: Só se destrói se NÃO for perfurante
 		if not pierce_enemies:
 			queue_free()
 

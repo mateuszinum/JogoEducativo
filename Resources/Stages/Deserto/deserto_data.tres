@@ -1,0 +1,163 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://dqokw82yj4pus"]
+
+[ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_brhsb"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_v2tmt"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_3v104"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Enemies/Goblin.tres" id="4_qb1dd"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Enemies/Esqueleto.tres" id="5_ngt0f"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="6_1xvqu"]
+[ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Enemies/SlimeDeGelo.tres" id="7_wy431"]
+[ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Enemies/Lobisomem.tres" id="8_kgp3u"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="8_owxjd"]
+[ext_resource type="Resource" uid="uid://cqnnmeqrchfi8" path="res://Resources/Enemies/Orc.tres" id="9_0rd4w"]
+[ext_resource type="TileSet" uid="uid://bkuy5lpvlo2rr" path="res://Resources/Stages/Deserto/deserto_tileset.tres" id="10_ayysd"]
+[ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Enemies/Fantasma.tres" id="10_yl5r2"]
+[ext_resource type="Resource" uid="uid://5rl1k3hktxve" path="res://Resources/Stages/Deserto/deserto_tesouro.tres" id="11_ockpj"]
+[ext_resource type="Resource" uid="uid://cd6v87ojvquk0" path="res://Resources/Enemies/Vampiro.tres" id="11_xqsww"]
+
+[sub_resource type="Resource" id="Resource_yyig3"]
+script = ExtResource("1_brhsb")
+chance_peso = 10.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_jd7mv"]
+script = ExtResource("1_brhsb")
+source_id = 1
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_lu5qd"]
+script = ExtResource("1_brhsb")
+source_id = 2
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_fyhc1"]
+script = ExtResource("1_brhsb")
+source_id = 3
+chance_peso = 2.0
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_mfjtu"]
+script = ExtResource("1_brhsb")
+source_id = 4
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_0vmxh"]
+script = ExtResource("1_brhsb")
+source_id = 5
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_ttsbp"]
+script = ExtResource("1_brhsb")
+source_id = 6
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_lndgn"]
+script = ExtResource("1_brhsb")
+source_id = 7
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_omn7t"]
+script = ExtResource("1_brhsb")
+source_id = 8
+chance_peso = 0.05
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_ytlo0"]
+script = ExtResource("1_brhsb")
+source_id = 9
+chance_peso = 0.2
+metadata/_custom_type_script = "uid://cv3u6luyflcf8"
+
+[sub_resource type="Resource" id="Resource_ts6uj"]
+script = ExtResource("3_3v104")
+enemy_type = ExtResource("4_qb1dd")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_fk5lg"]
+script = ExtResource("3_3v104")
+enemy_type = ExtResource("5_ngt0f")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_nt8bn"]
+script = ExtResource("3_3v104")
+time_in_seconds = 10
+enemy_type = ExtResource("6_1xvqu")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_0o20v"]
+script = ExtResource("3_3v104")
+time_in_seconds = 20
+enemy_type = ExtResource("7_wy431")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_q24cy"]
+script = ExtResource("3_3v104")
+enemy_type = ExtResource("8_kgp3u")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_1qsev"]
+script = ExtResource("3_3v104")
+enemy_type = ExtResource("9_0rd4w")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_6qphm"]
+script = ExtResource("3_3v104")
+time_in_seconds = 10
+enemy_type = ExtResource("10_yl5r2")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_ren1u"]
+script = ExtResource("3_3v104")
+time_in_seconds = 20
+enemy_type = ExtResource("11_xqsww")
+spawn_rate = 0.2
+metadata/_custom_type_script = "uid://croimo2sgqusx"
+
+[sub_resource type="Resource" id="Resource_ua18n"]
+script = ExtResource("8_owxjd")
+nome_obstaculo = "Arbusto"
+source_ids = Array[int]([12, 13, 14])
+frequencia = 0.2
+cluster_max = 1
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[sub_resource type="Resource" id="Resource_6ohbw"]
+script = ExtResource("8_owxjd")
+nome_obstaculo = "Arvore"
+source_ids = Array[int]([11])
+cluster_max = 3
+cluster_redondo = false
+afastar_obstaculos = Array[String](["Arbusto"])
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[sub_resource type="Resource" id="Resource_u4kak"]
+script = ExtResource("8_owxjd")
+source_ids = Array[int]([10])
+cluster_min = 30
+cluster_max = 40
+afastar_obstaculos = Array[String](["Arvore", "Arbusto"])
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[resource]
+script = ExtResource("2_v2tmt")
+nome = "Deserto"
+spawn_events = Array[ExtResource("3_3v104")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_0o20v"), SubResource("Resource_q24cy"), SubResource("Resource_1qsev"), SubResource("Resource_6qphm"), SubResource("Resource_ren1u")])
+map_width = 100
+tesouro_config = ExtResource("11_ockpj")
+stage_tileset = ExtResource("10_ayysd")
+ground_variants = Array[ExtResource("1_brhsb")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_mfjtu"), SubResource("Resource_0vmxh"), SubResource("Resource_ttsbp"), SubResource("Resource_lndgn"), SubResource("Resource_omn7t"), SubResource("Resource_ytlo0")])
+spawn_rules = Array[ExtResource("8_owxjd")]([SubResource("Resource_ua18n"), SubResource("Resource_6ohbw"), SubResource("Resource_u4kak")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"

@@ -45,7 +45,13 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	
 	private void VerificarAbortagem() { if (_execucaoAbortada || (_threadAtivaId != -1 && Thread.CurrentThread.ManagedThreadId != _threadAtivaId)) throw new Exception("Execução abortada pelo jogador."); }	
 	public void LiberarProximoComando() { _travaDeSincronizacao.Set(); }
-	public void PararExecucao() { _execucaoAbortada = true; _threadAtivaId = -1; _travaDeSincronizacao.Set(); }
+	public void PararExecucao() 
+	{ 
+		_execucaoAbortada = true; 
+		_threadAtivaId = -1; 
+		_travaDeSincronizacao.Set(); 
+		CallDeferred(nameof(DelegarLimpezaDestaque));
+	}
 
 	public void ExecutarCodigoDoJogador(string codigo, Node personagem)
 	{
@@ -67,10 +73,22 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 				var todosErros = new Godot.Collections.Array();
 				foreach (var e in lexerListener.ErrosEncontrados) todosErros.Add(e);
 				foreach (var e in parserListener.ErrosEncontrados) todosErros.Add(e);
-				if (todosErros.Count > 0) { CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros); return; }
+				
+				if (todosErros.Count > 0) { 
+					CallDeferred(nameof(DelegarLimpezaDestaque));
+					CallDeferred(nameof(EnviarErrosDeSintaxe), todosErros); 
+					return; 
+				}
 				CallDeferred(nameof(LimparErrosVisuais));
-				var visitor = new MeuVisitor(this); visitor.Visit(arvore);
+				var visitor = new MeuVisitor(this); 
+				visitor.Visit(arvore);
+
+				CallDeferred(nameof(DelegarLimpezaDestaque));
+
 			} catch (Exception ex) { 
+				// Quando o código CRASHA:
+				CallDeferred(nameof(DelegarLimpezaDestaque));
+				
 				if (ex.Message.StartsWith("L:")) {
 					var parts = ex.Message.Split('|', 2);
 					if (int.TryParse(parts[0].Substring(2), out int linha)) {
@@ -86,6 +104,16 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public void LimparErrosVisuais() => GetTree().CallGroup("Terminal", "limpar_erros_de_sintaxe");
 	public void NotificarErro(string mensagem) => CallDeferred(nameof(DelegarErroParaMainThread), mensagem);
 	private void DelegarErroParaMainThread(string mensagem) => GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
+
+	public void DestacarLinhaAtual(int linha, string categoria = "")
+	{
+		if (!_execucaoAbortada) {
+			CallDeferred(nameof(DelegarDestaqueLinha), linha, categoria);
+		}
+	}
+	private void DelegarDestaqueLinha(int linha, string categoria) => GetTree().CallGroup("Terminal", "destacar_linha_execucao", linha, categoria);
+	
+	private void DelegarLimpezaDestaque() => GetTree().CallGroup("Terminal", "limpar_destaque_execucao");
 
 	private Variant _ultimoResultado;
 
@@ -130,10 +158,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public int GetPosicaoTesouroY() => ExecutarAcaoComTick("tesouroY", new Godot.Collections.Array()).AsInt32();
 
 	// MATEMÁTICA E UTILIDADES
-	public int Trunca(float valor) => ExecutarAcaoComTick("trunca", new Godot.Collections.Array { valor }).AsInt32();
-	public float Min(float a, float b) => ExecutarAcaoComTick("min", new Godot.Collections.Array { a, b }).AsSingle();
-	public float Max(float a, float b) => ExecutarAcaoComTick("max", new Godot.Collections.Array { a, b }).AsSingle();
-	public float Aleatorio() => ExecutarAcaoComTick("aleatorio", new Godot.Collections.Array()).AsSingle();
 	public void Escreva(string texto) => ExecutarAcaoComTick("escreva", new Godot.Collections.Array { texto });
 
 	// ATRIBUTOS DE INIMIGO

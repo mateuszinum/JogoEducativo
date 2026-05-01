@@ -1,6 +1,7 @@
 extends Node
 
 func _ready() -> void:
+	Constantes.volume_alterado.connect(atualizar_buses)
 	atualizar_buses()
 
 func atualizar_buses() -> void:

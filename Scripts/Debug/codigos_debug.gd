@@ -66,14 +66,17 @@ fim funcao
 
 vazio AtacarInimigoMaisProximo():
 	Inimigo alvo = inimigoMaisProximo()
-	Ataque atk = atk[i]
+	Ataque ataque = atk[i]
 	se(alvo.nome == "NULO"):
 		retorna
-	senao:
+	senao se(alvo.nome == Vampiro):
 		escreva("Ataquei um " + alvo.nome)
-		atacar(alvo, atk)
+		atacar(alvo, Alho)
 		retorna
 	fim se
+	escreva("Ataquei um " + alvo.nome)
+	atacar(alvo, ataque)
+	retorna
 fim funcao
 
 vazio Incremento(int maior):

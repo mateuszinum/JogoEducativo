@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://0fo77c0s8yjw"]
+
+[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://Scripts/World/tesouro_data.gd" id="1_kg4vm"]
+[ext_resource type="Texture2D" uid="uid://cnxfpougyq8hk" path="res://Assets/Asset Packs/Chests Pack/chest_02.png" id="2_nrkvm"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_72xb4"]
+
+[resource]
+script = ExtResource("1_kg4vm")
+nome_do_tesouro = "Tesouro Genérico"
+sprite_do_bau = ExtResource("2_nrkvm")
+metadata/_custom_type_script = "uid://swrsg053t5vv"

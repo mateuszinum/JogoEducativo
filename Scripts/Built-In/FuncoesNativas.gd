@@ -146,18 +146,6 @@ func venderTudo():
 func escreva(texto: String) -> void:
 	Outros.debug_escreva(texto)
 
-func trunca(valor: float) -> int:
-	return Outros.util_trunca(valor)
-
-func min(a: float, b: float) -> float:
-	return Outros.util_min(a, b)
-
-func max(a: float, b: float) -> float:
-	return Outros.util_max(a, b)
-
-func aleatorio() -> float:
-	return Outros.util_aleatorio()
-
 
 
 
@@ -452,15 +440,3 @@ class Produtos:
 class Outros:
 	static func debug_escreva(texto: String):
 		Engine.get_main_loop().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "Jogo", "escrever_debug", texto)
-
-	static func util_min(valor1: float, valor2: float):
-		return min(valor1, valor2)
-
-	static func util_max(valor1: float, valor2: float):
-		return max(valor1, valor2)
-
-	static func util_aleatorio():
-		return snapped(randf(), 0.01)
-
-	static func util_trunca(valor: float):
-		return int(valor)

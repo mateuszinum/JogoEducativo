@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_ts6uj"]
 [ext_resource type="TileSet" uid="uid://cnvieb7wwswqa" path="res://Resources/Stages/Floresta/floresta_tileset.tres" id="10_e3kfy"]
 [ext_resource type="AudioStream" uid="uid://dhj8psak03ska" path="res://Audio/Soundtracks/Floresta.wav" id="10_yyig3"]
-[ext_resource type="Resource" uid="uid://cbq58vn3x3gyp" path="res://Resources/Stages/Floresta/tesouro_floresta.tres" id="12_yyig3"]
+[ext_resource type="Resource" uid="uid://cbq58vn3x3gyp" path="res://Resources/Stages/Floresta/floresta_tesouro.tres" id="11_h7a20"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]
 script = ExtResource("1_h7a20")
@@ -110,7 +110,8 @@ stage_music = ExtResource("10_yyig3")
 music_volume = -10.0
 spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_e3kfy")])
 map_width = 100
-tesouro_config = ExtResource("12_yyig3")
+tesouro_config = ExtResource("11_h7a20")
+ativar_luz_player = null
 stage_tileset = ExtResource("10_e3kfy")
 ground_variants = Array[ExtResource("1_h7a20")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_h7a20"), SubResource("Resource_i4qaj"), SubResource("Resource_geens"), SubResource("Resource_fne73"), SubResource("Resource_sd3pf"), SubResource("Resource_p407s")])
 spawn_rules = Array[ExtResource("7_ts6uj")]([SubResource("Resource_ua18n")])

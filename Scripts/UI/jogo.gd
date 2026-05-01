@@ -206,3 +206,12 @@ func escrever_debug(texto: String) -> void:
 		
 		if is_instance_valid(nova_mensagem):
 			nova_mensagem.queue_free()
+
+func _on_botao_atributos_pressed() -> void:
+	Atributos.maximizar_agilidade()
+
+func _on_botao_musica_pressed() -> void:
+	if Constantes.VOLUME_MUSICA == 0.0:
+		Constantes.VOLUME_MUSICA = 0.5
+	else:
+		Constantes.VOLUME_MUSICA = 0.0

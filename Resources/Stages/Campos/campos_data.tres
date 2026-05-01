@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_omn7t"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
 [ext_resource type="AudioStream" uid="uid://dchxhehlqsmty" path="res://Audio/Soundtracks/Campos.wav" id="10_0o20v"]
-[ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/tesouro_campos.tres" id="10_u4kak"]
+[ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/campos_tesouro.tres" id="11_mfjtu"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]
 script = ExtResource("1_ii8eh")
@@ -129,7 +129,7 @@ stage_music = ExtResource("10_0o20v")
 music_volume = -10.0
 spawn_events = Array[ExtResource("3_0o20v")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_0o20v")])
 map_width = 100
-tesouro_config = ExtResource("10_u4kak")
+tesouro_config = ExtResource("11_mfjtu")
 stage_tileset = ExtResource("9_ytlo0")
 ground_variants = Array[ExtResource("1_ii8eh")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_mfjtu"), SubResource("Resource_0vmxh"), SubResource("Resource_ttsbp"), SubResource("Resource_lndgn"), SubResource("Resource_omn7t"), SubResource("Resource_ytlo0")])
 spawn_rules = Array[ExtResource("7_omn7t")]([SubResource("Resource_ua18n"), SubResource("Resource_6ohbw"), SubResource("Resource_u4kak")])

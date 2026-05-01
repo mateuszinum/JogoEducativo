@@ -133,7 +133,7 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 	
 	ultimo_ataque_recebido = ataque_nome
 	
-	var mult = 1.0
+	var mult = Atributos.forca_multiplier
 	var is_slime_gelo = false
 	
 	if type != null:
