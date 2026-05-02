@@ -475,7 +475,6 @@ theme_override_constants/separation = 6
 alignment = 2
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1454908466]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FadeLayer" unique_id=1403915043]
 modulate = Color(0, 0, 0, 1)

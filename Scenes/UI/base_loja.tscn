@@ -259,6 +259,7 @@ offset_right = 63.0
 offset_bottom = 8.0
 personagem_animado = NodePath("../Personagem/EspacoPersonagem")
 espaco_acima_opcoes = 8.0
+volume_voz_db = -4.0
 
 [connection signal="pressed" from="Lateral/BotaoVoltar" to="." method="_on_botao_voltar_pressed"]
 [connection signal="pressed" from="Personagem" to="." method="_on_personagem_pressed"]

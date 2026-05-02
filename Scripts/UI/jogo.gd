@@ -60,13 +60,6 @@ func fazer_transicao_tv(cena_preload, modo_terminal: String) -> void:
 	fade_tv.modulate.a = 0.0
 	var tween_out = create_tween()
 	tween_out.tween_property(fade_tv, "modulate:a", 1.0, 1.0)
-	
-	if viewport.get_child_count() > 0:
-		var cena_atual = viewport.get_child(0)
-		if cena_atual.has_node("MusicaVilarejo"):
-			var musica = cena_atual.get_node("MusicaVilarejo")
-			var tween_som = create_tween()
-			tween_som.tween_property(musica, "volume_db", -40.0, 1.0)
 			
 	await tween_out.finished
 	

@@ -111,7 +111,6 @@ music_volume = -10.0
 spawn_events = Array[ExtResource("2_h7a20")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_e3kfy")])
 map_width = 100
 tesouro_config = ExtResource("11_h7a20")
-ativar_luz_player = null
 stage_tileset = ExtResource("10_e3kfy")
 ground_variants = Array[ExtResource("1_h7a20")]([SubResource("Resource_yyig3"), SubResource("Resource_jd7mv"), SubResource("Resource_lu5qd"), SubResource("Resource_fyhc1"), SubResource("Resource_h7a20"), SubResource("Resource_i4qaj"), SubResource("Resource_geens"), SubResource("Resource_fne73"), SubResource("Resource_sd3pf"), SubResource("Resource_p407s")])
 spawn_rules = Array[ExtResource("7_ts6uj")]([SubResource("Resource_ua18n")])
