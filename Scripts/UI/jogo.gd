@@ -28,29 +28,80 @@ extends Control
 @onready var terminal = %PainelTerminal
 @onready var fade_tv = %FadeTV 
 @onready var fade_rect = $FadeLayer/ColorRect 
+@onready var sistema_cutscene = %SistemaCutscene
+@onready var layer_cutscene = get_node_or_null("%LayerCutscene")
 
 const CENA_VILAREJO = preload("res://Scenes/UI/village_menu.tscn")
 const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
+const CENA_TUTORIAL = preload("res://Scenes/Tutorial/tutorial_world.tscn")
 
 var transicao_em_andamento: bool = false 
 
 func _ready() -> void:
 	add_to_group("Jogo") 
 	limpar_viewport()
-	var vilarejo = CENA_VILAREJO.instantiate()
-	viewport.add_child(vilarejo)
-	if terminal.has_method("ativar_modo_vilarejo"):
-		terminal.ativar_modo_vilarejo()
+	
+	if not Constantes.PULAR_TUTORIAL:
+		var tutorial = CENA_TUTORIAL.instantiate()
+		viewport.add_child(tutorial)
+		if terminal.has_method("ativar_modo_tutorial"):
+			terminal.ativar_modo_tutorial()
+	else:
+		var vilarejo = CENA_VILAREJO.instantiate()
+		viewport.add_child(vilarejo)
+		if terminal.has_method("ativar_modo_vilarejo"):
+			terminal.ativar_modo_vilarejo()
 
 	if fade_rect:
 		$FadeLayer.show()
 		fade_rect.show()
 		fade_rect.modulate.a = 1.0
 		
+		await get_tree().process_frame
+		await get_tree().process_frame
+		
 		var tween = create_tween()
 		tween.tween_property(fade_rect, "modulate:a", 0.0, 1.5)
 		await tween.finished
 		$FadeLayer.hide()
+
+func cobrir_tela_inteira(tempo: float = 1.0) -> Signal:
+	$FadeLayer.show()
+	fade_rect.show()
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, tempo)
+	return tween.finished
+
+func revelar_tela_inteira(tempo: float = 1.0) -> Signal:
+	var tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 0.0, tempo)
+	tween.tween_callback($FadeLayer.hide)
+	return tween.finished
+
+func tocar_cutscene(recurso: CutsceneResource) -> void:
+	await cobrir_tela_inteira(1.0)
+	
+	if layer_cutscene:
+		layer_cutscene.show()
+		
+	if sistema_cutscene and recurso:
+		sistema_cutscene.iniciar_cutscene(recurso)
+		
+	await revelar_tela_inteira(1.0)
+	
+	if sistema_cutscene:
+		await sistema_cutscene.cutscene_finalizada
+		
+	await cobrir_tela_inteira(1.0)
+	
+	if layer_cutscene:
+		layer_cutscene.hide()
+		
+	await revelar_tela_inteira(1.0)
+
+func limpar_codigo_terminal() -> void:
+	if terminal and terminal.has_method("limpar_codigo"):
+		terminal.limpar_codigo()
 
 func fazer_transicao_tv(cena_preload, modo_terminal: String) -> void:
 	if transicao_em_andamento: return
@@ -88,6 +139,7 @@ func ir_para_arena() -> void:
 
 func limpar_viewport() -> void:
 	Atributos.resetar_multiplicador_labirinto(1.0)
+	FuncoesNativas._posicao_inicializada = false
 	if viewport:
 		for child in viewport.get_children():
 			viewport.remove_child(child) 
@@ -141,7 +193,6 @@ func _on_botao_recurso_pressed() -> void:
 	RecursosManager.receberRecurso("Plasma", 56)
 	RecursosManager.receberRecurso("Safira", 275)
 	RecursosManager.receberRecurso("Sangue", 5125)
-	pass
 	
 func escrever_debug(texto: String) -> void:
 	var container = get_node_or_null("%TextoDebug")

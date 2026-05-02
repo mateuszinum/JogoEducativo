@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CutsceneResource" format=3 uid="uid://drd2u5y63spqa"]
+
+[ext_resource type="Script" uid="uid://cgh54v6gpqw6k" path="res://Scripts/Cutscene/cutscene_page.gd" id="2_xyj8l"]
+[ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="5_qo2ku"]
+
+[sub_resource type="Resource" id="Resource_wxfft"]
+script = ExtResource("2_xyj8l")
+textos = Array[String](["Preciso falar com o Mago Velho..."])
+metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
+
+[resource]
+script = ExtResource("5_qo2ku")
+usar_fade_in_audio = false
+paginas = Array[ExtResource("2_xyj8l")]([SubResource("Resource_wxfft")])
+metadata/_custom_type_script = "uid://dvcdosgs8y4mw"

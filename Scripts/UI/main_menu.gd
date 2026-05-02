@@ -148,8 +148,10 @@ func entrar_novo_jogo() -> void:
 		
 	for botao in container_botoes.get_children():
 		if botao != botao_start:
+			botao.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			var tween_botao = create_tween()
 			tween_botao.tween_property(botao, "modulate:a", 0.0, 0.6)
+			
 	
 	transition_rect.show()
 	transition_rect.modulate.a = 0.0

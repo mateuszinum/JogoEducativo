@@ -120,7 +120,7 @@ func _configurar_tooltip_erro() -> void:
 	code_edit.text_changed.connect(limpar_erros_de_sintaxe)
 
 func atualizar_estado_botao() -> void:
-	if modo_atual == "vilarejo":
+	if modo_atual == "vilarejo" or modo_atual == "tutorial":
 		if codigo_rodando:
 			botao_executar.text = "PARAR CÓDIGO"
 			if icone_parar: botao_executar.icon = icone_parar
@@ -179,7 +179,7 @@ func abortar_arena():
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
 
-	if modo_atual == "vilarejo" and not codigo_rodando:
+	if (modo_atual == "vilarejo" or modo_atual == "tutorial") and not codigo_rodando:
 		var codigo_digitado = code_edit.text
 		if codigo_digitado.strip_edges() == "": return
 		
@@ -204,6 +204,9 @@ func _on_botao_executar_pressed() -> void:
 		atualizar_estado_botao()
 		atualizar_travas_da_interface()
 		iniciar_cooldown_seguranca()
+
+	elif modo_atual == "tutorial" and codigo_rodando:
+		abortar_tutorial()
 
 	elif modo_atual == "arena":
 		abortar_arena()
@@ -490,3 +493,31 @@ func limpar_destaque_execucao() -> void:
 		code_edit.set_line_background_color(linha, Color(0, 0, 0, 0))
 		
 	_tweens_destaque.clear()
+
+func ativar_modo_tutorial():
+	modo_atual = "tutorial"
+	codigo_rodando = false
+	code_edit.editable = true 
+	botao_executar.visible = true
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+	iniciar_cooldown_seguranca()
+
+func abortar_tutorial():
+	if interpretador.has_method("PararExecucao"):
+		interpretador.PararExecucao()
+		
+	codigo_rodando = false
+	limpar_erros_de_sintaxe() 
+	code_edit.editable = true
+	
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+	iniciar_cooldown_seguranca()
+	
+	get_tree().call_group("MundoTutorial", "resetar_player")
+
+func limpar_codigo() -> void:
+	if code_edit:
+		code_edit.text = ""
+	limpar_destaque_execucao()
