@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CutsceneResource" format=3 uid="uid://bvmfnngxd048o"]
+
+[ext_resource type="AudioStream" uid="uid://cundlh503cfwc" path="res://Audio/Soundtracks/NovoTutorial.wav" id="1_nawa8"]
+[ext_resource type="Script" uid="uid://cgh54v6gpqw6k" path="res://Scripts/Cutscene/cutscene_page.gd" id="1_pm81d"]
+[ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="2_nawa8"]
+
+[resource]
+script = ExtResource("2_nawa8")
+musica_tema = ExtResource("1_nawa8")
+volume_musica_db = -6.0
+metadata/_custom_type_script = "uid://dvcdosgs8y4mw"

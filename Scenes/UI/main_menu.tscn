@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwsp5g03b6x68" path="res://Assets/UI/fundo1.jpg" id="2_4pqbp"]
 [ext_resource type="Script" uid="uid://qq2mqv4cd3kp" path="res://Scripts/Polimento/balanco_suave.gd" id="3_gih0s"]
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="3_o14dv"]
+[ext_resource type="Resource" uid="uid://buyptvhiwmx7y" path="res://Resources/Cutscene/cutscene_00_inicial.tres" id="4_46hhv"]
 [ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="4_k33u3"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="4_mrfpk"]
 [ext_resource type="Texture2D" uid="uid://b36diiavsxrpb" path="res://Assets/UI/Logo.png" id="4_u7lva"]
@@ -17,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
 [ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/Configs/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
+[ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="18_q6o50"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]
 shader = ExtResource("4_k33u3")
@@ -101,6 +103,10 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3h8o7"]
+font = ExtResource("7_wqme5")
+font_size = 24
+
 [sub_resource type="Animation" id="Animation_o14dv"]
 length = 0.001
 tracks/0/type = "value"
@@ -174,18 +180,26 @@ musica_tema = ExtResource("3_o14dv")
 volume_musica_db = -6.0
 sfx_entrar = ExtResource("10_wqme5")
 volume_sfx_entrar_db = -6.0
+cutscene_inicial = ExtResource("4_46hhv")
+multiplicador_aceleracao = 10.0
 
-[node name="Fundo" type="TextureRect" parent="." unique_id=298731134]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.4, 0.4)
+[node name="Background" type="Control" parent="." unique_id=782962240]
+anchors_preset = 0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = -1240.0
+offset_bottom = -680.0
+
+[node name="ImagemBG" type="TextureRect" parent="Background" unique_id=1710175445]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -110.82
+offset_top = -66.83
+offset_right = 3729.18
+offset_bottom = 2093.17
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4pqbp")
 script = ExtResource("3_gih0s")
-amplitude_rotacao = 1.0
 
 [node name="Blur" type="ColorRect" parent="." unique_id=1835359209]
 material = SubResource("ShaderMaterial_3h8o7")
@@ -196,17 +210,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Personagem" type="Control" parent="." unique_id=630321643]
+[node name="ConteudoMenuPrincipal" type="Control" parent="." unique_id=533032441]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Personagem" type="Control" parent="ConteudoMenuPrincipal" unique_id=630321643]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 281.0
-offset_top = 60.0
-offset_right = 281.0
-offset_bottom = 60.0
+offset_left = 901.0
+offset_top = 400.0
+offset_right = 901.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_gih0s")
@@ -217,7 +237,7 @@ velocidade_y = 0.5
 amplitude_rotacao = 1.215
 velocidade_rotacao = 0.915
 
-[node name="Raios" type="TextureRect" parent="Personagem" unique_id=1380382746]
+[node name="Raios" type="TextureRect" parent="ConteudoMenuPrincipal/Personagem" unique_id=1380382746]
 modulate = Color(1, 1, 1, 0.6862745)
 layout_mode = 1
 anchors_preset = 8
@@ -239,7 +259,7 @@ stretch_mode = 5
 script = ExtResource("6_cejvf")
 amplitude_pulso = 0.4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personagem" unique_id=982547945]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ConteudoMenuPrincipal/Personagem" unique_id=982547945]
 scale = Vector2(29.57, 29.57)
 sprite_frames = SubResource("SpriteFrames_3h8o7")
 autoplay = "default"
@@ -247,17 +267,17 @@ frame = 1
 frame_progress = 0.334193
 speed_scale = 1.5
 
-[node name="Logo" type="Control" parent="." unique_id=1083697683]
+[node name="Logo" type="Control" parent="ConteudoMenuPrincipal" unique_id=1083697683]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -262.0
-offset_top = -175.0
-offset_right = -262.0
-offset_bottom = -175.0
+offset_left = 358.0
+offset_top = 165.0
+offset_right = 358.0
+offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_gih0s")
@@ -268,26 +288,28 @@ velocidade_y = 1.0
 amplitude_rotacao = 1.095
 velocidade_rotacao = 1.825
 
-[node name="Logo" type="Sprite2D" parent="Logo" unique_id=1022398578]
+[node name="Logo" type="Sprite2D" parent="ConteudoMenuPrincipal/Logo" unique_id=1022398578]
 scale = Vector2(0.31, 0.31)
 texture = ExtResource("4_u7lva")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=583712999]
+[node name="ContainerBotoes" type="VBoxContainer" parent="ConteudoMenuPrincipal" unique_id=583712999]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1094.0
-offset_top = -363.0
-offset_right = -716.0
-offset_bottom = -89.0
+offset_left = 146.0
+offset_top = 317.0
+offset_right = 524.0
+offset_bottom = 591.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 18
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=837130793]
+[node name="BotaoNovoJogo" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=837130793]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -310,7 +332,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1909921654]
+[node name="Button2" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1909921654]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -333,7 +355,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="Button4" type="Button" parent="VBoxContainer" unique_id=895490790]
+[node name="BotaoCreditos" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=895490790]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -356,7 +378,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1865725634]
+[node name="Button3" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1865725634]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -379,8 +401,107 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
-libraries/ = SubResource("AnimationLibrary_mrfpk")
+[node name="TelaCreditos" type="Control" parent="." unique_id=2010705035]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollCreditos" type="ScrollContainer" parent="TelaCreditos" unique_id=1872046965]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TelaCreditos/ScrollCreditos" unique_id=2048726477]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=671471976]
+custom_minimum_size = Vector2(0, 720)
+layout_mode = 2
+
+[node name="Logo" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=1020788527]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TelaCreditos/ScrollCreditos/VBoxContainer/Logo" unique_id=598431402]
+layout_mode = 0
+offset_left = 430.0
+offset_right = 2350.0005
+offset_bottom = 1080.0
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("4_u7lva")
+
+[node name="Control3" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=671763482]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+
+[node name="TextoCréditos" type="Label" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=1996241724]
+layout_mode = 2
+text = "UFMT - Instituto de Computação
+Projeto Código Divertido
+Prof. Vanessa
+
+
+Desenvolvedores
+-
+-
+-
+-
+-
+-
+
+
+Playtesters
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
+Agradecimentos Especiais
+-
+-
+-
+-
+-
+
+
+OBRIGADO POR JOGAR!"
+label_settings = SubResource("LabelSettings_3h8o7")
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=1921717840]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Logo2" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=1467755566]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TelaCreditos/ScrollCreditos/VBoxContainer/Logo2" unique_id=1534282520]
+layout_mode = 1
+offset_left = 430.0
+offset_right = 2350.0
+offset_bottom = 500.0
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("15_xp0kt")
+
+[node name="Control2" type="Control" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=831359874]
+custom_minimum_size = Vector2(0, 880)
+layout_mode = 2
 
 [node name="IntroLayer" type="Control" parent="." unique_id=2068118409]
 visible = false
@@ -432,6 +553,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_xp0kt")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553999885]
+libraries/ = SubResource("AnimationLibrary_mrfpk")
+
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=2082542245]
 layer = 10
 
@@ -447,6 +571,11 @@ mouse_filter = 2
 [node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=723040478]
 environment = ExtResource("17_3h8o7")
 
+[node name="SistemaCutscene" parent="." unique_id=1229550324 instance=ExtResource("18_q6o50")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
 
 [node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=1152524501]
@@ -457,7 +586,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoNovoJogo" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCreditos" to="." method="_on_botao_creditos_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Button3" to="." method="_on_exit_pressed"]

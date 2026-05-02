@@ -1,6 +1,5 @@
 extends Control
 
-# Configurações para você ajustar no Inspetor
 @export_group("Movimento")
 @export var amplitude_x: float = 15.0
 @export var velocidade_x: float = 1.2
@@ -8,7 +7,7 @@ extends Control
 @export var velocidade_y: float = 0.8
 
 @export_group("Rotação Z")
-@export var amplitude_rotacao: float = 2.0 # Em graus
+@export var amplitude_rotacao: float = 1.0
 @export var velocidade_rotacao: float = 1.0
 
 var tempo: float = 0.0

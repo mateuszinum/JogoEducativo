@@ -23,17 +23,8 @@ func _ready() -> void:
 			$PosProcessamento.hide()
 
 func iniciar_musica() -> void:
-	if Constantes.TOCAR_MUSICA and musica_tema != null:
-		player_musica = AudioStreamPlayer.new()
-		player_musica.stream = musica_tema
-		player_musica.volume_db = volume_musica_db
-		player_musica.bus = "Musica" 
-		add_child(player_musica)
-		player_musica.play()
+	GerenciadorAudio.tocar_musica(musica_tema, volume_musica_db)
 
-# ==========================================
-# SINAIS DOS BOTÕES DO MENU (ABRIR)
-# ==========================================
 func _on_button_bruxa_pressed() -> void:
 	if loja_bruxa: loja_bruxa.show()
 
@@ -46,9 +37,6 @@ func _on_button_biblioteca_pressed() -> void:
 func _on_button_mago_velho_pressed() -> void:
 	if loja_mago_velho: loja_mago_velho.show()
 
-# ==========================================
-# SINAIS DAS LOJAS (FECHAR)
-# ==========================================
 func _on_loja_bruxa_fechou_loja() -> void:
 	if loja_bruxa: loja_bruxa.hide()
 
@@ -61,9 +49,6 @@ func _on_loja_biblioteca_fechou_loja() -> void:
 func _on_loja_mago_velho_fechou_loja() -> void:
 	if loja_mago_velho: loja_mago_velho.hide()
 
-# ==========================================
-# OUTROS BOTÕES
-# ==========================================
 func _on_start_game_pressed() -> void:
 	var main_scene = get_node_or_null("/root/Jogo")
 	if main_scene and main_scene.has_method("ir_para_arena"):

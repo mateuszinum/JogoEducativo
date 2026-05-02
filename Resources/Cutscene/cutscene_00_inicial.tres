@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CutsceneResource" format=3 uid="uid://buyptvhiwmx7y"]
+
+[ext_resource type="Script" uid="uid://cgh54v6gpqw6k" path="res://Scripts/Cutscene/cutscene_page.gd" id="1_vo31s"]
+[ext_resource type="AudioStream" uid="uid://cundlh503cfwc" path="res://Audio/Soundtracks/NovoTutorial.wav" id="1_wxfft"]
+[ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="2_wxfft"]
+[ext_resource type="Texture2D" uid="uid://c3q4gwavrjc5k" path="res://Assets/Cutscene/cutscene00_cena00.webp" id="3_nsjkh"]
+[ext_resource type="Texture2D" uid="uid://dibg71p0q1dnr" path="res://Assets/Cutscene/cutscene00_cena01.png" id="4_4sr4n"]
+
+[sub_resource type="Resource" id="Resource_wxfft"]
+script = ExtResource("1_vo31s")
+imagem = ExtResource("3_nsjkh")
+textos = Array[String](["Era uma vez, uma cutscene...", "Ela era muito interessante"])
+metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
+
+[sub_resource type="Resource" id="Resource_6d3cj"]
+script = ExtResource("1_vo31s")
+imagem = ExtResource("4_4sr4n")
+textos = Array[String](["Mais aí ela acabou...", "Fim!"])
+metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
+
+[resource]
+script = ExtResource("2_wxfft")
+musica_tema = ExtResource("1_wxfft")
+volume_musica_db = -6.0
+paginas = Array[ExtResource("1_vo31s")]([SubResource("Resource_wxfft"), SubResource("Resource_6d3cj")])
+metadata/_custom_type_script = "uid://dvcdosgs8y4mw"

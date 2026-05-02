@@ -394,13 +394,7 @@ func gerar_tesouro():
 
 func play_stage_music():
 	if stage_data != null and stage_data.stage_music != null:
-		var music_player = AudioStreamPlayer.new()
-		music_player.stream = stage_data.stage_music
-		music_player.volume_db = stage_data.music_volume
-		music_player.bus = "Musica" 
-		music_player.name = "StageMusicPlayer"
-		add_child(music_player)
-		music_player.play()
+		GerenciadorAudio.tocar_musica(stage_data.stage_music, stage_data.music_volume)
 
 func _on_player_morreu():
 	var terminal = get_tree().get_first_node_in_group("Terminal")
