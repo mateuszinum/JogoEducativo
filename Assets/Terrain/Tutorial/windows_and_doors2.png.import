@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://qokk7b8oqsrt"
+path="res://.godot/imported/windows_and_doors2.png-6c3cd94a1f5d938706920e3267fd285e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/windows_and_doors2.png"
+dest_files=["res://.godot/imported/windows_and_doors2.png-6c3cd94a1f5d938706920e3267fd285e.ctex"]
 
 [params]
 

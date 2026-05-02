@@ -36,9 +36,8 @@ func registrar_interpretador(node: Node):
 	interpretador_csharp = node
 	_ultimo_uso_da_acao.clear()
 
-func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
+func executar_com_tick(alvo: Node, metodo: String, argumentos: Array, linha: int = -1, categoria: String = ""):
 	var tempo_atual_msec = Time.get_ticks_msec()
-	
 	var tempo_espera_pre: float = 0.0
 	var tempo_espera_pos: float = 0.0
 	
@@ -47,13 +46,11 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 	else:
 		var peso = MULTIPLICADOR_TICK.get(metodo, 0.0)
 		tempo_espera_pos = Atributos.GetTempoTick() * peso
-		
 		var multiplicador_cooldown = COOLDOWNS_MINIMOS.get(metodo, COOLDOWN_UNIVERSAL)
 		var cooldown_exigido = Atributos.GetTempoTick() * multiplicador_cooldown
 		
 		if _ultimo_uso_da_acao.has(metodo):
 			var tempo_passado = (tempo_atual_msec - _ultimo_uso_da_acao[metodo]) / 1000.0
-			
 			if tempo_passado < cooldown_exigido:
 				tempo_espera_pre = cooldown_exigido - tempo_passado
 		
@@ -61,6 +58,12 @@ func executar_com_tick(alvo: Node, metodo: String, argumentos: Array):
 
 	if tempo_espera_pre > 0.0:
 		await get_tree().create_timer(tempo_espera_pre).timeout
+		
+	if linha != -1 and is_instance_valid(interpretador_csharp) and interpretador_csharp.get("_execucaoAbortada"):
+		return
+
+	if linha != -1:
+		get_tree().call_group("Terminal", "destacar_linha_execucao", linha, categoria)
 		
 	var sucesso = alvo.callv(metodo, argumentos)
 	

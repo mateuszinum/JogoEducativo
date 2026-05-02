@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://climu6av2qjye"
+path="res://.godot/imported/furniture_and_props.png-ff637584af26553d77132f13d5e18805.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/furniture_and_props.png"
+dest_files=["res://.godot/imported/furniture_and_props.png-ff637584af26553d77132f13d5e18805.ctex"]
 
 [params]
 

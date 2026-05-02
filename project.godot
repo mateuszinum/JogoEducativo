@@ -40,6 +40,7 @@ Atributos="*uid://cldoa2rub50er"
 HistoricoAcoes="*res://Scripts/player/historico_acoes.gd"
 RecursosManager="*uid://1y4nn2nr8jxf"
 ProgressoDB="*uid://dbwday27iykbu"
+ExecutarComTick="*uid://bgc4joe3ejyab"
 
 [display]
 

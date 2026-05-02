@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CutsceneResource" format=3 uid="uid://buyptvhiwmx7y"]
 
 [ext_resource type="Script" uid="uid://cgh54v6gpqw6k" path="res://Scripts/Cutscene/cutscene_page.gd" id="1_vo31s"]
-[ext_resource type="AudioStream" uid="uid://cundlh503cfwc" path="res://Audio/Soundtracks/NovoTutorial.wav" id="1_wxfft"]
+[ext_resource type="AudioStream" uid="uid://cundlh503cfwc" path="res://Audio/Soundtracks/CutsceneInicial.wav" id="1_wxfft"]
 [ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="2_wxfft"]
 [ext_resource type="Texture2D" uid="uid://c3q4gwavrjc5k" path="res://Assets/Cutscene/cutscene00_cena00.webp" id="3_nsjkh"]
 [ext_resource type="Texture2D" uid="uid://dibg71p0q1dnr" path="res://Assets/Cutscene/cutscene00_cena01.png" id="4_4sr4n"]
@@ -15,7 +15,7 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 [sub_resource type="Resource" id="Resource_6d3cj"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("4_4sr4n")
-textos = Array[String](["Mas aí ela acabou...", "Fim!"])
+textos = Array[String](["Mas aí ela acabou...", "Absolute cinema!"])
 metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 
 [resource]

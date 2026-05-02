@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://bf60rlgrkdfxk"
+path="res://.godot/imported/Interiors_tilesets.png-cb1ad616cdf19ca8afd73efe495710a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/Interiors_tilesets.png"
+dest_files=["res://.godot/imported/Interiors_tilesets.png-cb1ad616cdf19ca8afd73efe495710a6.ctex"]
 
 [params]
 

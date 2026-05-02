@@ -53,7 +53,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:		
-	#Atributos.debug_tempo_tick()
 	if Constantes.MODO_DEV:
 		var dirs = {
 			"move_up":    "Cima",
@@ -211,6 +210,11 @@ func feedback_erro_comando():
 		erro_inst.setup()
 
 func configurar_modo_labirinto(recurso: ItemData) -> void:
+	var camera = get_node_or_null("Camera2D")
+	if camera:
+		camera.position_smoothing_enabled = false
+		camera.reset_smoothing()
+		
 	if ui_barra_vida: 
 		ui_barra_vida.hide()
 		

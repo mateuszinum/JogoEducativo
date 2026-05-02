@@ -29,13 +29,12 @@ extends Control
 @onready var fade_tv = %FadeTV 
 @onready var fade_rect = $FadeLayer/ColorRect 
 @onready var sistema_cutscene = %SistemaCutscene
-@onready var layer_cutscene = get_node_or_null("%LayerCutscene")
 
 const CENA_VILAREJO = preload("res://Scenes/UI/village_menu.tscn")
 const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
 const CENA_TUTORIAL = preload("res://Scenes/Tutorial/tutorial_world.tscn")
 
-var transicao_em_andamento: bool = false 
+var transicao_em_andamento: bool = false
 
 func _ready() -> void:
 	add_to_group("Jogo") 
@@ -80,9 +79,6 @@ func revelar_tela_inteira(tempo: float = 1.0) -> Signal:
 
 func tocar_cutscene(recurso: CutsceneResource) -> void:
 	await cobrir_tela_inteira(1.0)
-	
-	if layer_cutscene:
-		layer_cutscene.show()
 		
 	if sistema_cutscene and recurso:
 		sistema_cutscene.iniciar_cutscene(recurso)
@@ -94,8 +90,8 @@ func tocar_cutscene(recurso: CutsceneResource) -> void:
 		
 	await cobrir_tela_inteira(1.0)
 	
-	if layer_cutscene:
-		layer_cutscene.hide()
+	if sistema_cutscene:
+		sistema_cutscene.hide()
 		
 	await revelar_tela_inteira(1.0)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://dpbelh7w0mqn2"
+path="res://.godot/imported/candlesticks_27.png-5a2491d3ea78c8ba8a5a9f2174e3ee7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/candlesticks_27.png"
+dest_files=["res://.godot/imported/candlesticks_27.png-5a2491d3ea78c8ba8a5a9f2174e3ee7d.ctex"]
 
 [params]
 

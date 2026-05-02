@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://dkudkbwfoo7gy"
+path="res://.godot/imported/kitchen_props2_0.png-74b8029623619326799922cd1c550d58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/kitchen_props2_0.png"
+dest_files=["res://.godot/imported/kitchen_props2_0.png-74b8029623619326799922cd1c550d58.ctex"]
 
 [params]
 

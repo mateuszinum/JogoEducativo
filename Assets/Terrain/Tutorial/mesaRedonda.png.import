@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfnp3cmx7tm4c"
-path="res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"
+uid="uid://bmk0trcnwukfc"
+path="res://.godot/imported/mesaRedonda.png-df67e7e5150a94e984cfc8835b869c09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/Tutorial/chaoTutorial (0).png"
-dest_files=["res://.godot/imported/chaoTutorial (0).png-e82b753c8065141095d4c61b86ad7e14.ctex"]
+source_file="res://Assets/Terrain/Tutorial/mesaRedonda.png"
+dest_files=["res://.godot/imported/mesaRedonda.png-df67e7e5150a94e984cfc8835b869c09.ctex"]
 
 [params]
 

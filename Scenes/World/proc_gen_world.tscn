@@ -62,13 +62,13 @@ music_volume = -10.0
 spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
 
-[sub_resource type="Gradient" id="Gradient_yljls"]
+[sub_resource type="Gradient" id="Gradient_3nb34"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.27108434)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jixqc"]
-gradient = SubResource("Gradient_yljls")
+gradient = SubResource("Gradient_3nb34")
 
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true

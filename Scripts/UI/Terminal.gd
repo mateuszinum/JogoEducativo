@@ -44,8 +44,7 @@ var modo_atual: String = "vilarejo"
 var codigo_rodando: bool = false
 var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
-var _timer_cooldown: SceneTreeTimer
-
+var cooldown_ativo: bool = false
 var _tweens_destaque: Dictionary = {}
 
 var slots_codigo: Array = [
@@ -131,34 +130,32 @@ func atualizar_estado_botao() -> void:
 		botao_executar.text = "PARAR E ESCAPAR"
 		if icone_escapar: botao_executar.icon = icone_escapar
 
-func iniciar_cooldown_seguranca() -> void:
-	botao_executar.disabled = true
+func iniciar_cooldown_seguranca():
+	cooldown_ativo = true
+	atualizar_travas_da_interface()
 	
-	if _timer_cooldown:
-		_timer_cooldown.disconnect("timeout", _liberar_botao)
-		
-	_timer_cooldown = get_tree().create_timer(tempo_cooldown)
-	_timer_cooldown.connect("timeout", _liberar_botao)
+	await get_tree().create_timer(tempo_cooldown).timeout
+	
+	cooldown_ativo = false
+	atualizar_travas_da_interface()
 
 func _liberar_botao() -> void:
 	botao_executar.disabled = false
 
-func ativar_modo_vilarejo():
-	modo_atual = "vilarejo"
-	code_edit.editable = not codigo_rodando
-	botao_executar.visible = true
-	atualizar_estado_botao()
-	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
-
 func ativar_modo_arena():
 	modo_atual = "arena"
-	code_edit.editable = false 
+	codigo_rodando = false
+	
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+
+func ativar_modo_tutorial():
+	modo_atual = "tutorial"
+	codigo_rodando = false
+	code_edit.editable = true 
 	botao_executar.visible = true
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	code_edit.release_focus() 
-	iniciar_cooldown_seguranca()
 
 func desativar_botao_executar():
 	botao_executar.disabled = true 
@@ -170,7 +167,6 @@ func abortar_arena():
 	codigo_rodando = false
 	limpar_erros_de_sintaxe() 
 		
-	botao_executar.disabled = true 
 	ativar_modo_vilarejo()
 		
 	if FuncoesNativas.has_method("escapar"):
@@ -207,9 +203,11 @@ func _on_botao_executar_pressed() -> void:
 
 	elif modo_atual == "tutorial" and codigo_rodando:
 		abortar_tutorial()
+		iniciar_cooldown_seguranca()
 
 	elif modo_atual == "arena":
 		abortar_arena()
+		iniciar_cooldown_seguranca()
 
 func _on_code_edit_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -432,10 +430,17 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	
 	limpar_erros_de_sintaxe()
 	
-func atualizar_travas_da_interface() -> void:
-	if seletor_slot:
-		var pode_editar = (modo_atual == "vilarejo") and not codigo_rodando
-		seletor_slot.disabled = not pode_editar
+func atualizar_travas_da_interface():
+	if code_edit:
+		if modo_atual == "arena":
+			code_edit.editable = false
+		else:
+			code_edit.editable = not codigo_rodando
+			
+	if not botao_executar:
+		return
+		
+	botao_executar.disabled = cooldown_ativo
 	
 func definir_codigo_slot(indice: int, codigo: String) -> void:
 	if indice < 0 or indice >= slots_codigo.size():
@@ -494,14 +499,18 @@ func limpar_destaque_execucao() -> void:
 		
 	_tweens_destaque.clear()
 
-func ativar_modo_tutorial():
-	modo_atual = "tutorial"
+func ativar_modo_vilarejo():
+	modo_atual = "vilarejo"
 	codigo_rodando = false
-	code_edit.editable = true 
-	botao_executar.visible = true
+	
+	if code_edit:
+		code_edit.editable = true
+		
+	if botao_executar:
+		botao_executar.visible = true
+		
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
 
 func abortar_tutorial():
 	if interpretador.has_method("PararExecucao"):
@@ -513,11 +522,18 @@ func abortar_tutorial():
 	
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
 	
 	get_tree().call_group("MundoTutorial", "resetar_player")
 
 func limpar_codigo() -> void:
+	limpar_destaque_execucao()
+	if interpretador and interpretador.has_method("PararExecucao"):
+		interpretador.PararExecucao()
+	
+	codigo_rodando = false
+	
 	if code_edit:
 		code_edit.text = ""
-	limpar_destaque_execucao()
+		
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()

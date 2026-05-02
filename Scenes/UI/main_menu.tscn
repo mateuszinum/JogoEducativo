@@ -557,7 +557,6 @@ texture = ExtResource("15_xp0kt")
 libraries/ = SubResource("AnimationLibrary_mrfpk")
 
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=2082542245]
-layer = 10
 
 [node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=1988947040 groups=["EfeitoSangue"]]
 material = ExtResource("16_1yfdm")
@@ -573,10 +572,9 @@ environment = ExtResource("17_3h8o7")
 
 [node name="SistemaCutscene" parent="." unique_id=1229550324 instance=ExtResource("18_q6o50")]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1979055590]
+layer = 20
 
 [node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=1152524501]
 visible = false
