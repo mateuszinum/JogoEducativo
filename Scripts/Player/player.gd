@@ -225,3 +225,10 @@ func configurar_modo_arena() -> void:
 		
 	if ui_recurso_labirinto: 
 		ui_recurso_labirinto.hide()
+
+func configurar_modo_tutorial() -> void:
+	if ui_barra_vida: 
+		ui_barra_vida.hide()
+		
+	if ui_recurso_labirinto: 
+		ui_recurso_labirinto.hide()

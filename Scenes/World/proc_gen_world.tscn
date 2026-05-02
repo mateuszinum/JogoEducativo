@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://drqfd5tdsd6it" path="res://Resources/Stages/Campos/campos_data.tres" id="2_5vcap"]
 [ext_resource type="PackedScene" uid="uid://gne6nkfcnp6e" path="res://Scenes/World/Tesouro.tscn" id="3_jixqc"]
 [ext_resource type="PackedScene" uid="uid://b0dfuc7lgsag6" path="res://Scenes/Spawner/spawner.tscn" id="4_wu1pf"]
+[ext_resource type="Script" uid="uid://dmx2iudco37ne" path="res://Scripts/Polimento/remover_se_grafico_low.gd" id="5_3nb34"]
 [ext_resource type="PackedScene" uid="uid://cahfrnsqc06wg" path="res://Scenes/Enemy/enemy.tscn" id="5_7deaf"]
 [ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="5_jixqc"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="6_jixqc"]
@@ -59,8 +60,6 @@ script = ExtResource("7_7fyq5")
 stage_music = ExtResource("13_0ofdx")
 music_volume = -10.0
 spawn_events = Array[ExtResource("8_5vcap")]([SubResource("Resource_01ayd"), SubResource("Resource_2d58w"), SubResource("Resource_3dl8p"), SubResource("Resource_gdekt"), SubResource("Resource_wi01x"), SubResource("Resource_j1oyk")])
-cor_escuridao = null
-ativar_luz_player = null
 metadata/_custom_type_script = "uid://cimi8ig206mmi"
 
 [sub_resource type="Gradient" id="Gradient_yljls"]
@@ -95,7 +94,7 @@ position_smoothing_enabled = true
 
 [node name="Escuridao" type="CanvasModulate" parent="." unique_id=1258980355]
 unique_name_in_owner = true
-color = Color(0.29093865, 0.3671007, 0.4468161, 1)
+script = ExtResource("5_3nb34")
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
 enemy_scene = ExtResource("5_7deaf")

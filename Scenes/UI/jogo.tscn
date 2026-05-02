@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_tvy04"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_yljls"]
 [ext_resource type="Script" uid="uid://cphkin8dnsnwc" path="res://Scripts/Debug/botoes_debug.gd" id="14_x77am"]
+[ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="16_hygll"]
+[ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="17_fk70m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
 texture = ExtResource("2_l4t8i")
@@ -489,6 +491,33 @@ color = Color(0, 0, 0, 1)
 [node name="InterpretadorServico" type="Node" parent="." unique_id=409858468]
 unique_name_in_owner = true
 script = ExtResource("3_8gbds")
+
+[node name="LayerCutscene" type="CanvasLayer" parent="." unique_id=2074229940]
+unique_name_in_owner = true
+layer = 10
+visible = false
+
+[node name="SistemaCutscene" parent="LayerCutscene" unique_id=1229550324 instance=ExtResource("16_hygll")]
+unique_name_in_owner = true
+
+[node name="PosProcessamentoCutscene" type="CanvasLayer" parent="LayerCutscene" unique_id=1001212748]
+unique_name_in_owner = true
+layer = 10
+offset = Vector2(4, 0)
+transform = Transform2D(1, 0, 0, 1, 4, 0)
+
+[node name="Efeitos" type="ColorRect" parent="LayerCutscene/PosProcessamentoCutscene" unique_id=1825678977 groups=["EfeitoSangue"]]
+material = ExtResource("17_fk70m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="LayerCutscene/PosProcessamentoCutscene" unique_id=1676170598]
+environment = ExtResource("7_kjdr6")
 
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebug" to="." method="_on_botao_debug_pressed"]

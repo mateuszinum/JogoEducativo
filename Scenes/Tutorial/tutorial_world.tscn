@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://d4julkdatha1t"]
+
+[ext_resource type="Script" uid="uid://c1clydq12cqvh" path="res://Scripts/Tutorial/tutorial_world.gd" id="1_6dj6l"]
+[ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="1_opnq6"]
+[ext_resource type="Resource" uid="uid://drd2u5y63spqa" path="res://Resources/Cutscene/cutscene_01_depoisDoTutorial.tres" id="2_gwubv"]
+[ext_resource type="TileSet" uid="uid://duy1ons8t0irq" path="res://Resources/Stages/Tutorial/tutorial_tileset.tres" id="2_y8rak"]
+[ext_resource type="PackedScene" uid="uid://cg41a0juammfe" path="res://Scenes/Polimento/LuzNormal.tscn" id="5_gwubv"]
+[ext_resource type="Script" uid="uid://dmx2iudco37ne" path="res://Scripts/Polimento/remover_se_grafico_low.gd" id="5_gxia1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwubv"]
+size = Vector2(31.470001, 31)
+
+[node name="TutorialWorld" type="Node2D" unique_id=205751075]
+script = ExtResource("1_6dj6l")
+camera_zoom = Vector2(2.1, 2)
+camera_offset = Vector2(10, 80)
+posicao_inicial = Vector2(87, 24)
+cutscene_final = ExtResource("2_gwubv")
+
+[node name="TileMap" type="TileMap" parent="." unique_id=339932368 groups=["Mapa"]]
+position = Vector2(8, 8)
+tile_set = ExtResource("2_y8rak")
+format = 2
+layer_0/name = "Chao"
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -65537, 0, 0, -65538, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -131072, 0, 0, -131071, 1, 0, -65535, 0, 0, 1, 0, 0, 65535, 0, 0, 65534, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196606, 0, 0, 262142, 0, 0, 327678, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, -131065, 0, 0, -131067, 0, 0, -131068, 0, 0, -131069, 0, 0, -131070, 0, 0, 262151, 0, 0, 196615, 0, 0, 131079, 0, 0, 65543, 0, 0, 7, 0, 0, -65529, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 196607, 0, 0, 262143, 0, 0, 196608, 0, 0, 262144, 0, 0, 262145, 0, 0, 196609, 0, 0, 131073, 0, 0, 327679, 0, 0, 131072, 0, 0, 131074, 0, 0, 196610, 0, 0, 65538, 0, 0, 2, 0, 0, -65534, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 262147, 0, 0, 262146, 0, 0, 262148, 0, 0, 262149, 0, 0, 196613, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 262150, 0, 0, 196614, 0, 0, 131078, 0, 0, 65542, 0, 0, 6, 0, 0, -65530, 0, 0, -196602, 0, 0, -131066, 0, 0)
+layer_1/name = "Barreira"
+layer_1/navigation_enabled = false
+layer_1/tile_data = PackedInt32Array(-65538, 16, 0, -2, 15, 0, 65534, 15, 0, 131070, 15, 0, 196606, 15, 0, 262142, 15, 0, 327678, 15, 0, 393214, 15, 0, 458750, 16, 196608, 458751, 15, 65536, 393216, 15, 65536, 393217, 15, 65536, 393218, 15, 65536, 393219, 15, 65536, 393220, 17, 65536, 393221, 15, 65536, 393222, 15, 65536, 393223, 16, 131072, 327687, 15, 0, 262151, 15, 0, 196615, 15, 0, 131079, 15, 0, 65543, 15, 0, 7, 15, 0, -65529, 15, 0, -131065, 17, 131072, -131067, 17, 131072, -131068, 15, 65536, -131069, 15, 65536, -131070, 15, 65536, -131071, 15, 65536, -131072, 15, 65536, -65537, 15, 65536, -65531, 15, 0, 5, 15, 0, 65541, 15, 0, 131077, 15, 0, 196613, 16, 131072, 196612, 15, 65536, 196611, 15, 65536, 196610, 15, 65536, 196609, 17, 0, 196608, 11, 131072, 262145, 11, 65536, 327684, 11, 0, -196603, 11, 0, -196601, 11, 0)
+
+[node name="SaidaTutorial" type="Area2D" parent="." unique_id=876139517]
+position = Vector2(215.97, -41.005)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SaidaTutorial" unique_id=1616940314]
+position = Vector2(0.02999878, -0.020000458)
+shape = SubResource("RectangleShape2D_gwubv")
+
+[node name="Player" parent="." unique_id=848872761 instance=ExtResource("1_opnq6")]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=639565855]
+offset = Vector2(94, 8.185)
+zoom = Vector2(2.1, 2.1)
+position_smoothing_enabled = true
+
+[node name="Escuridao" type="CanvasModulate" parent="." unique_id=1815781551]
+unique_name_in_owner = true
+color = Color(0.28235295, 0.28235295, 0.44705883, 1)
+script = ExtResource("5_gxia1")
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=30515579]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionLayer" unique_id=760039238]
+visible = false
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LuzNormal" parent="." unique_id=1979411036 instance=ExtResource("5_gwubv")]
+position = Vector2(215, -102)
+color = Color(1, 1, 0.5019608, 1)
+energy = 1.1
+texture_scale = 5.5
+
+[connection signal="body_entered" from="SaidaTutorial" to="." method="_on_saida_tutorial_body_entered"]
+
+[editable path="Player"]

@@ -57,3 +57,25 @@ theme_override_fonts/normal_font = ExtResource("3_teqbo")
 theme_override_font_sizes/normal_font_size = 28
 fit_content = true
 scroll_active = false
+
+[node name="PainelTextoSemImagem" type="MarginContainer" parent="." unique_id=984698404]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 230.0
+offset_right = 950.0
+offset_bottom = 490.0
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 30
+
+[node name="TextoDialogoSemImagem" type="RichTextLabel" parent="PainelTextoSemImagem" unique_id=1789019645]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("3_teqbo")
+theme_override_font_sizes/normal_font_size = 28
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
