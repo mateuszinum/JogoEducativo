@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cl464ipbqqbn5"]
+
+[ext_resource type="Script" uid="uid://b3isaxak7nnwb" path="res://Scripts/Listas/CutscenesDB.gd" id="1_ufsj6"]
+[ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="2_4g16f"]
+[ext_resource type="Resource" uid="uid://buyptvhiwmx7y" path="res://Resources/Cutscene/cutscene_00_inicial.tres" id="3_acr72"]
+[ext_resource type="Resource" uid="uid://drd2u5y63spqa" path="res://Resources/Cutscene/cutscene_01_depoisDoTutorial.tres" id="4_uj1ug"]
+[ext_resource type="Resource" uid="uid://bvmfnngxd048o" path="res://Resources/Cutscene/cutscene_99_generica.tres" id="5_74gfo"]
+
+[node name="CutscenesDB" type="Node" unique_id=1658935375]
+script = ExtResource("1_ufsj6")
+lista_de_cutscenes = Array[ExtResource("2_4g16f")]([ExtResource("3_acr72"), ExtResource("4_uj1ug"), ExtResource("5_74gfo")])

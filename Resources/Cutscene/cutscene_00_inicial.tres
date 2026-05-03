@@ -20,6 +20,7 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 
 [resource]
 script = ExtResource("2_wxfft")
+nome = "Inicial"
 musica_tema = ExtResource("1_wxfft")
 volume_musica_db = -6.0
 paginas = Array[ExtResource("1_vo31s")]([SubResource("Resource_wxfft"), SubResource("Resource_6d3cj")])

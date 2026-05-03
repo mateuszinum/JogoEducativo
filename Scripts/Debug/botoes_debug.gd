@@ -1,20 +1,10 @@
 extends Control
 
-@onready var botao_codigo = $BotaoDebug
-@onready var botao_recurso = $BotaoRecurso
+@export var cutscene_exemplo: String
 
 func _ready() -> void:
 	visible = false
 	
-	if Constantes.MODO_DEV:
-		if botao_codigo:
-			botao_codigo.pressed.connect(_on_botao_debug_codigo_pressed)
-			botao_codigo.focus_mode = Control.FOCUS_NONE
-			
-		if botao_recurso:
-			botao_recurso.pressed.connect(_on_botao_recurso_pressed)
-			botao_recurso.focus_mode = Control.FOCUS_NONE
-
 func _process(_delta: float) -> void:
 	if Constantes.MODO_DEV:
 		visible = Input.is_physical_key_pressed(KEY_TAB)
@@ -39,3 +29,15 @@ func _on_botao_recurso_pressed() -> void:
 		RecursosManager.receberRecurso("Plasma", 56)
 		RecursosManager.receberRecurso("Safira", 275)
 		RecursosManager.receberRecurso("Sangue", 5125)
+
+func _on_botao_agilidade_pressed() -> void:
+	Atributos.maximizar_agilidade()
+
+func _on_botao_musica_pressed() -> void:
+	if Constantes.VOLUME_MUSICA == 0.0:
+		Constantes.VOLUME_MUSICA = 0.5
+	else:
+		Constantes.VOLUME_MUSICA = 0.0
+
+func _on_botao_cutscene_pressed() -> void:
+	CutsceneManager.tocar_cutscene(cutscene_exemplo)

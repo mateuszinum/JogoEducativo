@@ -393,9 +393,9 @@ offset_top = 271.0
 offset_right = 171.0
 offset_bottom = 309.0
 script = ExtResource("14_x77am")
+cutscene_exemplo = "Inicial"
 
-[node name="BotaoDebug" type="Button" parent="BotoesDebug" unique_id=1426945878]
-unique_name_in_owner = true
+[node name="BotaoDebugCodigo" type="Button" parent="BotoesDebug" unique_id=1426945878]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -409,7 +409,6 @@ text = "Colocar código"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoRecurso" type="Button" parent="BotoesDebug" unique_id=1189409194]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -423,7 +422,6 @@ text = "Ganhar recursos"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoAgilidade" type="Button" parent="BotoesDebug" unique_id=2115188333]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -437,7 +435,6 @@ text = "Agilidade Máxima"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoMusica" type="Button" parent="BotoesDebug" unique_id=726031151]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -448,6 +445,19 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 text = "Toggle Música"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoCutscene" type="Button" parent="BotoesDebug" unique_id=562690665]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Exemplo de cutscene"
 script = ExtResource("5_kjdr6")
 
 [node name="DebugChat" type="TextureRect" parent="." unique_id=1766562716]
@@ -496,7 +506,8 @@ script = ExtResource("3_8gbds")
 unique_name_in_owner = true
 
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoDebug" to="." method="_on_botao_debug_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="." method="_on_botao_recurso_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="." method="_on_botao_atributos_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoMusica" to="." method="_on_botao_musica_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="BotoesDebug" method="_on_botao_agilidade_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoMusica" to="BotoesDebug" method="_on_botao_musica_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoCutscene" to="BotoesDebug" method="_on_botao_cutscene_pressed"]

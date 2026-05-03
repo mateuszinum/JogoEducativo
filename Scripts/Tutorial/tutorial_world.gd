@@ -62,6 +62,10 @@ func _on_saida_tutorial_body_entered(body: Node2D) -> void:
 		iniciar_cutscene_final()
 
 func iniciar_cutscene_final() -> void:
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	if terminal and terminal.has_method("desativar_botao_executar"):
+		terminal.desativar_botao_executar()
+
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		while player.moving:
@@ -135,3 +139,7 @@ func resetar_player() -> void:
 	
 	player.set_physics_process(true)
 	transition_rect.hide()
+	
+func iniciar_musica() -> void:
+	if Constantes.TOCAR_MUSICA and musica_tema != null:
+		GerenciadorAudio.tocar_musica(musica_tema, volume_musica_db)

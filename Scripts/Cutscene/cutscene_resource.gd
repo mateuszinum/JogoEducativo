@@ -1,6 +1,8 @@
 extends Resource
 class_name CutsceneResource
 
+@export var nome: String = ""
+
 @export_group("Trilha Sonora")
 @export var musica_tema: AudioStream
 @export var volume_musica_db: float = 0.0
