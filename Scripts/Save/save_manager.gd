@@ -1,5 +1,6 @@
 extends Node
 
+var slot_save_atual: int = 0
 # Nos métodos Get, trocar o void por Dictionary
 
 func SalvarSkillTree(dados: Dictionary) -> void:

@@ -40,11 +40,10 @@ var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
 	painel_slots.hide()
-	verificar_saves_existentes()
 	
-	#btn_slot1.pressed.connect(_on_slot_clicado.bind(1))
-	#btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
-	#btn_slot3.pressed.connect(_on_slot_clicado.bind(3))
+	btn_slot1.pressed.connect(_on_slot_clicado.bind(1))
+	btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
+	btn_slot3.pressed.connect(_on_slot_clicado.bind(3))
 	
 	btn_fechar.pressed.connect(_on_botao_fechar_pressed)
 	
@@ -205,6 +204,10 @@ func carregar_jogo() -> void:
 func _on_botao_fechar_pressed() -> void:
 	painel_slots.hide()
 	
-
-func verificar_saves_existentes() -> void:
-	pass
+func _on_slot_clicado(slot_id: int) -> void:
+	painel_slots.hide()
+	SaveManager.slot_save_atual = slot_id
+	
+	# se já tiver um save, perguntar se deseja sobrepor
+	
+	entrar_novo_jogo()

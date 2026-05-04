@@ -38,7 +38,7 @@ func salvar_dado(slot_id: int, dados_para_salvar: Dictionary):
 		print("Erro ao criar o arquivo em: ", caminho)
 
 
-func carregar_dado(slot_id: int) -> Dictionary:
+func carregar_slot(slot_id: int) -> Dictionary:
 	var caminho = obter_caminho_slot(slot_id)
 	
 	if not FileAccess.file_exists(caminho):
