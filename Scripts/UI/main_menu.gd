@@ -7,6 +7,12 @@ extends Control
 @onready var intro_layer = $IntroLayer
 @onready var transition_rect = $TransitionLayer/ColorRect
 @onready var botao_start = %BotaoNovoJogo
+@onready var botao_carregar = $BotaoCarregarJogo
+@onready var painel_slots = %PainelSlots
+@onready var btn_slot1 = %PainelSlots/VBoxContainer/BotaoSlot1
+@onready var btn_slot2 = %PainelSlots/VBoxContainer/BotaoSlot2
+@onready var btn_slot3 = %PainelSlots/VBoxContainer/BotaoSlot3
+@onready var btn_fechar = %PainelSlots/BotaoFechar
 @onready var container_botoes = %ContainerBotoes
 @onready var sistema_cutscene = %SistemaCutscene
 @onready var imagem_bg = %ImagemBG
@@ -33,6 +39,15 @@ var tween_scroll_creditos: Tween
 var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
+	painel_slots.hide()
+	verificar_saves_existentes()
+	
+	#btn_slot1.pressed.connect(_on_slot_clicado.bind(1))
+	#btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
+	#btn_slot3.pressed.connect(_on_slot_clicado.bind(3))
+	
+	btn_fechar.pressed.connect(_on_botao_fechar_pressed)
+	
 	if not Constantes.MODO_DEV and not intro_ja_exibida:
 		anim_intro.play("SplashIntro")
 		intro_ja_exibida = true
@@ -66,6 +81,9 @@ func pular_intro():
 
 func _on_start_pressed() -> void:
 	entrar_novo_jogo()
+
+func _on_carregar_pressed() -> void:
+	carregar_jogo()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -178,3 +196,15 @@ func entrar_novo_jogo() -> void:
 		await tween_cobrir.finished
 	
 	get_tree().change_scene_to_file("res://Scenes/UI/jogo.tscn")
+
+
+func carregar_jogo() -> void:
+	painel_slots.show()
+
+
+func _on_botao_fechar_pressed() -> void:
+	painel_slots.hide()
+	
+
+func verificar_saves_existentes() -> void:
+	pass

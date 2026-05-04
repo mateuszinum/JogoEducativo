@@ -325,7 +325,31 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "JOGAR"
+text = "NOVO JOGO"
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="BotaoCarregarJogo" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=72737047]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
+text = "CARREGAR JOGO"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -587,6 +611,63 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="PainelSlots" type="Panel" parent="." unique_id=959883297]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = -173.0
+offset_right = 272.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelSlots" unique_id=68084530]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="BotaoSlot1" type="Button" parent="PainelSlots/VBoxContainer" unique_id=707722200]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Slot 1"
+
+[node name="BotaoSlot2" type="Button" parent="PainelSlots/VBoxContainer" unique_id=961855706]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Slot 2"
+
+[node name="BotaoSlot3" type="Button" parent="PainelSlots/VBoxContainer" unique_id=555129403]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Slot 3"
+
+[node name="BotaoFechar" type="Button" parent="PainelSlots" unique_id=2098662635]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 47.0
+grow_horizontal = 0
+text = "X"
+
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoNovoJogo" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCarregarJogo" to="." method="_on_carregar_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCreditos" to="." method="_on_botao_creditos_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PainelSlots/BotaoFechar" to="." method="_on_botao_fechar_pressed"]

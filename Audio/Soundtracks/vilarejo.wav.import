@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cug5lv576p0c2"
-path="res://.godot/imported/Vilarejo.wav-8ffb12ed5a3ae9c3d9decc7c63798a23.sample"
+path="res://.godot/imported/vilarejo.wav-9cbb875d9254b57a8792535081eba970.sample"
 
 [deps]
 
-source_file="res://Audio/Soundtracks/Vilarejo.wav"
-dest_files=["res://.godot/imported/Vilarejo.wav-8ffb12ed5a3ae9c3d9decc7c63798a23.sample"]
+source_file="res://Audio/Soundtracks/vilarejo.wav"
+dest_files=["res://.godot/imported/vilarejo.wav-9cbb875d9254b57a8792535081eba970.sample"]
 
 [params]
 
