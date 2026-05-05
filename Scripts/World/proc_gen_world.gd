@@ -4,6 +4,8 @@ extends Node2D
 @export var cena_tesouro: PackedScene
 @onready var tile_map = $TileMap
 @onready var camera_2d = $Player/Camera2D
+@onready var tela_morte = %TelaMorte
+@onready var iris = %IrisRect
 
 var seed_hash: int
 var recursos_iniciais: Dictionary
@@ -12,6 +14,13 @@ func _ready():
 	randomize()
 	seed_hash = randi()
 	seed(seed_hash)
+	
+	if iris and iris.material:
+		var mat = iris.material as ShaderMaterial
+		mat.set_shader_parameter("circle_size", 1.05)
+	if tela_morte:
+		tela_morte.hide()
+		
 	generate_world()
 	if Constantes.TOCAR_MUSICA:
 		play_stage_music()
@@ -56,8 +65,6 @@ func generate_world():
 		
 	recursos_iniciais = RecursosManager.listarRecursos().duplicate()	
 	var player = get_tree().get_first_node_in_group("Player")
-	if not player.is_connected("vida_zerada", _on_player_morreu):
-		player.connect("vida_zerada", _on_player_morreu)
 	
 	if stage_data.tipo_mapa == StageData.TipoMapa.LABIRINTO:
 		if player.has_method("configurar_modo_labirinto"):
@@ -354,14 +361,13 @@ func gerar_tesouro():
 	var posicao_valida = false
 	var coordenada_sorteada: Vector2i
 	
-	# 1. Descobrir onde o jogador está agora na grade
 	var player = get_tree().get_first_node_in_group("Player")
 	var pos_player_grid = Vector2i(0, 0)
 	if player:
 		pos_player_grid = tile_map.local_to_map(player.position)
 		
 	var tentativas = 0
-	var distancia_desejada = 5.0 # Tenta spawnar a pelo menos 5 blocos de distância
+	var distancia_desejada = 5.0
 	
 	while not posicao_valida:
 		tentativas += 1
@@ -395,22 +401,6 @@ func gerar_tesouro():
 func play_stage_music():
 	if stage_data != null and stage_data.stage_music != null:
 		GerenciadorAudio.tocar_musica(stage_data.stage_music, stage_data.music_volume)
-
-func _on_player_morreu():
-	var terminal = get_tree().get_first_node_in_group("Terminal")
-	if terminal:
-		terminal.desativar_botao_executar()
-
-	var player = get_tree().get_first_node_in_group("Player")
-	if player and "invulneravel" in player:
-		player.invulneravel = true
-	
-	$TelaMorte.show()
-	await get_tree().create_timer(3.0).timeout
-	RecursosManager.aplicarListaRecursos(recursos_iniciais)
-	
-	if terminal:
-		terminal.abortar_arena()
 		
 func _configurar_visibilidade_ui(mostrar: bool):
 	var ui_timer = get_tree().get_first_node_in_group("UI_Timer")

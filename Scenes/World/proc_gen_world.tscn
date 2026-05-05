@@ -18,7 +18,10 @@
 [ext_resource type="AudioStream" uid="uid://uhscbn4ugy26" path="res://Audio/Soundtracks/MainMenu.wav" id="13_0ofdx"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="13_nkw66"]
 [ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Resources/Shaders/Configs/PosProcessamentoArena.tres" id="19_3nb34"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="20_7fyq5"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="20_jixqc"]
+[ext_resource type="Shader" uid="uid://dca33qnn3uwr6" path="res://Resources/Shaders/IrisRect.gdshader" id="21_7fyq5"]
+[ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="22_5vcap"]
 
 [sub_resource type="Resource" id="Resource_01ayd"]
 script = ExtResource("8_5vcap")
@@ -69,6 +72,20 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_jixqc"]
 gradient = SubResource("Gradient_3nb34")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vcap"]
+shader = ExtResource("21_7fyq5")
+shader_parameter/circle_size = 1.04999995231628
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vcap"]
+font = ExtResource("20_7fyq5")
+font_size = 84
+font_color = Color(0.97566444, 4.5724214e-06, 1.540184e-06, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fyq5"]
+line_spacing = -5.0
+font = ExtResource("20_7fyq5")
+font_size = 18
 
 [node name="proc_gen_world" type="Node2D" unique_id=1776267625 groups=["Mundo"]]
 y_sort_enabled = true
@@ -127,29 +144,64 @@ offset_bottom = 720.0
 texture = SubResource("GradientTexture1D_jixqc")
 
 [node name="TelaMorte" type="CanvasLayer" parent="." unique_id=490939006]
+unique_name_in_owner = true
 process_mode = 3
-visible = false
+layer = 25
 
-[node name="ColorRect" type="ColorRect" parent="TelaMorte" unique_id=1661535387]
+[node name="IrisRect" type="ColorRect" parent="TelaMorte" unique_id=2097679996]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_5vcap")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="TelaMorte" unique_id=1951470518]
+[node name="TextoMorte" type="Label" parent="TelaMorte" unique_id=1951470518]
+unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -11.5
-offset_right = 43.5
-offset_bottom = 11.5
+offset_left = -231.0
+offset_top = -62.670013
+offset_right = 231.0
+offset_bottom = 21.329987
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Over"
+text = "DERROTA"
+label_settings = SubResource("LabelSettings_5vcap")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TelaMorte/TextoMorte" unique_id=2080539878]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = 34.745003
+offset_right = 95.0
+offset_bottom = 61.74501
+grow_horizontal = 2
+grow_vertical = 2
+text = "Os recursos adquiridos nesta
+partida foram perdidos!"
+label_settings = SubResource("LabelSettings_7fyq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EfeitosGameOver" type="ColorRect" parent="TelaMorte" unique_id=70169755 groups=["EfeitoSangue"]]
+unique_name_in_owner = true
+material = ExtResource("22_5vcap")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [editable path="Player"]

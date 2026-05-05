@@ -11,7 +11,6 @@ func _process(_delta: float) -> void:
 
 func _on_botao_debug_codigo_pressed() -> void:
 	var terminal = get_tree().get_first_node_in_group("Terminal")
-	
 	if terminal and terminal.has_method("definir_codigo_slot"):
 		for i in range(5):
 			var codigo_puxado = CodigosDebug.obter_codigo(i)
@@ -41,3 +40,8 @@ func _on_botao_musica_pressed() -> void:
 
 func _on_botao_cutscene_pressed() -> void:
 	CutsceneManager.tocar_cutscene(cutscene_exemplo)
+
+func _on_botao_morrer_pressed() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and player.has_method("take_damage"):
+		player.take_damage(999)

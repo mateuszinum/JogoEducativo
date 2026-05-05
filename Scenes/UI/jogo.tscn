@@ -447,6 +447,19 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 text = "Toggle Música"
 script = ExtResource("5_kjdr6")
 
+[node name="BotaoMorrer" type="Button" parent="BotoesDebug" unique_id=1766665747]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Morrer"
+script = ExtResource("5_kjdr6")
+
 [node name="BotaoCutscene" type="Button" parent="BotoesDebug" unique_id=562690665]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
@@ -510,4 +523,5 @@ unique_name_in_owner = true
 [connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="BotoesDebug" method="_on_botao_agilidade_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoMusica" to="BotoesDebug" method="_on_botao_musica_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoMorrer" to="BotoesDebug" method="_on_botao_morrer_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoCutscene" to="BotoesDebug" method="_on_botao_cutscene_pressed"]

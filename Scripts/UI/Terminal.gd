@@ -46,6 +46,7 @@ var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
 var cooldown_ativo: bool = false
 var _tweens_destaque: Dictionary = {}
+var bloqueio_game_over: bool = false
 
 var slots_codigo: Array = [
 	{"nome": "Código A", "codigo": ""},
@@ -462,7 +463,7 @@ func atualizar_travas_da_interface():
 	if code_edit:
 		var deve_estar_editavel = false
 		
-		if modo_atual == "arena":
+		if modo_atual == "arena" or bloqueio_game_over:
 			deve_estar_editavel = false
 		else:
 			deve_estar_editavel = not codigo_rodando
@@ -477,7 +478,10 @@ func atualizar_travas_da_interface():
 			code_edit.caret_blink = true
 			
 	if botao_executar:
-		botao_executar.disabled = cooldown_ativo
+		if bloqueio_game_over:
+			botao_executar.disabled = true
+		else:
+			botao_executar.disabled = cooldown_ativo
 	
 func definir_codigo_slot(indice: int, codigo: String) -> void:
 	if indice < 0 or indice >= slots_codigo.size():

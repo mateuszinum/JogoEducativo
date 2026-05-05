@@ -6,12 +6,14 @@
 [ext_resource type="Script" uid="uid://bct2mn0xi7na0" path="res://Scripts/UI/ui.gd" id="3_dd0ac"]
 [ext_resource type="AudioStream" uid="uid://cg62prdwrcolt" path="res://Audio/SFX/PassosPlayer.mp3" id="3_gk6dx"]
 [ext_resource type="AudioStream" uid="uid://b6olxjv3sluok" path="res://Audio/SFX/Coleta.wav" id="4_0u5uq"]
+[ext_resource type="AudioStream" uid="uid://duq4lgt7a4avh" path="res://Audio/SFX/GameOver.mp3" id="5_7g0yx"]
 [ext_resource type="Texture2D" uid="uid://dogxdhaswpp14" path="res://Assets/Personagens/Wizard-Hurt.png" id="6_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://byprs2c3pp1oa" path="res://Assets/Drop/Diamante.png" id="6_gk6dx"]
 [ext_resource type="Script" uid="uid://kq4xclbqiiyo" path="res://Scripts/UI/ui_recurso_labirinto.gd" id="6_jhyir"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="7_jhyir"]
 [ext_resource type="Material" uid="uid://diywvushlgcf6" path="res://Resources/Shaders/IgnorarLuz.tres" id="8_oikmp"]
 [ext_resource type="PackedScene" uid="uid://dckuqroh6u0au" path="res://Scenes/Polimento/LuzEntidades.tscn" id="11_74mp2"]
+[ext_resource type="Texture2D" uid="uid://bq0ahlrktt22n" path="res://Assets/Personagens/Wizard-DEATH.png" id="12_06tpx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xpcdj"]
 radius = 8.0
@@ -72,6 +74,22 @@ region = Rect2(200, 0, 100, 100)
 atlas = ExtResource("6_dd0ac")
 region = Rect2(300, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
+atlas = ExtResource("12_06tpx")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
+atlas = ExtResource("12_06tpx")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
+atlas = ExtResource("12_06tpx")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("12_06tpx")
+region = Rect2(300, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_74mp2"]
 animations = [{
 "frames": [{
@@ -113,6 +131,23 @@ animations = [{
 "loop": false,
 "name": &"hurt",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dey5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks1b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}],
+"loop": false,
+"name": &"morte",
+"speed": 5.0
 }]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dd0ac"]
@@ -134,6 +169,11 @@ collect_volume = -15.0
 collect_pitch_min = 1.0
 ui_barra_vida = NodePath("HealthBar")
 ui_recurso_labirinto = NodePath("UIRecursoLabirinto")
+go_tempo_zoom_iris = 1.5
+go_tamanho_iris_foco = 0.2
+go_tempo_espera_final = 3.0
+go_som_texto = ExtResource("5_7g0yx")
+go_volume_som_texto = -18.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
@@ -212,6 +252,7 @@ vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2056011674]
 sprite_frames = SubResource("SpriteFrames_74mp2")
+animation = &"morte"
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D" unique_id=1809162312]
 texture = SubResource("CompressedTexture2D_dd0ac")
