@@ -221,6 +221,34 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 		else:
 			tooltip_erro.visible = false
 
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
+		var linha_antes = code_edit.get_caret_line()
+		
+		await get_tree().process_frame
+		
+		var linha_depois = code_edit.get_caret_line()
+		
+		if linha_depois > linha_antes:
+			var texto_linha_anterior = code_edit.get_line(linha_antes)
+			
+			var indentacao_detectada = ""
+			for i in range(texto_linha_anterior.length()):
+				var caractere = texto_linha_anterior[i]
+				if caractere == "\t" or caractere == " ":
+					indentacao_detectada += caractere
+				else:
+					break
+					
+			if texto_linha_anterior.strip_edges().ends_with(":"):
+				indentacao_detectada += "\t"
+				
+			if indentacao_detectada != "":
+				var texto_linha_nova = code_edit.get_line(linha_depois)
+				var texto_restante = texto_linha_nova.strip_edges(true, false) # Limpa os espaços antigos
+				
+				code_edit.set_line(linha_depois, indentacao_detectada + texto_restante)
+				code_edit.set_caret_column(indentacao_detectada.length())
+
 func mostrar_erros_de_sintaxe(lista_erros: Array):
 	limpar_erros_de_sintaxe()
 	for erro in lista_erros:
