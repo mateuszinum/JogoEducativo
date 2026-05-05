@@ -9,11 +9,18 @@ func obter_diretorio_save() -> String:
 		
 	elif sistema == "Linux" or sistema == "FreeBSD":
 		caminho_completo = OS.get_environment("HOME") + "/.local/share/Grimorio"
+	
+	else:
+		caminho_completo = "user://Grimorio"
 
 	if not DirAccess.dir_exists_absolute(caminho_completo):
-		pass
-		# cria pasta
-
+		var erro = DirAccess.make_dir_recursive_absolute(caminho_completo)
+		
+		if erro == OK:
+			print("Pasta de saves criada com sucesso em: ", caminho_completo)
+		
+		else:
+			print("Erro ao criar pasta de saves. Código do erro: ", erro)
 			
 	return caminho_completo
 
