@@ -432,15 +432,24 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	
 func atualizar_travas_da_interface():
 	if code_edit:
-		if modo_atual == "arena":
-			code_edit.editable = false
-		else:
-			code_edit.editable = not codigo_rodando
-			
-	if not botao_executar:
-		return
+		var deve_estar_editavel = false
 		
-	botao_executar.disabled = cooldown_ativo
+		if modo_atual == "arena":
+			deve_estar_editavel = false
+		else:
+			deve_estar_editavel = not codigo_rodando
+			
+		code_edit.editable = deve_estar_editavel
+		
+		if not deve_estar_editavel:
+			if code_edit.has_focus():
+				code_edit.release_focus()
+			code_edit.caret_blink = false
+		else:
+			code_edit.caret_blink = true
+			
+	if botao_executar:
+		botao_executar.disabled = cooldown_ativo
 	
 func definir_codigo_slot(indice: int, codigo: String) -> void:
 	if indice < 0 or indice >= slots_codigo.size():
