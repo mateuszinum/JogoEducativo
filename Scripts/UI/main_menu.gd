@@ -208,6 +208,7 @@ func _on_slot_clicado(slot_id: int) -> void:
 	painel_slots.hide()
 	SaveManager.slot_save_atual = slot_id
 	
+	
 	# se já tiver um save, perguntar se deseja sobrepor
 	
 	entrar_novo_jogo()

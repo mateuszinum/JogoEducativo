@@ -42,6 +42,7 @@ RecursosManager="*uid://1y4nn2nr8jxf"
 ProgressoDB="*uid://dbwday27iykbu"
 ExecutarComTick="*uid://bgc4joe3ejyab"
 SaveManager="*uid://dirx08x40g35k"
+SaveMaster="*uid://dmnhp8g7uykku"
 
 [display]
 

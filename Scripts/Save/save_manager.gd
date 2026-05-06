@@ -3,38 +3,22 @@ extends Node
 var slot_save_atual: int = 0
 # Nos métodos Get, trocar o void por Dictionary
 
-func SalvarSkillTree(dados: Dictionary) -> void:
-	pass
+func GetSkillTree() -> Dictionary:
+	var produtos = ProgressoDB.produtos_desbloqueados
+	var produtos_formatados = produtos.keys()
+	return produtos_formatados
+	
+func GetAtributosBruxa() -> Dictionary:
+	return {}
 
-func GetSkillTree() -> void:
-	pass
+func GetInventario() -> Dictionary:
+	return {}
 	
-func SalvarAtributosBruxa(dados: Dictionary) -> void:
-	pass
-	
-func GetAtributosBruxa() -> void:
-	pass
+func GetRecursos() -> Dictionary:
+	return {}
 
-func SalvarInventario(dados: Dictionary) -> void:
-	pass
-
-func GetInventario() -> void:
-	pass
+func GetCodigo() -> Dictionary:
+	return {}
 	
-func SalvarRecursos(dados: Dictionary) -> void:
-	pass
-	
-func GetRecursos() -> void:
-	pass
-
-func SalvarCodigo(dados: Dictionary) -> void:
-	pass
-	
-func GetCodigo() -> void:
-	pass
-
-func SalvarConfig(dados: Dictionary) -> void:
-	pass
-	
-func GetConfig() -> void:
-	pass
+func GetConfig() -> Dictionary:
+	return {}

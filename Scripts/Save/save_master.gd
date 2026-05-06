@@ -24,13 +24,12 @@ func obter_diretorio_save() -> String:
 			
 	return caminho_completo
 
+func obter_caminho_slot() -> String:
+	return obter_diretorio_save() + "/slot" + str(SaveManager.slot_save_atual) + ".txt"
 
-func obter_caminho_slot(slot_id: int) -> String:
-	return obter_diretorio_save() + "/slot" + str(slot_id) + ".txt"
-
-
-func salvar_dado(slot_id: int, dados_para_salvar: Dictionary):
-	var caminho = obter_caminho_slot(slot_id)
+func salvar_dado():
+	var dados_para_salvar = compilar_dados_salvamento()
+	var caminho = obter_caminho_slot()
 	
 	# pra encriptar, usar o método .open_encrypted_with_pass
 	var arquivo = FileAccess.open(caminho, FileAccess.WRITE)
@@ -40,16 +39,28 @@ func salvar_dado(slot_id: int, dados_para_salvar: Dictionary):
 		
 		arquivo.store_string(json_string)
 		arquivo.close()
-		print("Salvo com sucesso no slot ", slot_id, " em: ", caminho)
+		print("Salvo com sucesso no slot ", SaveManager.slot_save_atual, " em: ", caminho)
 	else:
 		print("Erro ao criar o arquivo em: ", caminho)
 
+func compilar_dados_salvamento() -> Dictionary:
+	var dados_completos = {
+		"skill-tree": SaveManager.GetSkillTree(),
+		"atributos": SaveManager.GetAtributosBruxa(),
+		"inventario": SaveManager.GetInventario(),
+		"recursos": SaveManager.GetRecursos(),
+		"codigos": SaveManager.GetCodigo()
+	}
+	
+	return dados_completos
 
-func carregar_slot(slot_id: int) -> Dictionary:
-	var caminho = obter_caminho_slot(slot_id)
+func carregar_slot():
+	var caminho = obter_caminho_slot()
 	
 	if not FileAccess.file_exists(caminho):
-		return {}
+		# Se não tem save, garante que a memória comece limpa
+		SaveManager.dados_em_cache = {}
+		return
 		
 	var arquivo = FileAccess.open(caminho, FileAccess.READ)
 	var json_string = arquivo.get_as_text()
@@ -58,8 +69,12 @@ func carregar_slot(slot_id: int) -> Dictionary:
 	var json = JSON.new()
 	var erro = json.parse(json_string)
 	
-	if !erro:
-		return json.data
+	if not erro:
+		# Injeta os dados direto na memória do SaveManager
+		SaveManager.dados_em_cache = json.data
+		print("Save carregado direto na memória do SaveManager!")
 	else:
 		print("Erro de formatação no JSON do save: ", json.get_error_message())
-		return {}
+		SaveManager.dados_em_cache = {}
+
+func carregar_dado():
