@@ -26,8 +26,8 @@ const COOLDOWNS_MINIMOS = {
 
 # 3. AÇÕES DE TEMPO FIXO (Ignoram os atributos do jogador, em Segundos)
 const TEMPO_FIXO_SEGUNDOS = {
-	"escapar": 1, 
-	"arena": 1
+	"escapar": 3.5, 
+	"arena": 2
 }
 
 var _ultimo_uso_da_acao: Dictionary = {}

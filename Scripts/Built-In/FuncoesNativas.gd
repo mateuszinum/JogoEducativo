@@ -208,6 +208,7 @@ class Partida:
 		em_arena = false
 		
 		var tree = Engine.get_main_loop()
+		tree.call_group("Terminal", "iniciar_cooldown_seguranca")
 		
 		var player = tree.get_first_node_in_group("Player")
 		if player and "invulneravel" in player:
@@ -244,6 +245,8 @@ class Partida:
 		if em_arena:
 			tree.call_group("Terminal", "mostrar_erro", "Você já está em uma arena!\nUse a interface para escapar primeiro.")
 			return
+			
+		tree.call_group("Terminal", "iniciar_cooldown_seguranca")
 			
 		var jogo_main = tree.root.get_node_or_null("Jogo")
 		if not jogo_main:

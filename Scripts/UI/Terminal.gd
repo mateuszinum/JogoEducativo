@@ -47,6 +47,7 @@ var tooltip_erro: Label
 var cooldown_ativo: bool = false
 var _tweens_destaque: Dictionary = {}
 var bloqueio_game_over: bool = false
+var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
 	{"nome": "Código A", "codigo": ""},
@@ -132,21 +133,35 @@ func atualizar_estado_botao() -> void:
 		if icone_escapar: botao_executar.icon = icone_escapar
 
 func iniciar_cooldown_seguranca():
+	_id_cooldown += 1
+	var id_atual = _id_cooldown
+	
 	cooldown_ativo = true
 	atualizar_travas_da_interface()
 	
 	await get_tree().create_timer(tempo_cooldown).timeout
 	
-	cooldown_ativo = false
-	atualizar_travas_da_interface()
+	if _id_cooldown == id_atual:
+		cooldown_ativo = false
+		atualizar_travas_da_interface()
 
 func _liberar_botao() -> void:
 	botao_executar.disabled = false
 
+func ativar_modo_vilarejo():
+	modo_atual = "vilarejo"
+	
+	if botao_executar:
+		botao_executar.visible = true
+		
+	iniciar_cooldown_seguranca()
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+
 func ativar_modo_arena():
 	modo_atual = "arena"
-	codigo_rodando = false
 	
+	iniciar_cooldown_seguranca()
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
 
@@ -460,14 +475,14 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	limpar_erros_de_sintaxe()
 	
 func atualizar_travas_da_interface():
-	if code_edit:
-		var deve_estar_editavel = false
+	var deve_estar_editavel = false
+	
+	if modo_atual == "arena" or bloqueio_game_over:
+		deve_estar_editavel = false
+	else:
+		deve_estar_editavel = not codigo_rodando
 		
-		if modo_atual == "arena" or bloqueio_game_over:
-			deve_estar_editavel = false
-		else:
-			deve_estar_editavel = not codigo_rodando
-			
+	if code_edit:
 		code_edit.editable = deve_estar_editavel
 		
 		if not deve_estar_editavel:
@@ -476,6 +491,9 @@ func atualizar_travas_da_interface():
 			code_edit.caret_blink = false
 		else:
 			code_edit.caret_blink = true
+			
+	if seletor_slot:
+		seletor_slot.disabled = not deve_estar_editavel
 			
 	if botao_executar:
 		if bloqueio_game_over:
@@ -539,19 +557,6 @@ func limpar_destaque_execucao() -> void:
 		code_edit.set_line_background_color(linha, Color(0, 0, 0, 0))
 		
 	_tweens_destaque.clear()
-
-func ativar_modo_vilarejo():
-	modo_atual = "vilarejo"
-	codigo_rodando = false
-	
-	if code_edit:
-		code_edit.editable = true
-		
-	if botao_executar:
-		botao_executar.visible = true
-		
-	atualizar_estado_botao()
-	atualizar_travas_da_interface()
 
 func abortar_tutorial():
 	if interpretador.has_method("PararExecucao"):
