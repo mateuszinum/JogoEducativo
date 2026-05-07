@@ -10,7 +10,6 @@ func CarregarProdutos():
 	ProgressoDB.produtos_desbloqueados.clear()
 	
 	for chave in dados:
-		# O int() garante que o Godot não trate o número vindo do JSON como float
 		ProgressoDB.produtos_desbloqueados[chave] = int(dados[chave])
 		
 	ProgressoDB.progresso_alterado.emit()

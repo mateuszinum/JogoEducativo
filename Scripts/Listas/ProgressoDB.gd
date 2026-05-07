@@ -9,6 +9,7 @@ func desbloquear(nome_produto: String, nivel: int = 1) -> void:
 	produtos_desbloqueados[limpo] = nivel
 	progresso_alterado.emit() 
 	print(produtos_desbloqueados)
+	SaveMaster.salvar_dado()
 
 func tem_desbloqueado(nome_produto: String) -> bool:
 	if Constantes.TUDO_DESBLOQUEADO: 
