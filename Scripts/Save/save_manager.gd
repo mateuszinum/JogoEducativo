@@ -1,18 +1,31 @@
 extends Node
 
+var dados_em_cache: Dictionary = {}
 var slot_save_atual: int = 0
 # Nos métodos Get, trocar o void por Dictionary
 
 func GetSkillTree() -> Dictionary:
-	var produtos = ProgressoDB.produtos_desbloqueados
-	var produtos_formatados = produtos.keys()
-	return produtos_formatados
+	return dados_em_cache.get("skill_tree", {})
 	
 func GetAtributosBruxa() -> Dictionary:
-	return {}
+	return dados_em_cache.get("atributos", {})
 
 func GetInventario() -> Dictionary:
-	return {}
+	var valor_padrao = {
+		"inventario_escolha": 0, 
+		"cinto": {
+			"0": "",
+			"1": ""
+		},
+		"mochila": {
+			"0": "",
+			"1": "",
+			"2": "",
+			"3": ""
+		}
+	}
+	
+	return dados_em_cache.get("inventario", valor_padrao)
 	
 func GetRecursos() -> Dictionary:
 	return {}

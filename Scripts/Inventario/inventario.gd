@@ -58,6 +58,7 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 		lista_atual[slot_livre] = produto
 		inventario_atualizado.emit() 
 		inventario_comprados_atualizado.emit() 
+		print(lista_atual)
 		return true 
 		
 	return false

@@ -43,11 +43,40 @@ func salvar_dado():
 	else:
 		print("Erro ao criar o arquivo em: ", caminho)
 
+func compilar_inventario() -> Dictionary:
+	var tipo_inventario = 0
+	var inventario = Inventario.get_lista_ativa()
+	
+	var inventario_cinto = {"slot_0": null, "slot_1": null}
+	var inventario_mochila = {"slot_0": null, "slot_1": null, "slot_2": null, "slot_3": null}
+	
+	if Inventario.inventario_ativo == Inventario.TipoInventario.CINTO:
+		tipo_inventario = 1
+		for i in range(inventario.size()):
+			inventario_cinto["slot_" + str(i)] = inventario[i]
+			
+	else:
+		tipo_inventario = 0
+		for i in range(inventario.size()):
+			inventario_mochila["slot_" + str(i)] = inventario[i]
+			
+	var dados_finais = {
+		"inventario_escolha": tipo_inventario,
+		"cinto": inventario_cinto,
+		"mochila": inventario_mochila
+	}
+	
+	return dados_finais
+
 func compilar_dados_salvamento() -> Dictionary:
+	var dados_inventario = compilar_inventario()
+	
 	var dados_completos = {
 		"skill-tree": SaveManager.GetSkillTree(),
 		"atributos": SaveManager.GetAtributosBruxa(),
-		"inventario": SaveManager.GetInventario(),
+		"inventario_escolha": dados_inventario["inventario_escolha"],
+		"cinto": dados_inventario["cinto"],
+		"mochila": dados_inventario["mochila"],
 		"recursos": SaveManager.GetRecursos(),
 		"codigos": SaveManager.GetCodigo()
 	}
@@ -76,5 +105,3 @@ func carregar_slot():
 	else:
 		print("Erro de formatação no JSON do save: ", json.get_error_message())
 		SaveManager.dados_em_cache = {}
-
-func carregar_dado():
