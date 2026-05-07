@@ -147,6 +147,7 @@ texture = SubResource("GradientTexture1D_jixqc")
 unique_name_in_owner = true
 process_mode = 3
 layer = 25
+visible = false
 
 [node name="IrisRect" type="ColorRect" parent="TelaMorte" unique_id=2097679996]
 unique_name_in_owner = true
