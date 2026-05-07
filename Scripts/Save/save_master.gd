@@ -24,24 +24,39 @@ func obter_diretorio_save() -> String:
 			
 	return caminho_completo
 
+
 func obter_caminho_slot() -> String:
 	return obter_diretorio_save() + "/slot" + str(SaveManager.slot_save_atual) + ".txt"
+
 
 func salvar_dado():
 	var dados_para_salvar = compilar_dados_salvamento()
 	var caminho = obter_caminho_slot()
 	
+	salvar_arquivo_json(caminho, dados_para_salvar)
+
+
+func salvar_dado_config():
+	var dados_config = {"temp" : 1}
+	var caminho = obter_diretorio_save() + "/config.txt"
+	
+	salvar_arquivo_json(caminho, dados_config)
+
+
+func salvar_arquivo_json(caminho: String, dados: Dictionary) -> void:
 	# pra encriptar, usar o método .open_encrypted_with_pass
 	var arquivo = FileAccess.open(caminho, FileAccess.WRITE)
 	
 	if arquivo:
-		var json_string = JSON.stringify(dados_para_salvar, "\t")
-		
+		var json_string = JSON.stringify(dados, "\t")
+			
 		arquivo.store_string(json_string)
 		arquivo.close()
-		print("Salvo com sucesso no slot ", SaveManager.slot_save_atual, " em: ", caminho)
+		print("Salvo com sucesso em: ", caminho)
+		
 	else:
 		print("Erro ao criar o arquivo em: ", caminho)
+
 
 func compilar_inventario() -> Dictionary:
 	var tipo_inventario = 0
@@ -74,12 +89,24 @@ func compilar_inventario() -> Dictionary:
 	
 	return dados_finais
 
+func compilar_recursos():
+	var recursos_salvos = {}
+	var recursos_atuais = RecursosManager.listarRecursos()
+	
+	for item_data in recursos_atuais:
+		var nome_recurso = item_data.nome
+		recursos_salvos[nome_recurso] = recursos_atuais[item_data]
+	
+	return recursos_salvos
+
 func compilar_dados_salvamento() -> Dictionary:
 	var dados_inventario = compilar_inventario()
+	var dados_recursos = compilar_recursos()
 	
 	var dados_completos = {
 		"produtos": ProgressoDB.produtos_desbloqueados,
 		"inventario": dados_inventario,
+		"recursos": dados_recursos,
 	}
 	
 	return dados_completos
@@ -112,4 +139,5 @@ func carregar_slot():
 func preenche_dados_in_game():
 	SaveManager.CarregarInventario()
 	SaveManager.CarregarProdutos()
+	SaveManager.CarregarRecursos()
 	

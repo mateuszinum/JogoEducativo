@@ -2,7 +2,8 @@ extends Node
 
 var dados_em_cache: Dictionary = {}
 var slot_save_atual: int = 0
-# Nos métodos Get, trocar o void por Dictionary
+
+#------ Métodos Carregar ------
 
 func CarregarProdutos():
 	var dados = GetProdutos()
@@ -15,10 +16,6 @@ func CarregarProdutos():
 	ProgressoDB.progresso_alterado.emit()
 	print("Progresso carregado: ", ProgressoDB.produtos_desbloqueados)
 	
-
-func GetProdutos() -> Dictionary:
-	
-	return dados_em_cache.get("produtos", {})
 	
 func CarregarInventario():
 	var dados = GetInventario()
@@ -54,6 +51,22 @@ func CarregarInventario():
 	Inventario.inventario_comprados_atualizado.emit()
 	print("Inventário reconstruído com sucesso!")
 
+
+func CarregarRecursos():
+	var dados = GetRecursos()
+	var recursos = {}
+	
+	if dados != null:
+		for nome_recurso in dados:
+			var item_data = RecursosDB.get_recurso(nome_recurso)
+			
+			if item_data != null:
+				recursos[item_data] = int(dados[nome_recurso])
+	
+	RecursosManager.aplicarListaRecursos(recursos)
+	
+#------ Métodos Get ------
+
 func GetInventario() -> Dictionary:
 	var valor_padrao = {
 		"inventario_escolha": 0, 
@@ -70,8 +83,11 @@ func GetInventario() -> Dictionary:
 	}
 	return dados_em_cache.get("inventario", valor_padrao)
 	
+func GetProdutos() -> Dictionary:
+	return dados_em_cache.get("produtos", {})
+
 func GetRecursos() -> Dictionary:
-	return {}
+	return dados_em_cache.get("recursos", {})
 
 func GetCodigo() -> Dictionary:
 	return {}

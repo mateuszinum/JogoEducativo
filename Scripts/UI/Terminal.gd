@@ -171,6 +171,8 @@ func abortar_arena():
 		
 	if FuncoesNativas.has_method("escapar"):
 		FuncoesNativas.escapar()
+	
+	SaveMaster.salvar_dado()
 
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
@@ -190,6 +192,8 @@ func _on_botao_executar_pressed() -> void:
 		atualizar_travas_da_interface()
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
 		iniciar_cooldown_seguranca()
+		
+		SaveMaster.salvar_dado()
 
 	elif modo_atual == "vilarejo" and codigo_rodando:
 		if interpretador.has_method("PararExecucao"):

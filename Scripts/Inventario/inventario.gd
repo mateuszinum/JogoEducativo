@@ -16,7 +16,6 @@ func _ready() -> void:
 
 func adicionar_item(item: ItemData, quantidade: int):
 	RecursosManager.receberRecurso(item.nome, quantidade)
-	SaveMaster.salvar_dado()
 
 func get_lista_ativa() -> Array:
 	if inventario_ativo == TipoInventario.CINTO:
