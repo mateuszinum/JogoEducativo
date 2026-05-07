@@ -111,4 +111,5 @@ func carregar_slot():
 
 func preenche_dados_in_game():
 	SaveManager.CarregarInventario()
+	SaveManager.CarregarProdutos()
 	

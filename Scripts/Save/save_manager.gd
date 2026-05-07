@@ -7,6 +7,14 @@ var slot_save_atual: int = 0
 func CarregarProdutos():
 	var dados = GetProdutos()
 	
+	ProgressoDB.produtos_desbloqueados.clear()
+	
+	for chave in dados:
+		# O int() garante que o Godot não trate o número vindo do JSON como float
+		ProgressoDB.produtos_desbloqueados[chave] = int(dados[chave])
+		
+	ProgressoDB.progresso_alterado.emit()
+	print("Progresso carregado: ", ProgressoDB.produtos_desbloqueados)
 	
 
 func GetProdutos() -> Dictionary:
