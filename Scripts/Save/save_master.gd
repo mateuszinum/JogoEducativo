@@ -99,14 +99,37 @@ func compilar_recursos():
 	
 	return recursos_salvos
 
+func compilar_codigo():
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	
+	if terminal:
+		var dados_finais = {
+			"espaco_codigo_atual": terminal.slot_atual_idx,
+		}
+		
+		for i in range(terminal.slots_codigo.size()):
+			var codigo_atual = terminal.get_codigo_slot(i)
+			
+			if codigo_atual == null:
+				codigo_atual = ""
+			
+			dados_finais["espaco_codigo_" + str(i)] = codigo_atual
+
+		return dados_finais
+	
+	else:
+		return SaveManager.GetCodigo()
+
 func compilar_dados_salvamento() -> Dictionary:
 	var dados_inventario = compilar_inventario()
 	var dados_recursos = compilar_recursos()
+	var dados_codigo = compilar_codigo()
 	
 	var dados_completos = {
 		"produtos": ProgressoDB.produtos_desbloqueados,
 		"inventario": dados_inventario,
 		"recursos": dados_recursos,
+		"codigos": dados_codigo,
 	}
 	
 	return dados_completos
@@ -140,4 +163,5 @@ func preenche_dados_in_game():
 	SaveManager.CarregarInventario()
 	SaveManager.CarregarProdutos()
 	SaveManager.CarregarRecursos()
+	SaveManager.CarregarCodigo()
 	

@@ -64,7 +64,21 @@ func CarregarRecursos():
 				recursos[item_data] = int(dados[nome_recurso])
 	
 	RecursosManager.aplicarListaRecursos(recursos)
-	
+
+func CarregarCodigo():
+	var dados_codigo = GetCodigo()
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+
+	if terminal and dados_codigo != null:
+		terminal.slot_atual_idx = int(dados_codigo.get("espaco_codigo_atual", 0))
+		
+		for slot in range(terminal.slots_codigo.size()):
+			var chave_json = "espaco_codigo_" + str(slot)
+			var codigo_terminal = dados_codigo.get(chave_json, "")
+			
+			terminal.definir_codigo_slot(slot, codigo_terminal)
+
+
 #------ Métodos Get ------
 
 func GetInventario() -> Dictionary:
@@ -81,6 +95,7 @@ func GetInventario() -> Dictionary:
 			"slot_3": null
 		}
 	}
+	
 	return dados_em_cache.get("inventario", valor_padrao)
 	
 func GetProdutos() -> Dictionary:
@@ -90,7 +105,7 @@ func GetRecursos() -> Dictionary:
 	return dados_em_cache.get("recursos", {})
 
 func GetCodigo() -> Dictionary:
-	return {}
+	return dados_em_cache.get("codigos", {})
 	
 func GetConfig() -> Dictionary:
 	return {}
