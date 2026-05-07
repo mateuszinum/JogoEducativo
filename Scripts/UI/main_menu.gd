@@ -157,8 +157,10 @@ func _input(event: InputEvent) -> void:
 			fechar_creditos()	
 
 func entrar_novo_jogo() -> void:
+	SaveMaster.carregar_slot()
 	GerenciadorAudio.parar_musica(0.0)
 	tocar_sfx_entrar()
+	ProdutosDB.listar_produtos()
 	
 	if botao_start.has_method("travar_no_clique"):
 		botao_start.travar_no_clique()

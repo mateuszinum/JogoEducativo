@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func adicionar_item(item: ItemData, quantidade: int):
 	RecursosManager.receberRecurso(item.nome, quantidade)
+	SaveMaster.salvar_dado()
 
 func get_lista_ativa() -> Array:
 	if inventario_ativo == TipoInventario.CINTO:
@@ -58,6 +59,7 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 		lista_atual[slot_livre] = produto
 		inventario_atualizado.emit() 
 		inventario_comprados_atualizado.emit() 
+		SaveMaster.salvar_dado()
 		print(lista_atual)
 		return true 
 		
@@ -90,6 +92,7 @@ func vender_item(index: int) -> void:
 	
 	inventario_atualizado.emit()
 	inventario_comprados_atualizado.emit()
+	SaveMaster.salvar_dado()
 	
 func trocar_inventario(novo_tipo: TipoInventario) -> void:
 	if inventario_ativo == novo_tipo:
@@ -105,6 +108,7 @@ func trocar_inventario(novo_tipo: TipoInventario) -> void:
 		capacidade_atual = 4
 		
 	inventario_comprados_atualizado.emit()
+	SaveMaster.salvar_dado()
 		
 func vender_tudo() -> void:
 	var lista_atual = get_lista_ativa()
