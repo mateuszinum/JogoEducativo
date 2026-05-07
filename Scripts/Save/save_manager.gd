@@ -5,9 +5,12 @@ var slot_save_atual: int = 0
 # Nos métodos Get, trocar o void por Dictionary
 
 func CarregarProdutos():
-	pass
+	var dados = GetProdutos()
+	
+	
 
 func GetProdutos() -> Dictionary:
+	
 	return dados_em_cache.get("produtos", {})
 	
 func CarregarInventario():
