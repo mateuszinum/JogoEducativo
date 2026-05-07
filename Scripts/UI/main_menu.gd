@@ -16,6 +16,7 @@ extends Control
 @onready var container_botoes = %ContainerBotoes
 @onready var sistema_cutscene = %SistemaCutscene
 @onready var imagem_bg = %ImagemBG
+@onready var confirmacao_reset_btn = %ConfirmacaoReset
 
 @export_group("Áudio")
 @export var musica_tema: AudioStream
@@ -50,6 +51,7 @@ func _ready() -> void:
 		print("achou")
 		botao_carregar.show()
 	
+	confirmacao_reset_btn.confirmed.connect(_on_reset_confirmado)
 	btn_slot1.pressed.connect(_on_slot_clicado.bind(1))
 	btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
 	btn_slot3.pressed.connect(_on_slot_clicado.bind(3))
@@ -267,8 +269,18 @@ func _on_slot_clicado(slot_id: int) -> void:
 
 
 func confirmacao_reset() -> void:
-	pass
+	confirmacao_reset_btn.dialog_text = "Já existe um save no Slot " + str(SaveManager.slot_save_atual) + ".\nDeseja apagá-lo e começar um Novo Jogo do zero?"
+	confirmacao_reset_btn.popup_centered()
+
+
+func _on_reset_confirmado() -> void:
+	var caminho_para_apagar = SaveMaster.obter_diretorio_save() + "/slot" + str(SaveManager.slot_save_atual) + ".txt"
 	
+	if FileAccess.file_exists(caminho_para_apagar):
+		DirAccess.remove_absolute(caminho_para_apagar)
+
+	iniciar_jogo()
+
 
 func iniciar_jogo() -> void:
 	painel_slots.hide()

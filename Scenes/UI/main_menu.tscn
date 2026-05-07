@@ -481,6 +481,11 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
+[node name="ConfirmacaoReset" type="ConfirmationDialog" parent="." unique_id=51262298]
+unique_name_in_owner = true
+title = "Atenção"
+ok_button_text = "Sim!"
+
 [node name="TelaCreditos" type="Control" parent="." unique_id=2010705035]
 unique_name_in_owner = true
 visible = false
