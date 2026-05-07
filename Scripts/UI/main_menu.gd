@@ -7,7 +7,7 @@ extends Control
 @onready var intro_layer = $IntroLayer
 @onready var transition_rect = $TransitionLayer/ColorRect
 @onready var botao_start = %BotaoNovoJogo
-@onready var botao_carregar = $BotaoCarregarJogo
+@onready var botao_carregar = %BotaoCarregarJogo
 @onready var painel_slots = %PainelSlots
 @onready var btn_slot1 = %PainelSlots/VBoxContainer/BotaoSlot1
 @onready var btn_slot2 = %PainelSlots/VBoxContainer/BotaoSlot2
@@ -35,11 +35,20 @@ extends Control
 static var intro_ja_exibida: bool = false
 var creditos_rolando: bool = false
 var tween_scroll_creditos: Tween
+var modo_slot: String
 
 var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
 	painel_slots.hide()
+	
+	if not SaveMaster.checar_existe_save():
+		print("não achou")
+		botao_carregar.hide()
+		
+	else:
+		print("achou")
+		botao_carregar.show()
 	
 	btn_slot1.pressed.connect(_on_slot_clicado.bind(1))
 	btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
@@ -79,10 +88,15 @@ func pular_intro():
 	anim_intro.stop()
 
 func _on_start_pressed() -> void:
-	entrar_novo_jogo()
+	modo_slot = "novo"
+	configurar_painel_slots()
+	painel_slots.show()
 
 func _on_carregar_pressed() -> void:
-	carregar_jogo()
+	modo_slot = "carregar"
+	configurar_painel_slots()
+	painel_slots.show()
+
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -161,6 +175,7 @@ func entrar_novo_jogo() -> void:
 	GerenciadorAudio.parar_musica(0.0)
 	tocar_sfx_entrar()
 	ProdutosDB.listar_produtos()
+	SaveMaster.salvar_dado()
 	
 	if botao_start.has_method("travar_no_clique"):
 		botao_start.travar_no_clique()
@@ -199,6 +214,32 @@ func entrar_novo_jogo() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/jogo.tscn")
 
 
+
+func configurar_painel_slots() -> void:
+	var botoes = [btn_slot1, btn_slot2, btn_slot3]
+	
+	for i in range(botoes.size()):
+		var slot_id = i + 1
+		var caminho = SaveMaster.obter_diretorio_save() + "/slot" + str(slot_id) + ".txt"
+		var tem_save = FileAccess.file_exists(caminho)
+		
+		if modo_slot == "carregar":
+			botoes[i].disabled = not tem_save 
+			
+			if tem_save:
+				botoes[i].text = "Carregar Slot " + str(slot_id)
+			else:
+				botoes[i].text = "Vazio"
+				
+		elif modo_slot == "novo":
+			botoes[i].disabled = false
+			
+			if tem_save:
+				botoes[i].text = "Substituir Slot " + str(slot_id)
+			else:
+				botoes[i].text = "Novo Jogo " + str(slot_id)
+
+
 func carregar_jogo() -> void:
 	painel_slots.show()
 
@@ -206,11 +247,30 @@ func carregar_jogo() -> void:
 func _on_botao_fechar_pressed() -> void:
 	painel_slots.hide()
 	
+	
 func _on_slot_clicado(slot_id: int) -> void:
-	painel_slots.hide()
 	SaveManager.slot_save_atual = slot_id
+	var caminho = SaveMaster.obter_diretorio_save() + "/slot" + str(slot_id) + ".txt"
+	var tem_save = FileAccess.file_exists(caminho)
 	
+	if modo_slot == "novo":
+		if tem_save:
+			print("aqui é pra ser perguntado se ele realmente quer apagar esse save")
+			confirmacao_reset()
+		else:
+			iniciar_jogo()
+			
+	elif modo_slot == "carregar":
+		painel_slots.hide()
+		SaveMaster.carregar_slot()
+		entrar_novo_jogo()
+
+
+func confirmacao_reset() -> void:
+	pass
 	
-	# se já tiver um save, perguntar se deseja sobrepor
-	
+
+func iniciar_jogo() -> void:
+	painel_slots.hide()
+	SaveManager.dados_em_cache = {}
 	entrar_novo_jogo()

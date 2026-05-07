@@ -29,6 +29,18 @@ func obter_caminho_slot() -> String:
 	return obter_diretorio_save() + "/slot" + str(SaveManager.slot_save_atual) + ".txt"
 
 
+func checar_existe_save() -> bool:
+	var diretorio = obter_diretorio_save()
+	var pastas = DirAccess.get_files_at(diretorio)
+	
+	for arquivo in pastas:
+		print(arquivo)
+		if arquivo.begins_with("slot") and arquivo.ends_with(".txt"):
+			return true
+	
+	return false
+
+
 func salvar_dado():
 	var dados_para_salvar = compilar_dados_salvamento()
 	var caminho = obter_caminho_slot()
