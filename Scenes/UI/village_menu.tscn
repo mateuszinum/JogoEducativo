@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6jy3ijgjagqg" path="res://Scripts/UI/village_menu.gd" id="1_qhw0b"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_k4kg0"]
 [ext_resource type="Texture2D" uid="uid://dxw1i037w42gy" path="res://Assets/UI/vilarejo.jpg" id="2_kolhh"]
-[ext_resource type="AudioStream" uid="uid://cug5lv576p0c2" path="res://Audio/Soundtracks/Vilarejo.wav" id="2_li3q7"]
+[ext_resource type="AudioStream" uid="uid://cug5lv576p0c2" path="res://Audio/Soundtracks/vilarejo.wav" id="2_li3q7"]
 [ext_resource type="PackedScene" uid="uid://47gpu1l8i1cx" path="res://Scenes/UI/loja_bruxa.tscn" id="5_ai1hv"]
 [ext_resource type="StyleBox" uid="uid://bre6lys6mak0r" path="res://Resources/UI/botaoNormal.tres" id="5_gcct8"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_pg2by"]
@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://doh77mpn3yqve" path="res://Scenes/UI/loja_biblioteca.tscn" id="9_mri60"]
 [ext_resource type="PackedScene" uid="uid://cwy5acmn1mf2w" path="res://Scenes/UI/loja_mago_velho.tscn" id="10_yu54g"]
 [ext_resource type="PackedScene" uid="uid://xcdslswds8he" path="res://Scenes/UI/loja_comerciante.tscn" id="11_li3q7"]
+[ext_resource type="Texture2D" uid="uid://cncn57xiaibht" path="res://Assets/Produtos/Skilltree/AUTO.png" id="12_howei"]
 [ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="13_1kxp1"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="14_1kxp1"]
+[ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="18_2ink5"]
 
 [sub_resource type="Gradient" id="Gradient_yljls"]
 interpolation_mode = 2
@@ -158,6 +160,21 @@ volume_hover_db = -10.0
 som_clique = ExtResource("7_s2xrj")
 volume_clique_db = -5.0
 
+[node name="ButtonConfiguracao" type="Button" parent="Background/Buttons" unique_id=617269817]
+offset_left = 646.00006
+offset_top = 194.00002
+offset_right = 854.00006
+offset_bottom = 402.0
+scale = Vector2(0.37201202, 0.3981519)
+tooltip_text = "Configuração"
+theme_override_fonts/font = ExtResource("2_k4kg0")
+theme_override_styles/normal = ExtResource("5_gcct8")
+theme_override_styles/pressed_mirrored = ExtResource("6_tyrjx")
+theme_override_styles/hover_mirrored = ExtResource("7_howei")
+theme_override_styles/focus = ExtResource("8_2ink5")
+icon = ExtResource("12_howei")
+script = ExtResource("5_pg2by")
+
 [node name="Sombra" type="TextureRect" parent="." unique_id=2125492208]
 layout_mode = 0
 offset_left = 604.825
@@ -203,6 +220,15 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("18_2ink5")]
+visible = false
+layout_mode = 0
+offset_left = 190.00002
+offset_top = 91.0
+offset_right = 190.00002
+offset_bottom = 91.0
+scale = Vector2(0.7953693, 0.94042295)
+
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=591691817]
 layer = 10
 
@@ -234,6 +260,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Background/Buttons/ButtonComerciante" to="." method="_on_button_comerciante_pressed"]
 [connection signal="pressed" from="Background/Buttons/ButtonBiblioteca" to="." method="_on_button_biblioteca_pressed"]
 [connection signal="pressed" from="Background/Buttons/ButtonMagoVelho" to="." method="_on_button_mago_velho_pressed"]
+[connection signal="pressed" from="Background/Buttons/ButtonConfiguracao" to="." method="_on_button_configuracao_pressed"]
 [connection signal="fechou_loja" from="LojaBruxa" to="." method="_on_loja_bruxa_fechou_loja"]
 [connection signal="fechou_loja" from="LojaBiblioteca" to="." method="_on_loja_biblioteca_fechou_loja"]
 [connection signal="fechou_loja" from="LojaMagoVelho" to="." method="_on_loja_mago_velho_fechou_loja"]

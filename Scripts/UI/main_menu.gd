@@ -178,3 +178,7 @@ func entrar_novo_jogo() -> void:
 		await tween_cobrir.finished
 	
 	get_tree().change_scene_to_file("res://Scenes/UI/jogo.tscn")
+
+
+func _on_configuracao_pressed() -> void:
+	$TelaConfiguracoes.abrir()

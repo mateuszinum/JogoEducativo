@@ -185,7 +185,6 @@ cutscene_inicial = ExtResource("4_46hhv")
 multiplicador_aceleracao = 10.0
 
 [node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("16_oslnl")]
-visible = false
 z_index = 10
 layout_mode = 0
 offset_left = 589.0

@@ -44,3 +44,17 @@ func _on_restart_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/village_menu.tscn")
+
+
+func _on_configuaracao_pressed() -> void:
+	$PanelContainer/TelaConfiguracoes.abrir()
+	
+	
+	
+#Para qunado for implementar o pause geral
+func congelarJogo() -> void:
+	pass
+
+
+func descongelarJogo() -> void:
+	pass
