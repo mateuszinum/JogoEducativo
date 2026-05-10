@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dxp5nwwotwb1v" path="res://Scripts/UI/pause_menu.gd" id="1_8qpb5"]
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="2_8rf44"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_r2i2h"]
-[ext_resource type="PackedScene" uid="uid://canymtlngpkde" path="res://Scenes/Debug/mouse_tracker.tscn" id="4_oykix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65h3o"]
 bg_color = Color(1, 1, 1, 1)
@@ -153,8 +152,6 @@ offset_right = 466.5
 offset_bottom = 162.0
 size_flags_horizontal = 4
 size_flags_vertical = 2
-
-[node name="MouseTracker" parent="." unique_id=488798999 instance=ExtResource("4_oykix")]
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Continuar" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Reiniciar" to="." method="_on_restart_pressed"]

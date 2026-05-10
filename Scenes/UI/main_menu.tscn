@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="16_oslnl"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="18_q6o50"]
-[ext_resource type="PackedScene" uid="uid://canymtlngpkde" path="res://Scenes/Debug/mouse_tracker.tscn" id="21_tr32r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]
 shader = ExtResource("4_k33u3")
@@ -590,8 +589,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-
-[node name="MouseTracker" parent="." unique_id=488798999 instance=ExtResource("21_tr32r")]
 
 [node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("16_oslnl")]
 visible = false
