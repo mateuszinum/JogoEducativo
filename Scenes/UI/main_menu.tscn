@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="16_oslnl"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="18_q6o50"]
+[ext_resource type="PackedScene" uid="uid://canymtlngpkde" path="res://Scenes/Debug/mouse_tracker.tscn" id="21_tr32r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]
 shader = ExtResource("4_k33u3")
@@ -183,16 +184,6 @@ sfx_entrar = ExtResource("10_wqme5")
 volume_sfx_entrar_db = -6.0
 cutscene_inicial = ExtResource("4_46hhv")
 multiplicador_aceleracao = 10.0
-
-[node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("16_oslnl")]
-visible = false
-z_index = 10
-layout_mode = 0
-offset_left = 589.0
-offset_top = 275.0
-offset_right = 967.0
-offset_bottom = 275.0
-scale = Vector2(1, 1)
 
 [node name="Background" type="Control" parent="." unique_id=782962240]
 anchors_preset = 0
@@ -600,8 +591,27 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="visibility_changed" from="TelaConfiguracoes" to="." method="_on_tela_configuracoes_visibility_changed"]
+[node name="MouseTracker" parent="." unique_id=488798999 instance=ExtResource("21_tr32r")]
+
+[node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("16_oslnl")]
+visible = false
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -112.99997
+offset_right = -40.0
+offset_bottom = -112.99997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.96918374, 1.2875742)
+
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoNovoJogo" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Configuracao" to="." method="_on_configuracao_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCreditos" to="." method="_on_botao_creditos_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Button3" to="." method="_on_exit_pressed"]
+[connection signal="visibility_changed" from="TelaConfiguracoes" to="." method="_on_tela_configuracoes_visibility_changed"]
