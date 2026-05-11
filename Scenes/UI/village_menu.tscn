@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="13_1kxp1"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="14_1kxp1"]
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="18_2ink5"]
+[ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="19_cq1bm"]
 
 [sub_resource type="Gradient" id="Gradient_yljls"]
 interpolation_mode = 2
@@ -219,6 +220,7 @@ layout_mode = 1
 [node name="LojaComerciante" parent="." unique_id=2059698802 instance=ExtResource("11_li3q7")]
 visible = false
 layout_mode = 1
+dialogo_personagem = null
 
 [node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("18_2ink5")]
 visible = false
@@ -228,6 +230,9 @@ offset_top = 91.0
 offset_right = 190.00002
 offset_bottom = 91.0
 scale = Vector2(0.7953693, 0.94042295)
+
+[node name="PauseMenu" parent="." unique_id=1618265714 instance=ExtResource("19_cq1bm")]
+layout_mode = 1
 
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=591691817]
 layer = 10

@@ -43,7 +43,14 @@ func _on_restart_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Scenes/UI/village_menu.tscn")
+	# 2. Tira o jogo do pause. ISSO É OBRIGATÓRIO! 
+	# Se você mudar de cena com o jogo pausado, o seu Menu Principal vai nascer congelado.
+	get_tree().paused = false
+	get_tree().call_group("Terminal", "abortar_arena")
+	await get_tree().process_frame
+	# 3. Muda a cena para o Menu Principal
+	# Substitua o caminho abaixo pelo caminho correto da sua cena do Main Menu
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 
 
 func _on_configuaracao_pressed() -> void:

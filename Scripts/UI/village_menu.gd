@@ -56,4 +56,4 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_button_configuracao_pressed() -> void:
-	$TelaConfiguracoes.abrir()
+	$PauseMenu.show()
