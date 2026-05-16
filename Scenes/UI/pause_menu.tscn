@@ -51,7 +51,6 @@ _data = {
 
 [node name="PauseMenu" type="Control" unique_id=1618265714]
 process_mode = 3
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -101,7 +100,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_dx8hs")
 text = "Reiniciar"
 
 [node name="Continuar" type="Button" parent="PanelContainer/VBoxContainer" unique_id=603476322]
-visible = false
 layout_mode = 2
 size_flags_vertical = 6
 focus_mode = 0
@@ -118,11 +116,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_65h3o")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u0x04")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dx8hs")
 text = "Continuar"
-
-[node name="Configuaracao" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1503477987]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r2i2h")
-text = "Configuração"
 
 [node name="exit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=978057255]
 layout_mode = 2
@@ -142,6 +135,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_u0x04")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dx8hs")
 text = "Menu principal"
 
+[node name="Configuaracao" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1503477987]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r2i2h")
+text = "Configuração"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2142712954]
 libraries/ = SubResource("AnimationLibrary_e5qkc")
 
@@ -152,7 +150,61 @@ layout_mode = 1
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
+[node name="PopupConfirmacao" type="Control" parent="." unique_id=15702157]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 277.0
+offset_top = 205.0
+offset_right = 317.0
+offset_bottom = 245.0
+
+[node name="FundoPreto" type="ColorRect" parent="PopupConfirmacao" unique_id=1867432862]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="PanelContainer" type="PanelContainer" parent="PopupConfirmacao" unique_id=875970273]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupConfirmacao/PanelContainer" unique_id=1560275240]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PopupConfirmacao/PanelContainer/VBoxContainer" unique_id=1462899305]
+layout_mode = 2
+text = "Deseja realemnte sair ?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupConfirmacao/PanelContainer/VBoxContainer" unique_id=1214493270]
+layout_mode = 2
+
+[node name="BotaoSim" type="Button" parent="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1382618862]
+layout_mode = 2
+text = "Sim"
+
+[node name="BotaoNao" type="Button" parent="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1426296333]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Não"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Continuar" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Configuaracao" to="." method="_on_configuaracao_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Configuaracao" to="." method="_on_configuaracao_pressed"]
+[connection signal="pressed" from="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer/BotaoSim" to="." method="_on_botao_sim_pressed"]
+[connection signal="pressed" from="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer/BotaoNao" to="." method="_on_botao_nao_pressed"]

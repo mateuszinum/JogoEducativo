@@ -232,6 +232,7 @@ offset_bottom = 91.0
 scale = Vector2(0.7953693, 0.94042295)
 
 [node name="PauseMenu" parent="." unique_id=1618265714 instance=ExtResource("19_cq1bm")]
+z_index = 10
 layout_mode = 1
 
 [node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=591691817]

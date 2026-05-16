@@ -42,15 +42,8 @@ func _on_restart_pressed() -> void:
 		get_tree().reload_current_scene()
 
 func _on_exit_pressed() -> void:
-	get_tree().paused = false
-	# 2. Tira o jogo do pause. ISSO É OBRIGATÓRIO! 
-	# Se você mudar de cena com o jogo pausado, o seu Menu Principal vai nascer congelado.
-	get_tree().paused = false
-	get_tree().call_group("Terminal", "abortar_arena")
-	await get_tree().process_frame
-	# 3. Muda a cena para o Menu Principal
-	# Substitua o caminho abaixo pelo caminho correto da sua cena do Main Menu
-	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
+	# Apenas exibe o popup visual que criamos no editor
+	%PopupConfirmacao.show()
 
 
 func _on_configuaracao_pressed() -> void:
@@ -65,3 +58,22 @@ func congelarJogo() -> void:
 
 func descongelarJogo() -> void:
 	pass
+
+
+func _on_botao_sim_pressed() -> void:
+	# 1. Tira o jogo do pause para os outros nós responderem
+	get_tree().paused = false
+	
+	# 2. Manda o Terminal abortar a arena e salvar os recursos
+	get_tree().call_group("Terminal", "abortar_arena")
+	
+	# 3. Espera 1 frame para garantir que o salvamento foi concluído
+	await get_tree().process_frame
+	
+	# 4. Vai para o Menu Principal
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
+
+
+func _on_botao_nao_pressed() -> void:
+	# Esconde o popup e não faz mais nada (o jogo continua pausado)
+	%PopupConfirmacao.hide()
