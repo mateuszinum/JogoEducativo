@@ -11,7 +11,6 @@ const ERROR_FEEDBACK = preload("res://Scenes/Polimento/error_feedback.tscn")
 
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
-signal vida_zerada
 
 var health : int
 @export var touch_knockback_multiplier: float = 1.0
@@ -37,6 +36,25 @@ var health : int
 @export var ui_barra_vida: CanvasItem 
 @export var ui_recurso_labirinto: CanvasItem
 
+@export_group("Animação de Game Over (Fases)")
+@export_subgroup("Fase 1: Foco no Jogador")
+@export var go_tempo_zoom_iris: float = 1.0
+@export var go_escala_zoom: Vector2 = Vector2(2.5, 2.5)
+@export var go_tamanho_iris_foco: float = 0.3
+@export var go_som_foco: AudioStream
+@export var go_volume_foco: float = 0.0
+
+@export_subgroup("Fase 2 e 3: Animação e Fechar Íris")
+@export var go_tempo_fechar_iris: float = 0.5
+@export var go_som_fechar_iris: AudioStream
+@export var go_volume_fechar_iris: float = 0.0
+
+@export_subgroup("Fase 4 e 5: Texto e Retorno")
+@export var go_tempo_fade_texto: float = 1.0
+@export var go_tempo_espera_final: float = 2.0
+@export var go_som_texto: AudioStream
+@export var go_volume_som_texto: float = 0.0
+
 var _current_collect_pitch : float = 0.8
 var _pitch_direction : int = 1
 var _pitch_reset_timer : float = 0.0
@@ -47,11 +65,11 @@ var moving : bool = false
 var input_dir : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	add_to_group("Player") 
 	anim.play("default")
 	_current_collect_pitch = collect_pitch_min
 	health = Atributos.max_health
 	
-
 func _physics_process(delta: float) -> void:		
 	if Constantes.MODO_DEV:
 		var dirs = {
@@ -132,7 +150,7 @@ func take_damage(amount):
 	health_changed.emit(health)
 	if health <= 0:
 		health = 0
-		vida_zerada.emit()
+		morrer()
 	$DamageTick.start()
 	modulate.a = OPACIDADE_NO_DANO
 	
@@ -162,7 +180,9 @@ func _on_self_damage_body_entered(body: Node2D) -> void:
 
 func _on_damage_tick_timeout() -> void:
 	modulate.a = 1
-	anim.play("default")
+	
+	if health > 0:
+		anim.play("default")
 
 func play_damage_effect() -> void:
 	shake_screen(6.0) 
@@ -236,3 +256,101 @@ func configurar_modo_tutorial() -> void:
 		
 	if ui_recurso_labirinto: 
 		ui_recurso_labirinto.hide()
+
+func _tocar_som_go(stream: AudioStream, volume: float):
+	if stream == null: return
+	var audio = AudioStreamPlayer.new()
+	audio.stream = stream
+	audio.volume_db = volume
+	audio.bus = "UI"
+	add_child(audio)
+	audio.play()
+	audio.finished.connect(audio.queue_free)
+
+func morrer():
+	invulneravel = true
+	set_physics_process(false)
+	input_dir = Vector2.ZERO
+
+	var terminal = get_tree().get_first_node_in_group("Terminal")
+	if terminal:
+		terminal.set("bloqueio_game_over", true)
+		if terminal.interpretador and terminal.interpretador.has_method("PararExecucao"):
+			terminal.interpretador.PararExecucao()
+		terminal.codigo_rodando = false
+		terminal.limpar_destaque_execucao()
+		terminal.atualizar_estado_botao()
+		terminal.atualizar_travas_da_interface()
+
+	get_tree().call_group("Enemy", "set_physics_process", false)
+	if GerenciadorAudio.has_method("parar_musica"):
+		GerenciadorAudio.parar_musica()
+
+	var tela_morte = get_tree().root.find_child("TelaMorte", true, false)
+	var iris = get_tree().root.find_child("IrisRect", true, false)
+	var texto_morte = get_tree().root.find_child("TextoMorte", true, false)
+	if not texto_morte: texto_morte = get_tree().root.find_child("TextoGameOver", true, false)
+	
+	var efeitos_go = get_tree().root.find_child("EfeitosGameOver", true, false)
+	if efeitos_go: efeitos_go.hide()
+
+	var mat = null
+	if iris and iris.material:
+		mat = iris.material as ShaderMaterial
+		mat.set_shader_parameter("circle_size", 1.05)
+
+	if tela_morte: tela_morte.show()
+	if texto_morte: texto_morte.modulate.a = 0.0
+
+	_tocar_som_go(go_som_foco, go_volume_foco)
+
+	var tw_fase1 = create_tween().set_parallel(true)
+	var camera = get_node_or_null("Camera2D")
+	if camera:
+		tw_fase1.tween_property(camera, "zoom", go_escala_zoom, go_tempo_zoom_iris).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if mat:
+		tw_fase1.tween_method(func(v): mat.set_shader_parameter("circle_size", v), 1.05, go_tamanho_iris_foco, go_tempo_zoom_iris)
+
+	await tw_fase1.finished
+
+	if anim.sprite_frames.has_animation("morte"):
+		anim.play("morte")
+		await anim.animation_finished
+	else:
+		await get_tree().create_timer(1.0).timeout
+
+	_tocar_som_go(go_som_fechar_iris, go_volume_fechar_iris)
+
+	if mat:
+		var tw_fase3 = create_tween()
+		tw_fase3.tween_method(func(v): mat.set_shader_parameter("circle_size", v), go_tamanho_iris_foco, 0.0, go_tempo_fechar_iris)
+		await tw_fase3.finished
+
+	if efeitos_go: efeitos_go.show()
+
+	_tocar_som_go(go_som_texto, go_volume_som_texto)
+
+	if texto_morte:
+		var tw_fase4 = create_tween()
+		tw_fase4.tween_property(texto_morte, "modulate:a", 1.0, go_tempo_fade_texto)
+		await tw_fase4.finished
+
+	await get_tree().create_timer(go_tempo_espera_final).timeout
+
+	var mundo = get_parent()
+	if mundo and "recursos_iniciais" in mundo:
+		RecursosManager.aplicarListaRecursos(mundo.recursos_iniciais)
+
+	if terminal:
+		terminal.set("bloqueio_game_over", false)
+		terminal.abortar_arena()
+		if terminal.has_method("iniciar_cooldown_seguranca"):
+			terminal.iniciar_cooldown_seguranca()
+
+	await get_tree().create_timer(1.2).timeout
+
+	if efeitos_go: efeitos_go.hide()
+	if is_instance_valid(tela_morte):
+		tela_morte.hide()
+	if mat:
+		mat.set_shader_parameter("circle_size", 1.05)

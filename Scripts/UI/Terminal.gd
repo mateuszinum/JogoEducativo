@@ -46,6 +46,8 @@ var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
 var cooldown_ativo: bool = false
 var _tweens_destaque: Dictionary = {}
+var bloqueio_game_over: bool = false
+var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
 	{"nome": "Código A", "codigo": ""},
@@ -132,21 +134,35 @@ func atualizar_estado_botao() -> void:
 		if icone_escapar: botao_executar.icon = icone_escapar
 
 func iniciar_cooldown_seguranca():
+	_id_cooldown += 1
+	var id_atual = _id_cooldown
+	
 	cooldown_ativo = true
 	atualizar_travas_da_interface()
 	
 	await get_tree().create_timer(tempo_cooldown).timeout
 	
-	cooldown_ativo = false
-	atualizar_travas_da_interface()
+	if _id_cooldown == id_atual:
+		cooldown_ativo = false
+		atualizar_travas_da_interface()
 
 func _liberar_botao() -> void:
 	botao_executar.disabled = false
 
+func ativar_modo_vilarejo():
+	modo_atual = "vilarejo"
+	
+	if botao_executar:
+		botao_executar.visible = true
+		
+	iniciar_cooldown_seguranca()
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+
 func ativar_modo_arena():
 	modo_atual = "arena"
-	codigo_rodando = false
 	
+	iniciar_cooldown_seguranca()
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
 
@@ -225,6 +241,34 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 			tooltip_erro.global_position = code_edit.get_global_mouse_position() + Vector2(15, 15)
 		else:
 			tooltip_erro.visible = false
+
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
+		var linha_antes = code_edit.get_caret_line()
+		
+		await get_tree().process_frame
+		
+		var linha_depois = code_edit.get_caret_line()
+		
+		if linha_depois > linha_antes:
+			var texto_linha_anterior = code_edit.get_line(linha_antes)
+			
+			var indentacao_detectada = ""
+			for i in range(texto_linha_anterior.length()):
+				var caractere = texto_linha_anterior[i]
+				if caractere == "\t" or caractere == " ":
+					indentacao_detectada += caractere
+				else:
+					break
+					
+			if texto_linha_anterior.strip_edges().ends_with(":"):
+				indentacao_detectada += "\t"
+				
+			if indentacao_detectada != "":
+				var texto_linha_nova = code_edit.get_line(linha_depois)
+				var texto_restante = texto_linha_nova.strip_edges(true, false) # Limpa os espaços antigos
+				
+				code_edit.set_line(linha_depois, indentacao_detectada + texto_restante)
+				code_edit.set_caret_column(indentacao_detectada.length())
 
 func mostrar_erros_de_sintaxe(lista_erros: Array):
 	limpar_erros_de_sintaxe()
@@ -436,16 +480,31 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	limpar_erros_de_sintaxe()
 	
 func atualizar_travas_da_interface():
-	if code_edit:
-		if modo_atual == "arena":
-			code_edit.editable = false
-		else:
-			code_edit.editable = not codigo_rodando
-			
-	if not botao_executar:
-		return
+	var deve_estar_editavel = false
+	
+	if modo_atual == "arena" or bloqueio_game_over:
+		deve_estar_editavel = false
+	else:
+		deve_estar_editavel = not codigo_rodando
 		
-	botao_executar.disabled = cooldown_ativo
+	if code_edit:
+		code_edit.editable = deve_estar_editavel
+		
+		if not deve_estar_editavel:
+			if code_edit.has_focus():
+				code_edit.release_focus()
+			code_edit.caret_blink = false
+		else:
+			code_edit.caret_blink = true
+			
+	if seletor_slot:
+		seletor_slot.disabled = not deve_estar_editavel
+			
+	if botao_executar:
+		if bloqueio_game_over:
+			botao_executar.disabled = true
+		else:
+			botao_executar.disabled = cooldown_ativo
 	
 func definir_codigo_slot(indice: int, codigo: String) -> void:
 	if indice < 0 or indice >= slots_codigo.size():
@@ -503,19 +562,6 @@ func limpar_destaque_execucao() -> void:
 		code_edit.set_line_background_color(linha, Color(0, 0, 0, 0))
 		
 	_tweens_destaque.clear()
-
-func ativar_modo_vilarejo():
-	modo_atual = "vilarejo"
-	codigo_rodando = false
-	
-	if code_edit:
-		code_edit.editable = true
-		
-	if botao_executar:
-		botao_executar.visible = true
-		
-	atualizar_estado_botao()
-	atualizar_travas_da_interface()
 
 func abortar_tutorial():
 	if interpretador.has_method("PararExecucao"):
