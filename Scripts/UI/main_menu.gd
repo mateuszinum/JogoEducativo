@@ -216,6 +216,8 @@ func entrar_novo_jogo() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/jogo.tscn")
 
 
+func _on_configuracao_pressed() -> void:
+	$TelaConfiguracoes.abrir()
 
 func configurar_painel_slots() -> void:
 	var botoes = [btn_slot1, btn_slot2, btn_slot3]

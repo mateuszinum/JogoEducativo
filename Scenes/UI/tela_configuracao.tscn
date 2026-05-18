@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cigywdnxq6776"]
+
+[ext_resource type="Script" uid="uid://cebsp0ngaxjie" path="res://Scripts/configuracoes.gd" id="1_32e1h"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_p80rm"]
+
+[node name="TelaConfiguracoes" type="Control" unique_id=1795307881]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1.0647482, 1.1320754)
+script = ExtResource("1_32e1h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=545174989]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.381565, 8.679765)
+color = Color(0, 0, 0, 1)
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=506057990]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8829068, 1.3385733)
+color = Color(0, 0, 0, 1)
+
+[node name="Margem" type="MarginContainer" parent="Fundo" unique_id=1507091602]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.8728367, 1.0245724)
+
+[node name="VBoxPrincipal" type="VBoxContainer" parent="Fundo/Margem" unique_id=2084499355]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=318706137]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Configurações"
+
+[node name="HBoxTela" type="HBoxContainer" parent="Fundo/Margem/VBoxPrincipal" unique_id=364136493]
+layout_mode = 2
+
+[node name="IconeTela" type="TextureRect" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=1610760972]
+layout_mode = 2
+
+[node name="DropdownResolucao" type="OptionButton" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=1259930756]
+layout_mode = 2
+
+[node name="CheckFullscreen" type="CheckBox" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=262750016]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Tela cheia"
+
+[node name="TituloSom" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=1893200751]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Som:"
+
+[node name="SliderSom" type="HSlider" parent="Fundo/Margem/VBoxPrincipal" unique_id=632574551]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="TituloMusica" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=538574549]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Musica:"
+
+[node name="SliderMusica" type="HSlider" parent="Fundo/Margem/VBoxPrincipal" unique_id=2025565257]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="Idioma" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=1853827223]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Idioma:"
+
+[node name="DropdownIdioma" type="OptionButton" parent="Fundo/Margem/VBoxPrincipal" unique_id=833516246]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+
+[node name="TituloDados" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=288152901]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Dados salvos"
+
+[node name="BotaoDeletar" type="Button" parent="Fundo/Margem/VBoxPrincipal" unique_id=1503248395]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Deletar dados salvos"
+
+[node name="HBoxBotoesFinais" type="HBoxContainer" parent="Fundo/Margem/VBoxPrincipal" unique_id=480071037]
+layout_mode = 2
+alignment = 1
+
+[node name="BotaoCancel" type="Button" parent="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais" unique_id=641459602]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Cancelar"
+
+[node name="BotaoSave" type="Button" parent="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais" unique_id=1264750845]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Salvar
+"
+
+[connection signal="toggled" from="Fundo/Margem/VBoxPrincipal/HBoxTela/CheckFullscreen" to="." method="_on_check_fullscreen_toggled"]
+[connection signal="value_changed" from="Fundo/Margem/VBoxPrincipal/SliderSom" to="." method="_on_slider_som_value_changed"]
+[connection signal="value_changed" from="Fundo/Margem/VBoxPrincipal/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/BotaoDeletar" to="." method="_on_botao_deletar_pressed"]
+[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais/BotaoCancel" to="." method="_on_botao_cancel_pressed"]
+[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais/BotaoSave" to="." method="_on_botao_save_pressed"]

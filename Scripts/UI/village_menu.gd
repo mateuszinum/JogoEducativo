@@ -53,3 +53,7 @@ func _on_start_game_pressed() -> void:
 	var main_scene = get_node_or_null("/root/Jogo")
 	if main_scene and main_scene.has_method("ir_para_arena"):
 		main_scene.ir_para_arena()
+
+
+func _on_button_configuracao_pressed() -> void:
+	$PauseMenu.show()
