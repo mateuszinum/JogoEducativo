@@ -111,5 +111,4 @@ tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("4_07xyc")]([SubResource("Resource_07xyc")])
 comportamento_especial = 1
 health = 5.0
-damage = 5.0
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

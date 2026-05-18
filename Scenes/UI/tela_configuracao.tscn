@@ -1,116 +1,216 @@
 [gd_scene format=3 uid="uid://cigywdnxq6776"]
 
-[ext_resource type="Script" uid="uid://cebsp0ngaxjie" path="res://Scripts/configuracoes.gd" id="1_32e1h"]
+[ext_resource type="Script" uid="uid://cebsp0ngaxjie" path="res://Scripts/Config/configuracoes.gd" id="1_32e1h"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_p80rm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p80rm"]
+bg_color = Color(0, 0, 0, 0.78039217)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_p80rm"]
+font_size = 24
 
 [node name="TelaConfiguracoes" type="Control" unique_id=1795307881]
 layout_mode = 3
-anchors_preset = 0
-scale = Vector2(1.0647482, 1.1320754)
-script = ExtResource("1_32e1h")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=545174989]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(9.381565, 8.679765)
-color = Color(0, 0, 0, 1)
-
-[node name="Fundo" type="ColorRect" parent="." unique_id=506057990]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.8829068, 1.3385733)
-color = Color(0, 0, 0, 1)
+scale = Vector2(1.4, 1.4)
+script = ExtResource("1_32e1h")
 
-[node name="Margem" type="MarginContainer" parent="Fundo" unique_id=1507091602]
+[node name="Control2" type="Control" parent="." unique_id=1687276312]
+anchors_preset = 0
+offset_left = -478.57138
+offset_top = -269.2857
+offset_right = 479.99997
+offset_bottom = 276.42853
+mouse_filter = 1
+
+[node name="Control" type="Control" parent="." unique_id=1577096999]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -157.0
+offset_right = 115.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="Control" unique_id=348357415]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.8728367, 1.0245724)
+offset_right = 230.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p80rm")
 
-[node name="VBoxPrincipal" type="VBoxContainer" parent="Fundo/Margem" unique_id=2084499355]
+[node name="Conteúdo" type="MarginContainer" parent="Control" unique_id=1507091602]
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 312.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxPrincipal" type="VBoxContainer" parent="Control/Conteúdo" unique_id=2084499355]
 layout_mode = 2
 
-[node name="Titulo" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=318706137]
+[node name="Titulo" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=318706137]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Configurações"
+text = "CONFIGURAÇÕES"
+label_settings = SubResource("LabelSettings_p80rm")
+horizontal_alignment = 1
 
-[node name="HBoxTela" type="HBoxContainer" parent="Fundo/Margem/VBoxPrincipal" unique_id=364136493]
+[node name="Separador" type="Control" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1263262592]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="IconeTela" type="TextureRect" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=1610760972]
+[node name="VOLUME" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=814341300]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "VOLUME"
+horizontal_alignment = 1
+
+[node name="VolumeMaster" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=781123421]
 layout_mode = 2
 
-[node name="DropdownResolucao" type="OptionButton" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=1259930756]
+[node name="TituloMaster" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeMaster" unique_id=1893200751]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Tudo"
+
+[node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeMaster" unique_id=1199643363]
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
-[node name="CheckFullscreen" type="CheckBox" parent="Fundo/Margem/VBoxPrincipal/HBoxTela" unique_id=262750016]
+[node name="SliderMaster" type="HSlider" parent="Control/Conteúdo/VBoxPrincipal/VolumeMaster" unique_id=632574551]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="VolumeMusica" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=965889471]
+layout_mode = 2
+
+[node name="TituloMusica" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeMusica" unique_id=1721290087]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "Música"
+
+[node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeMusica" unique_id=2079861309]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="SliderMusica" type="HSlider" parent="Control/Conteúdo/VBoxPrincipal/VolumeMusica" unique_id=686575296]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="VolumeSFX" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1767782196]
+layout_mode = 2
+
+[node name="TituloSFX" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeSFX" unique_id=858323326]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "SFX"
+
+[node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeSFX" unique_id=1987373143]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 2
+
+[node name="SliderSFX" type="HSlider" parent="Control/Conteúdo/VBoxPrincipal/VolumeSFX" unique_id=1531868073]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="VolumeUI" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1535048092]
+layout_mode = 2
+
+[node name="TituloUI" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeUI" unique_id=977458564]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "UI"
+
+[node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeUI" unique_id=2059294021]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="SliderUI" type="HSlider" parent="Control/Conteúdo/VBoxPrincipal/VolumeUI" unique_id=256299482]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="Separador2" type="Control" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1651379770]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="VÍDEO" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1853827223]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p80rm")
+text = "VÍDEO"
+horizontal_alignment = 1
+
+[node name="CheckFullscreen" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=262750016]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "Tela cheia"
 
-[node name="TituloSom" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=1893200751]
+[node name="CheckShake" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=212332961]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Som:"
+text = "Shake na tela"
 
-[node name="SliderSom" type="HSlider" parent="Fundo/Margem/VBoxPrincipal" unique_id=632574551]
-layout_mode = 2
-max_value = 1.0
-step = 0.1
-
-[node name="TituloMusica" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=538574549]
+[node name="CheckGrafico" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1328266874]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Musica:"
+text = "Gráficos Bonitos"
 
-[node name="SliderMusica" type="HSlider" parent="Fundo/Margem/VBoxPrincipal" unique_id=2025565257]
+[node name="Separador3" type="Control" parent="Control/Conteúdo/VBoxPrincipal" unique_id=964770607]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-max_value = 1.0
-step = 0.1
 
-[node name="Idioma" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=1853827223]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Idioma:"
-
-[node name="DropdownIdioma" type="OptionButton" parent="Fundo/Margem/VBoxPrincipal" unique_id=833516246]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p80rm")
-
-[node name="TituloDados" type="Label" parent="Fundo/Margem/VBoxPrincipal" unique_id=288152901]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Dados salvos"
-
-[node name="BotaoDeletar" type="Button" parent="Fundo/Margem/VBoxPrincipal" unique_id=1503248395]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Deletar dados salvos"
-
-[node name="HBoxBotoesFinais" type="HBoxContainer" parent="Fundo/Margem/VBoxPrincipal" unique_id=480071037]
+[node name="HBoxBotoesFinais" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=480071037]
 layout_mode = 2
 alignment = 1
 
-[node name="BotaoCancel" type="Button" parent="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais" unique_id=641459602]
+[node name="BotaoCancel" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=641459602]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "Cancelar"
 
-[node name="BotaoSave" type="Button" parent="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais" unique_id=1264750845]
+[node name="BotaoSave" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=1264750845]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "Salvar
 "
 
-[connection signal="toggled" from="Fundo/Margem/VBoxPrincipal/HBoxTela/CheckFullscreen" to="." method="_on_check_fullscreen_toggled"]
-[connection signal="value_changed" from="Fundo/Margem/VBoxPrincipal/SliderSom" to="." method="_on_slider_som_value_changed"]
-[connection signal="value_changed" from="Fundo/Margem/VBoxPrincipal/SliderMusica" to="." method="_on_slider_musica_value_changed"]
-[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/BotaoDeletar" to="." method="_on_botao_deletar_pressed"]
-[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais/BotaoCancel" to="." method="_on_botao_cancel_pressed"]
-[connection signal="pressed" from="Fundo/Margem/VBoxPrincipal/HBoxBotoesFinais/BotaoSave" to="." method="_on_botao_save_pressed"]
+[connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeMusica/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeSFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeUI/SliderUI" to="." method="_on_slider_ui_value_changed"]
+[connection signal="toggled" from="Control/Conteúdo/VBoxPrincipal/CheckFullscreen" to="." method="_on_check_fullscreen_toggled"]
+[connection signal="toggled" from="Control/Conteúdo/VBoxPrincipal/CheckShake" to="." method="_on_check_shake_toggled"]
+[connection signal="toggled" from="Control/Conteúdo/VBoxPrincipal/CheckGrafico" to="." method="_on_check_grafico_toggled"]
+[connection signal="pressed" from="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais/BotaoCancel" to="." method="_on_botao_cancel_pressed"]
+[connection signal="pressed" from="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais/BotaoSave" to="." method="_on_botao_save_pressed"]

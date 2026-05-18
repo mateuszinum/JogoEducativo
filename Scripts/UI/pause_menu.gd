@@ -1,79 +1,76 @@
 extends Control
 
+var menu_aberto: bool = false
+
+@onready var tela_config = %TelaConfiguracoes
+@onready var popup_confirmacao = %PopupConfirmacao
+
 func _ready() -> void:
-	# Força o menu a processar mesmo se o jogo estiver pausado
+	add_to_group("MenuPausa")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_desativar_menu()
 
 func _process(_delta: float) -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and player.health <= 0:
+		return
+		
 	if Input.is_action_just_pressed("pause_key"):
-		if not get_tree().paused:
+		if not menu_aberto:
 			pause()
 		else:
+			if tela_config.visible:
+				return
 			resume()
 
 func pause():
+	menu_aberto = true
 	show()
 	mouse_filter = Control.MOUSE_FILTER_STOP 
-	get_tree().paused = true
-	$AnimationPlayer.play("blur")
+	congelarJogo()
 
 func resume():
-	get_tree().paused = false
-	$AnimationPlayer.play_backwards("blur")
-	await $AnimationPlayer.animation_finished
-	if not get_tree().paused:
+	menu_aberto = false
+	descongelarJogo()
+	if not menu_aberto:
 		_desativar_menu()
 
 func _desativar_menu():
+	menu_aberto = false
 	hide()
 	mouse_filter = Control.MOUSE_FILTER_IGNORE 
-	$AnimationPlayer.play("RESET")
 
-func _on_continue_pressed() -> void:
+func fechar_forcado() -> void:
+	if menu_aberto:
+		descongelarJogo()
+	_desativar_menu()
+	
+	if has_node("TelaConfiguracoes"):
+		get_node("TelaConfiguracoes").hide()
+		
+	var popup = get_node_or_null("%PopupConfirmacao")
+	if popup:
+		popup.hide()
+
+func _on_botao_continuar_pressed() -> void:
 	resume()
 
-func _on_restart_pressed() -> void:
-	resume()
-	var main = get_node_or_null("/root/Jogo")
-	if main: 
-		main.ir_para_arena()
-	else: 
-		get_tree().reload_current_scene()
-
-func _on_exit_pressed() -> void:
-	# Apenas exibe o popup visual que criamos no editor
-	%PopupConfirmacao.show()
-
-
-func _on_configuaracao_pressed() -> void:
-	$TelaConfiguracoes.abrir()
+func _on_botao_config_pressed() -> void:
+	tela_config.abrir()
 	
+func _on_botao_menu_principal_pressed() -> void:
+	popup_confirmacao.show()
 	
-	
-#Para qunado for implementar o pause geral
 func congelarJogo() -> void:
 	pass
-
 
 func descongelarJogo() -> void:
 	pass
 
-
 func _on_botao_sim_pressed() -> void:
-	# 1. Tira o jogo do pause para os outros nós responderem
-	get_tree().paused = false
-	
-	# 2. Manda o Terminal abortar a arena e salvar os recursos
 	get_tree().call_group("Terminal", "abortar_arena")
-	
-	# 3. Espera 1 frame para garantir que o salvamento foi concluído
 	await get_tree().process_frame
-	
-	# 4. Vai para o Menu Principal
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 
-
 func _on_botao_nao_pressed() -> void:
-	# Esconde o popup e não faz mais nada (o jogo continua pausado)
-	%PopupConfirmacao.hide()
+	popup_confirmacao.hide()

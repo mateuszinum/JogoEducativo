@@ -56,7 +56,8 @@ func _ready() -> void:
 	btn_slot2.pressed.connect(_on_slot_clicado.bind(2))
 	btn_slot3.pressed.connect(_on_slot_clicado.bind(3))
 	
-	btn_fechar.pressed.connect(_on_botao_fechar_pressed)
+	if not btn_fechar.pressed.is_connected(_on_botao_fechar_pressed):
+		btn_fechar.pressed.connect(_on_botao_fechar_pressed)
 	
 	if not Constantes.MODO_DEV and not intro_ja_exibida:
 		anim_intro.play("SplashIntro")

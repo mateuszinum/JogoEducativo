@@ -11,6 +11,7 @@ const ERROR_FEEDBACK = preload("res://Scenes/Polimento/error_feedback.tscn")
 
 @onready var anim = $AnimatedSprite2D
 signal health_changed(current_health)
+signal max_health_changed(max_health)
 
 var health : int
 @export var touch_knockback_multiplier: float = 1.0
@@ -69,6 +70,15 @@ func _ready() -> void:
 	anim.play("default")
 	_current_collect_pitch = collect_pitch_min
 	health = Atributos.max_health
+	
+	if ui_barra_vida != null:
+		if "max_value" in ui_barra_vida:
+			ui_barra_vida.max_value = Atributos.max_health
+		if "value" in ui_barra_vida:
+			ui_barra_vida.value = health
+			
+	max_health_changed.emit(Atributos.max_health)
+	health_changed.emit(health)
 	
 func _physics_process(delta: float) -> void:		
 	if Constantes.MODO_DEV:
@@ -271,6 +281,8 @@ func morrer():
 	invulneravel = true
 	set_physics_process(false)
 	input_dir = Vector2.ZERO
+
+	get_tree().call_group("MenuPausa", "fechar_forcado")
 
 	var terminal = get_tree().get_first_node_in_group("Terminal")
 	if terminal:

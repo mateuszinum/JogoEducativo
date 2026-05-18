@@ -140,7 +140,6 @@ nome = "Vampiro"
 animations = SubResource("SpriteFrames_1fjwx")
 tabela_de_drops = Array[ExtResource("12_cfpjy")]([SubResource("Resource_05qj5")])
 health = 7.0
-damage = 5.0
 speed = 7.0
 multiplicadores_de_ataque = Array[ExtResource("1_6q5bk")]([SubResource("Resource_w6m35"), SubResource("Resource_hdp3d"), SubResource("Resource_uwpqh"), SubResource("Resource_d8lf6"), SubResource("Resource_kcdnt"), SubResource("Resource_716s8"), SubResource("Resource_a4pfi"), SubResource("Resource_cfpjy")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

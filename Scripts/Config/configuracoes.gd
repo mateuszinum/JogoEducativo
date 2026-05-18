@@ -1,34 +1,31 @@
 extends Control
 
-# Puxando as referências dos nós da sua UI
-@onready var dropdown_resolucao = $Fundo/Margem/VBoxPrincipal/HBoxTela/DropdownResolucao
-@onready var check_fullscreen = $Fundo/Margem/VBoxPrincipal/HBoxTela/CheckFullscreen
-@onready var slider_som = $Fundo/Margem/VBoxPrincipal/SliderSom
-@onready var slider_musica = $Fundo/Margem/VBoxPrincipal/SliderMusica
-@onready var dropdown_idioma =$Fundo/Margem/VBoxPrincipal/DropdownIdioma
+@onready var slider_master = %SliderMaster
+@onready var slider_musica = %SliderMusica
+@onready var slider_sfx = %SliderSFX
+@onready var slider_ui = %SliderUI
 
+@onready var check_fullscreen = %CheckFullscreen
+@onready var check_shake = %CheckShake
+@onready var check_grafico = %CheckGrafico
 
-var cache_som : float
+var cache_master : float
 var cache_musica : float
+var cache_sfx : float
+var cache_ui : float
 var cache_fullscreen : bool
 
 func _ready() -> void:
-	# 1. Configura as opções visuais
-	dropdown_resolucao.add_item("1920x1080")
-	dropdown_resolucao.add_item("1280x720")
-	
-	dropdown_idioma.add_item("ENGLISH")
-	dropdown_idioma.add_item("PORTUGUÊS")
-
-	# 2. Carrega as configurações ao abrir a tela
 	_sincronizar_ui_com_constantes()
 
 func abrir() -> void:
 	if not is_node_ready():
 		await ready
 	# 1. Tira a "foto" dos valores exatos ANTES do jogador ver a tela
-	cache_som = Constantes.VOLUME_SFX
+	cache_master = Constantes.VOLUME_MASTER
 	cache_musica = Constantes.VOLUME_MUSICA
+	cache_sfx = Constantes.VOLUME_SFX
+	cache_ui = Constantes.VOLUME_UI
 	cache_fullscreen = Constantes.TELA_CHEIA
 	
 	# 2. Força a interface a ir para a posição correta da foto
@@ -40,59 +37,45 @@ func abrir() -> void:
 func _sincronizar_ui_com_constantes() -> void:
 	if not is_node_ready():
 		return
-	check_fullscreen.button_pressed = Constantes.TELA_CHEIA
-	slider_som.value = Constantes.VOLUME_MASTER
+	slider_master.value = Constantes.VOLUME_MASTER
 	slider_musica.value = Constantes.VOLUME_MUSICA
+	slider_sfx.value = Constantes.VOLUME_SFX
+	slider_ui.value = Constantes.VOLUME_UI
 	
-	dropdown_resolucao.disabled = Constantes.TELA_CHEIA
-
-# -------------------------------------------------- #
-# SINAIS DOS SLIDERS (Para mudar o som em tempo real)
-# -------------------------------------------------- #
-func _on_slider_som_value_changed(value: float) -> void:
-	Constantes.VOLUME_MASTER = value
-
-func _on_slider_musica_value_changed(value: float) -> void:
-	Constantes.VOLUME_MUSICA = value
+	if check_fullscreen:
+		check_fullscreen.button_pressed = Constantes.TELA_CHEIA
+	if check_shake:
+		check_shake.button_pressed = Constantes.USAR_SHAKE
+	if check_grafico:
+		check_grafico.button_pressed = Constantes.GRÁFICO_HIGH
+	
 
 # -------------------------------------------------- #
 # SINAIS DA TELA (Checkbox e OptionButton)
 # -------------------------------------------------- #
 func _on_check_fullscreen_toggled(toggled_on: bool) -> void:
-	# Ao marcar/desmarcar a tela cheia, a gente trava ou destrava o dropdown de resolução
-	dropdown_resolucao.disabled = toggled_on
+	Constantes.TELA_CHEIA = toggled_on
 
+func _on_check_shake_toggled(toggled_on: bool) -> void:
+	Constantes.USAR_SHAKE = toggled_on
+
+func _on_check_grafico_toggled(toggled_on: bool) -> void:
+	Constantes.GRÁFICO_HIGH = toggled_on
+	
 # -------------------------------------------------- #
 # SINAIS DOS BOTÕES FINAIS (Save / Cancel)
 # -------------------------------------------------- #
 func _on_botao_save_pressed() -> void:
-	Constantes.TELA_CHEIA = check_fullscreen.button_pressed
-	
-	# Pega a janela principal absoluta do jogo
-	var janela_principal = get_tree().root
-	
-	if Constantes.TELA_CHEIA:
-		# Coloca a janela principal em Tela Cheia
-		janela_principal.mode = Window.MODE_FULLSCREEN
-	else:
-		# Tira da tela cheia
-		janela_principal.mode = Window.MODE_WINDOWED
-		
-		# Define a nova resolução da janela
-		if dropdown_resolucao.selected == 0:
-			janela_principal.size = Vector2i(1920, 1080)
-		elif dropdown_resolucao.selected == 1:
-			janela_principal.size = Vector2i(1280, 720)
-			
-		# Dica de UX: Centraliza a janela no monitor do jogador após mudar o tamanho
-		janela_principal.move_to_center()
+	GerenciadorVideo.aplicar_configuracoes_de_tela()
 
 	hide()
 
 func _on_botao_cancel_pressed() -> void:
 	# 1. Devolve os valores originais para o Autoload (o som volta ao normal na mesma hora)
-	Constantes.VOLUME_SFX = cache_som
+	Constantes.VOLUME_SFX = cache_sfx
 	Constantes.VOLUME_MUSICA = cache_musica
+	Constantes.VOLUME_UI = cache_ui
+	Constantes.VOLUME_MASTER = cache_master
 	Constantes.TELA_CHEIA = cache_fullscreen
 	
 	# 2. Força as barrinhas visuais a voltarem pro lugar antes da tela sumir
@@ -122,3 +105,18 @@ func _on_botao_deletar_pressed() -> void:
 	# 3. Força o jogo a voltar para tela cheia na mesma hora
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
+# -------------------------------------------------- #
+# SINAIS DOS SLIDERS (Para mudar o som em tempo real)
+# -------------------------------------------------- #
+
+func _on_slider_master_value_changed(value: float) -> void:
+	Constantes.VOLUME_MASTER = value
+
+func _on_slider_musica_value_changed(value: float) -> void:
+	Constantes.VOLUME_MUSICA = value
+	
+func _on_slider_sfx_value_changed(value: float) -> void:
+	Constantes.VOLUME_SFX = value
+
+func _on_slider_ui_value_changed(value: float) -> void:
+	Constantes.VOLUME_UI = value

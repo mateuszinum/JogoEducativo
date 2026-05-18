@@ -112,6 +112,5 @@ animations = SubResource("SpriteFrames_y0lqt")
 tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("4_p8lk4")]([SubResource("Resource_p8lk4")])
 health = 7.0
-damage = 5.0
 speed = 8.0
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"

@@ -127,7 +127,6 @@ animations = SubResource("SpriteFrames_ubjl6")
 tem_animacao_morte = true
 tabela_de_drops = Array[ExtResource("4_nevxn")]([SubResource("Resource_f1yee")])
 health = 20.0
-damage = 5.0
 speed = 8.0
 multiplicadores_de_ataque = Array[ExtResource("2_f1yee")]([SubResource("Resource_oro6y"), SubResource("Resource_bvx3w")])
 metadata/_custom_type_script = "uid://b2i50jlxpbinp"
