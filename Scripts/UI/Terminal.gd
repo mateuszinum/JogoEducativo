@@ -60,7 +60,7 @@ var slots_codigo: Array = [
 var slot_atual_idx: int = 0
 
 func _ready() -> void:
-	add_to_group("Terminal") 
+	add_to_group("Terminal")
 	
 	if not botao_executar.pressed.is_connected(_on_botao_executar_pressed):
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
@@ -82,6 +82,7 @@ func _ready() -> void:
 		seletor_slot.item_selected.connect(_on_seletor_slot_item_selected)
 		
 	ProgressoDB.progresso_alterado.connect(_atualizar_seletor_slots)
+	SaveManager.CarregarCodigo()
 	_atualizar_seletor_slots()
 
 func aplicar_fonte() -> void:
@@ -187,6 +188,8 @@ func abortar_arena():
 		
 	if FuncoesNativas.has_method("escapar"):
 		FuncoesNativas.escapar()
+	
+	SaveMaster.salvar_dado()
 
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
@@ -206,6 +209,8 @@ func _on_botao_executar_pressed() -> void:
 		atualizar_travas_da_interface()
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
 		iniciar_cooldown_seguranca()
+		
+		SaveMaster.salvar_dado()
 
 	elif modo_atual == "vilarejo" and codigo_rodando:
 		if interpretador.has_method("PararExecucao"):
@@ -450,7 +455,7 @@ func _atualizar_seletor_slots() -> void:
 			qtd_desbloqueada += 1
 		else:
 			break 
-			
+		
 	if qtd_desbloqueada == 0:
 		qtd_desbloqueada = 1
 	

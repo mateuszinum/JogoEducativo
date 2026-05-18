@@ -10,3 +10,7 @@ func get_produto(nome_procurado: String) -> ProdutoLoja:
 			return produto
 			
 	return null
+
+func listar_produtos():
+	for i in lista_de_produtos:
+		print(i.nome)
