@@ -8,7 +8,9 @@ var TEMPO_ESCREVA : float = 3.0
 # -------------------------------------------------- #
 
 # -------------------------------------------------- #
-# VARIÁVEIS DE DESENVOLVEDOR (Mude para false no build final)
+# VARIÁVEIS DE DESENVOLVEDOR
+
+# Mude para false no build final
 var MODO_DEV : bool = true 
 var TUDO_DESBLOQUEADO : bool = true 
 var REQUISITOS_DESATIVADOS : bool = true 
@@ -17,6 +19,7 @@ var JOGADOR_IMORTAL : bool = false
 var PULAR_TUTORIAL : bool = true 
 var DEBUG : bool = false 
 
+# Mude para true no build final
 var TOCAR_MUSICA : bool = true 
 var USAR_EFEITOS_TELA : bool = true 
 # -------------------------------------------------- #

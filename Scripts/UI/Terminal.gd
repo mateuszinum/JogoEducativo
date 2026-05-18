@@ -50,11 +50,11 @@ var bloqueio_game_over: bool = false
 var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
-	{"nome": "Código A", "codigo": ""},
-	{"nome": "Código B", "codigo": ""},
-	{"nome": "Código C", "codigo": ""},
-	{"nome": "Código D", "codigo": ""},
-	{"nome": "Código E", "codigo": ""}
+	{"nome": "Código A", "codigo": "", "modificado": false},
+	{"nome": "Código B", "codigo": "", "modificado": false},
+	{"nome": "Código C", "codigo": "", "modificado": false},
+	{"nome": "Código D", "codigo": "", "modificado": false},
+	{"nome": "Código E", "codigo": "", "modificado": false}
 ]
 
 var slot_atual_idx: int = 0
@@ -339,8 +339,15 @@ func configurar_cores_do_codigo() -> void:
 	code_edit.syntax_highlighter = highlighter
 
 func _on_text_changed() -> void:
-	slots_codigo[slot_atual_idx]["codigo"] = code_edit.text
+	var texto_atual = code_edit.text
+	var texto_salvo = slots_codigo[slot_atual_idx]["codigo"]
 	
+	if texto_atual != texto_salvo:
+		slots_codigo[slot_atual_idx]["codigo"] = texto_atual
+		if not slots_codigo[slot_atual_idx].get("modificado", false):
+			slots_codigo[slot_atual_idx]["modificado"] = true
+			_atualizar_nomes_seletor()
+
 	code_edit.request_code_completion(true)
 
 func _on_code_completion_requested() -> void:
@@ -408,7 +415,15 @@ func _on_code_completion_requested() -> void:
 	else: 
 		code_edit.cancel_code_completion()
 
+func salvar() -> void:
+	_salvar_tudo()
+	get_viewport().set_input_as_handled()
+
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and event.keycode == KEY_S and event.is_command_or_control_pressed():
+		if has_focus() or code_edit.has_focus():
+			salvar()
+			
 	if event.is_action_pressed("ui_text_completion_accept") or event.is_action_pressed("ui_accept"):
 		if code_edit.has_focus():
 			call_deferred("_verificar_cursor_pos_autocomplete")
@@ -459,7 +474,7 @@ func _atualizar_seletor_slots() -> void:
 	if qtd_desbloqueada == 0:
 		qtd_desbloqueada = 1
 	
-	seletor_slot.visible = (qtd_desbloqueada > 1)
+	seletor_slot.visible = (qtd_desbloqueada > 0)
 	
 	seletor_slot.clear()
 	for i in range(qtd_desbloqueada):
@@ -469,6 +484,8 @@ func _atualizar_seletor_slots() -> void:
 		_on_seletor_slot_item_selected(0)
 	else:
 		seletor_slot.select(slot_atual_idx)
+		
+	_atualizar_nomes_seletor()
 
 func _on_seletor_slot_item_selected(index: int) -> void:
 	slots_codigo[slot_atual_idx]["codigo"] = code_edit.text
@@ -478,6 +495,7 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	code_edit.text = slots_codigo[slot_atual_idx]["codigo"]
 	
 	limpar_erros_de_sintaxe()
+	_atualizar_nomes_seletor()
 	
 func atualizar_travas_da_interface():
 	var deve_estar_editavel = false
@@ -511,10 +529,12 @@ func definir_codigo_slot(indice: int, codigo: String) -> void:
 		return
 		
 	slots_codigo[indice]["codigo"] = codigo
+	slots_codigo[indice]["modificado"] = false
 	
 	if indice == slot_atual_idx:
 		code_edit.text = codigo
 		limpar_erros_de_sintaxe()
+		_atualizar_nomes_seletor()
 
 func get_codigo_slot(indice: int) -> String:
 	if indice < 0 or indice >= slots_codigo.size():
@@ -588,3 +608,46 @@ func limpar_codigo() -> void:
 		
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
+
+func _atualizar_nomes_seletor() -> void:
+	if not seletor_slot: return
+	
+	var popup = seletor_slot.get_popup()
+	
+	for i in range(seletor_slot.item_count):
+		var idx_real = seletor_slot.get_item_id(i)
+		var slot_info = slots_codigo[idx_real]
+		var modificado = slot_info.get("modificado", false)
+		
+		if modificado:
+			seletor_slot.set_item_text(i, slot_info["nome"] + "*")
+			if popup.has_method("set_item_custom_fg_color"):
+				popup.set_item_custom_fg_color(i, Color.YELLOW)
+		else:
+			seletor_slot.set_item_text(i, slot_info["nome"])
+			if popup.has_method("set_item_custom_fg_color"):
+				popup.set_item_custom_fg_color(i, Color.WHITE)
+			
+		if idx_real == slot_atual_idx:
+			if modificado:
+				seletor_slot.add_theme_color_override("font_color", Color.YELLOW)
+				seletor_slot.add_theme_color_override("font_hover_color", Color.YELLOW)
+				seletor_slot.add_theme_color_override("font_focus_color", Color.YELLOW)
+				seletor_slot.add_theme_color_override("font_pressed_color", Color.YELLOW)
+			else:
+				seletor_slot.remove_theme_color_override("font_color")
+				seletor_slot.remove_theme_color_override("font_hover_color")
+				seletor_slot.remove_theme_color_override("font_focus_color")
+				seletor_slot.remove_theme_color_override("font_pressed_color")
+
+func _salvar_tudo() -> void:
+	for slot in slots_codigo:
+		slot["modificado"] = false
+		
+	_atualizar_nomes_seletor()
+	
+	if SaveMaster.has_method("salvar_dado"):
+		SaveMaster.salvar_dado()
+
+func _on_botao_salvar_pressed() -> void:
+	salvar()

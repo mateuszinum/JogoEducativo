@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1glahnjbmrqx" path="res://Scripts/Projectiles/projectile.gd" id="1_7thkf"]
 [ext_resource type="PackedScene" uid="uid://c2jkygu7oqui1" path="res://Scenes/Polimento/RastroAtaque.tscn" id="2_rgflu"]
-[ext_resource type="Texture2D" uid="uid://7ea10sue8aya" path="res://Assets/Projectiles/Gelo.png" id="2_tqx12"]
+[ext_resource type="Texture2D" uid="uid://7ea10sue8aya" path="res://Assets/Projectiles/gelo.png" id="2_tqx12"]
 [ext_resource type="PackedScene" uid="uid://4cdp5nndd18r" path="res://Scenes/Polimento/LuzAtaque.tscn" id="3_w1waj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aihi3"]

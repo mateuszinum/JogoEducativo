@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_yljls"]
 [ext_resource type="Script" uid="uid://cphkin8dnsnwc" path="res://Scripts/Debug/botoes_debug.gd" id="14_x77am"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="16_hygll"]
+[ext_resource type="Texture2D" uid="uid://35jtgf0hjd6l" path="res://Assets/UI/Terminal/save.png" id="17_fk70m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
 texture = ExtResource("2_l4t8i")
@@ -62,6 +63,26 @@ content_margin_top = 26.0
 content_margin_right = 26.0
 content_margin_bottom = 26.0
 bg_color = Color(0.1, 0.1, 0.1, 0.3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fk70m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mlp1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpfw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcihl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1mes2"]
 
 [sub_resource type="Theme" id="Theme_p4t22"]
 default_font = ExtResource("3_n1i2u")
@@ -360,12 +381,45 @@ mouse_filter = 2
 [node name="Bloom" type="WorldEnvironment" parent="HBoxContainer/PainelTerminal/PosProcessamento" unique_id=2084198506]
 environment = ExtResource("7_kjdr6")
 
+[node name="Control" type="Control" parent="." unique_id=504574968]
+anchors_preset = 0
+offset_left = 864.545
+offset_top = 12.045
+offset_right = 914.545
+offset_bottom = 62.045
+scale = Vector2(0.4, 0.4)
+
+[node name="BotaoSalvar" type="Button" parent="Control" unique_id=1605917337]
+layout_mode = 1
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fk70m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1mlp1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lqpfw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lcihl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1mes2")
+icon = ExtResource("17_fk70m")
+icon_alignment = 1
+script = ExtResource("5_kjdr6")
+som_hover = ExtResource("7_tvy04")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_yljls")
+volume_clique_db = -5.0
+
 [node name="SeletorSlotCodigo" type="OptionButton" parent="." unique_id=525680132]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 861.0
+offset_left = 886.66
 offset_top = 11.0
-offset_right = 893.0
+offset_right = 918.66
 offset_bottom = 27.0
 theme = SubResource("Theme_p4t22")
 theme_override_fonts/font = ExtResource("3_n1i2u")
@@ -519,6 +573,7 @@ script = ExtResource("3_8gbds")
 unique_name_in_owner = true
 
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
+[connection signal="pressed" from="Control/BotaoSalvar" to="HBoxContainer/PainelTerminal" method="_on_botao_salvar_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="BotoesDebug" method="_on_botao_agilidade_pressed"]
