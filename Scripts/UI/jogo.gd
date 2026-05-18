@@ -29,13 +29,12 @@ extends Control
 @onready var fade_tv = %FadeTV 
 @onready var fade_rect = $FadeLayer/ColorRect 
 @onready var sistema_cutscene = %SistemaCutscene
-@onready var layer_cutscene = get_node_or_null("%LayerCutscene")
 
 const CENA_VILAREJO = preload("res://Scenes/UI/village_menu.tscn")
 const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
 const CENA_TUTORIAL = preload("res://Scenes/Tutorial/tutorial_world.tscn")
 
-var transicao_em_andamento: bool = false 
+var transicao_em_andamento: bool = false
 
 func _ready() -> void:
 	add_to_group("Jogo") 
@@ -79,10 +78,8 @@ func revelar_tela_inteira(tempo: float = 1.0) -> Signal:
 	return tween.finished
 
 func tocar_cutscene(recurso: CutsceneResource) -> void:
+	GerenciadorAudio.parar_musica()
 	await cobrir_tela_inteira(1.0)
-	
-	if layer_cutscene:
-		layer_cutscene.show()
 		
 	if sistema_cutscene and recurso:
 		sistema_cutscene.iniciar_cutscene(recurso)
@@ -94,8 +91,15 @@ func tocar_cutscene(recurso: CutsceneResource) -> void:
 		
 	await cobrir_tela_inteira(1.0)
 	
-	if layer_cutscene:
-		layer_cutscene.hide()
+	if sistema_cutscene:
+		sistema_cutscene.hide()
+		
+	var cena_atual = viewport.get_child(0) if viewport.get_child_count() > 0 else null
+	if cena_atual:
+		if cena_atual.has_method("iniciar_musica"):
+			cena_atual.iniciar_musica()
+		elif cena_atual.has_method("play_stage_music"):
+			cena_atual.play_stage_music()
 		
 	await revelar_tela_inteira(1.0)
 
@@ -178,21 +182,6 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	fade_tv.hide()
 	
 	transicao_em_andamento = false
-
-func _on_botao_debug_pressed() -> void:
-	pass
-
-func _on_botao_recurso_pressed() -> void:
-	RecursosManager.receberRecurso("Couro", 100)
-	RecursosManager.receberRecurso("Cristal", 200)
-	RecursosManager.receberRecurso("Diamante", 300)
-	RecursosManager.receberRecurso("Esmeralda", 400)
-	RecursosManager.receberRecurso("Magma", 500)
-	RecursosManager.receberRecurso("Moeda", 9000000000)
-	RecursosManager.receberRecurso("Osso", 1000)
-	RecursosManager.receberRecurso("Plasma", 56)
-	RecursosManager.receberRecurso("Safira", 275)
-	RecursosManager.receberRecurso("Sangue", 5125)
 	
 func escrever_debug(texto: String) -> void:
 	var container = get_node_or_null("%TextoDebug")
@@ -250,12 +239,3 @@ func escrever_debug(texto: String) -> void:
 		
 		if is_instance_valid(nova_mensagem):
 			nova_mensagem.queue_free()
-
-func _on_botao_atributos_pressed() -> void:
-	Atributos.maximizar_agilidade()
-
-func _on_botao_musica_pressed() -> void:
-	if Constantes.VOLUME_MUSICA == 0.0:
-		Constantes.VOLUME_MUSICA = 0.5
-	else:
-		Constantes.VOLUME_MUSICA = 0.0

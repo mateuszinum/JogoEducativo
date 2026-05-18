@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="8_yljls"]
 [ext_resource type="Script" uid="uid://cphkin8dnsnwc" path="res://Scripts/Debug/botoes_debug.gd" id="14_x77am"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="16_hygll"]
-[ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="17_fk70m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
 texture = ExtResource("2_l4t8i")
@@ -268,7 +267,7 @@ requisito_slot_4 = "-"
 icone_rodar = ExtResource("6_inkna")
 icone_parar = ExtResource("5_lkp2e")
 icone_escapar = ExtResource("5_lkp2e")
-tempo_cooldown = 1.5
+tempo_cooldown = 3.0
 fontes_disponiveis = Array[Font]([ExtResource("7_5rjbm"), ExtResource("7_p4t22")])
 cor_destaque_linha = Color(1, 1, 0.85882354, 0.50980395)
 tempo_fade_destaque = 0.75
@@ -394,9 +393,9 @@ offset_top = 271.0
 offset_right = 171.0
 offset_bottom = 309.0
 script = ExtResource("14_x77am")
+cutscene_exemplo = "Inicial"
 
-[node name="BotaoDebug" type="Button" parent="BotoesDebug" unique_id=1426945878]
-unique_name_in_owner = true
+[node name="BotaoDebugCodigo" type="Button" parent="BotoesDebug" unique_id=1426945878]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -410,7 +409,6 @@ text = "Colocar código"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoRecurso" type="Button" parent="BotoesDebug" unique_id=1189409194]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -424,7 +422,6 @@ text = "Ganhar recursos"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoAgilidade" type="Button" parent="BotoesDebug" unique_id=2115188333]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -438,7 +435,6 @@ text = "Agilidade Máxima"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoMusica" type="Button" parent="BotoesDebug" unique_id=726031151]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -449,6 +445,32 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 text = "Toggle Música"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoMorrer" type="Button" parent="BotoesDebug" unique_id=1766665747]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Morrer"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoCutscene" type="Button" parent="BotoesDebug" unique_id=562690665]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Exemplo de cutscene"
 script = ExtResource("5_kjdr6")
 
 [node name="DebugChat" type="TextureRect" parent="." unique_id=1766562716]
@@ -477,6 +499,7 @@ theme_override_constants/separation = 6
 alignment = 2
 
 [node name="FadeLayer" type="CanvasLayer" parent="." unique_id=1454908466]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FadeLayer" unique_id=1403915043]
 modulate = Color(0, 0, 0, 1)
@@ -492,35 +515,13 @@ color = Color(0, 0, 0, 1)
 unique_name_in_owner = true
 script = ExtResource("3_8gbds")
 
-[node name="LayerCutscene" type="CanvasLayer" parent="." unique_id=2074229940]
+[node name="SistemaCutscene" parent="." unique_id=1229550324 instance=ExtResource("16_hygll")]
 unique_name_in_owner = true
-layer = 10
-visible = false
-
-[node name="SistemaCutscene" parent="LayerCutscene" unique_id=1229550324 instance=ExtResource("16_hygll")]
-unique_name_in_owner = true
-
-[node name="PosProcessamentoCutscene" type="CanvasLayer" parent="LayerCutscene" unique_id=1001212748]
-unique_name_in_owner = true
-layer = 10
-offset = Vector2(4, 0)
-transform = Transform2D(1, 0, 0, 1, 4, 0)
-
-[node name="Efeitos" type="ColorRect" parent="LayerCutscene/PosProcessamentoCutscene" unique_id=1825678977 groups=["EfeitoSangue"]]
-material = ExtResource("17_fk70m")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Bloom" type="WorldEnvironment" parent="LayerCutscene/PosProcessamentoCutscene" unique_id=1676170598]
-environment = ExtResource("7_kjdr6")
 
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoDebug" to="." method="_on_botao_debug_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="." method="_on_botao_recurso_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="." method="_on_botao_atributos_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoMusica" to="." method="_on_botao_musica_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="BotoesDebug" method="_on_botao_agilidade_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoMusica" to="BotoesDebug" method="_on_botao_musica_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoMorrer" to="BotoesDebug" method="_on_botao_morrer_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoCutscene" to="BotoesDebug" method="_on_botao_cutscene_pressed"]

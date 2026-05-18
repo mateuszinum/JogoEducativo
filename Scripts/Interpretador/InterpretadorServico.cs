@@ -36,6 +36,8 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	private Node _gerenciador; 
 	private bool _execucaoAbortada = false; 
 	private int _threadAtivaId = -1; 
+	private int _linhaDestaquePendente = -1;
+	private string _categoriaDestaquePendente = "";
 
 	public override void _Ready()
 	{
@@ -45,10 +47,13 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	
 	private void VerificarAbortagem() { if (_execucaoAbortada || (_threadAtivaId != -1 && Thread.CurrentThread.ManagedThreadId != _threadAtivaId)) throw new Exception("Execução abortada pelo jogador."); }	
 	public void LiberarProximoComando() { _travaDeSincronizacao.Set(); }
+	
 	public void PararExecucao() 
 	{ 
 		_execucaoAbortada = true; 
 		_threadAtivaId = -1; 
+		_linhaDestaquePendente = -1;
+		_categoriaDestaquePendente = "";
 		_travaDeSincronizacao.Set(); 
 		CallDeferred(nameof(DelegarLimpezaDestaque));
 	}
@@ -105,24 +110,72 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public void NotificarErro(string mensagem) => CallDeferred(nameof(DelegarErroParaMainThread), mensagem);
 	private void DelegarErroParaMainThread(string mensagem) => GetTree().CallGroup("Terminal", "mostrar_erro_runtime", mensagem);
 
-	public void DestacarLinhaAtual(int linha, string categoria = "")
-	{
-		if (!_execucaoAbortada) {
-			CallDeferred(nameof(DelegarDestaqueLinha), linha, categoria);
-		}
-	}
 	private void DelegarDestaqueLinha(int linha, string categoria) => GetTree().CallGroup("Terminal", "destacar_linha_execucao", linha, categoria);
 	
 	private void DelegarLimpezaDestaque() => GetTree().CallGroup("Terminal", "limpar_destaque_execucao");
 
 	private Variant _ultimoResultado;
 
+	private void ProcessarDestaquePendente()
+	{
+		if (_linhaDestaquePendente != -1)
+		{
+			CallDeferred(nameof(DelegarDestaqueLinha), _linhaDestaquePendente, _categoriaDestaquePendente);
+			_linhaDestaquePendente = -1;
+			_categoriaDestaquePendente = "";
+		}
+	}
+
+	public void DestacarLinhaAtual(int linha, string categoria = "")
+	{
+		if (!_execucaoAbortada)
+		{
+			if (categoria == "chamada_funcao_pendente")
+			{
+				if (_linhaDestaquePendente == linha)
+				{
+					_categoriaDestaquePendente = "chamada_funcao";
+				}
+				else
+				{
+					ProcessarDestaquePendente();
+					_linhaDestaquePendente = linha;
+					_categoriaDestaquePendente = "chamada_funcao";
+				}
+			}
+			else
+			{
+				if (_linhaDestaquePendente == linha)
+				{
+				}
+				else
+				{
+					if (categoria == "origem_var" || categoria == "leitura_var")
+					{
+						CallDeferred(nameof(DelegarDestaqueLinha), linha, categoria);
+					}
+					else
+					{
+						ProcessarDestaquePendente();
+						CallDeferred(nameof(DelegarDestaqueLinha), linha, categoria);
+					}
+				}
+			}
+		}
+	}
+
 	private Variant ExecutarAcaoComTick(string metodo, Godot.Collections.Array args)
 	{
 		VerificarAbortagem();
-		if (_apiNativa != null && _apiNativa.HasMethod(metodo)) {
+		if (_apiNativa != null && _apiNativa.HasMethod(metodo))
+		{
 			if (_gerenciador == null) return default;
-			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args);
+
+			_gerenciador.CallDeferred("executar_com_tick", _apiNativa, metodo, args, _linhaDestaquePendente, _categoriaDestaquePendente);
+			
+			_linhaDestaquePendente = -1; 
+			_categoriaDestaquePendente = "";
+
 			_travaDeSincronizacao.WaitOne(); 
 			VerificarAbortagem();
 			return _ultimoResultado; 
@@ -130,6 +183,7 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 		return default;
 	}
 
+	// AÇÕES PRINCIPAIS
 	public void Mover(string direcao) => ExecutarAcaoComTick("mover", new Godot.Collections.Array { direcao });
 	public void Atacar(string alvo, string tipo) => ExecutarAcaoComTick("atacar", new Godot.Collections.Array { alvo, tipo });
 	public void Escapar() => ExecutarAcaoComTick("escapar", new Godot.Collections.Array());

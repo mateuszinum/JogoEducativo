@@ -3,18 +3,43 @@
 [ext_resource type="Script" uid="uid://c1clydq12cqvh" path="res://Scripts/Tutorial/tutorial_world.gd" id="1_6dj6l"]
 [ext_resource type="PackedScene" uid="uid://bh52uvg0iqam" path="res://Scenes/Player/player.tscn" id="1_opnq6"]
 [ext_resource type="Resource" uid="uid://drd2u5y63spqa" path="res://Resources/Cutscene/cutscene_01_depoisDoTutorial.tres" id="2_gwubv"]
+[ext_resource type="AudioStream" uid="uid://bxsx2gs23pi2u" path="res://Audio/Soundtracks/Tutorial.wav" id="2_h6m3b"]
 [ext_resource type="TileSet" uid="uid://duy1ons8t0irq" path="res://Resources/Stages/Tutorial/tutorial_tileset.tres" id="2_y8rak"]
 [ext_resource type="PackedScene" uid="uid://cg41a0juammfe" path="res://Scenes/Polimento/LuzNormal.tscn" id="5_gwubv"]
 [ext_resource type="Script" uid="uid://dmx2iudco37ne" path="res://Scripts/Polimento/remover_se_grafico_low.gd" id="5_gxia1"]
+[ext_resource type="Material" uid="uid://mnapuagnst6g" path="res://Resources/Shaders/Configs/PosProcessamentoArena.tres" id="7_5xrqj"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="8_n6g0l"]
+[ext_resource type="PackedScene" uid="uid://c8ql7x1nhs08r" path="res://Scenes/Tutorial/vela.tscn" id="9_n6g0l"]
+[ext_resource type="Script" uid="uid://brvbafdwtrbcn" path="res://Scripts/Polimento/luz_piscando.gd" id="10_upx0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwubv"]
 size = Vector2(31.470001, 31)
 
+[sub_resource type="Gradient" id="Gradient_5xrqj"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.27108434)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n6g0l"]
+gradient = SubResource("Gradient_5xrqj")
+
+[sub_resource type="Gradient" id="Gradient_jhyir"]
+offsets = PackedFloat32Array(0, 0.5706667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h6m3b"]
+gradient = SubResource("Gradient_jhyir")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="TutorialWorld" type="Node2D" unique_id=205751075]
 script = ExtResource("1_6dj6l")
-camera_zoom = Vector2(2.1, 2)
-camera_offset = Vector2(10, 80)
-posicao_inicial = Vector2(87, 24)
+tempo_fade_reset = 0.5
+camera_zoom = Vector2(1.6, 1.6)
+camera_offset = Vector2(56.5, 48)
+posicao_inicial = Vector2(87, -8)
+musica_tema = ExtResource("2_h6m3b")
+volume_musica_db = -4.0
 cutscene_final = ExtResource("2_gwubv")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=339932368 groups=["Mapa"]]
@@ -22,13 +47,18 @@ position = Vector2(8, 8)
 tile_set = ExtResource("2_y8rak")
 format = 2
 layer_0/name = "Chao"
-layer_0/tile_data = PackedInt32Array(0, 0, 0, -65537, 0, 0, -65538, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -131072, 0, 0, -131071, 1, 0, -65535, 0, 0, 1, 0, 0, 65535, 0, 0, 65534, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196606, 0, 0, 262142, 0, 0, 327678, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, -131065, 0, 0, -131067, 0, 0, -131068, 0, 0, -131069, 0, 0, -131070, 0, 0, 262151, 0, 0, 196615, 0, 0, 131079, 0, 0, 65543, 0, 0, 7, 0, 0, -65529, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 196607, 0, 0, 262143, 0, 0, 196608, 0, 0, 262144, 0, 0, 262145, 0, 0, 196609, 0, 0, 131073, 0, 0, 327679, 0, 0, 131072, 0, 0, 131074, 0, 0, 196610, 0, 0, 65538, 0, 0, 2, 0, 0, -65534, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 262147, 0, 0, 262146, 0, 0, 262148, 0, 0, 262149, 0, 0, 196613, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 262150, 0, 0, 196614, 0, 0, 131078, 0, 0, 65542, 0, 0, 6, 0, 0, -65530, 0, 0, -196602, 0, 0, -131066, 0, 0)
+layer_0/tile_data = PackedInt32Array(1, 2, 0, 65537, 2, 0, 2, 2, 0, 65538, 2, 0, 262144, 2, 0, 327680, 2, 0, 262145, 2, 0, 327681, 0, 0, 262146, 2, 0, 327682, 2, 0, 0, 0, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, 65535, 2, 0, 65534, 2, 0, 131070, 2, 0, 131071, 0, 0, 65536, 0, 0, 196606, 2, 0, 262142, 0, 0, 327678, 2, 0, 393214, 2, 0, 393215, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 196607, 2, 0, 131073, 2, 0, 327679, 2, 0, 131072, 2, 0, 131074, 2, 0, -65534, 2, 0, -65533, 2, 0, 3, 2, 0, 65539, 2, 0, 131075, 2, 0, 262147, 2, 0, 262148, 0, 0, 262149, 2, 0, 131076, 2, 0, 65540, 0, 0, 4, 2, 0, -65532, 0, 0, 262150, 2, 0, 196614, 2, 0, 131078, 2, 0, 65542, 2, 0, 6, 2, 0, -65530, 0, 0, -196602, 2, 0, -131066, 2, 0, -3, 2, 0, -4, 2, 0, 65532, 0, 0, 131068, 2, 0, 131069, 0, 0, 65533, 2, 0, 196604, 2, 0, 196605, 2, 0, -2, 0, 0, 327677, 0, 0, 327676, 2, 0, 393212, 0, 0, 393213, 2, 0, -262138, 2, 0, -327674, 2, 0, 458748, 2, 0, 458749, 2, 0, 458750, 2, 0, 458751, 0, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 393220, 2, 0, 393221, 0, 0, 393222, 2, 0, -65540, 2, 0, -65539, 2, 0, -65538, 2, 0, -65537, 2, 0, -131072, 2, 0, -131071, 2, 0, -131070, 0, 0, -131069, 2, 0, -131068, 2, 0, -393210, 2, 0, -458746, 2, 0, 262143, 2, 0, 262141, 2, 0)
 layer_1/name = "Barreira"
 layer_1/navigation_enabled = false
-layer_1/tile_data = PackedInt32Array(-65538, 16, 0, -2, 15, 0, 65534, 15, 0, 131070, 15, 0, 196606, 15, 0, 262142, 15, 0, 327678, 15, 0, 393214, 15, 0, 458750, 16, 196608, 458751, 15, 65536, 393216, 15, 65536, 393217, 15, 65536, 393218, 15, 65536, 393219, 15, 65536, 393220, 17, 65536, 393221, 15, 65536, 393222, 15, 65536, 393223, 16, 131072, 327687, 15, 0, 262151, 15, 0, 196615, 15, 0, 131079, 15, 0, 65543, 15, 0, 7, 15, 0, -65529, 15, 0, -131065, 17, 131072, -131067, 17, 131072, -131068, 15, 65536, -131069, 15, 65536, -131070, 15, 65536, -131071, 15, 65536, -131072, 15, 65536, -65537, 15, 65536, -65531, 15, 0, 5, 15, 0, 65541, 15, 0, 131077, 15, 0, 196613, 16, 131072, 196612, 15, 65536, 196611, 15, 65536, 196610, 15, 65536, 196609, 17, 0, 196608, 11, 131072, 262145, 11, 65536, 327684, 11, 0, -196603, 11, 0, -196601, 11, 0)
+layer_1/tile_data = PackedInt32Array(327687, 983107, 22, -131065, 983107, 22, -131067, 67, 22, 262151, 983107, 22, 196615, 983107, 22, 131079, 983107, 22, 65543, 983107, 22, 7, 983107, 22, -65529, 983107, 22, 196608, 655427, 22, 196609, 720963, 22, 196610, 786499, 22, 196611, 852035, 22, 196613, 393283, 25, 196612, 917571, 22, -65531, 67, 22, 5, 67, 22, 65541, 67, 22, 131077, 393283, 24, 262141, 327747, 24, 262140, 720963, 22, 327677, 2490436, 19, 393212, 2424900, 20, -196603, 67, 22, -196601, 983107, 22, -65541, 524355, 22, -5, 524355, 22, 65531, 524355, 22, 131067, 524355, 22, 196603, 524355, 22, 262139, 524355, 22, 458747, 524355, 28, -131074, 720963, 22, -131075, 655427, 22, -131076, 589891, 22, -196612, 589891, 21, -262139, 67, 20, -196604, 917571, 22, -196605, 852035, 22, -196606, 786499, 22, -196607, 720963, 22, -196608, 655427, 22, -262140, 917571, 21, -262141, 852035, 21, -262142, 786499, 21, -262143, 720963, 21, -262144, 655427, 21, -196609, 589891, 21, -196610, 720963, 21, -196611, 655427, 21, -131073, 589891, 22, -262137, 983107, 21, -327675, 196675, 20, -327673, 196675, 20, -131077, 524355, 22, -131071, 983108, 27, -131070, 1048644, 27, -65540, 720964, 33, -4, 720964, 34, -65539, 786500, 33, -3, 786500, 34, 458748, 655427, 28, 393213, 2490436, 20, 458749, 720963, 28, 458750, 786499, 28, 458751, 589891, 28, 393221, 720963, 28, 393222, 589891, 28, 131075, 196675, 23, 131076, 262211, 23, 131074, 131139, 23, -393211, 196675, 20, -393209, 196675, 20, -458745, 196675, 20, -458747, 196675, 20, -524283, 196675, 20, -524281, 196675, 20, 196604, 262211, 23, 196605, 327747, 23, -196613, 524355, 21, 131073, 196675, 23, -131069, 1704004, 34, 262146, 786500, 25, 262145, 720964, 25, -131072, 917572, 27, -65536, 917572, 28, -131068, 1572932, 34, -65532, 1572932, 35, 4, 1572932, 36, -65537, 524356, 12, 393216, 655427, 28, 393217, 720963, 28, 393218, 786499, 28, 393219, 589891, 28, 393220, 655427, 28, 327676, 2424900, 19, 327675, 524355, 22, 393211, 524355, 22, 393214, 1769540, 9, 262144, 524356, 12, 262147, 1310788, 26, 262148, 1376324, 26, -65538, 1179716, 36, 327686, 2293828, 16, 65532, 196676, 5, 131068, 196676, 6, 65533, 262212, 5, 131069, 262212, 6, 65536, 1179716, 35, 393223, 983107, 28, -524282, 196675, 20, -262147, 196675, 20, -262146, 196675, 20, -262145, 196675, 20, 262143, 65603, 24, 131072, 131139, 23, 196607, 65603, 23)
+layer_2/name = "Decor"
+layer_2/tile_data = PackedInt32Array(-65535, 44, 0, 1, 44, 1, -65534, 65580, 0, 2, 65580, 1, -196607, 983108, 26, -196606, 1048644, 26, -131076, 720964, 32, -131075, 786500, 32, -196605, 1704004, 33, -131074, 68, 26, -65538, 131140, 14, -131073, 65604, 26, -196604, 1572932, 33, 196609, 720964, 24, 196610, 786500, 24, -196608, 917572, 26, -131072, 1114180, 23, -131070, 327748, 3, 196608, 524356, 11, 131075, 1310788, 24, 196611, 1310788, 25, 196612, 1376324, 25, 262145, 1310788, 7, 262146, 1441860, 7, 131076, 1376324, 24, -4, 131140, 37, -3, 196676, 37, 196613, 327748, 11, 65533, 786500, 7, 65532, 720964, 7, -131071, 196676, 3)
+layer_3/name = "Decor2"
+layer_3/tile_data = PackedInt32Array(-131073, 524356, 11, -196608, 1048644, 22, 65532, 196676, 5, 131068, 196676, 6, 65533, 262212, 5, 131069, 262212, 6, 131077, 196675, 22, -262139, 131139, 20, -262137, 262211, 20, -327675, 524355, 22, -393211, 524355, 22, -458747, 524355, 22, -327673, 983107, 22, -393209, 983107, 22, -458745, 983107, 22)
 
 [node name="SaidaTutorial" type="Area2D" parent="." unique_id=876139517]
-position = Vector2(215.97, -41.005)
+unique_name_in_owner = true
+position = Vector2(217, -105)
 collision_layer = 0
 collision_mask = 2
 
@@ -40,9 +70,12 @@ shape = SubResource("RectangleShape2D_gwubv")
 z_index = 1
 y_sort_enabled = true
 
+[node name="LuzPlayer" parent="Player" index="10" unique_id=1979411036]
+energy = 0.4
+texture_scale = 1.62
+
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=639565855]
-offset = Vector2(94, 8.185)
-zoom = Vector2(2.1, 2.1)
+zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
 
 [node name="Escuridao" type="CanvasModulate" parent="." unique_id=1815781551]
@@ -63,11 +96,133 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="LuzNormal" parent="." unique_id=1979411036 instance=ExtResource("5_gwubv")]
-position = Vector2(215, -102)
+[node name="LuzNormal" parent="." unique_id=974779296 instance=ExtResource("5_gwubv")]
+position = Vector2(216, -170.29)
 color = Color(1, 1, 0.5019608, 1)
-energy = 1.1
-texture_scale = 5.5
+energy = 1.5
+texture_scale = 6.58
+
+[node name="PosProcessamento" type="CanvasLayer" parent="." unique_id=165994891]
+layer = 10
+
+[node name="Efeitos" type="ColorRect" parent="PosProcessamento" unique_id=136427839 groups=["EfeitoSangue"]]
+material = ExtResource("7_5xrqj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="PosProcessamento" unique_id=950527787]
+environment = ExtResource("8_n6g0l")
+
+[node name="Sombra" type="TextureRect" parent="PosProcessamento" unique_id=1965368511]
+offset_left = 620.0
+offset_right = 876.00024
+offset_bottom = 720.0
+texture = SubResource("GradientTexture1D_n6g0l")
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1439619479]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+custom_minimum_size = Vector2(1280, 720)
+offset_left = -549.0
+offset_top = -285.0
+offset_right = 731.0
+offset_bottom = 435.0
+color = Color(0, 0, 0, 1)
+
+[node name="Objetos" type="Control" parent="." unique_id=1529783763]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vela" parent="Objetos" unique_id=159991024 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = -91.000015
+offset_top = 14.999998
+offset_right = -51.000015
+offset_bottom = 55.000008
+
+[node name="Vela2" parent="Objetos" unique_id=864762012 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = 203.00003
+offset_top = 157.0
+offset_right = 243.00003
+offset_bottom = 197.00002
+
+[node name="Vela4" parent="Objetos" unique_id=1503955746 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = -117.0
+offset_top = 129.0
+offset_right = -77.0
+offset_bottom = 169.00002
+
+[node name="Vela9" parent="Objetos" unique_id=2096477079 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = -81.00001
+offset_top = 154.0
+offset_right = -41.000008
+offset_bottom = 194.00002
+
+[node name="Vela10" parent="Objetos" unique_id=1151253452 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = 12.999985
+offset_top = -44.000004
+offset_right = 52.999985
+offset_bottom = -3.9999886
+
+[node name="Vela12" parent="Objetos" unique_id=838135994 instance=ExtResource("9_n6g0l")]
+layout_mode = 0
+offset_left = -61.0
+offset_top = -66.0
+offset_right = -21.0
+offset_bottom = -25.999985
+
+[node name="LuzDeVela" type="PointLight2D" parent="Objetos" unique_id=1486873735 node_paths=PackedStringArray("luz")]
+unique_name_in_owner = true
+position = Vector2(-9, -80)
+scale = Vector2(1.0118535, 1)
+color = Color(1, 0.8316827, 0.71337724, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.45490196)
+texture = SubResource("GradientTexture2D_h6m3b")
+script = ExtResource("10_upx0s")
+luz = NodePath(".")
+min_scale = 1.0
+max_scale = 1.2
+
+[node name="LuzDeVela2" type="PointLight2D" parent="Objetos" unique_id=1528914934 node_paths=PackedStringArray("luz")]
+unique_name_in_owner = true
+position = Vector2(23, 111)
+scale = Vector2(1.0118535, 1)
+color = Color(1, 0.8316827, 0.71337724, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.45490196)
+texture = SubResource("GradientTexture2D_h6m3b")
+script = ExtResource("10_upx0s")
+luz = NodePath(".")
+min_scale = 1.0
+max_scale = 1.2
+
+[node name="LuzDeVela3" type="PointLight2D" parent="Objetos" unique_id=257577214 node_paths=PackedStringArray("luz")]
+unique_name_in_owner = true
+position = Vector2(184, 122)
+scale = Vector2(1.0118535, 1)
+color = Color(1, 0.8316827, 0.71337724, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.45490196)
+texture = SubResource("GradientTexture2D_h6m3b")
+script = ExtResource("10_upx0s")
+luz = NodePath(".")
+min_scale = 1.0
+max_scale = 1.2
 
 [connection signal="body_entered" from="SaidaTutorial" to="." method="_on_saida_tutorial_body_entered"]
 

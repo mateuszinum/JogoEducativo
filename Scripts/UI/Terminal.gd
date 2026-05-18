@@ -44,9 +44,10 @@ var modo_atual: String = "vilarejo"
 var codigo_rodando: bool = false
 var erros_sintaxe_ativos: Dictionary = {}
 var tooltip_erro: Label
-var _timer_cooldown: SceneTreeTimer
-
+var cooldown_ativo: bool = false
 var _tweens_destaque: Dictionary = {}
+var bloqueio_game_over: bool = false
+var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
 	{"nome": "Código A", "codigo": ""},
@@ -59,7 +60,7 @@ var slots_codigo: Array = [
 var slot_atual_idx: int = 0
 
 func _ready() -> void:
-	add_to_group("Terminal") 
+	add_to_group("Terminal")
 	
 	if not botao_executar.pressed.is_connected(_on_botao_executar_pressed):
 		botao_executar.pressed.connect(_on_botao_executar_pressed)
@@ -81,6 +82,7 @@ func _ready() -> void:
 		seletor_slot.item_selected.connect(_on_seletor_slot_item_selected)
 		
 	ProgressoDB.progresso_alterado.connect(_atualizar_seletor_slots)
+	SaveManager.CarregarCodigo()
 	_atualizar_seletor_slots()
 
 func aplicar_fonte() -> void:
@@ -131,34 +133,46 @@ func atualizar_estado_botao() -> void:
 		botao_executar.text = "PARAR E ESCAPAR"
 		if icone_escapar: botao_executar.icon = icone_escapar
 
-func iniciar_cooldown_seguranca() -> void:
-	botao_executar.disabled = true
+func iniciar_cooldown_seguranca():
+	_id_cooldown += 1
+	var id_atual = _id_cooldown
 	
-	if _timer_cooldown:
-		_timer_cooldown.disconnect("timeout", _liberar_botao)
-		
-	_timer_cooldown = get_tree().create_timer(tempo_cooldown)
-	_timer_cooldown.connect("timeout", _liberar_botao)
+	cooldown_ativo = true
+	atualizar_travas_da_interface()
+	
+	await get_tree().create_timer(tempo_cooldown).timeout
+	
+	if _id_cooldown == id_atual:
+		cooldown_ativo = false
+		atualizar_travas_da_interface()
 
 func _liberar_botao() -> void:
 	botao_executar.disabled = false
 
 func ativar_modo_vilarejo():
 	modo_atual = "vilarejo"
-	code_edit.editable = not codigo_rodando
-	botao_executar.visible = true
+	
+	if botao_executar:
+		botao_executar.visible = true
+		
+	iniciar_cooldown_seguranca()
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
 
 func ativar_modo_arena():
 	modo_atual = "arena"
-	code_edit.editable = false 
+	
+	iniciar_cooldown_seguranca()
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()
+
+func ativar_modo_tutorial():
+	modo_atual = "tutorial"
+	codigo_rodando = false
+	code_edit.editable = true 
 	botao_executar.visible = true
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	code_edit.release_focus() 
-	iniciar_cooldown_seguranca()
 
 func desativar_botao_executar():
 	botao_executar.disabled = true 
@@ -170,11 +184,12 @@ func abortar_arena():
 	codigo_rodando = false
 	limpar_erros_de_sintaxe() 
 		
-	botao_executar.disabled = true 
 	ativar_modo_vilarejo()
 		
 	if FuncoesNativas.has_method("escapar"):
 		FuncoesNativas.escapar()
+	
+	SaveMaster.salvar_dado()
 
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
@@ -194,6 +209,8 @@ func _on_botao_executar_pressed() -> void:
 		atualizar_travas_da_interface()
 		interpretador.ExecutarCodigoDoJogador(codigo_digitado, self)
 		iniciar_cooldown_seguranca()
+		
+		SaveMaster.salvar_dado()
 
 	elif modo_atual == "vilarejo" and codigo_rodando:
 		if interpretador.has_method("PararExecucao"):
@@ -207,9 +224,11 @@ func _on_botao_executar_pressed() -> void:
 
 	elif modo_atual == "tutorial" and codigo_rodando:
 		abortar_tutorial()
+		iniciar_cooldown_seguranca()
 
 	elif modo_atual == "arena":
 		abortar_arena()
+		iniciar_cooldown_seguranca()
 
 func _on_code_edit_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -222,6 +241,34 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 			tooltip_erro.global_position = code_edit.get_global_mouse_position() + Vector2(15, 15)
 		else:
 			tooltip_erro.visible = false
+
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
+		var linha_antes = code_edit.get_caret_line()
+		
+		await get_tree().process_frame
+		
+		var linha_depois = code_edit.get_caret_line()
+		
+		if linha_depois > linha_antes:
+			var texto_linha_anterior = code_edit.get_line(linha_antes)
+			
+			var indentacao_detectada = ""
+			for i in range(texto_linha_anterior.length()):
+				var caractere = texto_linha_anterior[i]
+				if caractere == "\t" or caractere == " ":
+					indentacao_detectada += caractere
+				else:
+					break
+					
+			if texto_linha_anterior.strip_edges().ends_with(":"):
+				indentacao_detectada += "\t"
+				
+			if indentacao_detectada != "":
+				var texto_linha_nova = code_edit.get_line(linha_depois)
+				var texto_restante = texto_linha_nova.strip_edges(true, false) # Limpa os espaços antigos
+				
+				code_edit.set_line(linha_depois, indentacao_detectada + texto_restante)
+				code_edit.set_caret_column(indentacao_detectada.length())
 
 func mostrar_erros_de_sintaxe(lista_erros: Array):
 	limpar_erros_de_sintaxe()
@@ -408,7 +455,7 @@ func _atualizar_seletor_slots() -> void:
 			qtd_desbloqueada += 1
 		else:
 			break 
-			
+		
 	if qtd_desbloqueada == 0:
 		qtd_desbloqueada = 1
 	
@@ -432,10 +479,32 @@ func _on_seletor_slot_item_selected(index: int) -> void:
 	
 	limpar_erros_de_sintaxe()
 	
-func atualizar_travas_da_interface() -> void:
+func atualizar_travas_da_interface():
+	var deve_estar_editavel = false
+	
+	if modo_atual == "arena" or bloqueio_game_over:
+		deve_estar_editavel = false
+	else:
+		deve_estar_editavel = not codigo_rodando
+		
+	if code_edit:
+		code_edit.editable = deve_estar_editavel
+		
+		if not deve_estar_editavel:
+			if code_edit.has_focus():
+				code_edit.release_focus()
+			code_edit.caret_blink = false
+		else:
+			code_edit.caret_blink = true
+			
 	if seletor_slot:
-		var pode_editar = (modo_atual == "vilarejo") and not codigo_rodando
-		seletor_slot.disabled = not pode_editar
+		seletor_slot.disabled = not deve_estar_editavel
+			
+	if botao_executar:
+		if bloqueio_game_over:
+			botao_executar.disabled = true
+		else:
+			botao_executar.disabled = cooldown_ativo
 	
 func definir_codigo_slot(indice: int, codigo: String) -> void:
 	if indice < 0 or indice >= slots_codigo.size():
@@ -494,15 +563,6 @@ func limpar_destaque_execucao() -> void:
 		
 	_tweens_destaque.clear()
 
-func ativar_modo_tutorial():
-	modo_atual = "tutorial"
-	codigo_rodando = false
-	code_edit.editable = true 
-	botao_executar.visible = true
-	atualizar_estado_botao()
-	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
-
 func abortar_tutorial():
 	if interpretador.has_method("PararExecucao"):
 		interpretador.PararExecucao()
@@ -513,11 +573,18 @@ func abortar_tutorial():
 	
 	atualizar_estado_botao()
 	atualizar_travas_da_interface()
-	iniciar_cooldown_seguranca()
 	
 	get_tree().call_group("MundoTutorial", "resetar_player")
 
 func limpar_codigo() -> void:
+	limpar_destaque_execucao()
+	if interpretador and interpretador.has_method("PararExecucao"):
+		interpretador.PararExecucao()
+	
+	codigo_rodando = false
+	
 	if code_edit:
 		code_edit.text = ""
-	limpar_destaque_execucao()
+		
+	atualizar_estado_botao()
+	atualizar_travas_da_interface()

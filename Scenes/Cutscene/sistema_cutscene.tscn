@@ -3,20 +3,17 @@
 [ext_resource type="Script" uid="uid://8f5on4qboo42" path="res://Scripts/Cutscene/sistema_cutscene.gd" id="1_0ht47"]
 [ext_resource type="AudioStream" uid="uid://2argyloyeoa3" path="res://Audio/SFX/Dialogo/Typing.wav" id="2_tn2xe"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_teqbo"]
+[ext_resource type="Material" uid="uid://dnmdxqqrw000r" path="res://Resources/Shaders/Configs/PosProcessamentoVilarejo.tres" id="4_swp1r"]
+[ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="5_qe2p2"]
 
-[node name="SistemaCutscene" type="Control" unique_id=1229550324]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SistemaCutscene" type="CanvasLayer" unique_id=661090001]
+layer = 15
+visible = false
 script = ExtResource("1_0ht47")
 som_voz = ExtResource("2_tn2xe")
 volume_voz_db = -4.0
 
 [node name="Fundo" type="ColorRect" parent="." unique_id=953056765]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,7 +25,6 @@ color = Color(0, 0, 0, 1)
 [node name="ImagemFundo" type="TextureRect" parent="." unique_id=1934843242]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 0
 offset_left = 310.0
 offset_top = 100.0
 offset_right = 1590.0
@@ -38,7 +34,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="PainelTexto" type="MarginContainer" parent="." unique_id=845693361]
-layout_mode = 0
 offset_left = 310.0
 offset_top = 460.0
 offset_right = 950.0
@@ -59,7 +54,6 @@ fit_content = true
 scroll_active = false
 
 [node name="PainelTextoSemImagem" type="MarginContainer" parent="." unique_id=984698404]
-layout_mode = 0
 offset_left = 310.0
 offset_top = 230.0
 offset_right = 950.0
@@ -79,3 +73,15 @@ theme_override_font_sizes/normal_font_size = 28
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
+
+[node name="Efeitos" type="ColorRect" parent="." unique_id=221330242 groups=["EfeitoSangue"]]
+material = ExtResource("4_swp1r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bloom" type="WorldEnvironment" parent="." unique_id=745444161]
+environment = ExtResource("5_qe2p2")

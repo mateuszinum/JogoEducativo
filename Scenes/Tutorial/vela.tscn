@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c8ql7x1nhs08r"]
+
+[ext_resource type="Texture2D" uid="uid://dpbelh7w0mqn2" path="res://Assets/Terrain/Tutorial/candlesticks_27.png" id="1_hcdly"]
+[ext_resource type="Script" uid="uid://brvbafdwtrbcn" path="res://Scripts/Polimento/luz_piscando.gd" id="2_hcdly"]
+
+[sub_resource type="Gradient" id="Gradient_hcdly"]
+offsets = PackedFloat32Array(0, 0.5706667)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_74mp2"]
+gradient = SubResource("Gradient_hcdly")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Vela" type="TextureRect" unique_id=159991024 node_paths=PackedStringArray("luz")]
+offset_left = 12.04
+offset_top = 31.245
+offset_right = 52.04
+offset_bottom = 71.24502
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("1_hcdly")
+script = ExtResource("2_hcdly")
+luz = NodePath("LuzDeVela")
+min_energy = 0.3
+max_energy = 0.6
+
+[node name="LuzDeVela" type="PointLight2D" parent="." unique_id=1435218160]
+unique_name_in_owner = true
+position = Vector2(19.275862, 23.715519)
+scale = Vector2(1.0118535, 1)
+color = Color(1, 0.8316827, 0.71337724, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.45490196)
+texture = SubResource("GradientTexture2D_74mp2")

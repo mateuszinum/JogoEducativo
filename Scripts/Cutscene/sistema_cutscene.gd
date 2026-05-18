@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name SistemaCutscene
 
 signal cutscene_finalizada
@@ -28,8 +28,6 @@ var sfx_voz: AudioStreamPlayer
 
 func _ready() -> void:
 	hide()
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
 	sfx_voz = AudioStreamPlayer.new()
 	sfx_voz.bus = "UI"
 	add_child(sfx_voz)
@@ -49,8 +47,6 @@ func iniciar_cutscene(recurso: CutsceneResource) -> void:
 		texto_dialogo_sem_imagem.text = ""
 	
 	show()
-	modulate = Color.WHITE
-	mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	await get_tree().create_timer(cutscene_atual.delay_inicial).timeout
 	if cutscene_atual == null: 
@@ -68,12 +64,14 @@ func iniciar_cutscene(recurso: CutsceneResource) -> void:
 	
 	if pagina_atual.imagem != null:
 		label_ativa = texto_dialogo
+		label_ativa.modulate.a = 1.0
 		imagem_fundo.texture = pagina_atual.imagem
 		var tween = create_tween()
 		tween.tween_property(imagem_fundo, "modulate:a", 1.0, cutscene_atual.tempo_fade_inicial)
 		await tween.finished
 	else:
 		label_ativa = texto_dialogo_sem_imagem
+		label_ativa.modulate.a = 1.0
 		imagem_fundo.texture = null
 		await get_tree().create_timer(cutscene_atual.tempo_fade_inicial).timeout
 	
@@ -156,13 +154,11 @@ func finalizar_escrita() -> void:
 		tween_auto_avanco.tween_interval(cutscene_atual.tempo_auto_avanco)
 		tween_auto_avanco.tween_callback(avancar_texto)
 
-func _gui_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if cutscene_atual == null: return
 		get_viewport().set_input_as_handled()
-		
-		if cutscene_atual == null or em_transicao:
-			return
-		
+		if em_transicao: return
 		if digitando:
 			digitando = false 
 		else:
@@ -206,7 +202,5 @@ func encerrar_cutscene() -> void:
 		tween_auto_avanco.kill()
 		
 	cutscene_atual = null
-	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
 	GerenciadorAudio.parar_musica(2.0)
 	cutscene_finalizada.emit()
