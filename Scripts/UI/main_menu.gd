@@ -43,12 +43,12 @@ var player_musica: AudioStreamPlayer
 func _ready() -> void:
 	painel_slots.hide()
 	
+	SaveMaster.carregar_config()
+	
 	if not SaveMaster.checar_existe_save():
-		print("não achou")
 		botao_carregar.hide()
 		
 	else:
-		print("achou")
 		botao_carregar.show()
 	
 	confirmacao_reset_btn.confirmed.connect(_on_reset_confirmado)

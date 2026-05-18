@@ -67,7 +67,8 @@ func _on_check_grafico_toggled(toggled_on: bool) -> void:
 # -------------------------------------------------- #
 func _on_botao_save_pressed() -> void:
 	GerenciadorVideo.aplicar_configuracoes_de_tela()
-
+	
+	SaveMaster.salvar_dado_config()
 	hide()
 
 func _on_botao_cancel_pressed() -> void:

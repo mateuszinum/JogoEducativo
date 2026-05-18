@@ -34,7 +34,6 @@ func checar_existe_save() -> bool:
 	var pastas = DirAccess.get_files_at(diretorio)
 	
 	for arquivo in pastas:
-		print(arquivo)
 		if arquivo.begins_with("slot") and arquivo.ends_with(".txt"):
 			return true
 	
@@ -49,9 +48,10 @@ func salvar_dado():
 
 
 func salvar_dado_config():
-	var dados_config = {"temp" : 1}
+	var dados_config = ConfigManager.listarConfig()
 	var caminho = obter_diretorio_save() + "/config.txt"
 	
+	print(dados_config)
 	salvar_arquivo_json(caminho, dados_config)
 
 
@@ -101,6 +101,7 @@ func compilar_inventario() -> Dictionary:
 	
 	return dados_finais
 
+
 func compilar_recursos():
 	var recursos_salvos = {}
 	var recursos_atuais = RecursosManager.listarRecursos()
@@ -110,6 +111,7 @@ func compilar_recursos():
 		recursos_salvos[nome_recurso] = recursos_atuais[item_data]
 	
 	return recursos_salvos
+
 
 func compilar_codigo():
 	var terminal = get_tree().get_first_node_in_group("Terminal")
@@ -132,6 +134,7 @@ func compilar_codigo():
 	else:
 		return SaveManager.GetCodigo()
 
+
 func compilar_dados_salvamento() -> Dictionary:
 	var dados_inventario = compilar_inventario()
 	var dados_recursos = compilar_recursos()
@@ -146,11 +149,33 @@ func compilar_dados_salvamento() -> Dictionary:
 	
 	return dados_completos
 
+
+func carregar_config():
+	var caminho = obter_diretorio_save() + "/config.txt"
+	
+	if not FileAccess.file_exists(caminho):
+		print("Primeira vez rodando, arquivo config.txt não encontrado. Utilizando configurações padrão.")
+		return
+
+	var arquivo = FileAccess.open(caminho, FileAccess.READ)
+	var json_string = arquivo.get_as_text()
+	arquivo.close()
+	
+	var json = JSON.new()
+	var erro = json.parse(json_string)
+	
+	if not erro:
+		var dados_config = json.data
+		ConfigManager.setConfig(dados_config)
+		
+	else:
+		print("Erro de formatação no JSON do config: ", json.get_error_message())
+
+
 func carregar_slot():
 	var caminho = obter_caminho_slot()
 	
 	if not FileAccess.file_exists(caminho):
-		# Se não tem save, garante que a memória comece limpa
 		SaveManager.dados_em_cache = {}
 		return
 		
@@ -162,7 +187,6 @@ func carregar_slot():
 	var erro = json.parse(json_string)
 	
 	if not erro:
-		# Injeta os dados direto na memória do SaveManager
 		SaveManager.dados_em_cache = json.data
 		print("Save carregado direto na memória do SaveManager!")
 		print(SaveManager.dados_em_cache)
@@ -171,9 +195,9 @@ func carregar_slot():
 		print("Erro de formatação no JSON do save: ", json.get_error_message())
 		SaveManager.dados_em_cache = {}
 
+
 func preenche_dados_in_game():
 	SaveManager.CarregarInventario()
 	SaveManager.CarregarProdutos()
 	SaveManager.CarregarRecursos()
 	SaveManager.CarregarCodigo()
-	

@@ -106,6 +106,3 @@ func GetRecursos() -> Dictionary:
 
 func GetCodigo() -> Dictionary:
 	return dados_em_cache.get("codigos", {})
-	
-func GetConfig() -> Dictionary:
-	return {}
