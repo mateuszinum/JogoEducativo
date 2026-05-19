@@ -417,7 +417,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="Configuracao" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1909921654]
+[node name="BotaoConfiguracao" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1909921654]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -463,7 +463,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
-[node name="Button3" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1865725634]
+[node name="BotaoSair" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=1865725634]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -867,7 +867,7 @@ layout_mode = 1
 
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoNovoJogo" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCarregarJogo" to="." method="_on_carregar_pressed"]
-[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Configuracao" to="." method="_on_configuracao_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoConfiguracao" to="." method="_on_configuracao_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCreditos" to="." method="_on_botao_creditos_pressed"]
-[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoSair" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/TelaSlots/BotaoFechar" to="." method="_on_botao_fechar_pressed"]

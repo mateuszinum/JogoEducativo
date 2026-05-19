@@ -197,6 +197,7 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 
 	// SENSORES E AMBIENTE (Agora com Tick de Segurança)
 	public string InimigoMaisProximo() => ExecutarAcaoComTick("inimigoMaisProximo", new Godot.Collections.Array()).AsString();
+	public bool InimigoExiste(string inimigoId) => ExecutarAcaoComTick("inimigoExiste", new Godot.Collections.Array { inimigoId }).AsBool();
 	public bool PodeMover(string direcao) => ExecutarAcaoComTick("podeMover", new Godot.Collections.Array { direcao }).AsBool();
 	public int GetTempo() => ExecutarAcaoComTick("getTempo", new Godot.Collections.Array()).AsInt32();
 	public int GetVidaAtual() => ExecutarAcaoComTick("getVidaAtual", new Godot.Collections.Array()).AsInt32();

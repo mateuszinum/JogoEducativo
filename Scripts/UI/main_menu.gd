@@ -108,7 +108,6 @@ func _on_exit_pressed() -> void:
 func _on_botao_creditos_pressed() -> void:
 	if creditos_rolando: return
 	
-	tocar_sfx_entrar()
 	creditos_rolando = true
 	
 	scroll_creditos.scroll_vertical = 0

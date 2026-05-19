@@ -321,7 +321,7 @@ func configurar_cores_do_codigo() -> void:
 	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
 		
 	var cor_tipo = Color("#569cd6")
-	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
+	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Nulo", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
 	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
 	
 	var cor_constante = Color("#4ec9b0") 

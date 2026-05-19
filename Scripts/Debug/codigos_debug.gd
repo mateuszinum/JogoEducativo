@@ -25,7 +25,7 @@ vazio AtacarInimigoMaisProximo():
 	senao se(alvo.nome == SlimeDeGelo):
 		atk = Fogo
 	fim se
-	se(alvo.nome == "NULO"):
+	se(alvo.nome == Nulo):
 		retorna
 	senao:
 		escreva("Ataquei um " + alvo.nome + " usando " + atk)
@@ -67,7 +67,7 @@ fim funcao
 vazio AtacarInimigoMaisProximo():
 	Inimigo alvo = inimigoMaisProximo()
 	Ataque ataque = atk[i]
-	se(alvo.nome == "NULO"):
+	se(alvo.nome == Nulo):
 		retorna
 	senao se(alvo.nome == Vampiro):
 		escreva("Ataquei um " + alvo.nome)
@@ -171,26 +171,10 @@ enquanto(Verdadeiro):
 fim enquanto""",
 
 # --- SLOT 3 (Código D) ---
-"""enquanto(Verdadeiro):
-	arena(Campos)
-	bool atacou = Falso
-	
-	enquanto(!atacou):
-		Inimigo alvo = inimigoMaisProximo()
-		se(alvo.nome != "NULO"):
-			atacar(alvo, EsferaAzul)
-			atacou = Verdadeiro
-		fim se
-	fim enquanto
-	
-	escapar()
-fim enquanto""",
+"""""",
 
 # --- SLOT 4 (Código E) ---
-"""enquanto(Verdadeiro):
-	arena(Campos)
-	escapar()
-fim enquanto"""
+""""""
 ]
 
 static func obter_codigo(indice: int) -> String:

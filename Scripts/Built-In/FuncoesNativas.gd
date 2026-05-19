@@ -106,6 +106,9 @@ func tesouroY() -> int:
 
 func inimigoMaisProximo() -> String:
 	return _cache_inimigo_proximo
+	
+func inimigoExiste(alvo_id: String) -> bool:
+	return Inimigo.inimigoExiste(alvo_id)
 
 func escanearArea() -> Array:
 	return Inimigo.escanear_area()
@@ -166,6 +169,16 @@ class Inimigo:
 				if distancia <= raio:
 					inimigos_proximos_ids.append(inimigo.name) 
 		return inimigos_proximos_ids
+		
+	static func inimigoExiste(alvo_id: String) -> bool:
+		var tree = Engine.get_main_loop()
+		if not tree: return false
+		
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				return true
+		return false
 
 	static func inimigo_nome(alvo_id: String) -> String:
 		var tree = Engine.get_main_loop()
@@ -175,7 +188,7 @@ class Inimigo:
 				if "type" in inimigo and inimigo.type != null:
 					return inimigo.type.nome
 				return "Inimigo Desconhecido"
-		return "NULO"
+		return "Nulo"
 		
 	static func inimigo_vida(alvo_id: String) -> float:
 		var tree = Engine.get_main_loop()
@@ -419,12 +432,12 @@ class Produtos:
 		
 		if produto_data == null:
 			tree.call_group("Terminal", "mostrar_erro", "O item '" + item + "' não foi catalogado.")
+			return
 		
-		#var compra_aprovada = Inventario.tentar_comprar_via_botao(produto_data)
+		var compra_aprovada = false
 		
-		#if compra_aprovada:
+		if compra_aprovada:
 			if Constantes.DEBUG: print("Compra de " + item + " efetuada com sucesso!")
-			
 		else:
 			if Inventario.get_lista_ativa().size() >= Inventario.get_capacidade_maxima():
 				if Constantes.DEBUG: print("Este compartimento está cheio!")
