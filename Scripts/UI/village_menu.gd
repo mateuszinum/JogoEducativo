@@ -62,8 +62,11 @@ func _on_loja_biblioteca_fechou_loja() -> void:
 	if loja_biblioteca: loja_biblioteca.hide()
 
 func _on_loja_mago_velho_fechou_loja() -> void:
+	if loja_mago_velho:
+		loja_mago_velho.hide()
+		if (!ProgressoDB.tem_desbloqueado("MagoVelho")):
+			ProgressoDB.desbloquear("MagoVelho")
 	verificar_progresso()
-	if loja_mago_velho: loja_mago_velho.hide()
 
 func _on_start_game_pressed() -> void:
 	verificar_progresso()
@@ -81,13 +84,14 @@ func set_comerciante(valor : bool):
 	botao_comerciante.disabled = !valor
 	
 func set_biblioteca(valor : bool):
-	loja_biblioteca.disabled = !valor
+	botao_biblioteca.disabled = !valor
 	
 func set_mago_velho(valor : bool):
-	loja_mago_velho.disabled = !valor
+	botao_mago_velho.disabled = !valor
 
 func verificar_progresso():
 	set_bruxa(ProgressoDB.tem_desbloqueado("Localização"))
 	set_comerciante(ProgressoDB.tem_desbloqueado("Itens"))
+	set_biblioteca(ProgressoDB.tem_desbloqueado("MagoVelho"))
 
 #----------------------------------#

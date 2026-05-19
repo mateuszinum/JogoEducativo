@@ -1,11 +1,5 @@
 extends Node
-
 signal volume_alterado
-
-# -------------------------------------------------- #
-var FONTE_TERMINAL : int = 0 
-var TEMPO_ESCREVA : float = 3.0 
-# -------------------------------------------------- #
 
 # -------------------------------------------------- #
 # VARIÁVEIS DE DESENVOLVEDOR
@@ -22,6 +16,10 @@ var DEBUG : bool = false
 # Mude para true no build final
 var TOCAR_MUSICA : bool = true 
 var USAR_EFEITOS_TELA : bool = true 
+
+# Outras opções
+var FONTE_TERMINAL : int = 0 # altera a fonte do código do usuário no grimório
+var TEMPO_ESCREVA : float = 3.0 # o tempo que cada mensagem do "escreva()" persiste na tela
 # -------------------------------------------------- #
 
 

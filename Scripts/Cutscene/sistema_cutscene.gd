@@ -52,13 +52,8 @@ func iniciar_cutscene(recurso: CutsceneResource) -> void:
 	if cutscene_atual == null: 
 		return
 	
-	if cutscene_atual.musica_tema:
-		GerenciadorAudio.tocar_musica(
-			cutscene_atual.musica_tema, 
-			cutscene_atual.volume_musica_db, 
-			cutscene_atual.tempo_fade_inicial, 
-			cutscene_atual.usar_fade_in_audio
-		)
+	var pagina_inicial = cutscene_atual.paginas[indice_pagina]
+	_atualizar_musica_da_pagina(pagina_inicial)
 	
 	var pagina_atual = cutscene_atual.paginas[indice_pagina]
 	
@@ -84,6 +79,8 @@ func mostrar_pagina() -> void:
 	em_transicao = true
 	indice_texto = 0
 	var pagina_atual = cutscene_atual.paginas[indice_pagina]
+	
+	_atualizar_musica_da_pagina(pagina_atual)
 	
 	texto_dialogo.text = ""
 	if texto_dialogo_sem_imagem: 
@@ -204,3 +201,14 @@ func encerrar_cutscene() -> void:
 	cutscene_atual = null
 	GerenciadorAudio.parar_musica(2.0)
 	cutscene_finalizada.emit()
+
+func _atualizar_musica_da_pagina(pagina: CutscenePage) -> void:
+	if pagina.musica != null:
+		GerenciadorAudio.tocar_musica(
+			pagina.musica, 
+			pagina.volume_musica_db, 
+			cutscene_atual.tempo_fade_inicial, 
+			cutscene_atual.usar_fade_in_audio
+		)
+	else:
+		GerenciadorAudio.parar_musica(cutscene_atual.tempo_fade_inicial)
