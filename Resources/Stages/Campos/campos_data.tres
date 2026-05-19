@@ -8,8 +8,8 @@
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Enemies/SlimeDeFogo.tres" id="6_ttsbp"]
 [ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Enemies/SlimeDeGelo.tres" id="7_mfjtu"]
 [ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="7_omn7t"]
+[ext_resource type="AudioStream" uid="uid://2aisqxpattp1" path="res://Audio/Soundtracks/campos.ogg" id="9_mfjtu"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
-[ext_resource type="AudioStream" uid="uid://dchxhehlqsmty" path="res://Audio/Soundtracks/Campos.wav" id="10_0o20v"]
 [ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/campos_tesouro.tres" id="11_mfjtu"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]
@@ -125,7 +125,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 [resource]
 script = ExtResource("2_mfjtu")
 nome = "Campos"
-stage_music = ExtResource("10_0o20v")
+stage_music = ExtResource("9_mfjtu")
 music_volume = -10.0
 spawn_events = Array[ExtResource("3_0o20v")]([SubResource("Resource_ts6uj"), SubResource("Resource_fk5lg"), SubResource("Resource_nt8bn"), SubResource("Resource_0o20v")])
 map_width = 100

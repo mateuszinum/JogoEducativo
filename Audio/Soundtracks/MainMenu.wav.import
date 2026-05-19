@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://uhscbn4ugy26"
+uid="uid://d2aohqkwm7m8j"
 path="res://.godot/imported/MainMenu.wav-090388920cfd83b30292318d59ed64b6.sample"
 
 [deps]
@@ -13,12 +13,12 @@ dest_files=["res://.godot/imported/MainMenu.wav-090388920cfd83b30292318d59ed64b6
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=2
+edit/loop_mode=1
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2

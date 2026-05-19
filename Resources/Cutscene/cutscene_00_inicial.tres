@@ -1,19 +1,19 @@
 [gd_resource type="Resource" script_class="CutsceneResource" format=3 uid="uid://buyptvhiwmx7y"]
 
-[ext_resource type="AudioStream" uid="uid://cundlh503cfwc" path="res://Audio/Soundtracks/CutsceneInicial.wav" id="1_nsjkh"]
 [ext_resource type="Script" uid="uid://cgh54v6gpqw6k" path="res://Scripts/Cutscene/cutscene_page.gd" id="1_vo31s"]
 [ext_resource type="Script" uid="uid://dvcdosgs8y4mw" path="res://Scripts/Cutscene/cutscene_resource.gd" id="2_wxfft"]
 [ext_resource type="Texture2D" uid="uid://c532e23mr8d3c" path="res://Assets/Cutscene/cutscene00_cena00.jpg" id="3_6d3cj"]
+[ext_resource type="AudioStream" uid="uid://qq5tb7e8soxp" path="res://Audio/Soundtracks/cutscene_inicial.ogg" id="3_m3n3p"]
 [ext_resource type="Texture2D" uid="uid://7ahhir5axjv3" path="res://Assets/Cutscene/cutscene00_cena01.jpg" id="4_nsjkh"]
 [ext_resource type="Texture2D" uid="uid://c3fhgwrd321ej" path="res://Assets/Cutscene/cutscene00_cena02.jpg" id="5_4sr4n"]
 [ext_resource type="Texture2D" uid="uid://7dw6e400j4yk" path="res://Assets/Cutscene/cutscene00_cena03.jpg" id="6_ddh3l"]
 [ext_resource type="Texture2D" uid="uid://mwwwmfv4e2dp" path="res://Assets/Cutscene/cutscene00_cena04.jpg" id="7_m3n3p"]
-[ext_resource type="AudioStream" uid="uid://deuxjavvxci3j" path="res://Audio/Soundtracks/Lar.wav" id="8_vxe86"]
+[ext_resource type="AudioStream" uid="uid://isgt0x6gfj37" path="res://Audio/Soundtracks/lar.ogg" id="8_m3n3p"]
 
 [sub_resource type="Resource" id="Resource_wxfft"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("3_6d3cj")
-musica = ExtResource("1_nsjkh")
+musica = ExtResource("3_m3n3p")
 volume_musica_db = -6.0
 textos = Array[String](["Há muito tempo, a magia corria livre neste mundo.", "Ela era moldada pelas mãos dos Feiticeiros Anciões, aqueles que dominavam a magia com maestria."])
 metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 [sub_resource type="Resource" id="Resource_6d3cj"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("4_nsjkh")
-musica = ExtResource("1_nsjkh")
+musica = ExtResource("3_m3n3p")
 volume_musica_db = -6.0
 textos = Array[String](["No entanto… De forma misteriosa, eles desapareceram, deixando para trás apenas o ápice de sua criação. Ecos da verdadeira magia: Grimórios!
 "])
@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 [sub_resource type="Resource" id="Resource_ddh3l"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("5_4sr4n")
-musica = ExtResource("1_nsjkh")
+musica = ExtResource("3_m3n3p")
 volume_musica_db = -6.0
 textos = Array[String](["Conhecidos nas escolas de magia, grimórios têm regras simples de utilização. 
 ", "Cada grimório é limitado a magias de um elemento apenas, e para usá-los, é necessário proferir os nomes dos feitiços.", "Porém, boatos corriam sobre algo maior…"])
@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 [sub_resource type="Resource" id="Resource_pmxvq"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("6_ddh3l")
-musica = ExtResource("1_nsjkh")
+musica = ExtResource("3_m3n3p")
 volume_musica_db = -6.0
 textos = Array[String](["As lendas tinham ele como o “Omni-Grimório”!
 ", "Um livro abençoado com magias de todos elementos, mas amaldiçoado com a condição de que elas deveriam ser escritas ao invés de pronunciadas.", "Este, estava escondido nas profundezas das ruínas que ninguém ousava entrar."])
@@ -53,15 +53,15 @@ metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 [sub_resource type="Resource" id="Resource_smi78"]
 script = ExtResource("1_vo31s")
 imagem = ExtResource("7_m3n3p")
-musica = ExtResource("8_vxe86")
+musica = ExtResource("8_m3n3p")
 volume_musica_db = -4.0
 textos = Array[String](["“Não acredito que o Omni-Grimório estava realmente lá esse tempo todo!”", "\"Agora é hora de voltar para casa.\""])
 metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 
 [sub_resource type="Resource" id="Resource_vxe86"]
 script = ExtResource("1_vo31s")
-musica = ExtResource("8_vxe86")
-textos = Array[String](["No caminho de volta, você mantém o grimório fechado, ansioso para chegar em casa e ver o conteúdo dele.", "Chegando lá, você o posiciona em sua mesa, abre ele e uma coisa estranha acontece...", "Você não consegue mais se mover! É como se o grimório tivesse assumido o controle de todas as suas ações!", "Felizmente, você se lembra de um feitiço de movimento que o mago velho te ensinou. Use ele para sair da casa!"])
+musica = ExtResource("8_m3n3p")
+textos = Array[String](["No caminho de volta, você mantém o grimório fechado, ansioso para chegar em casa e ver o conteúdo dele.", "Chegando lá, você o posiciona em sua mesa, abre ele e uma coisa estranha acontece...", "Você não consegue mais se mover! É como se o grimório tivesse assumido o controle de todas as suas ações!", "Felizmente, você se lembra de um feitiço de movimento que te ensinaram. Use ele para sair da casa!"])
 metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 
 [resource]
