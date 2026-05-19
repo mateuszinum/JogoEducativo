@@ -6,6 +6,7 @@ signal volume_alterado
 
 # Mude para false no build final
 var MODO_DEV : bool = true 
+var MOVIMENTO_WASD : bool = true 
 var TUDO_DESBLOQUEADO : bool = true 
 var REQUISITOS_DESATIVADOS : bool = true 
 var TUDO_GRATIS : bool = false 

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var tile_map = $"../TileMap"
 const tile_size = 32
-const TEMPO_DE_PASSO : float = 0.1
+const TEMPO_DE_PASSO : float = 0.08
 const TEMPO_ANIMACAO : float = 0.05
 
 const OPACIDADE_NO_DANO : float = 1.0
@@ -81,7 +81,7 @@ func _ready() -> void:
 	health_changed.emit(health)
 	
 func _physics_process(delta: float) -> void:		
-	if Constantes.MODO_DEV:
+	if Constantes.MOVIMENTO_WASD:
 		var dirs = {
 			"move_up":    "Cima",
 			"move_down":  "Baixo",

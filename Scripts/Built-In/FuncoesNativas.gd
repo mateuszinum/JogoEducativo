@@ -316,9 +316,14 @@ class Jogador:
 				"direita": Vector2i(1, 0)
 			}
 			
-			FuncoesNativas._coordenada_logica_atual += direcoes_vetores[dir_limpa]
-			
 			var tile_map = tree.get_first_node_in_group("Mapa")
+			
+			if tile_map and player:
+				var pos_visual_grid = tile_map.local_to_map(tile_map.to_local(player.global_position))
+				if pos_visual_grid != FuncoesNativas._coordenada_logica_atual:
+					player.global_position = tile_map.to_global(tile_map.map_to_local(FuncoesNativas._coordenada_logica_atual))
+
+			FuncoesNativas._coordenada_logica_atual += direcoes_vetores[dir_limpa]
 			
 			if tile_map:
 				for dir_nome in direcoes_vetores:

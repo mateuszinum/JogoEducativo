@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bct2mn0xi7na0" path="res://Scripts/UI/ui.gd" id="3_dd0ac"]
 [ext_resource type="AudioStream" uid="uid://cg62prdwrcolt" path="res://Audio/SFX/PassosPlayer.mp3" id="3_gk6dx"]
 [ext_resource type="AudioStream" uid="uid://b6olxjv3sluok" path="res://Audio/SFX/Coleta.wav" id="4_0u5uq"]
-[ext_resource type="AudioStream" uid="uid://duq4lgt7a4avh" path="res://Audio/SFX/GameOver.mp3" id="5_7g0yx"]
 [ext_resource type="Texture2D" uid="uid://dogxdhaswpp14" path="res://Assets/Personagens/Wizard-Hurt.png" id="6_dd0ac"]
 [ext_resource type="Texture2D" uid="uid://byprs2c3pp1oa" path="res://Assets/Drop/Diamante.png" id="6_gk6dx"]
 [ext_resource type="Script" uid="uid://kq4xclbqiiyo" path="res://Scripts/UI/ui_recurso_labirinto.gd" id="6_jhyir"]
@@ -172,8 +171,6 @@ ui_recurso_labirinto = NodePath("UIRecursoLabirinto")
 go_tempo_zoom_iris = 1.5
 go_tamanho_iris_foco = 0.2
 go_tempo_espera_final = 3.0
-go_som_texto = ExtResource("5_7g0yx")
-go_volume_som_texto = -18.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1753922737]
 script = ExtResource("3_dd0ac")
