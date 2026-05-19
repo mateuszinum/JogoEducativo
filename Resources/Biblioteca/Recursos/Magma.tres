@@ -6,15 +6,28 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_srp72")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "Magma"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_srp72")
-texto = "(Conteúdo do documento)"
+texto = "Descrição
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_srp72"]
+script = ExtResource("1_srp72")
+tipo = 2
+texto = "Dropado por:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_srp72")
+tipo = 4
+texto = "SlimeDeFogo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_7c71e")
-blocos_de_conteudo = Array[ExtResource("1_srp72")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_srp72")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_srp72"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

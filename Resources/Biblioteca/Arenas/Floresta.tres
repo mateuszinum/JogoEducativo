@@ -6,15 +6,40 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_tgg7w")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "Floresta"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_tgg7w")
-texto = "(Conteúdo do documento)"
+texto = "Floresta escura, com atmosfera pesada.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_48mmb"]
+script = ExtResource("1_tgg7w")
+tipo = 2
+texto = "Inimigos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n2nr0"]
+script = ExtResource("1_tgg7w")
+tipo = 4
+texto = "Fantasma Lobisomem Orc Vampiro"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tgg7w"]
+script = ExtResource("1_tgg7w")
+tipo = 2
+texto = "Tesouro"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ad844"]
+script = ExtResource("1_tgg7w")
+tipo = 4
+texto = "Diamante"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_ad844")
-blocos_de_conteudo = Array[ExtResource("1_tgg7w")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_tgg7w")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_48mmb"), SubResource("Resource_n2nr0"), SubResource("Resource_tgg7w"), SubResource("Resource_ad844")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

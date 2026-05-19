@@ -5,9 +5,10 @@ extends Control
 func _ready() -> void:
 	visible = false
 	
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
 	if Constantes.MODO_DEV:
-		visible = Input.is_physical_key_pressed(KEY_TAB)
+		if event is InputEventKey and event.keycode == KEY_TAB and event.pressed and not event.echo:
+			visible = not visible
 
 func _on_botao_debug_codigo_pressed() -> void:
 	var terminal = get_tree().get_first_node_in_group("Terminal")

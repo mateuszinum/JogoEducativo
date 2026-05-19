@@ -6,15 +6,33 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_ys6rr")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "inimigo.posicaoX"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_ys6rr")
-texto = "(Conteúdo do documento)"
+texto = "É possível acessar a posição X de um inimigo.
+
+Isso é útil para verificar a posição do inimigo e possivelmente compará-la com a sua própria.
+
+Esse é um valor inteiro aproximado da coordenada da tile a qual o inimigo se encontra.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n0vup"]
+script = ExtResource("1_ys6rr")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0dx7l"]
+script = ExtResource("1_ys6rr")
+tipo = 3
+texto = "Inimigo i = inimigoMaisProximo()
+int inimigoPosX = i.posicaoX"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_asyjt")
-blocos_de_conteudo = Array[ExtResource("1_ys6rr")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_ys6rr")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

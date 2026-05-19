@@ -6,15 +6,36 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_sqbvq")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "inimigo.vida"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_sqbvq")
-texto = "(Conteúdo do documento)"
+texto = "É possível acessar o valor atual da vida de um inimigo. 
+
+Isso é útil para verificar a vida de um inimigo antes de atacá-lo.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n0vup"]
+script = ExtResource("1_sqbvq")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0dx7l"]
+script = ExtResource("1_sqbvq")
+tipo = 2
+texto = "Inimigo i = inimigoMaisProximo()
+
+se(i.vida == 1):
+	atacar(i, Raio)
+senão:
+	atacar(i, EsferaAzul)
+fim se"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_qqk81")
-blocos_de_conteudo = Array[ExtResource("1_sqbvq")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_sqbvq")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_kggi5")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "enquanto"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]

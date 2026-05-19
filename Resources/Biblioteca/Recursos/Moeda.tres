@@ -1,20 +1,33 @@
-[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://j01gjhrlayi4"]
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://knhhqcskkbc5"]
 
-[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_bw6mn"]
-[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_2gxy6"]
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_oesn2"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_bisef"]
 
 [sub_resource type="Resource" id="Resource_sj6m0"]
-script = ExtResource("1_bw6mn")
+script = ExtResource("1_oesn2")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "Moeda"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
-script = ExtResource("1_bw6mn")
-texto = "(Conteúdo do documento)"
+script = ExtResource("1_oesn2")
+texto = "Descrição
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_bisef"]
+script = ExtResource("1_oesn2")
+tipo = 2
+texto = "Dropado por:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oesn2"]
+script = ExtResource("1_oesn2")
+tipo = 4
+texto = "Goblin [req=Floresta]Orc[/req] "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
-script = ExtResource("2_2gxy6")
-blocos_de_conteudo = Array[ExtResource("1_bw6mn")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+script = ExtResource("2_bisef")
+blocos_de_conteudo = Array[ExtResource("1_oesn2")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_bisef"), SubResource("Resource_oesn2")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

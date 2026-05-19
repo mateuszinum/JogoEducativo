@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://8mau18fuvtbm"]
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dinp4fvjwqr02"]
 
 [ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_nc7tv"]
 [ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_qm3rf"]
@@ -6,15 +6,40 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_nc7tv")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "Campos"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_nc7tv")
-texto = "(Conteúdo do documento)"
+texto = "Arena básica, campos verdes e claros.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_48mmb"]
+script = ExtResource("1_nc7tv")
+tipo = 2
+texto = "Inimigos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n2nr0"]
+script = ExtResource("1_nc7tv")
+tipo = 4
+texto = "Esqueleto Goblin SlimeDeFogo SlimeDeGelo"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tgg7w"]
+script = ExtResource("1_nc7tv")
+tipo = 2
+texto = "Tesouro"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ad844"]
+script = ExtResource("1_nc7tv")
+tipo = 4
+texto = "Safira"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_qm3rf")
-blocos_de_conteudo = Array[ExtResource("1_nc7tv")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_nc7tv")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_48mmb"), SubResource("Resource_n2nr0"), SubResource("Resource_tgg7w"), SubResource("Resource_ad844")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

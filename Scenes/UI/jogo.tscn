@@ -436,6 +436,7 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_1mes2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6v4bt")
 script = ExtResource("5_kjdr6")
 escala_hover = Vector2(1, 1)
+escala_clique = Vector2(1, 1)
 som_hover = ExtResource("7_tvy04")
 volume_hover_db = -10.0
 som_clique = ExtResource("8_yljls")

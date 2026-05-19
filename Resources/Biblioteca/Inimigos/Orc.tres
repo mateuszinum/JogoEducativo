@@ -6,15 +6,65 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_2hp7t")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "Orc"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_2hp7t")
-texto = "(Conteúdo do documento)"
+texto = "Descrição
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jk6uf"]
+script = ExtResource("1_2hp7t")
+tipo = 2
+texto = "Atributos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3fc27"]
+script = ExtResource("1_2hp7t")
+texto = "Vida: X
+Velocidade: X
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_s1xn2"]
+script = ExtResource("1_2hp7t")
+tipo = 2
+texto = "Aparece em:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lk5le"]
+script = ExtResource("1_2hp7t")
+tipo = 4
+texto = "Floresta"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_37tpt"]
+script = ExtResource("1_2hp7t")
+tipo = 2
+texto = "Dropa o recurso:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1xlt5"]
+script = ExtResource("1_2hp7t")
+tipo = 4
+texto = "Moeda"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_c773p"]
+script = ExtResource("1_2hp7t")
+tipo = 2
+texto = "É imune a:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_daujv"]
+script = ExtResource("1_2hp7t")
+tipo = 4
+texto = "EsferaAzul EsferaVermelha"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_gxgu1")
-blocos_de_conteudo = Array[ExtResource("1_2hp7t")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_2hp7t")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_jk6uf"), SubResource("Resource_3fc27"), SubResource("Resource_s1xn2"), SubResource("Resource_lk5le"), SubResource("Resource_37tpt"), SubResource("Resource_1xlt5"), SubResource("Resource_c773p"), SubResource("Resource_daujv")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

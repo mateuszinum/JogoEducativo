@@ -12,7 +12,7 @@ var REQUISITOS_DESATIVADOS : bool = true
 var TUDO_GRATIS : bool = false 
 var JOGADOR_IMORTAL : bool = false 
 var PULAR_TUTORIAL : bool = true 
-var DEBUG : bool = false 
+var DEBUG : bool = true 
 
 # Mude para true no build final
 var TOCAR_MUSICA : bool = true 
@@ -21,6 +21,7 @@ var USAR_EFEITOS_TELA : bool = true
 # Mantenha essas como estão
 var FONTE_TERMINAL : int = 0 # altera a fonte do código do usuário no grimório
 var TEMPO_ESCREVA : float = 3.0 # o tempo que cada mensagem do "escreva()" persiste na tela
+var IDIOMA : int = 0 # define o idioma dos textos do jogo
 # -------------------------------------------------- #
 
 

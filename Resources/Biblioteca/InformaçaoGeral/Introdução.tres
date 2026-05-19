@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_yll3l")
-texto = "Seja bem vindo a Documentação."
+texto = "Nessa parte, vamos escrever o geral do jogo."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

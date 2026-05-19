@@ -6,15 +6,39 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_g2dps")
 tipo = 1
-texto = "Titulo (Colocar nome da Pagina)"
+texto = "ExplosaoFogo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_g2dps")
-texto = "(Conteúdo do documento)"
+texto = "Descrição
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_g2dps")
+tipo = 2
+texto = "Atributos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_g2dps")
+texto = "Dano base: X
+Knockback: X
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_2agbe"]
+script = ExtResource("1_g2dps")
+tipo = 2
+texto = "Requisitos de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jt7od"]
+script = ExtResource("1_g2dps")
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_nij5b")
-blocos_de_conteudo = Array[ExtResource("1_g2dps")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_g2dps")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_2agbe"), SubResource("Resource_jt7od")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
