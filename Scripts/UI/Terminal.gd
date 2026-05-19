@@ -193,7 +193,7 @@ func abortar_arena():
 
 func _on_botao_executar_pressed() -> void:
 	if botao_executar.disabled: return 
-
+	salvar()
 	if (modo_atual == "vilarejo" or modo_atual == "tutorial") and not codigo_rodando:
 		var codigo_digitado = code_edit.text
 		if codigo_digitado.strip_edges() == "": return
