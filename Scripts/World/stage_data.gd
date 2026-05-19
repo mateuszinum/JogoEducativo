@@ -41,11 +41,6 @@ enum TipoMapa { ARENA_ABERTA, LABIRINTO }
 @export var labirinto_offset_camera: Vector2 = Vector2.ZERO
 @export var recurso_destaque_labirinto: ItemData
 
-@export_subgroup("Multiplicador de velocidade")
-@export var labirinto_multiplicador_inicial: float = 1.0
-@export var labirinto_multiplicador_maximo: float = 2.0
-@export var labirinto_tesouros_para_maximo: int = 10
-
 @export_group("Chão")
 @export var ground_variants: Array[GroundVariant] = []
 
@@ -78,10 +73,7 @@ func _validate_property(property: Dictionary):
 		"labirinto_altura", 
 		"labirinto_zoom_camera",
 		"labirinto_offset_camera",
-		"recurso_destaque_labirinto",
-		"labirinto_multiplicador_inicial",
-		"labirinto_multiplicador_maximo",
-		"labirinto_tesouros_para_maximo"
+		"recurso_destaque_labirinto"
 	]
 	
 	if property.name in props_labirinto and tipo_mapa != TipoMapa.LABIRINTO:

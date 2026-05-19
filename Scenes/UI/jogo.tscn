@@ -559,7 +559,7 @@ script = ExtResource("3_8gbds")
 [node name="SistemaCutscene" parent="." unique_id=1229550324 instance=ExtResource("16_hygll")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="." method="_on_botao_executar_pressed"]
+[connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="HBoxContainer/PainelTerminal" method="_on_botao_executar_pressed"]
 [connection signal="pressed" from="Control/BotaoSalvar" to="HBoxContainer/PainelTerminal" method="_on_botao_salvar_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]

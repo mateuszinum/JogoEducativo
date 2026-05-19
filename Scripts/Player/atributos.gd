@@ -1,23 +1,41 @@
 extends Node
 
+# ------------------------------------- #
+# Constantes
+const LEVEL_UP_XP : int = 10 # valor base de xp para subir de level (multiplicado pelo level_atual)
+const MAX_LEVEL : int = 10 # level máximo que o player pode alcançar
+const MAX_BONUS : float = 2.0 # valor máximo que o bônus pode assumir
+
+# Atributos iniciais
 var max_health : int = 5
 var global_knockback_multiplier : float = 1.0
 var tempo_tick : float = 0.8
 var coleta_multiplier : float = 1.0
 var forca_multiplier : float = 1.0
 
+# Upgrades da bruxa
 var ganhos_health = [7, 10, 15]
 var ganhos_kb = [1.5, 2.0, 3.0]
 var ganhos_agilidade = [0.7, 0.5, 0.3]
 var ganhos_coleta = [2.0, 3.0, 4.0]
 var ganhos_forca = [1.5, 2.0, 3.0]
-
 # ------------------------------------- #
 
-var multiplicador_labirinto : float = 1.0
+
+#--------------------------------------#
+var incremento_bonus : float = 0.1
+var range_bonus : float = 1.0
+
+var level_atual : int = 1
+var xp_atual : int = 0
+var bonus_level : float = 1.0
+
+func _ready() -> void:
+	range_bonus = MAX_BONUS - 1.0
+	incremento_bonus = range_bonus / MAX_LEVEL
 
 func GetTempoTick():
-	return tempo_tick / multiplicador_labirinto
+	return tempo_tick / bonus_level
 
 func comprar_upgrade(nome_upgrade, nivel_atual):
 	match nome_upgrade:
@@ -47,7 +65,7 @@ func comprar_upgrade(nome_upgrade, nivel_atual):
 		
 		"Força":
 			var novo_valor = ganhos_forca[nivel_atual - 2]
-	
+			
 			forca_multiplier = novo_valor
 			if Constantes.DEBUG: print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
 
@@ -55,15 +73,42 @@ func maximizar_agilidade() -> void:
 	tempo_tick = ganhos_agilidade[-1]
 	if Constantes.DEBUG: print("A agilidade foi maximizada!")
 
-func resetar_multiplicador_labirinto(valor: float) -> void:
-	multiplicador_labirinto = valor
-
-func incrementar_multiplicador_labirinto(incremento: float, valor_maximo: float) -> void:
-	multiplicador_labirinto += incremento
-	if multiplicador_labirinto > valor_maximo:
-		multiplicador_labirinto = valor_maximo
-		
-	if Constantes.DEBUG: print("Incremento! tempo_tick atual: ", GetTempoTick())
-	
 func debug_tempo_tick():
 	if Constantes.DEBUG: print(GetTempoTick())
+#--------------------------------------#
+
+
+#--------------------------------------#
+# SISTEMA DE BÔNUS (SUBIR DE NÍVEL)
+
+func ganhar_xp(valor : int = 1):
+	if level_atual == MAX_LEVEL: return
+	xp_atual = xp_atual + valor
+	if xp_atual >= (LEVEL_UP_XP * level_atual):
+		subir_de_nivel()
+		resetar_xp()
+	if Constantes.DEBUG: print("XP atual: ", xp_atual)
+
+func subir_de_nivel():
+	level_atual = level_atual + 1
+	if Constantes.DEBUG: print("Nível atual: ", level_atual)
+	incrementar_bonus()
+
+func incrementar_bonus():
+	bonus_level = bonus_level + incremento_bonus
+	if Constantes.DEBUG: print("Bônus atual: ", bonus_level)
+
+func resetar_level():
+	level_atual = 1
+
+func resetar_bonus():
+	bonus_level = 1.0
+
+func resetar_xp():
+	xp_atual = 0
+	
+func resetar_xp_bonus_level():
+	resetar_bonus()
+	resetar_level()
+	resetar_xp()
+#--------------------------------------#

@@ -16,6 +16,8 @@ func _ready():
 	seed_hash = randi()
 	seed(seed_hash)
 	
+	Atributos.resetar_xp_bonus_level()
+	
 	if iris and iris.material:
 		var mat = iris.material as ShaderMaterial
 		mat.set_shader_parameter("circle_size", 1.05)
@@ -57,11 +59,11 @@ func generate_world():
 	if stage_data.tipo_mapa == StageData.TipoMapa.LABIRINTO:
 		_gerar_modo_labirinto()
 		_configurar_visibilidade_ui(false) 
-		Atributos.resetar_multiplicador_labirinto(stage_data.labirinto_multiplicador_inicial) 
+		Atributos.resetar_xp_bonus_level()
 	else:
 		_gerar_modo_arena()
 		_configurar_visibilidade_ui(true)
-		Atributos.resetar_multiplicador_labirinto(1.0)
+		Atributos.resetar_xp_bonus_level()
 		
 	recursos_iniciais = RecursosManager.listarRecursos().duplicate()	
 	var player = get_tree().get_first_node_in_group("Player")
@@ -414,9 +416,6 @@ func _configurar_visibilidade_ui(mostrar: bool):
 
 func notificar_tesouro_coletado():
 	if stage_data.tipo_mapa == StageData.TipoMapa.LABIRINTO:
-		var passos = max(1, stage_data.labirinto_tesouros_para_maximo)
-		var incremento = (stage_data.labirinto_multiplicador_maximo - stage_data.labirinto_multiplicador_inicial) / float(passos)
-		Atributos.incrementar_multiplicador_labirinto(incremento, stage_data.labirinto_multiplicador_maximo)
 		tile_map.clear()
 		_gerar_modo_labirinto(true) 		
 	gerar_tesouro()

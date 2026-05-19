@@ -17,7 +17,7 @@ var DEBUG : bool = false
 var TOCAR_MUSICA : bool = true 
 var USAR_EFEITOS_TELA : bool = true 
 
-# Outras opções
+# Mantenha essas como estão
 var FONTE_TERMINAL : int = 0 # altera a fonte do código do usuário no grimório
 var TEMPO_ESCREVA : float = 3.0 # o tempo que cada mensagem do "escreva()" persiste na tela
 # -------------------------------------------------- #

@@ -148,7 +148,7 @@ func ir_para_arena() -> void:
 	fazer_transicao_tv(CENA_ARENA, "arena")
 
 func limpar_viewport() -> void:
-	Atributos.resetar_multiplicador_labirinto(1.0)
+	Atributos.resetar_xp_bonus_level()
 	FuncoesNativas._posicao_inicializada = false
 	if viewport:
 		for child in viewport.get_children():
