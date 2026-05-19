@@ -59,7 +59,7 @@ func tentar_comprar_via_botao(produto: ProdutoLoja) -> bool:
 		inventario_atualizado.emit() 
 		inventario_comprados_atualizado.emit() 
 		SaveMaster.salvar_dado()
-		print(lista_atual)
+		if Constantes.DEBUG: print(lista_atual)
 		return true 
 		
 	return false

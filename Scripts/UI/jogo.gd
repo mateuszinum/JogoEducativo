@@ -40,16 +40,22 @@ func _ready() -> void:
 	add_to_group("Jogo") 
 	limpar_viewport()
 	
-	if not Constantes.PULAR_TUTORIAL:
-		var tutorial = CENA_TUTORIAL.instantiate()
-		viewport.add_child(tutorial)
-		if terminal.has_method("ativar_modo_tutorial"):
-			terminal.ativar_modo_tutorial()
-	else:
+	SaveManager.CarregarProdutos()
+	SaveManager.CarregarInventario()
+	SaveManager.CarregarRecursos()
+	
+	if ProgressoDB.passou_do_tutorial():
 		var vilarejo = CENA_VILAREJO.instantiate()
 		viewport.add_child(vilarejo)
-		if terminal.has_method("ativar_modo_vilarejo"):
+		if terminal and terminal.has_method("ativar_modo_vilarejo"):
 			terminal.ativar_modo_vilarejo()
+	else:
+		var tutorial = CENA_TUTORIAL.instantiate()
+		viewport.add_child(tutorial)
+		if terminal and terminal.has_method("ativar_modo_tutorial"):
+			terminal.ativar_modo_tutorial()
+			
+	SaveManager.CarregarCodigo()
 
 	if fade_rect:
 		$FadeLayer.show()

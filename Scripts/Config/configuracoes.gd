@@ -4,6 +4,7 @@ extends Control
 @onready var slider_musica = %SliderMusica
 @onready var slider_sfx = %SliderSFX
 @onready var slider_ui = %SliderUI
+@onready var blur_rect = %Blur
 
 @onready var check_fullscreen = %CheckFullscreen
 @onready var check_shake = %CheckShake
@@ -18,7 +19,7 @@ var cache_fullscreen : bool
 func _ready() -> void:
 	_sincronizar_ui_com_constantes()
 
-func abrir() -> void:
+func abrir(blur: bool = false) -> void:
 	if not is_node_ready():
 		await ready
 	# 1. Tira a "foto" dos valores exatos ANTES do jogador ver a tela
@@ -32,6 +33,10 @@ func abrir() -> void:
 	_sincronizar_ui_com_constantes()
 	
 	# 3. Finalmente, mostra a tela pro jogador
+	if blur:
+		blur_rect.show()
+	else:
+		blur_rect.hide()
 	show()
 	
 func _sincronizar_ui_com_constantes() -> void:

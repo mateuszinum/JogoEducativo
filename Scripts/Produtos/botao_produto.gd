@@ -63,6 +63,9 @@ extends Button
 @export var pitch_venda_min: float = 0.9
 @export var pitch_venda_max: float = 1.1
 
+@export_group("Outros")
+@export var desabilitado: bool = false
+
 var slot_index: int = -1
 
 var travado: bool = false 
@@ -203,6 +206,7 @@ func _animar_escala(target_scale: Vector2) -> void:
 	tween_escala.tween_property(visual_animado, "scale", target_scale, tempo_transicao)
 
 func pode_comprar() -> bool:
+	if desabilitado: return false
 	if falta_requisito: return false
 	match produto.tipo:
 		ProdutoLoja.TipoProduto.ITEM_UNICO: return true 
@@ -291,6 +295,7 @@ func verificar_pre_requisitos() -> void:
 
 func _pressed() -> void:
 	if modo_operacao == 1: 
+		if desabilitado: return
 		if produto != null:
 			Inventario.vender_item(slot_index)
 			_animar_escala(escala_clique)

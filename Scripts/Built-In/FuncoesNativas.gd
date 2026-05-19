@@ -113,9 +113,6 @@ func escanearArea() -> Array:
 func nomeInimigo(alvo_id: String) -> String:
 	return Inimigo.inimigo_nome(alvo_id)
 
-func obterVelocidadeInimigo(alvo_id: String) -> float:
-	return Inimigo.inimigo_velocidade(alvo_id)
-
 func obterPosicaoXInimigo(alvo_id: String) -> int:
 	return Inimigo.inimigo_posicaoX(alvo_id)
 
@@ -190,14 +187,27 @@ class Inimigo:
 					return float(inimigo.health)
 		return 0.0
 		
-	static func inimigo_posicaoX(_alvo_id: String) -> int:
+	static func inimigo_posicaoX(alvo_id: String) -> int:
+		var tree = Engine.get_main_loop()
+		var tilemap = tree.get_first_node_in_group("Mapa")
+		if not tilemap: return 0
+		
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				return tilemap.local_to_map(inimigo.global_position).x
 		return 0
 		
-	static func inimigo_posicaoY(_alvo_id: String) -> int:
-		return 0
+	static func inimigo_posicaoY(alvo_id: String) -> int:
+		var tree = Engine.get_main_loop()
+		var tilemap = tree.get_first_node_in_group("Mapa")
+		if not tilemap: return 0
 		
-	static func inimigo_velocidade(_alvo_id: String) -> float:
-		return 0.0
+		var inimigos = tree.get_nodes_in_group("Enemy")
+		for inimigo in inimigos:
+			if is_instance_valid(inimigo) and inimigo.name == alvo_id:
+				return tilemap.local_to_map(inimigo.global_position).y
+		return 0
 
 class Partida:
 	static var em_arena: bool = false
@@ -218,7 +228,19 @@ class Partida:
 		if jogo_main and jogo_main.has_method("fazer_transicao_tv"):
 			jogo_main.fazer_transicao_tv(jogo_main.CENA_VILAREJO, "vilarejo")
 
-	static func getTempo():
+	static func getTempo() -> int:
+		var tree = Engine.get_main_loop()
+		if not tree:
+			return 0
+			
+		var spawner = tree.get_first_node_in_group("Spawner")
+		
+		if not spawner:
+			spawner = tree.root.find_child("Spawner", true, false)
+			
+		if is_instance_valid(spawner) and "total_time_seconds" in spawner:
+			return spawner.total_time_seconds
+			
 		return 0
 
 	static func tesouro():

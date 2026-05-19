@@ -8,11 +8,16 @@ func desbloquear(nome_produto: String, nivel: int = 1) -> void:
 	var limpo = nome_produto.to_lower().strip_edges()
 	produtos_desbloqueados[limpo] = nivel
 	progresso_alterado.emit() 
-	print(produtos_desbloqueados)
+	if Constantes.DEBUG: print(produtos_desbloqueados)
 	SaveMaster.salvar_dado()
 
-func tem_desbloqueado(nome_produto: String) -> bool:
-	if Constantes.TUDO_DESBLOQUEADO: 
+func passou_do_tutorial() -> bool:
+	if Constantes.PULAR_TUTORIAL: 
+		return true 
+	return tem_desbloqueado("Tutorial", true)
+
+func tem_desbloqueado(nome_produto: String, burlar_constante: bool = false) -> bool:
+	if Constantes.TUDO_DESBLOQUEADO and !burlar_constante: 
 		return true 
 		
 	if nome_produto == "": return true 

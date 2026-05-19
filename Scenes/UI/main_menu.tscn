@@ -18,12 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://cuqwho48nd6af" path="res://Assets/UI/UFMT.png" id="15_xp0kt"]
 [ext_resource type="Material" uid="uid://d1wyfosl4ttgf" path="res://Resources/Shaders/Configs/PosProcessamentoMenuPrincipal.tres" id="16_1yfdm"]
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="16_oslnl"]
+[ext_resource type="Texture2D" uid="uid://1xcct0mwebrk" path="res://Assets/UI/Terminal/x.png" id="16_tr32r"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="18_q6o50"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3h8o7"]
-shader = ExtResource("4_k33u3")
-shader_parameter/lod = 2.000000095
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jewm6"]
 atlas = ExtResource("6_wqme5")
@@ -103,6 +100,77 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tr32r"]
+shader = ExtResource("4_k33u3")
+shader_parameter/lod = 2.000000095
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tr32r"]
+bg_color = Color(0, 0, 0, 0.85882354)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbsmt"]
+font = ExtResource("7_wqme5")
+font_size = 34
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_go30u"]
+bg_color = Color(0.6, 0.6, 0.6, 0.105882354)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dji77"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keyrt"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbsmt"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gipi"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayn3n"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.19215687)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py2ge"]
+
+[sub_resource type="Theme" id="Theme_tr32r"]
+default_font = ExtResource("7_wqme5")
+default_font_size = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_3h8o7"]
 font = ExtResource("7_wqme5")
@@ -202,15 +270,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4pqbp")
 script = ExtResource("3_gih0s")
 
-[node name="Blur" type="ColorRect" parent="." unique_id=1835359209]
-material = SubResource("ShaderMaterial_3h8o7")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="ConteudoMenuPrincipal" type="Control" parent="." unique_id=533032441]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -293,76 +352,21 @@ velocidade_rotacao = 1.825
 scale = Vector2(0.31, 0.31)
 texture = ExtResource("4_u7lva")
 
-[node name="PainelSlots" type="Panel" parent="ConteudoMenuPrincipal" unique_id=959883297]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 348.0
-offset_top = 167.0
-offset_right = 892.0
-offset_bottom = 513.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ConteudoMenuPrincipal/PainelSlots" unique_id=68084530]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="BotaoSlot1" type="Button" parent="ConteudoMenuPrincipal/PainelSlots/VBoxContainer" unique_id=707722200]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Slot 1"
-
-[node name="BotaoSlot2" type="Button" parent="ConteudoMenuPrincipal/PainelSlots/VBoxContainer" unique_id=961855706]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Slot 2"
-
-[node name="BotaoSlot3" type="Button" parent="ConteudoMenuPrincipal/PainelSlots/VBoxContainer" unique_id=555129403]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Slot 3"
-
-[node name="BotaoFechar" type="Button" parent="ConteudoMenuPrincipal/PainelSlots" unique_id=2098662635]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -48.0
-offset_bottom = 47.0
-grow_horizontal = 0
-text = "X"
-
 [node name="ContainerBotoes" type="VBoxContainer" parent="ConteudoMenuPrincipal" unique_id=583712999]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 146.0
-offset_top = 317.0
-offset_right = 524.0
-offset_bottom = 591.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 207.395
+offset_top = 307.74
+offset_right = 585.3948
+offset_bottom = 634.7406
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 18
 
 [node name="BotaoNovoJogo" type="Button" parent="ConteudoMenuPrincipal/ContainerBotoes" unique_id=837130793]
@@ -482,10 +486,188 @@ volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
 
+[node name="TelaSlots" type="Control" parent="ConteudoMenuPrincipal" unique_id=1934849836]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 45.0
+offset_bottom = 45.000015
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="ConteudoMenuPrincipal/TelaSlots" unique_id=572347400]
+material = SubResource("ShaderMaterial_tr32r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -73.0
+offset_right = 1273.0
+offset_bottom = 672.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ConteudoMenuPrincipal/TelaSlots" unique_id=866672273]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 182.0
+offset_right = 916.0
+offset_bottom = 451.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tr32r")
+
+[node name="PainelSlots" type="MarginContainer" parent="ConteudoMenuPrincipal/TelaSlots" unique_id=1896837216]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 348.0
+offset_top = 167.0
+offset_right = 929.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots" unique_id=1094899752]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer" unique_id=1827324404]
+layout_mode = 2
+text = "SLOTS DE SALVAMENTO"
+label_settings = SubResource("LabelSettings_hbsmt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContainerSlots" type="HBoxContainer" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer" unique_id=2038975139]
+custom_minimum_size = Vector2(182.715, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BotaoSlot1" type="Button" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer/ContainerSlots" unique_id=1234110739]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 209)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_go30u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dji77")
+theme_override_styles/hover = SubResource("StyleBoxFlat_keyrt")
+text = "Slot 1"
+text_overrun_behavior = 2
+autowrap_mode = 2
+script = ExtResource("4_mrfpk")
+escala_hover = Vector2(1.025, 1.025)
+escala_clique = Vector2(0.95, 0.95)
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="BotaoSlot2" type="Button" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer/ContainerSlots" unique_id=1403590409]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 209)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_go30u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dji77")
+theme_override_styles/hover = SubResource("StyleBoxFlat_keyrt")
+text = "Slot 1"
+text_overrun_behavior = 2
+autowrap_mode = 2
+script = ExtResource("4_mrfpk")
+escala_hover = Vector2(1.025, 1.025)
+escala_clique = Vector2(0.95, 0.95)
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="BotaoSlot3" type="Button" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer/ContainerSlots" unique_id=1756307639]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 209)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -8
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_go30u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dji77")
+theme_override_styles/hover = SubResource("StyleBoxFlat_keyrt")
+text = "Slot 1"
+text_overrun_behavior = 2
+autowrap_mode = 2
+script = ExtResource("4_mrfpk")
+escala_hover = Vector2(1.025, 1.025)
+escala_clique = Vector2(0.95, 0.95)
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
+[node name="BotaoFechar" type="Button" parent="ConteudoMenuPrincipal/TelaSlots" unique_id=1411817759]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 0
+offset_left = 874.285
+offset_top = 192.59
+offset_right = 898.285
+offset_bottom = 216.59
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("7_wqme5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_hbsmt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0gipi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ayn3n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_py2ge")
+icon = ExtResource("16_tr32r")
+icon_alignment = 1
+script = ExtResource("4_mrfpk")
+som_hover = ExtResource("11_ypsd1")
+volume_hover_db = -10.0
+som_clique = ExtResource("12_xp0kt")
+volume_clique_db = -5.0
+
 [node name="ConfirmacaoReset" type="ConfirmationDialog" parent="." unique_id=51262298]
 unique_name_in_owner = true
+oversampling_override = 1.0
 title = "Atenção"
-ok_button_text = "Sim!"
+position = Vector2i(0, 36)
+theme = SubResource("Theme_tr32r")
+ok_button_text = "Sim"
+cancel_button_text = "Não"
 
 [node name="TelaCreditos" type="Control" parent="." unique_id=2010705035]
 unique_name_in_owner = true
@@ -649,6 +831,10 @@ material = ExtResource("16_1yfdm")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -674,18 +860,14 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("16_oslnl")]
+unique_name_in_owner = true
 visible = false
 z_index = 10
 layout_mode = 1
-offset_left = 312.40503
-offset_top = 13.01001
-offset_right = 312.40503
-offset_bottom = 13.01001
 
-[connection signal="pressed" from="ConteudoMenuPrincipal/PainelSlots/BotaoFechar" to="." method="_on_botao_fechar_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoNovoJogo" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCarregarJogo" to="." method="_on_carregar_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Configuracao" to="." method="_on_configuracao_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/BotaoCreditos" to="." method="_on_botao_creditos_pressed"]
 [connection signal="pressed" from="ConteudoMenuPrincipal/ContainerBotoes/Button3" to="." method="_on_exit_pressed"]
-[connection signal="visibility_changed" from="TelaConfiguracoes" to="." method="_on_tela_configuracoes_visibility_changed"]
+[connection signal="pressed" from="ConteudoMenuPrincipal/TelaSlots/BotaoFechar" to="." method="_on_botao_fechar_pressed"]

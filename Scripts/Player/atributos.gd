@@ -66,4 +66,4 @@ func incrementar_multiplicador_labirinto(incremento: float, valor_maximo: float)
 	if Constantes.DEBUG: print("Incremento! tempo_tick atual: ", GetTempoTick())
 	
 func debug_tempo_tick():
-	print(GetTempoTick())
+	if Constantes.DEBUG: print(GetTempoTick())

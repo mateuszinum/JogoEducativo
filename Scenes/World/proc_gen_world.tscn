@@ -114,6 +114,7 @@ unique_name_in_owner = true
 script = ExtResource("5_3nb34")
 
 [node name="Spawner" parent="." unique_id=179975569 instance=ExtResource("4_wu1pf")]
+unique_name_in_owner = true
 enemy_scene = ExtResource("5_7deaf")
 current_stage = SubResource("Resource_841rm")
 

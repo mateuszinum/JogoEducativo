@@ -218,7 +218,6 @@ public partial class InterpretadorServico : Node, IAcoesDoJogo
 	public string GetNomeInimigo(string alvo) => ExecutarAcaoComTick("nomeInimigo", new Godot.Collections.Array { alvo }).AsString();
 	public string ObterNomeInimigo(string inimigoId) => ExecutarAcaoComTick("nomeInimigo", new Godot.Collections.Array { inimigoId }).AsString();
 	public float ObterVidaInimigo(string inimigoId) => ExecutarAcaoComTick("obterVidaInimigo", new Godot.Collections.Array { inimigoId }).AsSingle();
-	public float ObterVelocidadeInimigo(string inimigoId) => ExecutarAcaoComTick("obterVelocidadeInimigo", new Godot.Collections.Array { inimigoId }).AsSingle();
 	public int ObterPosicaoXInimigo(string inimigoId) => ExecutarAcaoComTick("obterPosicaoXInimigo", new Godot.Collections.Array { inimigoId }).AsInt32();
 	public int ObterPosicaoYInimigo(string inimigoId) => ExecutarAcaoComTick("obterPosicaoYInimigo", new Godot.Collections.Array { inimigoId }).AsInt32();
 	}

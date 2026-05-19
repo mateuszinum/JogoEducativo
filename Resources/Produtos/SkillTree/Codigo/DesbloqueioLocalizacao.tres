@@ -29,7 +29,8 @@ nome = "Localização"
 icone = ExtResource("2_x44yy")
 pre_requisitos = Array[ExtResource("5_vfxon")]([ExtResource("6_x44yy")])
 tipo = 1
-descricao_simples = "posicaoX()
+descricao_simples = "Bruxa
+posicaoX()
 posicaoY()
 tesouroX()
 tesouroY()"

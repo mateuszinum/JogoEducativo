@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://co4w6gb45uefn"]
+
+[ext_resource type="Texture2D" uid="uid://5gnl76lb74vb" path="res://Assets/Produtos/Skilltree/interrogação.png" id="1_2dxoi"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="1_jbk6e"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="2_2dxoi"]
+
+[resource]
+script = ExtResource("2_2dxoi")
+nome = "Em Breve!"
+icone = ExtResource("1_2dxoi")
+tipo = 1
+descricao_simples = "Disponível na versão completa do jogo!"
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

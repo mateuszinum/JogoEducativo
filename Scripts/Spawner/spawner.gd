@@ -11,6 +11,9 @@ var total_time_seconds : int = 0
 var active_spawns : Dictionary = {}
 var spawn_accumulators : Dictionary = {}
 
+func _ready() -> void:
+	add_to_group("Spawner")
+
 func spawn(pos : Vector2, type_to_spawn: Enemy):
 	if get_tree().get_node_count_in_group("Enemy") >= max_enemies:
 		return

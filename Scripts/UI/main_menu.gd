@@ -8,15 +8,16 @@ extends Control
 @onready var transition_rect = $TransitionLayer/ColorRect
 @onready var botao_start = %BotaoNovoJogo
 @onready var botao_carregar = %BotaoCarregarJogo
-@onready var painel_slots = %PainelSlots
-@onready var btn_slot1 = %PainelSlots/VBoxContainer/BotaoSlot1
-@onready var btn_slot2 = %PainelSlots/VBoxContainer/BotaoSlot2
-@onready var btn_slot3 = %PainelSlots/VBoxContainer/BotaoSlot3
-@onready var btn_fechar = %PainelSlots/BotaoFechar
+@onready var painel_slots = %TelaSlots
+@onready var btn_slot1 = %BotaoSlot1
+@onready var btn_slot2 = %BotaoSlot2
+@onready var btn_slot3 = %BotaoSlot3
+@onready var btn_fechar = %BotaoFechar
 @onready var container_botoes = %ContainerBotoes
 @onready var sistema_cutscene = %SistemaCutscene
 @onready var imagem_bg = %ImagemBG
 @onready var confirmacao_reset_btn = %ConfirmacaoReset
+@onready var tela_config = %TelaConfiguracoes
 
 @export_group("Áudio")
 @export var musica_tema: AudioStream
@@ -180,16 +181,17 @@ func entrar_novo_jogo() -> void:
 	ProdutosDB.listar_produtos()
 	SaveMaster.salvar_dado()
 	
-	if botao_start.has_method("travar_no_clique"):
-		botao_start.travar_no_clique()
+	var botao_ativo = botao_start if modo_slot == "novo" else botao_carregar
+	
+	if botao_ativo.has_method("travar_no_clique"):
+		botao_ativo.travar_no_clique()
 		
 	for botao in container_botoes.get_children():
-		if botao != botao_start:
+		if botao != botao_ativo:
 			botao.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			var tween_botao = create_tween()
 			tween_botao.tween_property(botao, "modulate:a", 0.0, 0.6)
 			
-	
 	transition_rect.show()
 	transition_rect.modulate.a = 0.0
 	var tween_menu = create_tween()
@@ -199,7 +201,7 @@ func entrar_novo_jogo() -> void:
 	conteudo_menu.hide()
 	imagem_bg.hide()
 	
-	if not Constantes.PULAR_TUTORIAL and cutscene_inicial != null and sistema_cutscene != null:
+	if not ProgressoDB.passou_do_tutorial() and cutscene_inicial != null and sistema_cutscene != null:
 		sistema_cutscene.iniciar_cutscene(cutscene_inicial)
 		
 		var tween_revelar = create_tween()
@@ -216,9 +218,8 @@ func entrar_novo_jogo() -> void:
 	
 	get_tree().change_scene_to_file("res://Scenes/UI/jogo.tscn")
 
-
 func _on_configuracao_pressed() -> void:
-	$TelaConfiguracoes.abrir()
+	tela_config.abrir(true)
 
 func configurar_painel_slots() -> void:
 	var botoes = [btn_slot1, btn_slot2, btn_slot3]
@@ -244,15 +245,12 @@ func configurar_painel_slots() -> void:
 			else:
 				botoes[i].text = "Novo Jogo " + str(slot_id)
 
-
 func carregar_jogo() -> void:
 	painel_slots.show()
 
-
 func _on_botao_fechar_pressed() -> void:
 	painel_slots.hide()
-	
-	
+
 func _on_slot_clicado(slot_id: int) -> void:
 	SaveManager.slot_save_atual = slot_id
 	var caminho = SaveMaster.obter_diretorio_save() + "/slot" + str(slot_id) + ".txt"
@@ -260,30 +258,32 @@ func _on_slot_clicado(slot_id: int) -> void:
 	
 	if modo_slot == "novo":
 		if tem_save:
-			print("aqui é pra ser perguntado se ele realmente quer apagar esse save")
 			confirmacao_reset()
 		else:
-			iniciar_jogo()
+			painel_slots.hide()
+			SaveManager.dados_em_cache = {}
+			ProgressoDB.produtos_desbloqueados.clear()
+			ProgressoDB.progresso_alterado.emit()
+			SaveMaster.salvar_dado()
+			entrar_novo_jogo()
 			
 	elif modo_slot == "carregar":
 		painel_slots.hide()
 		SaveMaster.carregar_slot()
+		SaveManager.CarregarProdutos()
 		entrar_novo_jogo()
 
-
 func confirmacao_reset() -> void:
-	confirmacao_reset_btn.dialog_text = "Já existe um save no Slot " + str(SaveManager.slot_save_atual) + ".\nDeseja apagá-lo e começar um Novo Jogo do zero?"
+	confirmacao_reset_btn.dialog_text = "Já existe um save no Slot " + str(SaveManager.slot_save_atual) + ".\nDeseja apagá-lo e começar um novo jogo do zero?"
 	confirmacao_reset_btn.popup_centered()
 
-
 func _on_reset_confirmado() -> void:
-	var caminho_para_apagar = SaveMaster.obter_diretorio_save() + "/slot" + str(SaveManager.slot_save_atual) + ".txt"
-	
-	if FileAccess.file_exists(caminho_para_apagar):
-		DirAccess.remove_absolute(caminho_para_apagar)
-
-	iniciar_jogo()
-
+	painel_slots.hide()
+	SaveManager.dados_em_cache = {}
+	ProgressoDB.produtos_desbloqueados.clear()
+	ProgressoDB.progresso_alterado.emit()
+	SaveMaster.salvar_dado()
+	entrar_novo_jogo()
 
 func iniciar_jogo() -> void:
 	painel_slots.hide()

@@ -14,8 +14,7 @@ func CarregarProdutos():
 		ProgressoDB.produtos_desbloqueados[chave] = int(dados[chave])
 		
 	ProgressoDB.progresso_alterado.emit()
-	print("Progresso carregado: ", ProgressoDB.produtos_desbloqueados)
-	
+	if Constantes.DEBUG: print("Progresso carregado: ", ProgressoDB.produtos_desbloqueados)
 	
 func CarregarInventario():
 	var dados = GetInventario()
@@ -32,7 +31,7 @@ func CarregarInventario():
 		var nome_item = dict_cinto.get("slot_" + str(i))
 		if nome_item != null:
 			var produto = ProdutosDB.get_produto(nome_item)
-			print("Tentando carregar item: ", nome_item, " | Resultado: ", produto)
+			if Constantes.DEBUG: print("Tentando carregar item: ", nome_item, " | Resultado: ", produto)
 			Inventario.itens_cinto[i] = produto
 		else:
 			Inventario.itens_cinto[i] = null
@@ -42,14 +41,14 @@ func CarregarInventario():
 		var nome_item = dict_mochila.get("slot_" + str(i))
 		if nome_item != null:
 			var produto = ProdutosDB.get_produto(nome_item)
-			print("Tentando carregar item: ", nome_item, " | Resultado: ", produto)
+			if Constantes.DEBUG: print("Tentando carregar item: ", nome_item, " | Resultado: ", produto)
 			Inventario.itens_mochila[i] = produto
 		else:
 			Inventario.itens_mochila[i] = null
 		
 	Inventario.inventario_atualizado.emit()
 	Inventario.inventario_comprados_atualizado.emit()
-	print("Inventário reconstruído com sucesso!")
+	if Constantes.DEBUG: print("Inventário reconstruído com sucesso!")
 
 
 func CarregarRecursos():

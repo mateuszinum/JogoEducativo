@@ -4,44 +4,64 @@
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="2_8rf44"]
 [ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="2_qyryt"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_r2i2h"]
+[ext_resource type="StyleBox" uid="uid://bu5n61dnpvmca" path="res://Resources/Presets/menu_style_box_flat.tres" id="3_23me3"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="3_702e2"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="4_qyryt"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="5_23me3"]
+[ext_resource type="AudioStream" uid="uid://ci44kl8d630pm" path="res://Audio/SFX/UI/Venda.wav" id="8_deree"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_23me3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qyryt"]
 shader = ExtResource("2_qyryt")
 shader_parameter/lod = 2.000000095
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_702e2"]
-bg_color = Color(0, 0, 0, 0.69803923)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deree"]
 bg_color = Color(18.892157, 18.892157, 18.892157, 1)
 draw_center = false
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq7um"]
 bg_color = Color(16.77929, 16.77929, 16.77929, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_offset = Vector2(0, 3.4)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqqw2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_702e2"]
 font = ExtResource("2_r2i2h")
 font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqqw2"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 16
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hanoc"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 16
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxh81"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 16
+shadow_offset = Vector2(0, 3.4)
 
 [node name="PauseMenu" type="Control" unique_id=1618265714]
 process_mode = 3
@@ -55,8 +75,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8qpb5")
 
-[node name="Blur" type="ColorRect" parent="." unique_id=560227677]
-material = SubResource("ShaderMaterial_23me3")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=980075730]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,28 +84,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1365510308]
+[node name="Blur" type="ColorRect" parent="." unique_id=560227677]
+material = SubResource("ShaderMaterial_qyryt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FundoNormal" type="PanelContainer" parent="." unique_id=878985131]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -99.96503
-offset_top = -50.929993
-offset_right = 300.03497
-offset_bottom = 150.07
+offset_left = -92.79999
+offset_top = -46.600006
+offset_right = 92.80011
+offset_bottom = 46.599945
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_702e2")
+theme_override_styles/panel = ExtResource("3_23me3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=946836857]
-custom_minimum_size = Vector2(400, 50)
+[node name="BotoesPause" type="Control" parent="." unique_id=1210634809]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+
+[node name="PanelContainer" type="MarginContainer" parent="BotoesPause" unique_id=617333576]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -116.5
+offset_right = 232.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BotoesPause/PanelContainer" unique_id=946836857]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-theme_override_constants/separation = 24
+size_flags_horizontal = 4
 
-[node name="BotaoContinuar" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1238261378]
+[node name="BotaoContinuar" type="Button" parent="BotoesPause/PanelContainer/VBoxContainer" unique_id=1238261378]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -100,7 +159,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_deree")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yq7um")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yq7um")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nqqw2")
 text = "CONTINUAR"
 script = ExtResource("3_702e2")
 som_hover = ExtResource("4_qyryt")
@@ -108,7 +166,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("5_23me3")
 volume_clique_db = -5.0
 
-[node name="BotaoConfig" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1410414992]
+[node name="BotaoConfig" type="Button" parent="BotoesPause/PanelContainer/VBoxContainer" unique_id=1410414992]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -123,7 +181,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_deree")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yq7um")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yq7um")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nqqw2")
 text = "CONFIGURAÇÕES"
 script = ExtResource("3_702e2")
 som_hover = ExtResource("4_qyryt")
@@ -131,7 +188,7 @@ volume_hover_db = -10.0
 som_clique = ExtResource("5_23me3")
 volume_clique_db = -5.0
 
-[node name="BotaoMenuPrincipal" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1082029641]
+[node name="BotaoMenuPrincipal" type="Button" parent="BotoesPause/PanelContainer/VBoxContainer" unique_id=1082029641]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -146,8 +203,94 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_deree")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yq7um")
 theme_override_styles/hover = SubResource("StyleBoxFlat_yq7um")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nqqw2")
 text = "MENU PRINCIPAL"
+script = ExtResource("3_702e2")
+som_hover = ExtResource("4_qyryt")
+volume_hover_db = -10.0
+som_clique = ExtResource("5_23me3")
+volume_clique_db = -5.0
+
+[node name="PopupConfirmacao" type="Control" parent="." unique_id=15702157]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupConfirmacao" unique_id=1560275240]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 39.129997
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+alignment = 1
+
+[node name="Label" type="Label" parent="PopupConfirmacao/VBoxContainer" unique_id=1462899305]
+layout_mode = 2
+text = "Tem certeza?"
+label_settings = SubResource("LabelSettings_702e2")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupConfirmacao/VBoxContainer" unique_id=1214493270]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="BotaoNao" type="Button" parent="PopupConfirmacao/VBoxContainer/HBoxContainer" unique_id=539873211]
+custom_minimum_size = Vector2(58, 20)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_r2i2h")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqqw2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hanoc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kxh81")
+text = "Não"
+script = ExtResource("3_702e2")
+som_hover = ExtResource("4_qyryt")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_deree")
+volume_clique_db = -5.0
+
+[node name="BotaoSim" type="Button" parent="PopupConfirmacao/VBoxContainer/HBoxContainer" unique_id=116288976]
+custom_minimum_size = Vector2(58, 20)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_fonts/font = ExtResource("2_r2i2h")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqqw2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hanoc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kxh81")
+text = "Sim"
 script = ExtResource("3_702e2")
 som_hover = ExtResource("4_qyryt")
 volume_hover_db = -10.0
@@ -159,79 +302,12 @@ unique_name_in_owner = true
 visible = false
 z_index = 10
 layout_mode = 1
+scale = Vector2(1.1, 1.1)
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
-[node name="PopupConfirmacao" type="Control" parent="." unique_id=15702157]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 75.734985
-offset_right = 20.0
-offset_bottom = 115.734985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="FundoPreto" type="ColorRect" parent="PopupConfirmacao" unique_id=1867432862]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.50980395)
-
-[node name="PanelContainer" type="PanelContainer" parent="PopupConfirmacao" unique_id=875970273]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -25.0
-offset_right = 100.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupConfirmacao/PanelContainer" unique_id=1560275240]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PopupConfirmacao/PanelContainer/VBoxContainer" unique_id=1462899305]
-layout_mode = 2
-text = "Tem certeza?"
-label_settings = SubResource("LabelSettings_702e2")
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PopupConfirmacao/PanelContainer/VBoxContainer" unique_id=1214493270]
-layout_mode = 2
-alignment = 1
-
-[node name="BotaoSim" type="Button" parent="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1382618862]
-custom_minimum_size = Vector2(98, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_r2i2h")
-theme_override_font_sizes/font_size = 17
-text = "Sim"
-
-[node name="BotaoNao" type="Button" parent="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1426296333]
-custom_minimum_size = Vector2(98, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("2_r2i2h")
-theme_override_font_sizes/font_size = 17
-text = "Não"
-
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BotaoContinuar" to="." method="_on_botao_continuar_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BotaoConfig" to="." method="_on_botao_config_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/BotaoMenuPrincipal" to="." method="_on_botao_menu_principal_pressed"]
-[connection signal="pressed" from="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer/BotaoSim" to="." method="_on_botao_sim_pressed"]
-[connection signal="pressed" from="PopupConfirmacao/PanelContainer/VBoxContainer/HBoxContainer/BotaoNao" to="." method="_on_botao_nao_pressed"]
+[connection signal="pressed" from="BotoesPause/PanelContainer/VBoxContainer/BotaoContinuar" to="." method="_on_botao_continuar_pressed"]
+[connection signal="pressed" from="BotoesPause/PanelContainer/VBoxContainer/BotaoConfig" to="." method="_on_botao_config_pressed"]
+[connection signal="pressed" from="BotoesPause/PanelContainer/VBoxContainer/BotaoMenuPrincipal" to="." method="_on_botao_menu_principal_pressed"]
+[connection signal="pressed" from="PopupConfirmacao/VBoxContainer/HBoxContainer/BotaoNao" to="." method="_on_botao_nao_pressed"]
+[connection signal="pressed" from="PopupConfirmacao/VBoxContainer/HBoxContainer/BotaoSim" to="." method="_on_botao_sim_pressed"]

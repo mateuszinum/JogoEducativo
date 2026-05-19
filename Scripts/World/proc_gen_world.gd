@@ -6,6 +6,7 @@ extends Node2D
 @onready var camera_2d = $Player/Camera2D
 @onready var tela_morte = %TelaMorte
 @onready var iris = %IrisRect
+@onready var spawner = %Spawner
 
 var seed_hash: int
 var recursos_iniciais: Dictionary
@@ -42,7 +43,6 @@ func generate_world():
 		luz.enabled = stage_data.ativar_luz_player
 		
 	if has_node("Spawner"):
-		var spawner = $Spawner
 		spawner.current_stage = stage_data
 		spawner.total_time_seconds = 0
 		spawner.active_spawns.clear()

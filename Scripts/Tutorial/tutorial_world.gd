@@ -99,7 +99,7 @@ func iniciar_cutscene_final() -> void:
 			if jogo.sistema_cutscene:
 				jogo.sistema_cutscene.hide()
 			
-		Constantes.PULAR_TUTORIAL = true
+		ProgressoDB.desbloquear("Tutorial")
 		FuncoesNativas.Partida.em_arena = false
 		jogo.limpar_viewport()
 		

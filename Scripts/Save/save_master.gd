@@ -17,10 +17,10 @@ func obter_diretorio_save() -> String:
 		var erro = DirAccess.make_dir_recursive_absolute(caminho_completo)
 		
 		if erro == OK:
-			print("Pasta de saves criada com sucesso em: ", caminho_completo)
+			if Constantes.DEBUG: print("Pasta de saves criada com sucesso em: ", caminho_completo)
 		
 		else:
-			print("Erro ao criar pasta de saves. Código do erro: ", erro)
+			if Constantes.DEBUG: print("Erro ao criar pasta de saves. Código do erro: ", erro)
 			
 	return caminho_completo
 
@@ -51,7 +51,7 @@ func salvar_dado_config():
 	var dados_config = ConfigManager.listarConfig()
 	var caminho = obter_diretorio_save() + "/config.txt"
 	
-	print(dados_config)
+	if Constantes.DEBUG: print(dados_config)
 	salvar_arquivo_json(caminho, dados_config)
 
 
@@ -64,10 +64,10 @@ func salvar_arquivo_json(caminho: String, dados: Dictionary) -> void:
 			
 		arquivo.store_string(json_string)
 		arquivo.close()
-		print("Salvo com sucesso em: ", caminho)
+		if Constantes.DEBUG: print("Salvo com sucesso em: ", caminho)
 		
 	else:
-		print("Erro ao criar o arquivo em: ", caminho)
+		if Constantes.DEBUG: print("Erro ao criar o arquivo em: ", caminho)
 
 
 func compilar_inventario() -> Dictionary:
@@ -154,7 +154,7 @@ func carregar_config():
 	var caminho = obter_diretorio_save() + "/config.txt"
 	
 	if not FileAccess.file_exists(caminho):
-		print("Primeira vez rodando, arquivo config.txt não encontrado. Utilizando configurações padrão.")
+		if Constantes.DEBUG: print("Primeira vez rodando, arquivo config.txt não encontrado. Utilizando configurações padrão.")
 		return
 
 	var arquivo = FileAccess.open(caminho, FileAccess.READ)
@@ -169,7 +169,7 @@ func carregar_config():
 		ConfigManager.setConfig(dados_config)
 		
 	else:
-		print("Erro de formatação no JSON do config: ", json.get_error_message())
+		if Constantes.DEBUG: print("Erro de formatação no JSON do config: ", json.get_error_message())
 
 
 func carregar_slot():
@@ -188,11 +188,11 @@ func carregar_slot():
 	
 	if not erro:
 		SaveManager.dados_em_cache = json.data
-		print("Save carregado direto na memória do SaveManager!")
-		print(SaveManager.dados_em_cache)
+		if Constantes.DEBUG: print("Save carregado direto na memória do SaveManager!")
+		if Constantes.DEBUG: print(SaveManager.dados_em_cache)
 		preenche_dados_in_game()
 	else:
-		print("Erro de formatação no JSON do save: ", json.get_error_message())
+		if Constantes.DEBUG: print("Erro de formatação no JSON do save: ", json.get_error_message())
 		SaveManager.dados_em_cache = {}
 
 

@@ -1,17 +1,77 @@
 [gd_scene format=3 uid="uid://cigywdnxq6776"]
 
 [ext_resource type="Script" uid="uid://cebsp0ngaxjie" path="res://Scripts/Config/configuracoes.gd" id="1_32e1h"]
+[ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="2_12e1y"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_p80rm"]
+[ext_resource type="Texture2D" uid="uid://i54c44s2rlhs" path="res://Resources/Presets/slider_grabber.tres" id="3_3w3yx"]
+[ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="3_arg5j"]
+[ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="4_3w3yx"]
+[ext_resource type="AudioStream" uid="uid://dy7oih3iu8jee" path="res://Audio/SFX/UI/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="6_iy72f"]
+[ext_resource type="AudioStream" uid="uid://ci44kl8d630pm" path="res://Audio/SFX/UI/Venda.wav" id="7_iy72f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12e1y"]
+shader = ExtResource("2_12e1y")
+shader_parameter/lod = 2.000000095
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p80rm"]
-bg_color = Color(0, 0, 0, 0.78039217)
+bg_color = Color(0, 0, 0, 0.85882354)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_p80rm"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_2imtq"]
+font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arg5j"]
+content_margin_bottom = 6.0
+bg_color = Color(1, 1, 1, 0.6431373)
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+anti_aliasing = false
 
-[sub_resource type="LabelSettings" id="LabelSettings_p80rm"]
-font_size = 24
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3w3yx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy72f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_3h55h"]
+font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12e1y"]
+bg_color = Color(18.892157, 18.892157, 18.892157, 1)
+draw_center = false
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 16
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frmwe"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_offset = Vector2(0, 3.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwdbk"]
+bg_color = Color(16.77929, 16.77929, 16.77929, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_offset = Vector2(0, 3.4)
 
 [node name="TelaConfiguracoes" type="Control" unique_id=1795307881]
 layout_mode = 3
@@ -24,6 +84,21 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_32e1h")
+
+[node name="Blur" type="ColorRect" parent="." unique_id=531533827]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_12e1y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -472.14282
+offset_top = -267.85715
+offset_right = 481.42847
+offset_bottom = 270.71426
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control2" type="Control" parent="." unique_id=1687276312]
 anchors_preset = 0
@@ -41,22 +116,40 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -115.0
-offset_top = -157.0
+offset_top = -143.0
 offset_right = 115.0
-offset_bottom = 157.0
+offset_bottom = 143.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="Panel" parent="Control" unique_id=348357415]
-layout_mode = 0
-offset_right = 230.0
-offset_bottom = 314.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -144.0
+offset_right = 115.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p80rm")
 
 [node name="Conteúdo" type="MarginContainer" parent="Control" unique_id=1507091602]
-layout_mode = 0
-offset_right = 220.0
-offset_bottom = 312.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -144.0
+offset_right = 115.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -80,6 +173,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "VOLUME"
+label_settings = SubResource("LabelSettings_2imtq")
 horizontal_alignment = 1
 
 [node name="VolumeMaster" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=781123421]
@@ -98,6 +192,12 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_3w3yx")
+theme_override_icons/grabber_highlight = ExtResource("3_3w3yx")
+theme_override_icons/grabber_disabled = ExtResource("3_3w3yx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_arg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3w3yx")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_iy72f")
 max_value = 1.0
 step = 0.1
 
@@ -117,6 +217,12 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_3w3yx")
+theme_override_icons/grabber_highlight = ExtResource("3_3w3yx")
+theme_override_icons/grabber_disabled = ExtResource("3_3w3yx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_arg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3w3yx")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_iy72f")
 max_value = 1.0
 step = 0.1
 
@@ -136,6 +242,12 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_3w3yx")
+theme_override_icons/grabber_highlight = ExtResource("3_3w3yx")
+theme_override_icons/grabber_disabled = ExtResource("3_3w3yx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_arg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3w3yx")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_iy72f")
 max_value = 1.0
 step = 0.1
 
@@ -155,6 +267,12 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_3w3yx")
+theme_override_icons/grabber_highlight = ExtResource("3_3w3yx")
+theme_override_icons/grabber_disabled = ExtResource("3_3w3yx")
+theme_override_styles/slider = SubResource("StyleBoxFlat_arg5j")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3w3yx")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_iy72f")
 max_value = 1.0
 step = 0.1
 
@@ -166,6 +284,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "VÍDEO"
+label_settings = SubResource("LabelSettings_3h55h")
 horizontal_alignment = 1
 
 [node name="CheckFullscreen" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=262750016]
@@ -182,6 +301,7 @@ text = "Shake na tela"
 
 [node name="CheckGrafico" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1328266874]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
 text = "Gráficos Bonitos"
@@ -192,18 +312,54 @@ layout_mode = 2
 
 [node name="HBoxBotoesFinais" type="HBoxContainer" parent="Control/Conteúdo/VBoxPrincipal" unique_id=480071037]
 layout_mode = 2
+theme_override_constants/separation = 12
 alignment = 1
 
-[node name="BotaoCancel" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=641459602]
+[node name="BotaoCancel" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=1536148770]
+custom_minimum_size = Vector2(72, 20)
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
 theme_override_fonts/font = ExtResource("2_p80rm")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_12e1y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_frmwe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fwdbk")
 text = "Cancelar"
+script = ExtResource("3_arg5j")
+som_hover = ExtResource("4_3w3yx")
+volume_hover_db = -10.0
+som_clique = ExtResource("6_iy72f")
+volume_clique_db = -5.0
 
-[node name="BotaoSave" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=1264750845]
+[node name="BotaoSave" type="Button" parent="Control/Conteúdo/VBoxPrincipal/HBoxBotoesFinais" unique_id=1708235256]
+custom_minimum_size = Vector2(72, 20)
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Salvar
-"
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_12e1y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_frmwe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fwdbk")
+text = "Aplicar"
+script = ExtResource("3_arg5j")
+som_hover = ExtResource("4_3w3yx")
+volume_hover_db = -10.0
+som_clique = ExtResource("7_iy72f")
+volume_clique_db = -5.0
 
 [connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
 [connection signal="value_changed" from="Control/Conteúdo/VBoxPrincipal/VolumeMusica/SliderMusica" to="." method="_on_slider_musica_value_changed"]

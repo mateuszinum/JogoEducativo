@@ -21,6 +21,16 @@
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="18_2ink5"]
 [ext_resource type="PackedScene" uid="uid://dri1s4v4tguek" path="res://Scenes/UI/pause_menu.tscn" id="19_cq1bm"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ink5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+anti_aliasing = false
+
 [sub_resource type="Gradient" id="Gradient_yljls"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.27108434)
@@ -57,6 +67,7 @@ texture = ExtResource("2_kolhh")
 scale = Vector2(0.74626863, 0.74626863)
 
 [node name="ButtonBruxa" type="Button" parent="Background/Buttons" unique_id=397101318]
+unique_name_in_owner = true
 offset_left = 826.0
 offset_top = 1078.0
 offset_right = 985.0
@@ -83,6 +94,7 @@ som_clique = ExtResource("7_s2xrj")
 volume_clique_db = -5.0
 
 [node name="ButtonComerciante" type="Button" parent="Background/Buttons" unique_id=388143445]
+unique_name_in_owner = true
 offset_left = 1548.0
 offset_top = 1006.0
 offset_right = 1873.0
@@ -100,6 +112,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("5_gcct8")
 theme_override_styles/pressed = ExtResource("6_tyrjx")
 theme_override_styles/hover = ExtResource("7_howei")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2ink5")
 theme_override_styles/focus = ExtResource("8_2ink5")
 text = "COMERCIANTE"
 script = ExtResource("5_pg2by")
@@ -109,6 +122,7 @@ som_clique = ExtResource("7_s2xrj")
 volume_clique_db = -5.0
 
 [node name="ButtonBiblioteca" type="Button" parent="Background/Buttons" unique_id=81656469]
+unique_name_in_owner = true
 offset_left = 1296.0
 offset_top = 660.0
 offset_right = 1564.0
@@ -135,6 +149,7 @@ som_clique = ExtResource("7_s2xrj")
 volume_clique_db = -5.0
 
 [node name="ButtonMagoVelho" type="Button" parent="Background/Buttons" unique_id=935207510]
+unique_name_in_owner = true
 offset_left = 976.0
 offset_top = 808.0
 offset_right = 1272.0
@@ -209,13 +224,22 @@ dialogo_personagem = null
 [node name="TelaConfiguracoes" parent="." unique_id=1795307881 instance=ExtResource("18_2ink5")]
 visible = false
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 190.00002
 offset_top = 91.0
 offset_right = 190.00002
 offset_bottom = 91.0
+grow_horizontal = 1
+grow_vertical = 1
 scale = Vector2(0.7953693, 0.94042295)
 
 [node name="PauseMenu" parent="." unique_id=1618265714 instance=ExtResource("19_cq1bm")]
+unique_name_in_owner = true
+visible = false
 z_index = 10
 layout_mode = 1
 

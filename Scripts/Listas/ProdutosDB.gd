@@ -13,4 +13,4 @@ func get_produto(nome_procurado: String) -> ProdutoLoja:
 
 func listar_produtos():
 	for i in lista_de_produtos:
-		print(i.nome)
+		if Constantes.DEBUG: print(i.nome)
