@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0dfuc7lgsag6"]
 
 [ext_resource type="Script" uid="uid://dl6gqihkbwj4y" path="res://Scripts/Spawner/spawner.gd" id="1_kiceh"]
+[ext_resource type="PackedScene" uid="uid://cwopl52vhp0s6" path="res://Scenes/UI/ui_barra_xp.tscn" id="2_f8pqk"]
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="2_rd5sa"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_wbtia"]
 [ext_resource type="Script" uid="uid://c5lulshoylfgo" path="res://Scripts/Outros/criador_de_grupo.gd" id="3_v3byw"]
@@ -11,17 +12,21 @@ max_enemies = 200
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=233284635]
 
+[node name="UI_BarraXP" parent="UI" unique_id=1039590058 instance=ExtResource("2_f8pqk")]
+offset_top = 20.0
+offset_bottom = 39.999954
+
 [node name="HUD_Inventario" parent="UI" unique_id=1523922618 instance=ExtResource("2_rd5sa")]
 offset_left = -133.285
-offset_top = 18.0
+offset_top = 40.0
 offset_right = -133.285
-offset_bottom = 18.0
+offset_bottom = 40.0
 
 [node name="Tempo" type="HBoxContainer" parent="UI" unique_id=332268405]
-offset_left = 550.0
-offset_top = 38.0
-offset_right = 595.0
-offset_bottom = 62.0
+offset_left = 570.0
+offset_top = 46.0
+offset_right = 615.0
+offset_bottom = 70.00005
 grow_horizontal = 0
 script = ExtResource("3_v3byw")
 grupo = "UI_Timer"

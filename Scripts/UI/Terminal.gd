@@ -4,6 +4,7 @@ extends PanelContainer
 @onready var botao_executar = %BotaoExecutar 
 @onready var interpretador = %InterpretadorServico
 @onready var viewport = %SubViewport
+@onready var botao_salvar = %BotaoSalvar
 
 @onready var seletor_slot = %SeletorSlotCodigo
 
@@ -517,7 +518,10 @@ func atualizar_travas_da_interface():
 			
 	if seletor_slot:
 		seletor_slot.disabled = not deve_estar_editavel
-			
+	
+	if botao_salvar:
+		botao_salvar.disabled = not deve_estar_editavel
+	
 	if botao_executar:
 		if bloqueio_game_over:
 			botao_executar.disabled = true

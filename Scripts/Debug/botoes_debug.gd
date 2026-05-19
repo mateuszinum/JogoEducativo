@@ -29,9 +29,6 @@ func _on_botao_recurso_pressed() -> void:
 		RecursosManager.receberRecurso("Safira", 275)
 		RecursosManager.receberRecurso("Sangue", 5125)
 
-func _on_botao_agilidade_pressed() -> void:
-	Atributos.maximizar_agilidade()
-
 func _on_botao_musica_pressed() -> void:
 	if Constantes.VOLUME_MUSICA == 0.0:
 		Constantes.VOLUME_MUSICA = 0.5
@@ -45,3 +42,15 @@ func _on_botao_morrer_pressed() -> void:
 	var player = get_tree().get_first_node_in_group("Player")
 	if player and player.has_method("take_damage"):
 		player.take_damage(999)
+
+func _on_botao_ganhar_xp_pressed() -> void:
+	Atributos.ganhar_xp(3)
+
+func _on_botao_atributos_pressed() -> void:
+	Atributos.maximizar_atributos()
+
+func _on_botao_imortalidade_pressed() -> void:
+	Constantes.JOGADOR_IMORTAL = true
+
+func _on_botao_dup_agilidade_pressed() -> void:
+	Atributos.duplicar_agilidade()

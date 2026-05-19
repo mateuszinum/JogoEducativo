@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cwopl52vhp0s6"]
+
+[ext_resource type="Script" uid="uid://c55iph4415qq2" path="res://Scripts/UI/ui_barra_xp.gd" id="1_e208n"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="1_m2rq3"]
+[ext_resource type="AudioStream" uid="uid://d2r52txfqmo31" path="res://Audio/SFX/LevelUP.wav" id="2_ql1qr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e208n"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.5921569)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql1qr"]
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_e208n"]
+font = ExtResource("1_m2rq3")
+
+[node name="UI_BarraXP" type="Control" unique_id=1039590058]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.835
+offset_bottom = 40.83496
+grow_horizontal = 2
+script = ExtResource("1_e208n")
+cor_normal = Color(0.18039216, 0.53333336, 0.9411765, 0.8627451)
+cor_max_level = Color(0.94509804, 0.76862746, 0.05882353, 0.8627451)
+texto_nivel_prefixo = "NÍVEL "
+som_level_up = ExtResource("2_ql1qr")
+volume_som_db = -12.0
+
+[node name="MarginBar" type="MarginContainer" parent="." unique_id=1789581496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_right = 22
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginBar" unique_id=383254265]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_e208n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ql1qr")
+show_percentage = false
+
+[node name="TextoLevel" type="Label" parent="." unique_id=1825533223]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nível 0"
+label_settings = SubResource("LabelSettings_e208n")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,5 +1,9 @@
 extends Node
 
+signal xp_alterado(xp_atual: int, xp_necessario: int)
+signal subiu_de_nivel(novo_nivel: int)
+signal max_level_alcancado()
+
 # ------------------------------------- #
 # Constantes
 const LEVEL_UP_XP : int = 10 # valor base de xp para subir de level (multiplicado pelo level_atual)
@@ -69,9 +73,17 @@ func comprar_upgrade(nome_upgrade, nivel_atual):
 			forca_multiplier = novo_valor
 			if Constantes.DEBUG: print("Upgrade Nível ", nivel_atual, "! Multiplicador de Força está em: ", novo_valor, " x")
 
-func maximizar_agilidade() -> void:
+func maximizar_atributos() -> void:
 	tempo_tick = ganhos_agilidade[-1]
-	if Constantes.DEBUG: print("A agilidade foi maximizada!")
+	max_health = ganhos_health[-1]
+	global_knockback_multiplier = ganhos_kb[-1]
+	coleta_multiplier = ganhos_coleta[-1]
+	forca_multiplier = ganhos_forca[-1]
+	if Constantes.DEBUG: print("Os atributos foram maximizados!")
+
+func duplicar_agilidade() -> void:
+	tempo_tick = tempo_tick/2
+	if Constantes.DEBUG: print("A agilidade foi duplicada!")
 
 func debug_tempo_tick():
 	if Constantes.DEBUG: print(GetTempoTick())
@@ -82,17 +94,28 @@ func debug_tempo_tick():
 # SISTEMA DE BÔNUS (SUBIR DE NÍVEL)
 
 func ganhar_xp(valor : int = 1):
-	if level_atual == MAX_LEVEL: return
+	if level_atual >= MAX_LEVEL: return
+	
 	xp_atual = xp_atual + valor
-	if xp_atual >= (LEVEL_UP_XP * level_atual):
+	var xp_necessario = LEVEL_UP_XP * level_atual
+	
+	if xp_atual >= xp_necessario:
 		subir_de_nivel()
 		resetar_xp()
+		xp_necessario = LEVEL_UP_XP * level_atual 
+		
+	xp_alterado.emit(xp_atual, xp_necessario)
 	if Constantes.DEBUG: print("XP atual: ", xp_atual)
 
 func subir_de_nivel():
 	level_atual = level_atual + 1
 	if Constantes.DEBUG: print("Nível atual: ", level_atual)
 	incrementar_bonus()
+	
+	subiu_de_nivel.emit(level_atual)
+	
+	if level_atual >= MAX_LEVEL:
+		max_level_alcancado.emit()
 
 func incrementar_bonus():
 	bonus_level = bonus_level + incremento_bonus

@@ -390,6 +390,7 @@ offset_bottom = 62.045
 scale = Vector2(0.4, 0.4)
 
 [node name="BotaoSalvar" type="Button" parent="Control" unique_id=1605917337]
+unique_name_in_owner = true
 layout_mode = 1
 offset_right = 50.0
 offset_bottom = 50.0
@@ -459,7 +460,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Colocar código"
+text = "Código pronto"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoRecurso" type="Button" parent="BotoesDebug" unique_id=1189409194]
@@ -475,7 +476,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 text = "Ganhar recursos"
 script = ExtResource("5_kjdr6")
 
-[node name="BotaoAgilidade" type="Button" parent="BotoesDebug" unique_id=2115188333]
+[node name="BotaoAtributos" type="Button" parent="BotoesDebug" unique_id=458657408]
 custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -485,7 +486,46 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Agilidade Máxima"
+text = "Atributos máximos"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoDupAgilidade" type="Button" parent="BotoesDebug" unique_id=235107269]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Duplicar agilidade"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoImortalidade" type="Button" parent="BotoesDebug" unique_id=5493249]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Ficar imortal"
+script = ExtResource("5_kjdr6")
+
+[node name="BotaoGanharXP" type="Button" parent="BotoesDebug" unique_id=1706339532]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
+text = "Ganhar +3xp"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoMorrer" type="Button" parent="BotoesDebug" unique_id=1766665747]
@@ -563,6 +603,9 @@ unique_name_in_owner = true
 [connection signal="pressed" from="Control/BotaoSalvar" to="HBoxContainer/PainelTerminal" method="_on_botao_salvar_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoRecurso" to="BotoesDebug" method="_on_botao_recurso_pressed"]
-[connection signal="pressed" from="BotoesDebug/BotaoAgilidade" to="BotoesDebug" method="_on_botao_agilidade_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoAtributos" to="BotoesDebug" method="_on_botao_atributos_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoDupAgilidade" to="BotoesDebug" method="_on_botao_dup_agilidade_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoImortalidade" to="BotoesDebug" method="_on_botao_imortalidade_pressed"]
+[connection signal="pressed" from="BotoesDebug/BotaoGanharXP" to="BotoesDebug" method="_on_botao_ganhar_xp_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoMorrer" to="BotoesDebug" method="_on_botao_morrer_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoCutscene" to="BotoesDebug" method="_on_botao_cutscene_pressed"]
