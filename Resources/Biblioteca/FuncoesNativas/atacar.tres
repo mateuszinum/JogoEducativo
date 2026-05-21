@@ -12,15 +12,12 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_3rfv1")
 tipo = 3
-texto = "arena(a)"
+texto = "atacar(alvo, tipoDeAtaque)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_3rfv1")
-texto = "Entra na arena especificada.
-
-O parâmetro \"a\" deve ser o nome de uma arena.
-"
+texto = "Executa um ataque do tipo especificado contra um alvo determinado. O parâmetro \"alvo\" requer uma referência direta ao objeto de um inimigo específico presente no jogo, enquanto o parâmeto \"tipoDeAtaque\" deve receber uma string contendo o nome exato do ataque a ser desferido."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -32,7 +29,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_3rfv1")
 tipo = 3
-texto = "arena(Campos)"
+texto = "Inimigo alvo = inimigoMaisProximo()
+
+atacar(alvo, \"Gelo\")"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
