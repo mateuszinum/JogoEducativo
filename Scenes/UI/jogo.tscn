@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://clfmn82bf6t82" path="res://Scripts/UI/jogo.gd" id="1_kv1y8"]
 [ext_resource type="Script" uid="uid://cev7x6bw6m835" path="res://Scripts/UI/Terminal.gd" id="2_8gbds"]
 [ext_resource type="Texture2D" uid="uid://de6peqjsu3q7h" path="res://Assets/UI/Terminal/Terminal.jpg" id="2_l4t8i"]
+[ext_resource type="Resource" uid="uid://c2pbh50b0qxac" path="res://Resources/Dialogo/DialogoTutorial.tres" id="3_1mes2"]
 [ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_n1i2u"]
+[ext_resource type="Resource" uid="uid://7s26uv7dx2xr" path="res://Resources/Dialogo/DialogoTutorialDuvida.tres" id="4_6v4bt"]
 [ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Resources/Shaders/Configs/PosProcessamentoTerminal.tres" id="5_a105h"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_kjdr6"]
 [ext_resource type="Texture2D" uid="uid://cqmsncqpj3bfx" path="res://Assets/UI/Terminal/stop.png" id="5_lkp2e"]
@@ -17,6 +19,8 @@
 [ext_resource type="Script" uid="uid://cphkin8dnsnwc" path="res://Scripts/Debug/botoes_debug.gd" id="14_x77am"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="16_hygll"]
 [ext_resource type="Texture2D" uid="uid://35jtgf0hjd6l" path="res://Assets/UI/Terminal/save.png" id="17_fk70m"]
+[ext_resource type="Texture2D" uid="uid://5gnl76lb74vb" path="res://Assets/Produtos/Skilltree/interrogação.png" id="18_v5liu"]
+[ext_resource type="PackedScene" uid="uid://cerkaeicr5kas" path="res://Scenes/UI/overlay_dialogo_tutorial.tscn" id="21_1mes2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
 texture = ExtResource("2_l4t8i")
@@ -64,16 +68,16 @@ content_margin_right = 26.0
 content_margin_bottom = 26.0
 bg_color = Color(0.1, 0.1, 0.1, 0.3)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fk70m"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6v4bt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mlp1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvkpr"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpfw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2plp"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -214,6 +218,31 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_p4t22")
 fill_from = Vector2(1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr0sd"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mlp1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqpfw"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+corner_detail = 20
+
 [node name="Jogo" type="Control" unique_id=984641298]
 layout_mode = 3
 anchors_preset = 15
@@ -230,6 +259,8 @@ tamanho_sombra_debug = 5
 deslocamento_sombra_x = 0
 deslocamento_sombra_y = 0
 tempo_animacao_surgir = 0.65
+dialogo_apresentacao = ExtResource("3_1mes2")
+dialogo_duvida = ExtResource("4_6v4bt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1907880983]
 layout_mode = 1
@@ -405,9 +436,9 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fk70m")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_1mlp1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_lqpfw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6v4bt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yvkpr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j2plp")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_lcihl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1mes2")
 icon = ExtResource("17_fk70m")
@@ -603,6 +634,60 @@ script = ExtResource("3_8gbds")
 [node name="SistemaCutscene" parent="." unique_id=1229550324 instance=ExtResource("16_hygll")]
 unique_name_in_owner = true
 
+[node name="OverlayTutorial" type="Control" parent="." unique_id=717909864]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="OverlayTutorial" unique_id=891802219]
+anchors_preset = 0
+offset_left = 815.75
+offset_top = 12.045
+offset_right = 865.75
+offset_bottom = 62.045
+scale = Vector2(0.1, 0.1)
+
+[node name="BotaoDuvida" type="Button" parent="OverlayTutorial/Control" unique_id=1204597730]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_n1i2u")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_jr0sd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1mlp1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lqpfw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lcihl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1mes2")
+icon = ExtResource("18_v5liu")
+alignment = 2
+icon_alignment = 1
+script = ExtResource("5_kjdr6")
+som_hover = ExtResource("7_tvy04")
+volume_hover_db = -10.0
+som_clique = ExtResource("8_yljls")
+volume_clique_db = -5.0
+
+[node name="OverlayDialogo" parent="OverlayTutorial" unique_id=1203743968 instance=ExtResource("21_1mes2")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 422.0
+offset_top = -55.52
+offset_right = 422.0
+offset_bottom = -55.52002
+
 [connection signal="pressed" from="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer/BotaoExecutar" to="HBoxContainer/PainelTerminal" method="_on_botao_executar_pressed"]
 [connection signal="pressed" from="Control/BotaoSalvar" to="HBoxContainer/PainelTerminal" method="_on_botao_salvar_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoDebugCodigo" to="BotoesDebug" method="_on_botao_debug_codigo_pressed"]
@@ -613,3 +698,4 @@ unique_name_in_owner = true
 [connection signal="pressed" from="BotoesDebug/BotaoGanharXP" to="BotoesDebug" method="_on_botao_ganhar_xp_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoMorrer" to="BotoesDebug" method="_on_botao_morrer_pressed"]
 [connection signal="pressed" from="BotoesDebug/BotaoCutscene" to="BotoesDebug" method="_on_botao_cutscene_pressed"]
+[connection signal="pressed" from="OverlayTutorial/Control/BotaoDuvida" to="." method="_on_botao_duvida_pressed"]

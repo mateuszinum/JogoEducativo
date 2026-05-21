@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://7s26uv7dx2xr"]
+
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_tq1hq"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_rxkiy"]
+[ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="3_ufvma"]
+
+[sub_resource type="Resource" id="Resource_vvlgo"]
+script = ExtResource("1_tq1hq")
+texto = "Preciso sair de casa, vou usar minha magia de movimento. "
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_tq1hq"]
+script = ExtResource("1_tq1hq")
+texto = "Para andar, basta eu escrever em sequência vários \"mover(Cima)\", \"mover(Baixo)\", \"mover(Direita)\" ou \"mover(Esquerda)\". Fazendo isso, eu consigo andar para Cima, Baixo, Direita ou Esquerda (respectivamente)!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[resource]
+script = ExtResource("3_ufvma")
+linhas = Array[ExtResource("1_tq1hq")]([SubResource("Resource_vvlgo"), SubResource("Resource_tq1hq")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

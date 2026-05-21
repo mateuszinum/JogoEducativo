@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://c2pbh50b0qxac"]
+
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_l6p75"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_krsl3"]
+[ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="3_cdglv"]
+
+[sub_resource type="Resource" id="Resource_l6p75"]
+script = ExtResource("1_l6p75")
+texto = "Bem vindo ao Grimório: O Código da Magia!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_krsl3"]
+script = ExtResource("1_l6p75")
+texto = "Agora vamos começar com um simples tutorial."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_vvlgo"]
+script = ExtResource("1_l6p75")
+texto = "Essa é a seção de código, aqui é onde você vai escrever o código necessário para jogar o jogo. "
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_sbg5r"]
+script = ExtResource("1_l6p75")
+texto = "Desconsiderando interações da interface, tudo no jogo será feito pelo código escrito aqui dentro."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_mfhf3"]
+script = ExtResource("1_l6p75")
+texto = "Fique atento! O livro não entende magias faladas, portanto ele usa uma linguagem antiga para entender o mundo à sua volta. Sua escrita é delicada, a palavra “esquerda” é diferente de ”Esquerda”!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_65pwf"]
+script = ExtResource("1_l6p75")
+texto = "O livro realiza em sequência todas instruções escritas nele uma vez que mandado. Quando você estiver certo do seu algoritmo, rode o código!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[resource]
+script = ExtResource("3_cdglv")
+linhas = Array[ExtResource("1_l6p75")]([SubResource("Resource_l6p75"), SubResource("Resource_krsl3"), SubResource("Resource_vvlgo"), SubResource("Resource_sbg5r"), SubResource("Resource_mfhf3"), SubResource("Resource_65pwf")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

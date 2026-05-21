@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://cerkaeicr5kas"]
+
+[ext_resource type="Script" uid="uid://vsgcngso2lhm" path="res://Scripts/Dialogo/sistema_dialogo.gd" id="1_5pr7s"]
+[ext_resource type="PackedScene" uid="uid://dxvpfq25mjulq" path="res://Scenes/UI/botao_resposta.tscn" id="2_s2u1o"]
+[ext_resource type="AudioStream" uid="uid://2argyloyeoa3" path="res://Audio/SFX/Dialogo/Typing.wav" id="3_ueb4f"]
+[ext_resource type="Shader" uid="uid://cxd03306c4smx" path="res://Resources/Shaders/blur.gdshader" id="4_xfqnb"]
+[ext_resource type="Texture2D" uid="uid://ceqouinvjoqg6" path="res://Assets/UI/Dialogo/CaixaDialogo.png" id="5_hik4c"]
+[ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="6_q1xrm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5pr7s"]
+shader = ExtResource("4_xfqnb")
+shader_parameter/lod = 0.50000002375
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d1yip"]
+texture = ExtResource("5_hik4c")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="OverlayDialogo" type="Control" unique_id=1203743968]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5pr7s")
+prefab_botao_resposta = ExtResource("2_s2u1o")
+velocidade_texto = 0.04
+cor_fundo = Color(0, 0, 0, 0.48235294)
+intensidade_blur = 1.0
+tempo_fade_out = 0.1
+som_voz = ExtResource("3_ueb4f")
+pitch_min = 0.9
+rotacao_maxima_graus = 0.0
+escala_pulo_caixa = Vector2(1.05, 1.05)
+
+[node name="Blur" type="ColorRect" parent="." unique_id=1147266459]
+material = SubResource("ShaderMaterial_5pr7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2719.0
+offset_top = -354.0
+offset_right = 526.0
+offset_bottom = 849.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1467260602]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2087.0
+offset_top = -334.0
+offset_right = 298.0
+offset_bottom = 910.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.48235294)
+
+[node name="CaixaDialogo" type="PanelContainer" parent="." unique_id=10008605]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -30.5
+offset_right = 50.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_d1yip")
+
+[node name="MarginContainer" type="MarginContainer" parent="CaixaDialogo" unique_id=251984475]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="LayoutCaixa" type="VBoxContainer" parent="CaixaDialogo/MarginContainer" unique_id=199507579]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextoDialogo" type="RichTextLabel" parent="CaixaDialogo/MarginContainer/LayoutCaixa" unique_id=937791904]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.07214553, 0.02720956, 0.0035472063, 1)
+theme_override_fonts/normal_font = ExtResource("6_q1xrm")
+theme_override_font_sizes/normal_font_size = 22
+text = "Texto"
+fit_content = true
+autowrap_mode = 2
+
+[node name="ContainerOpcoes" type="VBoxContainer" parent="CaixaDialogo/MarginContainer/LayoutCaixa" unique_id=495443462]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1

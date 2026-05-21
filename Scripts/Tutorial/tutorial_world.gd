@@ -100,6 +100,8 @@ func iniciar_cutscene_final() -> void:
 				jogo.sistema_cutscene.hide()
 			
 		ProgressoDB.desbloquear("Tutorial")
+		if jogo and jogo.has_method("finalizar_modo_tutorial"):
+			jogo.finalizar_modo_tutorial()
 		FuncoesNativas.Partida.em_arena = false
 		jogo.limpar_viewport()
 		

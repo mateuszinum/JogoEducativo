@@ -24,11 +24,18 @@ extends Control
 @export_subgroup("Animação")
 @export var tempo_animacao_surgir: float = 0.25
 
+@export_subgroup("Tutorial")
+@export var dialogo_apresentacao: DialogoResource
+@export var dialogo_duvida: DialogoResource
+
 @onready var viewport = %SubViewport
 @onready var terminal = %PainelTerminal
 @onready var fade_tv = %FadeTV 
 @onready var fade_rect = $FadeLayer/ColorRect 
 @onready var sistema_cutscene = %SistemaCutscene
+@onready var overlay_dialogo = %OverlayDialogo
+@onready var botao_duvida = %BotaoDuvida
+@onready var overlay_tutorial = %OverlayTutorial
 
 const CENA_VILAREJO = preload("res://Scenes/UI/village_menu.tscn")
 const CENA_ARENA = preload("res://Scenes/World/proc_gen_world.tscn")
@@ -39,6 +46,7 @@ var transicao_em_andamento: bool = false
 func _ready() -> void:
 	add_to_group("Jogo") 
 	limpar_viewport()
+	overlay_tutorial.hide()
 	
 	SaveManager.CarregarProdutos()
 	SaveManager.CarregarInventario()
@@ -52,10 +60,17 @@ func _ready() -> void:
 	else:
 		var tutorial = CENA_TUTORIAL.instantiate()
 		viewport.add_child(tutorial)
+		ativar_modo_tutorial()
 		if terminal and terminal.has_method("ativar_modo_tutorial"):
 			terminal.ativar_modo_tutorial()
 			
 	SaveManager.CarregarCodigo()
+	
+	if not ProgressoDB.passou_do_tutorial() and terminal:
+		var codigo_atual = terminal.get_codigo_slot(terminal.slot_atual_idx)
+		if codigo_atual.strip_edges() == "":
+			var codigo_tutorial = "mover(Baixo)\nmover(Direita)\nmover(Esquerda)\nmover(Cima)"
+			terminal.definir_codigo_slot(terminal.slot_atual_idx, codigo_tutorial)
 
 	if fade_rect:
 		$FadeLayer.show()
@@ -245,3 +260,18 @@ func escrever_debug(texto: String) -> void:
 		
 		if is_instance_valid(nova_mensagem):
 			nova_mensagem.queue_free()
+
+# Chamado quando o jogador entra no tutorial
+func ativar_modo_tutorial() -> void:
+	overlay_tutorial.show()
+	# Espera um frame para garantir que os nós estejam prontos e toca o diálogo
+	await get_tree().process_frame 
+	overlay_dialogo.iniciar_dialogo(dialogo_apresentacao)
+
+# Chamado quando o jogador clica no botão de dúvida
+func _on_botao_duvida_pressed() -> void:
+	overlay_dialogo.iniciar_dialogo(dialogo_duvida)
+
+# Chamado quando o jogador sai do tutorial (ex: quando desbloqueia o progresso)
+func finalizar_modo_tutorial() -> void:
+	overlay_tutorial.hide()
