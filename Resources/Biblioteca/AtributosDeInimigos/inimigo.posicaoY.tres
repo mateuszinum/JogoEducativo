@@ -34,5 +34,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_c68p8")
+nome = "inimigo.posicaoY"
 blocos_de_conteudo = Array[ExtResource("1_wpgg6")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

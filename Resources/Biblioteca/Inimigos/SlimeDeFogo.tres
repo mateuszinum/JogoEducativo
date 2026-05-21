@@ -80,5 +80,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_aq6of")
+nome = "SlimeDeFogo"
 blocos_de_conteudo = Array[ExtResource("1_krlo6")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_jk6uf"), SubResource("Resource_3fc27"), SubResource("Resource_s1xn2"), SubResource("Resource_lk5le"), SubResource("Resource_37tpt"), SubResource("Resource_1xlt5"), SubResource("Resource_c773p"), SubResource("Resource_daujv"), SubResource("Resource_gar61"), SubResource("Resource_5265h")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

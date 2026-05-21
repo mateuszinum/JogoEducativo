@@ -78,5 +78,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_wwugd")
+nome = "Variáveis"
 blocos_de_conteudo = Array[ExtResource("1_h8jfw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_3xve1"), SubResource("Resource_nebly"), SubResource("Resource_nq2bc"), SubResource("Resource_d3fts"), SubResource("Resource_5f6uf"), SubResource("Resource_bjala"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

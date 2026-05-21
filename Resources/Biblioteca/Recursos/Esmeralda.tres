@@ -23,5 +23,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_tplgq")
+nome = "Esmeralda"
 blocos_de_conteudo = Array[ExtResource("1_uqwrq")]([SubResource("Resource_sj6m0"), SubResource("Resource_uqwrq"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

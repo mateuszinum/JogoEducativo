@@ -101,5 +101,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_0rfgp")
+nome = "PaginaInicial"
 blocos_de_conteudo = Array[ExtResource("1_7lmda")]([SubResource("Resource_qff5g"), SubResource("Resource_3yqwk"), SubResource("Resource_0wyyo"), SubResource("Resource_cgv5h"), SubResource("Resource_7lmda"), SubResource("Resource_0rfgp"), SubResource("Resource_t3afg"), SubResource("Resource_or0xj"), SubResource("Resource_mroc1"), SubResource("Resource_sbsfi"), SubResource("Resource_f7nr2"), SubResource("Resource_mc6gf"), SubResource("Resource_kpn3u"), SubResource("Resource_fpef0"), SubResource("Resource_m47yt"), SubResource("Resource_7jufl")])
 metadata/_custom_type_script = "uid://be6x46yhir5k7"

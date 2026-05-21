@@ -42,5 +42,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_hygop")
+nome = "ExplosaoGelo"
 blocos_de_conteudo = Array[ExtResource("1_0klpq")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_2agbe"), SubResource("Resource_jt7od")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

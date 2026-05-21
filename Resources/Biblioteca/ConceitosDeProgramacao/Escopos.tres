@@ -42,5 +42,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_ilbv4")
+nome = "Escopos"
 blocos_de_conteudo = Array[ExtResource("1_si74l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_si74l"), SubResource("Resource_ilbv4")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

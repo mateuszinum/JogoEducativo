@@ -24,5 +24,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_k6sv5")
+nome = "EsferaAzul"
 blocos_de_conteudo = Array[ExtResource("1_3wfyg")]([SubResource("Resource_sj6m0"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

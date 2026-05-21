@@ -43,5 +43,6 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_8y02y")
+nome = "Introdução"
 blocos_de_conteudo = Array[ExtResource("1_yll3l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
