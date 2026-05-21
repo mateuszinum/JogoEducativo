@@ -12,15 +12,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_pg87i")
 tipo = 3
-texto = "arena(a)"
+texto = "max(x, y)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_pg87i")
-texto = "Entra na arena especificada.
+texto = "Retorna o maior valor entre os dois números fornecidos.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
-"
+Os parâmetros \"x\" e \"y\" devem ser números (floats) a serem comparados."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -32,7 +31,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_pg87i")
 tipo = 3
-texto = "arena(Campos)"
+texto = "float a = aleatorio()
+float b = aleatorio()
+
+float maior = max(a, b)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

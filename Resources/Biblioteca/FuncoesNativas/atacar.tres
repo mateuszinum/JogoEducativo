@@ -17,7 +17,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_3rfv1")
-texto = "Executa um ataque do tipo especificado contra um alvo determinado. O parâmetro \"alvo\" requer uma referência direta ao objeto de um inimigo específico presente no jogo, enquanto o parâmeto \"tipoDeAtaque\" deve receber uma string contendo o nome exato do ataque a ser desferido."
+texto = "Realiza um ataque do tipo especificado no alvo determinado.
+
+O parâmetro \"alvo\" deve ser uma referência para o objeto de um inimigo específico.
+O parâmetro \"tipoDeAtaque\" deve ser uma string com o nome do ataque."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]

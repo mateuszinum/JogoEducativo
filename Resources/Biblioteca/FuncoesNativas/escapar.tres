@@ -12,14 +12,12 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_pquk3")
 tipo = 3
-texto = "arena(a)"
+texto = "escapar()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_pquk3")
-texto = "Entra na arena especificada.
-
-O parâmetro \"a\" deve ser o nome de uma arena.
+texto = "Sai da arena, e volta para o vilarejo.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -32,7 +30,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_pquk3")
 tipo = 3
-texto = "arena(Campos)"
+texto = "escapar()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

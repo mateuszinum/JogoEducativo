@@ -23,6 +23,9 @@ extends PanelContainer
 
 @export_group("Fontes do Terminal")
 @export var fontes_disponiveis: Array[Font] = []
+@export var tamanho_fonte_padrao: int = 14
+@export var tamanho_fonte_minimo: int = 8
+@export var tamanho_fonte_maximo: int = 20
 
 @export_group("Animação de Destaque de Código")
 @export var cor_destaque_linha: Color = Color(1.0, 1.0, 1.0, 0.4)
@@ -68,6 +71,8 @@ func _ready() -> void:
 	
 	botao_executar.focus_mode = Control.FOCUS_NONE
 	code_edit.focus_mode = Control.FOCUS_CLICK
+	
+	code_edit.add_theme_font_size_override("font_size", tamanho_fonte_padrao)
 	
 	configurar_cores_do_codigo()
 	aplicar_fonte()
@@ -242,7 +247,19 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 			tooltip_erro.global_position = code_edit.get_global_mouse_position() + Vector2(15, 15)
 		else:
 			tooltip_erro.visible = false
-
+	
+	if event is InputEventMouseButton and event.is_command_or_control_pressed():
+		var tamanho_atual = code_edit.get_theme_font_size("font_size")
+		if tamanho_atual <= 0: tamanho_atual = tamanho_fonte_padrao
+		
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			code_edit.add_theme_font_size_override("font_size", clamp(tamanho_atual + 2, tamanho_fonte_minimo, tamanho_fonte_maximo))
+			get_viewport().set_input_as_handled()
+			
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			code_edit.add_theme_font_size_override("font_size", clamp(tamanho_atual - 2, tamanho_fonte_minimo, tamanho_fonte_maximo))
+			get_viewport().set_input_as_handled()
+	
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
 		var linha_antes = code_edit.get_caret_line()
 		

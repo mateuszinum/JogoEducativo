@@ -12,15 +12,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_14bel")
 tipo = 3
-texto = "arena(a)"
+texto = "cinto.usarItem(indice)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_14bel")
-texto = "Entra na arena especificada.
+texto = "Usa o item do cinto no índice especificado. Só funciona se houver um item na respectiva posição.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
-"
+O parâmetro \"indice\" deve ser um número inteiro (int) que representa a posição do item no cinto."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -32,7 +31,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_14bel")
 tipo = 3
-texto = "arena(Campos)"
+texto = "int indice = 2
+
+cinto.usarItem(indice)
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
