@@ -9,12 +9,6 @@ tipo = 1
 texto = "Sangue"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
-[sub_resource type="Resource" id="Resource_7p0ow"]
-script = ExtResource("1_sx47c")
-texto = "Descrição
-"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
 [sub_resource type="Resource" id="Resource_vvtow"]
 script = ExtResource("1_sx47c")
 tipo = 2
@@ -29,5 +23,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_1wg6k")
-blocos_de_conteudo = Array[ExtResource("1_sx47c")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_vvtow"), SubResource("Resource_g1tmj")])
+blocos_de_conteudo = Array[ExtResource("1_sx47c")]([SubResource("Resource_sj6m0"), SubResource("Resource_vvtow"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

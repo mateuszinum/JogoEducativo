@@ -9,12 +9,6 @@ tipo = 1
 texto = "Esmeralda"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
-[sub_resource type="Resource" id="Resource_7p0ow"]
-script = ExtResource("1_uqwrq")
-texto = "Descrição
-"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
 [sub_resource type="Resource" id="Resource_uqwrq"]
 script = ExtResource("1_uqwrq")
 tipo = 2
@@ -29,5 +23,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_tplgq")
-blocos_de_conteudo = Array[ExtResource("1_uqwrq")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_uqwrq"), SubResource("Resource_g1tmj")])
+blocos_de_conteudo = Array[ExtResource("1_uqwrq")]([SubResource("Resource_sj6m0"), SubResource("Resource_uqwrq"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -9,12 +9,6 @@ tipo = 1
 texto = "Fogo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
-[sub_resource type="Resource" id="Resource_7p0ow"]
-script = ExtResource("1_bjgxk")
-texto = "Descrição
-"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
 [sub_resource type="Resource" id="Resource_3l6q0"]
 script = ExtResource("1_bjgxk")
 tipo = 2
@@ -23,12 +17,12 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_oxl6o"]
 script = ExtResource("1_bjgxk")
-texto = "Dano base: X
-Knockback: X
+texto = "Dano base: 4
+Knockback: 1
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_8lr2j")
-blocos_de_conteudo = Array[ExtResource("1_bjgxk")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+blocos_de_conteudo = Array[ExtResource("1_bjgxk")]([SubResource("Resource_sj6m0"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

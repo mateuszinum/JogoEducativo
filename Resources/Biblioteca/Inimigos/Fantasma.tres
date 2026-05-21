@@ -11,7 +11,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_jwk7n")
-texto = "O fantasma alterna entre modo físico e modo translúcido (de acordo com o tempo da partida). Tem pouca vida, mas não pode ser atingido enquanto estiver no modo translúcido."
+texto = "O fantasma alterna entre modo físico e modo translúcido (de acordo com o tempo da partida). Tem pouca vida, mas não pode ser atingido enquanto estiver no modo translúcido.  
+Dica: olhe no relogio Se o último dígito  for de 0 a 4, os fantasmas devem estar no modo translúcido. Se o último dígito for de 5 a 9, devem estar no modo físico.
+
+
+obs: não é o gasparzinho, esse é pior."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_jk6uf"]

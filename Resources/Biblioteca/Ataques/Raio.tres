@@ -11,7 +11,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_7rg4m")
-texto = "Descrição
+texto = "Dano fraco, mas inimigos derrotados com esse ataque dropam 2x mais recursos.
+
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -23,8 +24,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_oxl6o"]
 script = ExtResource("1_7rg4m")
-texto = "Dano base: X
-Knockback: X
+texto = "Dano base: 1
+Knockback: 0,5
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

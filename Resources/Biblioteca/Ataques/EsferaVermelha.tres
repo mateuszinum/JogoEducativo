@@ -11,7 +11,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_tm0i7")
-texto = "Descrição
+texto = "Igual o ataque básico, mas ele atravessa inimigos (podendo acertar vários).
+
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -23,12 +24,24 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_oxl6o"]
 script = ExtResource("1_tm0i7")
-texto = "Dano base: X
-Knockback: X
+texto = "Dano base: 5
+Knockback: 0,5
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tm0i7"]
+script = ExtResource("1_tm0i7")
+tipo = 2
+texto = "Requisito de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_hbekh"]
+script = ExtResource("1_tm0i7")
+texto = "Os últimos 3 ataques devem ter sido a EsferaAzul
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_hbekh")
-blocos_de_conteudo = Array[ExtResource("1_tm0i7")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+blocos_de_conteudo = Array[ExtResource("1_tm0i7")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_tm0i7"), SubResource("Resource_hbekh")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
