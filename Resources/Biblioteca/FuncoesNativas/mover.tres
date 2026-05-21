@@ -6,36 +6,32 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_bn0p4")
 tipo = 1
-texto = "mover"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_bn0p4")
-tipo = 3
-texto = "arena(a)"
+texto = "mover(direcao)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_bn0p4")
-texto = "Entra na arena especificada.
+texto = "
+Movimenta o personagem 1 espaço na direção especificada no parâmetro.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
+O parâmetro direcao deve ser uma string de conteúdo \"Cima\", \"Baixo\", \"Direita\" e \"Esquerda\"
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_bn0p4")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "
+Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_bn0p4")
 tipo = 3
-texto = "arena(Campos)"
+texto = "mover(\"Cima\")"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_r00fe")
-blocos_de_conteudo = Array[ExtResource("1_bn0p4")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_bn0p4")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

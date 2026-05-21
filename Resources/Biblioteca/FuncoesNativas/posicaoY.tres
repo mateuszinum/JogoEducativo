@@ -6,27 +6,23 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_xyppa")
 tipo = 1
-texto = "posicaoY"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_xyppa")
-tipo = 3
-texto = "arena(a)"
+texto = "posicaoY()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_xyppa")
-texto = "Entra na arena especificada.
+texto = "
+Retorna o valor numérico inteiro do eixo Y (vertical) em que o jogador está pisando agora. 
 
-O parâmetro \"a\" deve ser o nome de uma arena.
+Útil para saber exatamente a coordenada vertical do jogador em determinado momento.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_xyppa")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "
+Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
@@ -35,7 +31,21 @@ tipo = 3
 texto = "arena(Campos)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_xyppa"]
+script = ExtResource("1_xyppa")
+tipo = 2
+texto = "
+Páginas Relacionadas
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_pgocu"]
+script = ExtResource("1_xyppa")
+tipo = 4
+texto = "posicaoX tesouroX tesouroY"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [resource]
 script = ExtResource("2_pgocu")
-blocos_de_conteudo = Array[ExtResource("1_xyppa")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_xyppa")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_xyppa"), SubResource("Resource_pgocu")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

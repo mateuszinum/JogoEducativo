@@ -6,36 +6,33 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_ahq26")
 tipo = 1
-texto = "mochila.usarItem"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_ahq26")
-tipo = 3
-texto = "arena(a)"
+texto = "mochila.usarItem()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_ahq26")
-texto = "Entra na arena especificada.
+texto = "
+Utiliza o item no topo da pilha na mochila, sem nenhum parâmetro sendo necessário para utilizá-lo.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
+Funciona apenas se há [b]pelo menos[/b] um item na mochila.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_ahq26")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "
+Exemplo de Uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_ahq26")
 tipo = 3
-texto = "arena(Campos)"
+texto = "se (vidaAtual() < 20):
+	mochila.usarItem()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_0l6f8")
-blocos_de_conteudo = Array[ExtResource("1_ahq26")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_ahq26")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

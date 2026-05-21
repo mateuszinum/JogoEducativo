@@ -6,27 +6,23 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_hs528")
 tipo = 1
-texto = "podeMover"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_hs528")
-tipo = 3
-texto = "arena(a)"
+texto = "podeMover(direcao)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_hs528")
-texto = "Entra na arena especificada.
+texto = "
+Retorna um valor booleano que indica se a tile na direção especificada é chão ou não. 
 
-O parâmetro \"a\" deve ser o nome de uma arena.
+O parâmetro direcao deve ser uma string de conteúdo “Cima”, “Baixo”, “Direita” e “Esquerda”.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_hs528")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "
+Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
@@ -35,7 +31,20 @@ tipo = 3
 texto = "arena(Campos)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_yvjea"]
+script = ExtResource("1_hs528")
+tipo = 2
+texto = "
+Páginas Relacionadas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_hs528"]
+script = ExtResource("1_hs528")
+tipo = 4
+texto = "mover"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [resource]
 script = ExtResource("2_yvjea")
-blocos_de_conteudo = Array[ExtResource("1_hs528")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_hs528")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_yvjea"), SubResource("Resource_hs528")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
