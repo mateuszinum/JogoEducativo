@@ -205,12 +205,13 @@ func apply_chain_knockback(force: Vector2):
 		knockback = force
 
 func show_damage_number(amount):
+	var number_to_show = int(amount)
 	var dmg_num = DAMAGE_NUMBER.instantiate()
 	dmg_num.global_position = global_position
 	dmg_num.global_position.x += randf_range(-12, 12)
 	dmg_num.global_position.y += randf_range(-12, 12)
 	get_parent().add_child(dmg_num)
-	dmg_num.setup(amount)
+	dmg_num.setup(number_to_show)
 	
 func gerar_drops() -> void:
 	var multiplicador = 1

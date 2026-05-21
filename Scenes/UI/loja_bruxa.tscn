@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_pasot"]
 [ext_resource type="Resource" uid="uid://cgek2g4tndduc" path="res://Resources/Produtos/UpgradeAtributos/agilidadeUpgrade.tres" id="2_ke52h"]
-[ext_resource type="Resource" uid="uid://dr4f7eely5wgw" path="res://Resources/Dialogo/DialogoBruxa.tres" id="2_lhnmh"]
+[ext_resource type="Resource" uid="uid://dr4f7eely5wgw" path="res://Resources/Dialogo/Bruxa/DialogoBruxa.tres" id="2_lhnmh"]
 [ext_resource type="Texture2D" uid="uid://d4non5uc1t5r0" path="res://Assets/Personagens/Bruxa.png" id="2_xvemy"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_cxqjs"]
 [ext_resource type="Resource" uid="uid://djmwjd4b30bhe" path="res://Resources/Produtos/UpgradeAtributos/coletaUpgrade.tres" id="4_lhnmh"]

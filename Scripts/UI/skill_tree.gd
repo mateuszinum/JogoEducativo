@@ -13,6 +13,9 @@ var zoom_alvo: float = 1.0
 
 @onready var canvas = $CanvasArraste
 @onready var container_conexoes = $CanvasArraste/Conexoes
+@onready var overlay_dialogo = %OverlayDialogo
+
+
 
 func _ready() -> void:
 	zoom_alvo = clamp(zoom_inicial, zoom_minimo, zoom_maximo)

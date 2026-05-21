@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="DialogoResource" format=3 uid="uid://dtf31oqnbdoio"]
+
+[ext_resource type="Script" uid="uid://btolrf4p1yhho" path="res://Scripts/Dialogo/linha_dialogo.gd" id="1_uihat"]
+[ext_resource type="Script" uid="uid://c18eulvmcbep4" path="res://Scripts/Dialogo/opcao_dialogo.gd" id="2_ybdra"]
+[ext_resource type="Script" uid="uid://bxgpr8rtuumqq" path="res://Scripts/Dialogo/dialogo_resource.gd" id="3_675ky"]
+
+[sub_resource type="Resource" id="Resource_ybdra"]
+script = ExtResource("1_uihat")
+texto = "Calma novato, eu sei como te ajudar. Eu conheço alguns feitiços que serão úteis para você."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_675ky"]
+script = ExtResource("1_uihat")
+texto = "Na árvore de habilidades, adquira a evolução \"Início\". Ela é tudo o que você precisa para começar a entender o grimório."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_gm1hx"]
+script = ExtResource("1_uihat")
+texto = "Para se libertar dessa maldição, você precisa dominar todo o grimório."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_y2ac8"]
+script = ExtResource("1_uihat")
+texto = "Infelizmente, eu não tenho todos os feitiços dele para te ensinar agora."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_soqai"]
+script = ExtResource("1_uihat")
+texto = "Ah, quase me esqueci!"
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_otqrw"]
+script = ExtResource("2_ybdra")
+texto_opcao = "Ok, irei para a biblioteca!"
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_nk2u0"]
+script = ExtResource("1_uihat")
+texto = "Assim que você sair daqui, vá para a biblioteca. Lá, você pode encontrar textos antigos explicando como o grimório funciona."
+tem_opcoes = true
+opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_otqrw")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_alepv"]
+script = ExtResource("2_ybdra")
+texto_opcao = "Muito obrigado, Mago Velho."
+linhas = Array[ExtResource("1_uihat")]([SubResource("Resource_soqai"), SubResource("Resource_nk2u0")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_p3lig"]
+script = ExtResource("1_uihat")
+texto = "Para conseguir novos feitiços, você vai precisar ir para arenas derrotar monstros. Traga os recursos que você conseguir de volta para cá, e podemos usá-los como ingredientes para novos feitiços!"
+tem_opcoes = true
+opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_alepv")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_uihat"]
+script = ExtResource("2_ybdra")
+texto_opcao = "Eu encontrei o Omni-Grimório!"
+linhas = Array[ExtResource("1_uihat")]([SubResource("Resource_ybdra"), SubResource("Resource_675ky"), SubResource("Resource_gm1hx"), SubResource("Resource_y2ac8"), SubResource("Resource_p3lig")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_7eupd"]
+script = ExtResource("1_uihat")
+texto = "O que foi, novato?"
+tem_opcoes = true
+opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_uihat")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_5actq"]
+script = ExtResource("2_ybdra")
+texto_opcao = "POR FAVOR ME AJUDA!!!"
+linhas = Array[ExtResource("1_uihat")]([SubResource("Resource_7eupd")])
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_8t35l"]
+script = ExtResource("1_uihat")
+texto = "Olá! Como posso te ajudar, novato?"
+tem_opcoes = true
+opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_5actq")])
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[resource]
+script = ExtResource("3_675ky")
+linhas = Array[ExtResource("1_uihat")]([SubResource("Resource_8t35l")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

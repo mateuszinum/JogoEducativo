@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5kijd87b6v3l" path="res://Scenes/UI/base_loja.tscn" id="1_jp173"]
 [ext_resource type="Script" uid="uid://b7pddh7hubyyk" path="res://Scripts/UI/skill_tree.gd" id="2_j3yet"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_j3yet"]
+[ext_resource type="Resource" uid="uid://dtf31oqnbdoio" path="res://Resources/Dialogo/MagoVelho/DialogoInicialMagoVelho.tres" id="3_qic07"]
 [ext_resource type="Resource" uid="uid://cmkhmo0t2l5b1" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioInicio.tres" id="4_piamn"]
 [ext_resource type="Resource" uid="uid://se4vuh5ryinu" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="5_spist"]
 [ext_resource type="Resource" uid="uid://2faeufq3p63t" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioDebug.tres" id="6_55bkk"]
@@ -31,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://3mo8kk7lyfvd" path="res://Assets/Personagens/MagoVelho.png" id="28_n146t"]
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_jp173")]
+dialogo_especial = ExtResource("3_qic07")
 
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
 visible = false

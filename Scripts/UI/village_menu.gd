@@ -48,6 +48,9 @@ func _on_button_biblioteca_pressed() -> void:
 func _on_button_mago_velho_pressed() -> void:
 	verificar_progresso()
 	if loja_mago_velho: loja_mago_velho.show()
+	if (!ProgressoDB.tem_desbloqueado("MagoVelho")):
+		if loja_mago_velho and loja_mago_velho.has_method("tocar_dialogo_especial"):
+			loja_mago_velho.tocar_dialogo_especial()
 
 func _on_loja_bruxa_fechou_loja() -> void:
 	verificar_progresso()

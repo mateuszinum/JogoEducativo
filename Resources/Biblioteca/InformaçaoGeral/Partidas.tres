@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bx2eaxucu8g7h"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_l83gn"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_0xueo"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_l83gn")
+tipo = 1
+texto = "Partidas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_l83gn")
+texto = "Ao usar a função \"arena\", você entra em uma partida.
+
+Em uma partida, você tem a oportunidade de conseguir recursos, mas tome cuidado: Se sua vida chegar a 0, você perde todos os recursos conquistados nessa partida.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_pws7u"]
+script = ExtResource("1_l83gn")
+tipo = 2
+texto = "Subindo de nível"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_f5o1o"]
+script = ExtResource("1_l83gn")
+texto = "A cada partida você começa no nível 1. Conforme coleta recursos, sua barra de experiência vai sendo preenchida. Quando preenchida totalmente, você sobe de nível.
+
+O nível máximo que você pode chegar é o nível 10.
+
+Cada nível te concede aproximadamente +10% de agilidade. Ao alcançar o nível máximo, você terá um bônus de 100%, ou seja, o dobro da agilidade."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_l83gn"]
+script = ExtResource("1_l83gn")
+tipo = 2
+texto = "Páginas relacionadas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0xueo"]
+script = ExtResource("1_l83gn")
+tipo = 4
+texto = "arena"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_0xueo")
+blocos_de_conteudo = Array[ExtResource("1_l83gn")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_pws7u"), SubResource("Resource_f5o1o"), SubResource("Resource_l83gn"), SubResource("Resource_0xueo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

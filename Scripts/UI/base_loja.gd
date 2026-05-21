@@ -7,6 +7,7 @@ signal fechou_loja
 @onready var overlay_dialogo = %OverlayDialogo
 
 @export var dialogo_personagem: DialogoResource
+@export var dialogo_especial: DialogoResource
 
 func _ready() -> void:
 	pass
@@ -19,6 +20,9 @@ func _on_personagem_pressed() -> void:
 	if dialogo_personagem != null:
 		overlay_dialogo.iniciar_dialogo(dialogo_personagem)
 
+func tocar_dialogo_especial():
+	if dialogo_especial != null:
+		overlay_dialogo.iniciar_dialogo(dialogo_especial)
 
 func _on_botao_trocar_inventario_pressed() -> void:
 	if Inventario.inventario_ativo == Inventario.TipoInventario.CINTO:

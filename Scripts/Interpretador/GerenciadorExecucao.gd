@@ -11,7 +11,7 @@ const COOLDOWN_UNIVERSAL = 0.1
 
 # 1. AÇÕES VINCULADAS À AGILIDADE (Multiplicam o tempo_tick)
 const MULTIPLICADOR_TICK = {
-	"atacar": 0.8,
+	"atacar": 0.6,
 	"mover": 0.1,
 	"usar_item_cinto": 0.2,
 	"usar_item_mochila": 0.2,
@@ -21,7 +21,23 @@ const MULTIPLICADOR_TICK = {
 
 # 2. COOLDOWNS MÍNIMOS DE AÇÕES ESPECÍFICAS (Multiplicam o tempo_tick)
 const COOLDOWNS_MINIMOS = {
-	"mover": 1.0
+	"mover": 0.8,
+	"escreva": 0.05,
+
+	"nomeInimigo": 0.01,
+	"obterVidaInimigo": 0.01,
+	"obterPosicaoXInimigo": 0.01,
+	"obterPosicaoYInimigo": 0.01,
+	"inimigoExiste": 0.01,
+	"getTempo": 0.01,
+	"getVidaAtual": 0.01,
+	"posicaoX": 0.01,
+	"posicaoY": 0.01,
+	"tesouroX": 0.01,
+	"tesouroY": 0.01,
+	"podeMover": 0.01,
+	"inimigoMaisProximo": 0.01,
+	"escanearArea": 0.01
 }
 
 # 3. AÇÕES DE TEMPO FIXO (Ignoram os atributos do jogador, em Segundos)

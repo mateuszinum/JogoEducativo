@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://cpma83vicbdah"]
 
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="1_5n0qe"]
 [ext_resource type="Texture2D" uid="uid://clrvf4pw8c2cs" path="res://Assets/Produtos/Skilltree/SENSOR.png" id="2_5n0qe"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_w425r"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_jnxwo"]
@@ -32,5 +33,7 @@ tipo = 1
 descricao_simples = "podeMover()
 vidaAtual()
 inimigo.vida"
+custo_item_simples = ExtResource("1_5n0qe")
+custo_quantidade_simples = 20
 niveis = Array[ExtResource("3_w425r")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

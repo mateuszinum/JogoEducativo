@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://fkd7vvqmkuvr"]
 
 [ext_resource type="Texture2D" uid="uid://cd0dnxukkqc3c" path="res://Assets/Projectiles/RaioFrame.png" id="1_5l0bc"]
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="1_txvhl"]
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="2_txvhl"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="3_j8p6f"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="4_3d3ok"]
@@ -29,5 +30,7 @@ nome = "Raio"
 icone = ExtResource("1_5l0bc")
 pre_requisitos = Array[ExtResource("4_3d3ok")]([ExtResource("5_mtxoy")])
 tipo = 1
+custo_item_simples = ExtResource("1_txvhl")
+custo_quantidade_simples = 150
 niveis = Array[ExtResource("2_txvhl")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"
