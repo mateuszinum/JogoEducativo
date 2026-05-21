@@ -11,8 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_jwk7n")
-texto = "Descrição
-"
+texto = "O fantasma alterna entre modo físico e modo translúcido (de acordo com o tempo da partida). Tem pouca vida, mas não pode ser atingido enquanto estiver no modo translúcido."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_jk6uf"]
@@ -23,8 +22,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3fc27"]
 script = ExtResource("1_jwk7n")
-texto = "Vida: X
-Velocidade: X
+texto = "Vida: 5
+Velocidade: 10
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
