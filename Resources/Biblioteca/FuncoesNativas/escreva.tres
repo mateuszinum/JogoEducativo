@@ -12,15 +12,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_ckhpc")
 tipo = 3
-texto = "arena(a)"
+texto = "escreva(texto)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_ckhpc")
-texto = "Entra na arena especificada.
+texto = "Escreve o texto informado na página do grimório. Cada execução exibe a mensagem em uma nova linha automaticamente. A expressão \"\\n\" pode ser utilizada dentro do texto para forçar uma quebra de linha manual.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
-"
+O parâmetro \"string\" deve ser o texto que se deseja exibir."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -32,7 +31,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_ckhpc")
 tipo = 3
-texto = "arena(Campos)"
+texto = "escreva(\"Eu sou um mago poderoso\")
+Inimigo alvo = inimigoMaisProximo()
+escreva(\"O nome do inimigo mais perto é: \" + alvo)
+escreva(\"Inimigo: \" + alvo + \" Que medo!\")"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

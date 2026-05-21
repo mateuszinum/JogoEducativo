@@ -12,15 +12,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_fl467")
 tipo = 3
-texto = "arena(a)"
+texto = "comprar(produto)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_fl467")
-texto = "Entra na arena especificada.
+texto = "Realiza o pagamento para adquirir o produto especificado, adicionando-o imediatamente ao inventário ativo (cinto ou mochila). A compra só é efetivada se houver recursos e espaço livres suficientes. O preenchimento dos espaços ocorre da esquerda para a direita no cinto (índices 0 e 1) e de baixo para cima na mochila.
 
-O parâmetro \"a\" deve ser o nome de uma arena.
-"
+O parâmetro \"produto\" deve ser uma string com o nome do produto."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -32,7 +31,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_fl467")
 tipo = 3
-texto = "arena(Campos)"
+texto = "comprar(\"PocaoDeCura\")"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

@@ -12,14 +12,12 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_tufc8"]
 script = ExtResource("1_kmabc")
 tipo = 3
-texto = "arena(a)"
+texto = "escanearArea()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_kmabc")
-texto = "Entra na arena especificada.
-
-O parâmetro \"a\" deve ser o nome de uma arena.
+texto = "Retorna uma lista com as referências de todos os inimigos ativos atualmente na área.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -32,7 +30,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_kmabc")
 tipo = 3
-texto = "arena(Campos)"
+texto = "Inimigo inimigos = escanearArea()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
