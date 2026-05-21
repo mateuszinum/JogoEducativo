@@ -6,20 +6,13 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_mrgpt")
 tipo = 1
-texto = "tesouroX"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_mrgpt")
-tipo = 3
-texto = "arena(a)"
+texto = "tesouroX()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_mrgpt")
-texto = "Entra na arena especificada.
-
-O parâmetro \"a\" deve ser o nome de uma arena.
+texto = "
+Retorna um valor inteiro correspondente ao valor X (horizontal) das coordenadas XY do tesouro ativo no momento de execução da função.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -32,10 +25,24 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_mrgpt")
 tipo = 3
-texto = "arena(Campos)"
+texto = "int posTesouroX = tesouroX()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_mrgpt"]
+script = ExtResource("1_mrgpt")
+tipo = 2
+texto = "
+Páginas Relacionadas
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_24r0a"]
+script = ExtResource("1_mrgpt")
+tipo = 4
+texto = "posicaoX posicaoY tesouroY"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_24r0a")
-blocos_de_conteudo = Array[ExtResource("1_mrgpt")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_mrgpt")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_mrgpt"), SubResource("Resource_24r0a")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

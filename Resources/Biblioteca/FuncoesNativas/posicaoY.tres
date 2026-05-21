@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_xyppa")
 tipo = 3
-texto = "arena(Campos)"
+texto = "int posY = posicaoY()"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_xyppa"]
