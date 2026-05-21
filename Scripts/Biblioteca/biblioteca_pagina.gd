@@ -6,27 +6,23 @@ extends Control
 
 @export var pagina_para_testar: BibliotecaResource
 
-# Usando o Autoload "BibliotecaDB"
 @onready var biblioteca_db = get_node("/root/BibliotecaDB")
 
-var historico: Array[String] = []      # Armazena nomes das páginas visitadas
-var pagina_atual_nome: String = ""     # Nome da página atual (usado para recarregar)
+var historico: Array[String] = []
+var pagina_atual_nome: String = ""
 
 func _ready():
 	texto_artigo.meta_clicked.connect(_on_link_clicado)
 	btn_voltar.hide()
 	visibility_changed.connect(_ao_mudar_visibilidade)
 	
-	# Se houver uma página de teste, carrega ela pelo recurso direto
 	if pagina_para_testar != null and pagina_para_testar.nome != "":
 		pagina_atual_nome = pagina_para_testar.nome
 		carregar_pagina(pagina_para_testar)
+		btn_voltar.visible = false  # Força invisível na página inicial
 	elif pagina_para_testar != null:
 		print("Aviso: A página de teste não tem nome definido. Ignorando.")
 
-# ==========================================
-# FILTRO DINÂMICO DE PROGRESSÃO
-# ==========================================
 func filtrar_texto_por_progresso(texto: String) -> String:
 	var regex = RegEx.new()
 	regex.compile("(?s)\\[req=(.*?)\\](.*?)\\[/req\\]")
@@ -85,46 +81,38 @@ func carregar_pagina(pagina: BibliotecaResource):
 				texto_artigo.append_text(linha_formatada + "\n\n")
 
 func _on_link_clicado(meta: String):
-	# Busca a página pelo nome na database
-	ir_para_pagina_por_nome(meta)
+	ir_para_pagina_por_nome(meta, true)
 
-# Nova função: navega usando apenas o nome (chave da database)
-func ir_para_pagina_por_nome(nome_pagina: String) -> void:
+func ir_para_pagina_por_nome(nome_pagina: String, empilhar: bool = true) -> void:
 	var pagina = biblioteca_db.get_pagina_por_nome(nome_pagina)
 	if pagina == null:
 		print("Erro: Página '", nome_pagina, "' não encontrada na database.")
 		return
-	
-	# Guarda no histórico antes de mudar
-	if pagina_atual_nome != "":
+
+	if empilhar and pagina_atual_nome != "":
 		historico.append(pagina_atual_nome)
 	
 	pagina_atual_nome = nome_pagina
 	carregar_pagina(pagina)
 	scroll_container.scroll_vertical = 0
+
 	btn_voltar.visible = historico.size() > 0
 
-# Mantido para compatibilidade (caso receba um caminho antigo) - opcional
 func ir_para_pagina(caminho_do_arquivo: String) -> void:
-	# Tenta extrair o nome do arquivo (sem extensão) como chave
 	var nome = caminho_do_arquivo.get_file().replace(".tres", "").replace(".remap", "")
-	ir_para_pagina_por_nome(nome)
+	ir_para_pagina_por_nome(nome, true)
 
 func _on_botao_voltar_biblioteca_pressed() -> void:
 	if historico.size() > 0:
 		var nome_anterior = historico.pop_back()
-		ir_para_pagina_por_nome(nome_anterior)
+		ir_para_pagina_por_nome(nome_anterior, false)
 		
 func _ao_mudar_visibilidade() -> void:
-	# Recarrega a página atual quando a biblioteca ficar visível novamente
 	if visible and pagina_atual_nome != "":
 		var pagina = biblioteca_db.get_pagina_por_nome(pagina_atual_nome)
 		if pagina != null:
 			carregar_pagina(pagina)
 
-# ==========================================
-# FUNÇÃO DE HIGHLIGHT DE CÓDIGO (inalterada)
-# ==========================================
 func aplicar_syntax_highlight(codigo: String) -> String:
 	var temp_codigo = codigo
 	var comentarios = []

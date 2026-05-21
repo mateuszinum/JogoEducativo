@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_l6p75"]
 script = ExtResource("1_l6p75")
-texto = "Bem vindo ao Grimório: O Código da Magia!"
+texto = "Boas vindas ao Grimório: O Código da Magia!"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_krsl3"]
