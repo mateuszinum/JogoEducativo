@@ -14,7 +14,8 @@ script = ExtResource("1_46my7")
 texto = "Essa arena funciona diferente das outras. Não tem nenhum inimigo, ela é somente um labirinto com um tesouro.
 
 Nesta arena, você deve implementar um algoritmo de solucionar um labirinto.
-"
+
+Dica: Sabia que o maior segredo dos labirintos é escolher uma parede e nunca desencostar a mão dela? Se você seguir o caminho sem nunca soltar a parede, você acabará explorando o labirinto inteiro!"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_46my7"]

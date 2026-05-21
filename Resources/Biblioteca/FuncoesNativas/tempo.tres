@@ -11,16 +11,13 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_vfcb7")
-texto = "
-Retorna um valor inteiro correspondente à quantidade de segundos que já se passaram na partida atual.
-"
+texto = "Retorna um valor inteiro correspondente à quantidade de segundos que já se passaram na partida atual."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_vfcb7")
 tipo = 2
-texto = "
-Exemplo de uso"
+texto = "Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]

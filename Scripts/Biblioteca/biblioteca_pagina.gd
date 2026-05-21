@@ -52,13 +52,12 @@ func carregar_pagina(pagina: BibliotecaResource):
 	texto_artigo.text = ""
 	
 	for bloco in pagina.blocos_de_conteudo:
-		# 1. Filtra os spoilers ANTES de aplicar as cores e tamanhos
 		var texto_filtrado = filtrar_texto_por_progresso(bloco.texto)
 		
-		# 2. Se o bloco inteiro sumiu (era um parágrafo inteiro bloqueado), 
-		# pula ele para não deixar um "buraco" de linhas em branco na tela.
 		if texto_filtrado.strip_edges() == "":
 			continue
+
+		texto_filtrado = texto_filtrado.strip_edges(false, true)
 
 		match bloco.tipo:
 			BibliotecaTexto.TipoBloco.TITULO:
@@ -71,15 +70,15 @@ func carregar_pagina(pagina: BibliotecaResource):
 				
 			BibliotecaTexto.TipoBloco.TEXTO_NORMAL:
 				var formatacao = "[font_size=16][color=#cccccc]" + texto_filtrado + "[/color][/font_size]"
-				texto_artigo.append_text(formatacao + "\n")
+				texto_artigo.append_text(formatacao + "\n\n")
 				
 			BibliotecaTexto.TipoBloco.BLOCO_CODIGO:
-				var formatacao = "[indent][code][font_size=16][color=white]" + texto_filtrado + "[/color][/font_size][/code][/indent]"
-				texto_artigo.append_text(formatacao + "\n")
+				var codigo_colorido = aplicar_syntax_highlight(texto_filtrado)
+				var formatacao = "[indent][font_size=16][color=#d4d4d4]" + codigo_colorido + "[/color][/font_size][/indent]"
+				# Agora com \n\n ao final do bloco de código
+				texto_artigo.append_text("\n" + formatacao + "\n\n")
 				
 			BibliotecaTexto.TipoBloco.LINKS_VERDES:
-				# Como o texto filtrado já removeu links bloqueados, o split
-				# ignorará perfeitamente os botões que o jogador não tem acesso.
 				var palavras = texto_filtrado.split(" ", false) 
 				var linha_formatada = ""
 				
@@ -142,3 +141,63 @@ func _ao_mudar_visibilidade() -> void:
 		if pagina_atual != null:
 			# Passa a página pelo filtro de novo para checar novos desbloqueios
 			carregar_pagina(pagina_atual)
+
+func aplicar_syntax_highlight(codigo: String) -> String:
+	var temp_codigo = codigo
+	var comentarios = []
+	var strings = []
+	var count_com = 0
+	var count_str = 0
+	
+	# 1. Extrai Strings e Comentários primeiro (para não pintar palavras dentro deles)
+	var regex_str_com = RegEx.new()
+	regex_str_com.compile('(#.*)|(".*?")')
+	var m = regex_str_com.search(temp_codigo)
+	
+	while m:
+		var token = m.get_string()
+		if token.begins_with("#"):
+			comentarios.append(token)
+			temp_codigo = temp_codigo.replace(token, "___COM" + str(count_com) + "___")
+			count_com += 1
+		else:
+			strings.append(token)
+			temp_codigo = temp_codigo.replace(token, "___STR" + str(count_str) + "___")
+			count_str += 1
+		m = regex_str_com.search(temp_codigo)
+		
+	# 2. Pinta Números
+	var regex_palavra = RegEx.new()
+	regex_palavra.compile("\\b\\d+(\\.\\d+)?\\b")
+	temp_codigo = regex_palavra.sub(temp_codigo, "[color=#b5cea8]$0[/color]", true)
+	
+	# 3. Pinta as Palavras-Chave exatas do Terminal
+	var palavras_controle = ["se", "senao", "fim", "enquanto", "retorna", "funcao"]
+	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Nulo", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
+	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Raio", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
+	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho", "trunca", "aleatorio", "escreva", "usarItem", "colocarItem"]
+	
+	for p in palavras_controle:
+		regex_palavra.compile("\\b" + p + "\\b")
+		temp_codigo = regex_palavra.sub(temp_codigo, "[color=#c586c0]" + p + "[/color]", true)
+		
+	for p in palavras_tipo:
+		regex_palavra.compile("\\b" + p + "\\b")
+		temp_codigo = regex_palavra.sub(temp_codigo, "[color=#569cd6]" + p + "[/color]", true)
+		
+	for p in constantes_jogo:
+		regex_palavra.compile("\\b" + p + "\\b")
+		temp_codigo = regex_palavra.sub(temp_codigo, "[color=#4ec9b0]" + p + "[/color]", true)
+		
+	for p in funcoes_nativas:
+		regex_palavra.compile("\\b" + p + "\\b")
+		temp_codigo = regex_palavra.sub(temp_codigo, "[color=#dcdcaa]" + p + "[/color]", true)
+		
+	# 4. Devolve as Strings e Comentários para o texto já com as cores deles
+	for i in range(strings.size()):
+		temp_codigo = temp_codigo.replace("___STR" + str(i) + "___", "[color=#ce9178]" + strings[i] + "[/color]")
+		
+	for i in range(comentarios.size()):
+		temp_codigo = temp_codigo.replace("___COM" + str(i) + "___", "[color=#6a9955]" + comentarios[i] + "[/color]")
+		
+	return temp_codigo

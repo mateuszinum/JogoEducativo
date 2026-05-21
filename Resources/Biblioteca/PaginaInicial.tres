@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_3yqwk"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "Créditos Introdução"
+texto = "Créditos [req=Início]Introdução[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_0wyyo"]
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_cgv5h"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Loop e Condicional]enquanto[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Variáveis]Nulo[/req] [req=Loop e Condicional]se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
+texto = "Comentários [req=Loop e Condicional]Enquanto[/req] [req=Funções]Escopos[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Variáveis]Nulo[/req] [req=Loop e Condicional]Se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7lmda"]

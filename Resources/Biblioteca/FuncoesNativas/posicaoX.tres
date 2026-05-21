@@ -11,18 +11,15 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_svh2b")
-texto = "
-Retorna o valor numérico inteiro do eixo X (horizontal) em que o jogador está pisando agora. 
+texto = "Retorna o valor numérico inteiro do eixo X (horizontal) em que o jogador está pisando agora. 
 
-Útil para saber exatamente a coordenada horizontal do jogador em determinado momento.
-"
+Útil para saber exatamente a coordenada horizontal do jogador em determinado momento."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_svh2b")
 tipo = 2
-texto = "
-Exemplo de uso"
+texto = "Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
@@ -34,8 +31,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_svh2b"]
 script = ExtResource("1_svh2b")
 tipo = 2
-texto = "
-Páginas Relacionadas
+texto = "Páginas Relacionadas
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

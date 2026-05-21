@@ -11,16 +11,13 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_fy5jp")
-texto = "
-Dado um float enviado como parâmetro, retornará um valor inteiro correspondente à parte decimal do parâmetro.
-"
+texto = "Dado um float enviado como parâmetro, retornará um valor inteiro correspondente à parte decimal do parâmetro."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_fy5jp")
 tipo = 2
-texto = "
-Exemplo de uso"
+texto = "Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]

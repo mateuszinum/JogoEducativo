@@ -72,6 +72,7 @@ func check_spawn_events():
 		if tempo_alvo == total_time_seconds:
 			if event.spawn_rate >= 0.01:
 				active_spawns[event.enemy_type] = event.spawn_rate
+				spawn_accumulators[event.enemy_type] = 1.0
 				if Constantes.DEBUG: print("Evento: Definindo spawn de ", event.enemy_type.nome, " para ", event.spawn_rate)
 			else:
 				active_spawns.erase(event.enemy_type)

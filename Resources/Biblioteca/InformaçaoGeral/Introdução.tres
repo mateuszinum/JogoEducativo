@@ -11,10 +11,37 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_yll3l")
-texto = "Nessa parte, vamos escrever o geral do jogo."
+texto = "Se você não sabe por onde começar, aqui vai uma sugestão para o seu primeiro programa! Experimente fazer um teste simples para ver como o código se transforma em ações na tela.
+
+A nossa recomendação é tentar entrar na arena Campos usando o comando arena. Depois disso, você pode experimentar usar o comando atacar para testar o feitiço EsferaAzul no alvo que estiver por perto.
+
+Muitos inimigos vão aparecer, então você precisará realizar muitos ataques. Coloque vários ataques em sequência, como por exemplo:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_muvxh"]
+script = ExtResource("1_yll3l")
+tipo = 3
+texto = "arena(Campos)
+
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+[...]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_8y02y")
-blocos_de_conteudo = Array[ExtResource("1_yll3l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_yll3l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

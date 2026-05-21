@@ -14,15 +14,13 @@ script = ExtResource("1_ahq26")
 texto = "
 Utiliza o item no topo da pilha na mochila, sem nenhum parâmetro sendo necessário para utilizá-lo.
 
-Funciona apenas se há [b]pelo menos[/b] um item na mochila.
-"
+Funciona apenas se há [b]pelo menos[/b] um item na mochila."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_ahq26")
 tipo = 2
-texto = "
-Exemplo de Uso"
+texto = "Exemplo de Uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]

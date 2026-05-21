@@ -11,9 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_mrgpt")
-texto = "
-Retorna um valor inteiro correspondente ao valor X (horizontal) das coordenadas XY do tesouro ativo no momento de execução da função.
-"
+texto = "Retorna um valor inteiro correspondente ao valor X (horizontal) das coordenadas XY do tesouro ativo no momento de execução da função."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -31,9 +29,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_mrgpt"]
 script = ExtResource("1_mrgpt")
 tipo = 2
-texto = "
-Páginas Relacionadas
-"
+texto = "Páginas Relacionadas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_24r0a"]

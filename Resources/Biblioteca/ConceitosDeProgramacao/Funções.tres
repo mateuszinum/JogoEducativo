@@ -11,10 +11,34 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_eyya5")
-texto = "(Conteúdo do documento)"
+texto = "As funções são blocos de código personalizados que você cria para não ter que repetir as mesmas linhas várias vezes. É como ensinar um novo \"truque\" ao seu personagem.
+
+Ao criar uma função, você deve dizer qual o tipo de dado que ela vai devolver no final (ou usar vazio se ela não devolver nada). Você também pode passar informações para ela trabalhar, chamadas de parâmetros.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_eyya5"]
+script = ExtResource("1_eyya5")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_btp45"]
+script = ExtResource("1_eyya5")
+tipo = 3
+texto = "int somarValores(int a, int b):
+	int resultado = a + b
+	retorna resultado
+fim funcao
+
+int numero1 = 50
+int numero2 = 30
+
+int soma = somarValores(numero1, numero2)
+# A variável soma agora vale 80!"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_btp45")
-blocos_de_conteudo = Array[ExtResource("1_eyya5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_eyya5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_eyya5"), SubResource("Resource_btp45")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

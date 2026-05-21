@@ -14,9 +14,31 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 	public void SyntaxError(TextWriter output, IRecognizer recognizer, T offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
 	{
 		string erroTraduzido = msg;
-		if (erroTraduzido.Contains("missing 'fim' at '<EOF>'")) {
-			erroTraduzido = "Faltou fechar o bloco com 'fim' (o arquivo terminou antes).";
-		} else {
+		int linhaErro = line - 1;
+		
+		if (erroTraduzido.Contains("missing ':'")) 
+		{
+			erroTraduzido = "Faltou ':' no final desta estrutura.";
+			linhaErro = Math.Max(0, linhaErro - 1);
+		} 
+		else if (erroTraduzido.Contains("missing 'fim'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'fim'"))) 
+		{
+			erroTraduzido = "Faltou fechar uma estrutura de código. Lembre-se de colocar 'fim se', 'fim enquanto' ou 'fim funcao' no final do bloco.";
+		} 
+		else if (erroTraduzido.Contains("missing 'se'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'se'"))) 
+		{
+			erroTraduzido = "Faltou a palavra 'se'. Você quis dizer 'fim se' para fechar a condicional?";
+		}
+		else if (erroTraduzido.Contains("missing 'enquanto'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'enquanto'"))) 
+		{
+			erroTraduzido = "Faltou a palavra 'enquanto'. Você quis dizer 'fim enquanto' para fechar o laço de repetição?";
+		}
+		else if (erroTraduzido.Contains("missing 'funcao'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'funcao'"))) 
+		{
+			erroTraduzido = "Faltou a palavra 'funcao'. Você quis dizer 'fim funcao' para fechar a declaração?";
+		}
+		else 
+		{
 			erroTraduzido = erroTraduzido.Replace("missing", "Faltando").Replace("at", "em")
 										 .Replace("mismatched input", "Entrada incorreta")
 										 .Replace("expecting", "esperava-se")
@@ -24,7 +46,8 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 										 .Replace("no viable alternative", "Comando inválido ou incompleto")
 										 .Replace("<EOF>", "fim do arquivo");
 		}
-		var erro = new Godot.Collections.Dictionary { { "linha", line - 1 }, { "mensagem", erroTraduzido } };
+		
+		var erro = new Godot.Collections.Dictionary { { "linha", linhaErro }, { "mensagem", erroTraduzido } };
 		ErrosEncontrados.Add(erro);
 	}
 }

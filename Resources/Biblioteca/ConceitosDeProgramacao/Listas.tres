@@ -11,10 +11,29 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_u3s6p")
-texto = "(Conteúdo do documento)"
+texto = "As listas permitem que você guarde vários valores dentro de uma única variável. Para criar uma lista, você coloca os valores entre colchetes [], separados por vírgulas.
+
+Para acessar ou alterar um item específico dentro da lista, nós usamos o índice dele.
+
+Lembre-se: na programação, a contagem sempre começa no zero! Portanto, o primeiro item é o [0], o segundo é o [1] e assim por diante.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_u3s6p"]
+script = ExtResource("1_u3s6p")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cywvo"]
+script = ExtResource("1_u3s6p")
+tipo = 3
+texto = "int numeros = [10, 20, 30]
+int primeiroNumero = numeros[0]
+# A variável primeiroNumero agora vale 10"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_cywvo")
-blocos_de_conteudo = Array[ExtResource("1_u3s6p")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_u3s6p")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_u3s6p"), SubResource("Resource_cywvo")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -6,18 +6,12 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_ckhpc")
 tipo = 1
-texto = "escreva"
-metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
-
-[sub_resource type="Resource" id="Resource_tufc8"]
-script = ExtResource("1_ckhpc")
-tipo = 3
 texto = "escreva(texto)"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_ckhpc")
-texto = "Escreve o texto informado na página do grimório. Cada execução exibe a mensagem em uma nova linha automaticamente. A expressão \"\\n\" pode ser utilizada dentro do texto para forçar uma quebra de linha manual.
+texto = "Escreve o texto informado na tela. Cada execução exibe a mensagem em uma nova linha automaticamente. A expressão \"\\n\" pode ser utilizada dentro do texto para forçar uma quebra de linha manual.
 
 O parâmetro \"string\" deve ser o texto que se deseja exibir."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
@@ -39,5 +33,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_6bj88")
-blocos_de_conteudo = Array[ExtResource("1_ckhpc")]([SubResource("Resource_sj6m0"), SubResource("Resource_tufc8"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+blocos_de_conteudo = Array[ExtResource("1_ckhpc")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

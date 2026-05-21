@@ -11,10 +11,72 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_h8jfw")
-texto = "(Conteúdo do documento)"
+texto = "As variáveis são como caixas onde você guarda informações para usar depois. Na nossa linguagem, você precisa avisar o sistema qual é o tipo de \"caixa\" antes de dar um nome a ela.
+
+Os tipos de dados que você pode guardar são:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oj1kj"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "int"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_e7ofd"]
+script = ExtResource("1_h8jfw")
+texto = "Guarda números inteiros (ex: 1, 10, -5). "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3xve1"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "float"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nebly"]
+script = ExtResource("1_h8jfw")
+texto = "Guarda números \"quebrados\" ou decimais (ex: 3.14, 0.5)."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nq2bc"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "bool"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_d3fts"]
+script = ExtResource("1_h8jfw")
+texto = "Guarda valores lógicos, podendo ser apenas Verdadeiro ou Falso."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_5f6uf"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "string"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_bjala"]
+script = ExtResource("1_h8jfw")
+texto = "Guarda textos. Lembre-se sempre de colocar o texto entre aspas. Você também pode juntar (concatenar) textos usando o sinal de +. É possível somar textos com outros textos, ou até misturar com outros tipos de dados (como números, itens de listas e valores lógicos) que o sistema converte tudo em um texto só automaticamente!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_h8jfw"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_wwugd"]
+script = ExtResource("1_h8jfw")
+tipo = 3
+texto = "int i = 100
+bool b = Verdadeiro
+string s = \"Texto\"
+string s2 = \"o número é: \" + i		# s2: \"o número é: 100\"
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_wwugd")
-blocos_de_conteudo = Array[ExtResource("1_h8jfw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow")])
+blocos_de_conteudo = Array[ExtResource("1_h8jfw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_3xve1"), SubResource("Resource_nebly"), SubResource("Resource_nq2bc"), SubResource("Resource_d3fts"), SubResource("Resource_5f6uf"), SubResource("Resource_bjala"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

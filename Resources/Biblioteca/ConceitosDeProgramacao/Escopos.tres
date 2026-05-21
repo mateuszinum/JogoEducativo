@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bd4j4p4lg5wi2"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_si74l"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_ilbv4"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_si74l")
+tipo = 1
+texto = "Escopos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_si74l")
+texto = "O escopo é como o \"território\" onde uma variável vive e pode ser enxergada pelo sistema. Dependendo de onde você cria a sua variável de dados, ela pode ser pública para todo o código ou particular de um único lugar. Nós dividimos isso em dois tipos: Escopo Externo e Escopo Interno.
+
+Se você declarar uma variável \"solta\" no seu código, fora de qualquer função, ela se torna pública. Isso significa que qualquer função, laço de repetição ou condição dentro do seu programa consegue acessar e alterar o valor dessa variável livremente. Ela é visível para todo mundo.
+
+Se você declarar uma variável dentro de uma função, ela será uma variável fechada e existirá apenas no escopo interno daquela função. Quando a função terminar de rodar, essa variável morre. O resto do seu programa não faz ideia de que ela existe e não consegue acessá-la. Isso é excelente porque impede que as funções baguncem as informações umas das outras.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_si74l"]
+script = ExtResource("1_si74l")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ilbv4"]
+script = ExtResource("1_si74l")
+tipo = 3
+texto = "int numeroGloball = 100
+
+vazio exemploDeFuncao():
+    int numeroLocal = 50
+    numeroGlobal = numeroGlobal+ numeroLocal
+fim funcao
+
+escreva(numeroLocal)
+
+# A função \"escreva\" está tentando acessar a varável \"numeroLocal\". Isso dará um erro, porque a variável está no escopo interno da função!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_ilbv4")
+blocos_de_conteudo = Array[ExtResource("1_si74l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_si74l"), SubResource("Resource_ilbv4")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

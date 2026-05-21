@@ -11,24 +11,20 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_ojqib")
-texto = "
-Retorna um valor inteiro correspondente ao número de elementos dentro de uma lista passada como parâmetro.
-
+texto = "Retorna um valor inteiro correspondente ao número de elementos dentro de uma lista passada como parâmetro.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_ojqib")
 tipo = 2
-texto = "
-Exemplo de uso"
+texto = "Exemplo de uso"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_ojqib")
 tipo = 3
-texto = "int size = tamanho([1, 2, 3])		# size = 3
-"
+texto = "int size = tamanho([1, 2, 3])		# size = 3"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
