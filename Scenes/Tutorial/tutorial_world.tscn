@@ -80,7 +80,7 @@ position_smoothing_enabled = true
 
 [node name="Escuridao" type="CanvasModulate" parent="." unique_id=1815781551]
 unique_name_in_owner = true
-color = Color(0.28235295, 0.28235295, 0.44705883, 1)
+color = Color(0.44393823, 0.44649112, 0.65180737, 1)
 script = ExtResource("5_gxia1")
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=30515579]

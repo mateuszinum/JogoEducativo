@@ -26,6 +26,8 @@ func _ready() -> void:
 	verificar_progresso()
 	iniciar_musica()
 	
+	ProgressoDB.progresso_alterado.connect(_on_progresso_alterado)
+	
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
@@ -99,3 +101,12 @@ func verificar_progresso():
 	set_biblioteca(ProgressoDB.tem_desbloqueado("MagoVelho"))
 
 #----------------------------------#
+
+func _on_progresso_alterado() -> void:
+	verificar_progresso()
+	
+	if ProgressoDB.tem_desbloqueado("Início") and loja_mago_velho and loja_mago_velho.visible:
+		loja_mago_velho.hide()
+		if loja_biblioteca:
+			loja_biblioteca.show()
+			get_tree().call_group("BibliotecaPagina", "abrir_pagina_por_nome", "Início")

@@ -1,25 +1,25 @@
 [gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://b1364qruepsy6"]
 
-[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_yll3l"]
-[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_8y02y"]
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_1rkxv"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_8huc7"]
 
 [sub_resource type="Resource" id="Resource_sj6m0"]
-script = ExtResource("1_yll3l")
+script = ExtResource("1_1rkxv")
 tipo = 1
-texto = "Introdução"
+texto = "Início"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
-script = ExtResource("1_yll3l")
-texto = "Se você não sabe por onde começar, aqui vai uma sugestão para o seu primeiro programa! Experimente fazer um teste simples para ver como o código se transforma em ações na tela.
+script = ExtResource("1_1rkxv")
+texto = "Se você não sabe por onde começar, aqui vai uma sugestão para o seu primeiro programa!
 
-A nossa recomendação é tentar entrar na arena Campos usando o comando arena. Depois disso, você pode experimentar usar o comando atacar para testar o feitiço EsferaAzul no alvo que estiver por perto.
+Tente entrar na arena Campos usando o comando arena. Depois, você pode use o comando atacar para testar o feitiço EsferaAzul no alvo que estiver por perto.
 
 Muitos inimigos vão aparecer, então você precisará realizar muitos ataques. Coloque vários ataques em sequência, como por exemplo:"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_muvxh"]
-script = ExtResource("1_yll3l")
+script = ExtResource("1_1rkxv")
 tipo = 3
 texto = "arena(Campos)
 
@@ -42,7 +42,7 @@ atacar(inimigoMaisProximo(), EsferaAzul)
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
-script = ExtResource("2_8y02y")
-nome = "Introdução"
-blocos_de_conteudo = Array[ExtResource("1_yll3l")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh")])
+script = ExtResource("2_8huc7")
+nome = "Início"
+blocos_de_conteudo = Array[ExtResource("1_1rkxv")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

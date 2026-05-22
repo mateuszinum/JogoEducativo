@@ -12,6 +12,7 @@ var historico: Array[String] = []
 var pagina_atual_nome: String = ""
 
 func _ready():
+	add_to_group("BibliotecaPagina")
 	texto_artigo.meta_clicked.connect(_on_link_clicado)
 	btn_voltar.hide()
 	visibility_changed.connect(_ao_mudar_visibilidade)
@@ -168,3 +169,7 @@ func aplicar_syntax_highlight(codigo: String) -> String:
 		temp_codigo = temp_codigo.replace("___COM" + str(i) + "___", "[color=#6a9955]" + comentarios[i] + "[/color]")
 		
 	return temp_codigo
+
+func abrir_pagina_por_nome(nome_pagina: String) -> void:
+	if biblioteca_db:
+		ir_para_pagina_por_nome(nome_pagina, true)

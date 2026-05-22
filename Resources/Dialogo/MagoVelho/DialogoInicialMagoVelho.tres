@@ -6,12 +6,12 @@
 
 [sub_resource type="Resource" id="Resource_ybdra"]
 script = ExtResource("1_uihat")
-texto = "Calma novato, eu sei como te ajudar. Eu conheço alguns feitiços que serão úteis para você."
+texto = "Calma novato, eu sei como te ajudar."
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_675ky"]
 script = ExtResource("1_uihat")
-texto = "Na árvore de habilidades, adquira a evolução \"Início\". Ela é tudo o que você precisa para começar a entender o grimório."
+texto = "Na árvore de habilidades, adquira a evolução \"Início\"."
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_gm1hx"]
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_y2ac8"]
 script = ExtResource("1_uihat")
-texto = "Infelizmente, eu não tenho todos os feitiços dele para te ensinar agora."
+texto = "Para conseguir novos feitiços, você vai precisar ir para arenas derrotar monstros."
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_soqai"]
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_nk2u0"]
 script = ExtResource("1_uihat")
-texto = "Assim que você sair daqui, vá para a biblioteca. Lá, você pode encontrar textos antigos explicando como o grimório funciona."
+texto = "Assim que você sair daqui, vá para a biblioteca. Lá, você encontra textos explicando como o grimório funciona."
 tem_opcoes = true
 opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_otqrw")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_p3lig"]
 script = ExtResource("1_uihat")
-texto = "Para conseguir novos feitiços, você vai precisar ir para arenas derrotar monstros. Traga os recursos que você conseguir de volta para cá, e podemos usá-los como ingredientes para novos feitiços!"
+texto = "Traga os recursos que você conseguir de volta para cá, e podemos usá-los como ingredientes para novos feitiços!"
 tem_opcoes = true
 opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_alepv")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"

@@ -1,0 +1,139 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c51c7fholousb"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_175lm"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_7s6yp"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_175lm")
+tipo = 1
+texto = "TiposDeDado"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_175lm")
+texto = "Quando criamos uma variável para armazenar uma informação, o sistema do jogo precisa saber exatamente com que tipo de dado ele está lidando. O tipo de dado é o que define a natureza de uma informação e dita quais regras e operações podem ser aplicadas a ela.
+
+Pense nos tipos de dados como categorias: você pode fazer contas matemáticas com números. Da mesma forma, uma decisão lógica precisa de um tipo de dado que entenda apenas se algo é verdadeiro ou falso. Especificar o tipo ajuda o interpretador do jogo a organizar a memória e garante que os seus comandos funcionem sem erros.
+
+Os tipos de dados que você pode guardar são:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oj1kj"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "int"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_e7ofd"]
+script = ExtResource("1_175lm")
+texto = "Guarda números inteiros (ex: 1, 10, -5). "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3xve1"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "float"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nebly"]
+script = ExtResource("1_175lm")
+texto = "Guarda números \"quebrados\" ou decimais (ex: 3.14, 0.5)."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nq2bc"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "bool"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_d3fts"]
+script = ExtResource("1_175lm")
+texto = "Guarda valores lógicos, podendo ser apenas Verdadeiro ou Falso."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_5f6uf"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "string"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_bjala"]
+script = ExtResource("1_175lm")
+texto = "Guarda textos. Lembre-se sempre de colocar o texto entre aspas. Você também pode juntar (concatenar) textos usando o sinal de +. É possível somar textos com outros textos, ou até misturar com outros tipos de dados (como números, itens de listas e valores lógicos) que o sistema converte tudo em um texto só automaticamente!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_j15aw"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "Inimigo"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1ly2"]
+script = ExtResource("1_175lm")
+texto = "Tipo de dado usado para guardar uma referência a um inimigo.
+
+Usado por funções como \"atacar\", \"inimigoMaisProximo\", além de acesso a atributos de inimigos."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_u4e3s"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "Arena"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_gwfth"]
+script = ExtResource("1_175lm")
+texto = "Tipo de dado usado para guardar uma referência a uma arena.
+
+Usado por funções como \"arena\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ldl5t"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "Ataque"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_kvu2y"]
+script = ExtResource("1_175lm")
+texto = "Tipo de dado usado para guardar uma referência a um tipo específico de ataque.
+
+Usado por funções como \"atacar\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8csrw"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "Direcao"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_grb2c"]
+script = ExtResource("1_175lm")
+texto = "Tipo de dado usado para guardar uma referência a uma das 4 direções, sendo elas Cima, Baixo, Esquerda e Direita.
+
+Usado por funções como \"mover\" e \"podeMover\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_h8jfw"]
+script = ExtResource("1_175lm")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_wwugd"]
+script = ExtResource("1_175lm")
+tipo = 3
+texto = "int energia = 100
+string mensagem = \"Explorando a arena\"
+Inimigo alvo = inimigoMaisProximo()
+Direcao dir = Cima
+Arena arn = Campos
+Ataque atk = EsferaAzul
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_7s6yp")
+nome = "TiposDeDado"
+blocos_de_conteudo = Array[ExtResource("1_175lm")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_3xve1"), SubResource("Resource_nebly"), SubResource("Resource_nq2bc"), SubResource("Resource_d3fts"), SubResource("Resource_5f6uf"), SubResource("Resource_bjala"), SubResource("Resource_j15aw"), SubResource("Resource_g1ly2"), SubResource("Resource_u4e3s"), SubResource("Resource_gwfth"), SubResource("Resource_ldl5t"), SubResource("Resource_kvu2y"), SubResource("Resource_8csrw"), SubResource("Resource_grb2c"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

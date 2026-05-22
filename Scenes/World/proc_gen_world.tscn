@@ -104,6 +104,7 @@ layer_1/name = "Obstaculos"
 [node name="Player" parent="." unique_id=848872761 instance=ExtResource("6_nkw66")]
 z_index = 1
 y_sort_enabled = true
+go_tempo_espera_final = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1749366693]
 zoom = Vector2(1.6, 1.6)
@@ -168,9 +169,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -231.0
-offset_top = -62.670013
+offset_top = -82.359985
 offset_right = 231.0
-offset_bottom = 21.329987
+offset_bottom = 1.6400146
 grow_horizontal = 2
 grow_vertical = 2
 text = "DERROTA"
@@ -185,14 +186,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = 34.745003
-offset_right = 95.0
-offset_bottom = 61.74501
+offset_left = -107.0
+offset_top = 37.815002
+offset_right = 107.0
+offset_bottom = 126.815
 grow_horizontal = 2
 grow_vertical = 2
 text = "Os recursos adquiridos nesta
-partida foram perdidos!"
+partida foram perdidos!
+
+Para escapar com vida,
+pare a execução do código
+antes de morrer."
 label_settings = SubResource("LabelSettings_7fyq5")
 horizontal_alignment = 1
 vertical_alignment = 1

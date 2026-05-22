@@ -6,13 +6,13 @@
 [sub_resource type="Resource" id="Resource_qff5g"]
 script = ExtResource("1_7lmda")
 tipo = 2
-texto = "Informação Geral"
+texto = "[req=Início]Informação Geral[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3yqwk"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "Créditos [req=Início]Introdução[/req] [req=Início]Partidas[/req] [req=Localização]Tesouros[/req]"
+texto = "[req=Início]Início[/req] [req=Início]Partidas[/req] [req=Localização]Tesouros[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_0wyyo"]
@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_cgv5h"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Debug]Comentários[/req] [req=Loop e Condicional]Enquanto[/req] [req=Funções]Escopos[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Variáveis]Nulo[/req] [req=Loop e Condicional]Se[/req] [req=Operadores]Operadores[/req] [req=Variáveis]Variáveis[/req]"
+texto = "[req=Debug]Comentários[/req] [req=Loop e Condicional]Enquanto[/req] [req=Funções]Escopos[/req] [req=Funções]Funções[/req] [req=Listas]Listas[/req] [req=Variáveis]Nulo[/req] [req=Operadores]Operadores[/req] [req=Loop e Condicional]Se[/req] [req=Variáveis]TiposDeDado[/req] [req=Variáveis]Variáveis[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7lmda"]
@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_sbsfi"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=EsferaVermelha]EsferaVermelha[/req] [req=Explosão de Fogo]ExplosaoFogo[/req] [req=Explosão de Gelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=Gelo]Gelo[/req] [req=Raio]Raio[/req]"
+texto = "[req=Alho]Alho[/req] [req=Início]EsferaAzul[/req] [req=Esfera Vermelha]EsferaVermelha[/req] [req=Explosão de Fogo]ExplosaoFogo[/req] [req=Explosão de Gelo]ExplosaoGelo[/req] [req=Fogo]Fogo[/req] [req=Gelo]Gelo[/req] [req=Raio]Raio[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_f7nr2"]

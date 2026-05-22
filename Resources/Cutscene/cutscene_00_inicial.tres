@@ -23,7 +23,7 @@ script = ExtResource("1_vo31s")
 imagem = ExtResource("4_nsjkh")
 musica = ExtResource("3_m3n3p")
 volume_musica_db = -6.0
-textos = Array[String](["No entanto… De forma misteriosa, eles desapareceram, deixando para trás apenas o ápice de sua criação. Ecos da verdadeira magia: Grimórios!
+textos = Array[String](["No entanto… De forma misteriosa, eles desapareceram, deixando para trás apenas o ápice de sua criação: Grimórios!
 "])
 metadata/_custom_type_script = "uid://cgh54v6gpqw6k"
 
