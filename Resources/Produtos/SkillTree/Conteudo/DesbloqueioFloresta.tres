@@ -33,7 +33,7 @@ tipo = 1
 descricao_simples = "Arena nova!
 +1 espaço de código!"
 custo_item_simples = ExtResource("1_fwy0u")
-custo_quantidade_simples = 250
+custo_quantidade_simples = 500
 descricao_bloqueada = "Nova arena!
 +1 espaço de código!"
 niveis = Array[ExtResource("3_n8kxy")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

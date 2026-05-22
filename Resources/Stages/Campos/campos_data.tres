@@ -118,6 +118,7 @@ metadata/_custom_type_script = "uid://dlk027vsi110o"
 [sub_resource type="Resource" id="Resource_u4kak"]
 script = ExtResource("7_omn7t")
 source_ids = Array[int]([10])
+frequencia = 0.0
 cluster_min = 30
 cluster_max = 40
 afastar_obstaculos = Array[String](["Arvore", "Arbusto"])

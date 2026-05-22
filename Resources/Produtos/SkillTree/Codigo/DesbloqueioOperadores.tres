@@ -32,6 +32,6 @@ pre_requisitos = Array[ExtResource("5_ma3ew")]([ExtResource("6_tspay")])
 tipo = 1
 descricao_simples = "Operadores"
 custo_item_simples = ExtResource("1_tspay")
-custo_quantidade_simples = 30
+custo_quantidade_simples = 15
 niveis = Array[ExtResource("3_m15dp")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

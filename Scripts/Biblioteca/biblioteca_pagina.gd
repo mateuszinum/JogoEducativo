@@ -19,9 +19,9 @@ func _ready():
 	if pagina_para_testar != null and pagina_para_testar.nome != "":
 		pagina_atual_nome = pagina_para_testar.nome
 		carregar_pagina(pagina_para_testar)
-		btn_voltar.visible = false  # Força invisível na página inicial
+		btn_voltar.visible = false
 	elif pagina_para_testar != null:
-		print("Aviso: A página de teste não tem nome definido. Ignorando.")
+		if Constantes.DEBUG: print("Aviso: A página de teste não tem nome definido. Ignorando.")
 
 func filtrar_texto_por_progresso(texto: String) -> String:
 	var regex = RegEx.new()
@@ -86,7 +86,7 @@ func _on_link_clicado(meta: String):
 func ir_para_pagina_por_nome(nome_pagina: String, empilhar: bool = true) -> void:
 	var pagina = biblioteca_db.get_pagina_por_nome(nome_pagina)
 	if pagina == null:
-		print("Erro: Página '", nome_pagina, "' não encontrada na database.")
+		if Constantes.DEBUG: print("Erro: Página '", nome_pagina, "' não encontrada na database.")
 		return
 
 	if empilhar and pagina_atual_nome != "":

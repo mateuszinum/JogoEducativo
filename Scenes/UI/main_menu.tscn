@@ -168,6 +168,10 @@ shadow_offset = Vector2(0, 3.4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py2ge"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_tr32r"]
+font = ExtResource("7_wqme5")
+font_size = 24
+
 [sub_resource type="Theme" id="Theme_tr32r"]
 default_font = ExtResource("7_wqme5")
 default_font_size = 16
@@ -659,6 +663,17 @@ som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
 som_clique = ExtResource("12_xp0kt")
 volume_clique_db = -5.0
+
+[node name="Versão" type="Label" parent="ConteudoMenuPrincipal" unique_id=1093751734]
+layout_mode = 0
+offset_left = 1180.0
+offset_top = 673.0
+offset_right = 1264.0
+offset_bottom = 709.0
+text = "v0.1.3"
+label_settings = SubResource("LabelSettings_tr32r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ConfirmacaoReset" type="ConfirmationDialog" parent="." unique_id=51262298]
 unique_name_in_owner = true

@@ -49,6 +49,7 @@ func _on_button_mago_velho_pressed() -> void:
 	verificar_progresso()
 	if loja_mago_velho: loja_mago_velho.show()
 	if (!ProgressoDB.tem_desbloqueado("MagoVelho")):
+		ProgressoDB.desbloquear("MagoVelho")
 		if loja_mago_velho and loja_mago_velho.has_method("tocar_dialogo_especial"):
 			loja_mago_velho.tocar_dialogo_especial()
 
@@ -67,8 +68,8 @@ func _on_loja_biblioteca_fechou_loja() -> void:
 func _on_loja_mago_velho_fechou_loja() -> void:
 	if loja_mago_velho:
 		loja_mago_velho.hide()
-		if (!ProgressoDB.tem_desbloqueado("MagoVelho")):
-			ProgressoDB.desbloquear("MagoVelho")
+	if (!ProgressoDB.tem_desbloqueado("MagoVelho")):
+		ProgressoDB.desbloquear("MagoVelho")
 	verificar_progresso()
 
 func _on_start_game_pressed() -> void:

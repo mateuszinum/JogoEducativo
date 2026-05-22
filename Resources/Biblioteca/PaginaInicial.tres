@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_3yqwk"]
 script = ExtResource("1_7lmda")
 tipo = 4
-texto = "Créditos [req=Início]Introdução[/req] [req=Início]Partidas[/req]"
+texto = "Créditos [req=Início]Introdução[/req] [req=Início]Partidas[/req] [req=Localização]Tesouros[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_0wyyo"]

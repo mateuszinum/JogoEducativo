@@ -215,7 +215,7 @@ func show_damage_number(amount):
 	
 func gerar_drops() -> void:
 	var multiplicador = 1
-	if ultimo_ataque_recebido == "FeixeLuz":
+	if ultimo_ataque_recebido == "Raio":
 		multiplicador = 2
 	
 	if type != null and type.tabela_de_drops != null:
