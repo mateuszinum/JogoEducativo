@@ -393,6 +393,7 @@ theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxTexture_n1i2u")
 theme_override_styles/focus = SubResource("StyleBoxFlat_l4t8i")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_a105h")
+context_menu_enabled = false
 emoji_menu_enabled = false
 line_folding = true
 gutters_draw_fold_gutter = true

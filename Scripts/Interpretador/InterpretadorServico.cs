@@ -15,15 +15,23 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 	{
 		string erroTraduzido = msg;
 		int linhaErro = line - 1;
-		
+
+		// Tentamos pegar exatamente a palavra que causou o erro para dar uma dica melhor!
+		string simboloErro = "";
+		if (offendingSymbol is IToken token && token.Text != "<EOF>")
+		{
+			simboloErro = token.Text;
+		}
+
+		// --- ERROS CLÁSSICOS DE ESTRUTURA ---
 		if (erroTraduzido.Contains("missing ':'")) 
 		{
-			erroTraduzido = "Faltou ':' no final desta estrutura.";
+			erroTraduzido = "Faltou colocar os dois pontos ':' no final desta estrutura.";
 			linhaErro = Math.Max(0, linhaErro - 1);
 		} 
 		else if (erroTraduzido.Contains("missing 'fim'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'fim'"))) 
 		{
-			erroTraduzido = "Faltou fechar uma estrutura de código. Lembre-se de colocar 'fim se', 'fim enquanto' ou 'fim funcao' no final do bloco.";
+			erroTraduzido = "Faltou fechar o bloco! Lembre-se de colocar 'fim se', 'fim enquanto' ou 'fim funcao'.";
 		} 
 		else if (erroTraduzido.Contains("missing 'se'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'se'"))) 
 		{
@@ -31,20 +39,36 @@ public class InterpretadorErrorListener<T> : IAntlrErrorListener<T>
 		}
 		else if (erroTraduzido.Contains("missing 'enquanto'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'enquanto'"))) 
 		{
-			erroTraduzido = "Faltou a palavra 'enquanto'. Você quis dizer 'fim enquanto' para fechar o laço de repetição?";
+			erroTraduzido = "Faltou a palavra 'enquanto'. Você quis dizer 'fim enquanto' para fechar o loop?";
 		}
 		else if (erroTraduzido.Contains("missing 'funcao'") || (erroTraduzido.Contains("expecting") && erroTraduzido.Contains("'funcao'"))) 
 		{
 			erroTraduzido = "Faltou a palavra 'funcao'. Você quis dizer 'fim funcao' para fechar a declaração?";
 		}
+		
+		else if (erroTraduzido.Contains("mismatched input"))
+		{
+			erroTraduzido = string.IsNullOrEmpty(simboloErro) 
+				? "Um comando está incompleto ou terminou de repente." 
+				: $"O termo '{simboloErro}' está escrito errado ou foi colocado no lugar incorreto.";
+		}
+		else if (erroTraduzido.Contains("extraneous input"))
+		{
+			erroTraduzido = string.IsNullOrEmpty(simboloErro) 
+				? "Existem palavras ou símbolos sobrando nesta linha." 
+				: $"O item '{simboloErro}' não deveria estar aqui. Você digitou algo a mais?";
+		}
+		else if (erroTraduzido.Contains("no viable alternative"))
+		{
+			erroTraduzido = string.IsNullOrEmpty(simboloErro)
+				? "Comando desconhecido. O grimório não conseguiu entender esta linha."
+				: $"O sistema não reconhece o comando '{simboloErro}'. Ele existe e foi escrito certo?";
+		}
 		else 
 		{
-			erroTraduzido = erroTraduzido.Replace("missing", "Faltando").Replace("at", "em")
-										 .Replace("mismatched input", "Entrada incorreta")
-										 .Replace("expecting", "esperava-se")
-										 .Replace("extraneous input", "Palavra ou símbolo não reconhecido")
-										 .Replace("no viable alternative", "Comando inválido ou incompleto")
-										 .Replace("<EOF>", "fim do arquivo");
+			erroTraduzido = string.IsNullOrEmpty(simboloErro)
+				? "Erro de sintaxe. Verifique a estrutura deste comando."
+				: $"Erro de sintaxe perto de '{simboloErro}'. Algo está faltando ou sobrando.";
 		}
 		
 		var erro = new Godot.Collections.Dictionary { { "linha", linhaErro }, { "mensagem", erroTraduzido } };
