@@ -143,7 +143,7 @@ func take_damage(amount: float, kb_mult: float = 1.0, knockback_dir: Vector2 = V
 		if ataque_nome != "":
 			for weak in type.multiplicadores_de_ataque:
 				if weak.ataque != null and "nome" in weak.ataque and weak.ataque.nome == ataque_nome:
-					mult = weak.multiplicador
+					mult = mult * weak.multiplicador
 					break
 	
 	var final_damage = amount * mult

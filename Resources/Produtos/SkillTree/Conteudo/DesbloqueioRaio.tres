@@ -31,6 +31,6 @@ icone = ExtResource("1_5l0bc")
 pre_requisitos = Array[ExtResource("4_3d3ok")]([ExtResource("5_mtxoy")])
 tipo = 1
 custo_item_simples = ExtResource("1_txvhl")
-custo_quantidade_simples = 150
+custo_quantidade_simples = 100
 niveis = Array[ExtResource("2_txvhl")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

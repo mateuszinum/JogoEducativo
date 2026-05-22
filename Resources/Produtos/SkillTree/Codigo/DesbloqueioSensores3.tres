@@ -34,6 +34,6 @@ descricao_simples = "escanearArea()
 inimigo.posicaoX
 inimigo.posicaoY"
 custo_item_simples = ExtResource("1_7lgmt")
-custo_quantidade_simples = 400
+custo_quantidade_simples = 500
 niveis = Array[ExtResource("3_ggh8e")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

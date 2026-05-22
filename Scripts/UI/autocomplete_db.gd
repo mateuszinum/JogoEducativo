@@ -7,7 +7,7 @@ extends Resource
 static var termos : Dictionary = {
 	# --- Estruturas de Controle, Tipos e Funções ---
 	"se():": [2, "Loop e Condicional"], "senao:": [0, "Loop e Condicional"], "enquanto():": [2, "Loop e Condicional"], "fim enquanto": [0, "Loop e Condicional"], "fim se": [0, "Loop e Condicional"], 
-	"int": [0, "Variáveis"], "float": [0, "Variáveis"], "bool": [0, "Variáveis"], "string": [0, "Variáveis"], "vazio": [0, "Variáveis"],
+	"int": [0, "Variáveis"], "float": [0, "Variáveis"], "bool": [0, "Variáveis"], "Nulo": [0, "Variáveis"], "string": [0, "Variáveis"], "vazio": [0, "Variáveis"],
 	"Verdadeiro": [0, ""], "Falso": [0, ""], "Inimigo": [0, "Variáveis"], "Arena": [0, "Variáveis"], "Ataque": [0, "Variáveis"], "Direcao": [0, "Variáveis"],
 	"retorna": [0, "Funções"], "fim funcao": [0, "Funções"],
 
