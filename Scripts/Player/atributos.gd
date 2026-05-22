@@ -135,3 +135,25 @@ func resetar_xp_bonus_level():
 	resetar_level()
 	resetar_xp()
 #--------------------------------------#
+
+func recalcular_atributos(produtos_salvos: Dictionary):
+	max_health = 5
+	global_knockback_multiplier = 1.0
+	tempo_tick = 0.8
+	coleta_multiplier = 1.0
+	forca_multiplier = 1.0
+
+	if produtos_salvos.get("agilidade", 1) >= 2:
+		comprar_upgrade("Agilidade", produtos_salvos["agilidade"])
+		
+	if produtos_salvos.get("vida máxima", 1) >= 2:
+		comprar_upgrade("Vida Máxima", produtos_salvos["vida máxima"])
+		
+	if produtos_salvos.get("knockback", 1) >= 2:
+		comprar_upgrade("Knockback", produtos_salvos["knockback"])
+		
+	if produtos_salvos.get("coleta", 1) >= 2:
+		comprar_upgrade("Coleta", produtos_salvos["coleta"])
+		
+	if produtos_salvos.get("força", 1) >= 2:
+		comprar_upgrade("Força", produtos_salvos["força"])

@@ -16,6 +16,9 @@ func CarregarProdutos():
 	ProgressoDB.progresso_alterado.emit()
 	if Constantes.DEBUG: print("Progresso carregado: ", ProgressoDB.produtos_desbloqueados)
 	
+	if Atributos.has_method("recalcular_atributos"):
+		Atributos.recalcular_atributos(ProgressoDB.produtos_desbloqueados)
+	
 func CarregarInventario():
 	var dados = GetInventario()
 	
