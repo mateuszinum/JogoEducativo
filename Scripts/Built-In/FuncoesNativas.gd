@@ -392,7 +392,7 @@ class Jogador:
 			for req in ataque_data.requisitos:
 				if not req.verificar(player, ataque_data):
 					player.feedback_erro_comando()
-					Outros.debug_escreva("Requisito não atendido para o ataque: " + ataque_data.nome + " \"Verificar Biblioteca\"")
+					Outros.debug_escreva("Requisito não atendido para o ataque: \"" + ataque_data.nome + "\" Verificar Biblioteca", Color(0.54509807, 0, 0, 1) )
 					return false
 				
 		var alvo_encontrado = false
@@ -482,5 +482,5 @@ class Produtos:
 		Inventario.vender_tudo()
 
 class Outros:
-	static func debug_escreva(texto: String):
-		Engine.get_main_loop().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "Jogo", "escrever_debug", texto)
+	static func debug_escreva(texto: String, cor_personalizada: Color = Color.TRANSPARENT):
+		Engine.get_main_loop().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "Jogo", "escrever_debug", texto, cor_personalizada)

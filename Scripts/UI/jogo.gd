@@ -204,7 +204,7 @@ func carregar_arena_via_codigo(novo_stage_data: Resource) -> void:
 	
 	transicao_em_andamento = false
 	
-func escrever_debug(texto: String) -> void:
+func escrever_debug(texto: String, cor_personalizada: Color = Color.TRANSPARENT) -> void:
 	var container = get_node_or_null("%TextoDebug")
 	if not container: return
 	
@@ -221,8 +221,11 @@ func escrever_debug(texto: String) -> void:
 	
 	if fonte_debug:
 		nova_mensagem.add_theme_font_override("font", fonte_debug)
+	if cor_personalizada != Color.TRANSPARENT:
+		nova_mensagem.add_theme_color_override("font_color", cor_personalizada)
+	else:
+		nova_mensagem.add_theme_color_override("font_color", cor_texto_debug)
 	nova_mensagem.add_theme_font_size_override("font_size", tamanho_fonte_debug)
-	nova_mensagem.add_theme_color_override("font_color", cor_texto_debug)
 	nova_mensagem.add_theme_constant_override("line_spacing", espacamento_linhas_debug)
 	nova_mensagem.add_theme_color_override("font_shadow_color", cor_sombra_debug)
 	nova_mensagem.add_theme_constant_override("shadow_outline_size", tamanho_sombra_debug)
