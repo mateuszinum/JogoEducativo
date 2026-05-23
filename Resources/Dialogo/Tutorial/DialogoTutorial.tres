@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_65pwf"]
 script = ExtResource("1_l6p75")
-texto = "O livro realiza em sequência todas instruções escritas neleo. Quando você estiver certo do seu algoritmo, rode o código!"
+texto = "O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [resource]
