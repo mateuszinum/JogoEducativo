@@ -13,10 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_ys6rr")
 texto = "É possível acessar a posição X de um inimigo.
 
-Isso é útil para verificar a posição do inimigo e possivelmente compará-la com a sua própria.
-
-Esse é um valor inteiro aproximado da coordenada da tile a qual o inimigo se encontra.
-"
+Isso é útil para verificar a posição do inimigo e possivelmente compará-la com a sua própria."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_n0vup"]
@@ -28,7 +25,13 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_0dx7l"]
 script = ExtResource("1_ys6rr")
 tipo = 3
-texto = "Inimigo i = inimigoMaisProximo()
+texto = "#Exemplo 1
+
+escreva(inimigoMaisProximo().posicaoX)
+
+#Exemplo 2
+
+Inimigo i = inimigoMaisProximo()
 int inimigoPosX = i.posicaoX"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

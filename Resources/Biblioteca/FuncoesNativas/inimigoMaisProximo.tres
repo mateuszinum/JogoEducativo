@@ -11,8 +11,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_o2p58")
-texto = "Retorna o inimigo que estiver mais próximo do jogador no momento da execução.
-"
+texto = "Muito útil para não atacar o vento e focar no perigo imediato, MAS cuidado em arenas cheias, ele é cego para os monstros mais distantes.
+
+dica: futuramente, colar um ponto (.) logo após essa busca permitirá extrair informações precisas do alvo, como o seu nome."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
@@ -24,7 +25,15 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_o2p58")
 tipo = 3
-texto = "Inimigo inimigo = inimigoMaisProximo()"
+texto = "#Exemplo 1
+
+atacar(inimigoMaisProximo(), EsferaAzul)
+
+#Exemplo 2
+
+Inimigo inimigo = inimigoMaisProximo()
+
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
