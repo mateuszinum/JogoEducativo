@@ -392,6 +392,7 @@ class Jogador:
 			for req in ataque_data.requisitos:
 				if not req.verificar(player, ataque_data):
 					player.feedback_erro_comando()
+					Outros.debug_escreva("Requisito não atendido para o ataque: " + ataque_data.nome + " \"Verificar Biblioteca\"")
 					return false
 				
 		var alvo_encontrado = false
