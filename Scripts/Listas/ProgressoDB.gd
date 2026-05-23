@@ -1,6 +1,7 @@
 extends Node
 
 signal progresso_alterado 
+signal progresso_inicio_alterado
 
 var produtos_desbloqueados: Dictionary = {}
 
@@ -8,6 +9,9 @@ func desbloquear(nome_produto: String, nivel: int = 1) -> void:
 	var limpo = nome_produto.to_lower().strip_edges()
 	produtos_desbloqueados[limpo] = nivel
 	progresso_alterado.emit() 
+	if limpo == "início":
+		progresso_inicio_alterado.emit()
+		
 	if Constantes.DEBUG: print(produtos_desbloqueados)
 	SaveMaster.salvar_dado()
 
