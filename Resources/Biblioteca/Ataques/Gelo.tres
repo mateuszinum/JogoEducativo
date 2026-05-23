@@ -9,6 +9,13 @@ tipo = 1
 texto = "Gelo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_570sq"]
+script = ExtResource("1_570sq")
+texto = "Muito útil para matar o slime de fogo, MAS cuidado com o slime de gelo, isso é só uma brisa para ele.
+
+dica: esse juntamente do raio e esfera azul geram uma grande expolsão"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [sub_resource type="Resource" id="Resource_3l6q0"]
 script = ExtResource("1_570sq")
 tipo = 2
@@ -25,5 +32,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_ffl6i")
 nome = "Gelo"
-blocos_de_conteudo = Array[ExtResource("1_570sq")]([SubResource("Resource_sj6m0"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+blocos_de_conteudo = Array[ExtResource("1_570sq")]([SubResource("Resource_sj6m0"), SubResource("Resource_570sq"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

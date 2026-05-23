@@ -12,7 +12,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_b7tpe")
 texto = "Dano fraco, mas é o único jeito de derrotar Vampiro.
-"
+
+Obs: faz um delicioso pão de alho."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

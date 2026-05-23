@@ -6,12 +6,12 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_0klpq")
 tipo = 1
-texto = "ExplosaoGelo"
+texto = "Explosão de Gelo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_0klpq")
-texto = "Causa altíssimo dano em área grande, congelando temporariamente inimigos atingidos.
+texto = "Causa altíssimo dano em uma área grande, congelando temporariamente inimigos atingidos.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
