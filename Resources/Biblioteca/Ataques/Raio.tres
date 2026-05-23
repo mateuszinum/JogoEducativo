@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_7rg4m")
 texto = "Dano fraco, mas inimigos derrotados com esse ataque dropam 2x mais recursos.
 
-"
+Dica: esse ataque combinado ao gelo e esfera azul, geram uma grande explosão, não me pergunte como descobriram isso.... é uma historia cabulosa..."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_tm0i7")
 tipo = 1
-texto = "EsferaVermelha"
+texto = "Esfera Vermelha"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]

@@ -6,7 +6,14 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_3wfyg")
 tipo = 1
-texto = "EsferaAzul"
+texto = "Esfera Azul"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_2agbe"]
+script = ExtResource("1_3wfyg")
+texto = "Uma esfera de mana concentrada. Machuca quando acerta!, exceto pelo orc ou vampiro. São bem fortinho os dois.
+
+dica: esse cara é ingrediente para um ataque bem mais forte, nessa sequencia: EA - G - R -G  "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]
@@ -25,5 +32,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_k6sv5")
 nome = "EsferaAzul"
-blocos_de_conteudo = Array[ExtResource("1_3wfyg")]([SubResource("Resource_sj6m0"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+blocos_de_conteudo = Array[ExtResource("1_3wfyg")]([SubResource("Resource_sj6m0"), SubResource("Resource_2agbe"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

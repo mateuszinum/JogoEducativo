@@ -9,6 +9,13 @@ tipo = 1
 texto = "Fogo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_bjgxk"]
+script = ExtResource("1_bjgxk")
+texto = "Muito útil para matar o slime de gelo, MAS cuidado com o slime de fogo, isso nem é chamado de atque donde ele vem. 
+
+Dica:  se acumular esse cara (no maximo 4), a sua explosão se tornará enorme."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [sub_resource type="Resource" id="Resource_3l6q0"]
 script = ExtResource("1_bjgxk")
 tipo = 2
@@ -25,5 +32,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_8lr2j")
 nome = "Fogo"
-blocos_de_conteudo = Array[ExtResource("1_bjgxk")]([SubResource("Resource_sj6m0"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+blocos_de_conteudo = Array[ExtResource("1_bjgxk")]([SubResource("Resource_sj6m0"), SubResource("Resource_bjgxk"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

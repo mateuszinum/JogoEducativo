@@ -6,13 +6,14 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_g2dps")
 tipo = 1
-texto = "ExplosaoFogo"
+texto = "Explosão de Fogo"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_g2dps")
-texto = "Projétil que causa dano imediato em área circular. Causa alto dano em área.
-Área do ataque aumenta quanto mais ataques anteriores serem Fogo. (stack 4 max)"
+texto = "Uma explosão concentrada da esfera azul. 
+Projétil que causa dano imediato em área circular. Causa alto dano em área.
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]
@@ -37,7 +38,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_jt7od"]
 script = ExtResource("1_g2dps")
 texto = "O último ataque deve ter sido Fogo.
-Área aumenta quanto mais fogos tiverem precedido ele, até um cap de 4
+Área aumenta quanto mais fogos tiverem precedido ele, até um cap de 4 (o maximo é 4).
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
