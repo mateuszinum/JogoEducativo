@@ -30,7 +30,7 @@ texto = "#Exemplo 1
 
 se(inimigoMaisProximo().nome == SlimeDeFogo):
 	atacar(inimigoMaisProximo().nome, Gelo)
-senão:
+senao:
 	atacar(inimigoMaisProximo().nome, EsferaAzul)
 fim se
 
@@ -40,7 +40,7 @@ Inimigo i = inimigoMaisProximo()
 
 se(i.nome == SlimeDeFogo):
 	atacar(i, Gelo)
-senão:
+senao:
 	atacar(i, EsferaAzul)
 fim se"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
