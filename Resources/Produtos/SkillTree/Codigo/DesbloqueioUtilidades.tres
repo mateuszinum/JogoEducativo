@@ -30,11 +30,14 @@ nome = "Utilidades"
 icone = ExtResource("2_wqmaf")
 pre_requisitos = Array[ExtResource("5_ax4ot")]([ExtResource("6_wqmaf")])
 tipo = 1
-descricao_simples = "aleatorio()
-min()
-max()
-tamanho()
-trunca()"
+descricao_simples = "Um kit de funções úteis!
+
+Desbloqueia:
+- aleatorio()
+- min()
+- max()
+- tamanho()
+- trunca()"
 custo_item_simples = ExtResource("1_wqmaf")
 custo_quantidade_simples = 150
 niveis = Array[ExtResource("3_sx0pd")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

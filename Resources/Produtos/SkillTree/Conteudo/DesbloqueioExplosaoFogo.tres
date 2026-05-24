@@ -30,6 +30,7 @@ nome = "Explosão de Fogo"
 icone = ExtResource("1_pq1bc")
 pre_requisitos = Array[ExtResource("5_n84rw")]([ExtResource("6_qg6vf")])
 tipo = 1
+descricao_simples = "Novo ataque! Causa dano em área."
 custo_item_simples = ExtResource("1_qg6vf")
 custo_quantidade_simples = 150
 niveis = Array[ExtResource("3_iyqt3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

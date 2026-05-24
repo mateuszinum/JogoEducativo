@@ -27,10 +27,13 @@ script = ExtResource("5_xxrc8")
 nome = "Início"
 icone = ExtResource("2_mxbgm")
 tipo = 1
-descricao_simples = "arena()
-atacar()
-inimigoMaisProximo()
-Campos
-EsferaAzul"
+descricao_simples = "Desbloqueia coisas essenciais para as primeiras partidas!
+
+Desbloqueia:
+- arena()
+- atacar()
+- inimigoMaisProximo()
+- Campos
+- EsferaAzul"
 niveis = Array[ExtResource("3_o2rix")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

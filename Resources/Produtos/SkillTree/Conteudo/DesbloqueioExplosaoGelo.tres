@@ -30,6 +30,7 @@ nome = "Explosão de Gelo"
 icone = ExtResource("1_7cy82")
 pre_requisitos = Array[ExtResource("5_jd25p")]([ExtResource("6_kwox0")])
 tipo = 1
+descricao_simples = "Novo ataque! Causa dano em área e congela inimigos."
 custo_item_simples = ExtResource("1_kwox0")
 custo_quantidade_simples = 125
 niveis = Array[ExtResource("3_t0w4e")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

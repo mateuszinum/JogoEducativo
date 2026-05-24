@@ -11,8 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_0klpq")
-texto = "Causa altíssimo dano em uma área grande, congelando temporariamente inimigos atingidos.
-"
+texto = "Causa altíssimo dano em uma área grande, congelando temporariamente inimigos atingidos."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]
@@ -36,7 +35,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_jt7od"]
 script = ExtResource("1_0klpq")
-texto = "Os últimos 4 ataques devem ter sido “EsferaAzul-Gelo-Raio-Gelo”
+texto = "Os últimos 4 ataques devem ter sido “EsferaAzul-Gelo-Raio-Gelo”, nessa ordem.
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

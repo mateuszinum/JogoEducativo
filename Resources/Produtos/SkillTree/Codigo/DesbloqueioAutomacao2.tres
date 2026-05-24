@@ -29,7 +29,10 @@ nome = "Automação 2"
 icone = ExtResource("2_g6k0n")
 pre_requisitos = Array[ExtResource("5_seite")]([ExtResource("6_g6k0n")])
 tipo = 1
-descricao_simples = "comprar()
-venderTudo()"
+descricao_simples = "Permite comprar produtos e vender itens através do código!
+
+Desbloqueia:
+- comprar()
+- venderTudo()"
 niveis = Array[ExtResource("3_mef3c")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

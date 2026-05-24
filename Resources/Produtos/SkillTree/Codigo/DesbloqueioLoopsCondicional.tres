@@ -30,8 +30,7 @@ nome = "Loop e Condicional"
 icone = ExtResource("2_3wx8i")
 pre_requisitos = Array[ExtResource("5_mremj")]([ExtResource("6_3wx8i")])
 tipo = 1
-descricao_simples = "enquanto
-se"
+descricao_simples = "Desbloqueia acesso ao loop \"enquanto\" e a condicional \"se\"."
 custo_item_simples = ExtResource("1_3wx8i")
 custo_quantidade_simples = 10
 niveis = Array[ExtResource("3_xidyp")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

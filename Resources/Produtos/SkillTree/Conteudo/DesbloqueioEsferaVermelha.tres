@@ -30,6 +30,7 @@ nome = "Esfera Vermelha"
 icone = ExtResource("2_dv37w")
 pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp")])
 tipo = 1
+descricao_simples = "Novo ataque! Mais forte do que a Esfera Azul."
 custo_item_simples = ExtResource("1_dv37w")
 custo_quantidade_simples = 100
 niveis = Array[ExtResource("3_k6in4")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

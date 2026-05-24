@@ -30,9 +30,11 @@ nome = "Sensores 1"
 icone = ExtResource("2_yt7n5")
 pre_requisitos = Array[ExtResource("5_mprdk")]([ExtResource("6_yt7n5")])
 tipo = 1
-descricao_simples = "inimigo.nome
-tempo()
-"
+descricao_simples = "Libera acesso a informações úteis.
+
+Desbloqueia:
+- inimigo.nome
+- tempo()"
 custo_item_simples = ExtResource("1_yt7n5")
 custo_quantidade_simples = 60
 niveis = Array[ExtResource("3_4fy0p")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

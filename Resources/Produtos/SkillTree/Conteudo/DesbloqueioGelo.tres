@@ -30,6 +30,7 @@ nome = "Gelo"
 icone = ExtResource("1_bl3de")
 pre_requisitos = Array[ExtResource("5_f2r3j")]([ExtResource("6_slbvi")])
 tipo = 1
+descricao_simples = "Novo ataque! Útil para derrotar inimigos de fogo..."
 custo_item_simples = ExtResource("1_slbvi")
 custo_quantidade_simples = 40
 niveis = Array[ExtResource("3_ohnj3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

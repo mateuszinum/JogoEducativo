@@ -11,9 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_2agbe"]
 script = ExtResource("1_3wfyg")
-texto = "Uma esfera de mana concentrada. Machuca quando acerta!, exceto pelo orc ou vampiro. São bem fortinho os dois.
-
-dica: esse cara é ingrediente para um ataque bem mais forte, nessa sequencia: EA - G - R -G  "
+texto = "Uma esfera de magia concentrada. Machuca quando acerta[req=Floresta], exceto pelo Orc ou Vampiro. São bem fortinhos os dois[/req]."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

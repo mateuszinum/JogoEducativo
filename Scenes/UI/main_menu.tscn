@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cigywdnxq6776" path="res://Scenes/UI/tela_configuracao.tscn" id="16_oslnl"]
 [ext_resource type="Texture2D" uid="uid://1xcct0mwebrk" path="res://Assets/UI/Terminal/x.png" id="16_tr32r"]
 [ext_resource type="Environment" uid="uid://dqitl0b562dvh" path="res://Resources/Shaders/Bloom.tres" id="17_3h8o7"]
+[ext_resource type="Script" uid="uid://b6blrqt7tlx02" path="res://Scripts/Polimento/click_to_skip.gd" id="18_hbsmt"]
 [ext_resource type="PackedScene" uid="uid://cebk7rsx1mork" path="res://Scenes/Cutscene/sistema_cutscene.tscn" id="18_q6o50"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jewm6"]
@@ -801,6 +802,9 @@ offset_right = 0.00012207031
 offset_bottom = 6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("18_hbsmt")
+usar_fade = true
+tempo_fade = 0.1
 
 [node name="ColorRect" type="ColorRect" parent="IntroLayer" unique_id=1828069636]
 modulate = Color(0, 0, 0, 1)

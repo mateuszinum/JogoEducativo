@@ -11,9 +11,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_570sq"]
 script = ExtResource("1_570sq")
-texto = "Muito útil para matar o slime de fogo, MAS cuidado com o slime de gelo, isso é só uma brisa para ele.
+texto = "Muito útil para matar o Slime de Fogo, mas cuidado com o slime de gelo: Isso é só uma brisa para ele.
 
-dica: esse juntamente do raio e esfera azul geram uma grande expolsão"
+[req=Explosão de Gelo]Dica: Esse juntamente do Raio e Esfera Azul geram uma grande explosão.[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

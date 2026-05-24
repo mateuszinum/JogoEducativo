@@ -29,8 +29,10 @@ nome = "Itens"
 icone = ExtResource("2_ywuj6")
 pre_requisitos = Array[ExtResource("5_5h8bc")]([ExtResource("6_ywuj6")])
 tipo = 1
-descricao_simples = "Comerciante
-cinto.usarItem()
-mochila.usarItem()"
+descricao_simples = "Além de liberar acesso ao comerciante, desbloqueia o uso de itens.
+
+Desbloqueia:
+- cinto.usarItem()
+- mochila.usarItem()"
 niveis = Array[ExtResource("3_a68qi")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

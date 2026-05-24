@@ -29,6 +29,7 @@ nome = "Alho"
 icone = ExtResource("2_wa462")
 pre_requisitos = Array[ExtResource("5_yij8p")]([ExtResource("6_wa462")])
 tipo = 1
+descricao_simples = "Novo ataque! O dano é fraco, mas é o único jeito de derrotar Vampiros..."
 custo_item_simples = ExtResource("4_nk6ns")
 custo_quantidade_simples = 150
 niveis = Array[ExtResource("3_c34fr")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

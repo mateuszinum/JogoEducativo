@@ -30,11 +30,13 @@ nome = "Localização"
 icone = ExtResource("2_x44yy")
 pre_requisitos = Array[ExtResource("5_vfxon")]([ExtResource("6_x44yy")])
 tipo = 1
-descricao_simples = "Bruxa
-posicaoX()
-posicaoY()
-tesouroX()
-tesouroY()"
+descricao_simples = "Além de liberar acesso à Bruxa, desbloqueia funções que localizam tesouros nas arenas.
+
+Desbloqueia:
+- posicaoX()
+- posicaoY()
+- tesouroX()
+- tesouroY()"
 custo_item_simples = ExtResource("1_x44yy")
 custo_quantidade_simples = 50
 niveis = Array[ExtResource("3_npjni")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

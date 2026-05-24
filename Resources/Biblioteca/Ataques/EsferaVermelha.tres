@@ -11,9 +11,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_tm0i7")
-texto = "Igual o ataque básico, mas ele atravessa inimigos (podendo acertar vários).
-
-"
+texto = "Igual o ataque básico, mas ele atravessa inimigos (podendo acertar vários). Machuca bastante quando acerta[req=Floresta], exceto pelo Orc ou Vampiro. São bem fortinhos os dois[/req]."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]
@@ -37,8 +35,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_hbekh"]
 script = ExtResource("1_tm0i7")
-texto = "Os últimos 3 ataques devem ter sido a EsferaAzul
-"
+texto = "O ataque anterior deve ter sido a EsferaAzul."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

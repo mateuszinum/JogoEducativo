@@ -30,9 +30,12 @@ nome = "Sensores 2"
 icone = ExtResource("2_5n0qe")
 pre_requisitos = Array[ExtResource("5_tk6a2")]([ExtResource("6_5n0qe")])
 tipo = 1
-descricao_simples = "podeMover()
-vidaAtual()
-inimigo.vida"
+descricao_simples = "Libera acesso a mais informações úteis.
+
+Desbloqueia:
+- podeMover()
+- vidaAtual()
+- inimigo.vida"
 custo_item_simples = ExtResource("1_5n0qe")
 custo_quantidade_simples = 20
 niveis = Array[ExtResource("3_w425r")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

@@ -30,7 +30,10 @@ nome = "Debug"
 icone = ExtResource("2_v2fyr")
 pre_requisitos = Array[ExtResource("5_apnv1")]([ExtResource("6_v2fyr")])
 tipo = 1
-descricao_simples = "escreva()"
+descricao_simples = "Desbloqueia funcionalidade que facilita diagnóstico de bugs.
+
+Desbloqueia:
+- escreva()"
 custo_item_simples = ExtResource("1_v2fyr")
 custo_quantidade_simples = 75
 niveis = Array[ExtResource("3_qw8vh")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

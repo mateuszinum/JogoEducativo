@@ -30,7 +30,10 @@ nome = "Automação 1"
 icone = ExtResource("2_4ne2s")
 pre_requisitos = Array[ExtResource("5_lsr6j")]([ExtResource("6_4ne2s")])
 tipo = 1
-descricao_simples = "escapar()"
+descricao_simples = "Permite escapar da arena através do código!
+
+Desbloqueia:
+- escapar()"
 custo_item_simples = ExtResource("1_4ne2s")
 custo_quantidade_simples = 50
 niveis = Array[ExtResource("3_asr4t")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
