@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_hckvb")
 nome = "Esfera Vermelha"
+pagina_biblioteca = "EsferaVermelha"
 icone = ExtResource("2_dv37w")
 pre_requisitos = Array[ExtResource("5_hckvb")]([ExtResource("6_y22yp")])
 tipo = 1

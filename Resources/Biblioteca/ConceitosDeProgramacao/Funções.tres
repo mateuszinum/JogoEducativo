@@ -17,6 +17,18 @@ Ao criar uma função, você deve dizer qual o tipo de dado que ela vai devolver
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_ect6h"]
+script = ExtResource("1_eyya5")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_4xmli"]
+script = ExtResource("1_eyya5")
+tipo = 4
+texto = "Escopos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [sub_resource type="Resource" id="Resource_eyya5"]
 script = ExtResource("1_eyya5")
 tipo = 2
@@ -41,5 +53,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_btp45")
 nome = "Funções"
-blocos_de_conteudo = Array[ExtResource("1_eyya5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_eyya5"), SubResource("Resource_btp45")])
+blocos_de_conteudo = Array[ExtResource("1_eyya5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_ect6h"), SubResource("Resource_4xmli"), SubResource("Resource_eyya5"), SubResource("Resource_btp45")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

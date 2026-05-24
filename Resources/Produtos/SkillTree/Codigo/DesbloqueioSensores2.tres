@@ -27,14 +27,16 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_tk6a2")
 nome = "Sensores 2"
+pagina_biblioteca = null
 icone = ExtResource("2_5n0qe")
 pre_requisitos = Array[ExtResource("5_tk6a2")]([ExtResource("6_5n0qe")])
 tipo = 1
-descricao_simples = "Libera acesso a mais informações úteis.
+descricao_simples = "Libera acesso a informações úteis.
 
 Desbloqueia:
 - podeMover()
 - vidaAtual()
+- tempo()
 - inimigo.vida"
 custo_item_simples = ExtResource("1_5n0qe")
 custo_quantidade_simples = 20

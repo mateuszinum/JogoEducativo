@@ -25,9 +25,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_xxrc8")
 nome = "Início"
+pagina_biblioteca = "Início"
 icone = ExtResource("2_mxbgm")
 tipo = 1
-descricao_simples = "Desbloqueia coisas essenciais para as primeiras partidas!
+descricao_simples = "Coisas essenciais para as primeiras partidas!
 
 Desbloqueia:
 - arena()

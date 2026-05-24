@@ -11,7 +11,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_pquk3")
-texto = "Sai da arena, e volta para o vilarejo.
+texto = "Escapa da arena, voltando para o vilarejo sem encerrar a execução do código.
+
+Dica: Experimente criar um loop que entra e sai de uma partida por conta própria!
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

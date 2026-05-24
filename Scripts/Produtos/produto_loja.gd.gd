@@ -5,6 +5,8 @@ class_name ProdutoLoja
 enum TipoProduto { ITEM_UNICO, DESBLOQUEIO_UNICO, UPGRADE, DESBLOQUEIO_PROGRESSIVO }
 
 @export var nome: String
+@export var nome_display: String = ""
+@export var pagina_biblioteca: String = ""
 @export var icone: Texture2D
 @export var pre_requisitos: Array[ProdutoLoja] = []
 

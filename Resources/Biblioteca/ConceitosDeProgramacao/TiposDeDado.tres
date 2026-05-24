@@ -123,13 +123,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_wwugd"]
 script = ExtResource("1_175lm")
 tipo = 3
-texto = "int energia = 100
+texto = "int i = 100
+float f = 0.56
+bool b = Falso
 string mensagem = \"Explorando a arena\"
 Inimigo alvo = inimigoMaisProximo()
 Direcao dir = Cima
 Arena arn = Campos
-Ataque atk = EsferaAzul
-"
+Ataque atk = EsferaAzul"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

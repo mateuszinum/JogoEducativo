@@ -1,5 +1,7 @@
 extends Control
 
+const TEMPO_FADE_BIBLIOTECA: float = 0.5
+
 @export var musica_tema: AudioStream
 @export var volume_musica_db: float = 0.0
 
@@ -18,6 +20,7 @@ extends Control
 var player_musica: AudioStreamPlayer
 
 func _ready() -> void:
+	add_to_group("MenuVilarejo")
 	if loja_bruxa: loja_bruxa.hide()
 	if loja_comerciante: loja_comerciante.hide()
 	if loja_biblioteca: loja_biblioteca.hide()
@@ -26,7 +29,6 @@ func _ready() -> void:
 	verificar_progresso()
 	iniciar_musica()
 	
-	ProgressoDB.progresso_inicio_alterado.connect(_on_progresso_inicio_alterado)
 	ProgressoDB.progresso_alterado.connect(_on_progresso_alterado)
 	
 	if not Constantes.USAR_EFEITOS_TELA:
@@ -110,9 +112,34 @@ func _on_progresso_alterado() -> void:
 func _on_progresso_inicio_alterado() -> void:
 	verificar_progresso()
 	
-	if ProgressoDB.tem_desbloqueado("Início") and loja_mago_velho and loja_mago_velho.visible:
-		loja_mago_velho.hide()
-		if loja_biblioteca:
-			loja_biblioteca.show()
-			get_tree().call_group("BibliotecaPagina", "abrir_pagina_por_nome", "Início")
+func forcar_abertura_biblioteca(nome_pagina: String) -> void:
+	if Constantes.DEBUG: print("[DEBUG] VillageMenu: Recebeu ordem para transição. Página alvo: ", nome_pagina)
 	
+	if Constantes.FORÇAR_BIBLIOTECA:
+		if loja_mago_velho and loja_mago_velho.visible:
+			if Constantes.DEBUG: print("[DEBUG] VillageMenu: Mago Velho está aberto. Iniciando Fade to Black...")
+			
+			var tela_preta = ColorRect.new()
+			tela_preta.color = Color(0, 0, 0, 0)
+			tela_preta.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			tela_preta.z_index = 100
+			tela_preta.mouse_filter = Control.MOUSE_FILTER_STOP
+			add_child(tela_preta)
+			
+			var tween = create_tween()
+			tween.tween_property(tela_preta, "color:a", 1.0, TEMPO_FADE_BIBLIOTECA)
+			
+			tween.tween_callback(func():
+				loja_mago_velho.hide()
+				if loja_biblioteca:
+					loja_biblioteca.show()
+					if Constantes.DEBUG: print("[DEBUG] VillageMenu: Fade escuro máximo. Trocando loja e chamando BibliotecaPagina.")
+					get_tree().call_group("BibliotecaPagina", "abrir_pagina_por_nome", nome_pagina)
+			)
+			
+			tween.tween_property(tela_preta, "color:a", 0.0, TEMPO_FADE_BIBLIOTECA)
+			tween.tween_callback(tela_preta.queue_free)
+		else:
+			if Constantes.DEBUG: print("[DEBUG] VillageMenu ERRO: Transição cancelada pois o Mago Velho NÃO está visível.")
+	else:
+		if Constantes.DEBUG: print("[DEBUG] VillageMenu AVISO: Transição ignorada pois Constantes.FORÇAR_BIBLIOTECA é falso.")

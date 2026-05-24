@@ -85,10 +85,14 @@ func _on_link_clicado(meta: String):
 	ir_para_pagina_por_nome(meta, true)
 
 func ir_para_pagina_por_nome(nome_pagina: String, empilhar: bool = true) -> void:
+	if Constantes.DEBUG: print("[DEBUG] BibliotecaPagina: Tentando buscar a página '", nome_pagina, "' no banco de dados...")
+	
 	var pagina = biblioteca_db.get_pagina_por_nome(nome_pagina)
 	if pagina == null:
-		if Constantes.DEBUG: print("Erro: Página '", nome_pagina, "' não encontrada na database.")
+		if Constantes.DEBUG: print("[DEBUG] BibliotecaPagina ERRO: Página '", nome_pagina, "' NÃO foi encontrada na BibliotecaDB! Verifique as letras maiúsculas e espaços.")
 		return
+
+	if Constantes.DEBUG: print("[DEBUG] BibliotecaPagina SUCESSO: Página '", nome_pagina, "' encontrada! Carregando texto na tela.")
 
 	if empilhar and pagina_atual_nome != "":
 		historico.append(pagina_atual_nome)

@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_bjgxk")
 texto = "Muito útil para matar o Slime de Gelo, mas cuidado com o Slime de Fogo: Isso nem é chamado de ataque de onde ele vem. 
 
-[req=Explosão de Fogo]Dica: Se acumular esse cara (no maximo 4), você consegue lançar o ExplosaoFogo com uma área enorme.[/req]"
+[req=Explosão de Fogo]Dica: Se acumular esse cara (no máximo 4), você consegue lançar o ExplosaoFogo com uma área enorme.[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

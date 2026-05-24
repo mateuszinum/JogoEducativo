@@ -11,9 +11,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_1rkxv")
-texto = "Se você não sabe por onde começar, aqui vai uma sugestão para o seu primeiro programa!
+texto = "Aqui vai uma sugestão para o seu primeiro programa!
 
-Tente entrar na arena Campos usando o comando arena. Depois, você pode use o comando atacar para testar o feitiço EsferaAzul no alvo que estiver por perto.
+Tente entrar na arena Campos usando o comando \"arena\". Depois, use o comando \"atacar\" com \"EsferaAzul\" no alvo que estiver por perto.
 
 Muitos inimigos vão aparecer, então você precisará realizar muitos ataques. Coloque vários ataques em sequência, como por exemplo:"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
@@ -27,22 +27,23 @@ atacar(inimigoMaisProximo(), EsferaAzul)
 atacar(inimigoMaisProximo(), EsferaAzul)
 atacar(inimigoMaisProximo(), EsferaAzul)
 atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
 [...]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1rkxv"]
+script = ExtResource("1_1rkxv")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8huc7"]
+script = ExtResource("1_1rkxv")
+tipo = 4
+texto = "Partidas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_8huc7")
 nome = "Início"
-blocos_de_conteudo = Array[ExtResource("1_1rkxv")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh")])
+blocos_de_conteudo = Array[ExtResource("1_1rkxv")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh"), SubResource("Resource_1rkxv"), SubResource("Resource_8huc7")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

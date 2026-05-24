@@ -11,9 +11,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_l83gn")
-texto = "Ao usar a função \"arena\", você entra em uma partida.
+texto = "Ao usar a função \"arena\", você entra em uma partida. Se sua vida chegar a 0, você perde todos os recursos conquistados nessa partida.
 
-Em uma partida, você tem a oportunidade de conseguir recursos, mas tome cuidado: Se sua vida chegar a 0, você perde todos os recursos conquistados nessa partida.
+Para escapar com vida de uma partida, clique no botão \"PARAR E ESCAPAR\"[req=Automação 1]. Tambem é possível escapar de uma partida através da função \"escapar()\"[/req].
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

@@ -327,9 +327,19 @@ func efetivar_compra() -> void:
 		ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
 			nivel_atual += 1
 			ProgressoDB.desbloquear(produto.nome, nivel_atual)
+			
+	if produto.pagina_biblioteca.strip_edges() != "":
+		if Constantes.DEBUG: print("[DEBUG] Produto comprado! Pedindo para abrir página: ", produto.pagina_biblioteca)
+		get_tree().call_group("MenuVilarejo", "forcar_abertura_biblioteca", produto.pagina_biblioteca)
+	else:
+		if Constantes.DEBUG: print("[DEBUG] Produto comprado, mas o campo 'Pagina Biblioteca' está vazio no inspector.")
 
 func carregar_dados_do_tooltip() -> void:
-	if %TooltipNome: %TooltipNome.text = produto.nome
+	if %TooltipNome: 
+		if produto.nome_display.strip_edges() != "":
+			%TooltipNome.text = produto.nome_display
+		else:
+			%TooltipNome.text = produto.nome
 
 	var texto_final: String = ""
 	var item_custo: ItemData = null
@@ -372,7 +382,13 @@ func carregar_dados_do_tooltip() -> void:
 			
 	if item_custo == null: mostrar_custo = false
 	
-	if %TooltipDescricao: %TooltipDescricao.text = texto_final
+	texto_final = texto_final.replace("\r\n", "\n").strip_edges()
+	
+	if %TooltipDescricao: 
+		%TooltipDescricao.text = texto_final
+
+		%TooltipDescricao.custom_minimum_size.y = 0
+		%TooltipDescricao.size.y = 0
 	
 	if mostrar_custo:
 		%AreaDoPreco.show()
@@ -380,7 +396,8 @@ func carregar_dados_do_tooltip() -> void:
 		if %TooltipCustoIcone and item_custo: %TooltipCustoIcone.texture = item_custo.icone
 	else:
 		%AreaDoPreco.hide() 
-		%TooltipBox.size = Vector2.ZERO
+
+	%TooltipBox.size = Vector2.ZERO
 
 func preparar_bolinhas() -> void:
 	for child in %ContainerBolinhas.get_children(): child.queue_free()

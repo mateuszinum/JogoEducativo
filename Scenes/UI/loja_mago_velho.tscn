@@ -77,42 +77,42 @@ points = PackedVector2Array(324, 189, 324, 593.337)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineVertical2" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="1" unique_id=995714713]
-position = Vector2(350, 118.293)
-scale = Vector2(1, 0.5011547)
-points = PackedVector2Array(324, 189, 324, 602)
-width = 6.0
-default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
-
-[node name="LineVertical3" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="2" unique_id=992888547]
+[node name="LineVertical3" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="1" unique_id=992888547]
 position = Vector2(141, 51.999996)
-points = PackedVector2Array(-163, 930.425, -163, 240.467, 333, 240.467, 333, 797.385)
+points = PackedVector2Array(-163, 930.425, -163, 240.467, 333, 240.467, 333, 716.8296, 333, 797.385)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineVertical9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="3" unique_id=681698310]
+[node name="LineVertical9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="2" unique_id=681698310]
 position = Vector2(-145, 242.26563)
 scale = Vector2(1, 0.2717725)
 points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineVertical5" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="4" unique_id=1956303245]
-position = Vector2(550, 466.293)
+[node name="LineVertical5" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="3" unique_id=1956303245]
+position = Vector2(549.51074, 616.2931)
 scale = Vector2(1, 0.40021554)
 points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineVertical10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="5" unique_id=1782379805]
-position = Vector2(350, 476)
-scale = Vector2(1, 0.40021554)
+[node name="LineVertical10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="4" unique_id=1782379805]
+position = Vector2(349.51074, 614.21277)
+scale = Vector2(1, 0.41960248)
+points = PackedVector2Array(324, 189, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineVertical11" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="5" unique_id=1089476135]
+position = Vector2(150, 737)
+scale = Vector2(1, 0.41960248)
 points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
 [node name="LineVertical6" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="6" unique_id=19794881]
-position = Vector2(750, 463.293)
+position = Vector2(749.51074, 613.2931)
 scale = Vector2(1, 0.40021554)
 points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
@@ -126,22 +126,30 @@ width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
 [node name="LineHorizontal3" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="8" unique_id=388950964]
-position = Vector2(1331.458, 67)
+position = Vector2(1046.9253, 216.99998)
 rotation = 1.5707964
-scale = Vector2(1, 1.372)
-points = PackedVector2Array(324, 189, 324, 602)
+scale = Vector2(1, 0.9044824)
+points = PackedVector2Array(324, 189, 324, 535.38446, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineHorizontal6" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="9" unique_id=1539775279]
-position = Vector2(1336.871, 217)
+[node name="LineHorizontal4" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="9" unique_id=2003005010]
+position = Vector2(772.23987, 66.99998)
+rotation = 1.5707964
+scale = Vector2(1, 0.50849533)
+points = PackedVector2Array(324, 189, 324, 535.38446, 324, 602)
+width = 6.0
+default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
+
+[node name="LineHorizontal6" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="10" unique_id=1539775279]
+position = Vector2(1336.3817, 367.00006)
 rotation = 1.5707964
 scale = Vector2(1, 1.3723383)
-points = PackedVector2Array(324, 189, 324, 602)
+points = PackedVector2Array(324, 189, 323.99997, 541.49854, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineHorizontal9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="10" unique_id=1087290711]
+[node name="LineHorizontal9" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="11" unique_id=1087290711]
 position = Vector2(273, 217)
 rotation = 1.5707964
 scale = Vector2(1, 0.4647169)
@@ -149,7 +157,7 @@ points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineHorizontal10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="11" unique_id=1742124528]
+[node name="LineHorizontal10" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="12" unique_id=1742124528]
 position = Vector2(263, 367)
 rotation = 1.5707964
 scale = Vector2(1, 0.4647169)
@@ -157,7 +165,7 @@ points = PackedVector2Array(324, 189, 324, 602)
 width = 6.0
 default_color = Color(0.84976274, 0.78603417, 0.7088288, 1)
 
-[node name="LineHorizontal11" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="12" unique_id=2038780976]
+[node name="LineHorizontal11" type="Line2D" parent="Conteudo/SkillTreeMascara/CanvasArraste/Conexoes" index="13" unique_id=2038780976]
 position = Vector2(262, 517)
 rotation = 1.5707964
 scale = Vector2(1, 0.4647169)
@@ -203,10 +211,10 @@ icone_monocromatico = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 600.0
-offset_top = 200.0
-offset_right = 680.0
-offset_bottom = 280.0
+offset_left = 599.718
+offset_top = 350.0
+offset_right = 679.718
+offset_bottom = 430.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("6_55bkk")
@@ -216,10 +224,10 @@ icone_monocromatico = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 600.0
-offset_top = 350.0
-offset_right = 680.0
-offset_bottom = 430.0
+offset_left = 400.0
+offset_top = 500.0
+offset_right = 480.0
+offset_bottom = 580.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("7_7k5ma")
@@ -229,10 +237,10 @@ icone_monocromatico = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 800.0
-offset_top = 350.0
-offset_right = 880.0
-offset_bottom = 430.0
+offset_left = 599.718
+offset_top = 500.0
+offset_right = 679.718
+offset_bottom = 580.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("8_x0qlo")
@@ -242,10 +250,10 @@ icone_monocromatico = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 1000.0
-offset_top = 350.0
-offset_right = 1080.0
-offset_bottom = 430.00006
+offset_left = 799.718
+offset_top = 500.0
+offset_right = 879.718
+offset_bottom = 580.00006
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("9_j7bgc")
@@ -256,9 +264,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 400.0
-offset_top = 500.0
+offset_top = 650.0
 offset_right = 480.0
-offset_bottom = 580.00037
+offset_bottom = 730.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("10_fqpdv")
@@ -269,9 +277,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 400.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = 480.0
-offset_bottom = 730.0
+offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("11_uf3g2")
@@ -282,9 +290,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 601.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = 681.0
-offset_bottom = 730.0
+offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("12_tki0f")
@@ -295,9 +303,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 400.0
-offset_top = 800.0
+offset_top = 950.0
 offset_right = 480.0
-offset_bottom = 880.0001
+offset_bottom = 1030.0001
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("13_c2mca")
@@ -308,9 +316,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 600.0
-offset_top = 500.0
+offset_top = 650.0
 offset_right = 680.0
-offset_bottom = 580.00037
+offset_bottom = 730.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("14_c56la")
@@ -321,9 +329,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 800.0
-offset_top = 500.0
+offset_top = 650.0
 offset_right = 880.0
-offset_bottom = 580.00037
+offset_bottom = 730.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("15_tnlql")
@@ -334,9 +342,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 800.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = 880.0
-offset_bottom = 730.0
+offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("18_4t3wo")
@@ -380,9 +388,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 1000.0
-offset_top = 500.0
+offset_top = 650.0
 offset_right = 1080.0
-offset_bottom = 580.00037
+offset_bottom = 730.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("17_833jt")
@@ -397,9 +405,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 1000.0
-offset_top = 650.0
+offset_top = 800.0
 offset_right = 1080.0
-offset_bottom = 730.0
+offset_bottom = 880.0
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("17_833jt")

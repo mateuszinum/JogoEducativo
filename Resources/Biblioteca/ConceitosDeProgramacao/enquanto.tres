@@ -15,8 +15,20 @@ texto = "O \"enquanto\" serve para repetir um bloco de código várias vezes, de
 
 A estrutura deve ser fechada com um \"fim enquanto\"
 
-Dica: Se você quiser que um enquanto rode infinitamente, use \"enquanto(Verdadeiro)\". Isso é um loop infinito porque a condição nunca deixará de ser verdadeira!
+Dica: Se você quiser um loop infinito, use \"enquanto(Verdadeiro)\".
 "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oqvpk"]
+script = ExtResource("1_s4kx5")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_42fwn"]
+script = ExtResource("1_s4kx5")
+tipo = 4
+texto = "Se"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_s4kx5"]
@@ -51,5 +63,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_6qiy6")
 nome = "Enquanto"
-blocos_de_conteudo = Array[ExtResource("1_s4kx5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_s4kx5"), SubResource("Resource_agsnw"), SubResource("Resource_tcggy"), SubResource("Resource_6qiy6")])
+blocos_de_conteudo = Array[ExtResource("1_s4kx5")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oqvpk"), SubResource("Resource_42fwn"), SubResource("Resource_s4kx5"), SubResource("Resource_agsnw"), SubResource("Resource_tcggy"), SubResource("Resource_6qiy6")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

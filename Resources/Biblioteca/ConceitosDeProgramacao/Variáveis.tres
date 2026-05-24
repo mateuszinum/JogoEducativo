@@ -14,6 +14,18 @@ script = ExtResource("1_h8jfw")
 texto = "As variáveis são como caixas onde você guarda informações para usar depois. Na nossa linguagem, você precisa avisar o sistema qual é o tipo de \"caixa\" antes de dar um nome a ela."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_oj1kj"]
+script = ExtResource("1_h8jfw")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_e7ofd"]
+script = ExtResource("1_h8jfw")
+tipo = 4
+texto = "TiposDeDado"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [sub_resource type="Resource" id="Resource_h8jfw"]
 script = ExtResource("1_h8jfw")
 tipo = 2
@@ -33,5 +45,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_wwugd")
 nome = "Variáveis"
-blocos_de_conteudo = Array[ExtResource("1_h8jfw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
+blocos_de_conteudo = Array[ExtResource("1_h8jfw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

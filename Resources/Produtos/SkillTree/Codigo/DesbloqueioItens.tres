@@ -26,10 +26,11 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_5h8bc")
 nome = "Itens"
+pagina_biblioteca = null
 icone = ExtResource("2_ywuj6")
 pre_requisitos = Array[ExtResource("5_5h8bc")]([ExtResource("6_ywuj6")])
 tipo = 1
-descricao_simples = "Além de liberar acesso ao comerciante, desbloqueia o uso de itens.
+descricao_simples = "Libera acesso ao Comerciante e desbloqueia o uso de itens.
 
 Desbloqueia:
 - cinto.usarItem()

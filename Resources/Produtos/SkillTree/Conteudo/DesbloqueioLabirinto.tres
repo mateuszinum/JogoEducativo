@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_qtoqs")
 nome = "Labirinto"
+pagina_biblioteca = "Labirinto"
 icone = ExtResource("2_eaqbv")
 pre_requisitos = Array[ExtResource("5_qtoqs")]([ExtResource("6_eaqbv")])
 tipo = 1

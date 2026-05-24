@@ -6,13 +6,30 @@
 
 [sub_resource type="Resource" id="Resource_7eupd"]
 script = ExtResource("1_7eupd")
-texto = "Você precisa ir para uma arena derrotar inimigos. Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades."
+texto = "Você precisa ir para uma arena derrotar inimigos."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_otbpv"]
+script = ExtResource("1_7eupd")
+texto = "Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades."
+metadata/_custom_type_script = "uid://btolrf4p1yhho"
+
+[sub_resource type="Resource" id="Resource_67f1a"]
+script = ExtResource("2_x2355")
+texto_opcao = "Ok, obrigado!"
+metadata/_custom_type_script = "uid://c18eulvmcbep4"
+
+[sub_resource type="Resource" id="Resource_31u6f"]
+script = ExtResource("1_7eupd")
+texto = "Qualquer dúvida, vá para a biblioteca."
+tem_opcoes = true
+opcoes = Array[ExtResource("2_x2355")]([SubResource("Resource_67f1a")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_5actq"]
 script = ExtResource("2_x2355")
 texto_opcao = "O que eu tenho que fazer?"
-linhas = Array[ExtResource("1_7eupd")]([SubResource("Resource_7eupd")])
+linhas = Array[ExtResource("1_7eupd")]([SubResource("Resource_7eupd"), SubResource("Resource_otbpv"), SubResource("Resource_31u6f")])
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_0ej5d"]

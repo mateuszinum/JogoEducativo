@@ -45,6 +45,8 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [sub_resource type="Resource" id="Resource_7ckxg"]
 script = ExtResource("5_ekic0")
 nome = "Teste"
+nome_display = null
+pagina_biblioteca = null
 icone = ExtResource("2_4gav2")
 tipo = 2
 descricao_atual_base = "Multiplicador de força: 1x"
@@ -175,12 +177,13 @@ alignment = 1
 
 [node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
 unique_name_in_owner = true
+visible = false
 z_index = 50
-custom_minimum_size = Vector2(550, 172)
+custom_minimum_size = Vector2(500, 172)
 layout_mode = 0
 offset_left = 90.0
 offset_top = 90.0
-offset_right = 640.0
+offset_right = 590.0
 offset_bottom = 350.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_df68o")
@@ -203,14 +206,24 @@ theme_override_fonts/font = ExtResource("10_d2b7l")
 theme_override_font_sizes/font_size = 60
 text = "Título"
 
-[node name="TooltipDescricao" type="Label" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1965983211]
+[node name="TooltipDescricao" type="RichTextLabel" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=235612855]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(330, 10)
+custom_minimum_size = Vector2(330, 44)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.20287624, 0.11157612, 0.01933872, 1)
-theme_override_fonts/font = ExtResource("10_d2b7l")
-theme_override_font_sizes/font_size = 44
+theme_override_colors/default_color = Color(0.20392157, 0.10980392, 0.019607844, 1)
+theme_override_fonts/normal_font = ExtResource("10_d2b7l")
+theme_override_fonts/bold_font = ExtResource("10_d2b7l")
+theme_override_fonts/bold_italics_font = ExtResource("10_d2b7l")
+theme_override_fonts/italics_font = ExtResource("10_d2b7l")
+theme_override_fonts/mono_font = ExtResource("10_d2b7l")
+theme_override_font_sizes/normal_font_size = 44
+theme_override_font_sizes/bold_font_size = 44
+theme_override_font_sizes/bold_italics_font_size = 44
+theme_override_font_sizes/italics_font_size = 44
+theme_override_font_sizes/mono_font_size = 44
 text = "Descrição"
+fit_content = true
+scroll_active = false
 autowrap_mode = 2
 
 [node name="AreaDoPreco" type="HBoxContainer" parent="TooltipBox/Margem/OrganizadorVertical" unique_id=1690222296]

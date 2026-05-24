@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_4fy0p"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_ka18e"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_mprdk"]
-[ext_resource type="Resource" uid="uid://se4vuh5ryinu" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="6_yt7n5"]
+[ext_resource type="Resource" uid="uid://bkxmslye5w0vy" path="res://Resources/Produtos/SkillTree/Codigo/DesbloqueioOperadores.tres" id="6_yt7n5"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_4fy0p")
@@ -27,14 +27,14 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_mprdk")
 nome = "Sensores 1"
+pagina_biblioteca = "inimigo.nome"
 icone = ExtResource("2_yt7n5")
 pre_requisitos = Array[ExtResource("5_mprdk")]([ExtResource("6_yt7n5")])
 tipo = 1
-descricao_simples = "Libera acesso a informações úteis.
+descricao_simples = "Libera acesso ao nome de inimigos.
 
 Desbloqueia:
-- inimigo.nome
-- tempo()"
+- inimigo.nome"
 custo_item_simples = ExtResource("1_yt7n5")
 custo_quantidade_simples = 60
 niveis = Array[ExtResource("3_4fy0p")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_0xueo"]
 script = ExtResource("1_lcqyc")
 tipo = 4
-texto = "posicaX posicaoY tesouroX tesouroY"
+texto = "posicaoX posicaoY tesouroX tesouroY"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

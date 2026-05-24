@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_yij8p")
 nome = "Alho"
+pagina_biblioteca = "Alho"
 icone = ExtResource("2_wa462")
 pre_requisitos = Array[ExtResource("5_yij8p")]([ExtResource("6_wa462")])
 tipo = 1

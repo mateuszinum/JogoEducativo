@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_n84rw")
 nome = "Explosão de Fogo"
+pagina_biblioteca = "ExplosaoFogo"
 icone = ExtResource("1_pq1bc")
 pre_requisitos = Array[ExtResource("5_n84rw")]([ExtResource("6_qg6vf")])
 tipo = 1
