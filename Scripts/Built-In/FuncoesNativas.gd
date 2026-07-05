@@ -234,9 +234,13 @@ class Partida:
 		tree.call_group("Terminal", "iniciar_cooldown_seguranca")
 		
 		var player = tree.get_first_node_in_group("Player")
-		if player and "invulneravel" in player:
-			player.invulneravel = true
+		if player:
+			if "invulneravel" in player:
+				player.invulneravel = true
 			
+			if player.has_method("limpar_buffs_de_pocao"):
+				player.limpar_buffs_de_pocao()
+				
 		var jogo_main = tree.root.get_node_or_null("Jogo")
 		if jogo_main and jogo_main.has_method("fazer_transicao_tv"):
 			jogo_main.fazer_transicao_tv(jogo_main.CENA_VILAREJO, "vilarejo")
@@ -451,11 +455,16 @@ class Produtos:
 				if Constantes.DEBUG: print("Compra não efetuada, te falta o seguinte recurso: " + str(produto_data.custo_quantidade_simples) + " " + produto_data.custo_item_simples.nome)
 	
 	static func usar_item_mochila():
+		if Inventario.inventario_ativo != Inventario.TipoInventario.MOCHILA:
+			if Constantes.DEBUG: print("Falha: A mochila não é o inventário ativo no momento!")
+			return false
+			
 		for i in range(Inventario.itens_mochila.size() - 1, -1, -1):
 			var produto_usado = Inventario.itens_mochila[i]
 			
 			if produto_usado != null:
 				Inventario.itens_mochila[i] = null
+				Inventario.inventario_atualizado.emit()
 				Inventario.inventario_comprados_atualizado.emit()
 				
 				var tree = Engine.get_main_loop()
@@ -470,6 +479,10 @@ class Produtos:
 		return false
 
 	static func usar_item_cinto(index):
+		if Inventario.inventario_ativo != Inventario.TipoInventario.CINTO:
+				if Constantes.DEBUG: print("Falha: O cinto não é o inventário ativo no momento!")
+				return false
+				
 		if index >= 0 and index < Inventario.itens_cinto.size():
 			var produto_index = Inventario.itens_cinto[index]
 			

@@ -60,6 +60,10 @@ var _current_collect_pitch : float = 0.8
 var _pitch_direction : int = 1
 var _pitch_reset_timer : float = 0.0
 
+var buff_velocidade_ativo: bool = false
+var buff_forca_ativo: bool = false
+var buff_imortalidade_ativo: bool = false
+
 var invulneravel : bool = false
 
 var moving : bool = false
@@ -260,38 +264,59 @@ func consumir_pocao(nome_pocao: String) -> void:
 			print("Usou pocao cura")
 			
 		"Poção de Velocidade":
-			Atributos.tempo_tick /= 2.0
-			_reverter_efeito_agilidade()
-			print("Usou pocao velocidade")
+			if not buff_velocidade_ativo:
+				Atributos.tempo_tick /= 2.0
+				buff_velocidade_ativo = true
+				_reverter_efeito_agilidade()
 			
 		"Poção de Força":
-			Atributos.forca_multiplier *= 2.0
-			_reverter_efeito_forca()
-			print("Usou pocao força")
+			if not buff_forca_ativo:
+				Atributos.forca_multiplier *= 2.0
+				buff_forca_ativo = true
+				_reverter_efeito_forca()
 				  
 		"Poção de Invencibilidade":
-			Constantes.JOGADOR_IMORTAL = true
-			_reverter_efeito_imortalidade()
-			print("Usou pocao invencibilidade")
+			if not buff_imortalidade_ativo:
+				Constantes.JOGADOR_IMORTAL = true
+				buff_imortalidade_ativo = true
+				_reverter_efeito_imortalidade()
 			
 		"Poção de Aniquilação":
 			var inimigos = get_tree().get_nodes_in_group("Enemy")
 			for inimigo in inimigos:
 				if is_instance_valid(inimigo):
 					inimigo.queue_free()
-			print("Usou pocao aniquilacao")
 
+func limpar_buffs_de_pocao() -> void:
+	if buff_velocidade_ativo:
+		Atributos.tempo_tick *= 2.0
+		buff_velocidade_ativo = false
+		
+	if buff_forca_ativo:
+		Atributos.forca_multiplier /= 2.0
+		buff_forca_ativo = false
+		
+	if buff_imortalidade_ativo:
+		Constantes.JOGADOR_IMORTAL = false
+		buff_imortalidade_ativo = false
+		
 func _reverter_efeito_agilidade() -> void:
 	await get_tree().create_timer(20.0).timeout
-	Atributos.tempo_tick *= 2.0
+	if buff_velocidade_ativo:
+		Atributos.tempo_tick *= 2.0
+		buff_velocidade_ativo = false
 
 func _reverter_efeito_forca() -> void:
 	await get_tree().create_timer(20.0).timeout
-	Atributos.forca_multiplier /= 2.0
+	if buff_forca_ativo:
+		Atributos.forca_multiplier /= 2.0
+		buff_forca_ativo = false
 
 func _reverter_efeito_imortalidade() -> void:
 	await get_tree().create_timer(20.0).timeout
-	Constantes.JOGADOR_IMORTAL = false
+	if buff_imortalidade_ativo:
+		Constantes.JOGADOR_IMORTAL = false
+		buff_imortalidade_ativo = false
 
 func configurar_modo_arena() -> void:
 	if ui_barra_vida: 
