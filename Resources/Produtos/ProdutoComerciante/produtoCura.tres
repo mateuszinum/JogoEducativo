@@ -25,9 +25,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_mlh60")
-nome = "PocaoDeCura"
+nome = "Poção De Cura"
 icone = ExtResource("2_dsywt")
-descricao_simples = "Uma poção da boa"
+descricao_simples = "Uma poção da boa, restaura completamente a sua saúde"
 custo_item_simples = ExtResource("1_ajr3f")
 niveis = Array[ExtResource("3_23xct")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

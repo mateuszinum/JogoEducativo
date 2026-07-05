@@ -457,6 +457,12 @@ class Produtos:
 			if produto_usado != null:
 				Inventario.itens_mochila[i] = null
 				Inventario.inventario_comprados_atualizado.emit()
+				
+				var tree = Engine.get_main_loop()
+				var player = tree.get_first_node_in_group("Player")
+				if player and player.has_method("consumir_pocao"):
+					player.consumir_pocao(produto_usado.nome)
+				
 				if Constantes.DEBUG: print("Você usou o item do topo da mochila: ", produto_usado.nome)
 				return true
 
@@ -470,7 +476,12 @@ class Produtos:
 			if produto_index != null:
 				Inventario.itens_cinto[index] = null
 				Inventario.inventario_comprados_atualizado.emit()
-			
+
+				var tree = Engine.get_main_loop()
+				var player = tree.get_first_node_in_group("Player")
+				if player and player.has_method("consumir_pocao"):
+					player.consumir_pocao(produto_index.nome)
+
 				if Constantes.DEBUG: print("Você usou o item do cinto: ", produto_index.nome)
 				return true
 

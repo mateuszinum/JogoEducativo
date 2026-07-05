@@ -253,6 +253,46 @@ func configurar_modo_labirinto(recurso: ItemData) -> void:
 		if ui_recurso_labirinto.has_method("setup"):
 			ui_recurso_labirinto.setup(recurso)
 
+func consumir_pocao(nome_pocao: String) -> void:
+	match nome_pocao:
+		"Poção de Cura":
+			health = Atributos.max_health 
+			print("Usou pocao cura")
+			
+		"Poção de Velocidade":
+			Atributos.tempo_tick /= 2.0
+			_reverter_efeito_agilidade()
+			print("Usou pocao velocidade")
+			
+		"Poção de Força":
+			Atributos.forca_multiplier *= 2.0
+			_reverter_efeito_forca()
+			print("Usou pocao força")
+				  
+		"Poção de Invencibilidade":
+			Constantes.JOGADOR_IMORTAL = true
+			_reverter_efeito_imortalidade()
+			print("Usou pocao invencibilidade")
+			
+		"Poção de Aniquilação":
+			var inimigos = get_tree().get_nodes_in_group("Enemy")
+			for inimigo in inimigos:
+				if is_instance_valid(inimigo):
+					inimigo.queue_free()
+			print("Usou pocao aniquilacao")
+
+func _reverter_efeito_agilidade() -> void:
+	await get_tree().create_timer(20.0).timeout
+	Atributos.tempo_tick *= 2.0
+
+func _reverter_efeito_forca() -> void:
+	await get_tree().create_timer(20.0).timeout
+	Atributos.forca_multiplier /= 2.0
+
+func _reverter_efeito_imortalidade() -> void:
+	await get_tree().create_timer(20.0).timeout
+	Constantes.JOGADOR_IMORTAL = false
+
 func configurar_modo_arena() -> void:
 	if ui_barra_vida: 
 		ui_barra_vida.show()

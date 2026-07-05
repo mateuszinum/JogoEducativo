@@ -32,10 +32,10 @@
 [ext_resource type="Resource" uid="uid://dyix8gscaq3ab" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioGelo.tres" id="30_58lhm"]
 [ext_resource type="Resource" uid="uid://kcb20acnvr8v" path="res://Resources/Produtos/SkillTree/Conteudo/DesbloqueioLabirinto.tres" id="31_0cb2v"]
 [ext_resource type="Resource" uid="uid://b00x6w0s0mq1m" path="res://Resources/Produtos/ProdutoComerciante/produtoCura.tres" id="32_keg5n"]
-[ext_resource type="Resource" uid="uid://kfvmsbbnmqvi" path="res://Resources/Produtos/ProdutoComerciante/produtoDano.tres" id="33_ce4qm"]
-[ext_resource type="Resource" uid="uid://bw1fqkt0n2c4c" path="res://Resources/Produtos/ProdutoComerciante/produtoFuria.tres" id="34_mfrpq"]
+[ext_resource type="Resource" uid="uid://kfvmsbbnmqvi" path="res://Resources/Produtos/ProdutoComerciante/produtoForca.tres" id="33_ce4qm"]
+[ext_resource type="Resource" uid="uid://bw1fqkt0n2c4c" path="res://Resources/Produtos/ProdutoComerciante/produtoAniquilacao.tres" id="34_mfrpq"]
 [ext_resource type="Resource" uid="uid://3j6lmlig7071" path="res://Resources/Produtos/ProdutoComerciante/produtoPressa.tres" id="35_vqufk"]
-[ext_resource type="Resource" uid="uid://dmt2u2skd8mh" path="res://Resources/Produtos/ProdutoComerciante/produtoVidaMaior.tres" id="36_on5rq"]
+[ext_resource type="Resource" uid="uid://dmt2u2skd8mh" path="res://Resources/Produtos/ProdutoComerciante/produtoInvencibilidade.tres" id="36_on5rq"]
 
 [node name="ProdutosDB" type="Node" unique_id=1779632007]
 script = ExtResource("1_ktuyk")
