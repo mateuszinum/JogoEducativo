@@ -60,9 +60,9 @@ var _current_collect_pitch : float = 0.8
 var _pitch_direction : int = 1
 var _pitch_reset_timer : float = 0.0
 
-var buff_velocidade_ativo: bool = false
-var buff_forca_ativo: bool = false
-var buff_imortalidade_ativo: bool = false
+var tempo_velocidade: float = 0.0
+var tempo_forca: float = 0.0
+var tempo_imortalidade: float = 0.0
 
 var invulneravel : bool = false
 
@@ -260,26 +260,22 @@ func configurar_modo_labirinto(recurso: ItemData) -> void:
 func consumir_pocao(nome_pocao: String) -> void:
 	match nome_pocao:
 		"Poção de Cura":
-			health = Atributos.max_health 
-			print("Usou pocao cura")
+			health = Atributos.max_health
 			
 		"Poção de Velocidade":
-			if not buff_velocidade_ativo:
+			if tempo_velocidade <= 0.0:
 				Atributos.tempo_tick /= 2.0
-				buff_velocidade_ativo = true
-				_reverter_efeito_agilidade()
+			tempo_velocidade += 20.0
 			
 		"Poção de Força":
-			if not buff_forca_ativo:
+			if tempo_forca <= 0.0:
 				Atributos.forca_multiplier *= 2.0
-				buff_forca_ativo = true
-				_reverter_efeito_forca()
+			tempo_forca += 20.0
 				  
 		"Poção de Invencibilidade":
-			if not buff_imortalidade_ativo:
+			if tempo_imortalidade <= 0.0:
 				Constantes.JOGADOR_IMORTAL = true
-				buff_imortalidade_ativo = true
-				_reverter_efeito_imortalidade()
+			tempo_imortalidade += 20.0
 			
 		"Poção de Aniquilação":
 			var inimigos = get_tree().get_nodes_in_group("Enemy")
@@ -287,37 +283,38 @@ func consumir_pocao(nome_pocao: String) -> void:
 				if is_instance_valid(inimigo):
 					inimigo.queue_free()
 
+func _process(delta: float) -> void:
+	if tempo_velocidade > 0.0:
+		tempo_velocidade -= delta
+		if tempo_velocidade <= 0.0:
+			Atributos.tempo_tick *= 2.0
+			tempo_velocidade = 0.0
+			
+	if tempo_forca > 0.0:
+		tempo_forca -= delta
+		if tempo_forca <= 0.0:
+			Atributos.forca_multiplier /= 2.0
+			tempo_forca = 0.0
+			
+	if tempo_imortalidade > 0.0:
+		tempo_imortalidade -= delta
+		if tempo_imortalidade <= 0.0:
+			Constantes.JOGADOR_IMORTAL = false
+			tempo_imortalidade = 0.0
+			
 func limpar_buffs_de_pocao() -> void:
-	if buff_velocidade_ativo:
+	if tempo_velocidade > 0.0:
 		Atributos.tempo_tick *= 2.0
-		buff_velocidade_ativo = false
+		tempo_velocidade = 0.0
 		
-	if buff_forca_ativo:
+	if tempo_forca > 0.0:
 		Atributos.forca_multiplier /= 2.0
-		buff_forca_ativo = false
+		tempo_forca = 0.0
 		
-	if buff_imortalidade_ativo:
+	if tempo_imortalidade > 0.0:
 		Constantes.JOGADOR_IMORTAL = false
-		buff_imortalidade_ativo = false
-		
-func _reverter_efeito_agilidade() -> void:
-	await get_tree().create_timer(20.0).timeout
-	if buff_velocidade_ativo:
-		Atributos.tempo_tick *= 2.0
-		buff_velocidade_ativo = false
-
-func _reverter_efeito_forca() -> void:
-	await get_tree().create_timer(20.0).timeout
-	if buff_forca_ativo:
-		Atributos.forca_multiplier /= 2.0
-		buff_forca_ativo = false
-
-func _reverter_efeito_imortalidade() -> void:
-	await get_tree().create_timer(20.0).timeout
-	if buff_imortalidade_ativo:
-		Constantes.JOGADOR_IMORTAL = false
-		buff_imortalidade_ativo = false
-
+		tempo_imortalidade = 0.0
+	
 func configurar_modo_arena() -> void:
 	if ui_barra_vida: 
 		ui_barra_vida.show()
