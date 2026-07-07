@@ -113,10 +113,18 @@ func _on_botao_voltar_biblioteca_pressed() -> void:
 		ir_para_pagina_por_nome(nome_anterior, false)
 		
 func _ao_mudar_visibilidade() -> void:
-	if visible and pagina_atual_nome != "":
-		var pagina = biblioteca_db.get_pagina_por_nome(pagina_atual_nome)
-		if pagina != null:
-			carregar_pagina(pagina)
+	if not is_visible_in_tree():
+		historico.clear()
+		btn_voltar.hide()
+		if scroll_container:
+			scroll_container.scroll_vertical = 0
+		if pagina_para_testar != null and pagina_para_testar.nome != "":
+			pagina_atual_nome = pagina_para_testar.nome
+			carregar_pagina(pagina_para_testar)
+		else:
+			pagina_atual_nome = ""
+			if texto_artigo:
+				texto_artigo.text = ""
 
 func aplicar_syntax_highlight(codigo: String) -> String:
 	var temp_codigo = codigo

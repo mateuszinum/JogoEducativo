@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dbf8fxorgha01"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_l4xee"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_0lrdy"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_l4xee")
+tipo = 1
+texto = "Utilidades"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_l4xee")
+texto = "Uma coleção de funções úteis para seus algoritmos!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_vw2nn"]
+script = ExtResource("1_l4xee")
+tipo = 4
+texto = "aleatorio min max tamanho trunca"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_0lrdy")
+nome = "Utilidades"
+blocos_de_conteudo = Array[ExtResource("1_l4xee")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_vw2nn")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

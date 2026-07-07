@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_mprdk")
 nome = "Sensores 1"
-pagina_biblioteca = "inimigo.nome"
+pagina_biblioteca = "Sensores"
 icone = ExtResource("2_yt7n5")
 pre_requisitos = Array[ExtResource("5_mprdk")]([ExtResource("6_yt7n5")])
 tipo = 1

@@ -9,6 +9,12 @@ tipo = 1
 texto = "inimigo.posicaoY"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
+[sub_resource type="Resource" id="Resource_l4lgu"]
+script = ExtResource("1_wpgg6")
+tipo = 4
+texto = "Sensores"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_wpgg6")
 texto = "É possível acessar a posição Y de um inimigo.
@@ -38,5 +44,5 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [resource]
 script = ExtResource("2_c68p8")
 nome = "inimigo.posicaoY"
-blocos_de_conteudo = Array[ExtResource("1_wpgg6")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
+blocos_de_conteudo = Array[ExtResource("1_wpgg6")]([SubResource("Resource_sj6m0"), SubResource("Resource_l4lgu"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
