@@ -42,6 +42,9 @@ offset_bottom = 180.0
 scale = Vector2(3, 3)
 texture = ExtResource("3_yrm3q")
 
+[node name="Barreira" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="4" unique_id=51565971]
+visible = false
+
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
 visible = false
 offset_left = 0.0
@@ -364,21 +367,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BotaoProduto13" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/Itens" index="0" unique_id=1894458085 instance=ExtResource("3_j3yet")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 offset_left = 1000.0
-offset_top = 500.0
+offset_top = 800.0
 offset_right = 1080.0
-offset_bottom = 580.00037
+offset_bottom = 880.00037
 grow_horizontal = 1
 grow_vertical = 1
 produto = ExtResource("16_tm52l")
 icone_monocromatico = true
 
 [node name="BotaoProduto14" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/Itens" index="1" unique_id=2035096975 instance=ExtResource("3_j3yet")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -392,6 +393,7 @@ produto = ExtResource("17_tmlqk")
 icone_monocromatico = true
 
 [node name="BotaoEmBreve1" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/Itens" index="2" unique_id=823136977 instance=ExtResource("3_j3yet")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -409,6 +411,7 @@ cor_disponivel = Color(0.6, 0.14901961, 0.9019608, 1)
 desabilitado = true
 
 [node name="BotaoEmBreve2" parent="Conteudo/SkillTreeMascara/CanvasArraste/BotoesCodigo/Itens" index="3" unique_id=1212966048 instance=ExtResource("3_j3yet")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

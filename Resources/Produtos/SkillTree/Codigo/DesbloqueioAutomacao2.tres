@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_seite")
 nome = "Automação 2"
+pagina_biblioteca = "comprar"
 icone = ExtResource("2_g6k0n")
 pre_requisitos = Array[ExtResource("5_seite")]([ExtResource("6_g6k0n")])
 tipo = 1
