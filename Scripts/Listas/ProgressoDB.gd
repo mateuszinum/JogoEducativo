@@ -15,6 +15,8 @@ func desbloquear(nome_produto: String, nivel: int = 1) -> void:
 	if Constantes.DEBUG: print(produtos_desbloqueados)
 	SaveMaster.salvar_dado()
 
+	checar_skill_tree_completa()
+
 func passou_do_tutorial() -> bool:
 	if Constantes.PULAR_TUTORIAL: 
 		return true 
@@ -33,3 +35,16 @@ func get_nivel(nome_produto: String) -> int:
 	if produtos_desbloqueados.has(limpo):
 		return produtos_desbloqueados[limpo]
 	return 0
+
+func checar_skill_tree_completa() -> void:
+	var contagem_arvore = 0
+
+	var ignorar = ["tutorial", "início", "magovelho", "localização", "itens"]
+	
+	for produto in produtos_desbloqueados.keys():
+		if not produto in ignorar:
+			contagem_arvore += 1
+			
+	if contagem_arvore >= Constantes.TOTAL_ITENS_SKILL_TREE:
+		if has_node("/root/AchievementsManager"):
+			AchievementsManager.unlock_achievement("COMPLETE_SKILL_TREE")

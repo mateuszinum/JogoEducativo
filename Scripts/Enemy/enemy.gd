@@ -46,6 +46,10 @@ var health: float:
 		health = value
 		if health <= 0:
 			_morrendo = true
+			
+			if type != null and type.nome == "Vampiro":
+				AchievementsManager.unlock_achievement("DERROTE_VAMPIRO")
+				
 			gerar_drops()
 			_animar_morte()
 

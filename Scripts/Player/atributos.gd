@@ -157,3 +157,13 @@ func recalcular_atributos(produtos_salvos: Dictionary):
 		
 	if produtos_salvos.get("força", 1) >= 2:
 		comprar_upgrade("Força", produtos_salvos["força"])
+
+func checar_atributos_maximos() -> void:
+	if (tempo_tick == ganhos_agilidade[-1] and
+		max_health == ganhos_health[-1] and
+		global_knockback_multiplier == ganhos_kb[-1] and
+		coleta_multiplier == ganhos_coleta[-1] and
+		forca_multiplier == ganhos_forca[-1]):
+		
+		if has_node("/root/AchievementsManager"):
+			AchievementsManager.unlock_achievement("MAX_ATRIBUTOS")

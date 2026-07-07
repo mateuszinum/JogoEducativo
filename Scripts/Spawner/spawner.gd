@@ -47,6 +47,23 @@ func _on_timer_timeout() -> void:
 	check_spawn_events()
 	
 	execute_spawns()
+	
+	if current_stage != null:
+		if current_stage.nome == "Campos":
+			if total_time_seconds >= 300:
+				AchievementsManager.unlock_achievement("SOBREVIVA_5M_CAMPOS")
+			if total_time_seconds >= 180:
+				var terminal = get_tree().get_first_node_in_group("Terminal")
+				if terminal != null:
+					var codigo = terminal.get_codigo_slot(terminal.slot_atual_idx)
+					if codigo:
+						var linhas = codigo.split("\n").size()
+						if linhas <= 10:
+							AchievementsManager.unlock_achievement("SOBREVIVA_3M_CAMPOS_10L")
+							
+		elif current_stage.nome == "Floresta":
+			if total_time_seconds >= 300:
+				AchievementsManager.unlock_achievement("SOBREVIVA_5M_FLORESTA")
 
 func aplicar_incremento_de_tempo() -> void:
 	if current_stage == null or not current_stage.aumentar_spawn_com_tempo:

@@ -98,7 +98,8 @@ func iniciar_cutscene_final() -> void:
 			
 			if jogo.sistema_cutscene:
 				jogo.sistema_cutscene.hide()
-			
+		
+		AchievementsManager.unlock_achievement("TUTORIAL_COMPLETO")
 		ProgressoDB.desbloquear("Tutorial")
 		if jogo and jogo.has_method("finalizar_modo_tutorial"):
 			jogo.finalizar_modo_tutorial()

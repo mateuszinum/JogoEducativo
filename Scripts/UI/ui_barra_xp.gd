@@ -46,6 +46,8 @@ func _on_xp_alterado(xp_atual: int, xp_necessario: int) -> void:
 		tween.tween_property(progress_bar, "value", xp_atual, 0.4)
 
 func _on_subiu_de_nivel(novo_nivel: int) -> void:
+	if novo_nivel >= 10:
+		AchievementsManager.unlock_achievement("ALCANCE_NIVEL_10")
 
 	if novo_nivel < Atributos.MAX_LEVEL:
 		label_nivel.text = texto_nivel_prefixo + str(novo_nivel)

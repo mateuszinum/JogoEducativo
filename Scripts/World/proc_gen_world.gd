@@ -8,6 +8,8 @@ extends Node2D
 @onready var iris = %IrisRect
 @onready var spawner = %Spawner
 
+var tesouros_coletados_partida: int = 0
+
 var seed_hash: int
 var recursos_iniciais: Dictionary
 
@@ -30,6 +32,15 @@ func _ready():
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
+
+	if stage_data:
+		match stage_data.nome:
+			"Campos":
+				AchievementsManager.unlock_achievement("ENTRAR_ARENA_CAMPOS")
+			"Floresta":
+				AchievementsManager.unlock_achievement("ENTRAR_ARENA_FLORESTA")
+			"Labirinto":
+				AchievementsManager.unlock_achievement("ENTRAR_ARENA_LABIRINTO")
 
 func generate_world():
 	if not stage_data:
@@ -419,3 +430,8 @@ func notificar_tesouro_coletado():
 		tile_map.clear()
 		_gerar_modo_labirinto(true) 		
 	gerar_tesouro()
+
+	AchievementsManager.unlock_achievement("COLETE_TESOURO")
+	tesouros_coletados_partida += 1
+	if stage_data and stage_data.nome == "Labirinto" and tesouros_coletados_partida >= 50:
+		AchievementsManager.unlock_achievement("TESOUROS_50_LABIRINTO")

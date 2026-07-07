@@ -324,6 +324,8 @@ func efetivar_compra() -> void:
 			nivel_atual += 1
 			Atributos.comprar_upgrade(produto.nome, nivel_atual)
 			ProgressoDB.desbloquear(produto.nome, nivel_atual)
+			if Atributos.has_method("checar_atributos_maximos"):
+				Atributos.checar_atributos_maximos()
 		ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
 			nivel_atual += 1
 			ProgressoDB.desbloquear(produto.nome, nivel_atual)
