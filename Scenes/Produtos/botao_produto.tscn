@@ -6,12 +6,12 @@
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_0xya4"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_ekic0"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="6_0xya4"]
-[ext_resource type="Texture2D" uid="uid://cvs7eu83q8mo8" path="res://Assets/UI/BaseLoja/Elemento.png" id="6_8qpmc"]
 [ext_resource type="AudioStream" uid="uid://xc8idkymbqsk" path="res://Audio/SFX/UI/UIClick_INTERFACE-Strong Click 2_HY_PC-006.wav" id="7_ekic0"]
 [ext_resource type="AudioStream" uid="uid://dy7oih3iu8jee" path="res://Audio/SFX/UI/UIClick_INTERFACE-Metallic Click_HY_PC-001.wav" id="8_7ckxg"]
 [ext_resource type="AudioStream" uid="uid://ci44kl8d630pm" path="res://Audio/SFX/UI/Venda.wav" id="9_df68o"]
-[ext_resource type="Texture2D" uid="uid://du5n76k22oycc" path="res://Assets/UI/BaseLoja/Tooltip.png" id="10_7ol41"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="10_d2b7l"]
+[ext_resource type="Texture2D" uid="uid://rdydenf0sxg2" path="res://Assets/UI/new_version/Produto.png" id="10_df68o"]
+[ext_resource type="Texture2D" uid="uid://dmpfmcpbsrjyb" path="res://Assets/UI/new_version/Skill.png" id="11_df68o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qpmc"]
 
@@ -45,8 +45,6 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [sub_resource type="Resource" id="Resource_7ckxg"]
 script = ExtResource("5_ekic0")
 nome = "Teste"
-nome_display = null
-pagina_biblioteca = null
 icone = ExtResource("2_4gav2")
 tipo = 2
 descricao_atual_base = "Multiplicador de força: 1x"
@@ -66,11 +64,11 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_df68o"]
-texture = ExtResource("10_7ol41")
-texture_margin_left = 22.0
-texture_margin_top = 22.0
-texture_margin_right = 22.0
-texture_margin_bottom = 22.0
+texture = ExtResource("11_df68o")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
 
 [node name="BotaoProduto" type="Button" unique_id=1255495614 node_paths=PackedStringArray("visual_animado", "fundo_colorido")]
 custom_minimum_size = Vector2(80, 80)
@@ -134,7 +132,7 @@ offset_right = 519.1585
 offset_bottom = 518.8317
 scale = Vector2(0.073, 0.073)
 mouse_filter = 2
-texture = ExtResource("6_8qpmc")
+texture = ExtResource("10_df68o")
 
 [node name="MargemIcone" type="MarginContainer" parent="Conteúdo" unique_id=561669259]
 layout_mode = 0
@@ -177,7 +175,6 @@ alignment = 1
 
 [node name="TooltipBox" type="PanelContainer" parent="." unique_id=745313759]
 unique_name_in_owner = true
-visible = false
 z_index = 50
 custom_minimum_size = Vector2(500, 172)
 layout_mode = 0

@@ -1,7 +1,7 @@
 extends Node
 signal volume_alterado
 
-var TOTAL_ITENS_SKILL_TREE : int = 25 
+var TOTAL_ITENS_SKILL_TREE : int = 27 
 
 # -------------------------------------------------- #
 # VARIÁVEIS DE DESENVOLVEDOR

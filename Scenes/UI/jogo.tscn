@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://clfmn82bf6t82" path="res://Scripts/UI/jogo.gd" id="1_kv1y8"]
 [ext_resource type="Script" uid="uid://cev7x6bw6m835" path="res://Scripts/UI/Terminal.gd" id="2_8gbds"]
-[ext_resource type="Texture2D" uid="uid://de6peqjsu3q7h" path="res://Assets/UI/Terminal/Terminal.jpg" id="2_l4t8i"]
 [ext_resource type="Resource" uid="uid://c2pbh50b0qxac" path="res://Resources/Dialogo/Tutorial/DialogoTutorial.tres" id="3_1mes2"]
 [ext_resource type="Script" uid="uid://b23su3bso3yud" path="res://Scripts/Interpretador/InterpretadorServico.cs" id="3_8gbds"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="3_n1i2u"]
 [ext_resource type="Resource" uid="uid://7s26uv7dx2xr" path="res://Resources/Dialogo/Tutorial/DialogoTutorialDuvida.tres" id="4_6v4bt"]
+[ext_resource type="Texture2D" uid="uid://buucqukj7rkut" path="res://Assets/UI/new_version/Terminal.png" id="5_1mes2"]
 [ext_resource type="Material" uid="uid://dpdabhrh8ymba" path="res://Resources/Shaders/Configs/PosProcessamentoTerminal.tres" id="5_a105h"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="5_kjdr6"]
 [ext_resource type="Texture2D" uid="uid://cqmsncqpj3bfx" path="res://Assets/UI/Terminal/stop.png" id="5_lkp2e"]
@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cerkaeicr5kas" path="res://Scenes/UI/overlay_dialogo_tutorial.tscn" id="21_1mes2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4t8i"]
-texture = ExtResource("2_l4t8i")
+texture = ExtResource("5_1mes2")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a105h"]
 
@@ -335,7 +335,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Control" type="Control" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=2033328512]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=1074448828]
@@ -380,7 +380,7 @@ som_clique = ExtResource("8_yljls")
 volume_clique_db = -5.0
 
 [node name="Espaço2" type="Control" parent="HBoxContainer/PainelTerminal/VBoxContainer/HBoxContainer" unique_id=1898226199]
-custom_minimum_size = Vector2(14.695, 12)
+custom_minimum_size = Vector2(18.395, 12)
 layout_mode = 2
 
 [node name="CodeEdit" type="CodeEdit" parent="HBoxContainer/PainelTerminal/VBoxContainer" unique_id=1340550873]
@@ -419,9 +419,9 @@ environment = ExtResource("7_kjdr6")
 [node name="Control" type="Control" parent="." unique_id=504574968]
 anchors_preset = 0
 offset_left = 864.545
-offset_top = 12.045
+offset_top = 11.0
 offset_right = 914.545
-offset_bottom = 62.045
+offset_bottom = 61.0
 scale = Vector2(0.4, 0.4)
 
 [node name="BotaoSalvar" type="Button" parent="Control" unique_id=1605917337]
@@ -454,9 +454,9 @@ volume_clique_db = -5.0
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 886.66
-offset_top = 11.0
+offset_top = 10.0
 offset_right = 918.66
-offset_bottom = 27.0
+offset_bottom = 26.0
 theme = SubResource("Theme_p4t22")
 theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_font_sizes/font_size = 18

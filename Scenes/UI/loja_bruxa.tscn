@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dr4f7eely5wgw" path="res://Resources/Dialogo/Bruxa/DialogoBruxa.tres" id="2_lhnmh"]
 [ext_resource type="Texture2D" uid="uid://d4non5uc1t5r0" path="res://Assets/Personagens/Bruxa.png" id="2_xvemy"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="3_cxqjs"]
+[ext_resource type="Texture2D" uid="uid://fd6y8j65r1y8" path="res://Assets/UI/new_version/UI 2.jpg.png" id="3_x8pao"]
 [ext_resource type="Resource" uid="uid://djmwjd4b30bhe" path="res://Resources/Produtos/UpgradeAtributos/coletaUpgrade.tres" id="4_lhnmh"]
 [ext_resource type="Resource" uid="uid://bhvgfks1vi1no" path="res://Resources/Produtos/UpgradeAtributos/forcaUpgrade.tres" id="5_x8pao"]
 [ext_resource type="Resource" uid="uid://cpbdvsir52ey5" path="res://Resources/Produtos/UpgradeAtributos/vidaMaximaUpgrade.tres" id="6_3k5vv"]
@@ -12,6 +13,13 @@
 
 [node name="BaseLoja" unique_id=1722254578 instance=ExtResource("1_pasot")]
 dialogo_personagem = ExtResource("2_lhnmh")
+
+[node name="FundoPixel2" type="TextureRect" parent="Texturas" parent_id_path=PackedInt32Array(1026332895) index="3" unique_id=697762116]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_x8pao")
 
 [node name="BotaoProduto" parent="Conteudo" parent_id_path=PackedInt32Array(597489730) index="1" unique_id=1255495614]
 visible = false

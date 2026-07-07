@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://bs44buiwvb8n4" path="res://Scripts/UI/base_loja.gd" id="1_5duuu"]
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="1_aitj0"]
 [ext_resource type="Resource" uid="uid://bnda7muc577u0" path="res://Resources/Dialogo/MagoVelho/DialogoMagoVelho.tres" id="2_0gnl8"]
-[ext_resource type="Texture2D" uid="uid://bpod7lgo1t24e" path="res://Assets/UI/BaseLoja/Board.png" id="2_ipeki"]
-[ext_resource type="Texture2D" uid="uid://c2ydxomq2gxmc" path="res://Assets/UI/BaseLoja/BarraSuperior.jpg" id="3_wt6ah"]
+[ext_resource type="Texture2D" uid="uid://cu8xggwwup2o7" path="res://Assets/UI/new_version/BarraLateral.png" id="3_evj2b"]
 [ext_resource type="PackedScene" uid="uid://dme8jpy7soqbx" path="res://Scenes/Produtos/botao_produto.tscn" id="4_76fqn"]
-[ext_resource type="Texture2D" uid="uid://bddtbvvdvgqk7" path="res://Assets/UI/BaseLoja/BarraLateral.png" id="4_co7d0"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="5_bj3g6"]
 [ext_resource type="Script" uid="uid://cbhgv1pofkwq" path="res://Scripts/Polimento/botao_animado.gd" id="6_u5um8"]
 [ext_resource type="AudioStream" uid="uid://xc4p2koakkgg" path="res://Audio/SFX/UI/WeakClick.wav" id="7_8mo0i"]
@@ -88,6 +86,34 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Fundo" type="ColorRect" parent="Texturas" unique_id=1823747467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 711.0
+offset_bottom = 568.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarraLateral2" type="TextureRect" parent="Texturas" unique_id=341898112]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+scale = Vector2(3, 3)
+texture = ExtResource("3_evj2b")
+
+[node name="SombraPersonagem" type="TextureRect" parent="Texturas" unique_id=378721249]
+layout_mode = 0
+offset_left = -191.05504
+offset_top = 381.945
+offset_right = 64.94496
+offset_bottom = 618.83777
+rotation = -0.7853982
+scale = Vector2(1.0114783, 2.0847328)
+texture = SubResource("GradientTexture1D_jo0wy")
+
 [node name="Barreira" type="ColorRect" parent="Texturas" unique_id=51565971]
 layout_mode = 0
 offset_left = 640.0
@@ -102,53 +128,6 @@ offset_top = 540.0
 offset_right = 150.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
-
-[node name="Fundo" type="ColorRect" parent="Texturas" unique_id=1823747467]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 711.0
-offset_bottom = 568.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="FundoOverlay" type="TextureRect" parent="Texturas" unique_id=1375536134]
-layout_mode = 0
-offset_left = 149.0
-offset_top = 57.999992
-offset_right = 2165.0
-offset_bottom = 2186.0
-scale = Vector2(0.24355157, 0.22650376)
-texture = ExtResource("2_ipeki")
-
-[node name="BarraSuperior" type="TextureRect" parent="Texturas" unique_id=7503734]
-layout_mode = 0
-offset_left = 148.0
-offset_right = 1201.0
-offset_bottom = 124.0
-scale = Vector2(0.468, 0.468)
-texture = ExtResource("3_wt6ah")
-
-[node name="BarraLateral" type="TextureRect" parent="Texturas" unique_id=482410668]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -4.9999995
-offset_right = 1151.0
-offset_bottom = 3593.0
-scale = Vector2(0.14756943, 0.15182509)
-texture = ExtResource("4_co7d0")
-
-[node name="SombraPersonagem" type="TextureRect" parent="Texturas" unique_id=378721249]
-layout_mode = 0
-offset_left = -191.05504
-offset_top = 381.945
-offset_right = 64.94496
-offset_bottom = 618.83777
-rotation = -0.7853982
-scale = Vector2(1.0114783, 2.0847328)
-texture = SubResource("GradientTexture1D_jo0wy")
 
 [node name="Conteudo" type="Control" parent="." unique_id=597489730]
 anchors_preset = 0
@@ -170,10 +149,10 @@ anchors_preset = 0
 [node name="TituloLoja" type="Label" parent="Lateral" unique_id=1433500361]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 4.0
-offset_top = 73.0
+offset_left = 5.0
+offset_top = 69.0
 offset_right = 145.0
-offset_bottom = 96.0
+offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("5_bj3g6")
 theme_override_font_sizes/font_size = 22
 text = "TÍTULO"
