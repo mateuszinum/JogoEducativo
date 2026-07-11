@@ -71,7 +71,12 @@ func _ready() -> void:
 	if not Constantes.USAR_EFEITOS_TELA:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
-
+	
+	if Constantes.JOGO_EN == 0:
+		TranslationServer.set_locale("pt_br")
+	elif Constantes.JOGO_EN == 1:
+		TranslationServer.set_locale("en")
+		
 func iniciar_musica() -> void:
 	GerenciadorAudio.tocar_musica(musica_tema, volume_musica_db)
 

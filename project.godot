@@ -123,6 +123,10 @@ pause_key={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Traducao/localizacao.en.translation", "res://Traducao/localizacao.pt.translation")
+
 [layer_names]
 
 2d_physics/layer_1="world"
