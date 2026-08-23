@@ -257,31 +257,51 @@ func configurar_modo_labirinto(recurso: ItemData) -> void:
 		if ui_recurso_labirinto.has_method("setup"):
 			ui_recurso_labirinto.setup(recurso)
 
-func consumir_pocao(nome_pocao: String) -> void:
+func consumir_pocao(pocao_usada : Resource) -> void:
+	var nome_pocao = pocao_usada.nome
+	var cor_ui : Color = Color.WHITE
+	var tempo_ui : float = 20.0
+	var icone_ui : Texture2D = pocao_usada.icone
+	var criar_timer : bool = true
+	
 	match nome_pocao:
 		"Poção de Cura":
 			health = Atributos.max_health
+			criar_timer = false
 			
 		"Poção de Velocidade":
 			if tempo_velocidade <= 0.0:
 				Atributos.tempo_tick /= 2.0
 			tempo_velocidade += 20.0
 			
+			cor_ui = Color.AQUA
+			
 		"Poção de Força":
 			if tempo_forca <= 0.0:
 				Atributos.forca_multiplier *= 2.0
 			tempo_forca += 20.0
+			
+			cor_ui = Color.RED
 				  
 		"Poção de Invencibilidade":
 			if tempo_imortalidade <= 0.0:
 				Constantes.JOGADOR_IMORTAL = true
 			tempo_imortalidade += 20.0
 			
+			cor_ui = Color.GOLD
+			
 		"Poção de Aniquilação":
 			var inimigos = get_tree().get_nodes_in_group("Enemy")
 			for inimigo in inimigos:
 				if is_instance_valid(inimigo):
 					inimigo.queue_free()
+			criar_timer = false
+
+	if criar_timer:
+		var container_pocoes = get_tree().get_first_node_in_group("UI_Pocoes")
+		if container_pocoes and container_pocoes.has_method("adicionar_pocao"):
+			container_pocoes.adicionar_pocao(nome_pocao, icone_ui, tempo_ui, cor_ui)
+
 
 func _process(delta: float) -> void:
 	if tempo_velocidade > 0.0:
