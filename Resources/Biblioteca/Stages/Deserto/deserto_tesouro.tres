@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://bnedi8dt03dk8"]
+
+[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://Scripts/World/tesouro_data.gd" id="1_yiroc"]
+[ext_resource type="Texture2D" uid="uid://dmip1sw4htl2w" path="res://Assets/Asset Packs/Chests Pack/chest_11.png" id="2_ty4xa"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_ndtnl"]
+
+[resource]
+script = ExtResource("1_yiroc")
+nome_do_tesouro = "Tesouro do Deserto"
+sprite_do_bau = ExtResource("2_ty4xa")
+metadata/_custom_type_script = "uid://swrsg053t5vv"

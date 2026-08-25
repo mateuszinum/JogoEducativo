@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://dmr7nkbomyvvw"]
+
+[ext_resource type="Resource" uid="uid://bh3b78fwkrh5o" path="res://Resources/Drop/Cristal.tres" id="1_ph80n"]
+[ext_resource type="Texture2D" uid="uid://c13iiin1bqp8f" path="res://Assets/Projectiles/ExplosaoGelo.png" id="2_1h3vv"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_ydy7x"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_t1t53"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_2hbbq"]
+[ext_resource type="Resource" uid="uid://b0b4j137skmrj" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Conteudo/DesbloqueioExplosaoFogo.tres" id="6_c3b7y"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_ydy7x")
+custo_item = ExtResource("4_t1t53")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_ydy7x")
+custo_item = ExtResource("4_t1t53")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_ydy7x")
+custo_item = ExtResource("4_t1t53")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_2hbbq")
+nome = "Explosão de Gelo"
+pagina_biblioteca = "ExplosaoGelo"
+icone = ExtResource("2_1h3vv")
+pre_requisitos = Array[ExtResource("5_2hbbq")]([ExtResource("6_c3b7y")])
+tipo = 1
+descricao_simples = "Novo ataque! Causa dano em área e congela inimigos."
+custo_item_simples = ExtResource("1_ph80n")
+custo_quantidade_simples = 125
+niveis = Array[ExtResource("3_ydy7x")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://babodk73jef5s"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_lng37"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_883rl"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_lng37")
+tipo = 1
+texto = "Sensores"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_lng37")
+texto = "Estas são algumas funcionalidades que te fornecem informações úteis para seus algoritmos. 
+
+Conforme avança no jogo, novos sensores serão disponibilizados."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_l83gn"]
+script = ExtResource("1_lng37")
+tipo = 2
+texto = "Sensores desbloqueados"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0xueo"]
+script = ExtResource("1_lng37")
+tipo = 4
+texto = "[req=Sensores 3]escanearArea()[/req] [req=Sensores 1]inimigo.nome[/req] [req=Sensores 3]inimigo.posicaoX inimigo.posicaoY[/req] [req=Sensores 2]inimigo.vida podeMover() tempo() vidaAtual()[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_883rl")
+nome = "Sensores"
+blocos_de_conteudo = Array[ExtResource("1_lng37")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_l83gn"), SubResource("Resource_0xueo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StageData" format=3 uid="uid://bdjkwcm41mibt"]
+
+[ext_resource type="Script" uid="uid://cv3u6luyflcf8" path="res://Scripts/World/ground_variant.gd" id="1_pgp7g"]
+[ext_resource type="Script" uid="uid://cimi8ig206mmi" path="res://Scripts/World/stage_data.gd" id="2_ulvof"]
+[ext_resource type="Script" uid="uid://croimo2sgqusx" path="res://Scripts/Spawner/spawn_event.gd" id="3_nadoe"]
+[ext_resource type="Script" uid="uid://dlk027vsi110o" path="res://Scripts/World/gen_rule.gd" id="4_uqri2"]
+[ext_resource type="TileSet" uid="uid://dlih5cly5w3yh" path="res://Resources/Biblioteca/Stages/Genérico/generico_tileset.tres" id="5_6m8yi"]
+
+[sub_resource type="Resource" id="Resource_ua18n"]
+script = ExtResource("4_uqri2")
+source_ids = Array[int]([10])
+metadata/_custom_type_script = "uid://dlk027vsi110o"
+
+[resource]
+script = ExtResource("2_ulvof")
+nome = "Genérico"
+map_width = 100
+stage_tileset = ExtResource("5_6m8yi")
+spawn_rules = Array[ExtResource("4_uqri2")]([SubResource("Resource_ua18n")])
+metadata/_custom_type_script = "uid://cimi8ig206mmi"

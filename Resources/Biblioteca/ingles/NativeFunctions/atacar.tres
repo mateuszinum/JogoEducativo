@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://1xkg7fthokt7"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_73fpo"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_gox7f"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_73fpo")
+tipo = 1
+texto = "atacar(alvo, tipoDeAtaque)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_73fpo")
+texto = "Realiza um ataque do tipo especificado no alvo determinado.
+
+O parâmetro \"alvo\" deve ser uma referência para o objeto de um inimigo específico. O parâmetro \"tipoDeAtaque\" deve ser o nome do ataque."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_73fpo")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_73fpo")
+tipo = 3
+texto = "#Exemplo 1
+
+atacar(inimigoMaisProximo(), Gelo)
+
+#Exemplo 2
+
+Inimigo alvo = inimigoMaisProximo()
+atacar(alvo, Gelo)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_gox7f")
+nome = "atacar"
+blocos_de_conteudo = Array[ExtResource("1_73fpo")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

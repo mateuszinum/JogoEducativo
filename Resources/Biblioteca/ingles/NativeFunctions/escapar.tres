@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bkd4mlvfdskiv"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_wdsxs"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_hoq5q"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_wdsxs")
+tipo = 1
+texto = "escapar()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_wdsxs")
+texto = "Escapa da arena, voltando para o vilarejo sem encerrar a execução do código.
+
+Dica: Experimente criar um loop que entra e sai de uma partida por conta própria!
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_wdsxs")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_wdsxs")
+tipo = 3
+texto = "escapar()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_hoq5q")
+nome = "escapar"
+blocos_de_conteudo = Array[ExtResource("1_wdsxs")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

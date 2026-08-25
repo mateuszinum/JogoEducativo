@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dhv74w1qhxj3g"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_ay86t"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_p1kb5"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_ay86t")
+tipo = 1
+texto = "Listas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_ay86t")
+texto = "As listas permitem que você guarde vários valores dentro de uma única variável. Para criar uma lista, você coloca os valores entre colchetes [], separados por vírgulas.
+
+Para acessar ou alterar um item específico dentro da lista, nós usamos o índice dele.
+
+Lembre-se: na programação, a contagem sempre começa no zero! Portanto, o primeiro item é o [0], o segundo é o [1] e assim por diante.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_u3s6p"]
+script = ExtResource("1_ay86t")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cywvo"]
+script = ExtResource("1_ay86t")
+tipo = 3
+texto = "int numeros = [10, 20, 30]
+int primeiroNumero = numeros[0]
+# A variável primeiroNumero agora vale 10"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_p1kb5")
+nome = "Listas"
+blocos_de_conteudo = Array[ExtResource("1_ay86t")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_u3s6p"), SubResource("Resource_cywvo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

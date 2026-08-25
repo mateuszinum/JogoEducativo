@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://tagl2e2tvfu1"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_qu2v1"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_0ytqf"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_qu2v1")
+tipo = 1
+texto = "Fire Explosion"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_qu2v1")
+texto = "Uma explosão concentrada de fogo. Causa alto dano imediato em área circular.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_qu2v1")
+tipo = 2
+texto = "Attributes
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_qu2v1")
+texto = "Base damage: 6
+Knockback: 1,5
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_2agbe"]
+script = ExtResource("1_qu2v1")
+tipo = 2
+texto = "Usage requirements"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jt7od"]
+script = ExtResource("1_qu2v1")
+texto = "A concentrated fire explosion. Deals high immediate damage in a circular area."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_0ytqf")
+nome = "FireExplosion"
+blocos_de_conteudo = Array[ExtResource("1_qu2v1")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_2agbe"), SubResource("Resource_jt7od")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

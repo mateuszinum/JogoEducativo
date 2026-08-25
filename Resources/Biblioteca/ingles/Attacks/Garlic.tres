@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bntc32xvk2opw"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_vmr32"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_so2tb"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_vmr32")
+tipo = 1
+texto = "Garlic"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_vmr32")
+texto = "Weak damage, but it´s the only way to defeat the Vampire.
+
+Note: Make a delicious garlic bread "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_vmr32")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_vmr32")
+texto = "base damage: 1
+Knockback: 0,5
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_2agbe"]
+script = ExtResource("1_vmr32")
+tipo = 2
+texto = "Usage requirements"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jt7od"]
+script = ExtResource("1_vmr32")
+texto = "The last 2 moves must have been 'Up-Down'."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_so2tb")
+nome = "Garlic"
+blocos_de_conteudo = Array[ExtResource("1_vmr32")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_2agbe"), SubResource("Resource_jt7od")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

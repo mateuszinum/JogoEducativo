@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dhjiscq55etby"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_gtm3b"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_irqs0"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_gtm3b")
+tipo = 1
+texto = "podeMover(direcao)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_gtm3b")
+texto = "Retorna um valor booleano que indica se a tile na direção especificada é chão ou não.
+
+Se for chão, retorna Verdadeiro. Se for uma barreira que não dá para passar, retorna Falso.
+
+O parâmetro direcao deve ser Cima, Baixo, Direita ou Esquerda.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_gtm3b")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_gtm3b")
+tipo = 3
+texto = "se(podeMover(Cima)):
+	mover(Cima)
+fim se"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_yvjea"]
+script = ExtResource("1_gtm3b")
+tipo = 2
+texto = "Páginas Relacionadas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_hs528"]
+script = ExtResource("1_gtm3b")
+tipo = 4
+texto = "mover"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_irqs0")
+nome = "podeMover"
+blocos_de_conteudo = Array[ExtResource("1_gtm3b")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_yvjea"), SubResource("Resource_hs528")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

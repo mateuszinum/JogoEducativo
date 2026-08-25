@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://djgtenn2sogcq"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_eqr8k"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_7niff"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_eqr8k")
+tipo = 1
+texto = "Variáveis"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_eqr8k")
+texto = "As variáveis são como caixas onde você guarda informações para usar depois. Na nossa linguagem, você precisa avisar o sistema qual é o tipo de \"caixa\" antes de dar um nome a ela."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oj1kj"]
+script = ExtResource("1_eqr8k")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_e7ofd"]
+script = ExtResource("1_eqr8k")
+tipo = 4
+texto = "TiposDeDado"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_h8jfw"]
+script = ExtResource("1_eqr8k")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_wwugd"]
+script = ExtResource("1_eqr8k")
+tipo = 3
+texto = "int i = 100
+bool b = Verdadeiro
+string s = \"Texto\"
+string s2 = \"o número é: \" + i		# s2: \"o número é: 100\"
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_7niff")
+nome = "Variáveis"
+blocos_de_conteudo = Array[ExtResource("1_eqr8k")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

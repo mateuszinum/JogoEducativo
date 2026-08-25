@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://7plc53m4dunh"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_bswgf"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_7vp33"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_bswgf")
+tipo = 1
+texto = "labyrinth"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_bswgf")
+texto = "This arena works differently from the others. There are no enemies; it is just a maze with a treasure.
+
+In this arena, you must implement an algorithm to solve the maze.
+
+Hint: Did you know that the greatest secret of mazes is to choose a wall and never take your hand off it? If you follow the path without ever letting go of the wall, you will end up exploring the entire maze!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_46my7"]
+script = ExtResource("1_bswgf")
+tipo = 2
+texto = "Treasure"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_uv8yt"]
+script = ExtResource("1_bswgf")
+tipo = 4
+texto = "Diamond"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_7vp33")
+nome = "Labyrinth"
+blocos_de_conteudo = Array[ExtResource("1_bswgf")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_46my7"), SubResource("Resource_uv8yt")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

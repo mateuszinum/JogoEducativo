@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://vltnccmjvvqp"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_805r0"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_uprir"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_805r0")
+tipo = 1
+texto = "Comentários"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_805r0")
+texto = "Os comentários são anotações invisíveis para o interpretador do jogo. Qualquer texto escrito depois do símbolo # em uma linha será ignorado pelo sistema.
+
+Eles são essenciais para você organizar o seu código e deixar lembretes para si mesmo sobre o que cada parte faz!
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ll4ul"]
+script = ExtResource("1_805r0")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_vw2nn"]
+script = ExtResource("1_805r0")
+tipo = 3
+texto = "# Esse é um exemplo de comentário"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_uprir")
+nome = "Comentários"
+blocos_de_conteudo = Array[ExtResource("1_805r0")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_ll4ul"), SubResource("Resource_vw2nn")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

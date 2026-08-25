@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://dlqof8fhdwxr0"]
+
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_oxeta"]
+[ext_resource type="Texture2D" uid="uid://clrvf4pw8c2cs" path="res://Assets/Produtos/Skilltree/SENSOR.png" id="2_5y72y"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_l1gt5"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_ufuwh"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_hsbwh"]
+[ext_resource type="Resource" uid="uid://4l7xt7g2ddit" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Codigo/DesbloqueioSensores2.tres" id="6_ro54f"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_l1gt5")
+custo_item = ExtResource("4_ufuwh")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_l1gt5")
+custo_item = ExtResource("4_ufuwh")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_l1gt5")
+custo_item = ExtResource("4_ufuwh")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_hsbwh")
+nome = "Sensores 3"
+pagina_biblioteca = "Sensores"
+icone = ExtResource("2_5y72y")
+pre_requisitos = Array[ExtResource("5_hsbwh")]([ExtResource("6_ro54f")])
+tipo = 1
+descricao_simples = "Libera acesso a mais informações úteis.
+
+Desbloqueia:
+- escanearArea()
+- inimigo.posicaoX
+- inimigo.posicaoY"
+custo_item_simples = ExtResource("1_oxeta")
+custo_quantidade_simples = 500
+niveis = Array[ExtResource("3_l1gt5")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://mx05q248qnl"]
+
+[ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="1_pj3ai"]
+[ext_resource type="Texture2D" uid="uid://dpqjkf1ypvhl2" path="res://Assets/Projectiles/GeloFrame.png" id="2_wdybl"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_gb7fi"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_xny4s"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_7suv0"]
+[ext_resource type="Resource" uid="uid://bag6ke55uaodf" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Codigo/DesbloqueioInicio.tres" id="6_3iicw"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_gb7fi")
+custo_item = ExtResource("4_xny4s")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_gb7fi")
+custo_item = ExtResource("4_xny4s")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_gb7fi")
+custo_item = ExtResource("4_xny4s")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_7suv0")
+nome = "Gelo"
+pagina_biblioteca = "Gelo"
+icone = ExtResource("2_wdybl")
+pre_requisitos = Array[ExtResource("5_7suv0")]([ExtResource("6_3iicw")])
+tipo = 1
+descricao_simples = "Novo ataque! Útil para derrotar inimigos de fogo..."
+custo_item_simples = ExtResource("1_pj3ai")
+custo_quantidade_simples = 40
+niveis = Array[ExtResource("3_gb7fi")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

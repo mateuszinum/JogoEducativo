@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bdqy36oxd6hjm"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_komd7"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_u8yc2"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_komd7")
+tipo = 1
+texto = "cinto.usarItem(indice)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_komd7")
+texto = "Usa o item do cinto no índice especificado. Só funciona se houver um item na respectiva posição.
+
+O parâmetro \"indice\" deve ser um número inteiro (int) que representa a posição do item no cinto."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_komd7")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_komd7")
+tipo = 3
+texto = "int indice = 2
+
+cinto.usarItem(indice)
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_u8yc2")
+nome = "cinto.usarItem"
+blocos_de_conteudo = Array[ExtResource("1_komd7")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

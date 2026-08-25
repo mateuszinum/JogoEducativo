@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://1oqptyhuh10k"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_evxuw"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_87gxl"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_evxuw")
+tipo = 1
+texto = "Safira"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_damie"]
+script = ExtResource("1_evxuw")
+tipo = 2
+texto = "Adquirido em:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_evxuw")
+tipo = 4
+texto = "Campos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_87gxl")
+nome = "Safira"
+blocos_de_conteudo = Array[ExtResource("1_evxuw")]([SubResource("Resource_sj6m0"), SubResource("Resource_damie"), SubResource("Resource_g1tmj")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

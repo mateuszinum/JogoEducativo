@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dig161w2c7hqt"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_stf8u"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_l8ifr"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_stf8u")
+tipo = 1
+texto = "inimigo.posicaoY"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_l4lgu"]
+script = ExtResource("1_stf8u")
+tipo = 4
+texto = "Sensors"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_stf8u")
+texto = "You can view the enemy's Y position. 
+
+This is useful for checking the enemy's position and comparing it to your own."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n0vup"]
+script = ExtResource("1_stf8u")
+tipo = 2
+texto = "Usage Example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0dx7l"]
+script = ExtResource("1_stf8u")
+tipo = 3
+texto = "#Exemplo 1
+
+escreva(inimigoMaisProximo().posicaoY)
+
+#Exemplo 2
+
+Inimigo i = inimigoMaisProximo()
+int inimigoPosY = i.posicaoY"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_l8ifr")
+nome = "inimigo.positionY"
+blocos_de_conteudo = Array[ExtResource("1_stf8u")]([SubResource("Resource_sj6m0"), SubResource("Resource_l4lgu"), SubResource("Resource_7p0ow"), SubResource("Resource_n0vup"), SubResource("Resource_0dx7l")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

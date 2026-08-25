@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://yg8py8tlrobf"]
+
+[ext_resource type="Resource" uid="uid://dj4cnce40c7d" path="res://Resources/Drop/Sangue.tres" id="1_5o0kt"]
+[ext_resource type="Texture2D" uid="uid://cpqiki2be1br3" path="res://Assets/Terrain/Labirinto/chaoLabirinto(0).png" id="2_b7cyg"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_xftm6"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_j2hud"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_bmnts"]
+[ext_resource type="Resource" uid="uid://c5xs63i51wgff" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Conteudo/DesbloqueioFloresta.tres" id="6_lb7p6"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_xftm6")
+custo_item = ExtResource("4_j2hud")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_xftm6")
+custo_item = ExtResource("4_j2hud")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_xftm6")
+custo_item = ExtResource("4_j2hud")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_bmnts")
+nome = "Labirinto"
+pagina_biblioteca = "Labirinto"
+icone = ExtResource("2_b7cyg")
+pre_requisitos = Array[ExtResource("5_bmnts")]([ExtResource("6_lb7p6")])
+tipo = 1
+descricao_simples = "Arena nova!
++1 espaço de código!"
+custo_item_simples = ExtResource("1_5o0kt")
+custo_quantidade_simples = 500
+descricao_bloqueada = "Nova arena!
++1 espaço de código!"
+niveis = Array[ExtResource("3_xftm6")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

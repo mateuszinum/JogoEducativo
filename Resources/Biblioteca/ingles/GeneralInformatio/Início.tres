@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c1ukqk18rektt"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_510j8"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_hpp1h"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_510j8")
+tipo = 1
+texto = "Início"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_510j8")
+texto = "Aqui vai uma sugestão para o seu primeiro programa!
+
+Tente entrar na arena Campos usando o comando \"arena\". Depois, use o comando \"atacar\" com \"EsferaAzul\" no alvo que estiver por perto.
+
+Muitos inimigos vão aparecer, então você precisará realizar muitos ataques. Coloque vários ataques em sequência, como por exemplo:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_muvxh"]
+script = ExtResource("1_510j8")
+tipo = 3
+texto = "arena(Campos)
+
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+[...]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1rkxv"]
+script = ExtResource("1_510j8")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8huc7"]
+script = ExtResource("1_510j8")
+tipo = 4
+texto = "Partidas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_hpp1h")
+nome = "Início"
+blocos_de_conteudo = Array[ExtResource("1_510j8")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh"), SubResource("Resource_1rkxv"), SubResource("Resource_8huc7")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

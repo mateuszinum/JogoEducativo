@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://cam4lqovsfmea"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_ny0e8"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_tykw2"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_ny0e8")
+tipo = 1
+texto = "Goblin"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_ny0e8")
+texto = "Ughhhh... A Goblin. Its pockets are full of coins, surely stolen from someone.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jk6uf"]
+script = ExtResource("1_ny0e8")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3fc27"]
+script = ExtResource("1_ny0e8")
+texto = "Health: 5
+Speed: 10
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_s1xn2"]
+script = ExtResource("1_ny0e8")
+tipo = 2
+texto = "Found in:
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lk5le"]
+script = ExtResource("1_ny0e8")
+tipo = 4
+texto = "Fields"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_37tpt"]
+script = ExtResource("1_ny0e8")
+tipo = 2
+texto = "Drops:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1xlt5"]
+script = ExtResource("1_ny0e8")
+tipo = 4
+texto = "Coin"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_tykw2")
+nome = "Goblin"
+blocos_de_conteudo = Array[ExtResource("1_ny0e8")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_jk6uf"), SubResource("Resource_3fc27"), SubResource("Resource_s1xn2"), SubResource("Resource_lk5le"), SubResource("Resource_37tpt"), SubResource("Resource_1xlt5")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

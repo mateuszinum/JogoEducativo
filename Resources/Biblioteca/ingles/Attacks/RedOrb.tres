@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://b4y8xfpew6v1l"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_1yt2u"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_8alxf"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_1yt2u")
+tipo = 1
+texto = "Red Orb"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_1yt2u")
+texto = "It's like the basic attack, but it can go through enemies (hitting multiple targets).
+ so it hurts a lot when you strike someone with it[req=Floresta], Except for the Orc and the Vampire. They are both pretty tough.[/req]."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_1yt2u")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_1yt2u")
+texto = "Base damage: 5
+Knockback: 0,5
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tm0i7"]
+script = ExtResource("1_1yt2u")
+tipo = 2
+texto = "Usage requirements"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_hbekh"]
+script = ExtResource("1_1yt2u")
+texto = "The las attack must have been Blue orb."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_8alxf")
+nome = "RedOrb"
+blocos_de_conteudo = Array[ExtResource("1_1yt2u")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o"), SubResource("Resource_tm0i7"), SubResource("Resource_hbekh")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://lvm8pxuwvdas"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_lky8a"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_pcomm"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_lky8a")
+tipo = 1
+texto = "Fire"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_bjgxk"]
+script = ExtResource("1_lky8a")
+texto = "Very useful to kill the Ice Slime, but be careful with the Fire Slime: This flame is nothing compared to where it comes from.
+
+[req=Explosão de Fogo]Dica: Se acumular esse cara (no máximo 4), você consegue lançar o ExplosaoFogo com uma área enorme.[/req]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_lky8a")
+tipo = 2
+texto = "Attributes
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_lky8a")
+texto = "Base damage: 4
+Knockback: 1
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_pcomm")
+nome = "Fire"
+blocos_de_conteudo = Array[ExtResource("1_lky8a")]([SubResource("Resource_sj6m0"), SubResource("Resource_bjgxk"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

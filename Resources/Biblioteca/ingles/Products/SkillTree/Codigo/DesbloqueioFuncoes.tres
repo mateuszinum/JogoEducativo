@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://c8u5aql4wkld6"]
+
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="1_5rb7d"]
+[ext_resource type="Texture2D" uid="uid://dvjm6yh7m4ioe" path="res://Assets/Produtos/Skilltree/funcao.png" id="2_3i1wc"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_vpjrf"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="4_1y7w8"]
+[ext_resource type="Resource" uid="uid://bsbflois3q5xn" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Codigo/DesbloqueioAutomacao1.tres" id="5_c0jt8"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_vpjrf")
+custo_item = ExtResource("1_5rb7d")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_vpjrf")
+custo_item = ExtResource("1_5rb7d")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_vpjrf")
+custo_item = ExtResource("1_5rb7d")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("4_1y7w8")
+nome = "Funções"
+pagina_biblioteca = "Funções"
+icone = ExtResource("2_3i1wc")
+pre_requisitos = Array[ExtResource("4_1y7w8")]([ExtResource("5_c0jt8")])
+tipo = 1
+descricao_simples = "Declare suas próprias funções no código."
+custo_item_simples = ExtResource("1_5rb7d")
+custo_quantidade_simples = 100
+niveis = Array[ExtResource("3_vpjrf")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

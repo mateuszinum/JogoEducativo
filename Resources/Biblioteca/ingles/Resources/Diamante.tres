@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bna46nb43f2wm"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_2biom"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_d0cln"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_2biom")
+tipo = 1
+texto = "Diamante"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_m77ki"]
+script = ExtResource("1_2biom")
+tipo = 2
+texto = "Adquirido em:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_2biom")
+tipo = 4
+texto = "Labirinto"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_d0cln")
+nome = "Diamante"
+blocos_de_conteudo = Array[ExtResource("1_2biom")]([SubResource("Resource_sj6m0"), SubResource("Resource_m77ki"), SubResource("Resource_g1tmj")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

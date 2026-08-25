@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://5ej8ak4cu0hl"]
+
+[ext_resource type="Resource" uid="uid://cgnw0nw66jgr" path="res://Resources/Drop/Osso.tres" id="1_famh1"]
+[ext_resource type="Texture2D" uid="uid://dm6ilxplkt2jg" path="res://Assets/Produtos/Skilltree/debug.png" id="2_rh4f1"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_edswv"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_pjkuy"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_1jw5t"]
+[ext_resource type="Resource" uid="uid://snb8i8y72kwc" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Codigo/DesbloqueioLoopsCondicional.tres" id="6_2vqbt"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_edswv")
+custo_item = ExtResource("4_pjkuy")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_edswv")
+custo_item = ExtResource("4_pjkuy")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_edswv")
+custo_item = ExtResource("4_pjkuy")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_1jw5t")
+nome = "Debug"
+pagina_biblioteca = "escreva"
+icone = ExtResource("2_rh4f1")
+pre_requisitos = Array[ExtResource("5_1jw5t")]([ExtResource("6_2vqbt")])
+tipo = 1
+descricao_simples = "Facilita diagnóstico de bugs.
+
+Desbloqueia:
+- escreva()"
+custo_item_simples = ExtResource("1_famh1")
+custo_quantidade_simples = 80
+niveis = Array[ExtResource("3_edswv")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

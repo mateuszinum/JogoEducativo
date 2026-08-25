@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://1jjs86kxs1ll"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_3b4cy"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_ew2jc"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_3b4cy")
+tipo = 1
+texto = "Blue Orb"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_2agbe"]
+script = ExtResource("1_3b4cy")
+texto = "The blue orb is concentrated magic, so it hurts a lot when you strike someone with it. [req=Floresta], Except for the Orc and the Vampire. They are both pretty tough.[/req]."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3l6q0"]
+script = ExtResource("1_3b4cy")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oxl6o"]
+script = ExtResource("1_3b4cy")
+texto = "Base damage: 2
+Knockback: 0,5
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_ew2jc")
+nome = "BlueOrb"
+blocos_de_conteudo = Array[ExtResource("1_3b4cy")]([SubResource("Resource_sj6m0"), SubResource("Resource_2agbe"), SubResource("Resource_3l6q0"), SubResource("Resource_oxl6o")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://co3x31wtgyvms"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_nac5j"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_y7vnf"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_nac5j")
+tipo = 1
+texto = "Esmeralda"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_uqwrq"]
+script = ExtResource("1_nac5j")
+tipo = 2
+texto = "Adquirido em:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_nac5j")
+tipo = 4
+texto = "Floresta"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_y7vnf")
+nome = "Esmeralda"
+blocos_de_conteudo = Array[ExtResource("1_nac5j")]([SubResource("Resource_sj6m0"), SubResource("Resource_uqwrq"), SubResource("Resource_g1tmj")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

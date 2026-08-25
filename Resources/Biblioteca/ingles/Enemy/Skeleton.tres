@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://n5nyvlkhcpt5"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_by0rn"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_e5beu"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_by0rn")
+tipo = 1
+texto = "Skeleton"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_by0rn")
+texto = "This guy is a famous actor. He was in: Corpse Bride, Adventure Time, Poltergeist, and even The Phantom of the Opera."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jk6uf"]
+script = ExtResource("1_by0rn")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3fc27"]
+script = ExtResource("1_by0rn")
+texto = "Health: 7
+Speed: 8
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_s1xn2"]
+script = ExtResource("1_by0rn")
+tipo = 2
+texto = "Found in: "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lk5le"]
+script = ExtResource("1_by0rn")
+tipo = 4
+texto = "Fields"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_37tpt"]
+script = ExtResource("1_by0rn")
+tipo = 2
+texto = "Drops: "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1xlt5"]
+script = ExtResource("1_by0rn")
+tipo = 4
+texto = "Bones"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_e5beu")
+nome = "Skeleton"
+blocos_de_conteudo = Array[ExtResource("1_by0rn")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_jk6uf"), SubResource("Resource_3fc27"), SubResource("Resource_s1xn2"), SubResource("Resource_lk5le"), SubResource("Resource_37tpt"), SubResource("Resource_1xlt5")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

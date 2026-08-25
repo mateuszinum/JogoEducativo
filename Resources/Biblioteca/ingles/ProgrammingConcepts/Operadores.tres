@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://pxbnfp3ralhk"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_8dojr"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_ryuqb"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_8dojr")
+tipo = 1
+texto = "Operadores"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_8dojr")
+texto = "Os operadores são os símbolos que usamos para fazer contas matemáticas, comparar coisas ou juntar ideias.
+
+Aritméticos (Matemática básica):
+	+ : Soma
+	- : Subtração
+	* : Multiplicação
+	/ : Divisão
+	% : Resto da divisão
+
+Comparação (Para fazer perguntas):
+	== : É igual a?
+	!= : É diferente de?
+	>= : Maior ou igual
+	<= : Menor ou igual
+
+Lógicos (Para juntar regras):
+	e : As duas condições precisam ser verdadeiras.
+	ou : Apenas uma das condições precisa ser verdadeira.
+	! : Inverte a regra (o que era Verdadeiro vira Falso).
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1sph2"]
+script = ExtResource("1_8dojr")
+tipo = 2
+texto = "Exemplos de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_4yhyu"]
+script = ExtResource("1_8dojr")
+tipo = 3
+texto = "int vidaMaxima = 100
+int dano = 15
+int vidaRestante = vidaMaxima - dano
+float metadeDaVida = vidaMaxima / 2
+
+int nivel = 5
+se(nivel >= 10):
+	escreva(\"Você é muito forte!\")
+fim se
+
+se(alvo == Nulo):
+    escreva(\"Nenhum inimigo encontrado.\")
+fim se
+
+int contador = 50
+bool valor = Verdadeiro
+se(contador >= 20 e valor):
+    atacar(inimigoMaisProximo, EsferaAzul)
+fim se
+
+bool temBastanteVida = Falso
+se(!temBastanteVida):
+    escreva(\"Cuidado, você está desprotegido!\")
+fim se"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_ryuqb")
+nome = "Operadores"
+blocos_de_conteudo = Array[ExtResource("1_8dojr")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_1sph2"), SubResource("Resource_4yhyu")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

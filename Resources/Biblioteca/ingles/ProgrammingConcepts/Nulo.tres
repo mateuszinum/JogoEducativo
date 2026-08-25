@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dn1yt2tw1eepb"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_4ejuk"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_wib2m"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_4ejuk")
+tipo = 1
+texto = "Nulo"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_4ejuk")
+texto = "O Nulo é um tipo de dado especial que representa o vazio absoluto. Quando uma variável não tem nada dentro, ou quando você tenta procurar um alvo e não encontra ninguém, o sistema retorna Nulo.
+
+Ele é muito útil para checar se algo existe antes de tentar interagir com aquilo.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_fa6qn"]
+script = ExtResource("1_4ejuk")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cu4sd"]
+script = ExtResource("1_4ejuk")
+tipo = 3
+texto = "Inimigo alvo = inimigoMaisProximo()
+
+se(alvo == Nulo):
+    escreva(\"Ninguém por perto!\")
+fim se"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_wib2m")
+nome = "Nulo"
+blocos_de_conteudo = Array[ExtResource("1_4ejuk")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_fa6qn"), SubResource("Resource_cu4sd")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

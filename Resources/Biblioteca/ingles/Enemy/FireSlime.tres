@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://cji8sgdg0lswc"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_fljhg"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_w3hxa"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_fljhg")
+tipo = 1
+texto = "FireSlime"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_fljhg")
+texto = "High Health. The only viable way to defeat it is with Ice attacks. 
+
+Quite the hothead—needs to cool off."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_jk6uf"]
+script = ExtResource("1_fljhg")
+tipo = 2
+texto = "Attributes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3fc27"]
+script = ExtResource("1_fljhg")
+texto = "Health: 14
+Speed: 6
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_s1xn2"]
+script = ExtResource("1_fljhg")
+tipo = 2
+texto = "Found in:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lk5le"]
+script = ExtResource("1_fljhg")
+tipo = 4
+texto = "Fields"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_37tpt"]
+script = ExtResource("1_fljhg")
+tipo = 2
+texto = "Drops:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1xlt5"]
+script = ExtResource("1_fljhg")
+tipo = 4
+texto = "Magma"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_c773p"]
+script = ExtResource("1_fljhg")
+tipo = 2
+texto = "Immune to:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_daujv"]
+script = ExtResource("1_fljhg")
+tipo = 4
+texto = "Fire FireExplosion"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_gar61"]
+script = ExtResource("1_fljhg")
+tipo = 2
+texto = "Vulnerable to:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_5265h"]
+script = ExtResource("1_fljhg")
+tipo = 4
+texto = "Ice IceExplosion"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_w3hxa")
+nome = "FireSlime"
+blocos_de_conteudo = Array[ExtResource("1_fljhg")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_jk6uf"), SubResource("Resource_3fc27"), SubResource("Resource_s1xn2"), SubResource("Resource_lk5le"), SubResource("Resource_37tpt"), SubResource("Resource_1xlt5"), SubResource("Resource_c773p"), SubResource("Resource_daujv"), SubResource("Resource_gar61"), SubResource("Resource_5265h")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

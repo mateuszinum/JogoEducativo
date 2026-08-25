@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://78y6u41yd0pa"]
+
+[ext_resource type="Resource" uid="uid://v0m7wiak3fnn" path="res://Resources/Drop/Moeda.tres" id="1_aaqiw"]
+[ext_resource type="Texture2D" uid="uid://cqkybmu1g2p8b" path="res://Assets/Projectiles/EsferaVermelha.png" id="2_c75q5"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_rucdp"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_yky27"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_hy4cr"]
+[ext_resource type="Resource" uid="uid://cs5k25kn62nh2" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Conteudo/DesbloqueioFogo.tres" id="6_nsy4s"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_rucdp")
+custo_item = ExtResource("4_yky27")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_rucdp")
+custo_item = ExtResource("4_yky27")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_rucdp")
+custo_item = ExtResource("4_yky27")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_hy4cr")
+nome = "Esfera Vermelha"
+pagina_biblioteca = "EsferaVermelha"
+icone = ExtResource("2_c75q5")
+pre_requisitos = Array[ExtResource("5_hy4cr")]([ExtResource("6_nsy4s")])
+tipo = 1
+descricao_simples = "Novo ataque! Mais forte do que a Esfera Azul."
+custo_item_simples = ExtResource("1_aaqiw")
+custo_quantidade_simples = 100
+niveis = Array[ExtResource("3_rucdp")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

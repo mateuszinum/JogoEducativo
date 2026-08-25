@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://pga08wi1g7q0"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_1od18"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_ipkap"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_1od18")
+tipo = 1
+texto = "Funções"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_1od18")
+texto = "As funções são blocos de código personalizados que você cria para não ter que repetir as mesmas linhas várias vezes. É como ensinar um novo \"truque\" ao seu personagem.
+
+Ao criar uma função, você deve dizer qual o tipo de dado que ela vai devolver no final (ou usar vazio se ela não devolver nada). Você também pode passar informações para ela trabalhar, chamadas de parâmetros.
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ect6h"]
+script = ExtResource("1_1od18")
+tipo = 2
+texto = "Leia também"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_4xmli"]
+script = ExtResource("1_1od18")
+tipo = 4
+texto = "Escopos"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_eyya5"]
+script = ExtResource("1_1od18")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_btp45"]
+script = ExtResource("1_1od18")
+tipo = 3
+texto = "int somarValores(int a, int b):
+	int resultado = a + b
+	retorna resultado
+fim funcao
+
+int numero1 = 50
+int numero2 = 30
+
+int soma = somarValores(numero1, numero2)
+# A variável soma agora vale 80!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_ipkap")
+nome = "Funções"
+blocos_de_conteudo = Array[ExtResource("1_1od18")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_ect6h"), SubResource("Resource_4xmli"), SubResource("Resource_eyya5"), SubResource("Resource_btp45")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

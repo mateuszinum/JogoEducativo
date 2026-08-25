@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://y3jsykcn7wvt"]
+
+[ext_resource type="Texture2D" uid="uid://c3ji3aofa2wm1" path="res://Assets/Asset Packs/items/item688.png" id="1_4w0t5"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="2_5a4in"]
+[ext_resource type="Resource" uid="uid://bo6nq8i6ri5cp" path="res://Resources/Drop/Safira.tres" id="3_nalvh"]
+[ext_resource type="Resource" uid="uid://cbq1la4am4u0r" path="res://Resources/Drop/Esmeralda.tres" id="4_gi4sk"]
+[ext_resource type="Resource" uid="uid://dfsb7ee5ixfs4" path="res://Resources/Drop/Diamante.tres" id="5_n3tg4"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="6_m62vn"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("2_5a4in")
+descricao_atual = "+4 Vida Máxima"
+descricao_upgrade = "+6 Vida Máxima"
+custo_item = ExtResource("3_nalvh")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("2_5a4in")
+descricao_atual = "+6 Vida Máxima"
+descricao_upgrade = "+8 Vida Máxima"
+custo_item = ExtResource("4_gi4sk")
+custo_quantidade = 250
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("2_5a4in")
+descricao_atual = "+8 Vida Máxima"
+descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+custo_item = ExtResource("5_n3tg4")
+custo_quantidade = 500
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("6_m62vn")
+nome = "Vida Máxima"
+icone = ExtResource("1_4w0t5")
+tipo = 2
+descricao_atual_base = "+3 Vida Máxima"
+descricao_upgrade_base = "+4 Vida Máxima"
+niveis = Array[ExtResource("2_5a4in")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"

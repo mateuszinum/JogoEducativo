@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://lny08p8nv74m"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_ttp2n"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_157hn"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_ttp2n")
+tipo = 1
+texto = "Fields"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_ttp2n")
+texto = "Basic Arena, green and bright  fields
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_48mmb"]
+script = ExtResource("1_ttp2n")
+tipo = 2
+texto = "Enemy"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_n2nr0"]
+script = ExtResource("1_ttp2n")
+tipo = 4
+texto = "Skeleton Goblin FireSlime IceSlime"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tgg7w"]
+script = ExtResource("1_ttp2n")
+tipo = 2
+texto = "Treasure"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ad844"]
+script = ExtResource("1_ttp2n")
+tipo = 4
+texto = "Sapphire"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_157hn")
+nome = "Fields"
+blocos_de_conteudo = Array[ExtResource("1_ttp2n")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_48mmb"), SubResource("Resource_n2nr0"), SubResource("Resource_tgg7w"), SubResource("Resource_ad844")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ProdutoLoja" format=3 uid="uid://db67bgxsgpcfs"]
+
+[ext_resource type="Resource" uid="uid://ciih8qpmcof52" path="res://Resources/Drop/Magma.tres" id="1_qdvdo"]
+[ext_resource type="Texture2D" uid="uid://d0nje1u2phud3" path="res://Assets/Asset Packs/potions/potion22.png" id="2_ba0g6"]
+[ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_kkmsj"]
+[ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_fyili"]
+[ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_5mf34"]
+
+[sub_resource type="Resource" id="Resource_btodh"]
+script = ExtResource("3_kkmsj")
+custo_item = ExtResource("4_fyili")
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_ji3o2"]
+script = ExtResource("3_kkmsj")
+custo_item = ExtResource("4_fyili")
+custo_quantidade = 50
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[sub_resource type="Resource" id="Resource_6x1o3"]
+script = ExtResource("3_kkmsj")
+custo_item = ExtResource("4_fyili")
+custo_quantidade = 100
+metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
+
+[resource]
+script = ExtResource("5_5mf34")
+nome = "PocaoDeCura"
+icone = ExtResource("2_ba0g6")
+descricao_simples = "Uma poção da boa"
+custo_item_simples = ExtResource("1_qdvdo")
+niveis = Array[ExtResource("3_kkmsj")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
+metadata/_custom_type_script = "uid://b7fk0mvencb17"
