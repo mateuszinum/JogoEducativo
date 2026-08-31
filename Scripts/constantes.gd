@@ -14,7 +14,7 @@ var REQUISITOS_DESATIVADOS : bool = false
 var TUDO_GRATIS : bool = false
 var JOGADOR_IMORTAL : bool = false 
 var PULAR_TUTORIAL : bool = false
-var DEBUG : bool = false 
+var DEBUG : bool = true 
 
 # Mude para true no build final
 var TOCAR_MUSICA : bool = true 

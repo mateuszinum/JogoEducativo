@@ -37,7 +37,7 @@ func filtrar_texto_por_progresso(texto: String) -> String:
 		var conteudo = match_data.get_string(2)
 		
 		if ProgressoDB.tem_desbloqueado(requisito):
-			resultado = resultado.replace(string_completa, conteudo)
+			resultado = resultado.replace(string_completa, tr(conteudo))
 		else:
 			resultado = resultado.replace(string_completa, "")
 			
@@ -54,7 +54,7 @@ func carregar_pagina(pagina: BibliotecaResource):
 		if texto_filtrado.strip_edges() == "":
 			continue
 
-		texto_filtrado = texto_filtrado.strip_edges(false, true)
+		texto_filtrado = tr(texto_filtrado).strip_edges(false, true)
 
 		match bloco.tipo:
 			BibliotecaTexto.TipoBloco.TITULO:
@@ -77,8 +77,10 @@ func carregar_pagina(pagina: BibliotecaResource):
 			BibliotecaTexto.TipoBloco.LINKS_VERDES:
 				var palavras = texto_filtrado.split(" ", false) 
 				var linha_formatada = ""
+				
 				for palavra in palavras:
 					linha_formatada += "[url=" + palavra + "][font_size=16][color=#a8ca58][b]" + palavra + "[/b][/color][/font_size][/url]   "
+					
 				texto_artigo.append_text(linha_formatada + "\n\n")
 
 func _on_link_clicado(meta: String):
