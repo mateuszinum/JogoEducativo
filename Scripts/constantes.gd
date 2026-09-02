@@ -42,7 +42,7 @@ var USAR_SHAKE : bool = true
 var GRÁFICO_HIGH : bool = true
 
 # Define o idioma. (pt_br = 0, en = 1)
-var JOGO_EN : int = 0
+var JOGO_EN : int = 1
 
 var VOLUME_MASTER : float = 0.5:
 	set(value):

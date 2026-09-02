@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c8bxs1ja34fbl" path="res://Scripts/Produtos/nivel_upgrade.gd" id="3_rucdp"]
 [ext_resource type="Resource" uid="uid://cucl72qui0okn" path="res://Resources/Drop/Couro.tres" id="4_yky27"]
 [ext_resource type="Script" uid="uid://b7fk0mvencb17" path="res://Scripts/Produtos/produto_loja.gd.gd" id="5_hy4cr"]
-[ext_resource type="Resource" uid="uid://cs5k25kn62nh2" path="res://Resources/Biblioteca/ingles/Products/SkillTree/Conteudo/DesbloqueioFogo.tres" id="6_nsy4s"]
+[ext_resource type="Resource" uid="uid://cs5k25kn62nh2" path="res://Resources/Biblioteca/en/Products/SkillTree/Conteudo/DesbloqueioFogo.tres" id="6_nsy4s"]
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("3_rucdp")
