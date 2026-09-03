@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c6tmuwta4tyik"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_812ym"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_mt45d"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_812ym")
+tipo = 1
+texto = "Treasures"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_812ym")
+texto = "Every battle arena hides riches! At any point during your match, there will always be exactly one active treasure on the map. It uses the same grid system as the character, meaning the treasure is located at an XY coordinate.
+
+Upon reaching the treasure, you collect it, and another one immediately spawns at a random location in the arena.
+
+Tip: To collect treasures, you need to write a pathfinding algorithm that moves the character to the treasure's coordinate by comparing it to the character's current 
+position. Make sure your code can navigate around obstacles in the way!
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_l83gn"]
+script = ExtResource("1_812ym")
+tipo = 2
+texto = "Related"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0xueo"]
+script = ExtResource("1_812ym")
+tipo = 4
+texto = "posicaoX posicaoY tesouroX tesouroY"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_mt45d")
+nome = "Treasures"
+blocos_de_conteudo = Array[ExtResource("1_812ym")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_l83gn"), SubResource("Resource_0xueo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

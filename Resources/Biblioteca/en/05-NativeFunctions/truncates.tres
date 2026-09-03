@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c2hlha4dvsli6"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_2l7wn"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_wptut"]
+
+[sub_resource type="Resource" id="Resource_2hs0u"]
+script = ExtResource("1_2l7wn")
+tipo = 1
+texto = "trunca(num)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_2l7wn")
+texto = "Given a float as a parameter, returns an integer value corresponding to its integer part."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_2l7wn")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_2l7wn")
+tipo = 3
+texto = "int num = trunca(2.9)			# num = 2"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_wptut")
+nome = "truncates"
+blocos_de_conteudo = Array[ExtResource("1_2l7wn")]([SubResource("Resource_2hs0u"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

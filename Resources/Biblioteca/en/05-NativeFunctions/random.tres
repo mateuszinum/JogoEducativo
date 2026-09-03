@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dp1no0q0e4u71"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_gbbev"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_tcwht"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_gbbev")
+tipo = 1
+texto = "aleatorio()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_gbbev")
+texto = "Returns a random float between 0.00 and 1.00, rounded to 2 decimal places."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_gbbev")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_gbbev")
+tipo = 3
+texto = "float a = aleatorio()
+
+se(a > 0.50):
+	#Comand"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_tcwht")
+nome = "random"
+blocos_de_conteudo = Array[ExtResource("1_gbbev")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

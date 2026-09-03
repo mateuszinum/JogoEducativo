@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://ckel302g4r25r"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_qh7tj"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_avjqh"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_qh7tj")
+tipo = 1
+texto = "posicaoX()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_qh7tj")
+texto = "Returns the integer value of the X-axis (horizontal) the player is currently standing on. 
+
+Useful for knowing the exact horizontal coordinate of the player at any given moment."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_qh7tj")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_qh7tj")
+tipo = 3
+texto = "int posX = posicaoX()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_svh2b"]
+script = ExtResource("1_qh7tj")
+tipo = 2
+texto = "Related"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_pqcjb"]
+script = ExtResource("1_qh7tj")
+tipo = 4
+texto = "posicaoY tesouroX tesouroY Treasures"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_avjqh")
+nome = "positionX"
+blocos_de_conteudo = Array[ExtResource("1_qh7tj")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_svh2b"), SubResource("Resource_pqcjb")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

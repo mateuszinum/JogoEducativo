@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_0dx7l"]
 script = ExtResource("1_q4f5b")
 tipo = 3
-texto = "#Exemplo 1
+texto = "#Example 1
 
 se(inimigoMaisProximo().nome == SlimeDeFogo):
 	atacar(inimigoMaisProximo().nome, Gelo)
@@ -39,7 +39,7 @@ senao:
 	atacar(inimigoMaisProximo().nome, EsferaAzul)
 fim se
 
-#Exemplo 2
+#Example 2
 
 Inimigo i = inimigoMaisProximo()
 

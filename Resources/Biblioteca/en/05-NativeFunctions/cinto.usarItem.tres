@@ -11,15 +11,15 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_komd7")
-texto = "Usa o item do cinto no índice especificado. Só funciona se houver um item na respectiva posição.
-
-O parâmetro \"indice\" deve ser um número inteiro (int) que representa a posição do item no cinto."
+texto = "Uses the Belt item at the given index. Fails if the slot is empty. 
+The \"indice\" parameter expects an integer (int) for the Belt slot position."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_komd7")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "Usage Example
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]

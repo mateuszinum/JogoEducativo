@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c1ukqk18rektt"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_8odjw"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_78w3f"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_8odjw")
+tipo = 1
+texto = "The Beginning"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_8odjw")
+texto = "Here is a suggestion for your first program!
+
+Try to enter the Campos arena with the 'arena' command. Afterward, use the 'atacar' command with 'EsferaAzul' on the closest target.
+
+Many enemies will spawn, so you'll need to attack multiple times. Chain your attacks together, for example:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_muvxh"]
+script = ExtResource("1_8odjw")
+tipo = 3
+texto = "arena(Campos)
+
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+atacar(inimigoMaisProximo(), EsferaAzul)
+[...]"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1rkxv"]
+script = ExtResource("1_8odjw")
+tipo = 2
+texto = "See also
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8huc7"]
+script = ExtResource("1_8odjw")
+tipo = 4
+texto = "Runs
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_78w3f")
+nome = "Beginning"
+blocos_de_conteudo = Array[ExtResource("1_8odjw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh"), SubResource("Resource_1rkxv"), SubResource("Resource_8huc7")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

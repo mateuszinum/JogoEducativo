@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c5xlxasoyk8ut"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_8ofx7"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_waieh"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_8ofx7")
+tipo = 1
+texto = "Credits"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_8ofx7")
+texto = "Federal University of Mato Grosso (UFMT)
+Project Código Divertido
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0hl1p"]
+script = ExtResource("1_8ofx7")
+tipo = 2
+texto = "Developers"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7qvyl"]
+script = ExtResource("1_8ofx7")
+texto = "André Arrais
+Gustavo Yoshiro
+Kauan Romanini
+Mateus Almeida
+Pedro Melchior
+Pedro Vargas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_waieh")
+nome = "Credits"
+blocos_de_conteudo = Array[ExtResource("1_8ofx7")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_0hl1p"), SubResource("Resource_7qvyl")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

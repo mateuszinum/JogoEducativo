@@ -11,13 +11,14 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_fwdqn")
-texto = "Vende todos os itens no inventário (mochila ou cinto), recebendo o reembolso dos valores dos itens."
+texto = "Sells all items in the inventory (Backpack or Belt), receiving a refund for their values."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_fwdqn")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "Usage Example
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dm6y5a2gs2cjr"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_wt8fa"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_vninq"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_wt8fa")
+tipo = 1
+texto = "Leather"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_wt8fa")
+tipo = 2
+texto = "Dropped by:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lvk7e"]
+script = ExtResource("1_wt8fa")
+tipo = 4
+texto = "Werewolf"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_vninq")
+nome = "Leather"
+blocos_de_conteudo = Array[ExtResource("1_wt8fa")]([SubResource("Resource_sj6m0"), SubResource("Resource_g1tmj"), SubResource("Resource_lvk7e")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

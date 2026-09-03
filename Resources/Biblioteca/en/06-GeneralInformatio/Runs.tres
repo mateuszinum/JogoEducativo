@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://ckrn8dl0kh28w"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_hhe5i"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_fx8hj"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_hhe5i")
+tipo = 1
+texto = "Runs"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_hhe5i")
+texto = "Using the \"arena\" function starts a run. If your HP drops to 0, you lose all resources gathered during that run.
+
+To survive the run and escape, click the button \"STOP AND ESCAPE\"[req=Automação 1]. It's also possible to escape the match using a function \"escapar()\"[/req]."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_pws7u"]
+script = ExtResource("1_hhe5i")
+tipo = 2
+texto = "Leveling up"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_f5o1o"]
+script = ExtResource("1_hhe5i")
+texto = "
+In each run, you start at Level 1. As you gather resources, your EXP bar fills up. When it's full, you level up.
+The max level you can reach is Level 10.
+
+Each level grants about +10% Agility. At max level, you get a 100% bonus, meaning your base Agility is doubled."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_l83gn"]
+script = ExtResource("1_hhe5i")
+tipo = 2
+texto = "Related"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_0xueo"]
+script = ExtResource("1_hhe5i")
+tipo = 4
+texto = "arena"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_fx8hj")
+nome = "Runs"
+blocos_de_conteudo = Array[ExtResource("1_hhe5i")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_pws7u"), SubResource("Resource_f5o1o"), SubResource("Resource_l83gn"), SubResource("Resource_0xueo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

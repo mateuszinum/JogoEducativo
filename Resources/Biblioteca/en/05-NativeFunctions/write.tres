@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://bndyv1fwmu1u8"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_4434d"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_0fas2"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_4434d")
+tipo = 1
+texto = "escreva(texto)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_4434d")
+texto = "Prints the specified text to the screen. Each execution automatically displays the message on a new line. The \"\\n\" expression can be used within the text to force a manual line break. 
+The 'string' parameter must be the text you want to display."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_4434d")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_4434d")
+tipo = 3
+texto = "escreva(\"Eu sou um mago poderoso\")
+Inimigo alvo = inimigoMaisProximo()
+escreva(\"O nome do inimigo mais perto é: \" + alvo)
+escreva(\"Inimigo: \" + alvo + \" Que medo!\")"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_0fas2")
+nome = "write"
+blocos_de_conteudo = Array[ExtResource("1_4434d")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

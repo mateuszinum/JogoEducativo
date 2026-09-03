@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://by3ytjvr3nl6m"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_pmvxw"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_cwmin"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_pmvxw")
+tipo = 1
+texto = "Blood"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_vvtow"]
+script = ExtResource("1_pmvxw")
+tipo = 2
+texto = "Dropped by:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1tmj"]
+script = ExtResource("1_pmvxw")
+tipo = 4
+texto = "Vampire"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_cwmin")
+nome = "Blood"
+blocos_de_conteudo = Array[ExtResource("1_pmvxw")]([SubResource("Resource_sj6m0"), SubResource("Resource_vvtow"), SubResource("Resource_g1tmj")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

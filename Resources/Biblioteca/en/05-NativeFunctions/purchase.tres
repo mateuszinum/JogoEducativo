@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://d3x616mj4pid0"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_4vr48"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_5tjai"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_4vr48")
+tipo = 1
+texto = "comprar(produto)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_4vr48")
+texto = "Processes the payment to acquire the specified product, immediately adding it to the active inventory (Belt or Backpack). The purchase is only completed if you have sufficient resources and enough free space. Slots are filled from left to right in the Belt (indices 0 and 1) and from bottom to top in the Backpack. 
+
+The \"produto\" parameter must be a string with the product name."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_4vr48")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_4vr48")
+tipo = 3
+texto = "comprar(\"PocaoDeCura\")"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_5tjai")
+nome = "purchase"
+blocos_de_conteudo = Array[ExtResource("1_4vr48")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

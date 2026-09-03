@@ -11,25 +11,26 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ms24s"]
 script = ExtResource("1_iy2om")
-texto = "Muito útil para não atacar o vento e focar no perigo imediato, MAS cuidado em arenas cheias, ele é cego para os monstros mais distantes.
+texto = "Very useful for avoiding empty strikes and focusing on the immediate threat, BUT be careful in crowded arenas, as it is blind to distant enemies.
 
-dica: futuramente, colar um ponto (.) logo após essa busca permitirá extrair informações precisas do alvo, como o seu nome."
+Hint: In the future, using dot notation (.) immediately after this search will allow you to extract specific target properties, such as its name."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_ablw5"]
 script = ExtResource("1_iy2om")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "Usage Example
+"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_iy2om")
 tipo = 3
-texto = "#Exemplo 1
+texto = "#Example 1
 
 atacar(inimigoMaisProximo(), EsferaAzul)
 
-#Exemplo 2
+#Example 2
 
 Inimigo inimigo = inimigoMaisProximo()
 

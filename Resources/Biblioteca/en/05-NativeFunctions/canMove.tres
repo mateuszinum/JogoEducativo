@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dhjiscq55etby"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_2mjnt"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_cwsvs"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_2mjnt")
+tipo = 1
+texto = "podeMover(direcao)"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_2mjnt")
+texto = "Returns a boolean value indicating if the tile in the specified direction is a floor or not. Returns True if it is a floor, and False if it is an impassable barrier.
+
+ The 'direcao' parameter must be Up(Cima), Down(Baixo), Right(Direita) ou Left(Esquerda). "
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_2mjnt")
+tipo = 2
+texto = "Usage Example
+"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_2mjnt")
+tipo = 3
+texto = "se(podeMover(Cima)):
+	mover(Cima)
+fim se"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_yvjea"]
+script = ExtResource("1_2mjnt")
+tipo = 2
+texto = "Related"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_hs528"]
+script = ExtResource("1_2mjnt")
+tipo = 4
+texto = "move"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_cwsvs")
+nome = "podeMover"
+blocos_de_conteudo = Array[ExtResource("1_2mjnt")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_yvjea"), SubResource("Resource_hs528")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
