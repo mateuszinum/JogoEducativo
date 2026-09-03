@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://pga08wi1g7q0"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_dg82a"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_jirse"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_dg82a")
+tipo = 1
+texto = "Functions"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_dg82a")
+texto = "Functions are custom blocks of code you create so you don't have to repeat the same lines multiple times. It's like teaching a new \"trick\" to your character.
+
+When creating a function, you must state what data type it will return at the end (or use void if it doesn't return anything). You can also pass information for it to work with, called parameters."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ect6h"]
+script = ExtResource("1_dg82a")
+tipo = 2
+texto = "Read Also"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_4xmli"]
+script = ExtResource("1_dg82a")
+tipo = 4
+texto = "Scopes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_eyya5"]
+script = ExtResource("1_dg82a")
+tipo = 2
+texto = "Usage Example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_btp45"]
+script = ExtResource("1_dg82a")
+tipo = 3
+texto = "int somarValores(int a, int b):
+	int resultado = a + b
+	retorna resultado
+fim funcao
+
+int numero1 = 50
+int numero2 = 30
+
+int soma = somarValores(numero1, numero2)
+# A variável soma agora vale 80!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_jirse")
+nome = "Funções"
+blocos_de_conteudo = Array[ExtResource("1_dg82a")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_ect6h"), SubResource("Resource_4xmli"), SubResource("Resource_eyya5"), SubResource("Resource_btp45")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

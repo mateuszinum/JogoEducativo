@@ -6,30 +6,30 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_eqr8k")
 tipo = 1
-texto = "Variáveis"
+texto = "Variables"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_eqr8k")
-texto = "As variáveis são como caixas onde você guarda informações para usar depois. Na nossa linguagem, você precisa avisar o sistema qual é o tipo de \"caixa\" antes de dar um nome a ela."
+texto = "Variables are like boxes where you store information to use later. In our language, you need to tell the system what type of \"box\" it is before giving it a name."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_oj1kj"]
 script = ExtResource("1_eqr8k")
 tipo = 2
-texto = "Leia também"
+texto = "Read also"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_e7ofd"]
 script = ExtResource("1_eqr8k")
 tipo = 4
-texto = "TiposDeDado"
+texto = "DataTypes"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_h8jfw"]
 script = ExtResource("1_eqr8k")
 tipo = 2
-texto = "Exemplo de uso"
+texto = "Usage example"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_wwugd"]

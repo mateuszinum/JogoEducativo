@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dhv74w1qhxj3g"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_16yci"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_j8g61"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_16yci")
+tipo = 1
+texto = "Lists"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_16yci")
+texto = "Lists allow you to store multiple values within a single variable. To create a list, you place the values between square brackets [], separated by commas.
+
+To access or change a specific item within the list, we use its index.
+
+Remember: in programming, counting always starts at zero! Therefore, the first item is [0], the second is [1], and so on."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_u3s6p"]
+script = ExtResource("1_16yci")
+tipo = 2
+texto = "Usage example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cywvo"]
+script = ExtResource("1_16yci")
+tipo = 3
+texto = "int numeros = [10, 20, 30]
+int primeiroNumero = numeros[0]
+# A variável primeiroNumero agora vale 10"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_j8g61")
+nome = "Listas"
+blocos_de_conteudo = Array[ExtResource("1_16yci")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_u3s6p"), SubResource("Resource_cywvo")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

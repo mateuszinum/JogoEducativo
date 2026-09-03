@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://ba1mb81oc32ew"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_w4y7e"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_vhds2"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_w4y7e")
+tipo = 1
+texto = "While"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_w4y7e")
+texto = "The \"while\" serves to repeat a block of code multiple times, as long as the condition you chose remains true. It is perfect for executing continuous actions.
+
+The structure must be closed with an \"end while\"
+
+Tip: If you want an infinite loop, use \"while(True)\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oqvpk"]
+script = ExtResource("1_w4y7e")
+tipo = 2
+texto = "Read Also"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_42fwn"]
+script = ExtResource("1_w4y7e")
+tipo = 4
+texto = "If"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_s4kx5"]
+script = ExtResource("1_w4y7e")
+tipo = 2
+texto = "Example 1"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_agsnw"]
+script = ExtResource("1_w4y7e")
+tipo = 3
+texto = "enquanto(Verdadeiro):
+	attack(nearestEnemy(), BlueSphere)
+	atacar(inimigoMaisProximo(), EsferaAzul)
+  	mover(Esquerda)
+fim enquanto"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_tcggy"]
+script = ExtResource("1_w4y7e")
+tipo = 2
+texto = "Example 2"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_6qiy6"]
+script = ExtResource("1_w4y7e")
+tipo = 3
+texto = "enquanto(contador > 2):
+  	movee(Cima)
+fim enquanto"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_vhds2")
+nome = "Enquanto"
+blocos_de_conteudo = Array[ExtResource("1_w4y7e")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oqvpk"), SubResource("Resource_42fwn"), SubResource("Resource_s4kx5"), SubResource("Resource_agsnw"), SubResource("Resource_tcggy"), SubResource("Resource_6qiy6")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

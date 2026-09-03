@@ -6,37 +6,36 @@
 [sub_resource type="Resource" id="Resource_sj6m0"]
 script = ExtResource("1_8dojr")
 tipo = 1
-texto = "Operadores"
+texto = "Operators"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_8dojr")
-texto = "Os operadores são os símbolos que usamos para fazer contas matemáticas, comparar coisas ou juntar ideias.
+texto = "Operators are the symbols we use to do math, compare things, or combine comparisons.
 
-Aritméticos (Matemática básica):
-	+ : Soma
-	- : Subtração
-	* : Multiplicação
-	/ : Divisão
-	% : Resto da divisão
+Arithmetic (Basic math):
+	+ : Addition
+	- : Subtraction
+	* : Multiplication
+	/ : Division
+	% : Remainder of division
 
-Comparação (Para fazer perguntas):
-	== : É igual a?
-	!= : É diferente de?
-	>= : Maior ou igual
-	<= : Menor ou igual
+Comparison (To ask questions):
+	== : Is equal to?
+	!= : Is different from?
+	>= : Greater than or equal to
+	<= : Less than or equal to
 
-Lógicos (Para juntar regras):
-	e : As duas condições precisam ser verdadeiras.
-	ou : Apenas uma das condições precisa ser verdadeira.
-	! : Inverte a regra (o que era Verdadeiro vira Falso).
-"
+Logical (To combine comparisons):
+	and : Both conditions must be true.
+	or : Only one of the conditions needs to be true.
+	! : Inverts the rule (what was True becomes False)."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_1sph2"]
 script = ExtResource("1_8dojr")
 tipo = 2
-texto = "Exemplos de uso"
+texto = "Usage Examples"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_4yhyu"]

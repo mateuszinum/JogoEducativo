@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://c8oydrvb66vx7"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_shq77"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_yfp8d"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_shq77")
+tipo = 1
+texto = "Scopes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_shq77")
+texto = "Scope is like the \"territory\" where a variable lives and can be seen by the system. Depending on where you create your data variable, it can be public to the whole code or private to a single place. We divide this into two types: Outer Scope and Inner Scope.
+
+If you declare a \"lost\" variable in your code, outside of any function, it becomes public. This means that any function, loop, or condition within your program can freely access and change the value of this variable. It is visible to everyone.
+
+If you declare a variable inside a function, it will be a closed variable and will only exist in the inner scope of that function. When the function finishes running, this variable dies. The rest of your program has no idea it exists and cannot access it. This is excellent because it prevents functions from messing up each other's information."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_si74l"]
+script = ExtResource("1_shq77")
+tipo = 2
+texto = "Usage example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ilbv4"]
+script = ExtResource("1_shq77")
+tipo = 3
+texto = "int globalNumber = 100
+
+void functionExample():
+  	int localNumber = 50
+  	globalNumber = globalNumber + localNumber
+end function
+
+print(localNumber)
+
+# The \"print\" function is trying to access the variable \"localNumber\". This will give an error, because the variable is in the inner scope of the function!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_yfp8d")
+nome = "Escopos"
+blocos_de_conteudo = Array[ExtResource("1_shq77")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_si74l"), SubResource("Resource_ilbv4")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

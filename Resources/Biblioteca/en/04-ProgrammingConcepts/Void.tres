@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dn1yt2tw1eepb"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_aic4m"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_tdga0"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_aic4m")
+tipo = 1
+texto = "Void"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_aic4m")
+texto = "Void is a special data type that represents absolute emptiness. When a variable has nothing inside, or when you try to look for a target and find no one, the system returns Void.
+
+It is very useful for checking if something exists before trying to interact with it."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_fa6qn"]
+script = ExtResource("1_aic4m")
+tipo = 2
+texto = "Usage example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_cu4sd"]
+script = ExtResource("1_aic4m")
+tipo = 3
+texto = "Inimigo alvo = inimigoMaisProximo()
+
+se(alvo == Nulo):
+    escreva(\"Ninguém por perto!\")
+fim se"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_tdga0")
+nome = "Nulo"
+blocos_de_conteudo = Array[ExtResource("1_aic4m")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_fa6qn"), SubResource("Resource_cu4sd")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

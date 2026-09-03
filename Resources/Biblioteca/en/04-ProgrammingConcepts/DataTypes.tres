@@ -1,0 +1,140 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://dbolt442bb1gv"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_xaep4"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_35sqk"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_xaep4")
+tipo = 1
+texto = "DataTypes"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_xaep4")
+texto = "When we create a variable to store information, the game system needs to know exactly what type of data it is dealing with. The data type is what defines the nature of the information and dictates what rules and operations can be applied to it.
+
+Think of data types as categories: you can do math with numbers. Similarly, a logical decision needs a data type that only understands if something is true or false. Specifying the type helps the game interpreter organize memory and ensures that your commands work without errors.
+
+The data types you can store are:"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_oj1kj"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "int"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_e7ofd"]
+script = ExtResource("1_xaep4")
+texto = "Stores whole numbers (e.g., 1, 10, -5)."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_3xve1"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "float"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nebly"]
+script = ExtResource("1_xaep4")
+texto = "Stores decimal or fractional numbers (e.g., 3.14, 0.5)."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_nq2bc"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "bool"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_d3fts"]
+script = ExtResource("1_xaep4")
+texto = "Stores logical values, which can only be True or False."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_5f6uf"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "string"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_bjala"]
+script = ExtResource("1_xaep4")
+texto = "Stores text. Always remember to put the text in quotes. You can also join (concatenate) texts using the + sign. It is possible to add texts with other texts, or even mix them with other data types (like numbers, list items, and logical values) and the system automatically converts everything into a single text!"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_j15aw"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "Enemy"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_g1ly2"]
+script = ExtResource("1_xaep4")
+texto = "Data type used to store a reference to an enemy. 
+
+Used by functions like \"attack\", \"nearestEnemy\", in addition to accessing enemy attributes."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_u4e3s"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "Arena"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_gwfth"]
+script = ExtResource("1_xaep4")
+texto = "Data type used to store a reference to an arena. 
+
+Used by functions like \"arena\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ldl5t"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "Ataque"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_kvu2y"]
+script = ExtResource("1_xaep4")
+texto = "Data type used to store a reference to a specific type of attack. 
+
+Used by functions like \"attack\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8csrw"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "Direction"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_grb2c"]
+script = ExtResource("1_xaep4")
+texto = "Data type used to store a reference to one of the 4 directions, which are Up, Down, Left and Right. 
+
+Used by functions like \"move\" and \"canMove\"."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_h8jfw"]
+script = ExtResource("1_xaep4")
+tipo = 2
+texto = "Usage Example"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_wwugd"]
+script = ExtResource("1_xaep4")
+tipo = 3
+texto = "int i = 100
+float f = 0.56
+bool b = Falso
+string mensagem = \"Explorando a arena\"
+Inimigo alvo = inimigoMaisProximo()
+Direcao dir = Cima
+Arena arn = Campos
+Ataque atk = EsferaAzul"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_35sqk")
+nome = "TiposDeDado"
+blocos_de_conteudo = Array[ExtResource("1_xaep4")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_oj1kj"), SubResource("Resource_e7ofd"), SubResource("Resource_3xve1"), SubResource("Resource_nebly"), SubResource("Resource_nq2bc"), SubResource("Resource_d3fts"), SubResource("Resource_5f6uf"), SubResource("Resource_bjala"), SubResource("Resource_j15aw"), SubResource("Resource_g1ly2"), SubResource("Resource_u4e3s"), SubResource("Resource_gwfth"), SubResource("Resource_ldl5t"), SubResource("Resource_kvu2y"), SubResource("Resource_8csrw"), SubResource("Resource_grb2c"), SubResource("Resource_h8jfw"), SubResource("Resource_wwugd")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
