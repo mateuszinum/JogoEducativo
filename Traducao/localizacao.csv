@@ -73,45 +73,48 @@ Osso,Osso,Bone
 Plasma,Plasma,Plasma
 Safira,Safira,Sapphire
 Sangue,Sangue,Blood
-MORTE_TITULO,DERROTA,TRADUZIR
+MORTE_TITULO,DERROTA,DEFEAT
 MORTE_MENSAGEM,"Os recursos adquiridos nesta
 partida foram perdidos!
 
 Para escapar com vida,
 pare a execução do código
-antes de morrer.",TRADUZIR
-LOJA_VOLTAR,VOLTAR,TRADUZIR
-LOJA_BRUXA_NOME,BRUXA,TRADUZIR
-LOJA_COMERCIANTE_NOME,COMERCIANTE,TRADUZIR
-LOJA_BIBLIOTECA_NOME,BIBLIOTECA,TRADUZIR
-LOJA_MAGO_VELHO_NOME,MAGO VELHO,TRADUZIR
-VILAREJO_BOAS_VINDAS,Bem-Vindo ao Vilarejo!,TRADUZIR
-CONFIG_TITULO,CONFIGURAÇÕES,TRADUZIR
-CONFIG_VOLUME_TITULO,VOLUME,TRADUZIR
-CONFIG_VOLUME_GERAL,Tudo,TRADUZIR
-CONFIG_VOLUME_MUSICA,Música,TRADUZIR
-CONFIG_VOLUME_SFX,SFX,TRADUZIR
-CONFIG_VOLUME_UI,UI,TRADUZIR
-CONFIG_VIDEO_TITULO,VÍDEO,TRADUZIR
-CONFIG_TELA_CHEIA,Tela cheia,TRADUZIR
-CONFIG_TREMOR_TELA,Shake na tela,TRADUZIR
-CONFIG_GRAFICOS_BONITOS,Gráficos Bonitos,TRADUZIR
-CONFIG_CANCELAR,Cancelar,TRADUZIR
-CONFIG_APLICAR,Aplicar,TRADUZIR
-HUD_MOCHILA_TITULO,MOCHILA,TRADUZIR
-HUD_BOTAO_TROCAR,TROCAR,TRADUZIR
-HUD_CINTO_TITULO,CINTO,TRADUZIR
-HUD_NIVEL_PREFIXO,NÍVEL ,TRADUZIR
-HUD_NIVEL_MAXIMO,MÁXIMO,TRADUZIR
-PAUSA_CONTINUAR,CONTINUAR,TRADUZIR
-PAUSA_MENU_PRINCIPAL,MENU PRINCIPAL,TRADUZIR
-PAUSA_CONFIRMAR_PERGUNTA,Tem certeza?,TRADUZIR
-PAUSA_CONFIRMAR_NAO,Não,TRADUZIR
-PAUSA_CONFIRMAR_SIM,Sim,TRADUZIR
-MENU_NOVO_JOGO,NOVO JOGO,TRADUZIR
-MENU_CARREGAR_JOGO,CARREGAR JOGO,TRADUZIR
-MENU_CREDITOS,CRÉDITOS,TRADUZIR
-MENU_SLOTS_SALVAMENTO_TITULO,SLOTS DE SALVAMENTO,TRADUZIR
+antes de morrer.","The resources acquired in this run were lost! 
+To escape alive,
+stop the code execution 
+before dying"
+LOJA_VOLTAR,VOLTAR,RETURN
+LOJA_BRUXA_NOME,BRUXA,WITCH
+LOJA_COMERCIANTE_NOME,COMERCIANTE,MERCHANT 
+LOJA_BIBLIOTECA_NOME,BIBLIOTECA,LIBRARY
+LOJA_MAGO_VELHO_NOME,MAGO VELHO,OLD MAGE
+VILAREJO_BOAS_VINDAS,Bem-Vindo ao Vilarejo!,Welcome to the village
+CONFIG_TITULO,CONFIGURAÇÕES,CONFIGURATION
+CONFIG_VOLUME_TITULO,VOLUME,VOLUME
+CONFIG_VOLUME_GERAL,Tudo,All
+CONFIG_VOLUME_MUSICA,Música,Music
+CONFIG_VOLUME_SFX,SFX,SFX
+CONFIG_VOLUME_UI,UI,UI
+CONFIG_VIDEO_TITULO,VÍDEO,VIDEO
+CONFIG_TELA_CHEIA,Tela cheia,Full screen
+CONFIG_TREMOR_TELA,Shake na tela,Shake on screen 
+CONFIG_GRAFICOS_BONITOS,Gráficos Bonitos,Beautiful Graphics
+CONFIG_CANCELAR,Cancelar,Cancel
+CONFIG_APLICAR,Aplicar,Apply 
+HUD_MOCHILA_TITULO,MOCHILA,BACKPACK
+HUD_BOTAO_TROCAR,TROCAR,SWITCH
+HUD_CINTO_TITULO,CINTO,BELT
+HUD_NIVEL_PREFIXO,NÍVEL ,LEVEL
+HUD_NIVEL_MAXIMO,MÁXIMO,MAX
+PAUSA_CONTINUAR,CONTINUAR,CONTINUE
+PAUSA_MENU_PRINCIPAL,MENU PRINCIPAL,MAIN MENU
+PAUSA_CONFIRMAR_PERGUNTA,Tem certeza?,Are you sure?
+PAUSA_CONFIRMAR_NAO,Não,No
+PAUSA_CONFIRMAR_SIM,Sim,Yes
+MENU_NOVO_JOGO,NOVO JOGO,NEW GAME
+MENU_CARREGAR_JOGO,CARREGAR JOGO,LOADING GAME
+MENU_CREDITOS,CRÉDITOS,CREDITS
+MENU_SLOTS_SALVAMENTO_TITULO,SLOTS DE SALVAMENTO,SAVING SLOTS
 MENU_CREDITOS_TEXTO,"UFMT - Instituto de Computação
 Projeto Código Divertido
 
@@ -150,50 +153,88 @@ Agradecimentos Especiais
 -
 
 
-OBRIGADO POR JOGAR!",TRADUZIR
-MENU_SLOT_CARREGAR_PREFIXO,Carregar Slot ,TRADUZIR
-MENU_SLOT_VAZIO,Vazio,TRADUZIR
-MENU_SLOT_SUBSTITUIR_PREFIXO,Substituir Slot ,TRADUZIR
-MENU_SLOT_NOVOJOGO_PREFIXO,Novo Jogo ,TRADUZIR
-MENU_SLOT_RESET_CONFIRMAR_PREFIXO,Já existe um save no Slot ,TRADUZIR
+OBRIGADO POR JOGAR!","UFMT - Institute of Computing 
+Project Código Divertido
+
+
+Development
+André Arrais
+Gustavo Yoshiro
+Kauan Romanini
+Mateus Almeida
+Pedro Melchior
+Pedro Vargas
+
+
+MUSIC
+Pedro Vargas
+
+
+Playtesters
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
+Special Thanks
+-
+-
+-
+-
+-
+
+
+Thank you for playing!"
+MENU_SLOT_CARREGAR_PREFIXO,Carregar Slot ,Load slot
+MENU_SLOT_VAZIO,Vazio,Empty
+MENU_SLOT_SUBSTITUIR_PREFIXO,Substituir Slot ,Switch Slot
+MENU_SLOT_NOVOJOGO_PREFIXO,Novo Jogo ,New Game
+MENU_SLOT_RESET_CONFIRMAR_PREFIXO,Já existe um save no Slot ,There is already a save in the selected slot
 MENU_SLOT_RESET_CONFIRMAR_SUFIXO,".
-Deseja apagá-lo e começar um novo jogo do zero?",TRADUZIR
-TERMINAL_RODAR,RODAR CÓDIGO,TRADUZIR
-TERMINAL_PARAR,PARAR CÓDIGO,TRADUZIR
-TERMINAL_PARAR_E_ESCAPAR,PARAR E ESCAPAR,TRADUZIR
-TERMINAL_TEM_ERROS,Existem Erros!,TRADUZIR
-TERMINAL_ERRO_FATAL_TITULO,Erro Fatal da Engine!,TRADUZIR
-TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO,Algo inesperado quebrou a conexão:,TRADUZIR
-MENU_DEBUG_CODIGO_PRONTO,Código pronto,TRADUZIR
-MENU_DEBUG_GANHAR_RECURSOS,Ganhar recursos,TRADUZIR
-MENU_DEBUG_ATRIBUTOS_MAXIMOS,Atributos máximos,TRADUZIR
-MENU_DEBUG_DUPLICAR_AGILIDADE,Duplicar agilidade,TRADUZIR
-MENU_DEBUG_FICAR_IMORTAL,Ficar imortal,TRADUZIR
-MENU_DEBUG_GANHAR_XP,Ganhar +3xp,TRADUZIR
-MENU_DEBUG_MORRER,Morrer,TRADUZIR
-MENU_DEBUG_EXEMPLO_CUTSCENE,Exemplo de cutscene,TRADUZIR
-DIALOGO_BRUXA_MENTE_FECHADA,"Ele tem uma mente fechada, só isso.",TRADUZIR
-DIALOGO_BRUXA_OPCAO_PORQUE_MAGO_NAO_GOSTA,Porque o mago velho não gosta de você?,TRADUZIR
-DIALOGO_BRUXA_ENCONTRAR_TESOUROS,Você precisa ir para as arenas e encontrar tesouros em cada uma delas.,TRADUZIR
-DIALOGO_BRUXA_OPCAO_COMO_CONSEGUIR_RECURSOS,Como eu consigo os recursos que você precisa?,TRADUZIR
-DIALOGO_BRUXA_OPCAO_DEIXA_PRA_LA_SAIR,Deixa pra lá... [SAIR],TRADUZIR
-DIALOGO_BRUXA_SAUDACAO,Que saco! O que você quer agora?,TRADUZIR
-DIALOGO_MAGO_INTRO_CALMA,"Calma, eu sei o que você precisa fazer.",TRADUZIR
-DIALOGO_MAGO_INTRO_PASSO1_ARVORE_HABILIDADES,"Primeiro, vá na árvore de habilidades e adquira a evolução ""Início"".",TRADUZIR
-DIALOGO_MAGO_INTRO_PASSO2_ARENA,"Depois, você precisa ir para a arena derrotar monstros. ",TRADUZIR
-DIALOGO_MAGO_INTRO_OPCAO_OK,Ok!,TRADUZIR
-DIALOGO_MAGO_INTRO_PASSO3_TRAZER_RECURSOS,Traga os recursos que você conseguir de volta para cá!,TRADUZIR
-DIALOGO_MAGO_INTRO_OPCAO_ME_AJUDA,POR FAVOR ME AJUDA!!!,TRADUZIR
-DIALOGO_MAGO_INTRO_SAUDACAO,"Olá, novato!",TRADUZIR
-DIALOGO_MAGO_IR_PARA_ARENA,Você precisa ir para uma arena derrotar inimigos.,TRADUZIR
-DIALOGO_MAGO_DERROTAR_PARA_RECURSOS,Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades.,TRADUZIR
-DIALOGO_MAGO_OPCAO_OK_OBRIGADO,"Ok, obrigado!",TRADUZIR
-DIALOGO_MAGO_DUVIDA_BIBLIOTECA,"Qualquer dúvida, vá para a biblioteca.",TRADUZIR
-DIALOGO_MAGO_OPCAO_O_QUE_FAZER,O que eu tenho que fazer?,TRADUZIR
-DIALOGO_MAGO_OPCAO_NADA_NAO_SAIR,Nada não! [SAIR],TRADUZIR
-DIALOGO_MAGO_SAUDACAO,"Olá! Como posso te ajudar, novato?",TRADUZIR
-DIALOGO_TUTORIAL_BOAS_VINDAS,Boas vindas ao Grimório: O Código da Magia!,TRADUZIR
-DIALOGO_TUTORIAL_SECAO_CODIGO,"Essa é a seção de código, aqui é onde você vai escrever o código necessário para jogar o jogo. ",TRADUZIR
-DIALOGO_TUTORIAL_EXPLICACAO_SEQUENCIA,"O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!",TRADUZIR
-DIALOGO_TUTORIAL_DUVIDA_SAIR_DE_CASA,"Preciso sair de casa, vou usar minha magia de movimento. ",TRADUZIR
-DIALOGO_TUTORIAL_DUVIDA_EXPLICACAO_MOVER,"Para andar, basta eu escrever em sequência vários ""mover(Cima)"", ""mover(Baixo)"", ""mover(Direita)"" ou ""mover(Esquerda)"". Fazendo isso, eu consigo andar para Cima, Baixo, Direita ou Esquerda (respectivamente)!",TRADUZIR
+Deseja apagá-lo e começar um novo jogo do zero?",Would you like to delete it and start a new game from scratch?
+TERMINAL_RODAR,RODAR CÓDIGO,RUN CODE
+TERMINAL_PARAR,PARAR CÓDIGO,STOP CODE
+TERMINAL_PARAR_E_ESCAPAR,PARAR E ESCAPAR,RUN AND ESCAPE
+TERMINAL_TEM_ERROS,Existem Erros!,There are errors!
+TERMINAL_ERRO_FATAL_TITULO,Erro Fatal da Engine!,Fatal engine error
+TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO,Algo inesperado quebrou a conexão:,"Something unexpected happend, connection broken"
+MENU_DEBUG_CODIGO_PRONTO,Código pronto,Code ready
+MENU_DEBUG_GANHAR_RECURSOS,Ganhar recursos,Acquire resources
+MENU_DEBUG_ATRIBUTOS_MAXIMOS,Atributos máximos,Max atributes
+MENU_DEBUG_DUPLICAR_AGILIDADE,Duplicar agilidade,Duplicate Agility
+MENU_DEBUG_FICAR_IMORTAL,Ficar imortal,To become immortal
+MENU_DEBUG_GANHAR_XP,Ganhar +3xp,Earn +3 XP
+MENU_DEBUG_MORRER,Morrer,Die
+MENU_DEBUG_EXEMPLO_CUTSCENE,Exemplo de cutscene,Example of a cutscene 
+DIALOGO_BRUXA_MENTE_FECHADA,"Ele tem uma mente fechada, só isso.","He is narrow-minded, that's all."
+DIALOGO_BRUXA_OPCAO_PORQUE_MAGO_NAO_GOSTA,Porque o mago velho não gosta de você?,"Why doesn’t the old mage like you?"
+DIALOGO_BRUXA_ENCONTRAR_TESOUROS,Você precisa ir para as arenas e encontrar tesouros em cada uma delas.,You need to explore the arenas and collect the treasures in each.
+DIALOGO_BRUXA_OPCAO_COMO_CONSEGUIR_RECURSOS,Como eu consigo os recursos que você precisa?,How do I get the resources you need?
+DIALOGO_BRUXA_OPCAO_DEIXA_PRA_LA_SAIR,Deixa pra lá... [SAIR],Never mind... [EXIT]
+DIALOGO_BRUXA_SAUDACAO,Que saco! O que você quer agora?,Damn it! what do you want now?!
+DIALOGO_MAGO_INTRO_CALMA,"Calma, eu sei o que você precisa fazer.","Relax, I know what you need to do."
+DIALOGO_MAGO_INTRO_PASSO1_ARVORE_HABILIDADES,"Primeiro, vá na árvore de habilidades e adquira a evolução ""Início"".","First, go to your skill tree and acquire the 'Beginning' upgrade."
+DIALOGO_MAGO_INTRO_PASSO2_ARENA,"Depois, você precisa ir para a arena derrotar monstros. ","After, you need to head to an arena and fight enemies."
+DIALOGO_MAGO_INTRO_OPCAO_OK,Ok!,Ok!
+DIALOGO_MAGO_INTRO_PASSO3_TRAZER_RECURSOS,Traga os recursos que você conseguir de volta para cá!,Bring the resources you manage to collect back here!
+DIALOGO_MAGO_INTRO_OPCAO_ME_AJUDA,POR FAVOR ME AJUDA!!!,PLEASE HELP ME!!!
+DIALOGO_MAGO_INTRO_SAUDACAO,"Olá, novato!","Hello, Newbie!"
+DIALOGO_MAGO_IR_PARA_ARENA,Você precisa ir para uma arena derrotar inimigos.,You need to head to an arena and fight enemies.
+DIALOGO_MAGO_DERROTAR_PARA_RECURSOS,Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades.,"By defeating them, you will gather resources to upgrade your skill tree." 
+DIALOGO_MAGO_OPCAO_OK_OBRIGADO,"Ok, obrigado!","Ok, Thank you!"
+DIALOGO_MAGO_DUVIDA_BIBLIOTECA,"Qualquer dúvida, vá para a biblioteca.","If you have any questions, go to the library."
+DIALOGO_MAGO_OPCAO_O_QUE_FAZER,O que eu tenho que fazer?,What do I need to do?
+DIALOGO_MAGO_OPCAO_NADA_NAO_SAIR,Nada não! [SAIR],"It’s nothing! [EXIT]"
+DIALOGO_MAGO_SAUDACAO,"Olá! Como posso te ajudar, novato?","Hello! How can I help you, newbie?"
+DIALOGO_TUTORIAL_BOAS_VINDAS,Boas vindas ao Grimório: O Código da Magia!,Welcome to Grimoire:The Magic Code
+DIALOGO_TUTORIAL_SECAO_CODIGO,"Essa é a seção de código, aqui é onde você vai escrever o código necessário para jogar o jogo. ","This is the code area, where you’ll enter the code necessary to play the game."
+DIALOGO_TUTORIAL_EXPLICACAO_SEQUENCIA,"O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!","The book executes in sequence all the instructions written in it. When you are confident in your algorithm, run the code!"
+DIALOGO_TUTORIAL_DUVIDA_SAIR_DE_CASA,"Preciso sair de casa, vou usar minha magia de movimento. ","I need to leave the house, I will use my movement magic."
+DIALOGO_TUTORIAL_DUVIDA_EXPLICACAO_MOVER,"Para andar, basta eu escrever em sequência vários ""mover(Cima)"", ""mover(Baixo)"", ""mover(Direita)"" ou ""mover(Esquerda)"". Fazendo isso, eu consigo andar para Cima, Baixo, Direita ou Esquerda (respectivamente)!","To walk, I simply write a sequence of 'move(Up)', 'move(Down)', 'move(Right)', or 'move(Left)'. This way, I can move Up, Down, Right, or Left accordingly."
