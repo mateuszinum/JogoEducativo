@@ -6,40 +6,40 @@
 
 [sub_resource type="Resource" id="Resource_7eupd"]
 script = ExtResource("1_uihat")
-texto = "Calma, eu sei o que você precisa fazer."
+texto = "DIALOGO_MAGO_INTRO_CALMA"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_ybdra"]
 script = ExtResource("1_uihat")
-texto = "Primeiro, vá na árvore de habilidades e adquira a evolução \"Início\"."
+texto = "DIALOGO_MAGO_INTRO_PASSO1_ARVORE_HABILIDADES"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_kvys0"]
 script = ExtResource("1_uihat")
-texto = "Depois, você precisa ir para a arena derrotar monstros. "
+texto = "DIALOGO_MAGO_INTRO_PASSO2_ARENA"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_675ky"]
 script = ExtResource("2_ybdra")
-texto_opcao = "Ok!"
+texto_opcao = "DIALOGO_MAGO_INTRO_OPCAO_OK"
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_uihat"]
 script = ExtResource("1_uihat")
-texto = "Traga os recursos que você conseguir de volta para cá!"
+texto = "DIALOGO_MAGO_INTRO_PASSO3_TRAZER_RECURSOS"
 tem_opcoes = true
 opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_675ky")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_5actq"]
 script = ExtResource("2_ybdra")
-texto_opcao = "POR FAVOR ME AJUDA!!!"
+texto_opcao = "DIALOGO_MAGO_INTRO_OPCAO_ME_AJUDA"
 linhas = Array[ExtResource("1_uihat")]([SubResource("Resource_7eupd"), SubResource("Resource_ybdra"), SubResource("Resource_kvys0"), SubResource("Resource_uihat")])
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_8t35l"]
 script = ExtResource("1_uihat")
-texto = "Olá, novato!"
+texto = "DIALOGO_MAGO_INTRO_SAUDACAO"
 tem_opcoes = true
 opcoes = Array[ExtResource("2_ybdra")]([SubResource("Resource_5actq")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"

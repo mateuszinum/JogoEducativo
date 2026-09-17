@@ -130,13 +130,13 @@ func _configurar_tooltip_erro() -> void:
 func atualizar_estado_botao() -> void:
 	if modo_atual == "vilarejo" or modo_atual == "tutorial":
 		if codigo_rodando:
-			botao_executar.text = "PARAR CÓDIGO"
+			botao_executar.text = "TERMINAL_PARAR"
 			if icone_parar: botao_executar.icon = icone_parar
 		else:
-			botao_executar.text = "RODAR CÓDIGO"
+			botao_executar.text = "TERMINAL_RODAR"
 			if icone_rodar: botao_executar.icon = icone_rodar
 	elif modo_atual == "arena":
-		botao_executar.text = "PARAR E ESCAPAR"
+		botao_executar.text = "TERMINAL_PARAR_E_ESCAPAR"
 		if icone_escapar: botao_executar.icon = icone_escapar
 
 func iniciar_cooldown_seguranca():
@@ -300,7 +300,7 @@ func mostrar_erros_de_sintaxe(lista_erros: Array):
 	code_edit.editable = true
 	atualizar_travas_da_interface()
 	if modo_atual == "vilarejo":
-		botao_executar.text = "Existem Erros!"
+		botao_executar.text = "TERMINAL_TEM_ERROS"
 	iniciar_cooldown_seguranca()
 
 func limpar_erros_de_sintaxe():
@@ -319,8 +319,8 @@ func mostrar_erro_runtime(mensagem: String):
 	iniciar_cooldown_seguranca()
 	
 	var dialog = AcceptDialog.new()
-	dialog.title = "Erro Fatal da Engine!"
-	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
+	dialog.title = "TERMINAL_ERRO_FATAL_TITULO"
+	dialog.dialog_text = tr("TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO") + "\n\n" + mensagem
 	add_child(dialog)
 	dialog.popup_centered()
 

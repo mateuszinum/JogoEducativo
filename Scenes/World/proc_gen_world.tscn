@@ -174,7 +174,7 @@ offset_right = 231.0
 offset_bottom = 1.6400146
 grow_horizontal = 2
 grow_vertical = 2
-text = "DERROTA"
+text = "MORTE_TITULO"
 label_settings = SubResource("LabelSettings_5vcap")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -192,12 +192,7 @@ offset_right = 107.0
 offset_bottom = 126.815
 grow_horizontal = 2
 grow_vertical = 2
-text = "Os recursos adquiridos nesta
-partida foram perdidos!
-
-Para escapar com vida,
-pare a execução do código
-antes de morrer."
+text = "MORTE_MENSAGEM"
 label_settings = SubResource("LabelSettings_7fyq5")
 horizontal_alignment = 1
 vertical_alignment = 1

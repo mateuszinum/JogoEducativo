@@ -391,7 +391,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "NOVO JOGO"
+text = "MENU_NOVO_JOGO"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -415,7 +415,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "CARREGAR JOGO"
+text = "MENU_CARREGAR_JOGO"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -438,7 +438,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "CONFIGURAÇÕES"
+text = "CONFIG_TITULO"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -461,7 +461,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "CRÉDITOS"
+text = "MENU_CREDITOS"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -484,7 +484,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o14dv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_u7lva")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4pqbp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o14dv")
-text = "testemensagem"
+text = "sair"
 script = ExtResource("4_mrfpk")
 som_hover = ExtResource("11_ypsd1")
 volume_hover_db = -10.0
@@ -543,7 +543,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ConteudoMenuPrincipal/TelaSlots/PainelSlots/VBoxContainer" unique_id=1827324404]
 layout_mode = 2
-text = "SLOTS DE SALVAMENTO"
+text = "MENU_SLOTS_SALVAMENTO_TITULO"
 label_settings = SubResource("LabelSettings_hbsmt")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -729,45 +729,7 @@ layout_mode = 2
 
 [node name="TextoCréditos" type="Label" parent="TelaCreditos/ScrollCreditos/VBoxContainer" unique_id=1996241724]
 layout_mode = 2
-text = "UFMT - Instituto de Computação
-Projeto Código Divertido
-
-
-DESENVOLVIMENTO
-André Arrais
-Gustavo Yoshiro
-Kauan Romanini
-Mateus Almeida
-Pedro Melchior
-Pedro Vargas
-
-
-MÚSICA
-Pedro Vargas
-
-
-Playtesters
--
--
--
--
--
--
--
--
--
--
-
-
-Agradecimentos Especiais
--
--
--
--
--
-
-
-OBRIGADO POR JOGAR!"
+text = "MENU_CREDITOS_TEXTO"
 label_settings = SubResource("LabelSettings_3h8o7")
 horizontal_alignment = 1
 

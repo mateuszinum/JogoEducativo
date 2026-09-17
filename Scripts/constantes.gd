@@ -7,13 +7,13 @@ var TOTAL_ITENS_SKILL_TREE : int = 27
 # VARIÁVEIS DE DESENVOLVEDOR
 
 # Mude para false no build final
-var MODO_DEV : bool = false
+var MODO_DEV : bool = true
 var MOVIMENTO_WASD : bool = false 
-var TUDO_DESBLOQUEADO : bool = false 
-var REQUISITOS_DESATIVADOS : bool = false 
-var TUDO_GRATIS : bool = false
+var TUDO_DESBLOQUEADO : bool = true 
+var REQUISITOS_DESATIVADOS : bool = true 
+var TUDO_GRATIS : bool = true
 var JOGADOR_IMORTAL : bool = false 
-var PULAR_TUTORIAL : bool = false
+var PULAR_TUTORIAL : bool = true
 var DEBUG : bool = true 
 
 # Mude para true no build final
@@ -42,7 +42,7 @@ var USAR_SHAKE : bool = true
 var GRÁFICO_HIGH : bool = true
 
 # Define o idioma. (pt_br = 0, en = 1)
-var JOGO_EN : int = 1
+var JOGO_EN : int = 0
 
 var VOLUME_MASTER : float = 0.5:
 	set(value):

@@ -161,7 +161,7 @@ layout_mode = 2
 [node name="Titulo" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=318706137]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "CONFIGURAÇÕES"
+text = "CONFIG_TITULO"
 label_settings = SubResource("LabelSettings_p80rm")
 horizontal_alignment = 1
 
@@ -172,7 +172,7 @@ layout_mode = 2
 [node name="VOLUME" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=814341300]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "VOLUME"
+text = "CONFIG_VOLUME_TITULO"
 label_settings = SubResource("LabelSettings_2imtq")
 horizontal_alignment = 1
 
@@ -182,7 +182,7 @@ layout_mode = 2
 [node name="TituloMaster" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeMaster" unique_id=1893200751]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Tudo"
+text = "CONFIG_VOLUME_GERAL"
 
 [node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeMaster" unique_id=1199643363]
 custom_minimum_size = Vector2(15, 0)
@@ -207,7 +207,7 @@ layout_mode = 2
 [node name="TituloMusica" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeMusica" unique_id=1721290087]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Música"
+text = "CONFIG_VOLUME_MUSICA"
 
 [node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeMusica" unique_id=2079861309]
 custom_minimum_size = Vector2(2, 0)
@@ -232,7 +232,7 @@ layout_mode = 2
 [node name="TituloSFX" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeSFX" unique_id=858323326]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "SFX"
+text = "CONFIG_VOLUME_SFX"
 
 [node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeSFX" unique_id=1987373143]
 custom_minimum_size = Vector2(23, 0)
@@ -257,7 +257,7 @@ layout_mode = 2
 [node name="TituloUI" type="Label" parent="Control/Conteúdo/VBoxPrincipal/VolumeUI" unique_id=977458564]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "UI"
+text = "CONFIG_VOLUME_UI"
 
 [node name="Control" type="Control" parent="Control/Conteúdo/VBoxPrincipal/VolumeUI" unique_id=2059294021]
 custom_minimum_size = Vector2(32, 0)
@@ -283,7 +283,7 @@ layout_mode = 2
 [node name="VÍDEO" type="Label" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1853827223]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "VÍDEO"
+text = "CONFIG_VIDEO_TITULO"
 label_settings = SubResource("LabelSettings_3h55h")
 horizontal_alignment = 1
 
@@ -291,20 +291,20 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Tela cheia"
+text = "CONFIG_TELA_CHEIA"
 
 [node name="CheckShake" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=212332961]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Shake na tela"
+text = "CONFIG_TREMOR_TELA"
 
 [node name="CheckGrafico" type="CheckBox" parent="Control/Conteúdo/VBoxPrincipal" unique_id=1328266874]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_p80rm")
-text = "Gráficos Bonitos"
+text = "CONFIG_GRAFICOS_BONITOS"
 
 [node name="Separador3" type="Control" parent="Control/Conteúdo/VBoxPrincipal" unique_id=964770607]
 custom_minimum_size = Vector2(0, 10)
@@ -331,7 +331,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_12e1y")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_frmwe")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fwdbk")
-text = "Cancelar"
+text = "CONFIG_CANCELAR"
 script = ExtResource("3_arg5j")
 som_hover = ExtResource("4_3w3yx")
 volume_hover_db = -10.0
@@ -354,7 +354,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_12e1y")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_frmwe")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fwdbk")
-text = "Aplicar"
+text = "CONFIG_APLICAR"
 script = ExtResource("3_arg5j")
 som_hover = ExtResource("4_3w3yx")
 volume_hover_db = -10.0

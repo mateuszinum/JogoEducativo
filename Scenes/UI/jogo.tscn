@@ -370,7 +370,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kjdr6")
-text = "RODAR CÓDIGO"
+text = "TERMINAL_RODAR"
 icon = ExtResource("6_inkna")
 icon_alignment = 2
 script = ExtResource("5_kjdr6")
@@ -496,7 +496,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Código pronto"
+text = "MENU_DEBUG_CODIGO_PRONTO"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoRecurso" type="Button" parent="BotoesDebug" unique_id=1189409194]
@@ -509,7 +509,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Ganhar recursos"
+text = "MENU_DEBUG_GANHAR_RECURSOS"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoAtributos" type="Button" parent="BotoesDebug" unique_id=458657408]
@@ -522,7 +522,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Atributos máximos"
+text = "MENU_DEBUG_ATRIBUTOS_MAXIMOS"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoDupAgilidade" type="Button" parent="BotoesDebug" unique_id=235107269]
@@ -535,7 +535,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Duplicar agilidade"
+text = "MENU_DEBUG_DUPLICAR_AGILIDADE"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoImortalidade" type="Button" parent="BotoesDebug" unique_id=5493249]
@@ -548,7 +548,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Ficar imortal"
+text = "MENU_DEBUG_FICAR_IMORTAL"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoGanharXP" type="Button" parent="BotoesDebug" unique_id=1706339532]
@@ -561,7 +561,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Ganhar +3xp"
+text = "MENU_DEBUG_GANHAR_XP"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoMorrer" type="Button" parent="BotoesDebug" unique_id=1766665747]
@@ -574,7 +574,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Morrer"
+text = "MENU_DEBUG_MORRER"
 script = ExtResource("5_kjdr6")
 
 [node name="BotaoCutscene" type="Button" parent="BotoesDebug" unique_id=562690665]
@@ -587,7 +587,7 @@ theme_override_fonts/font = ExtResource("3_n1i2u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kjdr6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_inkna")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5rjbm")
-text = "Exemplo de cutscene"
+text = "MENU_DEBUG_EXEMPLO_CUTSCENE"
 script = ExtResource("5_kjdr6")
 
 [node name="DebugChat" type="TextureRect" parent="." unique_id=1766562716]

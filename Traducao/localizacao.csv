@@ -1,14 +1,11 @@
 keys,pt_br,en
-entrar,entrar,enter
-bom,bom,good
-inimigo,inimigo,enemy
 Campos,Campos,Fields
 Floresta,Floresta,Forest
 Labirinto,Labirinto,Labyrinth
 Alho,Alho,Garlic
 EsferaAzul,EsferaAzul,BlueOrb
 EsferaVermelha,EsferaVermelha,RedOrb
-testemensagem,sbfasuoPORTUGUESasidhasidnaida,aindaindaidnasENGLISHiasndiana
+sair,SAIR,EXIT
 ExplosaoFogo,ExplosaoFogo,FireExplosion
 ExplosaoGelo,ExplosaoGelo,IceExplosion
 Fogo,Fogo,Fire
@@ -29,35 +26,35 @@ Utilidades,Utilidades,Utilities
 Variáveis,Variáveis,Variables
 enquanto,enquanto,while
 se,se,if
-aleatorio,aleatorio,aleatorio
+aleatorio,aleatorio,random
 arena,arena,arena
-atacar,atacar,atacar
+atacar,atacar,attack
 cinto.usarItem,cinto.usarItem,cinto.usarItem
-comprar,comprar,comprar
-escanearArea,escanearArea,escanearArea
-escapar,escapar,escapar
-escreva,escreva,escreva
+comprar,comprar,purchase
+escanearArea,escanearArea,scanArea
+escapar,escapar,escape
+escreva,escreva,write
 inimigoMaisProximo,inimigoMaisProximo,inimigoMaisProximo
 max,max,max
 min,min,min
 mochila.usarItem,mochila.usarItem,mochila.usarItem
-mover,mover,mover
-podeMover,podeMover,podeMover
-posicaoX,posicaoX,posicaoX
-posicaoY,posicaoY,posicaoY
-tamanho,tamanho,tamanho
-tempo,tempo,tempo
+mover,mover,move
+podeMover,podeMover,canMove
+posicaoX,posicaoX,positionX
+posicaoY,posicaoY,positionY
+tamanho,tamanho,size
+tempo,tempo,time
 tesouroX,tesouroX,tesouroX
 tesouroY,tesouroY,tesouroY
-trunca,trunca,trunca
-venderTudo,venderTudo,venderTudo
-vidaAtual,vidaAtual,vidaAtual
-Créditos,Créditos,Créditos
-Início,Início,Início
-Itens,Itens,Itens
-Partidas,Partidas,Partidas
-Sensores,Sensores,Sensores
-Tesouros,Tesouros,Tesouros
+trunca,trunca,truncates
+venderTudo,venderTudo,sellAll
+vidaAtual,vidaAtual,currentHP
+Créditos,Créditos,Credits
+Início,Início,Beginning
+Itens,Itens,Items
+Partidas,Partidas,Runs
+Sensores,Sensores,Sensors
+Tesouros,Tesouros,Treasures
 Esqueleto,Esqueleto,Skeleton
 Fantasma,Fantasma,Ghost
 Goblin,Goblin,Goblin
@@ -66,13 +63,137 @@ Orc,Orc,Orc
 SlimeDeFogo,SlimeDeFogo,FireSlime
 SlimeDeGelo,SlimeDeGelo,IceSlime
 Vampiro,Vampiro,Vampire
-Couro,Couro,Couro
+Couro,Couro,Leather
 Cristal,Cristal,Cristal
-Diamante,Diamante,Diamante
-Esmeralda,Esmeralda,Esmeralda
+Diamante,Diamante,Diamond
+Esmeralda,Esmeralda,Emerald
 Magma,Magma,Magma
-Moeda,Moeda,Moeda
-Osso,Osso,Osso
+Moeda,Moeda,Coin
+Osso,Osso,Bone
 Plasma,Plasma,Plasma
-Safira,Safira,Safira
-Sangue,Sangue,Sangue
+Safira,Safira,Sapphire
+Sangue,Sangue,Blood
+MORTE_TITULO,DERROTA,TRADUZIR
+MORTE_MENSAGEM,"Os recursos adquiridos nesta
+partida foram perdidos!
+
+Para escapar com vida,
+pare a execução do código
+antes de morrer.",TRADUZIR
+LOJA_VOLTAR,VOLTAR,TRADUZIR
+LOJA_BRUXA_NOME,BRUXA,TRADUZIR
+LOJA_COMERCIANTE_NOME,COMERCIANTE,TRADUZIR
+LOJA_BIBLIOTECA_NOME,BIBLIOTECA,TRADUZIR
+LOJA_MAGO_VELHO_NOME,MAGO VELHO,TRADUZIR
+VILAREJO_BOAS_VINDAS,Bem-Vindo ao Vilarejo!,TRADUZIR
+CONFIG_TITULO,CONFIGURAÇÕES,TRADUZIR
+CONFIG_VOLUME_TITULO,VOLUME,TRADUZIR
+CONFIG_VOLUME_GERAL,Tudo,TRADUZIR
+CONFIG_VOLUME_MUSICA,Música,TRADUZIR
+CONFIG_VOLUME_SFX,SFX,TRADUZIR
+CONFIG_VOLUME_UI,UI,TRADUZIR
+CONFIG_VIDEO_TITULO,VÍDEO,TRADUZIR
+CONFIG_TELA_CHEIA,Tela cheia,TRADUZIR
+CONFIG_TREMOR_TELA,Shake na tela,TRADUZIR
+CONFIG_GRAFICOS_BONITOS,Gráficos Bonitos,TRADUZIR
+CONFIG_CANCELAR,Cancelar,TRADUZIR
+CONFIG_APLICAR,Aplicar,TRADUZIR
+HUD_MOCHILA_TITULO,MOCHILA,TRADUZIR
+HUD_BOTAO_TROCAR,TROCAR,TRADUZIR
+HUD_CINTO_TITULO,CINTO,TRADUZIR
+HUD_NIVEL_PREFIXO,NÍVEL ,TRADUZIR
+HUD_NIVEL_MAXIMO,MÁXIMO,TRADUZIR
+PAUSA_CONTINUAR,CONTINUAR,TRADUZIR
+PAUSA_MENU_PRINCIPAL,MENU PRINCIPAL,TRADUZIR
+PAUSA_CONFIRMAR_PERGUNTA,Tem certeza?,TRADUZIR
+PAUSA_CONFIRMAR_NAO,Não,TRADUZIR
+PAUSA_CONFIRMAR_SIM,Sim,TRADUZIR
+MENU_NOVO_JOGO,NOVO JOGO,TRADUZIR
+MENU_CARREGAR_JOGO,CARREGAR JOGO,TRADUZIR
+MENU_CREDITOS,CRÉDITOS,TRADUZIR
+MENU_SLOTS_SALVAMENTO_TITULO,SLOTS DE SALVAMENTO,TRADUZIR
+MENU_CREDITOS_TEXTO,"UFMT - Instituto de Computação
+Projeto Código Divertido
+
+
+DESENVOLVIMENTO
+André Arrais
+Gustavo Yoshiro
+Kauan Romanini
+Mateus Almeida
+Pedro Melchior
+Pedro Vargas
+
+
+MÚSICA
+Pedro Vargas
+
+
+Playtesters
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
+Agradecimentos Especiais
+-
+-
+-
+-
+-
+
+
+OBRIGADO POR JOGAR!",TRADUZIR
+MENU_SLOT_CARREGAR_PREFIXO,Carregar Slot ,TRADUZIR
+MENU_SLOT_VAZIO,Vazio,TRADUZIR
+MENU_SLOT_SUBSTITUIR_PREFIXO,Substituir Slot ,TRADUZIR
+MENU_SLOT_NOVOJOGO_PREFIXO,Novo Jogo ,TRADUZIR
+MENU_SLOT_RESET_CONFIRMAR_PREFIXO,Já existe um save no Slot ,TRADUZIR
+MENU_SLOT_RESET_CONFIRMAR_SUFIXO,".
+Deseja apagá-lo e começar um novo jogo do zero?",TRADUZIR
+TERMINAL_RODAR,RODAR CÓDIGO,TRADUZIR
+TERMINAL_PARAR,PARAR CÓDIGO,TRADUZIR
+TERMINAL_PARAR_E_ESCAPAR,PARAR E ESCAPAR,TRADUZIR
+TERMINAL_TEM_ERROS,Existem Erros!,TRADUZIR
+TERMINAL_ERRO_FATAL_TITULO,Erro Fatal da Engine!,TRADUZIR
+TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO,Algo inesperado quebrou a conexão:,TRADUZIR
+MENU_DEBUG_CODIGO_PRONTO,Código pronto,TRADUZIR
+MENU_DEBUG_GANHAR_RECURSOS,Ganhar recursos,TRADUZIR
+MENU_DEBUG_ATRIBUTOS_MAXIMOS,Atributos máximos,TRADUZIR
+MENU_DEBUG_DUPLICAR_AGILIDADE,Duplicar agilidade,TRADUZIR
+MENU_DEBUG_FICAR_IMORTAL,Ficar imortal,TRADUZIR
+MENU_DEBUG_GANHAR_XP,Ganhar +3xp,TRADUZIR
+MENU_DEBUG_MORRER,Morrer,TRADUZIR
+MENU_DEBUG_EXEMPLO_CUTSCENE,Exemplo de cutscene,TRADUZIR
+DIALOGO_BRUXA_MENTE_FECHADA,"Ele tem uma mente fechada, só isso.",TRADUZIR
+DIALOGO_BRUXA_OPCAO_PORQUE_MAGO_NAO_GOSTA,Porque o mago velho não gosta de você?,TRADUZIR
+DIALOGO_BRUXA_ENCONTRAR_TESOUROS,Você precisa ir para as arenas e encontrar tesouros em cada uma delas.,TRADUZIR
+DIALOGO_BRUXA_OPCAO_COMO_CONSEGUIR_RECURSOS,Como eu consigo os recursos que você precisa?,TRADUZIR
+DIALOGO_BRUXA_OPCAO_DEIXA_PRA_LA_SAIR,Deixa pra lá... [SAIR],TRADUZIR
+DIALOGO_BRUXA_SAUDACAO,Que saco! O que você quer agora?,TRADUZIR
+DIALOGO_MAGO_INTRO_CALMA,"Calma, eu sei o que você precisa fazer.",TRADUZIR
+DIALOGO_MAGO_INTRO_PASSO1_ARVORE_HABILIDADES,"Primeiro, vá na árvore de habilidades e adquira a evolução ""Início"".",TRADUZIR
+DIALOGO_MAGO_INTRO_PASSO2_ARENA,"Depois, você precisa ir para a arena derrotar monstros. ",TRADUZIR
+DIALOGO_MAGO_INTRO_OPCAO_OK,Ok!,TRADUZIR
+DIALOGO_MAGO_INTRO_PASSO3_TRAZER_RECURSOS,Traga os recursos que você conseguir de volta para cá!,TRADUZIR
+DIALOGO_MAGO_INTRO_OPCAO_ME_AJUDA,POR FAVOR ME AJUDA!!!,TRADUZIR
+DIALOGO_MAGO_INTRO_SAUDACAO,"Olá, novato!",TRADUZIR
+DIALOGO_MAGO_IR_PARA_ARENA,Você precisa ir para uma arena derrotar inimigos.,TRADUZIR
+DIALOGO_MAGO_DERROTAR_PARA_RECURSOS,Derrotando eles você conseguirá recursos para evoluir sua árvore de habilidades.,TRADUZIR
+DIALOGO_MAGO_OPCAO_OK_OBRIGADO,"Ok, obrigado!",TRADUZIR
+DIALOGO_MAGO_DUVIDA_BIBLIOTECA,"Qualquer dúvida, vá para a biblioteca.",TRADUZIR
+DIALOGO_MAGO_OPCAO_O_QUE_FAZER,O que eu tenho que fazer?,TRADUZIR
+DIALOGO_MAGO_OPCAO_NADA_NAO_SAIR,Nada não! [SAIR],TRADUZIR
+DIALOGO_MAGO_SAUDACAO,"Olá! Como posso te ajudar, novato?",TRADUZIR
+DIALOGO_TUTORIAL_BOAS_VINDAS,Boas vindas ao Grimório: O Código da Magia!,TRADUZIR
+DIALOGO_TUTORIAL_SECAO_CODIGO,"Essa é a seção de código, aqui é onde você vai escrever o código necessário para jogar o jogo. ",TRADUZIR
+DIALOGO_TUTORIAL_EXPLICACAO_SEQUENCIA,"O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!",TRADUZIR
+DIALOGO_TUTORIAL_DUVIDA_SAIR_DE_CASA,"Preciso sair de casa, vou usar minha magia de movimento. ",TRADUZIR
+DIALOGO_TUTORIAL_DUVIDA_EXPLICACAO_MOVER,"Para andar, basta eu escrever em sequência vários ""mover(Cima)"", ""mover(Baixo)"", ""mover(Direita)"" ou ""mover(Esquerda)"". Fazendo isso, eu consigo andar para Cima, Baixo, Direita ou Esquerda (respectivamente)!",TRADUZIR

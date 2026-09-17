@@ -6,34 +6,34 @@
 
 [sub_resource type="Resource" id="Resource_7eupd"]
 script = ExtResource("1_gbtfw")
-texto = "Ele tem uma mente fechada, só isso."
+texto = "DIALOGO_BRUXA_MENTE_FECHADA"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_5actq"]
 script = ExtResource("2_hr1r0")
-texto_opcao = "Porque o mago velho não gosta de você?"
+texto_opcao = "DIALOGO_BRUXA_OPCAO_PORQUE_MAGO_NAO_GOSTA"
 linhas = Array[ExtResource("1_gbtfw")]([SubResource("Resource_7eupd")])
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_gbtfw"]
 script = ExtResource("1_gbtfw")
-texto = "Você precisa ir para as arenas e encontrar tesouros em cada uma delas."
+texto = "DIALOGO_BRUXA_ENCONTRAR_TESOUROS"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_hr1r0"]
 script = ExtResource("2_hr1r0")
-texto_opcao = "Como eu consigo os recursos que você precisa?"
+texto_opcao = "DIALOGO_BRUXA_OPCAO_COMO_CONSEGUIR_RECURSOS"
 linhas = Array[ExtResource("1_gbtfw")]([SubResource("Resource_gbtfw")])
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_0ej5d"]
 script = ExtResource("2_hr1r0")
-texto_opcao = "Deixa pra lá... [SAIR]"
+texto_opcao = "DIALOGO_BRUXA_OPCAO_DEIXA_PRA_LA_SAIR"
 metadata/_custom_type_script = "uid://c18eulvmcbep4"
 
 [sub_resource type="Resource" id="Resource_8t35l"]
 script = ExtResource("1_gbtfw")
-texto = "Que saco! O que você quer agora?"
+texto = "DIALOGO_BRUXA_SAUDACAO"
 tem_opcoes = true
 opcoes = Array[ExtResource("2_hr1r0")]([SubResource("Resource_5actq"), SubResource("Resource_hr1r0"), SubResource("Resource_0ej5d")])
 metadata/_custom_type_script = "uid://btolrf4p1yhho"

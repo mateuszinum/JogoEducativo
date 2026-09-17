@@ -6,17 +6,17 @@
 
 [sub_resource type="Resource" id="Resource_l6p75"]
 script = ExtResource("1_l6p75")
-texto = "Boas vindas ao Grimório: O Código da Magia!"
+texto = "DIALOGO_TUTORIAL_BOAS_VINDAS"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_vvlgo"]
 script = ExtResource("1_l6p75")
-texto = "Essa é a seção de código, aqui é onde você vai escrever o código necessário para jogar o jogo. "
+texto = "DIALOGO_TUTORIAL_SECAO_CODIGO"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [sub_resource type="Resource" id="Resource_65pwf"]
 script = ExtResource("1_l6p75")
-texto = "O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!"
+texto = "DIALOGO_TUTORIAL_EXPLICACAO_SEQUENCIA"
 metadata/_custom_type_script = "uid://btolrf4p1yhho"
 
 [resource]

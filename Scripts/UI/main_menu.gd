@@ -237,17 +237,17 @@ func configurar_painel_slots() -> void:
 			botoes[i].disabled = not tem_save 
 			
 			if tem_save:
-				botoes[i].text = "Carregar Slot " + str(slot_id)
+				botoes[i].text = tr("MENU_SLOT_CARREGAR_PREFIXO") + str(slot_id)
 			else:
-				botoes[i].text = "Vazio"
+				botoes[i].text = "MENU_SLOT_VAZIO"
 				
 		elif modo_slot == "novo":
 			botoes[i].disabled = false
 			
 			if tem_save:
-				botoes[i].text = "Substituir Slot " + str(slot_id)
+				botoes[i].text = tr("MENU_SLOT_SUBSTITUIR_PREFIXO") + str(slot_id)
 			else:
-				botoes[i].text = "Novo Jogo " + str(slot_id)
+				botoes[i].text = tr("MENU_SLOT_NOVOJOGO_PREFIXO") + str(slot_id)
 
 func carregar_jogo() -> void:
 	painel_slots.show()
@@ -278,7 +278,7 @@ func _on_slot_clicado(slot_id: int) -> void:
 		entrar_novo_jogo()
 
 func confirmacao_reset() -> void:
-	confirmacao_reset_btn.dialog_text = "Já existe um save no Slot " + str(SaveManager.slot_save_atual) + ".\nDeseja apagá-lo e começar um novo jogo do zero?"
+	confirmacao_reset_btn.dialog_text = tr("MENU_SLOT_RESET_CONFIRMAR_PREFIXO") + str(SaveManager.slot_save_atual) + tr("MENU_SLOT_RESET_CONFIRMAR_SUFIXO")
 	confirmacao_reset_btn.popup_centered()
 
 func _on_reset_confirmado() -> void:
