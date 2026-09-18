@@ -25,16 +25,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_xxrc8")
 nome = "Início"
+nome_display = "PRODUTO_ARVORE_INICIO_NOME"
 pagina_biblioteca = "Início"
 icone = ExtResource("2_mxbgm")
 tipo = 1
-descricao_simples = "Coisas essenciais para as primeiras partidas!
-
-Desbloqueia:
-- arena()
-- atacar()
-- inimigoMaisProximo()
-- Campos
-- EsferaAzul"
+descricao_simples = "PRODUTO_ARVORE_INICIO_DESC"
 niveis = Array[ExtResource("3_o2rix")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

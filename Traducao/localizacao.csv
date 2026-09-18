@@ -238,3 +238,166 @@ DIALOGO_TUTORIAL_SECAO_CODIGO,"Essa é a seção de código, aqui é onde você 
 DIALOGO_TUTORIAL_EXPLICACAO_SEQUENCIA,"O livro realiza em sequência todas instruções escritas nele. Quando você estiver certo do seu algoritmo, rode o código!","The book executes in sequence all the instructions written in it. When you are confident in your algorithm, run the code!"
 DIALOGO_TUTORIAL_DUVIDA_SAIR_DE_CASA,"Preciso sair de casa, vou usar minha magia de movimento. ","I need to leave the house, I will use my movement magic."
 DIALOGO_TUTORIAL_DUVIDA_EXPLICACAO_MOVER,"Para andar, basta eu escrever em sequência vários ""mover(Cima)"", ""mover(Baixo)"", ""mover(Direita)"" ou ""mover(Esquerda)"". Fazendo isso, eu consigo andar para Cima, Baixo, Direita ou Esquerda (respectivamente)!","To walk, I simply write a sequence of 'move(Up)', 'move(Down)', 'move(Right)', or 'move(Left)'. This way, I can move Up, Down, Right, or Left accordingly."
+PRODUTO_COMERCIANTE_CURA_NOME,PocaoDeCura,TRADUZIR
+PRODUTO_COMERCIANTE_CURA_DESC,Uma poção da boa,TRADUZIR
+PRODUTO_COMERCIANTE_DANO_NOME,PocaoDeDano,TRADUZIR
+PRODUTO_COMERCIANTE_DANO_DESC,"Uma poção da boa, aumenta seu dano (só provando para saber quanto aumenta ;) )",TRADUZIR
+PRODUTO_COMERCIANTE_FURIA_NOME,PocaoDeFuria,TRADUZIR
+PRODUTO_COMERCIANTE_FURIA_DESC,Fique extremamente zangado (dano e velocidade aumentam!!!!),TRADUZIR
+PRODUTO_COMERCIANTE_VELOCIDADE_NOME,PocaoDeVelocidade,TRADUZIR
+PRODUTO_COMERCIANTE_VELOCIDADE_DESC,Dá le pau nesse carrinho marcos!!!! (aumenta sua velocidade de movimento e tiro no geral),TRADUZIR
+PRODUTO_COMERCIANTE_FORTALECIMENTO_NOME,PocaoDeFortalecimento,TRADUZIR
+PRODUTO_COMERCIANTE_FORTALECIMENTO_DESC,"Uma poção da boa, vai te deixar cheio( aumento temporario da vida) ",TRADUZIR
+PRODUTO_ARVORE_AUTOMACAO1_NOME,Automação 1,TRADUZIR
+PRODUTO_ARVORE_AUTOMACAO1_DESC,"Escape da arena através do código!
+
+Desbloqueia:
+- escapar()",TRADUZIR
+PRODUTO_ARVORE_AUTOMACAO2_NOME,Automação 2,TRADUZIR
+PRODUTO_ARVORE_AUTOMACAO2_DESC,"Compre produtos e venda itens através do código!
+
+Desbloqueia:
+- comprar()
+- venderTudo()",TRADUZIR
+PRODUTO_ARVORE_DEBUG_NOME,Debug,TRADUZIR
+PRODUTO_ARVORE_DEBUG_DESC,"Facilita diagnóstico de bugs.
+
+Desbloqueia:
+- escreva()",TRADUZIR
+PRODUTO_ARVORE_FUNCOES_NOME,Funções,TRADUZIR
+PRODUTO_ARVORE_FUNCOES_DESC,Declare suas próprias funções no código.,TRADUZIR
+PRODUTO_ARVORE_INICIO_NOME,Início,TRADUZIR
+PRODUTO_ARVORE_INICIO_DESC,"Coisas essenciais para as primeiras partidas!
+
+Desbloqueia:
+- arena()
+- atacar()
+- inimigoMaisProximo()
+- Campos
+- EsferaAzul",TRADUZIR
+PRODUTO_ARVORE_ITENS_NOME,Itens,TRADUZIR
+PRODUTO_ARVORE_ITENS_DESC,"Libera acesso ao Comerciante e desbloqueia o uso de itens.
+
+Desbloqueia:
+- cinto.usarItem()
+- mochila.usarItem()",TRADUZIR
+PRODUTO_ARVORE_LISTAS_NOME,Listas,TRADUZIR
+PRODUTO_ARVORE_LISTAS_DESC,Desbloqueia Listas / Vetores no código.,TRADUZIR
+PRODUTO_ARVORE_LOCALIZACAO_NOME,Localização,TRADUZIR
+PRODUTO_ARVORE_LOCALIZACAO_DESC,"Liberar acesso à Bruxa e desbloqueia funções que localizam tesouros nas arenas.
+
+Desbloqueia:
+- posicaoX()
+- posicaoY()
+- tesouroX()
+- tesouroY()",TRADUZIR
+PRODUTO_ARVORE_LOOPS_CONDICIONAL_NOME,Loop e Condicional,TRADUZIR
+PRODUTO_ARVORE_LOOPS_CONDICIONAL_DESC,"Desbloqueia loop ""enquanto"" e a condicional ""se"".",TRADUZIR
+PRODUTO_ARVORE_OPERADORES_NOME,Operadores,TRADUZIR
+PRODUTO_ARVORE_OPERADORES_DESC,Libera operadores matemáticos e lógicos.,TRADUZIR
+PRODUTO_ARVORE_SENSORES1_NOME,Sensores 1,TRADUZIR
+PRODUTO_ARVORE_SENSORES1_DESC,"Libera acesso ao nome de inimigos.
+
+Desbloqueia:
+- inimigo.nome",TRADUZIR
+PRODUTO_ARVORE_SENSORES2_NOME,Sensores 2,TRADUZIR
+PRODUTO_ARVORE_SENSORES2_DESC,"Libera acesso a informações úteis.
+
+Desbloqueia:
+- podeMover()
+- vidaAtual()
+- tempo()
+- inimigo.vida",TRADUZIR
+PRODUTO_ARVORE_SENSORES3_NOME,Sensores 3,TRADUZIR
+PRODUTO_ARVORE_SENSORES3_DESC,"Libera acesso a mais informações úteis.
+
+Desbloqueia:
+- escanearArea()
+- inimigo.posicaoX
+- inimigo.posicaoY",TRADUZIR
+PRODUTO_ARVORE_UTILIDADES_NOME,Utilidades,TRADUZIR
+PRODUTO_ARVORE_UTILIDADES_DESC,"Um kit de funções úteis!
+
+Desbloqueia:
+- aleatorio()
+- min()
+- max()
+- tamanho()
+- trunca()",TRADUZIR
+PRODUTO_ARVORE_VARIAVEIS_NOME,Variáveis,TRADUZIR
+PRODUTO_ARVORE_VARIAVEIS_DESC,Declare variáveis no código!,TRADUZIR
+PRODUTO_ARVORE_ALHO_NOME,Alho,TRADUZIR
+PRODUTO_ARVORE_ALHO_DESC,"Novo ataque! O dano é fraco, mas é o único jeito de derrotar Vampiros...",TRADUZIR
+PRODUTO_ARVORE_ESFERA_VERMELHA_NOME,Esfera Vermelha,TRADUZIR
+PRODUTO_ARVORE_ESFERA_VERMELHA_DESC,Novo ataque! Mais forte do que a Esfera Azul.,TRADUZIR
+PRODUTO_ARVORE_EXPLOSAO_FOGO_NOME,Explosão de Fogo,TRADUZIR
+PRODUTO_ARVORE_EXPLOSAO_FOGO_DESC,Novo ataque! Causa dano em área.,TRADUZIR
+PRODUTO_ARVORE_EXPLOSAO_GELO_NOME,Explosão de Gelo,TRADUZIR
+PRODUTO_ARVORE_EXPLOSAO_GELO_DESC,Novo ataque! Causa dano em área e congela inimigos.,TRADUZIR
+PRODUTO_ARVORE_FLORESTA_NOME,Floresta,TRADUZIR
+PRODUTO_ARVORE_FLORESTA_DESC,"Arena nova!
++1 espaço de código!",TRADUZIR
+PRODUTO_ARVORE_FOGO_NOME,Fogo,TRADUZIR
+PRODUTO_ARVORE_FOGO_DESC,Novo ataque! Útil para derrotar inimigos de gelo...,TRADUZIR
+PRODUTO_ARVORE_GELO_NOME,Gelo,TRADUZIR
+PRODUTO_ARVORE_GELO_DESC,Novo ataque! Útil para derrotar inimigos de fogo...,TRADUZIR
+PRODUTO_ARVORE_LABIRINTO_NOME,Labirinto,TRADUZIR
+PRODUTO_ARVORE_LABIRINTO_DESC,"Arena nova!
++1 espaço de código!",TRADUZIR
+PRODUTO_ARVORE_RAIO_NOME,Raio,TRADUZIR
+PRODUTO_ARVORE_RAIO_DESC,"Novo ataque! Dano fraco, mas inimigos derrotados com Raio dropam 2x mais recursos!",TRADUZIR
+PRODUTO_ARVORE_EM_BREVE_NOME,Em Breve!,TRADUZIR
+PRODUTO_ARVORE_EM_BREVE_DESC,Disponível na versão completa do jogo!,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NOME,Agilidade,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL1_ATUAL,+43%,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL1_UPGRADE,+100%,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL2_ATUAL,+100%,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL2_UPGRADE,+233%,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL3_ATUAL,+233%,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_BASE_ATUAL,Valor inicial de agilidade!,TRADUZIR
+PRODUTO_BRUXA_AGILIDADE_BASE_UPGRADE,+43%,TRADUZIR
+PRODUTO_BRUXA_COLETA_NOME,Coleta,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL1_ATUAL,Drops x2,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL1_UPGRADE,Drops x3,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL2_ATUAL,Drops x3,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL2_UPGRADE,Drops x4,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL3_ATUAL,Drops x4,TRADUZIR
+PRODUTO_BRUXA_COLETA_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,TRADUZIR
+PRODUTO_BRUXA_COLETA_BASE_ATUAL,Drops x1,TRADUZIR
+PRODUTO_BRUXA_COLETA_BASE_UPGRADE,Drops x2,TRADUZIR
+PRODUTO_BRUXA_FORCA_NOME,Força,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL1_ATUAL,Força x1.5,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL1_UPGRADE,Força x2,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL2_ATUAL,Força x2,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL2_UPGRADE,Força x3,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL3_ATUAL,Força x3,TRADUZIR
+PRODUTO_BRUXA_FORCA_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,TRADUZIR
+PRODUTO_BRUXA_FORCA_BASE_ATUAL,Força x1,TRADUZIR
+PRODUTO_BRUXA_FORCA_BASE_UPGRADE,Força x1.5,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NOME,Knockback,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL1_ATUAL,Multiplicador x1.5,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL1_UPGRADE,Multiplicador x2,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL2_ATUAL,Multiplicador x2,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL2_UPGRADE,Multiplicador x3,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL3_ATUAL,Multiplicador x3,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_BASE_ATUAL,Multiplicador x1,TRADUZIR
+PRODUTO_BRUXA_KNOCKBACK_BASE_UPGRADE,Multiplicador x1.5,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NOME,Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL1_ATUAL,+4 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL1_UPGRADE,+6 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL2_ATUAL,+6 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL2_UPGRADE,+8 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_ATUAL,+8 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_BASE_ATUAL,+3 Vida Máxima,TRADUZIR
+PRODUTO_BRUXA_VIDA_MAXIMA_BASE_UPGRADE,+4 Vida Máxima,TRADUZIR
+Informação Geral,Informação Geral,TRADUZIR
+Conceitos de Programação,Conceitos de Programação,TRADUZIR
+Acessando Atributos de Inimigos,Acessando Atributos de Inimigos,TRADUZIR
+Funções Nativas,Funções Nativas,TRADUZIR
+Ataques,Ataques,TRADUZIR
+Arenas,Arenas,TRADUZIR
+Inimigos,Inimigos,TRADUZIR
+Recursos,Recursos,TRADUZIR

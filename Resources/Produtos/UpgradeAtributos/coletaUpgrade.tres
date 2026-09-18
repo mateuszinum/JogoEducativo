@@ -9,24 +9,24 @@
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("1_agpqs")
-descricao_atual = "Drops x2"
-descricao_upgrade = "Drops x3"
+descricao_atual = "PRODUTO_BRUXA_COLETA_NIVEL1_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_COLETA_NIVEL1_UPGRADE"
 custo_item = ExtResource("3_3yoas")
 custo_quantidade = 100
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_ji3o2"]
 script = ExtResource("1_agpqs")
-descricao_atual = "Drops x3"
-descricao_upgrade = "Drops x4"
+descricao_atual = "PRODUTO_BRUXA_COLETA_NIVEL2_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_COLETA_NIVEL2_UPGRADE"
 custo_item = ExtResource("4_lldhb")
 custo_quantidade = 250
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_6x1o3"]
 script = ExtResource("1_agpqs")
-descricao_atual = "Drops x4"
-descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+descricao_atual = "PRODUTO_BRUXA_COLETA_NIVEL3_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_COLETA_NIVEL3_UPGRADE"
 custo_item = ExtResource("5_6337v")
 custo_quantidade = 500
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
@@ -34,9 +34,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("3_mq0fr")
 nome = "Coleta"
+nome_display = "PRODUTO_BRUXA_COLETA_NOME"
 icone = ExtResource("1_44sig")
 tipo = 2
-descricao_atual_base = "Drops x1"
-descricao_upgrade_base = "Drops x2"
+descricao_atual_base = "PRODUTO_BRUXA_COLETA_BASE_ATUAL"
+descricao_upgrade_base = "PRODUTO_BRUXA_COLETA_BASE_UPGRADE"
 niveis = Array[ExtResource("1_agpqs")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

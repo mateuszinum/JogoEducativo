@@ -9,24 +9,24 @@
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("1_uwkeq")
-descricao_atual = "Multiplicador x1.5"
-descricao_upgrade = "Multiplicador x2"
+descricao_atual = "PRODUTO_BRUXA_KNOCKBACK_NIVEL1_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_KNOCKBACK_NIVEL1_UPGRADE"
 custo_item = ExtResource("3_xlijs")
 custo_quantidade = 100
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_ji3o2"]
 script = ExtResource("1_uwkeq")
-descricao_atual = "Multiplicador x2"
-descricao_upgrade = "Multiplicador x3"
+descricao_atual = "PRODUTO_BRUXA_KNOCKBACK_NIVEL2_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_KNOCKBACK_NIVEL2_UPGRADE"
 custo_item = ExtResource("4_l8um7")
 custo_quantidade = 250
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_6x1o3"]
 script = ExtResource("1_uwkeq")
-descricao_atual = "Multiplicador x3"
-descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+descricao_atual = "PRODUTO_BRUXA_KNOCKBACK_NIVEL3_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_KNOCKBACK_NIVEL3_UPGRADE"
 custo_item = ExtResource("5_cb37s")
 custo_quantidade = 500
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
@@ -34,9 +34,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("3_5g2yy")
 nome = "Knockback"
+nome_display = "PRODUTO_BRUXA_KNOCKBACK_NOME"
 icone = ExtResource("1_wbmy8")
 tipo = 2
-descricao_atual_base = "Multiplicador x1"
-descricao_upgrade_base = "Multiplicador x1.5"
+descricao_atual_base = "PRODUTO_BRUXA_KNOCKBACK_BASE_ATUAL"
+descricao_upgrade_base = "PRODUTO_BRUXA_KNOCKBACK_BASE_UPGRADE"
 niveis = Array[ExtResource("1_uwkeq")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

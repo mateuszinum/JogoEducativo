@@ -26,8 +26,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_woobs")
 nome = "PocaoDeDano"
+nome_display = "PRODUTO_COMERCIANTE_DANO_NOME"
 icone = ExtResource("2_lij1d")
-descricao_simples = "Uma poção da boa, aumenta seu dano (só provando para saber quanto aumenta ;) )"
+descricao_simples = "PRODUTO_COMERCIANTE_DANO_DESC"
 custo_item_simples = ExtResource("1_lij1d")
 custo_quantidade_simples = 2
 niveis = Array[ExtResource("3_rpayf")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

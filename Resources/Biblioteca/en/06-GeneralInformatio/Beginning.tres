@@ -40,12 +40,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_8huc7"]
 script = ExtResource("1_8odjw")
 tipo = 4
-texto = "Runs
-"
+texto = "Partidas"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_78w3f")
-nome = "Beginning"
+nome = "Início"
 blocos_de_conteudo = Array[ExtResource("1_8odjw")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_muvxh"), SubResource("Resource_1rkxv"), SubResource("Resource_8huc7")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

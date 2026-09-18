@@ -18,11 +18,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_g1tmj"]
 script = ExtResource("1_pmvxw")
 tipo = 4
-texto = "Vampire"
+texto = "Vampiro"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_cwmin")
-nome = "Blood"
+nome = "Sangue"
 blocos_de_conteudo = Array[ExtResource("1_pmvxw")]([SubResource("Resource_sj6m0"), SubResource("Resource_vvtow"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

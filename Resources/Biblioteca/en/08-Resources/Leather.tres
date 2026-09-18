@@ -18,11 +18,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lvk7e"]
 script = ExtResource("1_wt8fa")
 tipo = 4
-texto = "Werewolf"
+texto = "Lobisomem"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_vninq")
-nome = "Leather"
+nome = "Couro"
 blocos_de_conteudo = Array[ExtResource("1_wt8fa")]([SubResource("Resource_sj6m0"), SubResource("Resource_g1tmj"), SubResource("Resource_lvk7e")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

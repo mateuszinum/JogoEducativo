@@ -24,37 +24,49 @@ func _ready():
 	elif pagina_para_testar != null:
 		if Constantes.DEBUG: print("Aviso: A página de teste não tem nome definido. Ignorando.")
 
-func filtrar_texto_por_progresso(texto: String) -> String:
+func filtrar_texto_por_progresso(texto: String, traduzir_conteudo: bool = true) -> String:
 	var regex = RegEx.new()
 	regex.compile("(?s)\\[req=(.*?)\\](.*?)\\[/req\\]")
-	
+
 	var resultado = texto
 	var match_data = regex.search(resultado)
-	
+
 	while match_data != null:
 		var string_completa = match_data.get_string(0)
 		var requisito = match_data.get_string(1)
 		var conteudo = match_data.get_string(2)
-		
+
 		if ProgressoDB.tem_desbloqueado(requisito):
-			resultado = resultado.replace(string_completa, tr(conteudo))
+			resultado = resultado.replace(string_completa, tr(conteudo) if traduzir_conteudo else conteudo)
 		else:
 			resultado = resultado.replace(string_completa, "")
-			
+
 		match_data = regex.search(resultado)
-		
+
 	return resultado
 
 func carregar_pagina(pagina: BibliotecaResource):
 	texto_artigo.text = ""
-	
+
 	for bloco in pagina.blocos_de_conteudo:
-		var texto_filtrado = filtrar_texto_por_progresso(bloco.texto)
-		
-		if texto_filtrado.strip_edges() == "":
+		var eh_links_verdes = bloco.tipo == BibliotecaTexto.TipoBloco.LINKS_VERDES
+		var texto_bruto = filtrar_texto_por_progresso(bloco.texto, not eh_links_verdes)
+
+		if texto_bruto.strip_edges() == "":
 			continue
 
-		texto_filtrado = tr(texto_filtrado).strip_edges(false, true)
+		if eh_links_verdes:
+			var ids_paginas = texto_bruto.strip_edges(false, true).split(" ", false)
+			var linha_formatada = ""
+
+			for id_pagina in ids_paginas:
+				var rotulo = tr(id_pagina)
+				linha_formatada += "[url=" + id_pagina + "][font_size=16][color=#a8ca58][b]" + rotulo + "[/b][/color][/font_size][/url]   "
+
+			texto_artigo.append_text(linha_formatada + "\n\n")
+			continue
+
+		var texto_filtrado = tr(texto_bruto).strip_edges(false, true)
 
 		match bloco.tipo:
 			BibliotecaTexto.TipoBloco.TITULO:
@@ -73,15 +85,6 @@ func carregar_pagina(pagina: BibliotecaResource):
 				var codigo_colorido = aplicar_syntax_highlight(texto_filtrado)
 				var formatacao = "[indent][font_size=16][color=#d4d4d4]" + codigo_colorido + "[/color][/font_size][/indent]"
 				texto_artigo.append_text("\n" + formatacao + "\n\n")
-				
-			BibliotecaTexto.TipoBloco.LINKS_VERDES:
-				var palavras = texto_filtrado.split(" ", false) 
-				var linha_formatada = ""
-				
-				for palavra in palavras:
-					linha_formatada += "[url=" + palavra + "][font_size=16][color=#a8ca58][b]" + palavra + "[/b][/color][/font_size][/url]   "
-					
-				texto_artigo.append_text(linha_formatada + "\n\n")
 
 func _on_link_clicado(meta: String):
 	ir_para_pagina_por_nome(meta, true)

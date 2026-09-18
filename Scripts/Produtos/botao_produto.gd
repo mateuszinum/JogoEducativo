@@ -362,21 +362,21 @@ func carregar_dados_do_tooltip() -> void:
 		ProdutoLoja.TipoProduto.UPGRADE:
 			var max_niveis = produto.niveis.size() + 1
 			if nivel_atual == 1:
-				texto_final = produto.descricao_atual_base
-				if produto.descricao_upgrade_base != "": texto_final += "\n\n" + produto.descricao_upgrade_base
+				texto_final = tr(produto.descricao_atual_base)
+				if produto.descricao_upgrade_base != "": texto_final += "\n\n" + tr(produto.descricao_upgrade_base)
 			else:
 				var index = nivel_atual - 2
-				texto_final = produto.niveis[index].descricao_atual
-				if produto.niveis[index].descricao_upgrade != "": texto_final += "\n\n" + produto.niveis[index].descricao_upgrade
+				texto_final = tr(produto.niveis[index].descricao_atual)
+				if produto.niveis[index].descricao_upgrade != "": texto_final += "\n\n" + tr(produto.niveis[index].descricao_upgrade)
 			if nivel_atual < max_niveis:
 				item_custo = produto.niveis[nivel_atual - 1].custo_item
 				qtd_custo = produto.niveis[nivel_atual - 1].custo_quantidade
 			else: mostrar_custo = false
 		ProdutoLoja.TipoProduto.DESBLOQUEIO_PROGRESSIVO:
 			var max_niveis = produto.niveis.size()
-			texto_final = produto.descricao_bloqueada if nivel_atual == 0 else produto.niveis[nivel_atual - 1].descricao_atual
+			texto_final = tr(produto.descricao_bloqueada) if nivel_atual == 0 else tr(produto.niveis[nivel_atual - 1].descricao_atual)
 			if nivel_atual > 0 and produto.niveis[nivel_atual - 1].descricao_upgrade != "":
-				texto_final += "\n\n" + produto.niveis[nivel_atual - 1].descricao_upgrade
+				texto_final += "\n\n" + tr(produto.niveis[nivel_atual - 1].descricao_upgrade)
 			if nivel_atual < max_niveis:
 				item_custo = produto.niveis[nivel_atual].custo_item
 				qtd_custo = produto.niveis[nivel_atual].custo_quantidade

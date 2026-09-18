@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lk5le"]
 script = ExtResource("1_kf2nj")
 tipo = 4
-texto = "Forest"
+texto = "Floresta"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_37tpt"]
@@ -50,7 +50,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_1xlt5"]
 script = ExtResource("1_kf2nj")
 tipo = 4
-texto = "Coin"
+texto = "Moeda"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_c773p"]
@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_daujv"]
 script = ExtResource("1_kf2nj")
 tipo = 4
-texto = "BlueOrb RedOrb "
+texto = "EsferaAzul EsferaVermelha"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

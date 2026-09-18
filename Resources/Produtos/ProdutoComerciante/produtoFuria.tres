@@ -26,8 +26,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_tosrt")
 nome = "PocaoDeFuria"
+nome_display = "PRODUTO_COMERCIANTE_FURIA_NOME"
 icone = ExtResource("2_ixjor")
-descricao_simples = "Fique extremamente zangado (dano e velocidade aumentam!!!!)"
+descricao_simples = "PRODUTO_COMERCIANTE_FURIA_DESC"
 custo_item_simples = ExtResource("1_ixjor")
 custo_quantidade_simples = 7
 niveis = Array[ExtResource("3_yxjve")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

@@ -18,11 +18,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_g1tmj"]
 script = ExtResource("1_8h6ru")
 tipo = 4
-texto = "Forest"
+texto = "Floresta"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
 script = ExtResource("2_osbqf")
-nome = "Emerald"
+nome = "Esmeralda"
 blocos_de_conteudo = Array[ExtResource("1_8h6ru")]([SubResource("Resource_sj6m0"), SubResource("Resource_uqwrq"), SubResource("Resource_g1tmj")])
 metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

@@ -27,11 +27,12 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_f2r3j")
 nome = "Gelo"
+nome_display = "PRODUTO_ARVORE_GELO_NOME"
 pagina_biblioteca = "Gelo"
 icone = ExtResource("1_bl3de")
 pre_requisitos = Array[ExtResource("5_f2r3j")]([ExtResource("6_slbvi")])
 tipo = 1
-descricao_simples = "Novo ataque! Útil para derrotar inimigos de fogo..."
+descricao_simples = "PRODUTO_ARVORE_GELO_DESC"
 custo_item_simples = ExtResource("1_slbvi")
 custo_quantidade_simples = 40
 niveis = Array[ExtResource("3_ohnj3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

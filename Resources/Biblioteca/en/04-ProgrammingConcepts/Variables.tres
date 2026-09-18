@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_e7ofd"]
 script = ExtResource("1_eqr8k")
 tipo = 4
-texto = "DataTypes"
+texto = "TiposDeDado"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_h8jfw"]
