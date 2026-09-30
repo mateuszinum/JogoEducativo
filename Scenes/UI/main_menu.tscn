@@ -679,11 +679,11 @@ vertical_alignment = 1
 [node name="ConfirmacaoReset" type="ConfirmationDialog" parent="." unique_id=51262298]
 unique_name_in_owner = true
 oversampling_override = 1.0
-title = "Atenção"
+title = "MENU_RESET_CONFIRMAR_TITULO"
 position = Vector2i(0, 36)
 theme = SubResource("Theme_tr32r")
-ok_button_text = "Sim"
-cancel_button_text = "Não"
+ok_button_text = "MENU_RESET_CONFIRMAR_SIM"
+cancel_button_text = "MENU_RESET_CONFIRMAR_NAO"
 
 [node name="TelaCreditos" type="Control" parent="." unique_id=2010705035]
 unique_name_in_owner = true

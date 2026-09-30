@@ -54,11 +54,11 @@ var bloqueio_game_over: bool = false
 var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
-	{"nome": "Código A", "codigo": "", "modificado": false},
-	{"nome": "Código B", "codigo": "", "modificado": false},
-	{"nome": "Código C", "codigo": "", "modificado": false},
-	{"nome": "Código D", "codigo": "", "modificado": false},
-	{"nome": "Código E", "codigo": "", "modificado": false}
+	{"nome": "TERMINAL_SLOT_CODIGO_A", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_B", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_C", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_D", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_E", "codigo": "", "modificado": false}
 ]
 
 var slot_atual_idx: int = 0
@@ -496,7 +496,7 @@ func _atualizar_seletor_slots() -> void:
 	
 	seletor_slot.clear()
 	for i in range(qtd_desbloqueada):
-		seletor_slot.add_item(slots_codigo[i]["nome"], i)
+		seletor_slot.add_item(tr(slots_codigo[i]["nome"]), i)
 
 	if slot_atual_idx >= qtd_desbloqueada:
 		_on_seletor_slot_item_selected(0)
@@ -641,11 +641,11 @@ func _atualizar_nomes_seletor() -> void:
 		var modificado = slot_info.get("modificado", false)
 		
 		if modificado:
-			seletor_slot.set_item_text(i, slot_info["nome"] + "*")
+			seletor_slot.set_item_text(i, tr(slot_info["nome"]) + "*")
 			if popup.has_method("set_item_custom_fg_color"):
 				popup.set_item_custom_fg_color(i, Color.YELLOW)
 		else:
-			seletor_slot.set_item_text(i, slot_info["nome"])
+			seletor_slot.set_item_text(i, tr(slot_info["nome"]))
 			if popup.has_method("set_item_custom_fg_color"):
 				popup.set_item_custom_fg_color(i, Color.WHITE)
 			

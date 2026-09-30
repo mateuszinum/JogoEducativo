@@ -205,6 +205,11 @@ TERMINAL_PARAR_E_ESCAPAR,PARAR E ESCAPAR,RUN AND ESCAPE
 TERMINAL_TEM_ERROS,Existem Erros!,There are errors!
 TERMINAL_ERRO_FATAL_TITULO,Erro Fatal da Engine!,Fatal engine error
 TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO,Algo inesperado quebrou a conexão:,"Something unexpected happend, connection broken"
+TERMINAL_SLOT_CODIGO_A,Código A,TRADUZIR
+TERMINAL_SLOT_CODIGO_B,Código B,TRADUZIR
+TERMINAL_SLOT_CODIGO_C,Código C,TRADUZIR
+TERMINAL_SLOT_CODIGO_D,Código D,TRADUZIR
+TERMINAL_SLOT_CODIGO_E,Código E,TRADUZIR
 MENU_DEBUG_CODIGO_PRONTO,Código pronto,Code ready
 MENU_DEBUG_GANHAR_RECURSOS,Ganhar recursos,Acquire resources
 MENU_DEBUG_ATRIBUTOS_MAXIMOS,Atributos máximos,Max atributes
@@ -442,6 +447,9 @@ PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_ATUAL,+8 Vida Máxima,+8 Max Health
 PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_UPGRADE,NÍVEL MÁXIMO ATINGIDO!,MAX LEVEL REACHED!
 PRODUTO_BRUXA_VIDA_MAXIMA_BASE_ATUAL,+3 Vida Máxima,+3 Max Health
 PRODUTO_BRUXA_VIDA_MAXIMA_BASE_UPGRADE,+4 Vida Máxima,+4 Max Health
+MENU_RESET_CONFIRMAR_TITULO,Atenção,TRADUZIR
+MENU_RESET_CONFIRMAR_SIM,Sim,TRADUZIR
+MENU_RESET_CONFIRMAR_NAO,Não,TRADUZIR
 Informação Geral,Informação Geral,General Information
 Conceitos de Programação,Conceitos de Programação,Programming Concepts
 Acessando Atributos de Inimigos,Acessando Atributos de Inimigos,Accessing Enemy Attributes
@@ -450,3 +458,5 @@ Ataques,Ataques,Attacks
 Arenas,Arenas,Arenas
 Inimigos,Inimigos, Enemies
 Recursos,Recursos,Resources
+ATAQUE_REQUISITO_NAO_ATENDIDO_PREFIXO,"Requisito não atendido para o ataque: """,TRADUZIR
+ATAQUE_REQUISITO_NAO_ATENDIDO_SUFIXO,""" Verificar Biblioteca",TRADUZIR
