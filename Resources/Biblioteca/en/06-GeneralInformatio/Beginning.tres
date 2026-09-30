@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_8odjw")
 texto = "Here is a suggestion for your first program!
 
-Try to enter the Campos arena with the 'arena' command. Afterward, use the 'atacar' command with 'EsferaAzul' on the closest target.
+Try to enter the Fields arena with the \"arena\" command. Afterward, use the \"attack\" command with \"BlueOrb\" on the closest target.
 
 Many enemies will spawn, so you'll need to attack multiple times. Chain your attacks together, for example:"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
@@ -21,12 +21,12 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_muvxh"]
 script = ExtResource("1_8odjw")
 tipo = 3
-texto = "arena(Campos)
+texto = "arena(Fields)
 
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
-atacar(inimigoMaisProximo(), EsferaAzul)
+attack(nearestEnemy(), BlueOrb)
+attack(nearestEnemy(), BlueOrb)
+attack(nearestEnemy(), BlueOrb)
+attack(nearestEnemy(), BlueOrb)
 [...]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_8huc7"]
 script = ExtResource("1_8odjw")
 tipo = 4
-texto = "Partidas"
+texto = "Runs"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

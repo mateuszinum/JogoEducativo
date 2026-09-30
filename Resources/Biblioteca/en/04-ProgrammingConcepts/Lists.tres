@@ -27,9 +27,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_cywvo"]
 script = ExtResource("1_16yci")
 tipo = 3
-texto = "int numeros = [10, 20, 30]
-int primeiroNumero = numeros[0]
-# A variável primeiroNumero agora vale 10"
+texto = "int numbers = [10, 20, 30]
+int firstNumber = numbers[0]
+# The variable firstNumber now contains the value 10"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

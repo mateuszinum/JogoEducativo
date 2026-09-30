@@ -196,9 +196,9 @@ MENU_SLOT_CARREGAR_PREFIXO,Carregar Slot ,Load slot
 MENU_SLOT_VAZIO,Vazio,Empty
 MENU_SLOT_SUBSTITUIR_PREFIXO,Substituir Slot ,Switch Slot
 MENU_SLOT_NOVOJOGO_PREFIXO,Novo Jogo ,New Game
-MENU_SLOT_RESET_CONFIRMAR_PREFIXO,Já existe um save no Slot ,There is already a save in the selected slot
+MENU_SLOT_RESET_CONFIRMAR_PREFIXO,Já existe um save no Slot ,There is already a save in the selected Slot 
 MENU_SLOT_RESET_CONFIRMAR_SUFIXO,".
-Deseja apagá-lo e começar um novo jogo do zero?",Would you like to delete it and start a new game from scratch?
+ Deseja apagá-lo e começar um novo jogo do zero?", Would you like to delete it and start a new game from scratch?
 TERMINAL_RODAR,RODAR CÓDIGO,RUN CODE
 TERMINAL_PARAR,PARAR CÓDIGO,STOP CODE
 TERMINAL_PARAR_E_ESCAPAR,PARAR E ESCAPAR,RUN AND ESCAPE
@@ -313,10 +313,10 @@ Desbloqueia:
 - tesouroY()","Grants access to the Witch and unlocks functions that locate treasures in the arenas.
 
 Unlocks:
-- posicaoX()
-- posicaoY()
-- tesouroX()
-- tesouroY()"
+- positionX()
+- positionY()
+- treasureX()
+- treasureY()"
 PRODUTO_ARVORE_LOOPS_CONDICIONAL_NOME,Loop e Condicional,Loops and Conditionals
 PRODUTO_ARVORE_LOOPS_CONDICIONAL_DESC,"Desbloqueia loop ""enquanto"" e a condicional ""se"".","Unlocks the ""while"" loop and the ""if"" conditional."
 PRODUTO_ARVORE_OPERADORES_NOME,Operadores,Operators
@@ -339,10 +339,10 @@ Desbloqueia:
 - inimigo.vida","Grants access to useful information.
 
 Unlocks:
-- podeMover()
-- vidaAtual()
-- tempo()
-- inimigo.vida"
+- canMove()
+- currentHealth()
+- time()
+- enemy.health"
 PRODUTO_ARVORE_SENSORES3_NOME,Sensores 3,Sensors 3
 PRODUTO_ARVORE_SENSORES3_DESC,"Libera acesso a mais informações úteis.
 

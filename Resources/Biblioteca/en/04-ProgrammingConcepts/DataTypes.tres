@@ -125,12 +125,12 @@ script = ExtResource("1_xaep4")
 tipo = 3
 texto = "int i = 100
 float f = 0.56
-bool b = Falso
-string mensagem = \"Explorando a arena\"
-Inimigo alvo = inimigoMaisProximo()
-Direcao dir = Cima
-Arena arn = Campos
-Ataque atk = EsferaAzul"
+bool b = False
+string message = \"Exploring the arena\"
+Enemy target = nearestEnemy()
+Direction dir = Up
+Arena arn = Fields
+Attack atk = BlueOrb"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

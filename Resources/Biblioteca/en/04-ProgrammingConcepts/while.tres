@@ -39,11 +39,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_agsnw"]
 script = ExtResource("1_w4y7e")
 tipo = 3
-texto = "enquanto(Verdadeiro):
+texto = "while(True):
 	attack(nearestEnemy(), BlueSphere)
-	atacar(inimigoMaisProximo(), EsferaAzul)
-  	mover(Esquerda)
-fim enquanto"
+	attack(nearestEnemy(), BlueOrb)
+  	move(Left)
+end while"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_tcggy"]
@@ -55,9 +55,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_6qiy6"]
 script = ExtResource("1_w4y7e")
 tipo = 3
-texto = "enquanto(contador > 2):
-  	movee(Cima)
-fim enquanto"
+texto = "while(counter > 2):
+  	move(Up)
+end while"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

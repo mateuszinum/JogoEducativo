@@ -36,9 +36,9 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_eqr8k")
 tipo = 3
 texto = "int i = 100
-bool b = Verdadeiro
-string s = \"Texto\"
-string s2 = \"o número é: \" + i		# s2: \"o número é: 100\"
+bool b = True
+string s = \"Text\"
+string s2 = \"the number is: \" + i		# s2: \"the number is: 100\"
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

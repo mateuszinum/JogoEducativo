@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_lky8a")
 texto = "Very useful to kill the Ice Slime, but be careful with the Fire Slime: This flame is nothing compared to where it comes from.
 
-[req=Explosão de Fogo]Dica: Se acumular esse cara (no máximo 4), você consegue lançar o ExplosaoFogo com uma área enorme.[/req]"
+[req=Explosão de Fogo]Tip: If you stack this guy (up to 4), you can cast FireExplosion with a huge area.[/req]"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]

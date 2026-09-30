@@ -11,8 +11,8 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_7p0ow"]
 script = ExtResource("1_1yt2u")
-texto = "It's like the basic attack, but it can go through enemies (hitting multiple targets).
- so it hurts a lot when you strike someone with it[req=Floresta], Except for the Orc and the Vampire. They are both pretty tough.[/req]."
+texto = "It's like the basic attack, but it can go through enemies (hitting multiple targets), so it hurts a lot when you strike someone with it[req=Floresta].
+Except for the Orc and the Vampire. They are both pretty tough.[/req]."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_3l6q0"]
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_hbekh"]
 script = ExtResource("1_1yt2u")
-texto = "The las attack must have been Blue orb."
+texto = "The last attack must have been Blue orb."
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

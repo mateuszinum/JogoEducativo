@@ -37,10 +37,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_btp45"]
 script = ExtResource("1_dg82a")
 tipo = 3
-texto = "int somarValores(int a, int b):
-	int resultado = a + b
-	retorna resultado
-fim funcao
+texto = "int sumValues(int a, int b):
+	int result = a + b
+	return result
+end function
 
 int numero1 = 50
 int numero2 = 30

@@ -41,30 +41,30 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_4yhyu"]
 script = ExtResource("1_8dojr")
 tipo = 3
-texto = "int vidaMaxima = 100
-int dano = 15
-int vidaRestante = vidaMaxima - dano
-float metadeDaVida = vidaMaxima / 2
+texto = "int maxHealth = 100
+int damage = 15
+int remainingHealth = maxHealth - damage
+float halfHealth = maxHealth / 2
 
-int nivel = 5
-se(nivel >= 10):
-	escreva(\"Você é muito forte!\")
-fim se
+int level = 5
+if(level >= 10):
+    write(\"You are very strong!\")
+end if
 
-se(alvo == Nulo):
-    escreva(\"Nenhum inimigo encontrado.\")
-fim se
+if(target == Null):
+    write(\"No enemy found.\")
+end if
 
-int contador = 50
-bool valor = Verdadeiro
-se(contador >= 20 e valor):
-    atacar(inimigoMaisProximo, EsferaAzul)
-fim se
+int counter = 50
+bool value = True
+if(counter >= 20 and value):
+    attack(nearestEnemy(), BlueSphere)
+end if
 
-bool temBastanteVida = Falso
-se(!temBastanteVida):
-    escreva(\"Cuidado, você está desprotegido!\")
-fim se"
+bool hasEnoughHealth = False
+if(!hasEnoughHealth):
+    write(\"Careful, you are unprotected!\")
+end if"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]
