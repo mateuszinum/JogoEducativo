@@ -70,7 +70,7 @@ produto = ExtResource("6_3k5vv")
 area_limite_tooltip = NodePath("../../../AreaLimiteTooltip")
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
-text = "BRUXA"
+text = "LOJA_BRUXA_NOME"
 
 [node name="PersonagemImagem" parent="Personagem/EspacoPersonagem" parent_id_path=PackedInt32Array(1732438903) index="0" unique_id=897123767]
 offset_top = -3.87

@@ -27,12 +27,12 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_qtoqs")
 nome = "Labirinto"
+nome_display = "PRODUTO_ARVORE_LABIRINTO_NOME"
 pagina_biblioteca = "Labirinto"
 icone = ExtResource("2_eaqbv")
 pre_requisitos = Array[ExtResource("5_qtoqs")]([ExtResource("6_eaqbv")])
 tipo = 1
-descricao_simples = "Arena nova!
-+1 espaço de código!"
+descricao_simples = "PRODUTO_ARVORE_LABIRINTO_DESC"
 custo_item_simples = ExtResource("1_eaqbv")
 custo_quantidade_simples = 500
 descricao_bloqueada = "Nova arena!

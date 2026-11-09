@@ -7,13 +7,13 @@ var TOTAL_ITENS_SKILL_TREE : int = 27
 # VARIÁVEIS DE DESENVOLVEDOR
 
 # Mude para false no build final
-var MODO_DEV : bool = true
+var MODO_DEV : bool = false
 var MOVIMENTO_WASD : bool = false 
-var TUDO_DESBLOQUEADO : bool = true
-var REQUISITOS_DESATIVADOS : bool = true 
+var TUDO_DESBLOQUEADO : bool = false
+var REQUISITOS_DESATIVADOS : bool = false 
 var TUDO_GRATIS : bool = false
 var JOGADOR_IMORTAL : bool = false 
-var PULAR_TUTORIAL : bool = true
+var PULAR_TUTORIAL : bool = false
 var DEBUG : bool = false 
 
 # Mude para true no build final
@@ -40,6 +40,9 @@ var USAR_SHAKE : bool = true
 
 # Define se vai ter luz e partículas nos ataques
 var GRÁFICO_HIGH : bool = true
+
+# Define o idioma. (pt_br = 0, en = 1)
+var JOGO_EN : int = 0
 
 var VOLUME_MASTER : float = 0.5:
 	set(value):

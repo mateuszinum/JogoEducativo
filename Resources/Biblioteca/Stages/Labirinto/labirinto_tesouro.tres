@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TesouroData" format=3 uid="uid://dr6y8fcbhkxvd"]
+
+[ext_resource type="Script" uid="uid://swrsg053t5vv" path="res://Scripts/World/tesouro_data.gd" id="1_odfcg"]
+[ext_resource type="Texture2D" uid="uid://dj28ebmlnwhdn" path="res://Assets/Asset Packs/Chests Pack/chest_10.png" id="2_fni23"]
+[ext_resource type="Script" uid="uid://cvs37xuengnw4" path="res://Scripts/Itens(Drops)/drop_data.gd" id="3_go5dj"]
+[ext_resource type="Resource" uid="uid://dfsb7ee5ixfs4" path="res://Resources/Drop/Diamante.tres" id="4_ktha5"]
+
+[sub_resource type="Resource" id="Resource_nh0no"]
+script = ExtResource("3_go5dj")
+item = ExtResource("4_ktha5")
+quantidade_minima = 10
+quantidade_maxima = 20
+metadata/_custom_type_script = "uid://cvs37xuengnw4"
+
+[resource]
+script = ExtResource("1_odfcg")
+nome_do_tesouro = "Tesouro do Labirinto"
+sprite_do_bau = ExtResource("2_fni23")
+tabela_de_drops = Array[ExtResource("3_go5dj")]([SubResource("Resource_nh0no")])

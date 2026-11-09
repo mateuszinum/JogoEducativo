@@ -284,7 +284,7 @@ offset_right = 130.0
 offset_bottom = 156.0
 theme_override_fonts/font = ExtResource("4_qonm2")
 theme_override_font_sizes/font_size = 24
-text = "MOCHILA"
+text = "HUD_MOCHILA_TITULO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -312,7 +312,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qonm2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4jp1i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ruy3p")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4h44i")
-text = "TROCAR"
+text = "HUD_BOTAO_TROCAR"
 icon = ExtResource("8_qonm2")
 script = ExtResource("6_ruy3p")
 som_hover = ExtResource("7_4h44i")
@@ -321,7 +321,7 @@ som_clique = ExtResource("8_fr10v")
 volume_clique_db = -5.0
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="2" unique_id=1433500361]
-text = "COMERCIANTE"
+text = "LOJA_COMERCIANTE_NOME"
 
 [node name="BotaoVoltar" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="3" unique_id=624095006]
 theme_override_styles/normal = SubResource("StyleBoxFlat_8mo0i")

@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://pxbnfp3ralhk"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_8dojr"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_ryuqb"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_8dojr")
+tipo = 1
+texto = "Operators"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_7p0ow"]
+script = ExtResource("1_8dojr")
+texto = "Operators are the symbols we use to do math, compare things, or combine comparisons.
+
+Arithmetic (Basic math):
+	+ : Addition
+	- : Subtraction
+	* : Multiplication
+	/ : Division
+	% : Remainder of division
+
+Comparison (To ask questions):
+	== : Is equal to?
+	!= : Is different from?
+	>= : Greater than or equal to
+	<= : Less than or equal to
+
+Logical (To combine comparisons):
+	and : Both conditions must be true.
+	or : Only one of the conditions needs to be true.
+	! : Inverts the rule (what was True becomes False)."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_1sph2"]
+script = ExtResource("1_8dojr")
+tipo = 2
+texto = "Usage Examples"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_4yhyu"]
+script = ExtResource("1_8dojr")
+tipo = 3
+texto = "int maxHealth = 100
+int damage = 15
+int remainingHealth = maxHealth - damage
+float halfHealth = maxHealth / 2
+
+int level = 5
+if(level >= 10):
+    write(\"You are very strong!\")
+end if
+
+if(target == Null):
+    write(\"No enemy found.\")
+end if
+
+int counter = 50
+bool value = True
+if(counter >= 20 and value):
+    attack(nearestEnemy(), BlueSphere)
+end if
+
+bool hasEnoughHealth = False
+if(!hasEnoughHealth):
+    write(\"Careful, you are unprotected!\")
+end if"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_ryuqb")
+nome = "Operadores"
+blocos_de_conteudo = Array[ExtResource("1_8dojr")]([SubResource("Resource_sj6m0"), SubResource("Resource_7p0ow"), SubResource("Resource_1sph2"), SubResource("Resource_4yhyu")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"

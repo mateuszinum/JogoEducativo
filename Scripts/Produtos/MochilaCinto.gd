@@ -45,7 +45,7 @@ func atualizar_slots() -> void:
 		_tocar_som_troca(is_cinto)
 	_ultimo_modo_cinto = is_cinto
 	
-	titulo.text = "CINTO" if is_cinto else "MOCHILA"
+	titulo.text = "HUD_CINTO_TITULO" if is_cinto else "HUD_MOCHILA_TITULO"
 	container_cinto.visible = is_cinto
 	container_mochila.visible = not is_cinto
 	

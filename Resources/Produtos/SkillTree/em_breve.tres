@@ -7,7 +7,8 @@
 [resource]
 script = ExtResource("2_2dxoi")
 nome = "Em Breve!"
+nome_display = "PRODUTO_ARVORE_EM_BREVE_NOME"
 icone = ExtResource("1_2dxoi")
 tipo = 1
-descricao_simples = "Disponível na versão completa do jogo!"
+descricao_simples = "PRODUTO_ARVORE_EM_BREVE_DESC"
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

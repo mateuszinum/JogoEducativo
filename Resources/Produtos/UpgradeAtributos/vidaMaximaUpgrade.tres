@@ -9,24 +9,24 @@
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("1_jcdr0")
-descricao_atual = "+4 Vida Máxima"
-descricao_upgrade = "+6 Vida Máxima"
+descricao_atual = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL1_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL1_UPGRADE"
 custo_item = ExtResource("3_ntdwr")
 custo_quantidade = 100
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_ji3o2"]
 script = ExtResource("1_jcdr0")
-descricao_atual = "+6 Vida Máxima"
-descricao_upgrade = "+8 Vida Máxima"
+descricao_atual = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL2_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL2_UPGRADE"
 custo_item = ExtResource("4_33dk8")
 custo_quantidade = 250
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_6x1o3"]
 script = ExtResource("1_jcdr0")
-descricao_atual = "+8 Vida Máxima"
-descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+descricao_atual = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_VIDA_MAXIMA_NIVEL3_UPGRADE"
 custo_item = ExtResource("5_v3yi0")
 custo_quantidade = 500
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
@@ -34,9 +34,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("3_ye65m")
 nome = "Vida Máxima"
+nome_display = "PRODUTO_BRUXA_VIDA_MAXIMA_NOME"
 icone = ExtResource("1_uayx1")
 tipo = 2
-descricao_atual_base = "+3 Vida Máxima"
-descricao_upgrade_base = "+4 Vida Máxima"
+descricao_atual_base = "PRODUTO_BRUXA_VIDA_MAXIMA_BASE_ATUAL"
+descricao_upgrade_base = "PRODUTO_BRUXA_VIDA_MAXIMA_BASE_UPGRADE"
 niveis = Array[ExtResource("1_jcdr0")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

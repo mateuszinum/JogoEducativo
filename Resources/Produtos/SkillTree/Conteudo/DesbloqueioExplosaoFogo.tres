@@ -27,11 +27,12 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_n84rw")
 nome = "Explosão de Fogo"
+nome_display = "PRODUTO_ARVORE_EXPLOSAO_FOGO_NOME"
 pagina_biblioteca = "ExplosaoFogo"
 icone = ExtResource("1_pq1bc")
 pre_requisitos = Array[ExtResource("5_n84rw")]([ExtResource("6_qg6vf")])
 tipo = 1
-descricao_simples = "Novo ataque! Causa dano em área."
+descricao_simples = "PRODUTO_ARVORE_EXPLOSAO_FOGO_DESC"
 custo_item_simples = ExtResource("1_qg6vf")
 custo_quantidade_simples = 150
 niveis = Array[ExtResource("3_iyqt3")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

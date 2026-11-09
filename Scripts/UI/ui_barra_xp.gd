@@ -3,8 +3,8 @@ extends Control
 @export_group("Configurações Visuais")
 @export var cor_normal: Color = Color("2e88f0")
 @export var cor_max_level: Color = Color("f1c40f")
-@export var texto_nivel_prefixo: String = "LV "
-@export var texto_max_level: String = "MÁXIMO"
+@export var texto_nivel_prefixo: String = "HUD_NIVEL_PREFIXO"
+@export var texto_max_level: String = "HUD_NIVEL_MAXIMO"
 
 @export_group("Áudio")
 @export var som_level_up: AudioStream
@@ -20,7 +20,7 @@ func _ready() -> void:
 	Atributos.subiu_de_nivel.connect(_on_subiu_de_nivel)
 	Atributos.max_level_alcancado.connect(_on_max_level_alcancado)
 	
-	label_nivel.text = texto_nivel_prefixo + str(Atributos.level_atual)
+	label_nivel.text = tr(texto_nivel_prefixo) + str(Atributos.level_atual)
 	progress_bar.max_value = Atributos.LEVEL_UP_XP * Atributos.level_atual
 	progress_bar.value = Atributos.xp_atual
 	_atualizar_cor(cor_normal)
@@ -50,7 +50,7 @@ func _on_subiu_de_nivel(novo_nivel: int) -> void:
 		AchievementsManager.unlock_achievement("ALCANCE_NIVEL_10")
 
 	if novo_nivel < Atributos.MAX_LEVEL:
-		label_nivel.text = texto_nivel_prefixo + str(novo_nivel)
+		label_nivel.text = tr(texto_nivel_prefixo) + str(novo_nivel)
 
 	if not is_pronto: return 
 	

@@ -9,24 +9,24 @@
 
 [sub_resource type="Resource" id="Resource_btodh"]
 script = ExtResource("1_m3qc0")
-descricao_atual = "Força x1.5"
-descricao_upgrade = "Força x2"
+descricao_atual = "PRODUTO_BRUXA_FORCA_NIVEL1_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_FORCA_NIVEL1_UPGRADE"
 custo_item = ExtResource("3_dotbh")
 custo_quantidade = 100
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_ji3o2"]
 script = ExtResource("1_m3qc0")
-descricao_atual = "Força x2"
-descricao_upgrade = "Força x3"
+descricao_atual = "PRODUTO_BRUXA_FORCA_NIVEL2_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_FORCA_NIVEL2_UPGRADE"
 custo_item = ExtResource("4_ryhcu")
 custo_quantidade = 250
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [sub_resource type="Resource" id="Resource_6x1o3"]
 script = ExtResource("1_m3qc0")
-descricao_atual = "Força x3"
-descricao_upgrade = "NÍVEL MÁXIMO ATINGIDO!"
+descricao_atual = "PRODUTO_BRUXA_FORCA_NIVEL3_ATUAL"
+descricao_upgrade = "PRODUTO_BRUXA_FORCA_NIVEL3_UPGRADE"
 custo_item = ExtResource("5_ly0ng")
 custo_quantidade = 500
 metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
@@ -34,9 +34,10 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("3_4hdp7")
 nome = "Força"
+nome_display = "PRODUTO_BRUXA_FORCA_NOME"
 icone = ExtResource("1_gfdue")
 tipo = 2
-descricao_atual_base = "Força x1"
-descricao_upgrade_base = "Força x1.5"
+descricao_atual_base = "PRODUTO_BRUXA_FORCA_BASE_ATUAL"
+descricao_upgrade_base = "PRODUTO_BRUXA_FORCA_BASE_UPGRADE"
 niveis = Array[ExtResource("1_m3qc0")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])
 metadata/_custom_type_script = "uid://b7fk0mvencb17"

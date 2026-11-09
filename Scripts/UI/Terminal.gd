@@ -54,11 +54,11 @@ var bloqueio_game_over: bool = false
 var _id_cooldown: int = 0
 
 var slots_codigo: Array = [
-	{"nome": "Código A", "codigo": "", "modificado": false},
-	{"nome": "Código B", "codigo": "", "modificado": false},
-	{"nome": "Código C", "codigo": "", "modificado": false},
-	{"nome": "Código D", "codigo": "", "modificado": false},
-	{"nome": "Código E", "codigo": "", "modificado": false}
+	{"nome": "TERMINAL_SLOT_CODIGO_A", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_B", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_C", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_D", "codigo": "", "modificado": false},
+	{"nome": "TERMINAL_SLOT_CODIGO_E", "codigo": "", "modificado": false}
 ]
 
 var slot_atual_idx: int = 0
@@ -130,13 +130,13 @@ func _configurar_tooltip_erro() -> void:
 func atualizar_estado_botao() -> void:
 	if modo_atual == "vilarejo" or modo_atual == "tutorial":
 		if codigo_rodando:
-			botao_executar.text = "PARAR CÓDIGO"
+			botao_executar.text = "TERMINAL_PARAR"
 			if icone_parar: botao_executar.icon = icone_parar
 		else:
-			botao_executar.text = "RODAR CÓDIGO"
+			botao_executar.text = "TERMINAL_RODAR"
 			if icone_rodar: botao_executar.icon = icone_rodar
 	elif modo_atual == "arena":
-		botao_executar.text = "PARAR E ESCAPAR"
+		botao_executar.text = "TERMINAL_PARAR_E_ESCAPAR"
 		if icone_escapar: botao_executar.icon = icone_escapar
 
 func iniciar_cooldown_seguranca():
@@ -331,7 +331,7 @@ func mostrar_erros_de_sintaxe(lista_erros: Array):
 	code_edit.editable = true
 	atualizar_travas_da_interface()
 	if modo_atual == "vilarejo":
-		botao_executar.text = "Existem Erros!"
+		botao_executar.text = "TERMINAL_TEM_ERROS"
 	iniciar_cooldown_seguranca()
 
 func limpar_erros_de_sintaxe():
@@ -350,8 +350,8 @@ func mostrar_erro_runtime(mensagem: String):
 	iniciar_cooldown_seguranca()
 	
 	var dialog = AcceptDialog.new()
-	dialog.title = "Erro Fatal da Engine!"
-	dialog.dialog_text = "Algo inesperado quebrou a conexão:\n\n" + mensagem
+	dialog.title = "TERMINAL_ERRO_FATAL_TITULO"
+	dialog.dialog_text = tr("TERMINAL_ERRO_FATAL_MENSAGEM_PREFIXO") + "\n\n" + mensagem
 	add_child(dialog)
 	dialog.popup_centered()
 
@@ -566,7 +566,7 @@ func _atualizar_seletor_slots() -> void:
 	
 	seletor_slot.clear()
 	for i in range(qtd_desbloqueada):
-		seletor_slot.add_item(slots_codigo[i]["nome"], i)
+		seletor_slot.add_item(tr(slots_codigo[i]["nome"]), i)
 
 	if slot_atual_idx >= qtd_desbloqueada:
 		_on_seletor_slot_item_selected(0)
@@ -711,11 +711,11 @@ func _atualizar_nomes_seletor() -> void:
 		var modificado = slot_info.get("modificado", false)
 		
 		if modificado:
-			seletor_slot.set_item_text(i, slot_info["nome"] + "*")
+			seletor_slot.set_item_text(i, tr(slot_info["nome"]) + "*")
 			if popup.has_method("set_item_custom_fg_color"):
 				popup.set_item_custom_fg_color(i, Color.YELLOW)
 		else:
-			seletor_slot.set_item_text(i, slot_info["nome"])
+			seletor_slot.set_item_text(i, tr(slot_info["nome"]))
 			if popup.has_method("set_item_custom_fg_color"):
 				popup.set_item_custom_fg_color(i, Color.WHITE)
 			

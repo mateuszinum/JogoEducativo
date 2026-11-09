@@ -542,7 +542,7 @@ grow_vertical = 1
 produto = ExtResource("26_oqm2m")
 
 [node name="TituloLoja" parent="Lateral" parent_id_path=PackedInt32Array(610877546) index="0" unique_id=1433500361]
-text = "MAGO VELHO"
+text = "LOJA_MAGO_VELHO_NOME"
 
 [node name="PersonagemImagem" parent="Personagem/EspacoPersonagem" parent_id_path=PackedInt32Array(1732438903) index="0" unique_id=897123767]
 texture = ExtResource("28_n146t")

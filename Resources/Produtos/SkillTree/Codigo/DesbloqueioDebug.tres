@@ -27,14 +27,12 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 [resource]
 script = ExtResource("5_apnv1")
 nome = "Debug"
+nome_display = "PRODUTO_ARVORE_DEBUG_NOME"
 pagina_biblioteca = "escreva"
 icone = ExtResource("2_v2fyr")
 pre_requisitos = Array[ExtResource("5_apnv1")]([ExtResource("6_v2fyr")])
 tipo = 1
-descricao_simples = "Facilita diagnóstico de bugs.
-
-Desbloqueia:
-- escreva()"
+descricao_simples = "PRODUTO_ARVORE_DEBUG_DESC"
 custo_item_simples = ExtResource("1_v2fyr")
 custo_quantidade_simples = 80
 niveis = Array[ExtResource("3_qw8vh")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

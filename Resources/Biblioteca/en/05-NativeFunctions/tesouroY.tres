@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="BibliotecaResource" format=3 uid="uid://cy0nn22usmai1"]
+
+[ext_resource type="Script" uid="uid://dg4eb1rd0eaip" path="res://Scripts/Biblioteca/biblioteca_texto.gd" id="1_taqu2"]
+[ext_resource type="Script" uid="uid://be6x46yhir5k7" path="res://Scripts/Biblioteca/biblioteca_resource.gd" id="2_l14vs"]
+
+[sub_resource type="Resource" id="Resource_sj6m0"]
+script = ExtResource("1_taqu2")
+tipo = 1
+texto = "tesouroY()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ms24s"]
+script = ExtResource("1_taqu2")
+texto = "Retorna um valor inteiro correspondente ao valor Y (vertical) das coordenadas XY do tesouro ativo no momento de execução da função."
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_ablw5"]
+script = ExtResource("1_taqu2")
+tipo = 2
+texto = "Exemplo de uso"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_lcow8"]
+script = ExtResource("1_taqu2")
+tipo = 3
+texto = "int posTesouroY = tesouroY()"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_p0fci"]
+script = ExtResource("1_taqu2")
+tipo = 2
+texto = "Páginas Relacionadas"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[sub_resource type="Resource" id="Resource_8fwl4"]
+script = ExtResource("1_taqu2")
+tipo = 4
+texto = "posicaoX posicaoY tesouroX Tesouros"
+metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
+
+[resource]
+script = ExtResource("2_l14vs")
+nome = "tesouroY"
+blocos_de_conteudo = Array[ExtResource("1_taqu2")]([SubResource("Resource_sj6m0"), SubResource("Resource_ms24s"), SubResource("Resource_ablw5"), SubResource("Resource_lcow8"), SubResource("Resource_p0fci"), SubResource("Resource_8fwl4")])
+metadata/_custom_type_script = "uid://bxgpr8rtuumqq"
