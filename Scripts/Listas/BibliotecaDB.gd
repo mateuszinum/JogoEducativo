@@ -70,9 +70,9 @@ func _indexar_paginas():
 	_mapa_nome_para_pagina.clear()
 
 	var paginas_ativas: Array[BibliotecaResource] = []
-	if Constantes.JOGO_EN == 1:
+	if Constantes.IDIOMA == 1:
 		paginas_ativas = paginas_en
-	elif Constantes.JOGO_EN == 0:
+	elif Constantes.IDIOMA == 0:
 		paginas_ativas = paginas_pt
 
 	for pagina in paginas_ativas:

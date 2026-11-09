@@ -23,7 +23,7 @@ var USAR_EFEITOS_TELA : bool = true
 # Mantenha essas como estão
 var FONTE_TERMINAL : int = 0 # altera a fonte do código do usuário no grimório
 var TEMPO_ESCREVA : float = 3.0 # o tempo que cada mensagem do "escreva()" persiste na tela
-var IDIOMA : int = 0 # define o idioma dos textos do jogo
+var IDIOMA : int = 0 # idioma do jogo, da Biblioteca e da linguagem do grimório (pt_br = 0, en = 1)
 
 var FORÇAR_BIBLIOTECA : bool = true #define se ao desbloquear algo na skill tree, ele imediatamente te leva pra biblioteca
 # -------------------------------------------------- #
@@ -40,9 +40,6 @@ var USAR_SHAKE : bool = true
 
 # Define se vai ter luz e partículas nos ataques
 var GRÁFICO_HIGH : bool = true
-
-# Define o idioma. (pt_br = 0, en = 1)
-var JOGO_EN : int = 0
 
 var VOLUME_MASTER : float = 0.5:
 	set(value):

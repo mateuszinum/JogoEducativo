@@ -72,9 +72,9 @@ func _ready() -> void:
 		if has_node("PosProcessamento"):
 			$PosProcessamento.hide()
 	
-	if Constantes.JOGO_EN == 0:
+	if Constantes.IDIOMA == 0:
 		TranslationServer.set_locale("pt_br")
-	elif Constantes.JOGO_EN == 1:
+	elif Constantes.IDIOMA == 1:
 		TranslationServer.set_locale("en")
 		
 func iniciar_musica() -> void:
