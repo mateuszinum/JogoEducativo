@@ -26,8 +26,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_ahq26")
 tipo = 3
-texto = "se (vidaAtual() < 20):
-	mochila.usarItem()"
+texto = "se (vidaAtual() < 20)
+{
+	mochila.usarItem()
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

@@ -33,20 +33,26 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_sqbvq")
 tipo = 3
 texto = "#Exemplo 1
-se(inimigoMaisProximo().vida == 1):
+se(inimigoMaisProximo().vida == 1)
+{
 	atacar(inimigoMaisProximo(), Raio)
-senao:
+}
+senao
+{
 	atacar(inimigoMaisProximo(), EsferaAzul)
-fim se
+}
 
 #Exemplo 2
 Inimigo i = inimigoMaisProximo()
 
-se(i.vida == 1):
+se(i.vida == 1)
+{
 	atacar(i, Raio)
-senao:
+}
+senao
+{
 	atacar(i, EsferaAzul)
-fim se"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

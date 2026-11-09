@@ -26,8 +26,10 @@ script = ExtResource("1_lfj42")
 tipo = 3
 texto = "float a = aleatorio()
 
-se(a > 0.50):
-	#comando"
+se(a > 0.50)
+{
+	escreva(\"Deu sorte!\") # metade das vezes
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

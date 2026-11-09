@@ -34,21 +34,27 @@ script = ExtResource("1_4l6a1")
 tipo = 3
 texto = "#Exemplo 1
 
-se(inimigoMaisProximo().nome == SlimeDeFogo):
-	atacar(inimigoMaisProximo().nome, Gelo)
-senao:
-	atacar(inimigoMaisProximo().nome, EsferaAzul)
-fim se
+se(inimigoMaisProximo().nome == SlimeDeFogo)
+{
+	atacar(inimigoMaisProximo(), Gelo)
+}
+senao
+{
+	atacar(inimigoMaisProximo(), EsferaAzul)
+}
 
 #Exemplo 2
 
 Inimigo i = inimigoMaisProximo()
 
-se(i.nome == SlimeDeFogo):
+se(i.nome == SlimeDeFogo)
+{
 	atacar(i, Gelo)
-senao:
+}
+senao
+{
 	atacar(i, EsferaAzul)
-fim se"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

@@ -48,24 +48,28 @@ int vidaRestante = vidaMaxima - dano
 float metadeDaVida = vidaMaxima / 2
 
 int nivel = 5
-se(nivel >= 10):
+se(nivel >= 10)
+{
 	escreva(\"Você é muito forte!\")
-fim se
+}
 
-se(alvo == Nulo):
+se(alvo == Nulo)
+{
     escreva(\"Nenhum inimigo encontrado.\")
-fim se
+}
 
 int contador = 50
 bool valor = Verdadeiro
-se(contador >= 20 e valor):
-    atacar(inimigoMaisProximo, EsferaAzul)
-fim se
+se(contador >= 20 e valor)
+{
+    atacar(inimigoMaisProximo(), EsferaAzul)
+}
 
 bool temBastanteVida = Falso
-se(!temBastanteVida):
+se(!temBastanteVida)
+{
     escreva(\"Cuidado, você está desprotegido!\")
-fim se"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

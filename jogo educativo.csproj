@@ -8,6 +8,25 @@
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
   </ItemGroup><ItemGroup>
+  <!-- Interpretador em português (repositório backend-extensao, branch Panorama-Geral). -->
   <ProjectReference Include="..\backend-extensao\Jogo.Core\Jogo.Core.csproj" />
 </ItemGroup>
+  <!--
+    Interpretador em inglês (repositório backend-extensao-ingles): DESLIGADO.
+    Para ligar:
+      1. No repositório inglês, renomeie Jogo.Core/Jogo.Core.csproj para Jogo.Core/Game.Core.csproj
+         (e atualize o .sln/.slnx e o Jogo.Core.Tests.csproj de lá). É obrigatório: os dois
+         projetos chamados "Jogo.Core" colidem no restore/deps.json e o jogo não acha o
+         assembly em runtime. Sobrescrever só AssemblyName/PackageId pela referência NÃO resolve.
+      2. Descomente o bloco abaixo. Ele define GRIMORIO_INGLES, que ativa
+         Scripts/Interpretador/Idiomas/Ingles/IdiomaIngles.cs.
+    Depois disso, Constantes.IDIOMA = 1 passa a usar o interpretador em inglês.
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);GRIMORIO_INGLES</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\backend-extensao-ingles\Jogo.Core\Game.Core.csproj" />
+  </ItemGroup>
+  -->
 </Project>

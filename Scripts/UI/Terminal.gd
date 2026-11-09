@@ -36,12 +36,12 @@ extends PanelContainer
 @export var hl_origem_var: bool = true # A linha lá em cima onde a variável 'a' nasceu
 @export var hl_atribuicao: bool = true # Ex: a = 2
 @export var hl_se_senao: bool = true # Ex: se, senao se, senao
-@export var hl_fim_se: bool = true # Ex: fim se
+@export var hl_fim_se: bool = true # Ex: a '}' que fecha o se/senao
 @export var hl_enquanto: bool = true # Ex: enquanto()
-@export var hl_fim_enquanto: bool = true # Ex: fim enquanto
+@export var hl_fim_enquanto: bool = true # Ex: a '}' que fecha o enquanto
 @export var hl_chamada_funcao: bool = true # Ex: mover(), getDirecao()
 @export var hl_corpo_funcao: bool = true # Ex: A declaração da função lá no topo
-@export var hl_fim_funcao: bool = true # Ex: fim funcao
+@export var hl_fim_funcao: bool = true # Ex: a '}' que fecha a função
 @export var hl_retorna: bool = true # Ex: retorna
 
 var modo_atual: String = "vilarejo"
@@ -73,8 +73,8 @@ func _ready() -> void:
 	code_edit.focus_mode = Control.FOCUS_CLICK
 	
 	code_edit.add_theme_font_size_override("font_size", tamanho_fonte_padrao)
-	
-	configurar_cores_do_codigo()
+
+	_sincronizar_idioma_linguagem(true)
 	aplicar_fonte()
 	
 	code_edit.code_completion_enabled = true
@@ -203,7 +203,9 @@ func _on_botao_executar_pressed() -> void:
 	if (modo_atual == "vilarejo" or modo_atual == "tutorial") and not codigo_rodando:
 		var codigo_digitado = code_edit.text
 		if codigo_digitado.strip_edges() == "": return
-		
+
+		_sincronizar_idioma_linguagem()
+
 		var erro_bloqueio = validar_codigo_bloqueado(codigo_digitado)
 		if erro_bloqueio != "":
 			mostrar_erro_runtime(erro_bloqueio)
@@ -260,7 +262,36 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 			code_edit.add_theme_font_size_override("font_size", clamp(tamanho_atual - 2, tamanho_fonte_minimo, tamanho_fonte_maximo))
 			get_viewport().set_input_as_handled()
 	
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER:
+	# Blocos com chaves em linhas próprias (ver AssistenteBlocos).
+	# Precisa rodar ANTES do CodeEdit processar a tecla, por isso não há await antes daqui.
+	if event is InputEventKey and event.pressed and code_edit.editable:
+		var completando = code_edit.get_code_completion_selected_index() != -1
+		if event.keycode in [KEY_ENTER, KEY_KP_ENTER] and not completando and not event.shift_pressed:
+			if AssistenteBlocos.ao_pressionar_enter(code_edit):
+				code_edit.accept_event()
+				return
+		if event.unicode == LinguagemDB.perfil()["abre_bloco"].unicode_at(0):
+			await get_tree().process_frame
+			AssistenteBlocos.ao_digitar_abre_chave(code_edit)
+			return
+
+	# Ao digitar '}' sozinho na linha, recua um nível de indentação.
+	if event is InputEventKey and event.pressed and event.unicode == LinguagemDB.perfil()["fecha_bloco"].unicode_at(0):
+		await get_tree().process_frame
+		var linha_fecha = code_edit.get_caret_line()
+		var texto_fecha = code_edit.get_line(linha_fecha)
+		if texto_fecha.strip_edges() == LinguagemDB.perfil()["fecha_bloco"]:
+			var recuado = ""
+			if texto_fecha.begins_with("\t"):
+				recuado = texto_fecha.substr(1)
+			elif texto_fecha.begins_with("    "):
+				recuado = texto_fecha.substr(4)
+			if recuado != "":
+				code_edit.set_line(linha_fecha, recuado)
+				code_edit.set_caret_column(recuado.length())
+
+	# Mantém a indentação ao quebrar linha (não quando o Enter só aceitou uma sugestão do autocomplete).
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and code_edit.get_code_completion_selected_index() == -1:
 		var linha_antes = code_edit.get_caret_line()
 		
 		await get_tree().process_frame
@@ -278,7 +309,7 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 				else:
 					break
 					
-			if texto_linha_anterior.strip_edges().ends_with(":"):
+			if texto_linha_anterior.strip_edges().ends_with(LinguagemDB.perfil()["abre_bloco"]):
 				indentacao_detectada += "\t"
 				
 			if indentacao_detectada != "":
@@ -324,34 +355,43 @@ func mostrar_erro_runtime(mensagem: String):
 	add_child(dialog)
 	dialog.popup_centered()
 
-func configurar_cores_do_codigo() -> void:
-	var highlighter = CodeHighlighter.new()
-	highlighter.number_color = Color("#b5cea8") 
-	highlighter.symbol_color = Color("#d4d4d4") 
-	highlighter.function_color = Color("#dcdcaa") 
-	highlighter.member_variable_color = Color("#9cdcfe")
-	
-	highlighter.add_color_region('"', '"', Color("#ce9178"), false) 
-	highlighter.add_color_region('#', '', Color("#6a9955"), true)   
-	
-	var cor_controle = Color("#c586c0")
-	var palavras_controle = ["se", "senao", "fim", "enquanto", "retorna", "funcao"]
-	for palavra in palavras_controle: highlighter.add_keyword_color(palavra, cor_controle)
-		
-	var cor_tipo = Color("#569cd6")
-	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Nulo", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
-	for palavra in palavras_tipo: highlighter.add_keyword_color(palavra, cor_tipo)
-	
-	var cor_constante = Color("#4ec9b0") 
-	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Raio", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
-	for constante in constantes_jogo: highlighter.add_keyword_color(constante, cor_constante)
-		
-	var cor_funcao = Color("#dcdcaa")
-	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho", "trunca", "aleatorio", "escreva"]
-	for func_nativa in funcoes_nativas: highlighter.add_keyword_color(func_nativa, cor_funcao)
+## Alinha o editor (cores, autocomplete, indentação) com o idioma que o interpretador vai usar.
+## Chame depois de trocar Constantes.IDIOMA para o editor refletir a mudança na hora.
+func atualizar_idioma_linguagem() -> void:
+	_sincronizar_idioma_linguagem(true)
 
-	var funcoes_membro = ["usarItem", "colocarItem"]
-	for func_membro in funcoes_membro: 
+func _sincronizar_idioma_linguagem(forcar: bool = false) -> void:
+	var codigo_idioma = LinguagemDB.IDIOMA_PADRAO
+	if interpretador and interpretador.has_method("IdiomaEfetivo"):
+		codigo_idioma = interpretador.IdiomaEfetivo()
+	if forcar or codigo_idioma != LinguagemDB.idioma_ativo:
+		LinguagemDB.definir_idioma(codigo_idioma)
+		configurar_cores_do_codigo()
+
+func configurar_cores_do_codigo() -> void:
+	var perfil = LinguagemDB.perfil()
+	var highlighter = CodeHighlighter.new()
+	highlighter.number_color = Color("#b5cea8")
+	highlighter.symbol_color = Color("#d4d4d4")
+	highlighter.function_color = Color("#dcdcaa")
+	highlighter.member_variable_color = Color("#9cdcfe")
+
+	highlighter.add_color_region('"', '"', Color("#ce9178"), false)
+	highlighter.add_color_region('#', '', Color("#6a9955"), true)
+
+	var cor_controle = Color("#c586c0")
+	for palavra in perfil["palavras_controle"]: highlighter.add_keyword_color(palavra, cor_controle)
+
+	var cor_tipo = Color("#569cd6")
+	for palavra in perfil["palavras_tipo"]: highlighter.add_keyword_color(palavra, cor_tipo)
+
+	var cor_constante = Color("#4ec9b0")
+	for constante in perfil["constantes"]: highlighter.add_keyword_color(constante, cor_constante)
+
+	var cor_funcao = Color("#dcdcaa")
+	for func_nativa in perfil["funcoes_nativas"]: highlighter.add_keyword_color(func_nativa, cor_funcao)
+
+	for func_membro in perfil["funcoes_membro"]:
 		highlighter.add_member_keyword_color(func_membro, cor_funcao)
 
 	code_edit.syntax_highlighter = highlighter
@@ -373,11 +413,7 @@ func _on_code_completion_requested() -> void:
 	var current_col = code_edit.get_caret_column()
 	var line_text = code_edit.get_line(current_line).substr(0, current_col)
 
-	var texto_limpo = line_text.strip_edges()
-	if texto_limpo.ends_with("fim enquanto") or texto_limpo.ends_with("fim se") or texto_limpo.ends_with("fim funcao"):
-		code_edit.cancel_code_completion()
-		return
-
+	var termos = LinguagemDB.termos_autocomplete()
 	var regex = RegEx.new()
 	regex.compile("[a-zA-Z0-9_\\.]+$") 
 	var match = regex.search(line_text)
@@ -389,17 +425,38 @@ func _on_code_completion_requested() -> void:
 	var prefixo_digitado = match.get_string()
 	var sugestoes_encontradas = 0
 
-	for termo in AutocompleteDB.termos.keys():
-		var dados = AutocompleteDB.termos[termo]
-		var requisito = dados[1] 
-		
+	# Palavra já completa (ex.: "senao", "int"): não oferece nada, para o Enter seguinte
+	# quebrar a linha em vez de trocar a palavra por uma sugestão mais longa.
+	if termos.has(prefixo_digitado):
+		code_edit.cancel_code_completion()
+		return
+
+	# Termos de mais de uma palavra ("senao se()"): compara com tudo o que foi digitado na linha.
+	var trecho = line_text.strip_edges(true, false)
+	var so_compostos = false
+	if trecho.contains(" "):
+		for termo in termos.keys():
+			if termo.contains(" ") and termo.to_lower().begins_with(trecho.to_lower()) and termo != trecho:
+				so_compostos = true
+				break
+
+	for termo in termos.keys():
+		var dados = termos[termo]
+		var requisito = dados[1]
+
 		if not ProgressoDB.tem_desbloqueado(requisito):
 			continue
-			
+
 		var match_encontrado = false
 		var texto_insercao = termo
-		
-		if prefixo_digitado.contains("."):
+
+		if so_compostos:
+			if termo.contains(" ") and termo.to_lower().begins_with(trecho.to_lower()) and termo != trecho:
+				match_encontrado = true
+				# O CodeEdit só substitui a última palavra; insere o resto do termo a partir dela.
+				texto_insercao = termo.substr(trecho.length() - prefixo_digitado.length())
+
+		elif prefixo_digitado.contains("."):
 			var partes = prefixo_digitado.rsplit(".", true, 1)
 			var sufixo = partes[1]
 			
@@ -442,7 +499,7 @@ func _input(event: InputEvent) -> void:
 		if has_focus() or code_edit.has_focus():
 			salvar()
 			
-	if event.is_action_pressed("ui_text_completion_accept") or event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_text_completion_accept") or event.is_action_pressed("ui_text_completion_replace") or event.is_action_pressed("ui_accept"):
 		if code_edit.has_focus():
 			call_deferred("_verificar_cursor_pos_autocomplete")
 
@@ -451,17 +508,30 @@ func _verificar_cursor_pos_autocomplete() -> void:
 	var col = code_edit.get_caret_column()
 	var texto_linha = code_edit.get_line(linha).substr(0, col)
 	
-	for termo in AutocompleteDB.termos.keys():
+	var termos = LinguagemDB.termos_autocomplete()
+
+	# Estrutura de bloco aceita no autocomplete ("se()", "senao", "enquanto()"...):
+	# monta "{", corpo e "}" em linhas próprias e posiciona o cursor.
+	var linha_inteira = code_edit.get_line(linha)
+	if col == linha_inteira.length() and not AssistenteBlocos.analisar_cabecalho(linha_inteira).is_empty():
+		var estruturas = LinguagemDB.perfil()["estruturas_bloco"]
+		for termo in termos.keys():
+			if estruturas.has(LinguagemDB.palavra_do_termo(termo)) and texto_linha.ends_with(termo):
+				AssistenteBlocos.expandir_bloco(code_edit, linha)
+				return
+
+	for termo in termos.keys():
 		if texto_linha.ends_with(termo):
-			var recuo = AutocompleteDB.termos[termo][0]
+			var recuo = termos[termo][0]
 			if recuo > 0: code_edit.set_caret_column(col - recuo)
 			break
 			
 func validar_codigo_bloqueado(codigo: String) -> String:
-	for termo in AutocompleteDB.termos.keys():
-		var requisito = AutocompleteDB.termos[termo][1]
+	var termos = LinguagemDB.termos_autocomplete()
+	for termo in termos.keys():
+		var requisito = termos[termo][1]
 		if not ProgressoDB.tem_desbloqueado(requisito):
-			var termo_limpo = termo.replace("():", "").replace("()", "").replace(":", "").strip_edges()
+			var termo_limpo = LinguagemDB.palavra_do_termo(termo)
 			var regex = RegEx.new()
 			regex.compile("\\b" + termo_limpo.replace(".", "\\.") + "\\b")
 			if regex.search(codigo):

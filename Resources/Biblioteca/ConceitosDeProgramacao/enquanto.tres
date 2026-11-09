@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_s4kx5")
 texto = "O \"enquanto\" serve para repetir um bloco de código várias vezes, desde que a condição que você escolheu continue sendo verdadeira. É perfeito para executar ações contínuas.
 
-A estrutura deve ser fechada com um \"fim enquanto\"
+As ações que serão repetidas ficam entre chaves { }, e o bloco deve ser fechado com a \"}\".
 
 Dica: Se você quiser um loop infinito, use \"enquanto(Verdadeiro)\".
 "
@@ -40,10 +40,11 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_agsnw"]
 script = ExtResource("1_s4kx5")
 tipo = 3
-texto = "enquanto(Verdadeiro):
+texto = "enquanto(Verdadeiro)
+{
 	atacar(inimigoMaisProximo(), EsferaAzul)
 	mover(Esquerda)
-fim enquanto"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_tcggy"]
@@ -55,9 +56,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_6qiy6"]
 script = ExtResource("1_s4kx5")
 tipo = 3
-texto = "enquanto(contador > 2):
+texto = "enquanto(contador > 2)
+{
 	mover(Cima)
-fim enquanto"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [resource]

@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 script = ExtResource("1_6su55")
 texto = "A estrutura se permite que o seu código tome decisões. É como dizer: \"Se isso for verdade, faça aquilo. Senão, faça outra coisa.\"
 
-Você escreve a condição entre parênteses e usa os dois pontos : para abrir o bloco de ações. Não se esqueça de fechar com o fim se!"
+Você escreve a condição entre parênteses e coloca as ações entre chaves { }. Não se esqueça de fechar o bloco com a }!"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_la7ww"]
@@ -25,13 +25,18 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_7f7fo"]
 script = ExtResource("1_6su55")
 tipo = 3
-texto = "se(condicao1):
+texto = "se(condicao1)
+{
 	#codigo
-senao se(condicao2):
+}
+senao se(condicao2)
+{
 	#codigo
-senao:
+}
+senao
+{
 	#codigo
-fim se
+}
 "
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 

@@ -28,9 +28,10 @@ metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 [sub_resource type="Resource" id="Resource_lcow8"]
 script = ExtResource("1_hs528")
 tipo = 3
-texto = "se(podeMover(Cima)):
+texto = "se(podeMover(Cima))
+{
 	mover(Cima)
-fim se"
+}"
 metadata/_custom_type_script = "uid://dg4eb1rd0eaip"
 
 [sub_resource type="Resource" id="Resource_yvjea"]

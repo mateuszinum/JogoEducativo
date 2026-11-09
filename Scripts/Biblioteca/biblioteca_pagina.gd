@@ -153,10 +153,12 @@ func aplicar_syntax_highlight(codigo: String) -> String:
 	regex_palavra.compile("\\b\\d+(\\.\\d+)?\\b")
 	temp_codigo = regex_palavra.sub(temp_codigo, "[color=#b5cea8]$0[/color]", true)
 	
-	var palavras_controle = ["se", "senao", "fim", "enquanto", "retorna", "funcao"]
-	var palavras_tipo = ["int", "float", "bool", "string", "vazio", "Verdadeiro", "Falso", "Nulo", "Inimigo", "Arena", "Ataque", "Direcao", "cinto", "mochila"]
-	var constantes_jogo = ["Cima", "Baixo", "Direita", "Esquerda", "EsferaAzul", "EsferaVermelha", "Raio", "Gelo", "Fogo", "ExplosaoFogo", "ExplosaoGelo", "Alho", "Moeda", "Osso", "Couro", "Magma", "Cristal", "Plasma", "Sangue", "Safira", "Esmeralda", "Diamante", "Goblin", "Esqueleto", "SlimeDeFogo", "SlimeDeGelo", "Lobisomem", "Orc", "Fantasma", "Vampiro", "Campos", "Floresta", "Labirinto"]
-	var funcoes_nativas = ["mover", "atacar", "inimigoMaisProximo", "podeMover", "getTempo", "getVidaAtual", "escapar", "escanearArea", "posicaoX", "posicaoY", "tesouroX", "tesouroY", "arena", "comprar", "min", "max", "tamanho", "trunca", "aleatorio", "escreva", "usarItem", "colocarItem"]
+	# Mesmo vocabulário do editor do grimório (ver Scripts/Interpretador/LinguagemDB.gd).
+	var perfil = LinguagemDB.perfil()
+	var palavras_controle: Array = perfil["palavras_controle"]
+	var palavras_tipo: Array = perfil["palavras_tipo"]
+	var constantes_jogo: Array = perfil["constantes"]
+	var funcoes_nativas: Array = perfil["funcoes_nativas"] + perfil["funcoes_membro"]
 	
 	for p in palavras_controle:
 		regex_palavra.compile("\\b" + p + "\\b")
