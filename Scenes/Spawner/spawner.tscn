@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://l0wqo5jekvld" path="res://Scenes/Inventario/Inventario.tscn" id="2_rd5sa"]
 [ext_resource type="FontFile" uid="uid://cnj1apyeng1e5" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_wbtia"]
 [ext_resource type="Script" uid="uid://c5lulshoylfgo" path="res://Scripts/Outros/criador_de_grupo.gd" id="3_v3byw"]
+[ext_resource type="Script" uid="uid://dhxeyd36plr27" path="res://Scripts/Pocoes/hud_pocoes.gd" id="6_n5t3c"]
+[ext_resource type="PackedScene" uid="uid://cq8vka6d2gtx6" path="res://Scenes/Pocoes/pocoes.tscn" id="7_7p3vf"]
 
 [node name="Spawner" type="Node2D" unique_id=179975569 groups=["Spawner"]]
 script = ExtResource("1_kiceh")
@@ -50,6 +52,21 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_wbtia")
 theme_override_font_sizes/font_size = 24
 text = "00"
+
+[node name="HUD_Pocoes" type="HBoxContainer" parent="UI" unique_id=911047326]
+anchors_preset = -1
+anchor_top = 0.65416664
+anchor_right = 0.4859375
+offset_left = 25.0
+offset_top = 93.00003
+offset_right = 65.0
+offset_bottom = 671.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+script = ExtResource("6_n5t3c")
+cena_pocao = ExtResource("7_7p3vf")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1316115701]
 autostart = true

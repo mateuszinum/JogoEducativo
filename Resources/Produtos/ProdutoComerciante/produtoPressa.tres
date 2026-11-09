@@ -25,9 +25,9 @@ metadata/_custom_type_script = "uid://c8bxs1ja34fbl"
 
 [resource]
 script = ExtResource("5_wumyq")
-nome = "PocaoDeVelocidade"
+nome = "Poção de Velocidade"
 icone = ExtResource("2_s7hjw")
-descricao_simples = "Dá le pau nesse carrinho marcos!!!! (aumenta sua velocidade de movimento e tiro no geral)"
+descricao_simples = "Dá le pau nesse carrinho marcos!!!! (duplica sua velocidade por 20 segundos)"
 custo_item_simples = ExtResource("1_s7hjw")
 custo_quantidade_simples = 3
 niveis = Array[ExtResource("3_q135d")]([SubResource("Resource_btodh"), SubResource("Resource_ji3o2"), SubResource("Resource_6x1o3")])

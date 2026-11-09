@@ -96,9 +96,7 @@ func vender_item(index: int) -> void:
 func trocar_inventario(novo_tipo: TipoInventario) -> void:
 	if inventario_ativo == novo_tipo:
 		return
-		
-	vender_tudo()
-	
+
 	inventario_ativo = novo_tipo
 	
 	if inventario_ativo == TipoInventario.CINTO:
