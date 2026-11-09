@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://2aisqxpattp1" path="res://Audio/Soundtracks/campos.ogg" id="9_mfjtu"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
 [ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/campos_tesouro.tres" id="11_mfjtu"]
-[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Inimigos/Goblin.tres" id="inimigo_Goblin"]
 [ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Inimigos/Esqueleto.tres" id="inimigo_Esqueleto"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Inimigos/Goblin.tres" id="inimigo_Goblin"]
 [ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Inimigos/SlimeDeFogo.tres" id="inimigo_SlimeDeFogo"]
 [ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Inimigos/SlimeDeGelo.tres" id="inimigo_SlimeDeGelo"]
 

@@ -7,9 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://d3wsoe71gb38p" path="res://Audio/Soundtracks/floresta.ogg" id="9_h7a20"]
 [ext_resource type="TileSet" uid="uid://cnvieb7wwswqa" path="res://Resources/Stages/Floresta/floresta_tileset.tres" id="10_e3kfy"]
 [ext_resource type="Resource" uid="uid://cbq58vn3x3gyp" path="res://Resources/Stages/Floresta/floresta_tesouro.tres" id="11_h7a20"]
+[ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Inimigos/Fantasma.tres" id="inimigo_Fantasma"]
 [ext_resource type="Resource" uid="uid://dj8iit3oemlpe" path="res://Resources/Inimigos/Lobisomem.tres" id="inimigo_Lobisomem"]
 [ext_resource type="Resource" uid="uid://cqnnmeqrchfi8" path="res://Resources/Inimigos/Orc.tres" id="inimigo_Orc"]
-[ext_resource type="Resource" uid="uid://e7xq7j38wovw" path="res://Resources/Inimigos/Fantasma.tres" id="inimigo_Fantasma"]
 [ext_resource type="Resource" uid="uid://cd6v87ojvquk0" path="res://Resources/Inimigos/Vampiro.tres" id="inimigo_Vampiro"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]

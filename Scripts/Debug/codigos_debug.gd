@@ -227,13 +227,8 @@ enquanto(Verdadeiro)
 }""",
 
 # --- SLOT 3 (Código D) ---
-"""""",
-
-# --- SLOT 4 (Código E) ---
 """# ==================================================
-# TESTE GERAL DA LINGUAGEM DO GRIMORIO
-# Rode na vila. So aparece mensagem em falha e no
-# fim de cada secao. A ultima secao entra na arena.
+# TESTE GERAL
 # ==================================================
 
 int testes = 0
@@ -966,28 +961,10 @@ resumoFinal()
 # se(Verdadeiro)
 # {
 # }
-#
-# [BUG CONHECIDO] hoje para com erro; deveria funcionar
-# int comecaNulo = Nulo
-# comecaNulo = 1
-#
-# [BUG CONHECIDO] hoje para com erro; deveria funcionar
-# int recebeNulo = 1
-# recebeNulo = Nulo
-#
-# [BUG CONHECIDO] hoje para com erro; deveria funcionar
-# float comecaComInt = 3
-# comecaComInt = 1.5
-#
-# [BUG CONHECIDO] funcao tipada nao consegue devolver Nulo
-# Inimigo semInimigo()
-# {
-# 	retorna Nulo
-# }
-# Inimigo resultado = semInimigo()
-#
-# [BUG CONHECIDO] resultado de escanearArea nao cabe em variavel
-# Inimigo area = escanearArea()"""
+""",
+
+# --- SLOT 4 (Código ) ---
+"""""",
 ]
 
 static func obter_codigo(indice: int) -> String:
