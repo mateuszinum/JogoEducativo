@@ -7,6 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://2aisqxpattp1" path="res://Audio/Soundtracks/campos.ogg" id="9_mfjtu"]
 [ext_resource type="TileSet" uid="uid://bf2twwxua7jb3" path="res://Resources/Stages/Campos/campos_tileset.tres" id="9_ytlo0"]
 [ext_resource type="Resource" uid="uid://bmq8xbv3qshx1" path="res://Resources/Stages/Campos/campos_tesouro.tres" id="11_mfjtu"]
+[ext_resource type="Resource" uid="uid://yv3gmlvil4l3" path="res://Resources/Inimigos/Goblin.tres" id="inimigo_Goblin"]
+[ext_resource type="Resource" uid="uid://bufqw7ji7465l" path="res://Resources/Inimigos/Esqueleto.tres" id="inimigo_Esqueleto"]
+[ext_resource type="Resource" uid="uid://dsltr00ychkc4" path="res://Resources/Inimigos/SlimeDeFogo.tres" id="inimigo_SlimeDeFogo"]
+[ext_resource type="Resource" uid="uid://bx2b1hghklvwh" path="res://Resources/Inimigos/SlimeDeGelo.tres" id="inimigo_SlimeDeGelo"]
 
 [sub_resource type="Resource" id="Resource_yyig3"]
 script = ExtResource("1_ii8eh")
@@ -67,42 +71,30 @@ source_id = 9
 chance_peso = 0.2
 metadata/_custom_type_script = "uid://cv3u6luyflcf8"
 
-[sub_resource type="Resource" id="Resource_14n5q"]
-metadata/__load_path__ = "res://Resources/Enemies/Goblin.tres"
-
 [sub_resource type="Resource" id="Resource_ts6uj"]
 script = ExtResource("3_0o20v")
-enemy_type = SubResource("Resource_14n5q")
+enemy_type = ExtResource("inimigo_Goblin")
 spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
-
-[sub_resource type="Resource" id="Resource_4h07m"]
-metadata/__load_path__ = "res://Resources/Enemies/Esqueleto.tres"
 
 [sub_resource type="Resource" id="Resource_fk5lg"]
 script = ExtResource("3_0o20v")
 time_in_seconds = 5
-enemy_type = SubResource("Resource_4h07m")
+enemy_type = ExtResource("inimigo_Esqueleto")
 spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
-
-[sub_resource type="Resource" id="Resource_kps0y"]
-metadata/__load_path__ = "res://Resources/Enemies/SlimeDeFogo.tres"
 
 [sub_resource type="Resource" id="Resource_nt8bn"]
 script = ExtResource("3_0o20v")
 time_in_seconds = 20
-enemy_type = SubResource("Resource_kps0y")
+enemy_type = ExtResource("inimigo_SlimeDeFogo")
 spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
-
-[sub_resource type="Resource" id="Resource_ii8eh"]
-metadata/__load_path__ = "res://Resources/Enemies/SlimeDeGelo.tres"
 
 [sub_resource type="Resource" id="Resource_0o20v"]
 script = ExtResource("3_0o20v")
 time_in_seconds = 20
-enemy_type = SubResource("Resource_ii8eh")
+enemy_type = ExtResource("inimigo_SlimeDeGelo")
 spawn_rate = 0.1
 metadata/_custom_type_script = "uid://croimo2sgqusx"
 
