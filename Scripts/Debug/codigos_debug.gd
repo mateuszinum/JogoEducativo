@@ -229,7 +229,6 @@ enquanto(Verdadeiro)
 # --- SLOT 3 (Código D) ---
 """# ==================================================
 # TESTE GERAL
-# ==================================================
 
 int testes = 0
 int falhas = 0
@@ -736,7 +735,7 @@ checar("substituir vetor inteiro", tamanho(substituido) == 2 e substituido[1] ==
 substituido = []
 checar("substituir por vazio", tamanho(substituido) == 0)
 
-int somaVetor(int lista)
+int somaVetor(Vetor de int lista)
 {
 	int soma = 0
 	int posicao = 0
@@ -748,12 +747,12 @@ int somaVetor(int lista)
 	retorna soma
 }
 
-vazio alteraPrimeiro(int lista)
+vazio alteraPrimeiro(Vetor de int lista)
 {
 	lista[0] = 99
 }
 
-vazio ordenar(int lista)
+vazio ordenar(Vetor de int lista)
 {
 	int passada = 0
 	enquanto(passada < tamanho(lista))
@@ -889,7 +888,6 @@ resumoFinal()
 # ==================================================
 # CASOS QUE DEVEM PARAR O CODIGO COM ERRO
 # Descomente um bloco por vez e rode sozinho.
-# ==================================================
 
 # [ERRO] variavel nao declarada
 # escreva(naoExiste)

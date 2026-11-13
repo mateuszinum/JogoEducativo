@@ -270,10 +270,6 @@ func _on_code_edit_gui_input(event: InputEvent) -> void:
 			if AssistenteBlocos.ao_pressionar_enter(code_edit):
 				code_edit.accept_event()
 				return
-		if event.unicode == LinguagemDB.perfil()["abre_bloco"].unicode_at(0):
-			await get_tree().process_frame
-			AssistenteBlocos.ao_digitar_abre_chave(code_edit)
-			return
 
 	# Ao digitar '}' sozinho na linha, recua um nível de indentação.
 	if event is InputEventKey and event.pressed and event.unicode == LinguagemDB.perfil()["fecha_bloco"].unicode_at(0):

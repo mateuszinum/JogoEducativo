@@ -1,23 +1,26 @@
 class_name AssistenteBlocos
 extends RefCounted
 
-## Ajuda o jogador a montar blocos no estilo do Grimório, com cada chave
-## na sua própria linha:
+## Ajuda o jogador a montar blocos no estilo do editor do Grimório:
+## a chave de abertura fica na linha do termo e a de fechamento sozinha no fim.
 ##
-##     se(condicao)
-##     {
+##     se(condicao) {
 ##         ...
 ##     }
 ##
 ## As palavras de cada idioma vêm do LinguagemDB (estruturas_bloco / tipos_funcao),
 ## então funciona igual em português e inglês.
 
-## Analisa uma linha. Se for cabeçalho de bloco, retorna:
-##   { "com_condicao": bool, "condicao": String, "abre_parenteses": int }
+## Analisa uma linha. Se for cabeçalho de bloco ("se(x)", "se(x) {", "senao", "vazio f()"...), retorna:
+##   { "com_condicao": bool, "condicao": String, "abre_parenteses": int, "tem_chave": bool }
 ## Senão, retorna {}.
 static func analisar_cabecalho(texto: String) -> Dictionary:
 	var perfil = LinguagemDB.perfil()
+	var abre: String = perfil["abre_bloco"]
 	var t = _sem_comentario(texto).strip_edges()
+	var tem_chave = t.ends_with(abre)
+	if tem_chave:
+		t = t.substr(0, t.length() - abre.length()).strip_edges()
 	if t == "":
 		return {}
 
@@ -35,17 +38,18 @@ static func analisar_cabecalho(texto: String) -> Dictionary:
 				"com_condicao": com_condicao,
 				"condicao": m.get_string(1).strip_edges() if com_condicao else "",
 				"abre_parenteses": texto.find("("),
+				"tem_chave": tem_chave,
 			}
 
 	# Declaração de função: <tipo> nome(parametros)
 	regex.compile("^(" + "|".join(perfil["tipos_funcao"]) + ")\\s+[A-Za-z_][A-Za-z0-9_]*\\s*\\((.*)\\)$")
 	if regex.search(t):
-		return { "com_condicao": false, "condicao": "", "abre_parenteses": texto.find("(") }
+		return { "com_condicao": false, "condicao": "", "abre_parenteses": texto.find("("), "tem_chave": tem_chave }
 
 	return {}
 
-## Garante que o cabeçalho na linha `linha` tenha "{", corpo e "}" logo abaixo,
-## e posiciona o cursor: nos parênteses se a condição estiver vazia, senão no corpo.
+## Garante que o cabeçalho na linha `linha` termine com " {" e tenha corpo e "}" abaixo.
+## Cursor: nos parênteses se a condição estiver vazia, senão no corpo.
 static func expandir_bloco(ce: CodeEdit, linha: int) -> void:
 	var texto = ce.get_line(linha)
 	var info = analisar_cabecalho(texto)
@@ -55,26 +59,36 @@ static func expandir_bloco(ce: CodeEdit, linha: int) -> void:
 	var ind = indentacao(texto)
 	var abre = LinguagemDB.perfil()["abre_bloco"]
 	var fecha = LinguagemDB.perfil()["fecha_bloco"]
+	var proxima = ce.get_line(linha + 1).strip_edges() if linha + 1 < ce.get_line_count() else ""
+	var linha_corpo = linha + 1
 
 	ce.begin_complex_operation()
-	var linha_abre = linha + 1
-	if linha_abre < ce.get_line_count() and ce.get_line(linha_abre).strip_edges() == abre:
-		# A chave de abertura já existe: garante o corpo (e o fechamento, se faltar).
-		var linha_corpo = linha_abre + 1
-		var sem_corpo = linha_corpo >= ce.get_line_count() or ce.get_line(linha_corpo).strip_edges() == fecha
-		if sem_corpo:
+	if info["tem_chave"]:
+		if proxima == fecha:
+			# Bloco existe mas está vazio: cria a linha do corpo.
+			ce.insert_text("\n" + ind + "\t", linha, texto.length())
+		elif chaves_abertas(ce.text) > 0:
+			# Chave aberta sem fechamento: cria corpo e "}".
+			ce.insert_text("\n" + ind + "\t\n" + ind + fecha, linha, texto.length())
+	elif proxima == abre:
+		# Código antigo com "{" na linha de baixo: respeita e só garante o corpo.
+		linha_corpo = linha + 2
+		var depois_abre = ce.get_line(linha + 2).strip_edges() if linha + 2 < ce.get_line_count() else ""
+		if linha + 2 >= ce.get_line_count() or depois_abre == fecha:
 			var extra = "\n" + ind + "\t"
-			if chaves_abertas(ce.text) > 0 and linha_corpo >= ce.get_line_count():
+			if chaves_abertas(ce.text) > 0 and linha + 2 >= ce.get_line_count():
 				extra += "\n" + ind + fecha
-			ce.insert_text(extra, linha_abre, ce.get_line(linha_abre).length())
+			ce.insert_text(extra, linha + 1, ce.get_line(linha + 1).length())
 	else:
-		ce.insert_text("\n" + ind + abre + "\n" + ind + "\t\n" + ind + fecha, linha, texto.length())
+		var base = texto.rstrip(" \t")
+		ce.set_line(linha, base + " " + abre)
+		ce.insert_text("\n" + ind + "\t\n" + ind + fecha, linha, ce.get_line(linha).length())
 	ce.end_complex_operation()
 
 	if info["com_condicao"] and info["condicao"] == "" and info["abre_parenteses"] >= 0:
 		_mover_cursor(ce, linha, info["abre_parenteses"] + 1)
 	else:
-		_ir_para_corpo(ce, linha + 2)
+		_ir_para_corpo(ce, linha_corpo)
 
 ## Trata o Enter. Retorna true se cuidou dele (o chamador deve consumir o evento).
 static func ao_pressionar_enter(ce: CodeEdit) -> bool:
@@ -85,21 +99,23 @@ static func ao_pressionar_enter(ce: CodeEdit) -> bool:
 	var coluna = ce.get_caret_column()
 	var texto = ce.get_line(linha)
 	var antes = texto.substr(0, coluna)
-	var depois = texto.substr(coluna)
+	var depois = _sem_comentario(texto.substr(coluna)).strip_edges()
+	var abre = LinguagemDB.perfil()["abre_bloco"]
+	var fecha = LinguagemDB.perfil()["fecha_bloco"]
 
-	# 1) Enter num cabeçalho, no fim da linha ou dentro dos parênteses → bloco + corpo.
+	# 1) Enter num cabeçalho (fim da linha, antes do "{" ou dentro dos parênteses).
 	var info = analisar_cabecalho(texto)
 	if not info.is_empty() and antes.strip_edges() != "":
 		var dentro_parenteses = info["abre_parenteses"] >= 0 and coluna > info["abre_parenteses"] and coluna <= texto.rfind(")")
-		if _sem_comentario(depois).strip_edges() == "" or dentro_parenteses:
-			# Condição vazia: o cursor fica nos parênteses; senão vai para o corpo.
+		var condicao_vazia = info["com_condicao"] and info["condicao"] == ""
+		if depois == "" and info["tem_chave"] and chaves_abertas(ce.text) <= 0 and not condicao_vazia:
+			return false # bloco já fechado: quebra de linha normal (o Terminal indenta)
+		if depois == "" or depois == abre or dentro_parenteses:
 			expandir_bloco(ce, linha)
 			return true
 
 	# 2) Enter numa "{" sozinha sem fechamento → corpo indentado + "}".
-	var abre = LinguagemDB.perfil()["abre_bloco"]
-	var fecha = LinguagemDB.perfil()["fecha_bloco"]
-	if texto.strip_edges() == abre and depois.strip_edges() == "" and chaves_abertas(ce.text) > 0:
+	if texto.strip_edges() == abre and depois == "" and chaves_abertas(ce.text) > 0:
 		var ind = indentacao(texto)
 		var proxima = ce.get_line(linha + 1).strip_edges() if linha + 1 < ce.get_line_count() else ""
 		ce.begin_complex_operation()
@@ -112,23 +128,6 @@ static func ao_pressionar_enter(ce: CodeEdit) -> bool:
 		return true
 
 	return false
-
-## Chamado logo depois de o jogador digitar "{". Se a linha for um cabeçalho
-## ("se(x) {"), move a chave para a linha de baixo e monta o bloco.
-static func ao_digitar_abre_chave(ce: CodeEdit) -> void:
-	var abre = LinguagemDB.perfil()["abre_bloco"]
-	var linha = ce.get_caret_line()
-	var texto = ce.get_line(linha)
-	var t = texto.strip_edges()
-	if t == abre or not t.ends_with(abre) or ce.get_caret_column() != texto.length():
-		return
-	var sem_chave = texto.substr(0, texto.rfind(abre)).rstrip(" \t")
-	if analisar_cabecalho(sem_chave).is_empty():
-		return
-	ce.begin_complex_operation()
-	ce.set_line(linha, sem_chave)
-	ce.end_complex_operation()
-	expandir_bloco(ce, linha)
 
 ## Quantas chaves estão abertas sem fechamento no texto (ignora strings e comentários).
 static func chaves_abertas(texto: String) -> int:
